@@ -27,7 +27,7 @@ def main():
     parser.add_argument("--tokenizer_path", required=True, help="Local tokenizer/model path for AutoTokenizer.")
     parser.add_argument("--base_url", default="http://localhost:30000/v1")
     parser.add_argument("--api_key", default="None")
-    parser.add_argument("--case_dir", required=True, help="Bench 根目录，例如 osce_data/bench")
+    parser.add_argument("--case_dir", required=True, help="Bench 根目录，例如 /data/xuxiang/mimic-iv/bench")
     parser.add_argument("--max_cases", type=int, default=10)
     parser.add_argument("--repeat_k", type=int, default=1)
     parser.add_argument("--no_cxr", action="store_true", help="使用无 CXR 数据（bench/without_img/hosp_only）；默认使用有 CXR（bench/with_img/ed_hosp）")

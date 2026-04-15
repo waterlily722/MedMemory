@@ -180,8 +180,6 @@ class ExperienceItem(SerializableMixin):
     effect_summary: Dict[str, Any] = field(default_factory=dict)
     utility_stats: Dict[str, Any] = field(default_factory=dict)
     applicability: Dict[str, Any] = field(default_factory=dict)
-    failure_mechanism: Dict[str, Any] = field(default_factory=dict)
-    safer_alternative: Dict[str, Any] = field(default_factory=dict)
     source_field_refs: List[str] = field(default_factory=list)
 
 

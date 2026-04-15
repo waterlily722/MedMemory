@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import json
 import uuid
 from typing import Any
@@ -293,7 +292,7 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
             self.current_retrieval_result = retrieve_all(self.current_intent_plan.query_signature, root_dir=self.memory_root)
             self.current_applicability_result = apply_controller(self.case_memory, self.current_intent_plan, self.current_retrieval_result)
             self.current_action_decision = decide_action(self.current_intent_plan, self.current_applicability_result)
-            self.messages.append({"role": "user", "content": self._build_memory_brief()})
+            self.messages.append({"role": "system", "content": self._build_memory_brief()})
 
     def update_from_model(self, response: str, **kwargs) -> Action:
         action = super().update_from_model(response, **kwargs)
