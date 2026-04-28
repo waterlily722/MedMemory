@@ -7,6 +7,8 @@ import json
 import os
 from typing import Any, Dict, List, Tuple
 
+from memory_agent.utils.bench_adapter import extract_gold_diagnosis, unwrap_osce_examination
+
 # bench 下按是否有 CXR 使用的子目录（相对 bench 根目录）
 SUBDIR_WITH_CXR = "with_img/ed_hosp"
 SUBDIR_NO_CXR = "without_img/hosp_only"
@@ -48,11 +50,11 @@ def load_cases_from_bench(
         case_id = os.path.splitext(os.path.basename(ehr_path))[0].replace("ehr_", "")
         obj = load_json(ehr_path)
         if isinstance(obj, dict) and "ehr" in obj and isinstance(obj["ehr"], dict):
-            ehr = obj["ehr"].copy()
-            knowledge = obj.get("knowledge") or []
+            ehr = unwrap_osce_examination(obj["ehr"]).copy()
+            knowledge = obj.get("knowledge") or ehr.get("knowledge") or []
         else:
-            ehr = obj if isinstance(obj, dict) else {}
-            knowledge = []
+            ehr = unwrap_osce_examination(obj) if isinstance(obj, dict) else {}
+            knowledge = ehr.get("knowledge") or []
 
         # 将 CXR 中 dicoms 的 jpg_path 解析为基于 case 目录的绝对路径
         if "CXR" in ehr and isinstance(ehr["CXR"], list):
@@ -66,7 +68,7 @@ def load_cases_from_bench(
                         # 保留原 jpg_path 便于兼容
                         # d["jpg_path"] 不变
 
-        gold = (ehr.get("Final_Result") or "") if isinstance(ehr, dict) else ""
+        gold = extract_gold_diagnosis(ehr)
 
         cases.append({
             "case_id": case_id,
@@ -78,6 +80,7 @@ def load_cases_from_bench(
             "medenv_case_bundle": {
                 "case_id": case_id,
                 "ehr": ehr,
+                "knowledge": knowledge,
                 "source_field_refs": ["ehr"],
             },
         })
@@ -96,8 +99,11 @@ def build_tasks(
         for c in cases:
             ehr = c.get("ehr", {})
             info = ehr.get("Patient_info") or {}
-            history = ehr.get("History") or {}
-            chief = history.get("Chief_Complaint", "")
+            actor = ehr.get("Patient_Actor") or {}
+            demographics = actor.get("Demographics") or info or {}
+            history = actor.get("History") or {}
+            symptoms = actor.get("Symptoms") or {}
+            chief = symptoms.get("Chief_Complaint") or history.get("Chief_Complaint") or ehr.get("Objective_for_Doctor", "")
 
             tasks.append({
                 "case_id": c["case_id"],
@@ -108,7 +114,7 @@ def build_tasks(
                     "medenv_case_bundle": c.get("medenv_case_bundle", {}),
                 },
                 "question": (
-                    f"I am a {info.get('age', '')}-year-old {info.get('gender', '')} patient. "
+                    f"I am a {demographics.get('age', '')}-year-old {demographics.get('gender', '')} patient. "
                     f"I haven't been feeling well recently. "
                     f"My main issue is: {chief}."
                 ),

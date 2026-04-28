@@ -4,13 +4,13 @@ import re
 from typing import Any
 
 from .schemas import ActionDecision, CaseMemory, EpisodeFeedback, MedEnvCaseBundle, TurnFeedback
-
+from .utils.bench_adapter import extract_gold_diagnosis, unwrap_osce_examination
 
 FINAL_DIAGNOSIS_RE = re.compile(r"\\box(?:ed)?\{(.+?)\}")
 
 
 def _normalize(text: str) -> str:
-    return " ".join(re.sub(r"[^\w\s]", " ", text.lower()).split())
+    return " ".join(re.sub(r"[^\w\s]", " ", (text or "").lower()).split())
 
 
 def _extract_final_diagnosis(trajectory) -> str:
@@ -22,18 +22,18 @@ def _extract_final_diagnosis(trajectory) -> str:
                 if fn.get("name") == "diagnosis":
                     args = fn.get("arguments", {})
                     if isinstance(args, str):
-                        match = FINAL_DIAGNOSIS_RE.search(args)
-                        if match:
-                            return match.group(1).strip()
-                    elif isinstance(args, dict):
+                        m = FINAL_DIAGNOSIS_RE.search(args)
+                        if m:
+                            return m.group(1).strip()
+                    if isinstance(args, dict):
                         text = str(args.get("final_response", ""))
-                        match = FINAL_DIAGNOSIS_RE.search(text)
-                        if match:
-                            return match.group(1).strip()
+                        m = FINAL_DIAGNOSIS_RE.search(text)
+                        if m:
+                            return m.group(1).strip()
         text = getattr(step, "model_response", "") or ""
-        match = FINAL_DIAGNOSIS_RE.search(text)
-        if match:
-            return match.group(1).strip()
+        m = FINAL_DIAGNOSIS_RE.search(text)
+        if m:
+            return m.group(1).strip()
     return ""
 
 
@@ -43,34 +43,29 @@ def build_turn_feedback(
     execution_result,
     case_after: CaseMemory,
 ) -> TurnFeedback:
-    before_missing = set(case_before.derived_state.get("missing_critical_slots", []))
-    after_missing = set(case_after.derived_state.get("missing_critical_slots", []))
-    before_uncertain = set(case_before.derived_state.get("active_uncertainties", []))
-    after_uncertain = set(case_after.derived_state.get("active_uncertainties", []))
-
+    before_missing = set(case_before.missing_info)
+    after_missing = set(case_after.missing_info)
     resolved_slots = sorted(before_missing - after_missing)
-    uncertainty_reduction = sorted(before_uncertain - after_uncertain)
-    used_refs = case_after.derived_state.get("interaction_state", {}).get("recent_useful_evidence_refs", [])
-    gain_type = "slot_fill" if resolved_slots else "uncertainty_reduce" if uncertainty_reduction else "useful_tool" if execution_result.execution_status == "success" and used_refs else "safe_defer"
-    gain_value = round(0.2 * len(resolved_slots) + 0.15 * len(uncertainty_reduction) + (0.1 if used_refs else 0.0), 4)
 
-    asked_before = case_before.derived_state.get("interaction_state", {}).get("asked_questions", [])
-    chosen_action = action_decision.chosen_action
-    redundant_question = bool(chosen_action.get("action_type") == "ask" and chosen_action.get("action_text") in asked_before)
+    before_h = {h.name for h in case_before.active_hypotheses}
+    after_h = {h.name for h in case_after.active_hypotheses}
+    hypothesis_refined = bool(after_h and after_h != before_h)
+
+    gain_value = 0.2 * len(resolved_slots) + (0.2 if hypothesis_refined else 0.0)
+    if execution_result.execution_status == "success" and case_after.evidence_items:
+        gain_value += 0.1
+
     wasted_turn = gain_value == 0.0 and execution_result.execution_status != "success"
     wasted_tool = execution_result.execution_status == "no_effect"
-    risk_before = case_before.derived_state.get("safety_state", {}).get("premature_finalize_risk", "mid")
-    after_conflict = case_after.derived_state.get("safety_state", {}).get("evidence_conflict_level", "low")
-    before_conflict = case_before.derived_state.get("safety_state", {}).get("evidence_conflict_level", "low")
+    redundant_question = action_decision.chosen_action.get("action_type") == "ASK" and not resolved_slots
 
     return TurnFeedback(
         turn_id=action_decision.turn_id,
         local_gain={
-            "gain_type": gain_type,
-            "gain_value": gain_value,
+            "gain_type": "slot_fill" if resolved_slots else "hypothesis_refine" if hypothesis_refined else "low_gain",
+            "gain_value": round(gain_value, 4),
             "resolved_slots": resolved_slots,
-            "uncertainty_reduction": uncertainty_reduction,
-            "useful_evidence_refs": used_refs[-5:],
+            "hypothesis_refined": hypothesis_refined,
         },
         local_cost={
             "wasted_turn": wasted_turn,
@@ -78,77 +73,52 @@ def build_turn_feedback(
             "redundant_question": redundant_question,
         },
         safety_signal={
-            "premature_finalize_signal": chosen_action.get("action_type") == "finalize" and risk_before != "low",
-            "evidence_conflict_increase": before_conflict == "low" and after_conflict in {"mid", "high"},
-            "guardrail_hit": "guardrail" in (action_decision.final_rationale or "").lower(),
+            "premature_finalize_signal": action_decision.chosen_action.get("action_type") == "FINALIZE_DIAGNOSIS" and case_before.finalize_risk != "low",
+            "high_finalize_risk": case_after.finalize_risk == "high",
         },
         source_field_refs=action_decision.source_field_refs,
     )
 
 
-def build_episode_feedback(
-    bundle,
-    trajectory,
-) -> EpisodeFeedback:
+def build_episode_feedback(bundle, trajectory) -> EpisodeFeedback:
     bundle = bundle if isinstance(bundle, MedEnvCaseBundle) else MedEnvCaseBundle.from_dict(bundle)
-    steps = getattr(trajectory, "steps", []) or []
+    turn_records = ((getattr(trajectory, "info", {}) or {}).get("memory_agent", {}) or {}).get("turn_records", [])
     final_diagnosis = _extract_final_diagnosis(trajectory)
 
-    counts = {"retrieve": 0, "request_exam": 0, "cxr": 0, "cxr_grounding": 0, "diagnosis": 0}
-    premature_finalize_events = []
-    guardrail_violations = []
-    low_yield_segments = []
-
-    turn_records = ((getattr(trajectory, "info", {}) or {}).get("memory_agent", {}) or {}).get("turn_records", [])
-    for idx, record in enumerate(turn_records):
-        feedback = record.get("turn_feedback", {})
-        decision = ((record.get("action_decision") or {}).get("chosen_action") or {})
-        action_type = decision.get("action_type", "")
-        if action_type in counts:
-            counts[action_type] += 1
+    premature = 0
+    low_yield = 0
+    for record in turn_records:
+        feedback = record.get("turn_feedback") or {}
         if (feedback.get("safety_signal") or {}).get("premature_finalize_signal"):
-            premature_finalize_events.append(idx)
-        if (feedback.get("safety_signal") or {}).get("guardrail_hit"):
-            guardrail_violations.append(idx)
+            premature += 1
         if (feedback.get("local_cost") or {}).get("wasted_turn"):
-            low_yield_segments.append(idx)
+            low_yield += 1
 
-    gold_candidates = [str((bundle.ehr or {}).get("Final_Result") or "")]
-    normalized_pred = _normalize(final_diagnosis)
-    utility_score = 0.0
-    for gold in gold_candidates:
-        normalized_gold = _normalize(gold)
-        if normalized_pred and normalized_gold and (normalized_gold in normalized_pred or normalized_pred in normalized_gold):
-            utility_score = 1.0
-            break
+    gold = extract_gold_diagnosis(bundle.ehr)
+    osce = unwrap_osce_examination(bundle.ehr)
+    pred = _normalize(final_diagnosis)
+    utility = 1.0 if pred and (_normalize(gold) in pred or pred in _normalize(gold)) else 0.0
 
-    total_turns = len(turn_records) or len(steps)
-    efficiency_score = max(0.0, 1.0 - max(total_turns - 4, 0) * 0.08)
-    safety_penalty = 0.2 * len(premature_finalize_events) + 0.1 * len(guardrail_violations)
-    safety_score = max(0.0, 1.0 - safety_penalty)
-    total_score = round((utility_score + efficiency_score + safety_score) / 3.0, 4)
+    total_turns = len(turn_records) or len(getattr(trajectory, "steps", []) or [])
+    efficiency = max(0.0, 1.0 - max(total_turns - 4, 0) * 0.08)
+    safety = max(0.0, 1.0 - 0.2 * premature)
+    total = round((utility + efficiency + safety) / 3.0, 4)
 
     return EpisodeFeedback(
         episode_id=getattr(trajectory, "uid", ""),
-        offline_supervision={
-            "ehr_final_result": (bundle.ehr or {}).get("Final_Result"),
-        },
+        offline_supervision={"ehr_final_result": gold},
         trajectory_metrics={
             "total_turns": total_turns,
-            "retrieve_count": counts["retrieve"],
-            "request_exam_count": counts["request_exam"],
-            "cxr_count": counts["cxr"],
-            "grounding_count": counts["cxr_grounding"],
-            "repeated_low_yield_segments": low_yield_segments,
-            "premature_finalize_events": premature_finalize_events,
-            "guardrail_violations": guardrail_violations,
+            "repeated_low_yield_segments": low_yield,
+            "premature_finalize_events": premature,
+            "principal_diagnosis": str((osce.get("Principal_Diagnosis") or {}).get("icd_title", "")),
         },
         reward={
-            "utility_score": utility_score,
-            "efficiency_score": round(efficiency_score, 4),
-            "safety_score": round(safety_score, 4),
-            "total_score": total_score,
+            "utility_score": utility,
+            "efficiency_score": round(efficiency, 4),
+            "safety_score": round(safety, 4),
+            "total_score": total,
             "predicted_diagnosis": final_diagnosis,
         },
-        source_field_refs=["ehr.Final_Result"],
+        source_field_refs=["OSCE_Examination.Correct_Diagnosis", "OSCE_Examination.Principal_Diagnosis"],
     )

@@ -1,54 +1,50 @@
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any
-
-from .schemas import MemoryRetrievalResult, RetrievalHit
-from .stores.experience_store import ExperienceStore
-from .stores.guardrail_store import GuardrailStore
-from .stores.skill_store import SkillStore
+from .online.retriever import DEFAULT_MEMORY_ROOT, retrieve_multi_memory
+from .online.reranker import rerank_retrieval_result
+from .schemas import MemoryQuery, MemoryRetrievalResult
 
 
-DEFAULT_MEMORY_ROOT = Path(__file__).resolve().parent / "store_data"
+def _to_memory_query(query_signature_or_query) -> MemoryQuery:
+    if isinstance(query_signature_or_query, MemoryQuery):
+        return query_signature_or_query
+    if isinstance(query_signature_or_query, dict):
+        if "structured" in query_signature_or_query:
+            return MemoryQuery.from_dict(query_signature_or_query)
+        query_text = " | ".join(f"{k}:{v}" for k, v in query_signature_or_query.items())
+        return MemoryQuery(query_text=query_text)
+    return MemoryQuery(query_text=str(query_signature_or_query))
 
 
-def _store_root(root: str | None = None) -> Path:
-    base = Path(root) if root else DEFAULT_MEMORY_ROOT
-    base.mkdir(parents=True, exist_ok=True)
-    return base
+def retrieve_experience(query_signature, top_k: int = 5, root_dir: str | None = None):
+    query = _to_memory_query(query_signature)
+    result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
+    return result.experience_hits[:top_k]
 
 
-def _as_hit(row) -> RetrievalHit:
-    item, score, matched_fields = row
-    return RetrievalHit(
-        item_id=getattr(item, "item_id", ""),
-        retrieval_score=round(float(score), 4),
-        matched_fields=matched_fields,
-        source_field_refs=getattr(item, "source_field_refs", []) or [],
-    )
+def retrieve_skill(query_signature, top_k: int = 3, root_dir: str | None = None):
+    query = _to_memory_query(query_signature)
+    result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
+    return result.skill_hits[:top_k]
 
 
-def retrieve_experience(query_signature, top_k: int = 10, root_dir: str | None = None):
-    store = ExperienceStore(_store_root(root_dir))
-    return [_as_hit(row) for row in store.search(query_signature, top_k=top_k)]
+def retrieve_guardrail(query_signature, top_k: int = 3, root_dir: str | None = None):
+    # Guardrail memory is represented as unsafe experience/knowledge hints in the new design.
+    query = _to_memory_query(query_signature)
+    result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
+    merged = [hit for hit in result.experience_hits if hit.payload.get("outcome_type") == "unsafe"]
+    if len(merged) < top_k:
+        merged.extend(result.knowledge_hits[: top_k - len(merged)])
+    return merged[:top_k]
 
 
-def retrieve_skill(query_signature, top_k: int = 10, root_dir: str | None = None):
-    store = SkillStore(_store_root(root_dir))
-    return [_as_hit(row) for row in store.search(query_signature, top_k=top_k)]
-
-
-def retrieve_guardrail(query_signature, top_k: int = 10, root_dir: str | None = None):
-    store = GuardrailStore(_store_root(root_dir))
-    return [_as_hit(row) for row in store.search(query_signature, top_k=top_k)]
-
-
-def retrieve_all(query_signature, top_k_each: int = 10, root_dir: str | None = None) -> MemoryRetrievalResult:
-    return MemoryRetrievalResult(
-        turn_id=str(query_signature.get("turn_id", "")),
-        query_signature=query_signature,
-        experience_hits=retrieve_experience(query_signature, top_k=top_k_each, root_dir=root_dir),
-        skill_hits=retrieve_skill(query_signature, top_k=top_k_each, root_dir=root_dir),
-        guardrail_hits=retrieve_guardrail(query_signature, top_k=top_k_each, root_dir=root_dir),
-        source_field_refs=[],
-    )
+def retrieve_all(query_signature, top_k_each: int = 5, root_dir: str | None = None) -> MemoryRetrievalResult:
+    query = _to_memory_query(query_signature)
+    result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
+    reranked = rerank_retrieval_result(result)
+    reranked.experience_hits = reranked.experience_hits[:top_k_each]
+    reranked.skill_hits = reranked.skill_hits[:top_k_each]
+    reranked.knowledge_hits = reranked.knowledge_hits[:top_k_each]
+    # Backward compatibility for older controller code paths expecting guardrail_hits.
+    setattr(reranked, "guardrail_hits", retrieve_guardrail(query, top_k=top_k_each, root_dir=root_dir))
+    return reranked

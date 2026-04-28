@@ -24,6 +24,8 @@ from .schemas import (
     SkillItem,
     TurnFeedback,
 )
+from .wrapper import MemoryWrappedMedicalAgent
+
 __all__ = [
     "ActionDecision",
     "ApplicabilityResult",
@@ -40,6 +42,7 @@ __all__ = [
     "MemoryUpdatePlan",
     "SkillItem",
     "TurnFeedback",
+    "MemoryWrappedMedicalAgent",
     "canonicalize_static_case",
     "canonicalize_turn_input",
     "init_case_memory",

@@ -6,6 +6,7 @@ import uuid
 from typing import Any, Dict, List
 
 from .schemas import CanonicalEvidence, MedEnvCaseBundle
+from .utils.bench_adapter import nested_get, unwrap_osce_examination
 
 
 NEGATION_PATTERNS = [
@@ -156,30 +157,36 @@ def canonicalize_static_case(bundle: MedEnvCaseBundle | dict[str, Any]) -> list[
     if isinstance(bundle, dict):
         bundle = MedEnvCaseBundle.from_dict(bundle)
 
+    osce = unwrap_osce_examination(bundle.ehr)
+
     evidences: list[CanonicalEvidence] = []
     turn_id = "static"
     static_specs = [
-        ("ehr", "ehr.Meta", bundle.ehr.get("Meta"), ""),
-        ("ehr", "ehr.Patient_info", bundle.ehr.get("Patient_info"), ""),
-        ("ehr", "ehr.Objective_for_Doctor", None, bundle.ehr.get("Objective_for_Doctor", "")),
-        ("ehr", "ehr.History.Chief_Complaint", None, ((bundle.ehr.get("History") or {}).get("Chief_Complaint", ""))),
-        ("ehr", "ehr.History.HPI", None, ((bundle.ehr.get("History") or {}).get("HPI", ""))),
-        ("ehr", "ehr.History.Past_Medical_History", None, ((bundle.ehr.get("History") or {}).get("Past_Medical_History", ""))),
-        ("ehr", "ehr.History.Social_History", None, ((bundle.ehr.get("History") or {}).get("Social_History", ""))),
-        ("ehr", "ehr.Physical_Examination_Findings", None, bundle.ehr.get("Physical_Examination_Findings", "")),
-        ("ehr", "ehr.Test_Results-Labs", bundle.ehr.get("Test_Results-Labs"), ""),
-        ("ehr", "ehr.Test_Results-Microbiology", bundle.ehr.get("Test_Results-Microbiology"), ""),
-        ("ehr", "ehr.Test_Results-Imaging", bundle.ehr.get("Test_Results-Imaging"), ""),
-        ("ehr", "ehr.CXR", bundle.ehr.get("CXR"), ""),
-        ("ehr", "ehr.Medrecon", bundle.ehr.get("Medrecon"), ""),
+        ("ehr", "OSCE_Examination.Meta", osce.get("Meta"), ""),
+        ("ehr", "OSCE_Examination.Objective_for_Doctor", None, osce.get("Objective_for_Doctor", "")),
+        ("ehr", "OSCE_Examination.Patient_Actor.Demographics", nested_get(osce, ["Patient_Actor", "Demographics"], {}), ""),
+        ("ehr", "OSCE_Examination.Patient_Actor.History.HPI", None, nested_get(osce, ["Patient_Actor", "History", "HPI"], "")),
+        ("ehr", "OSCE_Examination.Patient_Actor.History.Past_Medical_History", None, nested_get(osce, ["Patient_Actor", "History", "Past_Medical_History"], "")),
+        ("ehr", "OSCE_Examination.Patient_Actor.History.Social_History", None, nested_get(osce, ["Patient_Actor", "History", "Social_History"], "")),
+        ("ehr", "OSCE_Examination.Patient_Actor.Symptoms", nested_get(osce, ["Patient_Actor", "Symptoms"], {}), ""),
+        ("ehr", "OSCE_Examination.Physical_Examination_Findings.vitals", nested_get(osce, ["Physical_Examination_Findings", "vitals"], {}), ""),
+        ("ehr", "OSCE_Examination.Physical_Examination_Findings.general_exam", None, nested_get(osce, ["Physical_Examination_Findings", "general_exam"], "")),
+        ("ehr", "OSCE_Examination.Test_Results.Labs", nested_get(osce, ["Test_Results", "Labs"], {}), ""),
+        ("ehr", "OSCE_Examination.Test_Results.Microbiology", nested_get(osce, ["Test_Results", "Microbiology"], {}), ""),
+        ("ehr", "OSCE_Examination.Test_Results.Imaging", nested_get(osce, ["Test_Results", "Imaging"], {}), ""),
+        ("ehr", "OSCE_Examination.Test_Results.CXR", nested_get(osce, ["Test_Results", "CXR"], {}), ""),
+        ("ehr", "OSCE_Examination.Test_Results.Hosp", nested_get(osce, ["Test_Results", "Hosp"], {}), ""),
+        ("ehr", "OSCE_Examination.Correct_Diagnosis", None, _to_text(osce.get("Correct_Diagnosis", {}))),
+        ("ehr", "OSCE_Examination.Principal_Diagnosis", None, _to_text(osce.get("Principal_Diagnosis", {}))),
     ]
 
     for bundle_side, field_path, raw_structured, raw_text in static_specs:
         if not raw_text and not raw_structured:
             continue
         raw_image_refs: list[str] = []
-        if field_path == "ehr.CXR" and isinstance(raw_structured, list):
-            for study in raw_structured:
+        if field_path == "OSCE_Examination.Test_Results.CXR" and isinstance(raw_structured, dict):
+            studies = raw_structured.get("studies", [])
+            for study in studies if isinstance(studies, list) else []:
                 if not isinstance(study, dict):
                     continue
                 for dicom in study.get("dicoms", []) or []:
@@ -199,6 +206,32 @@ def canonicalize_static_case(bundle: MedEnvCaseBundle | dict[str, Any]) -> list[
                 raw_image_refs=raw_image_refs,
             )
         )
+
+    knowledge_block = nested_get(osce, ["knowledge", "principal_diagnosis", "matched_knowledge"], [])
+    if isinstance(knowledge_block, list):
+        for idx, item in enumerate(knowledge_block[:12]):
+            if not isinstance(item, dict):
+                continue
+            knowledge_text = "\n".join(
+                str(part)
+                for part in [
+                    item.get("introduction", ""),
+                    item.get("signs_and_symptoms", ""),
+                    item.get("diagnosis", ""),
+                ]
+                if part
+            )
+            evidences.append(
+                _build_evidence(
+                    turn_id=turn_id,
+                    source_type="knowledge_item",
+                    bundle_side="ehr",
+                    field_paths=[f"OSCE_Examination.knowledge.principal_diagnosis.matched_knowledge[{idx}]"],
+                    raw_text=knowledge_text,
+                    raw_structured=item,
+                    raw_image_refs=[],
+                )
+            )
     return evidences
 
 
