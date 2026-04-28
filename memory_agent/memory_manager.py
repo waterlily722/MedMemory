@@ -3,8 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from .memory_store import ExperienceMemoryStore, SkillMemoryStore
-from .offline.experience_merger import can_merge, merge_experience
-from .offline.skill_abstractor import promote_experiences_to_skill
+from .offline.memory_consolidator import consolidate_experience, consolidate_skill
 from .schemas import DistilledEpisode, ExperienceCard, MemoryUpdateOperation, MemoryUpdatePlan, SkillCard
 from .online.retriever import DEFAULT_MEMORY_ROOT
 
@@ -15,23 +14,49 @@ def _root(root_dir: str | None = None) -> Path:
     return base
 
 
-def _upsert_experience_with_merge(store: ExperienceMemoryStore, card: ExperienceCard, operations: list[MemoryUpdateOperation]) -> ExperienceCard:
+def _upsert_experience_with_merge(
+    store: ExperienceMemoryStore,
+    card: ExperienceCard,
+    operations: list[MemoryUpdateOperation],
+    experience_merge_mode: str = "rule",
+    llm_client=None,
+) -> ExperienceCard:
     existing_items = store.list_items()
-    for existing in existing_items:
-        if can_merge(existing, card):
-            merged = merge_experience(existing, card)
-            store.upsert(merged)
-            operations.append(
-                MemoryUpdateOperation(
-                    op_type="merge",
-                    target_memory="experience",
-                    target_item_id=merged.item_id,
-                    source_item_ids=[existing.item_id, card.item_id],
-                    reason="merged similar experience pattern",
-                    source_field_refs=card.source_field_refs,
-                )
+    decision = consolidate_experience(
+        new_experience=card,
+        similar_existing=existing_items,
+        mode=experience_merge_mode,
+        llm_client=llm_client,
+    )
+
+    merge_decision = str(decision.get("merge_decision", "insert_new"))
+    if merge_decision == "discard":
+        operations.append(
+            MemoryUpdateOperation(
+                op_type="discard",
+                target_memory="experience",
+                target_item_id=card.item_id,
+                source_item_ids=decision.get("target_memory_ids", []),
+                reason=str(decision.get("discard_reason") or "discarded by merger"),
+                source_field_refs=card.source_field_refs,
             )
-            return merged
+        )
+        return card
+
+    if merge_decision == "merge_with_existing":
+        merged = ExperienceCard.from_dict(decision.get("merged_experience") or card.to_dict())
+        store.upsert(merged)
+        operations.append(
+            MemoryUpdateOperation(
+                op_type="merge",
+                target_memory="experience",
+                target_item_id=merged.item_id,
+                source_item_ids=decision.get("target_memory_ids", []),
+                reason=str(decision.get("reason") or "merged similar experience"),
+                source_field_refs=card.source_field_refs,
+            )
+        )
+        return merged
 
     store.upsert(card)
     operations.append(
@@ -47,7 +72,13 @@ def _upsert_experience_with_merge(store: ExperienceMemoryStore, card: Experience
     return card
 
 
-def update_memory(distilled_episode: DistilledEpisode | dict, root_dir: str | None = None) -> MemoryUpdatePlan:
+def update_memory(
+    distilled_episode: DistilledEpisode | dict,
+    root_dir: str | None = None,
+    experience_merge_mode: str = "rule",
+    skill_mining_mode: str = "rule",
+    llm_client=None,
+) -> MemoryUpdatePlan:
     distilled = distilled_episode if isinstance(distilled_episode, DistilledEpisode) else DistilledEpisode.from_dict(distilled_episode)
     root = _root(root_dir)
     exp_store = ExperienceMemoryStore(root)
@@ -58,7 +89,13 @@ def update_memory(distilled_episode: DistilledEpisode | dict, root_dir: str | No
 
     for raw in distilled.candidate_experience_items:
         card = raw if isinstance(raw, ExperienceCard) else ExperienceCard.from_dict(raw)
-        merged = _upsert_experience_with_merge(exp_store, card, operations)
+        merged = _upsert_experience_with_merge(
+            exp_store,
+            card,
+            operations,
+            experience_merge_mode=experience_merge_mode,
+            llm_client=llm_client,
+        )
         merged_batch.append(merged)
 
     for raw in distilled.candidate_skill_items:
@@ -75,7 +112,11 @@ def update_memory(distilled_episode: DistilledEpisode | dict, root_dir: str | No
             )
         )
 
-    promoted = promote_experiences_to_skill(merged_batch)
+    promoted = consolidate_skill(
+        clustered_success_experiences=merged_batch,
+        mode=skill_mining_mode,
+        llm_client=llm_client,
+    )
     if promoted is not None:
         skill_store.upsert(promoted)
         operations.append(

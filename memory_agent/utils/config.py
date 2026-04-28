@@ -53,3 +53,18 @@ SKILL_ABSTRACTION_CONFIG = {
     "max_unsafe_rate": 0.05,
     "min_cross_case_support": 3,
 }
+
+MEMORY_RUNTIME_DEFAULTS = {
+    "query_builder_mode": "rule",
+    "applicability_mode": "rule",
+    "action_decision_mode": "base",
+    "experience_extraction_mode": "rule",
+    "experience_merge_mode": "rule",
+    "skill_mining_mode": "rule",
+    "memory_top_k": 5,
+    "log_memory_trace": False,
+    "disable_memory": False,
+    "disable_experience_memory": False,
+    "disable_skill_memory": False,
+    "disable_knowledge_memory": False,
+}

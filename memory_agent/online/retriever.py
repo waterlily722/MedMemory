@@ -40,7 +40,12 @@ def _experience_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]
                 item_id=card.item_id,
                 retrieval_score=round(score, 4),
                 matched_fields=matched,
-                payload=card.to_dict(),
+                payload={
+                    "memory_id": card.item_id,
+                    "memory_type": "experience",
+                    "content": card.to_dict(),
+                    "source": "experience_memory_store",
+                },
                 source_field_refs=card.source_field_refs,
             )
         )
@@ -74,7 +79,12 @@ def _skill_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
                 item_id=card.skill_id,
                 retrieval_score=round(score, 4),
                 matched_fields=matched,
-                payload=card.to_dict(),
+                payload={
+                    "memory_id": card.skill_id,
+                    "memory_type": "skill",
+                    "content": card.to_dict(),
+                    "source": "skill_memory_store",
+                },
                 source_field_refs=card.source_field_refs,
             )
         )
@@ -95,7 +105,12 @@ def _knowledge_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
                 item_id=item.item_id,
                 retrieval_score=round(score, 4),
                 matched_fields=["semantic"],
-                payload=item.to_dict(),
+                payload={
+                    "memory_id": item.item_id,
+                    "memory_type": "knowledge",
+                    "content": item.to_dict(),
+                    "source": item.source,
+                },
                 source_field_refs=item.source_field_refs,
             )
         )
@@ -103,11 +118,18 @@ def _knowledge_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
     return hits[: RETRIEVAL_CONFIG["knowledge_top_k"]]
 
 
-def retrieve_multi_memory(memory_query: MemoryQuery, turn_id: int, root_dir: str | None = None) -> MemoryRetrievalResult:
+def retrieve_multi_memory(
+    memory_query: MemoryQuery,
+    turn_id: int,
+    root_dir: str | None = None,
+    disable_experience_memory: bool = False,
+    disable_skill_memory: bool = False,
+    disable_knowledge_memory: bool = False,
+) -> MemoryRetrievalResult:
     return MemoryRetrievalResult(
         turn_id=turn_id,
-        experience_hits=_experience_hits(memory_query, root_dir),
-        skill_hits=_skill_hits(memory_query, root_dir),
-        knowledge_hits=_knowledge_hits(memory_query, root_dir),
+        experience_hits=[] if disable_experience_memory else _experience_hits(memory_query, root_dir),
+        skill_hits=[] if disable_skill_memory else _skill_hits(memory_query, root_dir),
+        knowledge_hits=[] if disable_knowledge_memory else _knowledge_hits(memory_query, root_dir),
         source_field_refs=memory_query.source_field_refs,
     )

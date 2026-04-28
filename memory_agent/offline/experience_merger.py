@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from ..llm import EXPERIENCE_MERGE_SCHEMA, LLMClient, experience_merge_prompt, parse_validate_repair
 from ..schemas import ExperienceCard
 from ..utils.config import MERGE_CONFIG
 from ..utils.scoring import cosine_similarity, overlap_score
@@ -42,3 +43,32 @@ def merge_experience(base: ExperienceCard, candidate: ExperienceCard) -> Experie
         merged.outcome_type = "partial_success"
         merged.error_tag = list(dict.fromkeys(base.error_tag + candidate.error_tag + ["conflict_group"]))
     return merged
+
+
+def decide_merge_rule(new_experience: ExperienceCard, similar_existing: list[ExperienceCard]) -> tuple[str, list[str], ExperienceCard | None, str | None]:
+    for existing in similar_existing:
+        if can_merge(existing, new_experience):
+            return "merge_with_existing", [existing.item_id], merge_experience(existing, new_experience), None
+    return "insert_new", [], new_experience, None
+
+
+def decide_merge_llm(
+    new_experience: ExperienceCard,
+    similar_existing: list[ExperienceCard],
+    llm_client: LLMClient,
+) -> dict:
+    fallback = {
+        "merge_decision": "insert_new",
+        "target_memory_ids": [],
+        "reason": "fallback insert_new",
+        "merged_experience": new_experience.to_dict(),
+        "discard_reason": None,
+    }
+    prompt = experience_merge_prompt(
+        {
+            "new_experience": new_experience.to_dict(),
+            "similar_existing": [x.to_dict() for x in similar_existing],
+        }
+    )
+    parsed, _, _ = parse_validate_repair(llm_client.generate_json(prompt), EXPERIENCE_MERGE_SCHEMA, fallback)
+    return parsed

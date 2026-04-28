@@ -32,15 +32,33 @@ def retrieve_guardrail(query_signature, top_k: int = 3, root_dir: str | None = N
     # Guardrail memory is represented as unsafe experience/knowledge hints in the new design.
     query = _to_memory_query(query_signature)
     result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
-    merged = [hit for hit in result.experience_hits if hit.payload.get("outcome_type") == "unsafe"]
+    merged = [
+        hit
+        for hit in result.experience_hits
+        if (hit.payload.get("content", {}) or {}).get("outcome_type") == "unsafe"
+    ]
     if len(merged) < top_k:
         merged.extend(result.knowledge_hits[: top_k - len(merged)])
     return merged[:top_k]
 
 
-def retrieve_all(query_signature, top_k_each: int = 5, root_dir: str | None = None) -> MemoryRetrievalResult:
+def retrieve_all(
+    query_signature,
+    top_k_each: int = 5,
+    root_dir: str | None = None,
+    disable_experience_memory: bool = False,
+    disable_skill_memory: bool = False,
+    disable_knowledge_memory: bool = False,
+) -> MemoryRetrievalResult:
     query = _to_memory_query(query_signature)
-    result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
+    result = retrieve_multi_memory(
+        query,
+        turn_id=0,
+        root_dir=root_dir,
+        disable_experience_memory=disable_experience_memory,
+        disable_skill_memory=disable_skill_memory,
+        disable_knowledge_memory=disable_knowledge_memory,
+    )
     reranked = rerank_retrieval_result(result)
     reranked.experience_hits = reranked.experience_hits[:top_k_each]
     reranked.skill_hits = reranked.skill_hits[:top_k_each]

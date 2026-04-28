@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import uuid
+from pathlib import Path
 from typing import Any
 
 from rllm.agents.agent import Action, Trajectory
@@ -13,12 +14,16 @@ from .controller import apply_controller
 from .decision import decide_action
 from .distiller import distill_episode
 from .feedback import build_episode_feedback, build_turn_feedback
+from .llm import LLMClient
 from .memory_store import KnowledgeMemoryStore
 from .memory_manager import update_memory
-from .planner import plan_intent
+from .online.memory_guidance import build_memory_guidance
+from .online.memory_trace import append_memory_trace
+from .planner import plan_intent_with_mode
 from .retriever import DEFAULT_MEMORY_ROOT, retrieve_all
 from .schemas import ActionDecision, CaseMemory, ExecutionResult, MedEnvCaseBundle
 from .utils.bench_adapter import knowledge_items_from_payload, unwrap_osce_examination
+from .utils.config import MEMORY_RUNTIME_DEFAULTS
 
 TOOL_TO_ACTION_TYPE = {
     "ask_patient": "ASK",
@@ -42,8 +47,42 @@ ACTION_TO_TOOL = {
 
 
 class MemoryWrappedMedicalAgent(MedicalAgent):
-    def __init__(self, *args, memory_root: str | None = None, **kwargs):
+    def __init__(
+        self,
+        *args,
+        memory_root: str | None = None,
+        query_builder_mode: str = "rule",
+        applicability_mode: str = "rule",
+        action_decision_mode: str = "base",
+        experience_extraction_mode: str = "rule",
+        experience_merge_mode: str = "rule",
+        skill_mining_mode: str = "rule",
+        memory_top_k: int = 5,
+        log_memory_trace: bool = False,
+        disable_memory: bool = False,
+        disable_experience_memory: bool = False,
+        disable_skill_memory: bool = False,
+        disable_knowledge_memory: bool = False,
+        memory_llm_model: str = "",
+        memory_llm_base_url: str = "",
+        memory_llm_api_key: str = "",
+        **kwargs,
+    ):
         self.memory_root = memory_root
+        self.query_builder_mode = query_builder_mode or MEMORY_RUNTIME_DEFAULTS["query_builder_mode"]
+        self.applicability_mode = applicability_mode or MEMORY_RUNTIME_DEFAULTS["applicability_mode"]
+        self.action_decision_mode = action_decision_mode or MEMORY_RUNTIME_DEFAULTS["action_decision_mode"]
+        self.experience_extraction_mode = experience_extraction_mode or MEMORY_RUNTIME_DEFAULTS["experience_extraction_mode"]
+        self.experience_merge_mode = experience_merge_mode or MEMORY_RUNTIME_DEFAULTS["experience_merge_mode"]
+        self.skill_mining_mode = skill_mining_mode or MEMORY_RUNTIME_DEFAULTS["skill_mining_mode"]
+        self.memory_top_k = int(memory_top_k)
+        self.log_memory_trace = bool(log_memory_trace)
+        self.disable_memory = bool(disable_memory)
+        self.disable_experience_memory = bool(disable_experience_memory)
+        self.disable_skill_memory = bool(disable_skill_memory)
+        self.disable_knowledge_memory = bool(disable_knowledge_memory)
+        self.trace_root = Path(__file__).resolve().parent.parent / "logs" / "memory_trace"
+        self.llm_client = LLMClient(model=memory_llm_model, base_url=memory_llm_base_url, api_key=memory_llm_api_key)
         self.case_bundle: MedEnvCaseBundle | None = None
         self.case_memory: CaseMemory | None = None
         self.turn_feedback_list: list[dict[str, Any]] = []
@@ -52,6 +91,7 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         self.current_retrieval_result = None
         self.current_applicability_result = None
         self.current_action_decision = None
+        self.current_memory_guidance: dict[str, Any] | None = None
         self.pending_turn_context: dict[str, Any] | None = None
         self.static_case_loaded = False
         self.knowledge_seeded = False
@@ -67,6 +107,7 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         self.current_retrieval_result = None
         self.current_applicability_result = None
         self.current_action_decision = None
+        self.current_memory_guidance = None
         self.pending_turn_context = None
         self.static_case_loaded = False
         self.knowledge_seeded = False
@@ -82,7 +123,7 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         self.case_bundle = MedEnvCaseBundle(case_id=str(observation.get("case_id", "")), ehr=context.get("ehr") or {})
 
     def _seed_knowledge_memory(self) -> None:
-        if self.case_bundle is None or self.knowledge_seeded:
+        if self.case_bundle is None or self.knowledge_seeded or self.disable_knowledge_memory:
             return
         knowledge_root = self.memory_root or DEFAULT_MEMORY_ROOT
         knowledge_store = KnowledgeMemoryStore(knowledge_root)
@@ -154,6 +195,35 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
             f"- Blocked candidates: {blocked}\n"
             "Respond with exactly one valid tool call. Avoid blocked or high-risk actions."
         )
+
+    def _append_trace(self, selected_action: dict[str, Any] | None = None, decision_reason: str = "") -> None:
+        if not self.log_memory_trace or self.case_memory is None or self.current_intent_plan is None:
+            return
+        case_id = self.case_memory.case_id or "unknown_case"
+        guidance = self.current_memory_guidance or {}
+        payload = {
+            "case_id": case_id,
+            "turn_id": self.case_memory.turn_id,
+            "case_state_summary": {
+                "problem_summary": self.case_memory.problem_summary,
+                "local_goal": self.case_memory.local_goal,
+                "missing_info": self.case_memory.missing_info,
+                "active_hypotheses": [h.name for h in self.case_memory.active_hypotheses],
+            },
+            "structured_query": self.current_intent_plan.memory_query.to_dict(),
+            "retrieved_experience_ids": guidance.get("retrieved_experience_ids", []),
+            "retrieved_skill_ids": guidance.get("retrieved_skill_ids", []),
+            "retrieved_knowledge_ids": guidance.get("retrieved_knowledge_ids", []),
+            "applicability_results": self.current_applicability_result.to_dict().get("action_assessments", []) if self.current_applicability_result else [],
+            "recommended_actions": guidance.get("recommended_actions", []),
+            "discouraged_actions": guidance.get("discouraged_actions", []),
+            "blocked_actions": guidance.get("blocked_actions", []),
+            "selected_action": selected_action or {},
+            "used_memory_ids": guidance.get("used_memory_ids", []),
+            "decision_reason": decision_reason,
+            "finalize_risk": self.case_memory.finalize_risk,
+        }
+        append_memory_trace(self.trace_root, case_id, payload)
 
     def _action_dict_to_env_action(self, action_dict: dict[str, Any]) -> list[dict[str, Any]]:
         action_type = action_dict.get("action_type", "ASK")
@@ -242,6 +312,9 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         super().update_from_env(observation, reward, done, info, **kwargs)
         self._ensure_case_bundle(observation)
 
+        if self.disable_memory:
+            return
+
         executed_action = None
         execution_result = None
         case_before = None
@@ -284,14 +357,36 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
             self.pending_turn_context = None
 
         if not done and self.case_memory is not None:
-            self.current_intent_plan = plan_intent(self.case_memory)
-            self.current_retrieval_result = retrieve_all(self.current_intent_plan.memory_query, root_dir=self.memory_root)
-            self.current_applicability_result = apply_controller(self.case_memory, self.current_intent_plan, self.current_retrieval_result)
+            self.current_intent_plan = plan_intent_with_mode(
+                self.case_memory,
+                query_builder_mode=self.query_builder_mode,
+                llm_client=self.llm_client,
+                observation=observation if isinstance(observation, dict) else {},
+                interaction_history_summary=f"turn={self.case_memory.turn_id}",
+            )
+            self.current_retrieval_result = retrieve_all(
+                self.current_intent_plan.memory_query,
+                top_k_each=self.memory_top_k,
+                root_dir=self.memory_root,
+                disable_experience_memory=self.disable_experience_memory,
+                disable_skill_memory=self.disable_skill_memory,
+                disable_knowledge_memory=self.disable_knowledge_memory,
+            )
+            self.current_applicability_result = apply_controller(
+                self.case_memory,
+                self.current_intent_plan,
+                self.current_retrieval_result,
+                mode=self.applicability_mode,
+                llm_client=self.llm_client,
+            )
             self.current_action_decision = decide_action(self.current_intent_plan, self.current_applicability_result, self.case_memory)
+            self.current_memory_guidance = build_memory_guidance(self.current_applicability_result, self.current_retrieval_result)
             self.messages.append({"role": "system", "content": self._build_memory_brief()})
 
     def update_from_model(self, response: str, **kwargs) -> Action:
         action = super().update_from_model(response, **kwargs)
+        if self.disable_memory:
+            return action
         parsed_action = action.action
         actual_action = parsed_action
         actual_decision = self.current_action_decision
@@ -321,6 +416,7 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
                 "case_before": self._clone_case_memory(),
                 "action_decision": actual_decision,
             }
+            self._append_trace(selected_action=parsed_action_dict, decision_reason=actual_decision.final_rationale if actual_decision else "")
 
         return Action(action=actual_action)
 
@@ -328,14 +424,32 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         if self.case_bundle is None:
             return {}
 
+        if self.disable_memory:
+            trajectory.info.setdefault("memory_agent", {})
+            trajectory.info["memory_agent"]["disabled"] = True
+            return trajectory.info["memory_agent"]
+
         trajectory.info.setdefault("memory_agent", {})
         trajectory.info["memory_agent"]["turn_feedbacks"] = self.turn_feedback_list
         trajectory.info["memory_agent"]["turn_records"] = self.turn_records
         trajectory.info["memory_agent"]["final_case_memory"] = self.case_memory.to_dict() if self.case_memory else {}
 
         episode_feedback = build_episode_feedback(self.case_bundle, trajectory)
-        distilled = distill_episode(trajectory, self.turn_feedback_list, episode_feedback)
-        memory_update_plan = update_memory(distilled, root_dir=self.memory_root)
+        distilled = distill_episode(
+            trajectory,
+            self.turn_feedback_list,
+            episode_feedback,
+            experience_extraction_mode=self.experience_extraction_mode,
+            skill_mining_mode=self.skill_mining_mode,
+            llm_client=self.llm_client,
+        )
+        memory_update_plan = update_memory(
+            distilled,
+            root_dir=self.memory_root,
+            experience_merge_mode=self.experience_merge_mode,
+            skill_mining_mode=self.skill_mining_mode,
+            llm_client=self.llm_client,
+        )
 
         trajectory.info["memory_agent"]["episode_feedback"] = episode_feedback.to_dict()
         trajectory.info["memory_agent"]["distilled_episode"] = distilled.to_dict()
