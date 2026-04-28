@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from .schemas import ActionDecision, CaseMemory, EpisodeFeedback, MedEnvCaseBundle, TurnFeedback
+from .schemas import ActionDecision, CaseState, EpisodeFeedback, MedEnvCaseBundle, TurnFeedback
 from .utils.bench_adapter import extract_gold_diagnosis, unwrap_osce_examination
 
 FINAL_DIAGNOSIS_RE = re.compile(r"\\box(?:ed)?\{(.+?)\}")
@@ -38,10 +38,10 @@ def _extract_final_diagnosis(trajectory) -> str:
 
 
 def build_turn_feedback(
-    case_before: CaseMemory,
+    case_before: CaseState,
     action_decision: ActionDecision,
     execution_result,
-    case_after: CaseMemory,
+    case_after: CaseState,
 ) -> TurnFeedback:
     before_missing = set(case_before.missing_info)
     after_missing = set(case_after.missing_info)

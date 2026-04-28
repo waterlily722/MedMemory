@@ -6,7 +6,7 @@ from ..schemas import CaseState
 from .base_store import JsonMemoryStore
 
 
-class CaseMemoryStore(JsonMemoryStore):
+class CaseStateStore(JsonMemoryStore):
     def __init__(self, root_dir: str | Path):
         super().__init__(root_dir=root_dir, filename="case_memory_store.json", item_cls=CaseState)
 

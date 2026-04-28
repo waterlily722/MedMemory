@@ -21,7 +21,7 @@ from .online.memory_guidance import build_memory_guidance
 from .online.memory_trace import append_memory_trace
 from .planner import plan_intent_with_mode
 from .retriever import DEFAULT_MEMORY_ROOT, retrieve_all
-from .schemas import ActionDecision, CaseMemory, ExecutionResult, MedEnvCaseBundle
+from .schemas import ActionDecision, CaseState, ExecutionResult, MedEnvCaseBundle
 from .utils.bench_adapter import knowledge_items_from_payload, unwrap_osce_examination
 from .utils.config import MEMORY_RUNTIME_DEFAULTS
 
@@ -84,7 +84,7 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         self.trace_root = Path(__file__).resolve().parent.parent / "logs" / "memory_trace"
         self.llm_client = LLMClient(model=memory_llm_model, base_url=memory_llm_base_url, api_key=memory_llm_api_key)
         self.case_bundle: MedEnvCaseBundle | None = None
-        self.case_memory: CaseMemory | None = None
+        self.case_memory: CaseState | None = None
         self.turn_feedback_list: list[dict[str, Any]] = []
         self.turn_records: list[dict[str, Any]] = []
         self.current_intent_plan = None
@@ -132,10 +132,10 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
             knowledge_store.upsert(item)
         self.knowledge_seeded = True
 
-    def _clone_case_memory(self) -> CaseMemory | None:
+    def _clone_case_memory(self) -> CaseState | None:
         if self.case_memory is None:
             return None
-        return CaseMemory.from_dict(self.case_memory.to_dict())
+        return CaseState.from_dict(self.case_memory.to_dict())
 
     def _observation_turn_id(self) -> str:
         if self.case_memory is None:

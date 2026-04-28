@@ -17,11 +17,12 @@ def _root(root: str | None) -> Path:
     return base
 
 
-def _experience_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
+def _experience_hits(query: MemoryQuery, root: str | None) -> tuple[list[RetrievalHit], list[RetrievalHit]]:
     store = ExperienceMemoryStore(_root(root))
     q = query.structured
     q_text = query.query_text
-    hits: list[RetrievalHit] = []
+    positive_hits: list[RetrievalHit] = []
+    negative_hits: list[RetrievalHit] = []
     for card in store.list_items():
         semantic = cosine_similarity(q_text, flatten_payload(card.to_dict()))
         hypothesis = overlap_score(q.active_hypotheses, [card.situation_anchor])
@@ -35,22 +36,26 @@ def _experience_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]
             matched.append("hypothesis")
         if local_goal > 0:
             matched.append("local_goal")
-        hits.append(
-            RetrievalHit(
-                item_id=card.item_id,
-                retrieval_score=round(score, 4),
-                matched_fields=matched,
-                payload={
-                    "memory_id": card.item_id,
-                    "memory_type": "experience",
-                    "content": card.to_dict(),
-                    "source": "experience_memory_store",
-                },
-                source_field_refs=card.source_field_refs,
-            )
+        hit = RetrievalHit(
+            item_id=card.item_id,
+            retrieval_score=round(score, 4),
+            matched_fields=matched,
+            payload={
+                "memory_id": card.item_id,
+                "memory_type": "experience",
+                "outcome_type": card.outcome_type,
+                "content": card.to_dict(),
+                "source": "experience_memory_store",
+            },
+            source_field_refs=card.source_field_refs,
         )
-    hits.sort(key=lambda x: x.retrieval_score, reverse=True)
-    return hits[: RETRIEVAL_CONFIG["experience_top_k"]]
+        if card.outcome_type in {"unsafe", "failure"} or card.error_tag:
+            negative_hits.append(hit)
+        else:
+            positive_hits.append(hit)
+    positive_hits.sort(key=lambda x: x.retrieval_score, reverse=True)
+    negative_hits.sort(key=lambda x: x.retrieval_score, reverse=True)
+    return positive_hits[: RETRIEVAL_CONFIG["experience_top_k"]], negative_hits[: RETRIEVAL_CONFIG["negative_experience_top_k"]]
 
 
 def _skill_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
@@ -126,9 +131,13 @@ def retrieve_multi_memory(
     disable_skill_memory: bool = False,
     disable_knowledge_memory: bool = False,
 ) -> MemoryRetrievalResult:
+    experience_hits, negative_experience_hits = ([], [])
+    if not disable_experience_memory:
+        experience_hits, negative_experience_hits = _experience_hits(memory_query, root_dir)
     return MemoryRetrievalResult(
         turn_id=turn_id,
-        experience_hits=[] if disable_experience_memory else _experience_hits(memory_query, root_dir),
+        experience_hits=experience_hits,
+        negative_experience_hits=negative_experience_hits,
         skill_hits=[] if disable_skill_memory else _skill_hits(memory_query, root_dir),
         knowledge_hits=[] if disable_knowledge_memory else _knowledge_hits(memory_query, root_dir),
         source_field_refs=memory_query.source_field_refs,

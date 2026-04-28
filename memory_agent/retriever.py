@@ -34,7 +34,7 @@ def retrieve_guardrail(query_signature, top_k: int = 3, root_dir: str | None = N
     result = retrieve_multi_memory(query, turn_id=0, root_dir=root_dir)
     merged = [
         hit
-        for hit in result.experience_hits
+        for hit in result.negative_experience_hits
         if (hit.payload.get("content", {}) or {}).get("outcome_type") == "unsafe"
     ]
     if len(merged) < top_k:

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from .online.query_builder import build_memory_query_with_mode
-from .schemas import ActionCandidate, CaseMemory, IntentPlan, RankedIntent
+from .schemas import ActionCandidate, CaseState, IntentPlan, RankedIntent
 
 
 def _candidate(
@@ -22,7 +22,7 @@ def _candidate(
     )
 
 
-def _to_ranked_intents(case_memory: CaseMemory) -> list[RankedIntent]:
+def _to_ranked_intents(case_memory: CaseState) -> list[RankedIntent]:
     intents: list[RankedIntent] = []
     refs = case_memory.source_field_refs
     if case_memory.missing_info:
@@ -36,7 +36,7 @@ def _to_ranked_intents(case_memory: CaseMemory) -> list[RankedIntent]:
     return sorted(intents, key=lambda x: x.score, reverse=True)
 
 
-def plan_intent(case_memory: CaseMemory) -> IntentPlan:
+def plan_intent(case_memory: CaseState) -> IntentPlan:
     refs = case_memory.source_field_refs or ["ehr.History"]
     candidates: list[ActionCandidate] = []
 
@@ -121,7 +121,7 @@ def plan_intent(case_memory: CaseMemory) -> IntentPlan:
 
 
 def plan_intent_with_mode(
-    case_memory: CaseMemory,
+    case_memory: CaseState,
     query_builder_mode: str = "rule",
     llm_client=None,
     observation: dict | None = None,

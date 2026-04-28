@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from .online.applicability_controller import apply_applicability_control
-from .schemas import ApplicabilityResult, CaseMemory, IntentPlan, MemoryRetrievalResult
+from .schemas import ApplicabilityResult, CaseState, IntentPlan, MemoryRetrievalResult
 
 
 def apply_controller(
-    case_memory: CaseMemory,
+    case_memory: CaseState,
     intent_plan: IntentPlan,
     retrieval_result: MemoryRetrievalResult,
     mode: str = "rule",

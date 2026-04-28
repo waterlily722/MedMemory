@@ -43,6 +43,23 @@ def _upsert_experience_with_merge(
         )
         return card
 
+    if merge_decision == "conflict":
+        conflict_id = str(decision.get("discard_reason") or decision.get("conflict_group_id") or f"conflict_{card.item_id}")
+        conflict_card = ExperienceCard.from_dict(card.to_dict())
+        conflict_card.conflict_group_id = conflict_id
+        store.upsert(conflict_card)
+        operations.append(
+            MemoryUpdateOperation(
+                op_type="conflict",
+                target_memory="experience",
+                target_item_id=conflict_card.item_id,
+                source_item_ids=decision.get("target_memory_ids", []),
+                reason=f"conflict_group:{conflict_id}",
+                source_field_refs=card.source_field_refs,
+            )
+        )
+        return conflict_card
+
     if merge_decision == "merge_with_existing":
         merged = ExperienceCard.from_dict(decision.get("merged_experience") or card.to_dict())
         store.upsert(merged)
@@ -85,18 +102,16 @@ def update_memory(
     skill_store = SkillMemoryStore(root)
 
     operations: list[MemoryUpdateOperation] = []
-    merged_batch: list[ExperienceCard] = []
 
     for raw in distilled.candidate_experience_items:
         card = raw if isinstance(raw, ExperienceCard) else ExperienceCard.from_dict(raw)
-        merged = _upsert_experience_with_merge(
+        _upsert_experience_with_merge(
             exp_store,
             card,
             operations,
             experience_merge_mode=experience_merge_mode,
             llm_client=llm_client,
         )
-        merged_batch.append(merged)
 
     for raw in distilled.candidate_skill_items:
         card = raw if isinstance(raw, SkillCard) else SkillCard.from_dict(raw)
@@ -113,7 +128,7 @@ def update_memory(
         )
 
     promoted = consolidate_skill(
-        clustered_success_experiences=merged_batch,
+        clustered_success_experiences=exp_store.list_items(),
         mode=skill_mining_mode,
         llm_client=llm_client,
     )

@@ -21,6 +21,7 @@ class TurnRecord(SerializableMixin):
     decision_rationale: str = ""
     reward_signal: float | None = None
     error_signal: list[str] | None = None
+    memory_guidance: dict[str, Any] = field(default_factory=dict)
     source_field_refs: list[str] = field(default_factory=list)
 
 

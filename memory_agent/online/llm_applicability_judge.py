@@ -16,8 +16,12 @@ def llm_judge_applicability(
     llm_client: LLMClient,
 ) -> tuple[dict[str, Any], bool, str]:
     memory_id = str(memory_item.get("memory_id") or memory_item.get("item_id") or "")
+    memory_type = str(memory_item.get("memory_type") or "experience")
+    memory_content = memory_item.get("content") if isinstance(memory_item.get("content"), dict) else memory_item
     fallback = {
         "memory_id": memory_id,
+        "memory_type": memory_type,
+        "memory_content": memory_content if isinstance(memory_content, dict) else {},
         "applicability": "medium",
         "reason": "fallback rule: moderate applicability",
         "matched_aspects": [],

@@ -12,10 +12,11 @@ from .case_state import (
     MedEnvCaseBundle,
     MemoryQuery,
     MemoryQueryStructured,
+    MemoryApplicabilityAssessment,
     MemoryRetrievalResult,
     RetrievalHit,
 )
-from .common import SerializableMixin
+from .common import CanonicalEvidence, RankedIntent, SerializableMixin
 from .experience_card import ExperienceCard
 from .knowledge_item import KnowledgeItem
 from .skill_card import SkillCard, SkillProcedureStep
@@ -30,6 +31,8 @@ from .turn_record import (
 
 __all__ = [
     "SerializableMixin",
+    "RankedIntent",
+    "CanonicalEvidence",
     "EvidenceItem",
     "HypothesisState",
     "CaseState",
@@ -45,6 +48,7 @@ __all__ = [
     "ActionDecision",
     "ExecutionResult",
     "MedEnvCaseBundle",
+    "MemoryApplicabilityAssessment",
     "ExperienceCard",
     "SkillProcedureStep",
     "SkillCard",
