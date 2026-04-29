@@ -16,8 +16,8 @@ class SkillConsolidatorTests(unittest.TestCase):
                 store.upsert(
                     ExperienceCard(
                         memory_id=f"exp-{index}",
-                        situation_anchor="chest pain",
-                        local_goal="rule out ACS",
+                        situation_text="chest pain",
+                        action_text="REQUEST_LAB: request lab",
                         action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "request lab"}],
                         outcome_type="success",
                         support_count=1,

@@ -13,17 +13,10 @@ def build_memory_query_rule(
     case_state: CaseState,
     candidate_actions: list[str],
 ) -> MemoryQuery:
+    # Use only minimal, stable CaseState fields to construct the query text.
     parts = [
         f"Problem: {case_state.problem_summary}",
-        f"Current goal: {case_state.local_goal}",
         f"Uncertainty: {case_state.uncertainty_summary}",
-        f"Positive evidence: {_join(case_state.key_evidence)}",
-        f"Negative evidence: {_join(case_state.negative_evidence)}",
-        f"Missing information: {_join(case_state.missing_info)}",
-        f"Active hypotheses: {_join(case_state.active_hypotheses)}",
-        f"Finalize risk: {case_state.finalize_risk}",
-        f"Available modalities: {_join(case_state.modality_flags)}",
-        f"Reviewed modalities: {_join(case_state.reviewed_modalities)}",
         f"Candidate actions: {_join(candidate_actions, limit=10)}",
         f"Interaction summary: {case_state.interaction_history_summary}",
     ]
@@ -50,14 +43,22 @@ def build_memory_query_llm(
     if not llm_client.available():
         return fallback
 
+    # Provide a minimal case_state view to the LLM to avoid leaking legacy fields.
+    minimal_state = {
+        "case_id": case_state.case_id,
+        "turn_id": case_state.turn_id,
+        "problem_summary": case_state.problem_summary,
+        "uncertainty_summary": case_state.uncertainty_summary,
+        "interaction_history_summary": case_state.interaction_history_summary,
+    }
+
     payload = {
-        "case_state": case_state.to_dict(),
+        "case_state": minimal_state,
         "candidate_actions": candidate_actions,
         "instruction": (
             "Create one concise retrieval query for memory search. "
-            "The query should mention the clinical situation, uncertainty, "
-            "missing information, finalize risk, and useful next-action needs. "
-            "Return JSON with only query_text."
+            "The query should mention the clinical situation and uncertainty, "
+            "and highlight useful next-action needs. Return JSON with only query_text."
         ),
     }
 

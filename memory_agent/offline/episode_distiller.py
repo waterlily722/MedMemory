@@ -42,7 +42,7 @@ def _turn_records_from_trajectory(trajectory: Any) -> list[dict[str, Any]]:
 
 def distill_from_trajectory(
     trajectory: Any,
-    episode_feedback: EpisodeFeedback | dict[str, Any],
+    feedback: EpisodeFeedback | dict[str, Any],
 ) -> DistilledEpisode:
     """
     Compress raw trajectory into the minimal package needed by offline extraction.
@@ -50,9 +50,9 @@ def distill_from_trajectory(
     This function should not extract ExperienceCards and should not mine skills.
     """
     feedback = (
-        episode_feedback
-        if isinstance(episode_feedback, EpisodeFeedback)
-        else EpisodeFeedback.from_dict(episode_feedback)
+        feedback
+        if isinstance(feedback, EpisodeFeedback)
+        else EpisodeFeedback.from_dict(feedback)
     )
     turn_records = _turn_records_from_trajectory(trajectory)
 

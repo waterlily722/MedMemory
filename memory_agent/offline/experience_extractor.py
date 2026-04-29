@@ -106,13 +106,13 @@ def _candidate_skeleton(turn_record: dict[str, Any], feedback: dict[str, Any]) -
     action_type = str(selected.get("action_type") or "ASK")
     action_label = str(selected.get("action_label") or selected.get("action") or action_type.lower())
 
+    # Only use minimal, stable case_state fields to avoid depending on legacy keys.
+    evidence_list = case_state.get("evidence") or []
+    evidence_text = ", ".join(evidence_list[:5]) if isinstance(evidence_list, list) else str(evidence_list)
     situation_text = (
         f"Problem: {case_state.get('problem_summary', '')}. "
         f"Uncertainty: {case_state.get('uncertainty_summary', '')}. "
-        f"Evidence: {', '.join((case_state.get('key_evidence') or [])[:5])}. "
-        f"Negative evidence: {', '.join((case_state.get('negative_evidence') or [])[:5])}. "
-        f"Missing: {', '.join((case_state.get('missing_info') or [])[:5])}. "
-        f"Hypotheses: {', '.join((case_state.get('active_hypotheses') or [])[:5])}."
+        f"Evidence: {evidence_text}."
     ).strip()
 
     outcome_text = str(
@@ -210,7 +210,7 @@ def extract_experiences_llm(
         "episode_id": distilled.episode_id,
         "case_id": distilled.case_id,
         "episode_summary": distilled.summary,
-        "episode_feedback": feedback,
+        "feedback": feedback,
         "selected_high_value_turns": high_value_turns,
         "candidate_skeletons": candidates,
         "instruction": (

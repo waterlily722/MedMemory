@@ -58,25 +58,22 @@ def knowledge_items_from_payload(payload: dict[str, Any] | None, case_id: str = 
     for index, item in enumerate(matched):
         if not isinstance(item, dict):
             continue
+        # Build minimal KnowledgeItem according to current schema
         title = str(item.get("name") or item.get("icd_title") or item.get("ICD-10") or f"knowledge_{index}")
         content_parts = [item.get("introduction", ""), item.get("signs_and_symptoms", ""), item.get("diagnosis", ""), item.get("prognosis", "")]
         content = "\n".join(str(part) for part in content_parts if part)
         disease_tags = [str(item.get(field)) for field in ("ICD-10", "ICD-10-CM", "ICD-9", "ICD-9-CM") if item.get(field)]
-        source_refs = ["OSCE_Examination.knowledge.principal_diagnosis.matched_knowledge"]
+        # Consolidate tags into a single list for the minimal schema
+        tags = disease_tags
         if case_id:
-            source_refs.append(f"case:{case_id}")
+            tags.append(f"case:{case_id}")
         items.append(
             KnowledgeItem(
                 memory_id=f"kn_{case_id}_{index}" if case_id else f"kn_{index}",
-                title=title,
-                content=content[:4000],
-                disease_tags=disease_tags,
-                symptom_tags=[],
-                modality_tags=[],
-                risk_tags=[],
+                content=(title + "\n" + content)[:4000],
+                tags=tags,
                 source=str(item.get("_source") or item.get("source_md") or "wiki"),
                 confidence=0.9,
-                source_field_refs=source_refs,
             )
         )
     return items

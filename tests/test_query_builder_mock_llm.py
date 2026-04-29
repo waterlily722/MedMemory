@@ -43,4 +43,6 @@ class QueryBuilderMockLLMTests(unittest.TestCase):
         )
         query = build_memory_query(case_state, ["REQUEST_LAB"], mode="llm", llm_client=client)
         self.assertEqual(query.query_text, "llm query")
-        self.assertEqual(query.finalize_risk_reason, "missing_critical_info")
+        # ensure minimal schema: only case_id, turn_id, query_text
+        keys = set(query.to_dict().keys())
+        self.assertEqual(keys, {"case_id", "turn_id", "query_text"})

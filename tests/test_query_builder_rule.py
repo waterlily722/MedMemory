@@ -11,17 +11,11 @@ class QueryBuilderRuleTests(unittest.TestCase):
         case_state = CaseState(
             case_id="case-1",
             problem_summary="patient with chest pain",
-            key_evidence=["chest pain"],
-            negative_evidence=["no fever"],
-            missing_info=["troponin"],
-            active_hypotheses=["ACS"],
-            local_goal="rule out ACS",
             uncertainty_summary="need more evidence",
-            finalize_risk="high",
-            modality_flags=["text", "lab"],
         )
         query = build_memory_query_rule(case_state, ["REQUEST_LAB", "FINALIZE_DIAGNOSIS"])
-        self.assertEqual(query.situation_anchor, case_state.problem_summary)
-        self.assertEqual(query.retrieval_intent, "mixed")
-        self.assertIn("rule out ACS", query.query_text)
-        self.assertIn("troponin", query.missing_info)
+        self.assertIn(case_state.problem_summary, query.query_text)
+        self.assertIn("REQUEST_LAB", query.query_text or "")
+        # Ensure MemoryQuery only contains minimal fields
+        keys = set(query.to_dict().keys())
+        self.assertEqual(keys, {"case_id", "turn_id", "query_text"})

@@ -10,10 +10,9 @@ class ExperienceMergeTests(unittest.TestCase):
     def test_merge_and_conflict(self):
         base = ExperienceCard(
             memory_id="exp-1",
-            situation_anchor="chest pain",
-            local_goal="rule out ACS",
-            active_hypotheses=["ACS"],
-            boundary="ed",
+            situation_text="chest pain",
+            action_text="REQUEST_LAB: request lab",
+            boundary_text="ed",
             action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "request lab"}],
             outcome_type="success",
             source_episode_ids=["ep-1"],
@@ -21,10 +20,9 @@ class ExperienceMergeTests(unittest.TestCase):
         )
         incoming = ExperienceCard(
             memory_id="exp-2",
-            situation_anchor="chest pain",
-            local_goal="rule out ACS",
-            active_hypotheses=["ACS"],
-            boundary="ed",
+            situation_text="chest pain",
+            action_text="REQUEST_LAB: request lab",
+            boundary_text="ed",
             action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "request lab"}],
             outcome_type="failure",
             source_episode_ids=["ep-2"],
@@ -35,10 +33,9 @@ class ExperienceMergeTests(unittest.TestCase):
 
         same = ExperienceCard(
             memory_id="exp-3",
-            situation_anchor="chest pain",
-            local_goal="rule out ACS",
-            active_hypotheses=["ACS"],
-            boundary="ed",
+            situation_text="chest pain",
+            action_text="REQUEST_LAB: request lab",
+            boundary_text="ed",
             action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "request lab"}],
             outcome_type="success",
             source_episode_ids=["ep-3"],

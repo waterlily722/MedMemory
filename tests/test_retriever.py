@@ -18,11 +18,12 @@ class RetrieverTests(unittest.TestCase):
             exp_store.upsert(
                 ExperienceCard(
                     memory_id="exp-1",
-                    situation_anchor="chest pain",
-                    local_goal="rule out ACS",
-                    key_evidence=["troponin"],
-                    outcome_type="success",
+                    situation_text="chest pain",
+                    action_text="REQUEST_LAB: troponin",
+                    outcome_text="improved",
+                    boundary_text="adult with chest pain",
                     action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "request lab"}],
+                    outcome_type="success",
                     source_episode_ids=["ep-1"],
                     source_case_ids=["case-1"],
                 )
@@ -30,11 +31,12 @@ class RetrieverTests(unittest.TestCase):
             exp_store.upsert(
                 ExperienceCard(
                     memory_id="exp-2",
-                    situation_anchor="wrong diagnosis",
-                    local_goal="avoid harm",
-                    key_evidence=["unsafe"],
-                    outcome_type="unsafe",
+                    situation_text="wrong diagnosis",
+                    action_text="FINALIZE_DIAGNOSIS: finalize",
+                    outcome_text="harm",
+                    boundary_text="different condition",
                     action_sequence=[{"action_type": "FINALIZE_DIAGNOSIS", "action_label": "finalize"}],
+                    outcome_type="unsafe",
                     source_episode_ids=["ep-2"],
                     source_case_ids=["case-2"],
                 )
@@ -43,9 +45,9 @@ class RetrieverTests(unittest.TestCase):
                 SkillCard(
                     memory_id="skill-1",
                     skill_name="ask more",
-                    clinical_situation="chest pain",
-                    local_goal="rule out ACS",
-                    trigger_conditions=["chest pain"],
+                    situation_text="chest pain",
+                    goal_text="rule out ACS",
+                    procedure_text="ask for troponin",
                     procedure=[{"action_type": "ASK", "action_label": "ask"}],
                     source_experience_ids=["exp-1"],
                     evidence_count=5,
@@ -55,9 +57,8 @@ class RetrieverTests(unittest.TestCase):
             kn_store.upsert(
                 KnowledgeItem(
                     memory_id="kn-1",
-                    title="ACS",
                     content="troponin and ECG are key",
-                    disease_tags=["ACS"],
+                    tags=["ACS"],
                     source="wiki",
                 )
             )
@@ -70,4 +71,5 @@ class RetrieverTests(unittest.TestCase):
             self.assertGreaterEqual(len(result.negative_experience_hits), 1)
             self.assertGreaterEqual(len(result.skill_hits), 1)
             self.assertGreaterEqual(len(result.knowledge_hits), 1)
-            self.assertEqual(result.negative_experience_hits[0].memory_type, "negative_experience")
+            # negative_experience_hits are still typed as experience with negative bucket
+            self.assertEqual(result.negative_experience_hits[0].memory_type, "experience")
