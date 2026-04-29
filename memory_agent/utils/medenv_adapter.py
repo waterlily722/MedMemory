@@ -8,9 +8,9 @@ from ..schemas import KnowledgeItem
 def unwrap_osce_examination(payload: dict[str, Any] | None) -> dict[str, Any]:
     if not isinstance(payload, dict):
         return {}
-    inner = payload.get("OSCE_Examination")
-    if isinstance(inner, dict):
-        return inner
+    osce = payload.get("OSCE_Examination")
+    if isinstance(osce, dict):
+        return osce
     return payload
 
 
@@ -50,7 +50,6 @@ def knowledge_items_from_payload(payload: dict[str, Any] | None, case_id: str = 
     items: list[KnowledgeItem] = []
     if not isinstance(knowledge, dict):
         return items
-
     principal = knowledge.get("principal_diagnosis") or {}
     matched = principal.get("matched_knowledge") or []
     if not isinstance(matched, list):
@@ -60,24 +59,15 @@ def knowledge_items_from_payload(payload: dict[str, Any] | None, case_id: str = 
         if not isinstance(item, dict):
             continue
         title = str(item.get("name") or item.get("icd_title") or item.get("ICD-10") or f"knowledge_{index}")
-        content_parts = [
-            item.get("introduction", ""),
-            item.get("signs_and_symptoms", ""),
-            item.get("diagnosis", ""),
-            item.get("prognosis", ""),
-        ]
+        content_parts = [item.get("introduction", ""), item.get("signs_and_symptoms", ""), item.get("diagnosis", ""), item.get("prognosis", "")]
         content = "\n".join(str(part) for part in content_parts if part)
-        disease_tags = []
-        for field in ("ICD-10", "ICD-10-CM", "ICD-9", "ICD-9-CM"):
-            value = item.get(field)
-            if value:
-                disease_tags.append(str(value))
+        disease_tags = [str(item.get(field)) for field in ("ICD-10", "ICD-10-CM", "ICD-9", "ICD-9-CM") if item.get(field)]
         source_refs = ["OSCE_Examination.knowledge.principal_diagnosis.matched_knowledge"]
         if case_id:
             source_refs.append(f"case:{case_id}")
         items.append(
             KnowledgeItem(
-                item_id=f"kn_{case_id}_{index}" if case_id else f"kn_{index}",
+                memory_id=f"kn_{case_id}_{index}" if case_id else f"kn_{index}",
                 title=title,
                 content=content[:4000],
                 disease_tags=disease_tags,

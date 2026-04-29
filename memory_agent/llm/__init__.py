@@ -1,20 +1,9 @@
+from __future__ import annotations
+
 from .client import LLMClient
 from .parser import parse_validate_repair
-from .prompts import (
-    applicability_prompt,
-    experience_extraction_prompt,
-    experience_merge_prompt,
-    query_builder_prompt,
-    skill_mining_prompt,
-)
-from .schemas import (
-    APPLICABILITY_JUDGE_SCHEMA,
-    EXPERIENCE_EXTRACT_SCHEMA,
-    EXPERIENCE_MERGE_SCHEMA,
-    MEMORY_GUIDANCE_SCHEMA,
-    QUERY_BUILDER_SCHEMA,
-    SKILL_MINER_SCHEMA,
-)
+from .prompts import applicability_prompt, experience_extraction_prompt, experience_merge_prompt, query_builder_prompt, skill_consolidation_prompt
+from .schemas import APPLICABILITY_SCHEMA, EXPERIENCE_EXTRACTION_SCHEMA, EXPERIENCE_MERGE_SCHEMA, QUERY_BUILDER_SCHEMA, SKILL_SCHEMA
 
 __all__ = [
     "LLMClient",
@@ -23,11 +12,10 @@ __all__ = [
     "applicability_prompt",
     "experience_extraction_prompt",
     "experience_merge_prompt",
-    "skill_mining_prompt",
+    "skill_consolidation_prompt",
     "QUERY_BUILDER_SCHEMA",
-    "APPLICABILITY_JUDGE_SCHEMA",
-    "MEMORY_GUIDANCE_SCHEMA",
-    "EXPERIENCE_EXTRACT_SCHEMA",
+    "APPLICABILITY_SCHEMA",
+    "EXPERIENCE_EXTRACTION_SCHEMA",
     "EXPERIENCE_MERGE_SCHEMA",
-    "SKILL_MINER_SCHEMA",
+    "SKILL_SCHEMA",
 ]

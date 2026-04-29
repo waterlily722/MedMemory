@@ -7,7 +7,7 @@ import json
 import os
 from typing import Any, Dict, List, Tuple
 
-from memory_agent.utils.bench_adapter import extract_gold_diagnosis, unwrap_osce_examination
+from memory_agent.utils.medenv_adapter import extract_gold_diagnosis, unwrap_osce_examination
 
 # bench 下按是否有 CXR 使用的子目录（相对 bench 根目录）
 SUBDIR_WITH_CXR = "with_img/ed_hosp"

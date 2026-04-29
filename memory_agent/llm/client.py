@@ -14,11 +14,9 @@ class LLMClient:
     def available(self) -> bool:
         return bool(self.model and self.base_url)
 
-    def generate_json(self, prompt: str, temperature: float = 0.2, max_tokens: int = 900) -> str:
+    def generate_json(self, prompt: str, temperature: float = 0.2, max_tokens: int = 1200) -> str:
         if not self.available():
             return "{}"
-
-        url = f"{self.base_url}/chat/completions"
         payload = {
             "model": self.model,
             "temperature": temperature,
@@ -28,13 +26,16 @@ class LLMClient:
                 {"role": "user", "content": prompt},
             ],
         }
-        body = json.dumps(payload).encode("utf-8")
         headers = {"Content-Type": "application/json"}
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
-
         try:
-            req = request.Request(url, data=body, headers=headers, method="POST")
+            req = request.Request(
+                f"{self.base_url}/chat/completions",
+                data=json.dumps(payload).encode("utf-8"),
+                headers=headers,
+                method="POST",
+            )
             with request.urlopen(req, timeout=30) as resp:
                 raw = json.loads(resp.read().decode("utf-8"))
             return str((((raw.get("choices") or [{}])[0].get("message") or {}).get("content") or "{}"))

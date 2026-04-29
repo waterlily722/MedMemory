@@ -1,144 +1,105 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Iterable
 
-from ..memory_store import ExperienceMemoryStore, KnowledgeMemoryStore, SkillMemoryStore
-from ..memory_store.base_store import flatten_payload
+from ..memory_store import ExperienceMemoryStore, KnowledgeMemoryStore, SkillMemoryStore, flatten_payload
 from ..schemas import MemoryQuery, MemoryRetrievalResult, RetrievalHit
-from ..utils.config import RETRIEVAL_CONFIG
+from ..utils.config import RETRIEVAL_LIMITS
 from ..utils.scoring import cosine_similarity, overlap_score, weighted_experience_score, weighted_skill_score
 
-DEFAULT_MEMORY_ROOT = Path(__file__).resolve().parent.parent / "store_data"
+DEFAULT_MEMORY_ROOT = Path(__file__).resolve().parent.parent / "memory_data"
 
 
-def _root(root: str | None) -> Path:
-    base = Path(root) if root else DEFAULT_MEMORY_ROOT
-    base.mkdir(parents=True, exist_ok=True)
-    return base
+def _root(root_dir: str | None) -> Path:
+    root = Path(root_dir) if root_dir else DEFAULT_MEMORY_ROOT
+    root.mkdir(parents=True, exist_ok=True)
+    return root
 
 
-def _experience_hits(query: MemoryQuery, root: str | None) -> tuple[list[RetrievalHit], list[RetrievalHit]]:
-    store = ExperienceMemoryStore(_root(root))
-    q = query.structured
-    q_text = query.query_text
-    positive_hits: list[RetrievalHit] = []
-    negative_hits: list[RetrievalHit] = []
-    for card in store.list_items():
-        semantic = cosine_similarity(q_text, flatten_payload(card.to_dict()))
-        hypothesis = overlap_score(q.active_hypotheses, [card.situation_anchor])
-        local_goal = 1.0 if q.local_goal and q.local_goal in card.local_goal else 0.0
-        modality = 1.0 if not q.modality_flags else overlap_score(q.modality_flags, list(card.visual_signature.values()))
-        risk = 1.0 if q.finalize_risk != "high" or card.outcome_type != "unsafe" else 0.0
-        evidence = overlap_score(q.key_positive_evidence, [card.outcome_shift, card.boundary])
-        score = weighted_experience_score(semantic, hypothesis, local_goal, modality, risk, evidence)
+def _query_text(query: MemoryQuery) -> str:
+    return flatten_payload(query.to_dict())
+
+
+def _score_fields(query: MemoryQuery, content: dict, memory_type: str) -> float:
+    query_text = _query_text(query)
+    content_text = flatten_payload(content)
+    semantic = cosine_similarity(query_text, content_text)
+    goal = 1.0 if query.local_goal and query.local_goal.lower() in content_text.lower() else 0.0
+    hypotheses = overlap_score(query.active_hypotheses, content.get("active_hypotheses", []) if isinstance(content.get("active_hypotheses"), list) else [])
+    evidence = overlap_score(query.positive_evidence, content.get("key_evidence", []) if isinstance(content.get("key_evidence"), list) else [])
+    boundary = 1.0 if query.finalize_risk == "high" and content.get("outcome_type") in {"unsafe", "failure"} else 0.0
+    if memory_type == "experience":
+        return weighted_experience_score(semantic, goal, hypotheses, evidence, boundary)
+    if memory_type == "skill":
+        trigger = semantic
+        precondition = overlap_score(query.active_hypotheses, content.get("trigger_conditions", []) if isinstance(content.get("trigger_conditions"), list) else [])
+        modality = overlap_score(query.modality_need, content.get("required_modalities", []) if isinstance(content.get("required_modalities"), list) else [])
+        success_rate = float(content.get("confidence", 0.5))
+        return weighted_skill_score(trigger, goal, precondition, modality, success_rate)
+    knowledge = semantic
+    return knowledge
+
+
+def _build_hit(memory_id: str, memory_type: str, content: dict, score: float, matched_fields: list[str]) -> RetrievalHit:
+    return RetrievalHit(memory_id=memory_id, memory_type=memory_type, content=content, score=round(score, 4), matched_fields=matched_fields)
+
+
+def _experience_hits(query: MemoryQuery, root_dir: str | None) -> tuple[list[RetrievalHit], list[RetrievalHit]]:
+    store = ExperienceMemoryStore(_root(root_dir))
+    positive: list[RetrievalHit] = []
+    negative: list[RetrievalHit] = []
+    for card in store.list_all():
+        payload = card.to_dict()
+        score = _score_fields(query, payload, "experience")
         matched = ["semantic"]
-        if hypothesis > 0:
-            matched.append("hypothesis")
-        if local_goal > 0:
-            matched.append("local_goal")
-        hit = RetrievalHit(
-            item_id=card.item_id,
-            retrieval_score=round(score, 4),
-            matched_fields=matched,
-            payload={
-                "memory_id": card.item_id,
-                "memory_type": "experience",
-                "outcome_type": card.outcome_type,
-                "content": card.to_dict(),
-                "source": "experience_memory_store",
-            },
-            source_field_refs=card.source_field_refs,
-        )
-        if card.outcome_type in {"unsafe", "failure"} or card.error_tag:
-            negative_hits.append(hit)
+        if query.local_goal and query.local_goal.lower() in flatten_payload(payload).lower():
+            matched.append("goal")
+        hit = _build_hit(card.memory_id, "negative_experience" if card.outcome_type in {"failure", "unsafe"} else "experience", payload, score, matched)
+        if card.outcome_type in {"failure", "unsafe"}:
+            negative.append(hit)
         else:
-            positive_hits.append(hit)
-    positive_hits.sort(key=lambda x: x.retrieval_score, reverse=True)
-    negative_hits.sort(key=lambda x: x.retrieval_score, reverse=True)
-    return positive_hits[: RETRIEVAL_CONFIG["experience_top_k"]], negative_hits[: RETRIEVAL_CONFIG["negative_experience_top_k"]]
+            positive.append(hit)
+    positive.sort(key=lambda item: item.score, reverse=True)
+    negative.sort(key=lambda item: item.score, reverse=True)
+    return positive[: RETRIEVAL_LIMITS["positive_experience_top_k"]], negative[: RETRIEVAL_LIMITS["negative_experience_top_k"]]
 
 
-def _skill_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
-    store = SkillMemoryStore(_root(root))
-    q = query.structured
-    q_text = query.query_text
+def _skill_hits(query: MemoryQuery, root_dir: str | None) -> list[RetrievalHit]:
+    store = SkillMemoryStore(_root(root_dir))
     hits: list[RetrievalHit] = []
-    for card in store.list_items():
-        trigger = cosine_similarity(q_text, card.skill_trigger)
-        goal = 1.0 if q.local_goal and q.local_goal in card.clinical_goal else 0.0
-        precond = overlap_score(q.active_hypotheses, card.preconditions)
-        modality = overlap_score(q.modality_flags, list(card.visual_trigger.values())) if q.modality_flags else 1.0
-        score = weighted_skill_score(
-            trigger_match=trigger,
-            clinical_goal_match=goal,
-            precondition_match=precond,
-            modality_match=modality,
-            success_rate=card.success_rate,
-            boundary_consistency=max(0.0, 1.0 - card.unsafe_rate),
-        )
-        matched = ["trigger"]
-        if precond > 0:
-            matched.append("precondition")
-        hits.append(
-            RetrievalHit(
-                item_id=card.skill_id,
-                retrieval_score=round(score, 4),
-                matched_fields=matched,
-                payload={
-                    "memory_id": card.skill_id,
-                    "memory_type": "skill",
-                    "content": card.to_dict(),
-                    "source": "skill_memory_store",
-                },
-                source_field_refs=card.source_field_refs,
-            )
-        )
-    hits.sort(key=lambda x: x.retrieval_score, reverse=True)
-    return hits[: RETRIEVAL_CONFIG["skill_top_k"]]
+    for card in store.list_all():
+        payload = card.to_dict()
+        score = _score_fields(query, payload, "skill")
+        hits.append(_build_hit(card.memory_id, "skill", payload, score, ["semantic"]))
+    hits.sort(key=lambda item: item.score, reverse=True)
+    return hits[: RETRIEVAL_LIMITS["skill_top_k"]]
 
 
-def _knowledge_hits(query: MemoryQuery, root: str | None) -> list[RetrievalHit]:
-    store = KnowledgeMemoryStore(_root(root))
-    q = query.structured
+def _knowledge_hits(query: MemoryQuery, root_dir: str | None) -> list[RetrievalHit]:
+    store = KnowledgeMemoryStore(_root(root_dir))
     hits: list[RetrievalHit] = []
-    for item in store.list_items():
-        score = cosine_similarity(query.query_text, item.content)
-        score += 0.1 * overlap_score(q.active_hypotheses, item.disease_tags)
-        score += 0.05 * overlap_score(q.modality_flags, item.modality_tags)
-        hits.append(
-            RetrievalHit(
-                item_id=item.item_id,
-                retrieval_score=round(score, 4),
-                matched_fields=["semantic"],
-                payload={
-                    "memory_id": item.item_id,
-                    "memory_type": "knowledge",
-                    "content": item.to_dict(),
-                    "source": item.source,
-                },
-                source_field_refs=item.source_field_refs,
-            )
-        )
-    hits.sort(key=lambda x: x.retrieval_score, reverse=True)
-    return hits[: RETRIEVAL_CONFIG["knowledge_top_k"]]
+    for item in store.list_all():
+        payload = item.to_dict()
+        score = _score_fields(query, payload, "knowledge")
+        hits.append(_build_hit(item.memory_id, "knowledge", payload, score, ["semantic"]))
+    hits.sort(key=lambda item: item.score, reverse=True)
+    return hits[: RETRIEVAL_LIMITS["knowledge_top_k"]]
 
 
 def retrieve_multi_memory(
     memory_query: MemoryQuery,
-    turn_id: int,
     root_dir: str | None = None,
     disable_experience_memory: bool = False,
     disable_skill_memory: bool = False,
     disable_knowledge_memory: bool = False,
 ) -> MemoryRetrievalResult:
-    experience_hits, negative_experience_hits = ([], [])
+    positive, negative = ([], [])
     if not disable_experience_memory:
-        experience_hits, negative_experience_hits = _experience_hits(memory_query, root_dir)
+        positive, negative = _experience_hits(memory_query, root_dir)
     return MemoryRetrievalResult(
-        turn_id=turn_id,
-        experience_hits=experience_hits,
-        negative_experience_hits=negative_experience_hits,
+        positive_experience_hits=positive,
+        negative_experience_hits=negative,
         skill_hits=[] if disable_skill_memory else _skill_hits(memory_query, root_dir),
         knowledge_hits=[] if disable_knowledge_memory else _knowledge_hits(memory_query, root_dir),
-        source_field_refs=memory_query.source_field_refs,
     )

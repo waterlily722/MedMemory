@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import threading
 from pathlib import Path
-from typing import Any, Iterable, Type
+from typing import Any, Type
 
 from ..schemas import SerializableMixin
 
@@ -16,44 +16,63 @@ class JsonMemoryStore:
         self.item_cls = item_cls
         self._lock = threading.Lock()
         if not self.path.exists():
-            self._write_items([])
+            self.path.write_text("", encoding="utf-8")
 
-    def _read_items(self) -> list[SerializableMixin]:
+    def _read_raw(self) -> list[dict[str, Any]]:
+        if not self.path.exists():
+            return []
         with self._lock:
             text = self.path.read_text(encoding="utf-8")
-        raw = json.loads(text) if text.strip() else []
-        return [self.item_cls.from_dict(item) for item in raw]
+        rows: list[dict[str, Any]] = []
+        for line in text.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                payload = json.loads(line)
+            except Exception:
+                continue
+            if isinstance(payload, dict):
+                rows.append(payload)
+        return rows
 
-    def _write_items(self, items: Iterable[SerializableMixin]) -> None:
-        payload = [item.to_dict() if isinstance(item, SerializableMixin) else item for item in items]
+    def _write_raw(self, rows: list[dict[str, Any]]) -> None:
         with self._lock:
-            self.path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+            if rows:
+                content = "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n"
+            else:
+                content = ""
+            self.path.write_text(content, encoding="utf-8")
 
-    def list_items(self) -> list[SerializableMixin]:
-        return self._read_items()
+    def list_all(self):
+        return [self.item_cls.from_dict(row) for row in self._read_raw()]
 
-    def upsert(self, item: SerializableMixin, id_field: str = "item_id") -> str:
-        items = self._read_items()
-        item_id = getattr(item, id_field)
+    def append(self, item: SerializableMixin) -> str:
+        rows = self._read_raw()
+        row = item.to_dict() if isinstance(item, SerializableMixin) else dict(item)
+        rows.append(row)
+        self._write_raw(rows)
+        return str(row.get("memory_id") or row.get("item_id") or "")
+
+    def upsert(self, item: SerializableMixin, id_field: str = "memory_id") -> str:
+        rows = self._read_raw()
+        row = item.to_dict() if isinstance(item, SerializableMixin) else dict(item)
+        item_id = str(row.get(id_field) or row.get("memory_id") or row.get("item_id") or "")
         replaced = False
-        for idx, existing in enumerate(items):
-            if getattr(existing, id_field, None) == item_id:
-                items[idx] = item
+        for index, existing in enumerate(rows):
+            if str(existing.get(id_field) or existing.get("memory_id") or existing.get("item_id") or "") == item_id:
+                rows[index] = row
                 replaced = True
                 break
         if not replaced:
-            items.append(item)
-        self._write_items(items)
-        return str(item_id)
+            rows.append(row)
+        self._write_raw(rows)
+        return item_id
 
-    def remove(self, item_id: str, id_field: str = "item_id") -> None:
-        items = [item for item in self._read_items() if getattr(item, id_field, None) != item_id]
-        self._write_items(items)
-
-    def get(self, item_id: str, id_field: str = "item_id") -> SerializableMixin | None:
-        for item in self._read_items():
-            if getattr(item, id_field, None) == item_id:
-                return item
+    def find_by_id(self, memory_id: str, id_field: str = "memory_id"):
+        for row in self._read_raw():
+            if str(row.get(id_field) or row.get("memory_id") or row.get("item_id") or "") == str(memory_id):
+                return self.item_cls.from_dict(row)
         return None
 
 
@@ -61,7 +80,7 @@ def flatten_payload(payload: Any) -> str:
     if payload is None:
         return ""
     if isinstance(payload, dict):
-        return " ".join(f"{k} {flatten_payload(v)}" for k, v in payload.items())
+        return " ".join(f"{key} {flatten_payload(value)}" for key, value in payload.items())
     if isinstance(payload, list):
-        return " ".join(flatten_payload(v) for v in payload)
+        return " ".join(flatten_payload(value) for value in payload)
     return str(payload)

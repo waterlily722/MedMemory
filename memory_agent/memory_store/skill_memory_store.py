@@ -8,4 +8,4 @@ from .base_store import JsonMemoryStore
 
 class SkillMemoryStore(JsonMemoryStore):
     def __init__(self, root_dir: str | Path):
-        super().__init__(root_dir=root_dir, filename="skill_memory_store.json", item_cls=SkillCard)
+        super().__init__(root_dir=root_dir, filename="skill_memory.jsonl", item_cls=SkillCard)

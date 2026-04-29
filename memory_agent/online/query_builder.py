@@ -1,88 +1,82 @@
 from __future__ import annotations
 
-from ..schemas import CaseState, MemoryQuery, MemoryQueryStructured
-from .llm_query_builder import llm_build_query_payload
+from typing import Any
+
+from ..llm import LLMClient, parse_validate_repair, query_builder_prompt
+from ..llm.schemas import QUERY_BUILDER_SCHEMA
+from ..schemas import CaseState, MemoryQuery
 
 
-def build_memory_query(case_state: CaseState, action_candidates: list[str]) -> MemoryQuery:
-    pos = [item.content for item in case_state.evidence_items if item.polarity == "positive"][:8]
-    neg = [item.content for item in case_state.evidence_items if item.polarity == "negative"][:6]
-    hypotheses = [h.name for h in case_state.active_hypotheses][:6]
-    finalize_risk_reason = "missing critical info" if case_state.missing_info else "high uncertainty" if case_state.finalize_risk == "high" else "bounded"
+def _base_query(case_state: CaseState, candidate_actions: list[str]) -> MemoryQuery:
+    positive = list(case_state.key_evidence[:8])
+    negative = list(case_state.negative_evidence[:8])
+    missing = list(case_state.missing_info[:8])
+    hypotheses = list(case_state.active_hypotheses[:8])
+    modality_need = []
+    if "lab" in case_state.modality_flags:
+        modality_need.append("lab")
+    if "image" in case_state.modality_flags:
+        modality_need.append("image")
+    if "text" in case_state.modality_flags:
+        modality_need.append("text")
+
+    risk_reason = "missing_critical_info" if missing else "image_needed" if "image" in modality_need and "image" not in case_state.reviewed_modalities else "other"
     retrieval_intent = "mixed"
-    if any("review" in action.lower() for action in action_candidates):
+    lower_actions = [action.lower() for action in candidate_actions]
+    if any("finalize" in action for action in lower_actions):
+        retrieval_intent = "mixed"
+    elif any("image" in action for action in lower_actions):
         retrieval_intent = "experience"
-    elif any("request" in action.lower() for action in action_candidates):
+    elif any("lab" in action or "exam" in action for action in lower_actions):
         retrieval_intent = "skill"
 
-    structured = MemoryQueryStructured(
-        situation_anchor=case_state.problem_summary,
-        local_goal=case_state.local_goal,
-        uncertainty_focus=case_state.uncertainty_summary,
-        active_hypotheses=hypotheses,
-        key_positive_evidence=pos,
-        key_negative_evidence=neg,
-        missing_info=case_state.missing_info[:8],
-        modality_flags=case_state.modality_flags,
-        finalize_risk=case_state.finalize_risk,
-        finalize_risk_reason=finalize_risk_reason,
-        retrieval_intent=retrieval_intent,
-        current_action_candidates=action_candidates,
-        source_field_refs=case_state.source_field_refs,
-    )
     query_text = " | ".join(
         [
             case_state.problem_summary,
-            case_state.uncertainty_summary,
             case_state.local_goal,
-            " ".join(hypotheses),
-            " ".join(pos[:4]),
-            "missing:" + ",".join(case_state.missing_info[:4]),
+            case_state.uncertainty_summary,
+            " ".join(positive[:4]),
+            "missing:" + ",".join(missing[:4]),
             "risk:" + case_state.finalize_risk,
+            case_state.interaction_history_summary,
         ]
     )
-    return MemoryQuery(query_text=query_text, structured=structured, source_field_refs=case_state.source_field_refs)
-
-
-def build_memory_query_with_mode(
-    case_state: CaseState,
-    action_candidates: list[str],
-    mode: str = "rule",
-    llm_client=None,
-    observation: dict | None = None,
-    interaction_history_summary: str = "",
-) -> MemoryQuery:
-    rule_query = build_memory_query(case_state, action_candidates)
-    if mode != "llm" or llm_client is None:
-        return rule_query
-
-    payload, _, _ = llm_build_query_payload(
-        case_state=case_state.to_dict(),
-        observation=observation,
-        interaction_history_summary=interaction_history_summary,
-        candidate_actions=action_candidates,
-        local_goal=case_state.local_goal,
-        uncertainty=case_state.uncertainty_summary,
-        llm_client=llm_client,
-    )
-
-    structured = MemoryQueryStructured(
-        situation_anchor=str(payload.get("situation_anchor", rule_query.structured.situation_anchor)),
-        local_goal=str(payload.get("local_goal", case_state.local_goal)),
-        uncertainty_focus=str(payload.get("uncertainty_focus", case_state.uncertainty_summary)),
-        active_hypotheses=[str(x) for x in payload.get("active_hypotheses", [])],
-        key_positive_evidence=[str(x) for x in payload.get("positive_evidence", [])],
-        key_negative_evidence=[str(x) for x in payload.get("negative_evidence", [])],
-        missing_info=[str(x) for x in payload.get("missing_info", [])],
-        modality_flags=[str(x) for x in payload.get("modality_need", [])],
-        finalize_risk=str(payload.get("finalize_risk", case_state.finalize_risk)),
-        finalize_risk_reason=str(payload.get("finalize_risk_reason", rule_query.structured.finalize_risk_reason)),
-        retrieval_intent=str(payload.get("retrieval_intent", rule_query.structured.retrieval_intent)),
-        current_action_candidates=[str(x) for x in payload.get("candidate_action_need", action_candidates)],
-        source_field_refs=case_state.source_field_refs,
-    )
     return MemoryQuery(
-        query_text=str(payload.get("query_text", rule_query.query_text)),
-        structured=structured,
-        source_field_refs=case_state.source_field_refs,
+        query_text=query_text,
+        situation_anchor=case_state.problem_summary,
+        local_goal=case_state.local_goal,
+        uncertainty_focus=case_state.uncertainty_summary,
+        positive_evidence=positive,
+        negative_evidence=negative,
+        missing_info=missing,
+        active_hypotheses=hypotheses,
+        modality_need=modality_need,
+        candidate_action_need=list(candidate_actions),
+        finalize_risk=case_state.finalize_risk,
+        finalize_risk_reason=risk_reason,
+        retrieval_intent=retrieval_intent,
     )
+
+
+def build_memory_query_rule(case_state: CaseState, candidate_actions: list[str]) -> MemoryQuery:
+    return _base_query(case_state, candidate_actions)
+
+
+def build_memory_query_llm(case_state: CaseState, candidate_actions: list[str], llm_client: LLMClient) -> MemoryQuery:
+    rule_query = _base_query(case_state, candidate_actions)
+    if not llm_client.available():
+        return rule_query
+    payload = {
+        "case_state": case_state.to_dict(),
+        "candidate_actions": candidate_actions,
+        "structured_query": rule_query.to_dict(),
+    }
+    fallback = rule_query.to_dict()
+    parsed, _, _ = parse_validate_repair(llm_client.generate_json(query_builder_prompt(payload)), QUERY_BUILDER_SCHEMA, fallback)
+    return MemoryQuery.from_dict(parsed)
+
+
+def build_memory_query(case_state: CaseState, candidate_actions: list[str], mode: str = "rule", llm_client: LLMClient | None = None) -> MemoryQuery:
+    if mode == "llm" and llm_client is not None:
+        return build_memory_query_llm(case_state, candidate_actions, llm_client)
+    return build_memory_query_rule(case_state, candidate_actions)

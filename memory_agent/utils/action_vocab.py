@@ -1,39 +1,46 @@
 from __future__ import annotations
 
-ACTION_TYPES = {
-    "ASK",
-    "REQUEST_EXAM",
-    "REQUEST_LAB",
-    "REQUEST_IMAGING",
-    "REVIEW_IMAGE",
-    "REVIEW_HISTORY",
-    "UPDATE_HYPOTHESIS",
-    "DEFER_FINALIZE",
-    "FINALIZE_DIAGNOSIS",
+from ..schemas import CaseState
+
+ACTION_LABELS = {
+    "ASK": "ask_patient",
+    "REVIEW_HISTORY": "review_history",
+    "REQUEST_EXAM": "request_exam",
+    "REQUEST_LAB": "request_lab",
+    "REVIEW_IMAGE": "review_image",
+    "UPDATE_HYPOTHESIS": "update_hypothesis",
+    "DEFER_FINALIZE": "defer_finalize",
+    "FINALIZE_DIAGNOSIS": "finalize_diagnosis",
 }
 
-ASK_LABELS = {
-    "ask_onset",
-    "ask_duration",
-    "ask_pain_location",
-    "ask_fever",
-    "ask_dyspnea",
-    "ask_orthopnea",
-    "ask_medication_history",
+TOOL_NAMES = {
+    "ASK": "ask_patient",
+    "REVIEW_HISTORY": "retrieve",
+    "REQUEST_EXAM": "request_exam",
+    "REQUEST_LAB": "request_exam",
+    "REVIEW_IMAGE": "cxr",
+    "UPDATE_HYPOTHESIS": "retrieve",
+    "DEFER_FINALIZE": "ask_patient",
+    "FINALIZE_DIAGNOSIS": "diagnosis",
 }
 
-LAB_LABELS = {
-    "order_CBC",
-    "order_BNP",
-    "order_D_dimer",
-    "order_troponin",
-}
 
-IMAGE_REVIEW_LABELS = {
-    "review_opacity_pattern",
-    "review_fracture_line",
-    "review_cardiomegaly",
-    "review_effusion",
-}
+def action_label(action_type: str) -> str:
+    return ACTION_LABELS.get(action_type, action_type.lower())
 
-FINALIZE_LABELS = {"finalize_primary_diagnosis"}
+
+def tool_name(action_type: str) -> str:
+    return TOOL_NAMES.get(action_type, "ask_patient")
+
+
+def candidate_actions(case_state: CaseState) -> list[str]:
+    actions = ["ASK", "REVIEW_HISTORY", "UPDATE_HYPOTHESIS", "DEFER_FINALIZE"]
+    if "lab" in case_state.modality_flags:
+        actions.append("REQUEST_LAB")
+    if "image" in case_state.modality_flags:
+        actions.append("REVIEW_IMAGE")
+    if case_state.missing_info:
+        actions.append("REQUEST_EXAM")
+    if case_state.finalize_risk in {"low", "medium", "high"}:
+        actions.append("FINALIZE_DIAGNOSIS")
+    return list(dict.fromkeys(actions))

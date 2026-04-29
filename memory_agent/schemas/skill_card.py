@@ -6,34 +6,21 @@ from .common import SerializableMixin
 
 
 @dataclass
-class SkillProcedureStep(SerializableMixin):
-    step_id: int
-    action_type: str
-    action_label: str
-    expected_observation: str = ""
-    fallback_action: str = ""
-    source_field_refs: list[str] = field(default_factory=list)
-
-
-@dataclass
 class SkillCard(SerializableMixin):
-    skill_id: str
-    skill_name: str
-    skill_trigger: str
-    clinical_goal: str
-    preconditions: list[str] = field(default_factory=list)
-    procedure_template: list[SkillProcedureStep] = field(default_factory=list)
-    stop_condition: list[str] = field(default_factory=list)
-    boundary: list[str] = field(default_factory=list)
+    memory_id: str
+    memory_type: str = "skill"
+    skill_name: str = ""
+    clinical_situation: str = ""
+    local_goal: str = ""
+    trigger_conditions: list[str] = field(default_factory=list)
+    procedure: list[dict] = field(default_factory=list)
+    stop_conditions: list[str] = field(default_factory=list)
+    success_criteria: list[str] = field(default_factory=list)
+    failure_modes: list[str] = field(default_factory=list)
     contraindications: list[str] = field(default_factory=list)
     required_modalities: list[str] = field(default_factory=list)
+    applicability_boundary: str = ""
     source_experience_ids: list[str] = field(default_factory=list)
-    support_count: int = 1
-    success_rate: float = 1.0
-    unsafe_rate: float = 0.0
+    evidence_count: int = 0
     confidence: float = 0.5
-    skill_pattern_id: str = ""
-    cross_episode_support_count: int = 0
-    visual_trigger: dict[str, str] = field(default_factory=dict)
-    source_case_ids: list[str] = field(default_factory=list)
-    source_field_refs: list[str] = field(default_factory=list)
+    version: int = 1
