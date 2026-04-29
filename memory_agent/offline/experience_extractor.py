@@ -24,33 +24,58 @@ def _outcome_type(turn_record: dict[str, Any], feedback: dict[str, Any]) -> str:
     return "failure"
 
 
-def _build_experience(turn_record: dict[str, Any], feedback: dict[str, Any], outcome_type: str) -> ExperienceCard:
-    before = turn_record.get("case_state_before") or {}
-    selected = _selected_action(turn_record)
+def _build_experience(turn_record: dict, feedback: dict, outcome_type: str) -> ExperienceCard:
+    case_state = turn_record.get("case_state") or {}
+    selected = turn_record.get("selected_action") or {}
+    env_info = turn_record.get("env_info") or {}
+
     action_type = str(selected.get("action_type", "ASK"))
     action_label = str(selected.get("action_label", action_type.lower()))
+
     return ExperienceCard(
-        memory_id=str(turn_record.get("experience_id") or f"exp_{uuid.uuid4().hex[:10]}"),
-        situation_anchor=str(before.get("problem_summary", ""))[:240],
-        local_goal=str(before.get("local_goal", "")),
-        uncertainty_state=str(before.get("uncertainty_summary", "")),
-        key_evidence=list(before.get("key_evidence") or [])[:8],
-        missing_info=list(before.get("missing_info") or [])[:8],
-        active_hypotheses=list(before.get("active_hypotheses") or [])[:8],
-        action_sequence=[{"action_type": action_type, "action_label": action_label}],
-        outcome_shift=str((turn_record.get("env_info") or {}).get("outcome_shift") or feedback.get("notes") or ""),
+        memory_id=f"exp_{uuid.uuid4().hex[:10]}",
+
+        situation_text=(
+            f"Problem: {case_state.get('problem_summary', '')}. "
+            f"Uncertainty: {case_state.get('uncertainty_summary', '')}. "
+            f"Evidence: {', '.join(case_state.get('key_evidence', [])[:5])}. "
+            f"Missing info: {', '.join(case_state.get('missing_info', [])[:5])}. "
+            f"Hypotheses: {', '.join(case_state.get('active_hypotheses', [])[:5])}."
+        ),
+
+        action_text=f"{action_type}: {action_label}",
+
+        outcome_text=str(
+            env_info.get("outcome_shift")
+            or env_info.get("feedback")
+            or feedback.get("summary")
+            or ""
+        ),
+
+        boundary_text=(
+            f"Use when the situation resembles this uncertainty state. "
+            f"Less applicable if the missing information or modality evidence differs."
+        ),
+
+        action_sequence=[
+            {"action_type": action_type, "action_label": action_label}
+        ],
+
         outcome_type=outcome_type,
-        failure_mode="safety_block" if outcome_type == "unsafe" else None,
-        boundary=", ".join((before.get("missing_info") or [])[:3]),
-        applicability_conditions=list(before.get("modality_flags") or []),
-        non_applicability_conditions=list(before.get("negative_evidence") or [])[:4],
-        modality_flags=list(before.get("modality_flags") or []),
-        retrieval_tags=[action_type],
+        failure_mode="safety_block" if outcome_type == "unsafe" else "",
+
+        retrieval_tags=[action_type, action_label],
         risk_tags=["blocked_action"] if turn_record.get("selected_action_blocked") else [],
-        confidence=max(0.2, min(1.0, float(turn_record.get("reward", 0.0)) if turn_record.get("reward", 0.0) else 0.5)),
+
+        confidence=max(
+            0.2,
+            min(1.0, float(turn_record.get("reward", 0.5)))
+        ),
+
         support_count=1,
         source_episode_ids=[str(feedback.get("episode_id", ""))],
         source_case_ids=[str(feedback.get("case_id", ""))],
+        source_turn_ids=[int(turn_record.get("turn_id", 0))],
     )
 
 

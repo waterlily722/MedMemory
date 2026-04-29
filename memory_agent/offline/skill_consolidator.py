@@ -21,21 +21,24 @@ def _root(memory_root: str | None) -> Path:
 
 
 def _cluster_experiences(experiences: list[ExperienceCard]) -> list[list[ExperienceCard]]:
-    clusters: list[list[ExperienceCard]] = []
-    for experience in experiences:
+    clusters = []
+
+    for exp in experiences:
         placed = False
+
         for cluster in clusters:
             seed = cluster[0]
             if (
-                cosine_similarity(seed.situation_anchor, experience.situation_anchor) >= 0.8
-                and cosine_similarity(seed.local_goal, experience.local_goal) >= 0.8
-                and cosine_similarity(" ".join(step.get("action_label", step.get("action_type", "")) for step in seed.action_sequence), " ".join(step.get("action_label", step.get("action_type", "")) for step in experience.action_sequence)) >= 0.8
+                cosine_similarity(seed.situation_text, exp.situation_text) >= 0.8
+                and cosine_similarity(seed.action_text, exp.action_text) >= 0.8
             ):
-                cluster.append(experience)
+                cluster.append(exp)
                 placed = True
                 break
+
         if not placed:
-            clusters.append([experience])
+            clusters.append([exp])
+
     return clusters
 
 
@@ -59,18 +62,23 @@ def _build_skill_from_cluster(cluster: list[ExperienceCard], skill_index: int, l
     rule_skill = SkillCard(
         memory_id=f"skill_{seed.memory_id}_{skill_index}",
         skill_name=f"skill_{skill_index}",
-        clinical_situation=seed.situation_anchor,
-        local_goal=seed.local_goal,
-        trigger_conditions=list(dict.fromkeys(seed.active_hypotheses + [seed.situation_anchor]))[:6],
+
+        situation_text=seed.situation_text,
+        goal_text="",
+
+        procedure_text=seed.action_text,
+        boundary_text=seed.boundary_text,
+
         procedure=seed.action_sequence,
-        stop_conditions=["risk low", "uncertainty reduced"],
-        success_criteria=["goal achieved"],
-        failure_modes=["unsafe finalization"],
-        contraindications=["high finalize risk"],
-        required_modalities=list(dict.fromkeys(seed.modality_flags)),
-        applicability_boundary=seed.boundary,
+        contraindications=[],
+
         source_experience_ids=[item.memory_id for item in cluster],
+
         evidence_count=support_count,
+        unique_case_count=len(unique_cases),
+        success_rate=success_rate,
+        unsafe_rate=unsafe_rate,
+
         confidence=min(0.99, round(success_rate * (1.0 - unsafe_rate), 4)),
         version=1,
     )
