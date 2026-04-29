@@ -7,73 +7,66 @@ from ..llm.schemas import QUERY_BUILDER_SCHEMA
 from ..schemas import CaseState, MemoryQuery
 
 
-def _base_query(case_state: CaseState, candidate_actions: list[str]) -> MemoryQuery:
-    positive = list(case_state.key_evidence[:8])
-    negative = list(case_state.negative_evidence[:8])
-    missing = list(case_state.missing_info[:8])
-    hypotheses = list(case_state.active_hypotheses[:8])
-    modality_need = []
-    if "lab" in case_state.modality_flags:
-        modality_need.append("lab")
-    if "image" in case_state.modality_flags:
-        modality_need.append("image")
-    if "text" in case_state.modality_flags:
-        modality_need.append("text")
+def build_memory_query_rule(
+    case_state: CaseState,
+    candidate_actions: list[str],
+) -> MemoryQuery:
+    parts = [
+        f"Problem: {case_state.problem_summary}",
+        f"Current goal: {case_state.local_goal}",
+        f"Uncertainty: {case_state.uncertainty_summary}",
+        f"Positive evidence: {', '.join(case_state.key_evidence[:6])}",
+        f"Negative evidence: {', '.join(case_state.negative_evidence[:6])}",
+        f"Missing information: {', '.join(case_state.missing_info[:6])}",
+        f"Active hypotheses: {', '.join(case_state.active_hypotheses[:6])}",
+        f"Finalize risk: {case_state.finalize_risk}",
+        f"Reviewed modalities: {', '.join(case_state.reviewed_modalities)}",
+        f"Available modalities: {', '.join(case_state.modality_flags)}",
+        f"Candidate actions: {', '.join(candidate_actions[:8])}",
+        f"Interaction summary: {case_state.interaction_history_summary}",
+    ]
 
-    risk_reason = "missing_critical_info" if missing else "image_needed" if "image" in modality_need and "image" not in case_state.reviewed_modalities else "other"
-    retrieval_intent = "mixed"
-    lower_actions = [action.lower() for action in candidate_actions]
-    if any("finalize" in action for action in lower_actions):
-        retrieval_intent = "mixed"
-    elif any("image" in action for action in lower_actions):
-        retrieval_intent = "experience"
-    elif any("lab" in action or "exam" in action for action in lower_actions):
-        retrieval_intent = "skill"
+    query_text = "\n".join(part for part in parts if part and not part.endswith(": "))
 
-    query_text = " | ".join(
-        [
-            case_state.problem_summary,
-            case_state.local_goal,
-            case_state.uncertainty_summary,
-            " ".join(positive[:4]),
-            "missing:" + ",".join(missing[:4]),
-            "risk:" + case_state.finalize_risk,
-            case_state.interaction_history_summary,
-        ]
-    )
     return MemoryQuery(
+        case_id=case_state.case_id,
+        turn_id=case_state.turn_id,
         query_text=query_text,
-        situation_anchor=case_state.problem_summary,
-        local_goal=case_state.local_goal,
-        uncertainty_focus=case_state.uncertainty_summary,
-        positive_evidence=positive,
-        negative_evidence=negative,
-        missing_info=missing,
-        active_hypotheses=hypotheses,
-        modality_need=modality_need,
-        candidate_action_need=list(candidate_actions),
-        finalize_risk=case_state.finalize_risk,
-        finalize_risk_reason=risk_reason,
-        retrieval_intent=retrieval_intent,
     )
 
 
-def build_memory_query_rule(case_state: CaseState, candidate_actions: list[str]) -> MemoryQuery:
-    return _base_query(case_state, candidate_actions)
+def build_memory_query_llm(
+    case_state: CaseState,
+    candidate_actions: list[str],
+    llm_client: LLMClient,
+) -> MemoryQuery:
+    fallback = build_memory_query_rule(case_state, candidate_actions)
 
-
-def build_memory_query_llm(case_state: CaseState, candidate_actions: list[str], llm_client: LLMClient) -> MemoryQuery:
-    rule_query = _base_query(case_state, candidate_actions)
     if not llm_client.available():
-        return rule_query
+        return fallback
+
     payload = {
         "case_state": case_state.to_dict(),
         "candidate_actions": candidate_actions,
-        "structured_query": rule_query.to_dict(),
+        "instruction": (
+            "Create one concise retrieval query for memory search. "
+            "The query should mention the clinical situation, uncertainty, "
+            "missing information, finalize risk, and useful next-action needs. "
+            "Return JSON with only query_text."
+        ),
     }
-    fallback = rule_query.to_dict()
-    parsed, _, _ = parse_validate_repair(llm_client.generate_json(query_builder_prompt(payload)), QUERY_BUILDER_SCHEMA, fallback)
-    return MemoryQuery.from_dict(parsed)
+
+    parsed, _, _ = parse_validate_repair(
+        llm_client.generate_json(query_builder_prompt(payload)),
+        QUERY_BUILDER_SCHEMA,
+        {"query_text": fallback.query_text},
+    )
+
+    return MemoryQuery(
+        case_id=case_state.case_id,
+        turn_id=case_state.turn_id,
+        query_text=str(parsed.get("query_text") or fallback.query_text),
+    )
 
 
 def build_memory_query(case_state: CaseState, candidate_actions: list[str], mode: str = "rule", llm_client: LLMClient | None = None) -> MemoryQuery:

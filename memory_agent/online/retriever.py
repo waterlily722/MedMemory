@@ -103,3 +103,48 @@ def retrieve_multi_memory(
         skill_hits=[] if disable_skill_memory else _skill_hits(memory_query, root_dir),
         knowledge_hits=[] if disable_knowledge_memory else _knowledge_hits(memory_query, root_dir),
     )
+
+
+def experience_to_text(payload: dict) -> str:
+    return "\n".join([
+        f"Situation: {payload.get('situation_text', '')}",
+        f"Action: {payload.get('action_text', '')}",
+        f"Outcome: {payload.get('outcome_text', '')}",
+        f"Boundary: {payload.get('boundary_text', '')}",
+        f"Action sequence: {flatten_payload(payload.get('action_sequence', []))}",
+        f"Retrieval tags: {', '.join(payload.get('retrieval_tags', []))}",
+        f"Risk tags: {', '.join(payload.get('risk_tags', []))}",
+        f"Failure mode: {payload.get('failure_mode', '')}",
+    ])
+
+def skill_to_text(payload: dict) -> str:
+    return "\n".join([
+        f"Skill: {payload.get('skill_name', '')}",
+        payload.get("description", ""),
+        f"Situation: {payload.get('situation_text', '')}",
+        f"Goal: {payload.get('goal_text', '') or payload.get('local_goal', '')}",
+        f"Procedure: {payload.get('procedure_text', '')}",
+        f"Boundary: {payload.get('boundary_text', '')}",
+        f"Triggers: {', '.join(payload.get('trigger_conditions', []))}",
+        f"Procedure steps: {flatten_payload(payload.get('procedure', []))}",
+        f"Contraindications: {', '.join(payload.get('contraindications', []))}",
+    ])
+
+
+def knowledge_to_text(payload: dict) -> str:
+    tags = payload.get("tags", payload.get("modality_tags", []))
+    return "\n".join([
+        payload.get("content", ""),
+        f"Tags: {', '.join(tags)}",
+        f"Source: {payload.get('source', '')}",
+    ])
+
+
+def memory_to_text(memory_type: str, payload: dict) -> str:
+    if memory_type in {"experience", "negative_experience"}:
+        return experience_to_text(payload)
+    if memory_type == "skill":
+        return skill_to_text(payload)
+    if memory_type == "knowledge":
+        return knowledge_to_text(payload)
+    return flatten_payload(payload)

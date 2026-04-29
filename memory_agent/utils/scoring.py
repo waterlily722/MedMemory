@@ -78,3 +78,13 @@ def weighted_skill_score(
         + weights["modality_weight"] * modality_match
         + weights["success_weight"] * success_rate
     )
+
+
+def score_memory(query: MemoryQuery, memory_type: str, payload: dict) -> float:
+    memory_text = memory_to_text(memory_type, payload)
+    base = cosine_similarity(query.query_text, memory_text)
+
+    tags = payload.get("retrieval_tags") or payload.get("tags") or []
+    tag_bonus = 0.05 * cosine_similarity(query.query_text, " ".join(tags))
+
+    return min(1.0, base + tag_bonus)
