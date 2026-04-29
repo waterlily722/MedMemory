@@ -3,46 +3,100 @@ from __future__ import annotations
 from ..schemas import ApplicabilityResult, MemoryGuidance
 
 
-def build_memory_guidance(applicability: ApplicabilityResult) -> MemoryGuidance:
-    recommended = [assessment.action_type for assessment in applicability.action_assessments if not assessment.blocked and assessment.score_delta >= 0.1]
-    discouraged = [assessment.action_type for assessment in applicability.action_assessments if not assessment.blocked and assessment.score_delta < 0.1]
-    blocked = list(dict.fromkeys(applicability.hard_blocked_actions))
-    used_memory_ids = []
-    warning_memory_ids = []
-    for assessment in applicability.action_assessments:
-        if assessment.blocked:
-            warning_memory_ids.extend(assessment.warning_memory_ids)
-        if assessment.score_delta > 0:
-            used_memory_ids.extend(assessment.supporting_memory_ids)
-    rationale = "; ".join(assessment.reason for assessment in applicability.action_assessments if assessment.score_delta > 0) or "No strong memory support."
-    why_not_finalize = "Finalize is blocked by hard safety rules." if "FINALIZE_DIAGNOSIS" in blocked else ""
+def build_memory_guidance(
+    applicability_result: ApplicabilityResult,
+) -> MemoryGuidance:
+    recommended: list[str] = []
+    discouraged: list[str] = []
+    blocked: list[str] = list(applicability_result.hard_blocked_actions)
+
+    used_memory_ids: list[str] = []
+    warning_memory_ids: list[str] = []
+
+    rationale_parts: list[str] = []
+
+    for action in applicability_result.action_assessments:
+        if action.blocked:
+            blocked.append(action.action_type)
+        elif action.score_delta > 0:
+            recommended.append(action.action_type)
+        elif action.score_delta < 0:
+            discouraged.append(action.action_type)
+
+        used_memory_ids.extend(action.supporting_memory_ids)
+        warning_memory_ids.extend(action.warning_memory_ids)
+
+        if action.reason:
+            rationale_parts.append(f"{action.action_type}: {action.reason}")
+
+    for assessment in applicability_result.memory_assessments:
+        if assessment.decision in {"apply", "hint"}:
+            used_memory_ids.append(assessment.memory_id)
+        if assessment.decision == "block":
+            warning_memory_ids.append(assessment.memory_id)
+
+    blocked = list(dict.fromkeys(blocked))
+    recommended = [item for item in dict.fromkeys(recommended) if item not in blocked]
+    discouraged = [item for item in dict.fromkeys(discouraged) if item not in blocked]
+    used_memory_ids = list(dict.fromkeys(used_memory_ids))
+    warning_memory_ids = list(dict.fromkeys(warning_memory_ids))
+
+    why_not_finalize = ""
+    if "FINALIZE_DIAGNOSIS" in blocked:
+        why_not_finalize = (
+            applicability_result.risk_warning
+            or "Diagnosis finalization is blocked by safety rules or negative memory."
+        )
+
     return MemoryGuidance(
-        recommended_actions=list(dict.fromkeys(recommended)),
-        discouraged_actions=list(dict.fromkeys(discouraged)),
-        blocked_actions=list(dict.fromkeys(blocked)),
-        used_memory_ids=list(dict.fromkeys(used_memory_ids)),
-        warning_memory_ids=list(dict.fromkeys(warning_memory_ids)),
-        rationale=rationale,
-        risk_warning=applicability.risk_warning,
+        recommended_actions=recommended,
+        discouraged_actions=discouraged,
+        blocked_actions=blocked,
+        used_memory_ids=used_memory_ids,
+        warning_memory_ids=warning_memory_ids,
+        rationale=" ".join(rationale_parts[:6]),
+        risk_warning=applicability_result.risk_warning,
         why_not_finalize=why_not_finalize,
     )
 
 
 def guidance_to_text(guidance: MemoryGuidance) -> str:
-    lines = ["Memory guidance:"]
+    parts: list[str] = []
+
     if guidance.recommended_actions:
-        lines.append("Recommended: " + ", ".join(guidance.recommended_actions))
+        parts.append(
+            "Recommended actions: "
+            + ", ".join(guidance.recommended_actions)
+        )
+
     if guidance.discouraged_actions:
-        lines.append("Discouraged: " + ", ".join(guidance.discouraged_actions))
+        parts.append(
+            "Discouraged actions: "
+            + ", ".join(guidance.discouraged_actions)
+        )
+
     if guidance.blocked_actions:
-        lines.append("Blocked: " + ", ".join(guidance.blocked_actions))
-    if guidance.used_memory_ids:
-        lines.append("Used memories: " + ", ".join(guidance.used_memory_ids))
-    if guidance.warning_memory_ids:
-        lines.append("Warnings: " + ", ".join(guidance.warning_memory_ids))
+        parts.append(
+            "Blocked actions: "
+            + ", ".join(guidance.blocked_actions)
+        )
+
     if guidance.risk_warning:
-        lines.append("Risk: " + guidance.risk_warning)
+        parts.append(f"Risk warning: {guidance.risk_warning}")
+
     if guidance.why_not_finalize:
-        lines.append("Why not finalize: " + guidance.why_not_finalize)
-    lines.append("Rationale: " + guidance.rationale)
-    return "\n".join(lines)
+        parts.append(f"Why not finalize: {guidance.why_not_finalize}")
+
+    if guidance.used_memory_ids:
+        parts.append(
+            "Used memory ids: "
+            + ", ".join(guidance.used_memory_ids[:8])
+        )
+
+    if guidance.warning_memory_ids:
+        parts.append(
+            "Warning memory ids: "
+            + ", ".join(guidance.warning_memory_ids[:8])
+        )
+
+    return "\n".join(parts)

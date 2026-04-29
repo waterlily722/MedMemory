@@ -11,8 +11,8 @@ class RetrievalHit(SerializableMixin):
     memory_id: str
     memory_type: str
     content: dict[str, Any]
-    score: float
- 
+    score: float = 0.0
+
 
 @dataclass
 class MemoryRetrievalResult(SerializableMixin):
@@ -25,9 +25,13 @@ class MemoryRetrievalResult(SerializableMixin):
     def from_dict(cls, data: dict[str, Any] | None):
         if data is None:
             return cls()
-        payload = dict(data)
-        payload["positive_experience_hits"] = [RetrievalHit.from_dict(item) for item in payload.get("positive_experience_hits", [])]
-        payload["negative_experience_hits"] = [RetrievalHit.from_dict(item) for item in payload.get("negative_experience_hits", [])]
-        payload["skill_hits"] = [RetrievalHit.from_dict(item) for item in payload.get("skill_hits", [])]
-        payload["knowledge_hits"] = [RetrievalHit.from_dict(item) for item in payload.get("knowledge_hits", [])]
-        return cls(**payload)
+
+        def hits(items):
+            return [RetrievalHit.from_dict(item) for item in items or []]
+
+        return cls(
+            positive_experience_hits=hits(data.get("positive_experience_hits")),
+            negative_experience_hits=hits(data.get("negative_experience_hits")),
+            skill_hits=hits(data.get("skill_hits")),
+            knowledge_hits=hits(data.get("knowledge_hits")),
+        )

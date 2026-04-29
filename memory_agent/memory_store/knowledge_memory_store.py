@@ -7,5 +7,10 @@ from .base_store import JsonMemoryStore
 
 
 class KnowledgeMemoryStore(JsonMemoryStore):
-    def __init__(self, root_dir: str | Path):
-        super().__init__(root_dir=root_dir, filename="knowledge_memory.jsonl", item_cls=KnowledgeItem)
+    def __init__(self, root_dir: str | Path, strict_json: bool = True) -> None:
+        super().__init__(
+            root_dir=root_dir,
+            filename="knowledge_memory.jsonl",
+            item_factory=KnowledgeItem.from_dict,
+            strict_json=strict_json,
+        )

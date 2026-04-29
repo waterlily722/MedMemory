@@ -25,7 +25,7 @@ class DistilledEpisode(SerializableMixin):
     episode_id: str
     case_id: str = ""
 
-    turn_records: list[dict] = field(default_factory=list)
-    feedback: dict = field(default_factory=dict)
+    turn_records: list[dict[str, Any]] = field(default_factory=list)
+    feedback: dict[str, Any] = field(default_factory=dict)
 
     summary: str = ""

@@ -24,40 +24,23 @@ APPLICABILITY_SCHEMA = {
 }
 
 EXPERIENCE_EXTRACTION_SCHEMA = {
+    "required": ["experiences"],
+    "list_fields": ["experiences"],
+    "dict_fields": [],
+}
+
+EXPERIENCE_MERGE_SCHEMA = {
     "required": [
-        "memory_id",
-        "memory_type",
-        "situation_text",
-        "action_text",
-        "outcome_text",
-        "boundary_text",
-        "action_sequence",
-        "outcome_type",
-        "failure_mode",
-        "retrieval_tags",
-        "risk_tags",
-        "confidence",
-        "support_count",
+        "merge_decision",
+        "target_memory_ids",
+        "reason",
+        "merged_experience",
         "conflict_group_id",
-        "source_episode_ids",
-        "source_case_ids",
-        "source_turn_ids",
     ],
-    "list_fields": [
-        "action_sequence",
-        "retrieval_tags",
-        "risk_tags",
-        "source_episode_ids",
-        "source_case_ids",
-        "source_turn_ids",
-    ],
+    "list_fields": ["target_memory_ids"],
+    "dict_fields": ["merged_experience"],
     "enum_fields": {
-        "memory_type": ["experience"],
-        "outcome_type": ["success", "partial_success", "failure", "unsafe"],
-    },
-    "range_fields": {
-        "confidence": {"min": 0.0, "max": 1.0},
-        "support_count": {"min": 1, "max": 999999},
+        "merge_decision": ["insert_new", "merge", "discard", "conflict"],
     },
 }
 
@@ -85,7 +68,9 @@ SKILL_SCHEMA = {
         "contraindications",
         "source_experience_ids",
     ],
-    "enum_fields": {"memory_type": ["skill"]},
+    "enum_fields": {
+        "memory_type": ["skill"],
+    },
     "range_fields": {
         "evidence_count": {"min": 0, "max": 999999},
         "unique_case_count": {"min": 0, "max": 999999},

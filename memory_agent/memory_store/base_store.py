@@ -1,86 +1,126 @@
 from __future__ import annotations
 
 import json
-import threading
 from pathlib import Path
-from typing import Any, Type
-
-from ..schemas import SerializableMixin
+from typing import Any, Callable
 
 
 class JsonMemoryStore:
-    def __init__(self, root_dir: str | Path, filename: str, item_cls: Type[SerializableMixin]):
+    def __init__(
+        self,
+        root_dir: str | Path,
+        filename: str,
+        item_factory: Callable[[dict[str, Any]], Any],
+        strict_json: bool = True,
+    ) -> None:
         self.root_dir = Path(root_dir)
         self.root_dir.mkdir(parents=True, exist_ok=True)
+
         self.path = self.root_dir / filename
-        self.item_cls = item_cls
-        self._lock = threading.Lock()
+        self.item_factory = item_factory
+        self.strict_json = strict_json
+
         if not self.path.exists():
             self.path.write_text("", encoding="utf-8")
 
-    def _read_raw(self) -> list[dict[str, Any]]:
-        if not self.path.exists():
-            return []
-        with self._lock:
-            text = self.path.read_text(encoding="utf-8")
-        rows: list[dict[str, Any]] = []
-        for line in text.splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                payload = json.loads(line)
-            except Exception:
-                continue
-            if isinstance(payload, dict):
-                rows.append(payload)
-        return rows
+    def list_all(self) -> list[Any]:
+        return [self.item_factory(row) for row in self._read_raw()]
 
-    def _write_raw(self, rows: list[dict[str, Any]]) -> None:
-        with self._lock:
-            if rows:
-                content = "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n"
-            else:
-                content = ""
-            self.path.write_text(content, encoding="utf-8")
+    def append(self, item: Any) -> Any:
+        row = self._to_row(item)
+        memory_id = self._memory_id(row)
 
-    def list_all(self):
-        return [self.item_cls.from_dict(row) for row in self._read_raw()]
+        if self.find_by_id(memory_id) is not None:
+            raise ValueError(f"memory_id already exists: {memory_id}")
 
-    def append(self, item: SerializableMixin) -> str:
+        with self.path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+        return item
+
+    def upsert(self, item: Any) -> Any:
+        row = self._to_row(item)
+        memory_id = self._memory_id(row)
+
         rows = self._read_raw()
-        row = item.to_dict() if isinstance(item, SerializableMixin) else dict(item)
-        rows.append(row)
-        self._write_raw(rows)
-        return str(row.get("memory_id") or row.get("item_id") or "")
-
-    def upsert(self, item: SerializableMixin, id_field: str = "memory_id") -> str:
-        rows = self._read_raw()
-        row = item.to_dict() if isinstance(item, SerializableMixin) else dict(item)
-        item_id = str(row.get(id_field) or row.get("memory_id") or row.get("item_id") or "")
         replaced = False
+
         for index, existing in enumerate(rows):
-            if str(existing.get(id_field) or existing.get("memory_id") or existing.get("item_id") or "") == item_id:
+            if str(existing.get("memory_id") or "") == memory_id:
                 rows[index] = row
                 replaced = True
                 break
+
         if not replaced:
             rows.append(row)
-        self._write_raw(rows)
-        return item_id
 
-    def find_by_id(self, memory_id: str, id_field: str = "memory_id"):
+        self._write_raw(rows)
+        return item
+
+    def find_by_id(self, memory_id: str) -> Any | None:
+        memory_id = str(memory_id or "")
+        if not memory_id:
+            return None
+
         for row in self._read_raw():
-            if str(row.get(id_field) or row.get("memory_id") or row.get("item_id") or "") == str(memory_id):
-                return self.item_cls.from_dict(row)
+            if str(row.get("memory_id") or "") == memory_id:
+                return self.item_factory(row)
+
         return None
 
+    def clear(self) -> None:
+        self.path.write_text("", encoding="utf-8")
 
-def flatten_payload(payload: Any) -> str:
-    if payload is None:
-        return ""
-    if isinstance(payload, dict):
-        return " ".join(f"{key} {flatten_payload(value)}" for key, value in payload.items())
-    if isinstance(payload, list):
-        return " ".join(flatten_payload(value) for value in payload)
-    return str(payload)
+    def _read_raw(self) -> list[dict[str, Any]]:
+        rows: list[dict[str, Any]] = []
+
+        if not self.path.exists():
+            return rows
+
+        with self.path.open("r", encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                line = line.strip()
+                if not line:
+                    continue
+
+                try:
+                    value = json.loads(line)
+                except json.JSONDecodeError as exc:
+                    if self.strict_json:
+                        raise ValueError(
+                            f"Invalid JSON in {self.path} at line {line_number}"
+                        ) from exc
+                    continue
+
+                if not isinstance(value, dict):
+                    if self.strict_json:
+                        raise ValueError(
+                            f"Expected JSON object in {self.path} at line {line_number}"
+                        )
+                    continue
+
+                rows.append(value)
+
+        return rows
+
+    def _write_raw(self, rows: list[dict[str, Any]]) -> None:
+        with self.path.open("w", encoding="utf-8") as handle:
+            for row in rows:
+                handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    def _to_row(self, item: Any) -> dict[str, Any]:
+        if hasattr(item, "to_dict"):
+            row = item.to_dict()
+        elif isinstance(item, dict):
+            row = dict(item)
+        else:
+            raise TypeError(f"Unsupported memory item type: {type(item)}")
+
+        self._memory_id(row)
+        return row
+
+    def _memory_id(self, row: dict[str, Any]) -> str:
+        memory_id = str(row.get("memory_id") or "")
+        if not memory_id:
+            raise ValueError("memory item must contain non-empty memory_id")
+        return memory_id
