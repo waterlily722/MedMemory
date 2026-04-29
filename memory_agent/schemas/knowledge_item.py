@@ -9,7 +9,6 @@ from .common import SerializableMixin
 class KnowledgeItem(SerializableMixin):
     memory_id: str
     memory_type: str = "knowledge"
-    title: str = ""
     content: str = ""
     disease_tags: list[str] = field(default_factory=list)
     symptom_tags: list[str] = field(default_factory=list)

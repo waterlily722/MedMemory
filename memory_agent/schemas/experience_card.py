@@ -17,7 +17,7 @@ class ExperienceCard(SerializableMixin):
     active_hypotheses: list[str] = field(default_factory=list)
     action_sequence: list[dict] = field(default_factory=list)
     outcome_shift: str = ""
-    outcome_type: str = "partial_success"
+    outcome_type: str = "partial_success" # success | partial_success | failure | unsafe
     failure_mode: str | None = None
     boundary: str = ""
     applicability_conditions: list[str] = field(default_factory=list)

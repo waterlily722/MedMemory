@@ -24,3 +24,6 @@ class SkillCard(SerializableMixin):
     evidence_count: int = 0
     confidence: float = 0.5
     version: int = 1
+    unique_case_count: int = 0
+    success_rate: float = 0.0
+    unsafe_rate: float = 0.0
