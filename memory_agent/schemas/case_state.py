@@ -16,8 +16,7 @@ class CaseState(SerializableMixin):
     active_hypotheses: list[str] = field(default_factory=list)
     local_goal: str = ""
     uncertainty_summary: str = ""
-    finalize_risk: str = "high"
+    finalize_risk: str = "high" # low | medium | high
     modality_flags: list[str] = field(default_factory=list)
     reviewed_modalities: list[str] = field(default_factory=list)
     interaction_history_summary: str = ""
-    source_turn_ids: list[int] = field(default_factory=list)

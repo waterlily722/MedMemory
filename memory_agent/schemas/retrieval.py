@@ -12,8 +12,7 @@ class RetrievalHit(SerializableMixin):
     memory_type: str
     content: dict[str, Any]
     score: float
-    matched_fields: list[str] = field(default_factory=list)
-
+ 
 
 @dataclass
 class MemoryRetrievalResult(SerializableMixin):

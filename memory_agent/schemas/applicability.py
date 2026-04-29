@@ -10,20 +10,15 @@ from .common import SerializableMixin
 class MemoryApplicabilityAssessment(SerializableMixin):
     memory_id: str
     memory_type: str
-    applicability: str = "medium"
+    decision: str = "ignore" # apply | hint | block | ignore
     reason: str = ""
-    matched_aspects: list[str] = field(default_factory=list)
-    mismatched_aspects: list[str] = field(default_factory=list)
-    boundary_violation: Optional[str] = None
     action_bias: dict[str, float] = field(default_factory=dict)
     blocked_actions: list[str] = field(default_factory=list)
-    controller_decision: str = "ignore"
 
 
 @dataclass
 class ActionAssessment(SerializableMixin):
     action_type: str
-    action_label: str
     score_delta: float = 0.0
     blocked: bool = False
     reason: str = ""
