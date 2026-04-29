@@ -121,13 +121,18 @@ def _hard_safety_block(case_state: CaseState, action_type: str, retrieval: Memor
 def _aggregate_action_support(
     action_type: str,
     memory_assessments: list[MemoryApplicabilityAssessment],
-) -> tuple[float, list[str], list[str], list[str]]:
+) -> tuple[float, float, bool, list[str], list[str], list[str]]:
     exp_ids: list[str] = []
     skill_ids: list[str] = []
     kn_ids: list[str] = []
     score = 0.0
+    bias = 0.0
+    blocked = False
 
     for assessment in memory_assessments:
+        bias += float(assessment.action_bias.get(action_type, 0.0))
+        if action_type in assessment.blocked_actions:
+            blocked = True
         if action_type not in assessment.matched_aspects and action_type.lower() not in str(assessment.memory_content).lower():
             continue
         if assessment.memory_type in {"experience", "skill", "knowledge"} and assessment.controller_decision in {"apply", "hint"}:
@@ -141,7 +146,8 @@ def _aggregate_action_support(
         elif assessment.memory_type == "negative_experience" or assessment.boundary_violation:
             score -= max(0.15, assessment.relevance_score * 0.5)
 
-    return score, list(dict.fromkeys(exp_ids))[:3], list(dict.fromkeys(skill_ids))[:2], list(dict.fromkeys(kn_ids))[:2]
+    score += bias
+    return score, bias, blocked, list(dict.fromkeys(exp_ids))[:3], list(dict.fromkeys(skill_ids))[:2], list(dict.fromkeys(kn_ids))[:2]
 
 
 def apply_applicability_control(
@@ -164,7 +170,7 @@ def apply_applicability_control(
     assessments: list[ActionAssessment] = []
     hard_block_actions: list[str] = []
     for cand in plan.action_candidates:
-        support, exp_ids, skill_ids, kn_ids = _aggregate_action_support(cand.action_type, memory_assessments)
+        support, bias, memory_blocked, exp_ids, skill_ids, kn_ids = _aggregate_action_support(cand.action_type, memory_assessments)
         risk_penalty = 0.0
         boundary_conflict = False
         hard_block, hard_reason = _hard_safety_block(case_state, cand.action_type, retrieval)
@@ -183,6 +189,10 @@ def apply_applicability_control(
             decision = "block"
             rationale = hard_reason
             hard_block_actions.append(cand.action_id)
+        elif memory_blocked:
+            decision = "block"
+            rationale = "Blocked by memory-level assessment."
+            hard_block_actions.append(cand.action_id)
         elif boundary_conflict:
             decision = "block"
             rationale = "Rejected due to modality/boundary conflict or premature finalize risk."
@@ -197,7 +207,7 @@ def apply_applicability_control(
             decision = "escalate"
             rationale = "Low applicability, prefer to request missing evidence first."
 
-        if mode in {"llm", "hybrid"} and llm_client is not None:
+        if mode in {"llm", "hybrid"} and llm_client is not None and not hard_block and not memory_blocked and not boundary_conflict:
             payload = {
                 "memory_id": exp_ids[0] if exp_ids else (skill_ids[0] if skill_ids else (kn_ids[0] if kn_ids else "")),
                 "item_id": exp_ids[0] if exp_ids else (skill_ids[0] if skill_ids else (kn_ids[0] if kn_ids else "")),
@@ -213,10 +223,10 @@ def apply_applicability_control(
             )
             llm_decision = str(judge.get("controller_decision", "hint"))
             llm_reason = str(judge.get("reason", ""))
-            if mode == "llm":
+            if mode == "llm" and decision != "block":
                 decision = llm_decision
                 rationale = llm_reason or rationale
-            elif mode == "hybrid":
+            elif mode == "hybrid" and decision != "block":
                 if decision == "block":
                     pass
                 elif llm_decision == "block":
@@ -231,7 +241,12 @@ def apply_applicability_control(
                 action_id=cand.action_id,
                 decision=decision,
                 rationale=rationale,
-                scores={"support": round(support, 4), "risk_penalty": round(risk_penalty, 4), "final": round(score, 4)},
+                scores={
+                    "support": round(support, 4),
+                    "memory_bias": round(bias, 4),
+                    "risk_penalty": round(risk_penalty, 4),
+                    "final": round(score, 4),
+                },
                 supporting_experience_ids=exp_ids,
                 supporting_skill_ids=skill_ids,
                 supporting_knowledge_ids=kn_ids,

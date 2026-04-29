@@ -3,8 +3,8 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from .schemas import ActionDecision, CaseState, EpisodeFeedback, MedEnvCaseBundle, TurnFeedback
-from .utils.bench_adapter import extract_gold_diagnosis, unwrap_osce_examination
+from ..schemas import ActionDecision, CaseState, EpisodeFeedback, MedEnvCaseBundle, TurnFeedback
+from .bench_adapter import extract_gold_diagnosis, unwrap_osce_examination
 
 FINAL_DIAGNOSIS_RE = re.compile(r"\\box(?:ed)?\{(.+?)\}")
 
@@ -22,18 +22,18 @@ def _extract_final_diagnosis(trajectory) -> str:
                 if fn.get("name") == "diagnosis":
                     args = fn.get("arguments", {})
                     if isinstance(args, str):
-                        m = FINAL_DIAGNOSIS_RE.search(args)
-                        if m:
-                            return m.group(1).strip()
+                        match = FINAL_DIAGNOSIS_RE.search(args)
+                        if match:
+                            return match.group(1).strip()
                     if isinstance(args, dict):
                         text = str(args.get("final_response", ""))
-                        m = FINAL_DIAGNOSIS_RE.search(text)
-                        if m:
-                            return m.group(1).strip()
+                        match = FINAL_DIAGNOSIS_RE.search(text)
+                        if match:
+                            return match.group(1).strip()
         text = getattr(step, "model_response", "") or ""
-        m = FINAL_DIAGNOSIS_RE.search(text)
-        if m:
-            return m.group(1).strip()
+        match = FINAL_DIAGNOSIS_RE.search(text)
+        if match:
+            return match.group(1).strip()
     return ""
 
 
@@ -80,7 +80,7 @@ def build_turn_feedback(
     )
 
 
-def build_episode_feedback(bundle, trajectory) -> EpisodeFeedback:
+def build_episode_feedback(bundle: MedEnvCaseBundle | dict[str, Any], trajectory) -> EpisodeFeedback:
     bundle = bundle if isinstance(bundle, MedEnvCaseBundle) else MedEnvCaseBundle.from_dict(bundle)
     turn_records = ((getattr(trajectory, "info", {}) or {}).get("memory_agent", {}) or {}).get("turn_records", [])
     final_diagnosis = _extract_final_diagnosis(trajectory)

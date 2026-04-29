@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .memory_store import ExperienceMemoryStore, SkillMemoryStore
-from .offline.memory_consolidator import consolidate_experience, consolidate_skill
-from .schemas import DistilledEpisode, ExperienceCard, MemoryUpdateOperation, MemoryUpdatePlan, SkillCard
+from .memory_store import ExperienceMemoryStore
+from .offline.memory_consolidator import consolidate_experience
+from .schemas import DistilledEpisode, ExperienceCard, MemoryUpdateOperation, MemoryUpdatePlan
 from .online.retriever import DEFAULT_MEMORY_ROOT
 
 
@@ -93,14 +93,11 @@ def update_memory(
     distilled_episode: DistilledEpisode | dict,
     root_dir: str | None = None,
     experience_merge_mode: str = "rule",
-    skill_mining_mode: str = "rule",
     llm_client=None,
 ) -> MemoryUpdatePlan:
     distilled = distilled_episode if isinstance(distilled_episode, DistilledEpisode) else DistilledEpisode.from_dict(distilled_episode)
     root = _root(root_dir)
     exp_store = ExperienceMemoryStore(root)
-    skill_store = SkillMemoryStore(root)
-
     operations: list[MemoryUpdateOperation] = []
 
     for raw in distilled.candidate_experience_items:
@@ -113,44 +110,12 @@ def update_memory(
             llm_client=llm_client,
         )
 
-    for raw in distilled.candidate_skill_items:
-        card = raw if isinstance(raw, SkillCard) else SkillCard.from_dict(raw)
-        skill_store.upsert(card)
-        operations.append(
-            MemoryUpdateOperation(
-                op_type="write",
-                target_memory="skill",
-                target_item_id=card.skill_id,
-                source_item_ids=card.source_experience_ids,
-                reason="new distilled skill candidate",
-                source_field_refs=card.source_field_refs,
-            )
-        )
-
-    promoted = consolidate_skill(
-        clustered_success_experiences=exp_store.list_items(),
-        mode=skill_mining_mode,
-        llm_client=llm_client,
-    )
-    if promoted is not None:
-        skill_store.upsert(promoted)
-        operations.append(
-            MemoryUpdateOperation(
-                op_type="promote",
-                target_memory="skill",
-                target_item_id=promoted.skill_id,
-                source_item_ids=promoted.source_experience_ids,
-                reason="promoted repeated successful experiences",
-                source_field_refs=promoted.source_field_refs,
-            )
-        )
-
     return MemoryUpdatePlan(
         episode_id=distilled.episode_id,
         operations=operations,
         backend_updates={
             "experience_items": len(exp_store.list_items()),
-            "skill_items": len(skill_store.list_items()),
+            "skill_items": 0,
         },
         source_field_refs=distilled.source_field_refs,
     )

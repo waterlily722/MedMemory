@@ -8,19 +8,20 @@ from typing import Any
 from rllm.agents.agent import Action, Trajectory
 from rllm.agents.med_agent import MedicalAgent
 
-from .canonicalizer import canonicalize_static_case, canonicalize_turn_input
-from .case_memory import init_case_memory, update_case_memory
-from .controller import apply_controller
-from .decision import decide_action
-from .distiller import distill_episode
-from .feedback import build_episode_feedback, build_turn_feedback
+from .utils.canonicalizer import canonicalize_static_case, canonicalize_turn_input
+from .utils.feedback import build_episode_feedback, build_turn_feedback
 from .llm import LLMClient
 from .memory_store import KnowledgeMemoryStore
 from .memory_manager import update_memory
+from .offline.episode_distiller import distill_from_trajectory
+from .online.applicability_controller import apply_applicability_control
+from .online.case_updater import init_case_state, update_case_state
+from .online.doctor_policy import choose_next_action
+from .online.intent_planner import plan_intent_with_mode
 from .online.memory_guidance import build_memory_guidance
 from .online.memory_trace import append_memory_trace
-from .planner import plan_intent_with_mode
-from .retriever import DEFAULT_MEMORY_ROOT, retrieve_all
+from .online.reranker import rerank_retrieval_result
+from .online.retriever import DEFAULT_MEMORY_ROOT, retrieve_multi_memory
 from .schemas import ActionDecision, CaseState, ExecutionResult, MedEnvCaseBundle
 from .utils.bench_adapter import knowledge_items_from_payload, unwrap_osce_examination
 from .utils.config import MEMORY_RUNTIME_DEFAULTS
@@ -53,10 +54,8 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         memory_root: str | None = None,
         query_builder_mode: str = "rule",
         applicability_mode: str = "rule",
-        action_decision_mode: str = "base",
         experience_extraction_mode: str = "rule",
         experience_merge_mode: str = "rule",
-        skill_mining_mode: str = "rule",
         memory_top_k: int = 5,
         log_memory_trace: bool = False,
         disable_memory: bool = False,
@@ -71,10 +70,8 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         self.memory_root = memory_root
         self.query_builder_mode = query_builder_mode or MEMORY_RUNTIME_DEFAULTS["query_builder_mode"]
         self.applicability_mode = applicability_mode or MEMORY_RUNTIME_DEFAULTS["applicability_mode"]
-        self.action_decision_mode = action_decision_mode or MEMORY_RUNTIME_DEFAULTS["action_decision_mode"]
         self.experience_extraction_mode = experience_extraction_mode or MEMORY_RUNTIME_DEFAULTS["experience_extraction_mode"]
         self.experience_merge_mode = experience_merge_mode or MEMORY_RUNTIME_DEFAULTS["experience_merge_mode"]
-        self.skill_mining_mode = skill_mining_mode or MEMORY_RUNTIME_DEFAULTS["skill_mining_mode"]
         self.memory_top_k = int(memory_top_k)
         self.log_memory_trace = bool(log_memory_trace)
         self.disable_memory = bool(disable_memory)
@@ -327,16 +324,16 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
 
         if self.case_bundle is not None and self.case_memory is None:
             self._seed_knowledge_memory()
-            self.case_memory = init_case_memory(self.case_bundle, no_cxr="cxr" not in getattr(self.tools, "tools", []))
+            self.case_memory = init_case_state(self.case_bundle, no_cxr="cxr" not in getattr(self.tools, "tools", []))
 
         evidence_list = canonicalize_turn_input(self._observation_turn_id(), {"observation": observation, "info": info})
         if self.case_bundle is not None and self.case_memory is not None and not self.static_case_loaded:
             static_evidence = canonicalize_static_case(self.case_bundle)
-            self.case_memory = update_case_memory(self.case_memory, static_evidence)
+            self.case_memory = update_case_state(self.case_memory, static_evidence)
             self.static_case_loaded = True
 
         if self.case_memory is not None:
-            self.case_memory = update_case_memory(self.case_memory, evidence_list)
+            self.case_memory = update_case_state(self.case_memory, evidence_list)
 
         if case_before is not None and action_decision is not None and execution_result is not None and self.case_memory is not None:
             turn_feedback = build_turn_feedback(case_before, action_decision, execution_result, self.case_memory)
@@ -364,22 +361,27 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
                 observation=observation if isinstance(observation, dict) else {},
                 interaction_history_summary=f"turn={self.case_memory.turn_id}",
             )
-            self.current_retrieval_result = retrieve_all(
+            retrieval = retrieve_multi_memory(
                 self.current_intent_plan.memory_query,
-                top_k_each=self.memory_top_k,
+                turn_id=self.current_intent_plan.turn_id,
                 root_dir=self.memory_root,
                 disable_experience_memory=self.disable_experience_memory,
                 disable_skill_memory=self.disable_skill_memory,
                 disable_knowledge_memory=self.disable_knowledge_memory,
             )
-            self.current_applicability_result = apply_controller(
+            reranked = rerank_retrieval_result(retrieval)
+            reranked.experience_hits = reranked.experience_hits[: self.memory_top_k]
+            reranked.skill_hits = reranked.skill_hits[: self.memory_top_k]
+            reranked.knowledge_hits = reranked.knowledge_hits[: self.memory_top_k]
+            self.current_retrieval_result = reranked
+            self.current_applicability_result = apply_applicability_control(
                 self.case_memory,
                 self.current_intent_plan,
                 self.current_retrieval_result,
                 mode=self.applicability_mode,
                 llm_client=self.llm_client,
             )
-            self.current_action_decision = decide_action(self.current_intent_plan, self.current_applicability_result, self.case_memory)
+            self.current_action_decision = choose_next_action(self.case_memory, self.current_intent_plan, self.current_applicability_result)
             self.current_memory_guidance = build_memory_guidance(self.current_applicability_result, self.current_retrieval_result)
             self.messages.append({"role": "system", "content": self._build_memory_brief()})
 
@@ -435,19 +437,17 @@ class MemoryWrappedMedicalAgent(MedicalAgent):
         trajectory.info["memory_agent"]["final_case_memory"] = self.case_memory.to_dict() if self.case_memory else {}
 
         episode_feedback = build_episode_feedback(self.case_bundle, trajectory)
-        distilled = distill_episode(
+        distilled = distill_from_trajectory(
             trajectory,
             self.turn_feedback_list,
             episode_feedback,
             experience_extraction_mode=self.experience_extraction_mode,
-            skill_mining_mode=self.skill_mining_mode,
             llm_client=self.llm_client,
         )
         memory_update_plan = update_memory(
             distilled,
             root_dir=self.memory_root,
             experience_merge_mode=self.experience_merge_mode,
-            skill_mining_mode=self.skill_mining_mode,
             llm_client=self.llm_client,
         )
 

@@ -3,10 +3,10 @@ from __future__ import annotations
 import json
 import re
 import uuid
-from typing import Any, Dict, List
+from typing import Any
 
-from .schemas import CanonicalEvidence, MedEnvCaseBundle
-from .utils.bench_adapter import nested_get, unwrap_osce_examination
+from ..schemas import CanonicalEvidence, MedEnvCaseBundle
+from .bench_adapter import nested_get, unwrap_osce_examination
 
 
 NEGATION_PATTERNS = [
@@ -258,57 +258,30 @@ def canonicalize_turn_input(turn_id: str, input_obj: dict[str, Any] | Any) -> li
         if isinstance(tool_calls, list):
             for tc in tool_calls:
                 fn = (tc.get("function") or {}) if isinstance(tc, dict) else {}
-                tool_by_id[str(tc.get("id", ""))] = str(fn.get("name", ""))
-
-        for tool_call_id, tool_output in observation["tool_outputs"].items():
-            tool_name = tool_by_id.get(tool_call_id, "")
-            parsed: Any = tool_output
-            raw_text = tool_output if isinstance(tool_output, str) else _to_text(tool_output)
-            raw_structured: dict[str, Any] = {}
-            raw_image_refs: list[str] = []
-            field_paths: list[str] = []
-            source_type = "retrieve_output"
-
-            if isinstance(tool_output, str):
-                try:
-                    parsed = json.loads(tool_output)
-                except Exception:
-                    parsed = tool_output
-
-            if tool_name == "retrieve":
-                source_type = "retrieve_output"
-            elif tool_name == "request_exam":
-                source_type = "request_exam_output"
-                if isinstance(parsed, dict):
-                    section = parsed.get("section")
-                    if section:
-                        field_paths = [f"ehr.{section}"]
-            elif tool_name == "cxr":
-                source_type = "cxr_output"
-                field_paths = ["ehr.CXR"]
-            elif tool_name == "cxr_grounding":
-                source_type = "cxr_grounding_output"
-                field_paths = ["ehr.CXR"]
-
-            if isinstance(parsed, dict):
-                raw_structured = parsed
-                if tool_name == "cxr":
-                    for image in parsed.get("images", []) or []:
-                        if isinstance(image, dict) and image.get("jpg_path"):
-                            raw_image_refs.append(str(image["jpg_path"]))
-                if tool_name == "cxr_grounding" and parsed.get("image_path"):
-                    raw_image_refs.append(str(parsed["image_path"]))
-
+                if fn.get("name") and tc.get("id"):
+                    tool_by_id[str(tc.get("id"))] = str(fn.get("name"))
+        for tool_id, output in (observation.get("tool_outputs") or {}).items():
+            tool_name = tool_by_id.get(str(tool_id), "")
             evidences.append(
                 _build_evidence(
                     turn_id=turn_id,
-                    source_type=source_type,
+                    source_type=tool_name or "tool",
                     bundle_side="ehr",
-                    field_paths=field_paths,
-                    raw_text=raw_text,
-                    raw_structured=raw_structured,
-                    raw_image_refs=raw_image_refs,
+                    field_paths=[f"tool_outputs.{tool_id}"],
+                    raw_text=_to_text(output)[:800],
+                    raw_structured={"tool": tool_name, "payload": output},
                 )
             )
+
+    if isinstance(info, dict) and info.get("metadata"):
+        evidences.append(
+            _build_evidence(
+                turn_id=turn_id,
+                source_type="env_metadata",
+                bundle_side="ehr",
+                field_paths=["info.metadata"],
+                raw_structured=info.get("metadata"),
+            )
+        )
 
     return evidences

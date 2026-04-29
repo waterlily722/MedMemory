@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from .online.query_builder import build_memory_query_with_mode
-from .schemas import ActionCandidate, CaseState, IntentPlan, RankedIntent
+from ..schemas import ActionCandidate, CaseState, IntentPlan, RankedIntent
+from .query_builder import build_memory_query_with_mode
 
 
 def _candidate(
@@ -114,8 +114,12 @@ def plan_intent(case_memory: CaseState) -> IntentPlan:
 
     ranked = _to_ranked_intents(case_memory)
     memory_query = build_memory_query_with_mode(case_memory, [c.action_type for c in candidates], mode="rule")
-    # Keep ranked intents attached for compatibility with wrapper's debug message.
-    plan = IntentPlan(turn_id=case_memory.turn_id, action_candidates=sorted(candidates, key=lambda c: c.planner_score, reverse=True), memory_query=memory_query, source_field_refs=refs)
+    plan = IntentPlan(
+        turn_id=case_memory.turn_id,
+        action_candidates=sorted(candidates, key=lambda c: c.planner_score, reverse=True),
+        memory_query=memory_query,
+        source_field_refs=refs,
+    )
     setattr(plan, "ranked_intents", ranked)
     return plan
 

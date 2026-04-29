@@ -197,7 +197,7 @@ class MemoryAgentSchemaFirstTests(unittest.TestCase):
                 candidate_experience_items=[experience.to_dict()],
                 candidate_skill_items=[],
             )
-            update_memory(distilled, root_dir=tmpdir, experience_merge_mode="rule", skill_mining_mode="rule")
+            update_memory(distilled, root_dir=tmpdir, experience_merge_mode="rule")
 
             query = build_memory_query(case_state, ["REQUEST_LAB", "FINALIZE_DIAGNOSIS"])
             retrieval = retrieve_multi_memory(query, turn_id=1, root_dir=tmpdir)

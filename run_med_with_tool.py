@@ -43,10 +43,8 @@ def main():
     parser.add_argument("--judge_api_key", default="", help="Judge API key (default: same as --api_key).")
     parser.add_argument("--query_builder_mode", default="rule", choices=["rule", "llm"])
     parser.add_argument("--applicability_mode", default="rule", choices=["rule", "llm", "hybrid"])
-    parser.add_argument("--action_decision_mode", default="base", choices=["base", "llm", "hybrid"])
     parser.add_argument("--experience_extraction_mode", default="rule", choices=["rule", "llm"])
     parser.add_argument("--experience_merge_mode", default="rule", choices=["rule", "llm"])
-    parser.add_argument("--skill_mining_mode", default="rule", choices=["rule", "llm"])
     parser.add_argument("--memory_top_k", type=int, default=5)
     parser.add_argument("--log_memory_trace", action="store_true")
     parser.add_argument("--disable_memory", action="store_true")
@@ -94,10 +92,8 @@ def main():
             "system_prompt": DOCTOR_SYSTEM_PROMPT_wo_IMG,
             "query_builder_mode": args.query_builder_mode,
             "applicability_mode": args.applicability_mode,
-            "action_decision_mode": args.action_decision_mode,
             "experience_extraction_mode": args.experience_extraction_mode,
             "experience_merge_mode": args.experience_merge_mode,
-            "skill_mining_mode": args.skill_mining_mode,
             "memory_top_k": args.memory_top_k,
             "log_memory_trace": args.log_memory_trace,
             "disable_memory": args.disable_memory,
@@ -122,10 +118,8 @@ def main():
             "system_prompt": DOCTOR_SYSTEM_PROMPT,
             "query_builder_mode": args.query_builder_mode,
             "applicability_mode": args.applicability_mode,
-            "action_decision_mode": args.action_decision_mode,
             "experience_extraction_mode": args.experience_extraction_mode,
             "experience_merge_mode": args.experience_merge_mode,
-            "skill_mining_mode": args.skill_mining_mode,
             "memory_top_k": args.memory_top_k,
             "log_memory_trace": args.log_memory_trace,
             "disable_memory": args.disable_memory,

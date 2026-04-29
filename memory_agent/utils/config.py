@@ -57,10 +57,8 @@ SKILL_ABSTRACTION_CONFIG = {
 MEMORY_RUNTIME_DEFAULTS = {
     "query_builder_mode": "rule",
     "applicability_mode": "rule",
-    "action_decision_mode": "base",
     "experience_extraction_mode": "rule",
     "experience_merge_mode": "rule",
-    "skill_mining_mode": "rule",
     "memory_top_k": 5,
     "log_memory_trace": False,
     "disable_memory": False,

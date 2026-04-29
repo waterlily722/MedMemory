@@ -114,20 +114,16 @@ case "${EXPERIMENT_SUITE}" in
     run_experiment "rule_baseline" \
       --query_builder_mode rule \
       --applicability_mode rule \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5
     ;;
   main)
     run_experiment "llm_query_hybrid_app" \
       --query_builder_mode llm \
       --applicability_mode hybrid \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5
     ;;
   full)
@@ -135,19 +131,15 @@ case "${EXPERIMENT_SUITE}" in
       --disable_memory \
       --query_builder_mode rule \
       --applicability_mode rule \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5
 
     run_experiment "case_memory_only" \
       --query_builder_mode rule \
       --applicability_mode rule \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5 \
       --disable_experience_memory \
       --disable_skill_memory \
@@ -156,37 +148,29 @@ case "${EXPERIMENT_SUITE}" in
     run_experiment "rule_retrieval" \
       --query_builder_mode rule \
       --applicability_mode rule \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5
 
     run_experiment "llm_query_builder" \
       --query_builder_mode llm \
       --applicability_mode rule \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5
 
     run_experiment "hybrid_applicability" \
       --query_builder_mode llm \
       --applicability_mode hybrid \
-      --action_decision_mode base \
       --experience_extraction_mode rule \
       --experience_merge_mode rule \
-      --skill_mining_mode rule \
       --memory_top_k 5
 
     run_experiment "full_memory_pipeline" \
       --query_builder_mode llm \
       --applicability_mode hybrid \
-      --action_decision_mode base \
       --experience_extraction_mode llm \
       --experience_merge_mode llm \
-      --skill_mining_mode llm \
       --memory_top_k 5 \
       --log_memory_trace
     ;;
