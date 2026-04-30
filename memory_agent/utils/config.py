@@ -7,6 +7,12 @@ RETRIEVAL_CONFIG = {
     "negative_experience_top_k": 3,
     "skill_top_k": 3,
     "knowledge_top_k": 3,
+    # Retrieval thresholds. Negative memory uses a higher threshold because it can
+    # discourage or block actions downstream.
+    "positive_experience_min_score": 0.18,
+    "negative_experience_min_score": 0.25,
+    "skill_min_score": 0.20,
+    "knowledge_min_score": 0.12,
 }
 
 MERGE_CONFIG = {
