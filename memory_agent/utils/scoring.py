@@ -1,14 +1,26 @@
 from __future__ import annotations
 
+import logging
 import math
 import re
 from collections import Counter
 from typing import Any
 
-TOKEN_RE = re.compile(r"[a-z0-9_]+")
+logger = logging.getLogger(__name__)
+
+# English alphanumeric runs OR individual CJK characters (each char = 1 token)
+TOKEN_RE = re.compile(
+    r"[a-z0-9_]+|[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]"
+)
 
 
 def tokenize(text: str) -> list[str]:
+    """Tokenize text into English word stems and individual CJK characters.
+
+    English: lowercase alphanumeric runs (e.g. "chest" → "chest").
+    CJK: each Chinese character becomes its own token (e.g. "胸痛" → ["胸", "痛"]).
+    Punctuation and whitespace are discarded automatically.
+    """
     return TOKEN_RE.findall((text or "").lower())
 
 

@@ -9,10 +9,8 @@ def build_memory_guidance(
     recommended: list[str] = []
     discouraged: list[str] = []
     blocked: list[str] = list(applicability_result.hard_blocked_actions)
-
     used_memory_ids: list[str] = []
     warning_memory_ids: list[str] = []
-
     rationale_parts: list[str] = []
 
     for action in applicability_result.action_assessments:
@@ -25,7 +23,6 @@ def build_memory_guidance(
 
         used_memory_ids.extend(action.supporting_memory_ids)
         warning_memory_ids.extend(action.warning_memory_ids)
-
         if action.reason:
             rationale_parts.append(f"{action.action_type}: {action.reason}")
 
@@ -62,41 +59,20 @@ def build_memory_guidance(
 
 def guidance_to_text(guidance: MemoryGuidance) -> str:
     parts: list[str] = []
-
     if guidance.recommended_actions:
-        parts.append(
-            "Recommended actions: "
-            + ", ".join(guidance.recommended_actions)
-        )
-
+        parts.append("Recommended actions: " + ", ".join(guidance.recommended_actions))
     if guidance.discouraged_actions:
-        parts.append(
-            "Discouraged actions: "
-            + ", ".join(guidance.discouraged_actions)
-        )
-
+        parts.append("Discouraged actions: " + ", ".join(guidance.discouraged_actions))
     if guidance.blocked_actions:
-        parts.append(
-            "Blocked actions: "
-            + ", ".join(guidance.blocked_actions)
-        )
-
+        parts.append("Blocked actions: " + ", ".join(guidance.blocked_actions))
     if guidance.risk_warning:
         parts.append(f"Risk warning: {guidance.risk_warning}")
-
     if guidance.why_not_finalize:
         parts.append(f"Why not finalize: {guidance.why_not_finalize}")
-
+    if guidance.rationale:
+        parts.append(f"Rationale: {guidance.rationale}")
     if guidance.used_memory_ids:
-        parts.append(
-            "Used memory ids: "
-            + ", ".join(guidance.used_memory_ids[:8])
-        )
-
+        parts.append("Used memory ids: " + ", ".join(guidance.used_memory_ids[:8]))
     if guidance.warning_memory_ids:
-        parts.append(
-            "Warning memory ids: "
-            + ", ".join(guidance.warning_memory_ids[:8])
-        )
-
+        parts.append("Warning memory ids: " + ", ".join(guidance.warning_memory_ids[:8]))
     return "\n".join(parts)

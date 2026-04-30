@@ -1,8 +1,10 @@
 from __future__ import annotations
 
-from typing import Any
+import logging
 
 from ..llm import LLMClient, applicability_prompt, parse_validate_repair
+
+logger = logging.getLogger(__name__)
 from ..llm.schemas import APPLICABILITY_SCHEMA
 from ..schemas import (
     ActionAssessment,
@@ -11,9 +13,10 @@ from ..schemas import (
     MemoryApplicabilityAssessment,
     MemoryQuery,
     MemoryRetrievalResult,
+    OutcomeType,
     RetrievalHit,
 )
-
+from ..utils.config import APPLICABILITY_CONFIG
 
 DEFAULT_ACTIONS = [
     "ASK",
@@ -33,54 +36,79 @@ def _all_hits(retrieval_result: MemoryRetrievalResult) -> list[RetrievalHit]:
     )
 
 
+def _outcome_type(hit: RetrievalHit) -> str:
+    return str(hit.content.get("outcome_type") or "").lower()
+
+
+_NEGATIVE_OUTCOMES = {OutcomeType.FAILURE.value, OutcomeType.UNSAFE.value}
+_POSITIVE_OUTCOMES = {OutcomeType.SUCCESS.value, OutcomeType.PARTIAL_SUCCESS.value}
+
+
 def _is_negative_experience(hit: RetrievalHit) -> bool:
-    if hit.memory_type != "experience":
-        return False
-    outcome_type = str(hit.content.get("outcome_type") or "")
-    return outcome_type in {"failure", "unsafe"}
+    return hit.memory_type == "experience" and _outcome_type(hit) in _NEGATIVE_OUTCOMES
+
+
+def _infer_action_from_steps(steps: object) -> str:
+    if isinstance(steps, list) and steps:
+        first = steps[0]
+        if isinstance(first, dict):
+            return str(first.get("action_type") or "").upper()
+    return ""
+
+
+def _infer_action_from_text(text: str) -> str:
+    upper = text.upper()
+    for action in DEFAULT_ACTIONS:
+        if action in upper:
+            return action
+    return ""
 
 
 def _infer_action_from_memory(hit: RetrievalHit) -> str:
     if hit.memory_type == "experience":
-        sequence = hit.content.get("action_sequence") or []
-        if isinstance(sequence, list) and sequence:
-            first = sequence[0]
-            if isinstance(first, dict):
-                return str(first.get("action_type") or "").upper()
-        action_text = str(hit.content.get("action_text") or "").upper()
-        for action in DEFAULT_ACTIONS:
-            if action in action_text:
-                return action
-
+        action = _infer_action_from_steps(hit.content.get("action_sequence") or [])
+        return action or _infer_action_from_text(str(hit.content.get("action_text") or ""))
     if hit.memory_type == "skill":
-        procedure = hit.content.get("procedure") or []
-        if isinstance(procedure, list) and procedure:
-            first = procedure[0]
-            if isinstance(first, dict):
-                return str(first.get("action_type") or "").upper()
-        procedure_text = str(hit.content.get("procedure_text") or "").upper()
-        for action in DEFAULT_ACTIONS:
-            if action in procedure_text:
-                return action
-
+        action = _infer_action_from_steps(hit.content.get("procedure") or [])
+        return action or _infer_action_from_text(str(hit.content.get("procedure_text") or ""))
     return ""
+
+
+def _unsafe_block_threshold() -> float:
+    return float(APPLICABILITY_CONFIG.get("unsafe_block_score", 0.35))
+
+
+def _skill_apply_threshold() -> float:
+    return float(APPLICABILITY_CONFIG.get("skill_apply_score", 0.40))
 
 
 def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
     action = _infer_action_from_memory(hit)
 
     if _is_negative_experience(hit):
-        blocked_actions = [action] if action else []
+        outcome = _outcome_type(hit)
+        if outcome == "unsafe" and action and hit.score >= _unsafe_block_threshold():
+            return MemoryApplicabilityAssessment(
+                memory_id=hit.memory_id,
+                memory_type=hit.memory_type,
+                decision="block",
+                reason=(
+                    "Retrieved high-confidence unsafe experience with overlapping action; "
+                    "block repeating this risky path."
+                ),
+                action_bias={action: -0.9},
+                blocked_actions=[action],
+            )
         return MemoryApplicabilityAssessment(
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
-            decision="block" if blocked_actions else "hint",
+            decision="hint",
             reason=(
-                "Retrieved negative experience with similar situation/action. "
-                "Use as warning against repeating a risky path."
+                "Retrieved negative experience. Treat as a cautionary signal; "
+                "discourage rather than block unless clearly unsafe and high-confidence."
             ),
-            action_bias={action: -0.8} if action else {},
-            blocked_actions=blocked_actions,
+            action_bias={action: -0.45} if action else {},
+            blocked_actions=[],
         )
 
     if hit.memory_type == "experience":
@@ -89,7 +117,7 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
             memory_type=hit.memory_type,
             decision="hint",
             reason="Retrieved positive experience may provide a useful local action hint.",
-            action_bias={action: 0.4} if action else {},
+            action_bias={action: 0.35} if action else {},
             blocked_actions=[],
         )
 
@@ -97,9 +125,12 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
         return MemoryApplicabilityAssessment(
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
-            decision="apply",
-            reason="Retrieved skill provides a reusable procedure for this uncertainty state.",
-            action_bias={action: 0.6} if action else {},
+            decision="hint",
+            reason=(
+                "Retrieved skill is potentially useful, but retrieval alone is not enough "
+                "to automatically apply it; check boundary conditions."
+            ),
+            action_bias={action: 0.30} if action else {},
             blocked_actions=[],
         )
 
@@ -113,6 +144,60 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
     )
 
 
+def _postprocess_llm_assessment(
+    hit: RetrievalHit,
+    assessment: MemoryApplicabilityAssessment,
+) -> MemoryApplicabilityAssessment:
+    action = _infer_action_from_memory(hit)
+    outcome = _outcome_type(hit)
+
+    if assessment.decision not in {"apply", "hint", "block", "ignore"}:
+        return _rule_memory_assessment(hit)
+
+    assessment.memory_id = hit.memory_id
+    assessment.memory_type = hit.memory_type
+
+    if hit.memory_type == "skill" and assessment.decision == "apply" and hit.score < _skill_apply_threshold():
+        assessment.decision = "hint"
+        assessment.reason = (
+            assessment.reason
+            or "Skill score is below apply threshold; downgrade to hint."
+        )
+
+    if hit.memory_type == "experience" and outcome == "failure" and assessment.decision == "block":
+        assessment.decision = "hint"
+        assessment.blocked_actions = []
+        if action and not assessment.action_bias:
+            assessment.action_bias = {action: -0.45}
+        assessment.reason = (
+            assessment.reason
+            or "Failure experience should discourage, not hard-block, unless unsafe."
+        )
+
+    if hit.memory_type == "experience" and outcome == "unsafe" and assessment.decision == "block":
+        if hit.score < _unsafe_block_threshold() or not action:
+            assessment.decision = "hint"
+            assessment.blocked_actions = []
+            if action and not assessment.action_bias:
+                assessment.action_bias = {action: -0.45}
+            assessment.reason = (
+                assessment.reason
+                or "Unsafe experience was not similar enough for hard block; downgrade to hint."
+            )
+
+    assessment.blocked_actions = [
+        str(item).upper()
+        for item in assessment.blocked_actions
+        if str(item).upper() in DEFAULT_ACTIONS
+    ]
+    assessment.action_bias = {
+        str(key).upper(): float(value)
+        for key, value in (assessment.action_bias or {}).items()
+        if str(key).upper() in DEFAULT_ACTIONS
+    }
+    return assessment
+
+
 def _llm_memory_assessment(
     hit: RetrievalHit,
     case_state: CaseState,
@@ -120,7 +205,6 @@ def _llm_memory_assessment(
     llm_client: LLMClient,
 ) -> MemoryApplicabilityAssessment:
     fallback = _rule_memory_assessment(hit)
-
     if not llm_client.available():
         return fallback
 
@@ -136,29 +220,25 @@ def _llm_memory_assessment(
         "allowed_decisions": ["apply", "hint", "block", "ignore"],
         "allowed_actions": DEFAULT_ACTIONS,
         "instruction": (
-            "Judge whether this memory is applicable to the current case. "
-            "Return only memory_id, memory_type, decision, reason, action_bias, blocked_actions. "
-            "Do not invent new action types."
+            "Judge whether this memory applies to the current case. "
+            "Retrieved skill should not automatically apply; use apply only when boundary conditions fit. "
+            "Failure experiences should discourage; unsafe experiences may block only when highly applicable."
         ),
     }
-
     parsed, _, _ = parse_validate_repair(
         llm_client.generate_json(applicability_prompt(payload), max_tokens=900),
         APPLICABILITY_SCHEMA,
         fallback.to_dict(),
     )
-
     try:
         assessment = MemoryApplicabilityAssessment.from_dict(parsed)
-    except Exception:
+    except Exception as exc:
+        logger.warning(
+            "LLM applicability assessment parse failed for memory %s: %s",
+            hit.memory_id, exc,
+        )
         return fallback
-
-    if assessment.decision not in {"apply", "hint", "block", "ignore"}:
-        return fallback
-
-    assessment.memory_id = hit.memory_id
-    assessment.memory_type = hit.memory_type
-    return assessment
+    return _postprocess_llm_assessment(hit, assessment)
 
 
 def _hard_block_actions(case_state: CaseState) -> tuple[list[str], str]:
@@ -187,6 +267,7 @@ def _aggregate_action_assessments(
     action_map: dict[str, ActionAssessment] = {}
 
     def ensure(action: str) -> ActionAssessment:
+        action = str(action).upper()
         if action not in action_map:
             action_map[action] = ActionAssessment(action_type=action)
         return action_map[action]
@@ -197,36 +278,36 @@ def _aggregate_action_assessments(
         item.reason = "Hard safety rule blocked this action."
 
     for assessment in memory_assessments:
+        if assessment.decision == "ignore":
+            continue
+
         for action, delta in assessment.action_bias.items():
             action = str(action).upper()
             if not action:
                 continue
-
             item = ensure(action)
             try:
                 item.score_delta += float(delta)
             except Exception:
                 pass
-
-            if assessment.decision in {"apply", "hint"}:
+            if assessment.decision in {"apply", "hint"} and delta > 0:
                 item.supporting_memory_ids.append(assessment.memory_id)
-            if assessment.decision == "block":
+            if delta < 0:
                 item.warning_memory_ids.append(assessment.memory_id)
 
-        for action in assessment.blocked_actions:
-            action = str(action).upper()
-            if not action:
-                continue
-
-            item = ensure(action)
-            item.blocked = True
-            item.warning_memory_ids.append(assessment.memory_id)
-            item.reason = assessment.reason or "Blocked by retrieved memory."
+        if assessment.decision == "block":
+            for action in assessment.blocked_actions:
+                action = str(action).upper()
+                if not action:
+                    continue
+                item = ensure(action)
+                item.blocked = True
+                item.warning_memory_ids.append(assessment.memory_id)
+                item.reason = assessment.reason or "Blocked by retrieved memory."
 
     for item in action_map.values():
         item.supporting_memory_ids = list(dict.fromkeys(item.supporting_memory_ids))
         item.warning_memory_ids = list(dict.fromkeys(item.warning_memory_ids))
-
         if not item.reason:
             if item.score_delta > 0:
                 item.reason = "Supported by retrieved memory."
@@ -248,11 +329,10 @@ def apply_applicability_control(
     memory_assessments: list[MemoryApplicabilityAssessment] = []
 
     for hit in _all_hits(retrieval_result):
-        if mode == "hybrid" and llm_client is not None:
+        if mode in {"llm", "hybrid"} and llm_client is not None:
             assessment = _llm_memory_assessment(hit, case_state, memory_query, llm_client)
         else:
             assessment = _rule_memory_assessment(hit)
-
         memory_assessments.append(assessment)
 
     hard_blocked, risk_warning = _hard_block_actions(case_state)

@@ -12,28 +12,28 @@ class QueryBuilderRuleTests(unittest.TestCase):
             case_id="case-1",
             problem_summary="patient with chest pain",
             key_evidence=["substernal pain"],
-            negative_evidence=["no fever"],
-            missing_info=["ECG or troponin"],
+            negative_evidence=["denies fever"],
+            missing_info=["troponin"],
             active_hypotheses=["ACS"],
-            local_goal="rule out high-risk cardiac cause",
+            local_goal="rule out ACS",
             uncertainty_summary="need more evidence",
             finalize_risk="high",
             modality_flags=["text", "lab"],
             reviewed_modalities=["text"],
-            interaction_history_summary="turn_1: asked onset",
+            interaction_history_summary="turn_1: asked about pain",
         )
         query = build_memory_query_rule(
             case_state,
-            [{"action_type": "REQUEST_LAB", "action_label": "troponin"}, "FINALIZE_DIAGNOSIS"],
+            ["REQUEST_LAB", {"action_type": "FINALIZE_DIAGNOSIS", "action_label": "finalize"}],
         )
-        self.assertIn("problem_summary", query.query_text)
-        self.assertIn(case_state.problem_summary, query.query_text)
+        self.assertIn("problem_summary: patient with chest pain", query.query_text)
+        self.assertIn("missing_info: troponin", query.query_text)
+        self.assertIn("finalize_risk: high", query.query_text)
+        self.assertIn("candidate_actions:", query.query_text)
         self.assertIn("REQUEST_LAB", query.query_text)
-        self.assertIn("missing_info", query.query_text)
 
-        # MemoryQuery schema remains minimal.
-        keys = set(query.to_dict().keys())
-        self.assertEqual(keys, {"case_id", "turn_id", "query_text"})
+        # Ensure MemoryQuery schema stays minimal.
+        self.assertEqual(set(query.to_dict().keys()), {"case_id", "turn_id", "query_text"})
 
 
 if __name__ == "__main__":

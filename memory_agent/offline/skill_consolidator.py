@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import argparse
+import logging
 from pathlib import Path
 
 from ..llm import LLMClient, parse_validate_repair, skill_consolidation_prompt
+
+logger = logging.getLogger(__name__)
 from ..llm.schemas import SKILL_SCHEMA
 from ..memory_store import ExperienceMemoryStore, SkillMemoryStore
-from ..schemas import ExperienceCard, SkillCard
+from ..schemas import ExperienceCard, OutcomeType, SkillCard
 from ..utils.config import MEMORY_ROOT_DIRNAME, SKILL_CONFIG
 from ..utils.scoring import cosine_similarity
 
@@ -18,11 +21,13 @@ def _root(memory_root: str | None) -> Path:
 
 
 def _is_positive(experience: ExperienceCard) -> bool:
-    return experience.outcome_type in {"success", "partial_success"}
+    return experience.outcome_type in {
+        OutcomeType.SUCCESS.value, OutcomeType.PARTIAL_SUCCESS.value
+    }
 
 
 def _is_unsafe(experience: ExperienceCard) -> bool:
-    return experience.outcome_type == "unsafe"
+    return experience.outcome_type == OutcomeType.UNSAFE.value
 
 
 def _cluster_positive_experiences(
@@ -195,6 +200,10 @@ def consolidate_skills_from_store(
         skill_store.upsert(skill)
         skills.append(skill)
 
+    logger.info(
+        "Skill consolidation done — %d clusters, %d skills written, %d experiences in store",
+        len(clusters), len(skills), len(all_experiences),
+    )
     return skills
 
 

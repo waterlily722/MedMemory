@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 from typing import Any
 
 from ..memory_store import ExperienceMemoryStore
+
+logger = logging.getLogger(__name__)
 from ..schemas import DistilledEpisode, ExperienceCard
 from ..utils.config import MEMORY_ROOT_DIRNAME
 from ..utils.scoring import cosine_similarity
@@ -134,7 +137,7 @@ def write_memory_from_distilled_episode(
         written_ids.append(experience.memory_id)
         existing.append(experience)
 
-    return {
+    result = {
         "episode_id": distilled.episode_id,
         "written_experience_ids": written_ids,
         "extracted_count": len(extracted),
@@ -143,3 +146,11 @@ def write_memory_from_distilled_episode(
         "discarded_count": discarded_count,
         "experience_store_count": len(store.list_all()),
     }
+
+    logger.info(
+        "Memory write done — episode=%s extracted=%d merged=%d conflict=%d discarded=%d "
+        "total_store=%d",
+        distilled.episode_id, len(extracted), merged_count,
+        conflict_count, discarded_count, result["experience_store_count"],
+    )
+    return result

@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -42,6 +45,10 @@ class LLMClient:
         temperature: float | None = None,
     ) -> str:
         if not self.available():
+            logger.warning(
+                "LLMClient not available — model=%r base_url=%r",
+                self.model, self.base_url,
+            )
             return "{}"
 
         payload = {
@@ -73,17 +80,22 @@ class LLMClient:
         try:
             with urllib.request.urlopen(request, timeout=self.timeout) as response:
                 raw = response.read().decode("utf-8")
-        except (urllib.error.URLError, TimeoutError, OSError):
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            logger.warning("LLMClient HTTP error: %s", exc)
             return "{}"
 
         try:
             data = json.loads(raw)
-            return (
+            content = (
                 data.get("choices", [{}])[0]
                 .get("message", {})
                 .get("content", "{}")
             )
-        except Exception:
+            if not content or content == "{}":
+                logger.warning("LLMClient returned empty content for model=%s", self.model)
+            return content
+        except Exception as exc:
+            logger.warning("LLMClient parse error: %s", exc)
             return "{}"
 
     def _headers(self) -> dict[str, str]:

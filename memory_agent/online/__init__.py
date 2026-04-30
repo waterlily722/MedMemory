@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 from .applicability_controller import apply_applicability_control
-from .case_updater import init_case_state, update_case_state
+from .case_updater import (
+    init_case_state,
+    update_case_state,
+    update_case_state_llm,
+    update_case_state_rule,
+)
 from .memory_guidance import build_memory_guidance, guidance_to_text
 from .memory_trace import append_memory_trace, build_trace_payload
 from .query_builder import (
@@ -15,6 +20,8 @@ __all__ = [
     "DEFAULT_MEMORY_ROOT",
     "init_case_state",
     "update_case_state",
+    "update_case_state_rule",
+    "update_case_state_llm",
     "build_memory_query",
     "build_memory_query_rule",
     "build_memory_query_llm",

@@ -1,7 +1,25 @@
 from __future__ import annotations
 
 from dataclasses import asdict, is_dataclass
+from enum import Enum
 from typing import Any
+
+
+class OutcomeType(str, Enum):
+    """Canonical outcome types for ExperienceCard."""
+    SUCCESS = "success"
+    PARTIAL_SUCCESS = "partial_success"
+    FAILURE = "failure"
+    UNSAFE = "unsafe"
+
+    @classmethod
+    def _missing_(cls, value: object) -> "OutcomeType":
+        if isinstance(value, str):
+            normalized = value.lower().replace(" ", "_")
+            for member in cls:
+                if member.value == normalized:
+                    return member
+        return cls.PARTIAL_SUCCESS
 
 
 def _convert(value: Any) -> Any:

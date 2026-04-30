@@ -27,6 +27,7 @@ def build_trace_payload(
     memory_guidance: MemoryGuidance,
     selected_action: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    """Build an online debug trace using current schema objects only."""
     return {
         "case_id": case_state.case_id,
         "turn_id": case_state.turn_id,
@@ -36,7 +37,7 @@ def build_trace_payload(
         "applicability_result": applicability_result.to_dict(),
         "memory_guidance": memory_guidance.to_dict(),
         "selected_action": selected_action or {},
-        "blocked_actions": memory_guidance.blocked_actions,
+        "blocked_actions": list(memory_guidance.blocked_actions),
     }
 
 
@@ -46,11 +47,8 @@ def append_memory_trace(
 ) -> Path:
     root = Path(trace_root)
     root.mkdir(parents=True, exist_ok=True)
-
     case_id = str(payload.get("case_id") or "unknown_case")
     path = root / f"{case_id}.jsonl"
-
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(_to_dict(payload), ensure_ascii=False) + "\n")
-
     return path

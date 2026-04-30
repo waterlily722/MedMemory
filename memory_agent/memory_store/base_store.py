@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Any, Callable
+
+logger = logging.getLogger(__name__)
 
 
 class JsonMemoryStore:
@@ -31,6 +34,7 @@ class JsonMemoryStore:
         memory_id = self._memory_id(row)
 
         if self.find_by_id(memory_id) is not None:
+            logger.warning("Duplicate memory_id in append: %s", memory_id)
             raise ValueError(f"memory_id already exists: {memory_id}")
 
         with self.path.open("a", encoding="utf-8") as handle:
@@ -90,6 +94,9 @@ class JsonMemoryStore:
                         raise ValueError(
                             f"Invalid JSON in {self.path} at line {line_number}"
                         ) from exc
+                    logger.warning(
+                        "Skipped invalid JSON in %s at line %d", self.path, line_number
+                    )
                     continue
 
                 if not isinstance(value, dict):
@@ -97,6 +104,9 @@ class JsonMemoryStore:
                         raise ValueError(
                             f"Expected JSON object in {self.path} at line {line_number}"
                         )
+                    logger.warning(
+                        "Skipped non-dict JSON in %s at line %d", self.path, line_number
+                    )
                     continue
 
                 rows.append(value)

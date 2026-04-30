@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import logging
 import uuid
 from typing import Any
 
 from ..llm import LLMClient, experience_merge_prompt, parse_validate_repair
+
+logger = logging.getLogger(__name__)
 from ..llm.schemas import EXPERIENCE_MERGE_SCHEMA
-from ..schemas import ExperienceCard
+from ..schemas import ExperienceCard, OutcomeType
 from ..utils.config import MERGE_CONFIG
 from ..utils.scoring import cosine_similarity
 
@@ -18,8 +21,12 @@ def _threshold(name: str, default: float) -> float:
 
 
 def _same_direction(left: ExperienceCard, right: ExperienceCard) -> bool:
-    left_positive = left.outcome_type in {"success", "partial_success"}
-    right_positive = right.outcome_type in {"success", "partial_success"}
+    left_positive = left.outcome_type in {
+        OutcomeType.SUCCESS.value, OutcomeType.PARTIAL_SUCCESS.value
+    }
+    right_positive = right.outcome_type in {
+        OutcomeType.SUCCESS.value, OutcomeType.PARTIAL_SUCCESS.value
+    }
     return left_positive == right_positive
 
 
@@ -161,9 +168,13 @@ def decide_merge_llm(
 
     decision = str(parsed.get("merge_decision") or "insert_new")
     if decision not in {"insert_new", "merge", "discard", "conflict"}:
+        logger.warning(
+            "LLM merge returned invalid decision=%r; falling back to rule", decision
+        )
         return fallback
 
     if decision == "merge" and not isinstance(parsed.get("merged_experience"), dict):
+        logger.warning("LLM merge decided 'merge' but merged_experience is not dict; fallback")
         return fallback
 
     return parsed

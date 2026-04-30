@@ -6,7 +6,7 @@ from .applicability import (
     MemoryApplicabilityAssessment,
 )
 from .case_state import CaseState
-from .common import SerializableMixin
+from .common import OutcomeType, SerializableMixin
 from .episode import DistilledEpisode, EpisodeFeedback
 from .experience_card import ExperienceCard
 from .guidance import MemoryGuidance
@@ -17,6 +17,7 @@ from .skill_card import SkillCard
 from .turn_record import TurnRecord
 
 __all__ = [
+    "OutcomeType",
     "SerializableMixin",
     "CaseState",
     "MemoryQuery",

@@ -27,3 +27,9 @@ SKILL_CONFIG = {
     "min_success_rate": 0.75,
     "max_unsafe_rate": 0.05,
 }
+
+# Applicability heuristics and thresholds used by the online controller
+APPLICABILITY_CONFIG = {
+    "unsafe_block_score": 0.35,
+    "skill_apply_score": 0.40,
+}

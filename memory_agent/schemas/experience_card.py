@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .common import SerializableMixin
+from .common import OutcomeType, SerializableMixin
 
 
 @dataclass
@@ -17,7 +17,7 @@ class ExperienceCard(SerializableMixin):
 
     action_sequence: list[dict[str, str]] = field(default_factory=list)
 
-    outcome_type: str = "partial_success"  # success | partial_success | failure | unsafe
+    outcome_type: str = OutcomeType.PARTIAL_SUCCESS.value
     failure_mode: str = ""
 
     retrieval_tags: list[str] = field(default_factory=list)
