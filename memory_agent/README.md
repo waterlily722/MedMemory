@@ -40,7 +40,7 @@ memory_agent/
 
 ```bash
 # 1. 激活 conda 环境
-conda activate medenv
+conda activate vllm_env
 
 # 2. 安装 rllm（首次）
 cd /oral_llm/xiweidai/med_env/code/rllm
@@ -77,7 +77,7 @@ print('All imports OK')
 ### 终端 A — Doctor (port 30000)
 
 ```bash
-conda activate medenv
+conda activate vllm_env
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python -m vllm.entrypoints.openai.api_server \
   --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
@@ -105,7 +105,7 @@ vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
 ### 终端 B — Patient (port 30001)
 
 ```bash
-conda activate medenv
+conda activate vllm_env
 export CUDA_VISIBLE_DEVICES=4,5,6,7
 python -m vllm.entrypoints.openai.api_server \
   --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
@@ -118,7 +118,7 @@ python -m vllm.entrypoints.openai.api_server \
 ### 终端 C — Judge (port 30002)
 
 ```bash
-conda activate medenv
+conda activate vllm_env
 export CUDA_VISIBLE_DEVICES=1
 python -m vllm.entrypoints.openai.api_server \
   --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
