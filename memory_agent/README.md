@@ -78,27 +78,14 @@ print('All imports OK')
 
 ```bash
 conda activate vllm_env
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-python -m vllm.entrypoints.openai.api_server \
-  --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
-  --served-model-name doctor_agent \
-  --host 0.0.0.0 --port 30000 \
-  --dtype bfloat16 --max-model-len 32768 \
-  --tensor-parallel-size 4 --gpu-memory-utilization 0.9 \
-  --trust-remote-code
-```
-
-cd ~
-
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-
+export CUDA_VISIBLE_DEVICES=0,1
 vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --served-model-name doctor_agent \
   --host 0.0.0.0 \
   --port 30000 \
   --dtype bfloat16 \
   --max-model-len 32768 \
-  --tensor-parallel-size 4 \
+  --tensor-parallel-size 2 \
   --gpu-memory-utilization 0.9 \
   --trust-remote-code
 
@@ -106,26 +93,32 @@ vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
 
 ```bash
 conda activate vllm_env
-export CUDA_VISIBLE_DEVICES=4,5,6,7
-python -m vllm.entrypoints.openai.api_server \
-  --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+export CUDA_VISIBLE_DEVICES=4,5
+vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --served-model-name patient_agent \
-  --host 0.0.0.0 --port 30001 \
+  --host 0.0.0.0 \
+  --port 30001 \
   --dtype bfloat16 \
-  --tensor-parallel-size 4 --gpu-memory-utilization 0.8
+  --max-model-len 32768 \
+  --tensor-parallel-size 2 \
+  --gpu-memory-utilization 0.8 \
+  --trust-remote-code
 ```
 
 ### 终端 C — Judge (port 30002)
 
 ```bash
 conda activate vllm_env
-export CUDA_VISIBLE_DEVICES=1
-python -m vllm.entrypoints.openai.api_server \
-  --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+export CUDA_VISIBLE_DEVICES=2,3
+vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --served-model-name judge_agent \
-  --host 0.0.0.0 --port 30002 \
-  --dtype bfloat16 --max-model-len 32768 \
-  --gpu-memory-utilization 0.9 --trust-remote-code
+  --host 0.0.0.0 \
+  --port 30002 \
+  --dtype bfloat16 \
+  --max-model-len 32768 \
+  --tensor-parallel-size 2 \
+  --gpu-memory-utilization 0.8 \
+  --trust-remote-code
 ```
 
 ### 验证服务就绪
@@ -139,6 +132,7 @@ curl -s http://127.0.0.1:30002/v1/models | head
 ### 运行评测
 
 ```bash
+conda activate vllm_env
 cd /oral_llm/xiweidai/med_env/code/rllm
 export PYTHONPATH="/oral_llm/xiweidai/med_env/code/rllm"
 export RLLM_PATIENT_BASE_URL="http://127.0.0.1:30001/v1"
@@ -157,7 +151,8 @@ python examples/MedGym/run_med_with_tool.py \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1 \
   --enable_memory \
-  --memory_root memory_data
+  --memory_root memory_data \
+  --log_memory_trace
 
 # 有 CXR 模式（去掉 --no_cxr 即可）
 python examples/MedGym/run_med_with_tool.py \
@@ -170,7 +165,8 @@ python examples/MedGym/run_med_with_tool.py \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1 \
   --enable_memory \
-  --memory_root memory_data
+  --memory_root memory_data \
+  --log_memory_trace
 ```
 
 ## 记忆系统参数说明
