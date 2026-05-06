@@ -39,24 +39,20 @@ memory_agent/
 ## 环境准备
 
 ```bash
-# ── 1. 创建干净环境（仅首次）──
-conda create -n medenv python=3.11 -y
+# 1. 激活 conda 环境
 conda activate medenv
 
-# ── 2. 安装 PyTorch + vLLM ──
-conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia -y
-pip install vllm==0.8.3
-
-# ── 3. 安装 rllm + memory_agent ──
+# 2. 安装 rllm（首次）
 cd /oral_llm/xiweidai/med_env/code/rllm
-pip install -e . --no-deps
-pip install datasets polars hydra-core wandb mcp httpx-aiohttp antlr4-python3-runtime==4.9.3
+pip install -e .
 
-# ── 4. 验证导入 ──
+# 3. 验证导入
+cd /oral_llm/xiweidai/med_env/code/rllm
 PYTHONPATH="/oral_llm/xiweidai/med_env/code/rllm/examples/MedGym" \
-  python -c "from memory_agent import MemoryWrappedMedicalAgent; import vllm; print(f'OK  vllm={vllm.__version__}')"
+  python -c "from memory_agent import MemoryWrappedMedicalAgent; print('memory_agent OK')"
 
-# ── 5. （可选）MedGym 环境依赖 — 跑完整 benchmark 时需要 ──
+# 4. （可选）MedGym 环境依赖 — 跑完整 benchmark 时需要
+#    包含 decord / moviepy / opencv / scikit-learn 等，编译较慢
 pip install -r /oral_llm/xiweidai/med_env/code/rllm/examples/MedGym/requirements.txt
 ```
 
@@ -81,7 +77,7 @@ print('All imports OK')
 ### 终端 A — Doctor (port 30000)
 
 ```bash
-conda activate scientist
+conda activate medenv
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 python -m vllm.entrypoints.openai.api_server \
   --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
@@ -92,10 +88,24 @@ python -m vllm.entrypoints.openai.api_server \
   --trust-remote-code
 ```
 
+cd ~
+
+export CUDA_VISIBLE_DEVICES=0,1,2,3
+
+vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --served-model-name doctor_agent \
+  --host 0.0.0.0 \
+  --port 30000 \
+  --dtype bfloat16 \
+  --max-model-len 32768 \
+  --tensor-parallel-size 4 \
+  --gpu-memory-utilization 0.9 \
+  --trust-remote-code
+
 ### 终端 B — Patient (port 30001)
 
 ```bash
-conda activate scientist
+conda activate medenv
 export CUDA_VISIBLE_DEVICES=4,5,6,7
 python -m vllm.entrypoints.openai.api_server \
   --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
@@ -108,7 +118,7 @@ python -m vllm.entrypoints.openai.api_server \
 ### 终端 C — Judge (port 30002)
 
 ```bash
-conda activate scientist
+conda activate medenv
 export CUDA_VISIBLE_DEVICES=1
 python -m vllm.entrypoints.openai.api_server \
   --model /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \

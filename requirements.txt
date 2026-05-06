@@ -1,15 +1,7 @@
---extra-index-url https://download.pytorch.org/whl/cu118
-torch==2.4.0
-torchvision==0.19.0
-datasets==2.21.0
-transformers==4.51.2
-tokenizers==0.20.3
-deepspeed==0.15.4
-accelerate==1.7.0
-peft==0.4.0
-nibabel==5.3.2
-timm==1.0.3
-numpy==1.24.4
+# MedGym 额外依赖
+# 核心 ML 包（torch / transformers / datasets 等）由 rllm 的 pyproject.toml 管理，
+# 执行 pip install -e . 后即已安装，此处无需重复指定。
+
 # data processing
 decord==0.6.0
 imageio==2.34.0
@@ -19,14 +11,14 @@ opencv-python==4.6.0.66
 pyarrow
 pysubs2
 ffmpeg-python
+
 # misc
 scikit-learn==1.2.2
-huggingface_hub==0.23.4
 sentencepiece==0.1.99
 shortuuid
 einops==0.6.1
 einops-exts==0.0.4
-bitsandbytes==0.43.3 # for cuda 124
+bitsandbytes==0.43.3
 pydantic>=2.0
 markdown2[all]
 gradio==3.50.0
