@@ -399,7 +399,13 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         return observation
 
     def _candidate_actions(self) -> list[str]:
-        tools = getattr(self, "tools", None) or []
+        raw_tools = getattr(self, "tools", None) or []
+        if hasattr(raw_tools, "tools"):
+            tools = getattr(raw_tools, "tools") or []
+        elif isinstance(raw_tools, dict):
+            tools = raw_tools.keys()
+        else:
+            tools = raw_tools
         actions: list[str] = []
         for tool in tools:
             name = str(tool)

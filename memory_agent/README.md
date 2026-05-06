@@ -138,6 +138,8 @@ export PYTHONPATH="/oral_llm/xiweidai/med_env/code/rllm"
 export RLLM_PATIENT_BASE_URL="http://127.0.0.1:30001/v1"
 export RLLM_PATIENT_MODEL="patient_agent"
 export RLLM_PATIENT_API_KEY="None"
+export RLLM_TRAJECTORY_DIR="/oral_llm/xiweidai/med_env/code/rllm/examples/MedGym/trajectories"
+
 
 # 无 CXR 模式（默认 5 个 case）
 python examples/MedGym/run_med_with_tool.py \
@@ -145,7 +147,7 @@ python examples/MedGym/run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 5 \
+  --max_cases 1 \
   --no_cxr \
   --parser_name qwen \
   --judge_model judge_agent \

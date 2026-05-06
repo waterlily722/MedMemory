@@ -12,6 +12,7 @@ from memory_agent.wrapper import MemoryWrappedMedicalAgent
 from rllm.engine.agent_execution_engine import AgentExecutionEngine
 from rllm.environments.medgym.medgym_env import MedicalDialogueEnv
 # from rllm.environments.tools.tool_env import ToolEnvironment
+from rllm.tools import register_med_tools
 from rllm.utils.diagnose_acc import evaluate_doctor_results
 # from prepare_med_data import prepare_med_data
 from rllm.rewards.reward_fn import search_reward_fn
@@ -21,6 +22,8 @@ from prepare_med_data_bench import prepare_med_data, SUBDIR_WITH_CXR, SUBDIR_NO_
 
 
 def main():
+    register_med_tools()
+
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--model", required=True, help="Doctor served model name (e.g., --served-model-name doctor_agent).")
@@ -105,6 +108,7 @@ def main():
             "memory_llm_model": args.memory_llm_model,
             "memory_llm_base_url": args.memory_llm_base_url,
             "memory_llm_api_key": args.memory_llm_api_key,
+            "no_cxr": args.no_cxr,
         }
 
         env_args = {
@@ -132,6 +136,7 @@ def main():
             "memory_llm_model": args.memory_llm_model,
             "memory_llm_base_url": args.memory_llm_base_url,
             "memory_llm_api_key": args.memory_llm_api_key,
+            "no_cxr": args.no_cxr,
         }
 
         env_args = {
