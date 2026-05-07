@@ -16,15 +16,10 @@ from ..schemas import (
     OutcomeType,
     RetrievalHit,
 )
-from ..utils.config import APPLICABILITY_CONFIG
+from ..utils.config import APPLICABILITY_CONFIG, MEMORY_ACTION_CONFIG
 
-DEFAULT_ACTIONS = [
-    "ASK",
-    "REQUEST_LAB",
-    "REVIEW_IMAGE",
-    "UPDATE_HYPOTHESIS",
-    "FINALIZE_DIAGNOSIS",
-]
+DEFAULT_ACTIONS = list(MEMORY_ACTION_CONFIG["default_actions"])
+FINALIZE_ACTION = str(MEMORY_ACTION_CONFIG["finalize_action"])
 
 
 def _all_hits(retrieval_result: MemoryRetrievalResult) -> list[RetrievalHit]:
@@ -203,11 +198,9 @@ def _llm_memory_assessment(
     case_state: CaseState,
     memory_query: MemoryQuery,
     llm_client: LLMClient,
+    debug: dict[str, object] | None = None,
 ) -> MemoryApplicabilityAssessment:
     fallback = _rule_memory_assessment(hit)
-    if not llm_client.available():
-        return fallback
-
     payload = {
         "case_state": case_state.to_dict(),
         "memory_query": memory_query.to_dict(),
@@ -225,11 +218,30 @@ def _llm_memory_assessment(
             "Failure experiences should discourage; unsafe experiences may block only when highly applicable."
         ),
     }
+    prompt = applicability_prompt(payload)
+    if debug is not None:
+        debug["mode"] = "llm"
+        debug["hit"] = payload["retrieved_memory"]
+        debug["rule_fallback_assessment"] = fallback.to_dict()
+        debug["llm_available"] = llm_client.available()
+        debug["payload"] = payload
+        debug["prompt"] = prompt
+    if not llm_client.available():
+        if debug is not None:
+            debug["used_fallback"] = True
+            debug["fallback_reason"] = "llm_unavailable"
+            debug["final_assessment"] = fallback.to_dict()
+        return fallback
+
+    raw_output = llm_client.generate_json(prompt, max_tokens=900)
     parsed, _, _ = parse_validate_repair(
-        llm_client.generate_json(applicability_prompt(payload), max_tokens=900),
+        raw_output,
         APPLICABILITY_SCHEMA,
         fallback.to_dict(),
     )
+    if debug is not None:
+        debug["raw_output"] = raw_output
+        debug["parsed_output"] = parsed
     try:
         assessment = MemoryApplicabilityAssessment.from_dict(parsed)
     except Exception as exc:
@@ -237,25 +249,43 @@ def _llm_memory_assessment(
             "LLM applicability assessment parse failed for memory %s: %s",
             hit.memory_id, exc,
         )
+        if debug is not None:
+            debug["used_fallback"] = True
+            debug["fallback_reason"] = f"parse_exception: {exc}"
+            debug["final_assessment"] = fallback.to_dict()
         return fallback
-    return _postprocess_llm_assessment(hit, assessment)
+    result = _postprocess_llm_assessment(hit, assessment)
+    if debug is not None:
+        debug["used_fallback"] = False
+        debug["final_assessment"] = result.to_dict()
+    return result
 
 
 def _hard_block_actions(case_state: CaseState) -> tuple[list[str], str]:
     blocked: list[str] = []
     warnings: list[str] = []
 
-    if case_state.finalize_risk == "high":
-        blocked.append("FINALIZE_DIAGNOSIS")
-        warnings.append("finalize_risk is high")
+    warning_text = APPLICABILITY_CONFIG.get("risk_warning_text", {})
 
-    if len(case_state.missing_info) >= 3:
-        if "FINALIZE_DIAGNOSIS" not in blocked:
-            blocked.append("FINALIZE_DIAGNOSIS")
-        warnings.append("multiple critical missing information slots remain unresolved")
+    if (
+        APPLICABILITY_CONFIG.get("hard_block_finalize_on_high_risk", True)
+        and case_state.finalize_risk == "high"
+    ):
+        blocked.append(FINALIZE_ACTION)
+        warnings.append(str(warning_text.get("high_finalize_risk", "finalize_risk is high")))
 
-    if "image" in case_state.modality_flags and "image" not in case_state.reviewed_modalities:
-        warnings.append("image modality is available but not yet reviewed")
+    missing_info_min = int(APPLICABILITY_CONFIG.get("hard_block_finalize_missing_info_min", 3))
+    if missing_info_min > 0 and len(case_state.missing_info) >= missing_info_min:
+        if FINALIZE_ACTION not in blocked:
+            blocked.append(FINALIZE_ACTION)
+        warnings.append(str(warning_text.get("missing_info", "multiple critical missing information slots remain unresolved")))
+
+    if (
+        APPLICABILITY_CONFIG.get("image_unreviewed_warning", True)
+        and "image" in case_state.modality_flags
+        and "image" not in case_state.reviewed_modalities
+    ):
+        warnings.append(str(warning_text.get("image_unreviewed", "image modality is available but not yet reviewed")))
 
     return blocked, "; ".join(warnings)
 
@@ -275,7 +305,7 @@ def _aggregate_action_assessments(
     for action in hard_blocked_actions:
         item = ensure(action)
         item.blocked = True
-        item.reason = "Hard safety rule blocked this action."
+        item.reason = str(APPLICABILITY_CONFIG.get("hard_block_reason", "Configured safety rule blocked this action."))
 
     for assessment in memory_assessments:
         if assessment.decision == "ignore":
@@ -325,22 +355,48 @@ def apply_applicability_control(
     retrieval_result: MemoryRetrievalResult,
     mode: str = "rule",
     llm_client: LLMClient | None = None,
+    debug: dict[str, object] | None = None,
 ) -> ApplicabilityResult:
     memory_assessments: list[MemoryApplicabilityAssessment] = []
+    if debug is not None:
+        debug["mode"] = mode
+        debug["case_state"] = case_state.to_dict()
+        debug["memory_query"] = memory_query.to_dict()
+        debug["retrieval_result"] = retrieval_result.to_dict()
+        debug["hit_assessments"] = []
 
     for hit in _all_hits(retrieval_result):
+        hit_debug: dict[str, object] = {}
         if mode in {"llm", "hybrid"} and llm_client is not None:
-            assessment = _llm_memory_assessment(hit, case_state, memory_query, llm_client)
+            assessment = _llm_memory_assessment(
+                hit,
+                case_state,
+                memory_query,
+                llm_client,
+                debug=hit_debug if debug is not None else None,
+            )
         else:
             assessment = _rule_memory_assessment(hit)
+            if debug is not None:
+                hit_debug["mode"] = "rule"
+                hit_debug["hit"] = hit.to_dict()
+                hit_debug["final_assessment"] = assessment.to_dict()
         memory_assessments.append(assessment)
+        if debug is not None:
+            debug["hit_assessments"].append(hit_debug)
 
     hard_blocked, risk_warning = _hard_block_actions(case_state)
     action_assessments = _aggregate_action_assessments(memory_assessments, hard_blocked)
+    if debug is not None:
+        debug["hard_blocked_actions"] = hard_blocked
+        debug["risk_warning"] = risk_warning
 
-    return ApplicabilityResult(
+    result = ApplicabilityResult(
         memory_assessments=memory_assessments,
         action_assessments=action_assessments,
         hard_blocked_actions=hard_blocked,
         risk_warning=risk_warning,
     )
+    if debug is not None:
+        debug["final_applicability_result"] = result.to_dict()
+    return result

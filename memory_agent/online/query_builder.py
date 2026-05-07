@@ -78,14 +78,13 @@ def build_memory_query_llm(
     case_state: CaseState,
     candidate_actions: list[Any] | None,
     llm_client: LLMClient,
+    debug: dict[str, Any] | None = None,
 ) -> MemoryQuery:
     fallback = build_memory_query_rule(case_state, candidate_actions)
-    if not llm_client.available():
-        return fallback
-
+    actions = [_action_to_text(action) for action in candidate_actions or []]
     payload = {
         "case_state": case_state.to_dict(),
-        "candidate_actions": [_action_to_text(action) for action in candidate_actions or []],
+        "candidate_actions": actions,
         "instruction": (
             "Create one concise retrieval query for memory search. "
             "Use only CaseState fields and candidate_actions from the input. "
@@ -93,17 +92,40 @@ def build_memory_query_llm(
             "modalities, and useful next-action needs. Return JSON with only query_text."
         ),
     }
+    prompt = query_builder_prompt(payload)
+    if debug is not None:
+        debug["mode"] = "llm"
+        debug["case_state"] = case_state.to_dict()
+        debug["candidate_actions"] = actions
+        debug["rule_fallback_query"] = fallback.to_dict()
+        debug["llm_available"] = llm_client.available()
+        debug["payload"] = payload
+        debug["prompt"] = prompt
+    if not llm_client.available():
+        if debug is not None:
+            debug["used_fallback"] = True
+            debug["fallback_reason"] = "llm_unavailable"
+            debug["final_query"] = fallback.to_dict()
+        return fallback
+
+    raw_output = llm_client.generate_json(prompt, max_tokens=800)
     parsed, _, _ = parse_validate_repair(
-        llm_client.generate_json(query_builder_prompt(payload), max_tokens=800),
+        raw_output,
         QUERY_BUILDER_SCHEMA,
         {"query_text": fallback.query_text},
     )
     query_text = str(parsed.get("query_text") or fallback.query_text).strip()
-    return MemoryQuery(
+    result = MemoryQuery(
         case_id=case_state.case_id,
         turn_id=case_state.turn_id,
         query_text=query_text or fallback.query_text,
     )
+    if debug is not None:
+        debug["raw_output"] = raw_output
+        debug["parsed_output"] = parsed
+        debug["used_fallback"] = not bool(str(parsed.get("query_text") or "").strip())
+        debug["final_query"] = result.to_dict()
+    return result
 
 
 def build_memory_query(
@@ -111,7 +133,14 @@ def build_memory_query(
     candidate_actions: list[Any] | None = None,
     mode: str = "rule",
     llm_client: LLMClient | None = None,
+    debug: dict[str, Any] | None = None,
 ) -> MemoryQuery:
     if mode == "llm" and llm_client is not None:
-        return build_memory_query_llm(case_state, candidate_actions, llm_client)
-    return build_memory_query_rule(case_state, candidate_actions)
+        return build_memory_query_llm(case_state, candidate_actions, llm_client, debug=debug)
+    result = build_memory_query_rule(case_state, candidate_actions)
+    if debug is not None:
+        debug["mode"] = "rule"
+        debug["case_state"] = case_state.to_dict()
+        debug["candidate_actions"] = [_action_to_text(action) for action in candidate_actions or []]
+        debug["final_query"] = result.to_dict()
+    return result

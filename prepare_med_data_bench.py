@@ -22,7 +22,7 @@ def load_json(path: str) -> Any:
 def discover_ehr_paths(bench_root: str, subdir: str = "with_img/ed_hosp", max_cases: int = -1) -> List[str]:
     """
     在 bench 根目录下发现所有 ehr_<id>.json 路径。
-    bench_root: 例如 /data/xuxiang/mimic-iv/bench
+    bench_root: 例如 /oral_llm/xiweidai/med_env/bench
     subdir: 相对 bench_root 的子目录，例如 with_img/ed_hosp
     """
     search_dir = os.path.join(bench_root, subdir)
@@ -137,7 +137,7 @@ def prepare_med_data(
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Any]:
     """
     适配 bench 的 prepare_med_data 接口。
-    case_dir: 此处作为 bench 根目录使用，例如 /data/xuxiang/mimic-iv/bench
+    case_dir: 此处作为 bench 根目录使用，例如 /oral_llm/xiweidai/med_env/bench
     subdir: 相对 bench 根目录的子路径，默认 with_img/ed_hosp
     返回: (tasks, cases, None)
     """

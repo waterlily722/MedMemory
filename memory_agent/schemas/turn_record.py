@@ -30,6 +30,7 @@ class TurnRecord(SerializableMixin):
     memory_guidance: Optional[MemoryGuidance] = None
 
     selected_action: dict[str, Any] = field(default_factory=dict)
+    memory_debug: dict[str, Any] = field(default_factory=dict)
 
     env_observation: dict[str, Any] | str = field(default_factory=dict)
     env_info: dict[str, Any] = field(default_factory=dict)

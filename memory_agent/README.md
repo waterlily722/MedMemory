@@ -117,7 +117,7 @@ vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --dtype bfloat16 \
   --max-model-len 32768 \
   --tensor-parallel-size 2 \
-  --gpu-memory-utilization 0.8 \
+  --gpu-memory-utilization 0.7 \
   --trust-remote-code
 ```
 
@@ -134,11 +134,14 @@ curl -s http://127.0.0.1:30002/v1/models | head
 ```bash
 conda activate vllm_env
 cd /oral_llm/xiweidai/med_env/code/rllm
-export PYTHONPATH="/oral_llm/xiweidai/med_env/code/rllm"
+export PYTHONPATH="/oral_llm/xiweidai/med_env/code/rllm:/oral_llm/xiweidai/med_env/code/rllm/examples/MedGym"
 export RLLM_PATIENT_BASE_URL="http://127.0.0.1:30001/v1"
 export RLLM_PATIENT_MODEL="patient_agent"
 export RLLM_PATIENT_API_KEY="None"
 export RLLM_TRAJECTORY_DIR="/oral_llm/xiweidai/med_env/code/rllm/examples/MedGym/trajectories"
+# export MEMORY_LLM_MODEL="your_model_name"
+# xport MEMORY_LLM_BASE_URL="https://your-api-host/v1"
+# export MEMORY_LLM_API_KEY="your_api_key"
 
 
 # 无 CXR 模式（默认 5 个 case）
@@ -153,7 +156,6 @@ python examples/MedGym/run_med_with_tool.py \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1 \
   --enable_memory \
-  --memory_root memory_data \
   --log_memory_trace
 
 # 有 CXR 模式（去掉 --no_cxr 即可）
@@ -167,7 +169,6 @@ python examples/MedGym/run_med_with_tool.py \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1 \
   --enable_memory \
-  --memory_root memory_data \
   --log_memory_trace
 ```
 
@@ -176,14 +177,22 @@ python examples/MedGym/run_med_with_tool.py \
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
 | `--enable_memory` | off | 启用记忆系统 |
-| `--memory_root` | `memory_data` | 记忆存储根目录 |
-| `--query_builder_mode` | `rule` | 检索查询构建模式 (`rule` / `llm`) |
-| `--applicability_mode` | `rule` | 适用性判断模式 (`rule` / `llm` / `hybrid`) |
+| `--memory_root` | `memory_agent/memory_data` | 记忆存储根目录；留空或传 `memory_data` 都会落到该目录 |
+| `--query_builder_mode` | `llm` | 检索查询构建模式 (`rule` / `llm`) |
+| `--applicability_mode` | `llm` | 适用性判断模式 (`rule` / `llm` / `hybrid`) |
 | `--experience_extraction_mode` | `llm` | 经验提取模式 (`rule` / `llm`) |
-| `--experience_merge_mode` | `rule` | 经验合并模式 (`rule` / `llm`) |
+| `--experience_merge_mode` | `llm` | 经验合并模式 (`rule` / `llm`) |
 | `--log_memory_trace` | off | 记录每步记忆 trace 到文件 |
 | `--disable_experience_memory` | off | 禁用经验记忆 |
 | `--disable_skill_memory` | off | 禁用技能记忆 |
 | `--disable_knowledge_memory` | off | 禁用知识记忆 |
-| `--memory_llm_model` | — | 记忆系统专用 LLM 模型名 |
-| `--memory_llm_base_url` | — | 记忆系统专用 LLM 地址 (默认同主 LLM) |
+| `--memory_llm_model` | 主 doctor 模型 | 记忆系统专用 LLM 模型名，默认复用 `--model` |
+| `--memory_llm_base_url` | 主 doctor 地址 | 记忆系统专用 LLM 地址，默认复用 `--base_url` |
+
+### Memory Trace 输出
+
+开启 `--log_memory_trace` 后，trace 会写入 `memory_agent/memory_data/trace/`：
+
+- `<case_id>.json`：推荐阅读的聚合 memory trace，按 `turns[]` 保存 memory 构造链路摘要。它不同于 `trajectory_*.json`：trajectory 负责保存完整对话/工具轨迹，memory trace 只保存 `case_state`、`memory_query`、检索 hit 摘要、applicability 决策、guidance 和 selected action。
+- 每个 turn 的 `memory_debug` 用于调试 memory 构造链路，包含 `case_state_update`、`candidate_actions`、`query_builder`、`retrieval`、`applicability`、`guidance`。默认不保存完整 observation、LLM prompt、raw output，避免和 trajectory 重复；需要深调 LLM IO 时，可在 `memory_agent/utils/config.py` 的 `TRACE_CONFIG` 中打开 `include_llm_io` / `include_prompt_payload` / `include_observation_payload`。
+- `<case_id>.jsonl`：兼容旧调试流程的逐步 memory snapshot 日志，默认关闭；需要时在 `TRACE_CONFIG.write_jsonl_snapshot` 中打开。

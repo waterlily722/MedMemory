@@ -8,7 +8,7 @@ from .case_updater import (
     update_case_state_rule,
 )
 from .memory_guidance import build_memory_guidance, guidance_to_text
-from .memory_trace import append_memory_trace, build_trace_payload
+from .memory_trace import append_memory_trace, append_memory_turn_trace, build_trace_payload
 from .query_builder import (
     build_memory_query,
     build_memory_query_llm,
@@ -32,4 +32,5 @@ __all__ = [
     "guidance_to_text",
     "build_trace_payload",
     "append_memory_trace",
+    "append_memory_turn_trace",
 ]

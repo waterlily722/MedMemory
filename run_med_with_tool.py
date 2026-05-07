@@ -19,6 +19,7 @@ from rllm.rewards.reward_fn import search_reward_fn
 from rllm.rewards.med_diagnosis_reward import med_diagnosis_reward  # 结果+过程奖励：诊断包含 + ask_patient 置信度
 
 from prepare_med_data_bench import prepare_med_data, SUBDIR_WITH_CXR, SUBDIR_NO_CXR
+from memory_agent.utils.config import MEMORY_ROOT_DIRNAME
 
 
 def main():
@@ -46,10 +47,10 @@ def main():
     parser.add_argument("--judge_api_key", default="", help="Judge API key (default: same as --api_key).")
     parser.add_argument("--enable_memory", action="store_true")
     parser.add_argument("--memory_root", default="")
-    parser.add_argument("--query_builder_mode", default="rule", choices=["rule", "llm"])
-    parser.add_argument("--applicability_mode", default="rule", choices=["rule", "llm", "hybrid"])
-    parser.add_argument("--experience_extraction_mode", default="rule", choices=["rule", "llm"])
-    parser.add_argument("--experience_merge_mode", default="rule", choices=["rule", "llm"])
+    parser.add_argument("--query_builder_mode", default="llm", choices=["rule", "llm"])
+    parser.add_argument("--applicability_mode", default="llm", choices=["rule", "llm", "hybrid"])
+    parser.add_argument("--experience_extraction_mode", default="llm", choices=["rule", "llm"])
+    parser.add_argument("--experience_merge_mode", default="llm", choices=["rule", "llm"])
     parser.add_argument("--memory_top_k", type=int, default=5)
     parser.add_argument("--log_memory_trace", action="store_true")
     parser.add_argument("--disable_experience_memory", action="store_true")
@@ -63,6 +64,31 @@ def main():
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
     if "RETRIEVAL_SERVER_URL" not in os.environ:
         os.environ["RETRIEVAL_SERVER_URL"] = "http://127.0.0.1:8000"
+
+    memory_root = args.memory_root.strip() if args.memory_root else ""
+    if not memory_root or memory_root == "memory_data":
+        memory_root = MEMORY_ROOT_DIRNAME
+
+    memory_llm_model = (
+        args.memory_llm_model
+        or os.getenv("MEMORY_LLM_MODEL", "")
+        or (args.model if args.enable_memory else "")
+    )
+    memory_llm_base_url = (
+        args.memory_llm_base_url
+        or os.getenv("MEMORY_LLM_BASE_URL", "")
+        or (args.base_url if args.enable_memory else "")
+    )
+    memory_llm_api_key = (
+        args.memory_llm_api_key
+        or os.getenv("MEMORY_LLM_API_KEY", "")
+        or (args.api_key if args.enable_memory else "")
+    )
+    if args.enable_memory and not (memory_llm_model and memory_llm_base_url):
+        raise ValueError(
+            "Memory is enabled and configured for LLM mode, but memory LLM is not available. "
+            "Set --memory_llm_model and --memory_llm_base_url, or provide --model/--base_url."
+        )
 
     subdir = SUBDIR_NO_CXR if args.no_cxr else SUBDIR_WITH_CXR
     tasks, cases, _ = prepare_med_data(
@@ -95,7 +121,7 @@ def main():
             "parser_name": args.parser_name,
             "system_prompt": DOCTOR_SYSTEM_PROMPT_wo_IMG,
             "enable_memory": args.enable_memory,
-            "memory_root": args.memory_root or None,
+            "memory_root": memory_root,
             "query_builder_mode": args.query_builder_mode,
             "applicability_mode": args.applicability_mode,
             "experience_extraction_mode": args.experience_extraction_mode,
@@ -105,9 +131,9 @@ def main():
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
-            "memory_llm_model": args.memory_llm_model,
-            "memory_llm_base_url": args.memory_llm_base_url,
-            "memory_llm_api_key": args.memory_llm_api_key,
+            "memory_llm_model": memory_llm_model,
+            "memory_llm_base_url": memory_llm_base_url,
+            "memory_llm_api_key": memory_llm_api_key,
             "no_cxr": args.no_cxr,
         }
 
@@ -123,7 +149,7 @@ def main():
             "parser_name": args.parser_name,
             "system_prompt": DOCTOR_SYSTEM_PROMPT,
             "enable_memory": args.enable_memory,
-            "memory_root": args.memory_root or None,
+            "memory_root": memory_root,
             "query_builder_mode": args.query_builder_mode,
             "applicability_mode": args.applicability_mode,
             "experience_extraction_mode": args.experience_extraction_mode,
@@ -133,9 +159,9 @@ def main():
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
-            "memory_llm_model": args.memory_llm_model,
-            "memory_llm_base_url": args.memory_llm_base_url,
-            "memory_llm_api_key": args.memory_llm_api_key,
+            "memory_llm_model": memory_llm_model,
+            "memory_llm_base_url": memory_llm_base_url,
+            "memory_llm_api_key": memory_llm_api_key,
             "no_cxr": args.no_cxr,
         }
 

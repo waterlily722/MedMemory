@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from ..schemas import ApplicabilityResult, MemoryGuidance
+from ..utils.config import MEMORY_ACTION_CONFIG
 
 
 def build_memory_guidance(
@@ -39,7 +40,8 @@ def build_memory_guidance(
     warning_memory_ids = list(dict.fromkeys(warning_memory_ids))
 
     why_not_finalize = ""
-    if "FINALIZE_DIAGNOSIS" in blocked:
+    finalize_action = str(MEMORY_ACTION_CONFIG["finalize_action"])
+    if finalize_action in blocked:
         why_not_finalize = (
             applicability_result.risk_warning
             or "Diagnosis finalization is blocked by safety rules or negative memory."

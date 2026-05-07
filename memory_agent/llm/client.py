@@ -6,6 +6,7 @@ import os
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 
@@ -78,7 +79,12 @@ class LLMClient:
         )
 
         try:
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+            if self._is_local_base_url():
+                opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+                response_ctx = opener.open(request, timeout=self.timeout)
+            else:
+                response_ctx = urllib.request.urlopen(request, timeout=self.timeout)
+            with response_ctx as response:
                 raw = response.read().decode("utf-8")
         except (urllib.error.URLError, TimeoutError, OSError) as exc:
             logger.warning("LLMClient HTTP error: %s", exc)
@@ -105,3 +111,7 @@ class LLMClient:
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
         return headers
+
+    def _is_local_base_url(self) -> bool:
+        parsed = urlparse(self.base_url or "")
+        return parsed.hostname in {"127.0.0.1", "localhost", "0.0.0.0"}

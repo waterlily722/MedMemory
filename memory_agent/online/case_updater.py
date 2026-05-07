@@ -6,6 +6,7 @@ from typing import Any
 
 from ..llm import LLMClient, parse_validate_repair
 from ..schemas import CaseState
+from ..utils.config import CASE_STATE_CONFIG
 
 logger = logging.getLogger(__name__)
 
@@ -36,49 +37,7 @@ CASE_STATE_UPDATE_SCHEMA = {
         "reviewed_modalities",
     ],
     "dict_fields": [],
-    "enum_fields": {"finalize_risk": ["low", "medium", "high"]},
-}
-
-CRITICAL_SLOT_TEMPLATES = {
-    "chest pain": [
-        "onset",
-        "radiation",
-        "associated dyspnea",
-        "exertional trigger",
-        "cardiac history",
-        "ECG or troponin",
-    ],
-    "shortness of breath": [
-        "onset",
-        "progression",
-        "fever or cough",
-        "oxygen saturation",
-        "cardiac history",
-        "CXR or imaging",
-    ],
-    "altered mental status": [
-        "onset",
-        "baseline mental status",
-        "focal neurologic symptoms",
-        "fever",
-        "medication exposure",
-        "trauma",
-    ],
-    "abdominal pain": [
-        "onset",
-        "location",
-        "duration",
-        "fever",
-        "vomiting",
-        "stool or urinary symptoms",
-    ],
-    "bleeding": [
-        "amount",
-        "duration",
-        "hemodynamic symptoms",
-        "medication exposure",
-        "prior bleeding history",
-    ],
+    "enum_fields": {"finalize_risk": CASE_STATE_CONFIG["risk_levels"]},
 }
 
 
@@ -118,16 +77,10 @@ def _collect_texts(payload: Any) -> list[str]:
 
 def _critical_slots(problem_summary: str) -> list[str]:
     lowered = (problem_summary or "").lower()
-    for key, slots in CRITICAL_SLOT_TEMPLATES.items():
+    for key, slots in CASE_STATE_CONFIG["critical_slot_templates"].items():
         if key in lowered:
             return list(slots)
-    return [
-        "timeline",
-        "associated symptoms",
-        "severity",
-        "risk factors",
-        "targeted exam",
-    ]
+    return list(CASE_STATE_CONFIG["default_critical_slots"])
 
 
 def _case_id_from_bundle(bundle: Any) -> str:
@@ -180,7 +133,7 @@ def _modality_flags_from_ehr(ehr: dict[str, Any], no_cxr: bool = False) -> list[
 def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
     ehr = _ehr_from_bundle(bundle)
     case_id = _case_id_from_bundle(bundle)
-    problem_summary = _problem_summary_from_ehr(ehr) or "initial clinical problem unclear"
+    problem_summary = _problem_summary_from_ehr(ehr) or CASE_STATE_CONFIG["fallback_problem_summary"]
 
     return CaseState(
         case_id=case_id,
@@ -190,9 +143,9 @@ def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
         negative_evidence=[],
         missing_info=_critical_slots(problem_summary),
         active_hypotheses=[],
-        local_goal="collect_missing_critical_info",
-        uncertainty_summary="initial state with unresolved diagnostic uncertainty",
-        finalize_risk="high",
+        local_goal=CASE_STATE_CONFIG["default_local_goal"],
+        uncertainty_summary=CASE_STATE_CONFIG["default_uncertainty_summary"],
+        finalize_risk=CASE_STATE_CONFIG["initial_finalize_risk"],
         modality_flags=_modality_flags_from_ehr(ehr, no_cxr=no_cxr),
         reviewed_modalities=[],
         interaction_history_summary="",
@@ -299,7 +252,7 @@ def _case_state_update_prompt(
         "previous_case_state": previous_case_state.to_dict(),
         "rule_updated_case_state": rule_updated_case_state.to_dict(),
         "new_observation": _truncate_payload(observation),
-        "allowed_finalize_risk": ["low", "medium", "high"],
+        "allowed_finalize_risk": CASE_STATE_CONFIG["risk_levels"],
         "schema_fields": CASE_STATE_FIELDS,
     }
     return f"""
@@ -313,7 +266,7 @@ Rules:
 - Preserve case_id and turn_id from rule_updated_case_state.
 - Use only evidence present in previous_case_state, rule_updated_case_state, and new_observation.
 - Update missing_info, active_hypotheses, local_goal, uncertainty_summary, and finalize_risk by clinical reasoning.
-- finalize_risk must be one of: low, medium, high.
+- finalize_risk must be one of: {", ".join(CASE_STATE_CONFIG["risk_levels"])}.
 - Keep lists concise and non-duplicated.
 - Do not invent tests, diagnoses, or imaging findings not supported by input.
 
@@ -344,8 +297,9 @@ def _sanitize_case_state_dict(parsed: dict[str, Any], fallback: CaseState) -> di
     )
 
     risk = str(cleaned.get("finalize_risk") or fallback.finalize_risk).lower()
-    if risk not in {"low", "medium", "high"}:
-        risk = fallback.finalize_risk if fallback.finalize_risk in {"low", "medium", "high"} else "high"
+    risk_levels = set(CASE_STATE_CONFIG["risk_levels"])
+    if risk not in risk_levels:
+        risk = fallback.finalize_risk if fallback.finalize_risk in risk_levels else CASE_STATE_CONFIG["initial_finalize_risk"]
     cleaned["finalize_risk"] = risk
     return cleaned
 
@@ -354,31 +308,55 @@ def update_case_state_llm(
     prev_case_state: CaseState,
     observation: Any,
     llm_client: LLMClient,
+    debug: dict[str, Any] | None = None,
 ) -> CaseState:
     fallback = update_case_state_rule(prev_case_state, observation)
+    prompt = _case_state_update_prompt(prev_case_state, fallback, observation)
+    if debug is not None:
+        debug["mode"] = "llm"
+        debug["previous_case_state"] = prev_case_state.to_dict()
+        debug["observation"] = _truncate_payload(observation)
+        debug["rule_fallback_case_state"] = fallback.to_dict()
+        debug["llm_available"] = llm_client.available()
+        debug["prompt"] = prompt
     if not llm_client.available():
+        if debug is not None:
+            debug["used_fallback"] = True
+            debug["fallback_reason"] = "llm_unavailable"
+            debug["final_case_state"] = fallback.to_dict()
         return fallback
 
+    raw_output = llm_client.generate_json(prompt, max_tokens=1400)
     parsed, ok, errors = parse_validate_repair(
-        llm_client.generate_json(
-            _case_state_update_prompt(prev_case_state, fallback, observation),
-            max_tokens=1400,
-        ),
+        raw_output,
         CASE_STATE_UPDATE_SCHEMA,
         fallback.to_dict(),
     )
+    if debug is not None:
+        debug["raw_output"] = raw_output
+        debug["parsed_output"] = parsed
+        debug["validation_ok"] = ok
+        debug["validation_errors"] = errors
     if not ok:
         logger.warning(
             "CaseState LLM update validation errors for turn %d: %s",
             prev_case_state.turn_id + 1, errors,
         )
     try:
-        return CaseState.from_dict(_sanitize_case_state_dict(parsed, fallback))
+        result = CaseState.from_dict(_sanitize_case_state_dict(parsed, fallback))
+        if debug is not None:
+            debug["used_fallback"] = False
+            debug["final_case_state"] = result.to_dict()
+        return result
     except Exception as exc:
         logger.warning(
             "CaseState LLM update failed for turn %d: %s; using rule fallback",
             prev_case_state.turn_id + 1, exc,
         )
+        if debug is not None:
+            debug["used_fallback"] = True
+            debug["fallback_reason"] = f"parse_exception: {exc}"
+            debug["final_case_state"] = fallback.to_dict()
         return fallback
 
 
@@ -387,7 +365,14 @@ def update_case_state(
     observation: Any,
     mode: str = "llm",
     llm_client: LLMClient | None = None,
+    debug: dict[str, Any] | None = None,
 ) -> CaseState:
     if mode == "llm" and llm_client is not None:
-        return update_case_state_llm(prev_case_state, observation, llm_client)
-    return update_case_state_rule(prev_case_state, observation)
+        return update_case_state_llm(prev_case_state, observation, llm_client, debug=debug)
+    result = update_case_state_rule(prev_case_state, observation)
+    if debug is not None:
+        debug["mode"] = "rule"
+        debug["previous_case_state"] = prev_case_state.to_dict()
+        debug["observation"] = _truncate_payload(observation)
+        debug["final_case_state"] = result.to_dict()
+    return result

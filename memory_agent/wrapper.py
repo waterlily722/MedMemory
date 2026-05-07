@@ -27,6 +27,7 @@ except Exception:  # pragma: no cover - used in lightweight unit tests
 from .llm import EmbeddingClient, LLMClient
 from .offline import distill_from_trajectory, write_memory_from_distilled_episode
 from .online import (
+    append_memory_turn_trace,
     append_memory_trace,
     apply_applicability_control,
     build_memory_guidance,
@@ -46,23 +47,11 @@ from .schemas import (
     MemoryRetrievalResult,    OutcomeType,    TurnRecord,
 )
 from .utils.config import MEMORY_ROOT_DIRNAME
+from .utils.config import MEMORY_ACTION_CONFIG
 
-ACTION_MAP = {
-    "ask_patient": "ASK",
-    "request_exam": "REQUEST_LAB",
-    "retrieve": "REQUEST_LAB",
-    "cxr": "REVIEW_IMAGE",
-    "cxr_grounding": "REVIEW_IMAGE",
-    "diagnosis": "FINALIZE_DIAGNOSIS",
-}
-
-DEFAULT_ACTIONS = [
-    "ASK",
-    "REQUEST_LAB",
-    "REVIEW_IMAGE",
-    "UPDATE_HYPOTHESIS",
-    "FINALIZE_DIAGNOSIS",
-]
+ACTION_MAP = dict(MEMORY_ACTION_CONFIG["tool_to_action"])
+DEFAULT_ACTIONS = list(MEMORY_ACTION_CONFIG["default_actions"])
+FINALIZE_ACTION = str(MEMORY_ACTION_CONFIG["finalize_action"])
 
 
 class MemoryWrappedMedicalAgent(_BaseAgent):
@@ -170,10 +159,10 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self,
         *args: Any,
         case_update_mode: str = "llm",
-        query_builder_mode: str = "rule",
-        applicability_mode: str = "rule",
+        query_builder_mode: str = "llm",
+        applicability_mode: str = "llm",
         experience_extraction_mode: str = "llm",
-        experience_merge_mode: str = "rule",
+        experience_merge_mode: str = "llm",
         memory_top_k: int = 5,
         log_memory_trace: bool = False,
         disable_memory: bool = False,
@@ -229,6 +218,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.latest_retrieval: MemoryRetrievalResult | None = None
         self.latest_applicability: ApplicabilityResult | None = None
         self.latest_guidance: MemoryGuidance | None = None
+        self.latest_memory_debug: dict[str, Any] = {}
         self.pending_selected_action: dict[str, Any] = {}
         self.pending_selected_action_blocked: bool = False
         self.turn_records: list[TurnRecord] = []
@@ -295,22 +285,43 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 **kwargs,
             )
 
+        memory_debug: dict[str, Any] = {
+            "episode_id": self.episode_id,
+            "input_observation": self._safe_payload(observation),
+            "env_info_before_memory": self._safe_payload(info),
+            "memory_enabled": not self.disable_memory,
+        }
+
         if self.case_state is None:
             bundle = self._case_bundle_from(observation, info)
             self._case_bundle = bundle if isinstance(bundle, dict) else {}
             self.case_state = init_case_state(bundle, no_cxr=self.no_cxr)
+            memory_debug["case_state_update"] = {
+                "mode": "init",
+                "bundle": self._safe_payload(bundle),
+                "final_case_state": self.case_state.to_dict(),
+            }
         else:
+            case_state_debug: dict[str, Any] = {}
             self.case_state = update_case_state(
                 self.case_state,
                 observation,
                 mode=self.case_update_mode,
                 llm_client=self.memory_llm,
+                debug=case_state_debug,
             )
+            memory_debug["case_state_update"] = case_state_debug
 
         if not self.disable_memory:
-            self._run_memory_pipeline()
+            self._run_memory_pipeline(memory_debug=memory_debug)
 
         enriched_observation = self._inject_guidance(observation)
+        memory_debug["guidance_injection"] = {
+            "guidance_text": guidance_to_text(self.latest_guidance) if self.latest_guidance else "",
+            "original_observation": self._safe_payload(observation),
+            "enriched_observation": self._safe_payload(enriched_observation),
+        }
+        self.latest_memory_debug = memory_debug
 
         if self.log_memory_trace and self._has_memory_snapshot():
             payload = build_trace_payload(
@@ -320,6 +331,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 applicability_result=self.latest_applicability,
                 memory_guidance=self.latest_guidance,
                 selected_action={},
+                memory_debug=self.latest_memory_debug,
             )
             append_memory_trace(self.trace_root, payload)
 
@@ -355,16 +367,25 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         base_result = self._call_base("update_from_model", rewritten_output, **kwargs)
         return base_result if base_result is not None else rewritten_output
 
-    def _run_memory_pipeline(self) -> None:
+    def _run_memory_pipeline(self, memory_debug: dict[str, Any] | None = None) -> None:
         if self.case_state is None:
             return
 
         candidate_actions = self._candidate_actions()
+        if memory_debug is not None:
+            memory_debug["candidate_actions"] = candidate_actions
+            memory_debug["memory_llm"] = {
+                "available": self.memory_llm.available(),
+                "model": self.memory_llm.model,
+                "base_url": self.memory_llm.base_url,
+            }
+            memory_debug["query_builder"] = {}
         self.latest_query = build_memory_query(
             case_state=self.case_state,
             candidate_actions=candidate_actions,
             mode=self.query_builder_mode,
             llm_client=self.memory_llm,
+            debug=memory_debug.get("query_builder") if memory_debug is not None else None,
         )
         self.latest_retrieval = retrieve_multi_memory(
             memory_query=self.latest_query,
@@ -374,14 +395,30 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             disable_knowledge_memory=self.disable_knowledge_memory,
             embedding_client=self.memory_embedding if self.memory_embedding.available() else None,
         )
+        if memory_debug is not None:
+            memory_debug["retrieval"] = {
+                "memory_root": self.memory_root,
+                "disable_experience_memory": self.disable_experience_memory,
+                "disable_skill_memory": self.disable_skill_memory,
+                "disable_knowledge_memory": self.disable_knowledge_memory,
+                "embedding_available": self.memory_embedding.available(),
+                "result": self.latest_retrieval.to_dict(),
+            }
+            memory_debug["applicability"] = {}
         self.latest_applicability = apply_applicability_control(
             case_state=self.case_state,
             memory_query=self.latest_query,
             retrieval_result=self.latest_retrieval,
             mode=self.applicability_mode,
             llm_client=self.memory_llm,
+            debug=memory_debug.get("applicability") if memory_debug is not None else None,
         )
         self.latest_guidance = build_memory_guidance(self.latest_applicability)
+        if memory_debug is not None:
+            memory_debug["guidance"] = {
+                "structured": self.latest_guidance.to_dict(),
+                "text": guidance_to_text(self.latest_guidance),
+            }
 
     def _inject_guidance(self, observation: Any) -> Any:
         if self.disable_memory or self.latest_guidance is None:
@@ -414,8 +451,9 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 actions.append(action)
         if not actions:
             actions = list(DEFAULT_ACTIONS)
-        if "UPDATE_HYPOTHESIS" not in actions:
-            actions.append("UPDATE_HYPOTHESIS")
+        for action in MEMORY_ACTION_CONFIG.get("always_include_actions", []):
+            if action not in actions:
+                actions.append(str(action))
         return list(dict.fromkeys(actions))
 
     # ------------------------------------------------------------------
@@ -443,12 +481,15 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             applicability_result=self.latest_applicability,
             memory_guidance=self.latest_guidance,
             selected_action=dict(self.pending_selected_action),
+            memory_debug=dict(self.latest_memory_debug or {}),
             env_observation=self._safe_payload(env_observation),
             env_info=self._safe_payload(env_info),
             reward=float(reward or 0.0),
             done=bool(done),
         )
         self.turn_records.append(record)
+        if self.log_memory_trace:
+            append_memory_turn_trace(self.trace_root, record.to_dict())
         self.pending_selected_action = {}
         self.pending_selected_action_blocked = False
 
@@ -588,7 +629,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
     def _infer_action_type_from_text(self, text: str) -> str:
         lowered = text.lower()
         if "diagnosis" in lowered or "final" in lowered:
-            return "FINALIZE_DIAGNOSIS"
+            return FINALIZE_ACTION
         if "cxr" in lowered or "x-ray" in lowered or "image" in lowered:
             return "REVIEW_IMAGE"
         if "lab" in lowered or "test" in lowered or "exam" in lowered:

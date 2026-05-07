@@ -38,5 +38,4 @@ python examples/MedGym/run_med_with_tool.py \
     --parser_name qwen \
     --judge_model judge_agent \
     --judge_base_url http://127.0.0.1:30002/v1 \
-    --enable_memory \
-    --memory_root memory_data
+    --enable_memory
