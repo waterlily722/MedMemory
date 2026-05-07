@@ -10,7 +10,7 @@ class MemoryApplicabilityAssessment(SerializableMixin):
     memory_id: str
     memory_type: str
 
-    decision: str = "ignore"  # apply | hint | block | ignore
+    decision: str = "ignore"  # apply | ignore
     reason: str = ""
 
     action_bias: dict[str, float] = field(default_factory=dict)

@@ -178,6 +178,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         memory_embedding_base_url: str = "",
         memory_embedding_api_key: str = "",
         enforce_memory_blocks: bool = False,
+        strict_memory_errors: bool = True,
         no_cxr: bool = False,
         **kwargs: Any,
     ) -> None:
@@ -200,6 +201,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.disable_skill_memory = disable_skill_memory
         self.disable_knowledge_memory = disable_knowledge_memory
         self.enforce_memory_blocks = enforce_memory_blocks
+        self.strict_memory_errors = strict_memory_errors
         self.no_cxr = no_cxr
         self.memory_llm = LLMClient(
             model=memory_llm_model,
@@ -212,7 +214,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             api_key=memory_embedding_api_key,
         )
 
-        self.episode_id = f"episode_{uuid.uuid4().hex[:10]}"
+        self.episode_id = f"pending_episode_{uuid.uuid4().hex[:10]}"
         self.case_state: CaseState | None = None
         self.latest_query: MemoryQuery | None = None
         self.latest_retrieval: MemoryRetrievalResult | None = None
@@ -295,10 +297,25 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if self.case_state is None:
             bundle = self._case_bundle_from(observation, info)
             self._case_bundle = bundle if isinstance(bundle, dict) else {}
-            self.case_state = init_case_state(bundle, no_cxr=self.no_cxr)
+            initial_case_state = init_case_state(bundle, no_cxr=self.no_cxr)
+            if self.strict_memory_errors and not initial_case_state.case_id:
+                raise RuntimeError("Memory CaseState initialization failed: missing case_id")
+            self.episode_id = self._episode_id_from_bundle(self._case_bundle, initial_case_state.case_id)
+            memory_debug["episode_id"] = self.episode_id
+            case_state_debug: dict[str, Any] = {}
+            self.case_state = update_case_state(
+                initial_case_state,
+                observation,
+                mode=self.case_update_mode,
+                llm_client=self.memory_llm,
+                debug=case_state_debug,
+                strict=self.strict_memory_errors,
+            )
             memory_debug["case_state_update"] = {
-                "mode": "init",
+                "mode": "init_then_current_turn_update",
                 "bundle": self._safe_payload(bundle),
+                "initial_case_state": initial_case_state.to_dict(),
+                "current_turn_update": case_state_debug,
                 "final_case_state": self.case_state.to_dict(),
             }
         else:
@@ -309,6 +326,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 mode=self.case_update_mode,
                 llm_client=self.memory_llm,
                 debug=case_state_debug,
+                strict=self.strict_memory_errors,
             )
             memory_debug["case_state_update"] = case_state_debug
 
@@ -386,6 +404,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             mode=self.query_builder_mode,
             llm_client=self.memory_llm,
             debug=memory_debug.get("query_builder") if memory_debug is not None else None,
+            strict=self.strict_memory_errors,
         )
         self.latest_retrieval = retrieve_multi_memory(
             memory_query=self.latest_query,
@@ -412,6 +431,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             mode=self.applicability_mode,
             llm_client=self.memory_llm,
             debug=memory_debug.get("applicability") if memory_debug is not None else None,
+            strict=self.strict_memory_errors,
         )
         self.latest_guidance = build_memory_guidance(self.latest_applicability)
         if memory_debug is not None:
@@ -450,6 +470,8 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             if action:
                 actions.append(action)
         if not actions:
+            if self.strict_memory_errors:
+                raise RuntimeError("Cannot derive candidate memory actions: no registered tools matched MEMORY_ACTION_CONFIG")
             actions = list(DEFAULT_ACTIONS)
         for action in MEMORY_ACTION_CONFIG.get("always_include_actions", []):
             if action not in actions:
@@ -672,6 +694,17 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
     def _case_bundle_from(self, observation: Any, info: dict[str, Any]) -> Any:
         return info.get("case") or info.get("task") or info.get("case_bundle") or observation or {}
 
+    def _episode_id_from_bundle(self, bundle: dict[str, Any], case_id: str) -> str:
+        case_text = str(case_id or bundle.get("case_id") or "unknown_case").strip()
+        repeat = bundle.get("_repeat_id")
+        if repeat is None:
+            repeat = bundle.get("repeat_id")
+        if repeat is None:
+            repeat = bundle.get("repeat")
+        if repeat is not None and str(repeat).strip() != "":
+            return f"case_{case_text}_repeat_{repeat}"
+        return f"case_{case_text}"
+
     def _safe_payload(self, value: Any, max_chars: int = 4000) -> Any:
         if isinstance(value, dict):
             return {
@@ -695,7 +728,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         )
 
     def reset_memory(self) -> None:
-        self.episode_id = f"episode_{uuid.uuid4().hex[:10]}"
+        self.episode_id = f"pending_episode_{uuid.uuid4().hex[:10]}"
         self.case_state = None
         self.latest_query = None
         self.latest_retrieval = None
@@ -705,3 +738,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.pending_selected_action_blocked = False
         self.turn_records = []
         self.episode_finalized = False
+
+    def reset(self) -> Any:
+        self.reset_memory()
+        return self._call_base("reset")

@@ -28,10 +28,8 @@ def build_memory_guidance(
             rationale_parts.append(f"{action.action_type}: {action.reason}")
 
     for assessment in applicability_result.memory_assessments:
-        if assessment.decision in {"apply", "hint"}:
+        if assessment.decision == "apply":
             used_memory_ids.append(assessment.memory_id)
-        if assessment.decision == "block":
-            warning_memory_ids.append(assessment.memory_id)
 
     blocked = list(dict.fromkeys(blocked))
     recommended = [item for item in dict.fromkeys(recommended) if item not in blocked]

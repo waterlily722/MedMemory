@@ -75,20 +75,20 @@ def test_serializable_mixin_to_dict_roundtrip():
         outcome_text="ECG normal, pain resolved",
         boundary_text="use when chest pain with cardiac risk factors",
         outcome_type=OutcomeType.SUCCESS.value,
-        retrieval_tags=["chest_pain", "ecg"],
-        source_turn_ids=[1, 2, 3],
+        tags=["chest_pain", "ecg"],
+        source={"turn_ids": ["1", "2", "3"]},
     )
     d = card.to_dict()
     assert d["memory_id"] == "exp_001"
     assert d["outcome_type"] == "success"
-    assert d["retrieval_tags"] == ["chest_pain", "ecg"]
-    assert d["source_turn_ids"] == [1, 2, 3]
+    assert d["tags"] == ["chest_pain", "ecg"]
+    assert d["source"]["turn_ids"] == ["1", "2", "3"]
 
     restored = ExperienceCard.from_dict(d)
     assert restored.memory_id == "exp_001"
     assert restored.outcome_type == "success"
-    assert restored.retrieval_tags == ["chest_pain", "ecg"]
-    assert restored.source_turn_ids == [1, 2, 3]
+    assert restored.tags == ["chest_pain", "ecg"]
+    assert restored.source["turn_ids"] == ["1", "2", "3"]
 
 
 def test_serializable_mixin_from_dict_none():

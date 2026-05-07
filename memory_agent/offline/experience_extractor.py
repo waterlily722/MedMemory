@@ -141,10 +141,13 @@ def _card_from_raw(
     except Exception:
         outcome_type = OutcomeType.PARTIAL_SUCCESS.value
 
-    source_turn_ids: list[int] = []
-    for value in raw.get("source_turn_ids") or []:
+    raw_source = raw.get("source") if isinstance(raw.get("source"), dict) else {}
+    source_case_ids = [str(item) for item in raw_source.get("case_ids") or [] if str(item)]
+    source_episode_ids = [str(item) for item in raw_source.get("episode_ids") or [] if str(item)]
+    source_turn_ids = []
+    for item in raw_source.get("turn_ids") or []:
         try:
-            source_turn_ids.append(int(value))
+            source_turn_ids.append(str(int(item)))
         except Exception:
             pass
 
@@ -157,21 +160,23 @@ def _card_from_raw(
         boundary_text=boundary_text,
         action_sequence=_normalize_action_sequence(raw.get("action_sequence")),
         outcome_type=outcome_type,
-        failure_mode=str(raw.get("failure_mode") or "").strip(),
-        retrieval_tags=[str(item) for item in raw.get("retrieval_tags") or [] if str(item)],
-        risk_tags=[str(item) for item in raw.get("risk_tags") or [] if str(item)],
+        tags=[str(item) for item in raw.get("tags") or [] if str(item)],
         confidence=max(0.0, min(1.0, _safe_float(raw.get("confidence"), 0.5))),
         support_count=max(1, int(_safe_float(raw.get("support_count"), 1))),
-        conflict_group_id=str(raw.get("conflict_group_id") or ""),
-        source_episode_ids=[str(item) for item in raw.get("source_episode_ids") or [] if str(item)],
-        source_case_ids=[str(item) for item in raw.get("source_case_ids") or [] if str(item)],
-        source_turn_ids=source_turn_ids,
+        source={
+            "episode_ids": source_episode_ids,
+            "case_ids": source_case_ids,
+            "turn_ids": source_turn_ids,
+        },
     )
 
-    if distilled.episode_id and distilled.episode_id not in card.source_episode_ids:
-        card.source_episode_ids.append(distilled.episode_id)
-    if distilled.case_id and distilled.case_id not in card.source_case_ids:
-        card.source_case_ids.append(distilled.case_id)
+    card.source.setdefault("episode_ids", [])
+    card.source.setdefault("case_ids", [])
+    card.source.setdefault("turn_ids", [])
+    if distilled.episode_id and distilled.episode_id not in card.source["episode_ids"]:
+        card.source["episode_ids"].append(distilled.episode_id)
+    if distilled.case_id and distilled.case_id not in card.source["case_ids"]:
+        card.source["case_ids"].append(distilled.case_id)
 
     if not card.situation_text or not card.action_text or not card.outcome_text:
         return None

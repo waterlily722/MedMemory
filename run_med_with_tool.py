@@ -56,6 +56,11 @@ def main():
     parser.add_argument("--disable_experience_memory", action="store_true")
     parser.add_argument("--disable_skill_memory", action="store_true")
     parser.add_argument("--disable_knowledge_memory", action="store_true")
+    parser.add_argument(
+        "--allow_memory_fallback",
+        action="store_true",
+        help="Allow rule fallback when memory LLM parsing/service fails. Default is fail-fast.",
+    )
     parser.add_argument("--memory_llm_model", default="")
     parser.add_argument("--memory_llm_base_url", default="")
     parser.add_argument("--memory_llm_api_key", default="")
@@ -131,6 +136,7 @@ def main():
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
+            "strict_memory_errors": not args.allow_memory_fallback,
             "memory_llm_model": memory_llm_model,
             "memory_llm_base_url": memory_llm_base_url,
             "memory_llm_api_key": memory_llm_api_key,
@@ -159,6 +165,7 @@ def main():
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
+            "strict_memory_errors": not args.allow_memory_fallback,
             "memory_llm_model": memory_llm_model,
             "memory_llm_base_url": memory_llm_base_url,
             "memory_llm_api_key": memory_llm_api_key,

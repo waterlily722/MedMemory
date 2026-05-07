@@ -75,14 +75,6 @@ def _collect_texts(payload: Any) -> list[str]:
     return texts
 
 
-def _critical_slots(problem_summary: str) -> list[str]:
-    lowered = (problem_summary or "").lower()
-    for key, slots in CASE_STATE_CONFIG["critical_slot_templates"].items():
-        if key in lowered:
-            return list(slots)
-    return list(CASE_STATE_CONFIG["default_critical_slots"])
-
-
 def _case_id_from_bundle(bundle: Any) -> str:
     if isinstance(bundle, dict):
         return str(bundle.get("case_id") or bundle.get("id") or bundle.get("uid") or "")
@@ -96,16 +88,34 @@ def _case_id_from_bundle(bundle: Any) -> str:
 
 def _ehr_from_bundle(bundle: Any) -> dict[str, Any]:
     if isinstance(bundle, dict):
-        ehr = bundle.get("ehr") or bundle.get("EHR") or bundle
+        ehr = (
+            bundle.get("ehr")
+            or bundle.get("EHR")
+            or _nested_get(bundle, ["medenv_case_bundle", "ehr"])
+            or _nested_get(bundle, ["case_bundle", "ehr"])
+            or bundle
+        )
     else:
         ehr = getattr(bundle, "ehr", None) or getattr(bundle, "EHR", None) or {}
+    if isinstance(ehr, dict) and isinstance(ehr.get("ehr"), dict):
+        ehr = ehr["ehr"]
     return ehr if isinstance(ehr, dict) else {}
 
 
 def _problem_summary_from_ehr(ehr: dict[str, Any]) -> str:
     osce = _unwrap_osce_examination(ehr)
-    history = _nested_get(osce, ["Patient_Actor", "History"], {})
-    symptoms = _nested_get(osce, ["Patient_Actor", "Symptoms"], {})
+    history = (
+        _nested_get(osce, ["Patient_Actor", "History"], {})
+        or osce.get("History")
+        or ehr.get("History")
+        or {}
+    )
+    symptoms = (
+        _nested_get(osce, ["Patient_Actor", "Symptoms"], {})
+        or osce.get("Symptoms")
+        or ehr.get("Symptoms")
+        or {}
+    )
 
     chief = ""
     if isinstance(symptoms, dict):
@@ -113,7 +123,13 @@ def _problem_summary_from_ehr(ehr: dict[str, Any]) -> str:
     if not chief and isinstance(history, dict):
         chief = str(history.get("Chief_Complaint") or "")
 
-    objective = str(osce.get("Objective_for_Doctor") or osce.get("objective") or "")
+    objective = str(
+        osce.get("Objective_for_Doctor")
+        or ehr.get("Objective_for_Doctor")
+        or osce.get("objective")
+        or ehr.get("objective")
+        or ""
+    )
     parts = [part.strip() for part in [chief, objective] if part and part.strip()]
     return " | ".join(parts)
 
@@ -133,7 +149,7 @@ def _modality_flags_from_ehr(ehr: dict[str, Any], no_cxr: bool = False) -> list[
 def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
     ehr = _ehr_from_bundle(bundle)
     case_id = _case_id_from_bundle(bundle)
-    problem_summary = _problem_summary_from_ehr(ehr) or CASE_STATE_CONFIG["fallback_problem_summary"]
+    problem_summary = _problem_summary_from_ehr(ehr)
 
     return CaseState(
         case_id=case_id,
@@ -141,7 +157,7 @@ def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
         problem_summary=problem_summary,
         key_evidence=[],
         negative_evidence=[],
-        missing_info=_critical_slots(problem_summary),
+        missing_info=[],
         active_hypotheses=[],
         local_goal=CASE_STATE_CONFIG["default_local_goal"],
         uncertainty_summary=CASE_STATE_CONFIG["default_uncertainty_summary"],
@@ -309,55 +325,60 @@ def update_case_state_llm(
     observation: Any,
     llm_client: LLMClient,
     debug: dict[str, Any] | None = None,
+    strict: bool = True,
 ) -> CaseState:
-    fallback = update_case_state_rule(prev_case_state, observation)
-    prompt = _case_state_update_prompt(prev_case_state, fallback, observation)
+    rule_updated = update_case_state_rule(prev_case_state, observation)
+    prompt = _case_state_update_prompt(prev_case_state, rule_updated, observation)
     if debug is not None:
         debug["mode"] = "llm"
         debug["previous_case_state"] = prev_case_state.to_dict()
         debug["observation"] = _truncate_payload(observation)
-        debug["rule_fallback_case_state"] = fallback.to_dict()
+        debug["rule_updated_case_state"] = rule_updated.to_dict()
         debug["llm_available"] = llm_client.available()
         debug["prompt"] = prompt
     if not llm_client.available():
+        message = "CaseState LLM update requested but memory LLM is unavailable"
+        if strict:
+            raise RuntimeError(message)
         if debug is not None:
             debug["used_fallback"] = True
             debug["fallback_reason"] = "llm_unavailable"
-            debug["final_case_state"] = fallback.to_dict()
-        return fallback
+            debug["final_case_state"] = rule_updated.to_dict()
+        return rule_updated
 
     raw_output = llm_client.generate_json(prompt, max_tokens=1400)
+    raw_empty = not str(raw_output or "").strip() or str(raw_output or "").strip() == "{}"
     parsed, ok, errors = parse_validate_repair(
         raw_output,
         CASE_STATE_UPDATE_SCHEMA,
-        fallback.to_dict(),
+        rule_updated.to_dict(),
     )
     if debug is not None:
         debug["raw_output"] = raw_output
         debug["parsed_output"] = parsed
         debug["validation_ok"] = ok
         debug["validation_errors"] = errors
-    if not ok:
-        logger.warning(
-            "CaseState LLM update validation errors for turn %d: %s",
-            prev_case_state.turn_id + 1, errors,
-        )
+    if raw_empty or not ok:
+        message = f"CaseState LLM update validation errors for turn {prev_case_state.turn_id + 1}: {errors}"
+        if strict:
+            raise RuntimeError(message)
+        logger.warning(message)
     try:
-        result = CaseState.from_dict(_sanitize_case_state_dict(parsed, fallback))
+        result = CaseState.from_dict(_sanitize_case_state_dict(parsed, rule_updated))
         if debug is not None:
             debug["used_fallback"] = False
             debug["final_case_state"] = result.to_dict()
         return result
     except Exception as exc:
-        logger.warning(
-            "CaseState LLM update failed for turn %d: %s; using rule fallback",
-            prev_case_state.turn_id + 1, exc,
-        )
+        message = f"CaseState LLM update failed for turn {prev_case_state.turn_id + 1}: {exc}"
+        if strict:
+            raise RuntimeError(message) from exc
+        logger.warning("%s; using rule update", message)
         if debug is not None:
             debug["used_fallback"] = True
             debug["fallback_reason"] = f"parse_exception: {exc}"
-            debug["final_case_state"] = fallback.to_dict()
-        return fallback
+            debug["final_case_state"] = rule_updated.to_dict()
+        return rule_updated
 
 
 def update_case_state(
@@ -366,9 +387,12 @@ def update_case_state(
     mode: str = "llm",
     llm_client: LLMClient | None = None,
     debug: dict[str, Any] | None = None,
+    strict: bool = True,
 ) -> CaseState:
     if mode == "llm" and llm_client is not None:
-        return update_case_state_llm(prev_case_state, observation, llm_client, debug=debug)
+        return update_case_state_llm(prev_case_state, observation, llm_client, debug=debug, strict=strict)
+    if mode == "llm" and strict:
+        raise RuntimeError("CaseState LLM update requested but llm_client is None")
     result = update_case_state_rule(prev_case_state, observation)
     if debug is not None:
         debug["mode"] = "rule"

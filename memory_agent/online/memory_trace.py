@@ -14,192 +14,200 @@ from ..schemas import (
 from ..utils.config import TRACE_CONFIG
 
 
-def _to_dict(value: Any) -> Any:
-    if hasattr(value, "to_dict"):
-        return value.to_dict()
-    if isinstance(value, dict):
-        return {str(key): _to_dict(item) for key, item in value.items()}
-    if isinstance(value, list):
-        return [_to_dict(item) for item in value]
-    return value
+TRACE_SCHEMA = "memory_trace.memory_only.v2"
+HIT_GROUPS = (
+    "positive_experience_hits",
+    "negative_experience_hits",
+    "skill_hits",
+    "knowledge_hits",
+)
 
 
-def _clip(value: Any, max_chars: int | None = None) -> Any:
-    max_chars = max_chars or int(TRACE_CONFIG.get("max_text_chars", 600))
-    if value is None:
-        return None
-    if isinstance(value, (int, float, bool)):
-        return value
-    text = str(value)
-    if len(text) <= max_chars:
-        return text
-    return text[:max_chars] + "...[truncated]"
+# -----------------------------------------------------------------------------
+# Generic helpers
+# -----------------------------------------------------------------------------
 
 
-def _compact_case_state(case_state: dict[str, Any] | None) -> dict[str, Any]:
-    case_state = case_state or {}
+def _cfg(key: str, default: Any = None) -> Any:
+    return TRACE_CONFIG.get(key, default)
+
+
+def _to_dict(x: Any) -> Any:
+    if hasattr(x, "to_dict"):
+        return x.to_dict()
+    if isinstance(x, dict):
+        return {str(k): _to_dict(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [_to_dict(v) for v in x]
+    return x
+
+
+def _clip(x: Any, max_chars: int | None = None) -> Any:
+    if x is None or isinstance(x, (int, float, bool)):
+        return x
+    text = str(x)
+    limit = max_chars or int(_cfg("max_text_chars", 600))
+    return text if len(text) <= limit else text[:limit] + "...[truncated]"
+
+
+def _get(d: dict[str, Any] | None, key: str, default: Any = None) -> Any:
+    return (d or {}).get(key, default)
+
+
+def _tail(values: list[Any], limit: int = 5) -> list[Any]:
+    return list(values or [])[-limit:]
+
+
+def _latest_turn_text(history: str) -> str:
+    parts = [part.strip() for part in str(history or "").split(" | ") if part.strip()]
+    return parts[-1] if parts else ""
+
+
+# -----------------------------------------------------------------------------
+# Compact views
+# -----------------------------------------------------------------------------
+
+
+def _case_view(case_state: dict[str, Any] | None) -> dict[str, Any]:
+    """Only keep fields needed to understand why query/guidance changed."""
+    c = case_state or {}
     return {
-        "turn_id": case_state.get("turn_id"),
-        "problem_summary": _clip(case_state.get("problem_summary")),
-        "local_goal": case_state.get("local_goal"),
-        "finalize_risk": case_state.get("finalize_risk"),
-        "missing_info": case_state.get("missing_info") or [],
-        "active_hypotheses": case_state.get("active_hypotheses") or [],
-        "key_evidence_count": len(case_state.get("key_evidence") or []),
-        "negative_evidence_count": len(case_state.get("negative_evidence") or []),
-        "modality_flags": case_state.get("modality_flags") or [],
-        "reviewed_modalities": case_state.get("reviewed_modalities") or [],
+        "problem_summary": _clip(c.get("problem_summary")),
+        "current_turn": _clip(_latest_turn_text(c.get("interaction_history_summary") or "")),
+        "local_goal": c.get("local_goal"),
+        "missing_info": c.get("missing_info") or [],
+        "active_hypotheses": c.get("active_hypotheses") or [],
+        "finalize_risk": c.get("finalize_risk"),
+        "recent_key_evidence": [_clip(x) for x in _tail(c.get("key_evidence") or [], 5)],
+        "recent_negative_evidence": [_clip(x) for x in _tail(c.get("negative_evidence") or [], 5)],
+        "modalities": c.get("modality_flags") or [],
+        "reviewed_modalities": c.get("reviewed_modalities") or [],
     }
 
 
-def _hit_summary(hit: dict[str, Any]) -> dict[str, Any]:
-    content = hit.get("content") or {}
+def _hit_view(hit: dict[str, Any] | None) -> dict[str, Any]:
+    """Memory hit summary; avoid dumping full content/source payloads."""
+    h = hit or {}
+    c = h.get("content") or {}
     return {
-        "memory_id": hit.get("memory_id") or content.get("memory_id"),
-        "memory_type": hit.get("memory_type") or content.get("memory_type"),
-        "score": hit.get("score"),
-        "outcome_type": content.get("outcome_type"),
-        "situation_text": _clip(content.get("situation_text")),
-        "action_text": _clip(content.get("action_text")),
-        "boundary_text": _clip(content.get("boundary_text")),
-        "retrieval_tags": content.get("retrieval_tags") or [],
-        "risk_tags": content.get("risk_tags") or [],
+        "id": h.get("memory_id") or c.get("memory_id"),
+        "type": h.get("memory_type") or c.get("memory_type"),
+        "score": h.get("score"),
+        "outcome": c.get("outcome_type"),
+        "situation": _clip(c.get("situation_text")),
+        "action": _clip(c.get("action_text")),
+        "boundary": _clip(c.get("boundary_text")),
+        "tags": c.get("tags") or c.get("retrieval_tags") or [],
     }
 
 
-def _compact_retrieval(retrieval: dict[str, Any] | None) -> dict[str, Any]:
-    retrieval = retrieval or {}
-    max_hits = int(TRACE_CONFIG.get("max_hits_per_type", 5))
-    compact: dict[str, Any] = {}
-    for key in [
-        "positive_experience_hits",
-        "negative_experience_hits",
-        "skill_hits",
-        "knowledge_hits",
-    ]:
-        hits = retrieval.get(key) or []
-        compact[key] = [_hit_summary(hit) for hit in hits[:max_hits]]
-        compact[f"{key}_count"] = len(hits)
-    return compact
+def _retrieval_view(result: dict[str, Any] | None) -> dict[str, Any]:
+    r = result or {}
+    max_hits = int(_cfg("max_hits_per_type", 3))
+    out: dict[str, Any] = {"counts": {}, "top_hits": {}}
+
+    for group in HIT_GROUPS:
+        hits = r.get(group) or []
+        name = group.replace("_hits", "")
+        out["counts"][name] = len(hits)
+        out["top_hits"][name] = [_hit_view(hit) for hit in hits[:max_hits]]
+
+    return out
 
 
-def _compact_applicability(applicability: dict[str, Any] | None) -> dict[str, Any]:
-    applicability = applicability or {}
+def _applicability_view(app: dict[str, Any] | None) -> dict[str, Any]:
+    app = app or {}
     return {
-        "memory_assessments": applicability.get("memory_assessments") or [],
-        "action_assessments": applicability.get("action_assessments") or [],
-        "hard_blocked_actions": applicability.get("hard_blocked_actions") or [],
-        "risk_warning": applicability.get("risk_warning") or "",
+        "risk_warning": app.get("risk_warning") or "",
+        "hard_blocked_actions": app.get("hard_blocked_actions") or [],
+        "memory_assessments": app.get("memory_assessments") or [],
+        "action_assessments": app.get("action_assessments") or [],
     }
 
 
-def _compact_memory_debug(debug: dict[str, Any] | None) -> dict[str, Any]:
-    debug = debug or {}
-    include_llm_io = bool(TRACE_CONFIG.get("include_llm_io", False))
-    include_prompt_payload = bool(TRACE_CONFIG.get("include_prompt_payload", False))
-    compact: dict[str, Any] = {
-        "memory_enabled": debug.get("memory_enabled"),
-        "memory_llm": debug.get("memory_llm") or {},
-        "candidate_actions": debug.get("candidate_actions") or [],
+def _maybe_llm_io(debug: dict[str, Any] | None) -> dict[str, Any]:
+    """Prompt/raw output are the main knobs for prompt/schema debugging."""
+    if not _cfg("include_llm_io", False):
+        return {}
+
+    d = debug or {}
+    out = {"raw_output": d.get("raw_output")}
+
+    if _cfg("include_prompt_payload", False):
+        out["prompt"] = d.get("prompt")
+        out["payload"] = d.get("payload")
+
+    return out
+
+
+def _builder_view(debug: dict[str, Any] | None, *, kind: str) -> dict[str, Any]:
+    """Shared compact view for case/query/applicability LLM builders."""
+    d = debug or {}
+    out = {
+        "mode": d.get("mode"),
+        "llm_available": d.get("llm_available"),
     }
 
-    case_update = debug.get("case_state_update") or {}
-    compact["case_state_update"] = {
-        "mode": case_update.get("mode"),
-        "llm_available": case_update.get("llm_available"),
-        "used_fallback": case_update.get("used_fallback"),
-        "fallback_reason": case_update.get("fallback_reason"),
-        "validation_ok": case_update.get("validation_ok"),
-        "validation_errors": case_update.get("validation_errors") or [],
-        "rule_fallback_case_state": _compact_case_state(case_update.get("rule_fallback_case_state")),
-        "final_case_state": _compact_case_state(case_update.get("final_case_state")),
-    }
+    if kind == "case":
+        out["validation_ok"] = d.get("validation_ok")
+        out["validation_errors"] = d.get("validation_errors") or []
+        out["rule_updated"] = _case_view(d.get("rule_updated_case_state"))
+    elif kind == "query":
+        out["rule_query"] = d.get("rule_query")
+        out["parsed_output"] = d.get("parsed_output")
+    elif kind == "hit_assessment":
+        out["parsed_output"] = d.get("parsed_output")
+        out["final_assessment"] = d.get("final_assessment")
 
-    query_builder = debug.get("query_builder") or {}
-    compact["query_builder"] = {
-        "mode": query_builder.get("mode"),
-        "llm_available": query_builder.get("llm_available"),
-        "used_fallback": query_builder.get("used_fallback"),
-        "fallback_reason": query_builder.get("fallback_reason"),
-        "rule_fallback_query": query_builder.get("rule_fallback_query"),
-        "parsed_output": query_builder.get("parsed_output"),
-        "final_query": query_builder.get("final_query"),
-    }
-
-    retrieval = debug.get("retrieval") or {}
-    compact["retrieval"] = {
-        "memory_root": retrieval.get("memory_root"),
-        "embedding_available": retrieval.get("embedding_available"),
-        "disable_experience_memory": retrieval.get("disable_experience_memory"),
-        "disable_skill_memory": retrieval.get("disable_skill_memory"),
-        "disable_knowledge_memory": retrieval.get("disable_knowledge_memory"),
-        "result": _compact_retrieval(retrieval.get("result")),
-    }
-
-    applicability = debug.get("applicability") or {}
-    compact["applicability"] = {
-        "mode": applicability.get("mode"),
-        "hard_blocked_actions": applicability.get("hard_blocked_actions") or [],
-        "risk_warning": applicability.get("risk_warning") or "",
-        "hit_assessments": [
-            {
-                "hit": _hit_summary(item.get("hit") or {}),
-                "mode": item.get("mode"),
-                "llm_available": item.get("llm_available"),
-                "used_fallback": item.get("used_fallback"),
-                "fallback_reason": item.get("fallback_reason"),
-                "parsed_output": item.get("parsed_output"),
-                "final_assessment": item.get("final_assessment"),
-            }
-            for item in (applicability.get("hit_assessments") or [])
-        ],
-        "final_applicability_result": _compact_applicability(
-            applicability.get("final_applicability_result")
-        ),
-    }
-
-    compact["guidance"] = debug.get("guidance") or {}
-
-    if TRACE_CONFIG.get("include_observation_payload", False):
-        compact["input_observation"] = debug.get("input_observation")
-        compact["guidance_injection"] = debug.get("guidance_injection")
-
-    if include_llm_io:
-        for source, target in [
-            (case_update, compact["case_state_update"]),
-            (query_builder, compact["query_builder"]),
-        ]:
-            target["raw_output"] = source.get("raw_output")
-            if include_prompt_payload:
-                target["prompt"] = source.get("prompt")
-                target["payload"] = source.get("payload")
-        for source, target in zip(
-            applicability.get("hit_assessments") or [],
-            compact["applicability"]["hit_assessments"],
-        ):
-            target["raw_output"] = source.get("raw_output")
-            if include_prompt_payload:
-                target["prompt"] = source.get("prompt")
-                target["payload"] = source.get("payload")
-
-    return compact
+    out.update(_maybe_llm_io(d))
+    return out
 
 
-def _compact_turn_record(record: dict[str, Any]) -> dict[str, Any]:
+def _hit_assessment_view(item: dict[str, Any] | None) -> dict[str, Any]:
+    item = item or {}
     return {
-        "episode_id": record.get("episode_id"),
-        "case_id": record.get("case_id"),
-        "turn_id": record.get("turn_id"),
-        "selected_action": record.get("selected_action") or {},
-        "reward": record.get("reward"),
-        "done": record.get("done"),
-        "case_state": _compact_case_state(record.get("case_state")),
-        "memory_query": record.get("memory_query") or {},
-        "retrieval_result": _compact_retrieval(record.get("retrieval_result")),
-        "applicability_result": _compact_applicability(record.get("applicability_result")),
-        "memory_guidance": record.get("memory_guidance") or {},
-        "memory_debug": _compact_memory_debug(record.get("memory_debug")),
+        "hit": _hit_view(item.get("hit")),
+        **_builder_view(item, kind="hit_assessment"),
     }
+
+
+def _selection_guidance_view(
+    app: dict[str, Any] | None,
+    guidance: dict[str, Any] | None,
+    app_debug: dict[str, Any] | None,
+) -> dict[str, Any]:
+    app = app or {}
+    guidance = guidance or {}
+    assessments = app.get("memory_assessments") or []
+    applied = [
+        item.get("memory_id")
+        for item in assessments
+        if item.get("decision") == "apply" and item.get("memory_id")
+    ]
+    ignored = [
+        item.get("memory_id")
+        for item in assessments
+        if item.get("decision") == "ignore" and item.get("memory_id")
+    ]
+    return {
+        "mode": (app_debug or {}).get("mode"),
+        "applied_memory_ids": applied,
+        "ignored_memory_ids": ignored,
+        "memory_assessments": assessments,
+        "recommended_actions": guidance.get("recommended_actions") or [],
+        "discouraged_actions": guidance.get("discouraged_actions") or [],
+        "blocked_actions": guidance.get("blocked_actions") or app.get("hard_blocked_actions") or [],
+        "used_memory_ids": guidance.get("used_memory_ids") or applied,
+        "warning_memory_ids": guidance.get("warning_memory_ids") or [],
+        "risk_warning": guidance.get("risk_warning") or app.get("risk_warning") or "",
+        "why_not_finalize": guidance.get("why_not_finalize") or "",
+        "rationale": guidance.get("rationale") or "",
+    }
+
+
+# -----------------------------------------------------------------------------
+# Public builders
+# -----------------------------------------------------------------------------
 
 
 def build_trace_payload(
@@ -211,7 +219,12 @@ def build_trace_payload(
     selected_action: dict[str, Any] | None = None,
     memory_debug: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Build an online debug trace using current schema objects only."""
+    """
+    Compatibility adapter for existing call sites.
+
+    It intentionally returns a plain turn record; append_memory_turn_trace() decides
+    how much to keep.
+    """
     return {
         "case_id": case_state.case_id,
         "turn_id": case_state.turn_id,
@@ -226,81 +239,134 @@ def build_trace_payload(
     }
 
 
-def append_memory_trace(
-    trace_root: str | Path,
-    payload: dict[str, Any],
-) -> Path:
+def compact_turn_record(turn_record: dict[str, Any] | Any) -> dict[str, Any]:
+    """
+    Minimal readable trace for debugging memory behavior.
+
+    The trace answers five questions:
+    1. What did the case schema look like?
+    2. What query did memory build?
+    3. What did retrieval return?
+    4. What did applicability block/warn about?
+    5. What guidance was injected into the agent?
+    """
+    r = _to_dict(turn_record)
+    d = r.get("memory_debug") or {}
+
+    case_dbg = d.get("case_state_update") or {}
+    case_builder_dbg = case_dbg.get("current_turn_update") or case_dbg
+    query_dbg = d.get("query_builder") or {}
+    retrieval_dbg = d.get("retrieval") or {}
+    app_dbg = d.get("applicability") or {}
+    guidance_dbg = d.get("guidance") or {}
+
+    retrieval_result = retrieval_dbg.get("result") or r.get("retrieval_result") or {}
+    final_app = app_dbg.get("final_applicability_result") or r.get("applicability_result") or {}
+    final_guidance = guidance_dbg.get("structured") or r.get("memory_guidance") or {}
+
+    out = {
+        "case_id": r.get("case_id"),
+        "turn_id": r.get("turn_id"),
+        "case_memory": _case_view(
+            case_dbg.get("final_case_state")
+            or case_builder_dbg.get("final_case_state")
+            or r.get("case_state")
+        ),
+        "query": query_dbg.get("final_query") or r.get("memory_query") or {},
+        "retrieval": _retrieval_view(retrieval_result),
+        "selection_guidance": _selection_guidance_view(final_app, final_guidance, app_dbg),
+    }
+
+    if _cfg("include_applicability_debug", False):
+        out["applicability_debug"] = {
+            **_applicability_view(final_app),
+            "mode": app_dbg.get("mode"),
+            "hit_assessments": [
+                _hit_assessment_view(item)
+                for item in app_dbg.get("hit_assessments") or []
+            ],
+        }
+
+    if r.get("selected_action"):
+        out["selected_action"] = r.get("selected_action")
+
+    # Optional large payloads for prompt/injection debugging.
+    if _cfg("include_observation_payload", False):
+        out["observation"] = d.get("input_observation")
+        out["guidance_injection"] = d.get("guidance_injection")
+
+    # Optional raw fallback for rare deep debugging. Keep off by default.
+    if _cfg("include_full_turn", False):
+        out["raw_turn"] = r
+
+    return out
+
+
+# -----------------------------------------------------------------------------
+# Public writers
+# -----------------------------------------------------------------------------
+
+
+def append_memory_turn_trace(trace_root: str | Path, turn_record: dict[str, Any] | Any) -> Path:
+    """Upsert one turn into <trace_root>/<case_id>.json."""
     root = Path(trace_root)
     root.mkdir(parents=True, exist_ok=True)
-    case_id = str(payload.get("case_id") or "unknown_case")
-    path = root / f"{case_id}.jsonl"
-    if not TRACE_CONFIG.get("write_jsonl_snapshot", False):
-        return path
-    payload = _to_dict(payload)
-    if not TRACE_CONFIG.get("include_full_turn", False):
-        payload["case_state"] = _compact_case_state(payload.get("case_state"))
-        payload["retrieval_result"] = _compact_retrieval(payload.get("retrieval_result"))
-        payload["applicability_result"] = _compact_applicability(payload.get("applicability_result"))
-        payload["memory_debug"] = _compact_memory_debug(payload.get("memory_debug"))
-    with path.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
-    return path
 
-
-def append_memory_turn_trace(
-    trace_root: str | Path,
-    turn_record: dict[str, Any] | Any,
-) -> Path:
-    """
-    Maintain a human-readable JSON trace grouped by case/episode/turn.
-
-    This complements the JSONL snapshot log above. Each turn contains the full
-    TurnRecord payload: selected action, env observation/info, reward/done, and
-    all memory pipeline artifacts used before that action.
-    """
-    root = Path(trace_root)
-    root.mkdir(parents=True, exist_ok=True)
-
-    raw_record = _to_dict(turn_record)
-    record = (
-        raw_record
-        if TRACE_CONFIG.get("include_full_turn", False)
-        else _compact_turn_record(raw_record)
-    )
+    record = compact_turn_record(turn_record)
     case_id = str(record.get("case_id") or "unknown_case")
-    episode_id = str(record.get("episode_id") or "")
     path = root / f"{case_id}.json"
 
-    if path.exists():
-        try:
-            with path.open("r", encoding="utf-8") as handle:
-                payload = json.load(handle)
-        except Exception:
-            payload = {}
-    else:
+    payload = _read_json(path)
+    if payload.get("schema") not in (None, TRACE_SCHEMA):
         payload = {}
 
+    payload.setdefault("schema", TRACE_SCHEMA)
     payload.setdefault("case_id", case_id)
-    if episode_id:
-        payload.setdefault("episode_id", episode_id)
-    payload.setdefault("schema", "memory_turn_trace.v1")
+
     turns = payload.setdefault("turns", [])
+    _upsert_turn(turns, record)
+    turns.sort(key=lambda x: int(x.get("turn_id") or 0))
 
-    turn_key = (record.get("episode_id"), record.get("turn_id"))
-    replaced = False
-    for idx, existing in enumerate(turns):
-        existing_key = (existing.get("episode_id"), existing.get("turn_id"))
-        if existing_key == turn_key:
-            turns[idx] = record
-            replaced = True
-            break
-    if not replaced:
-        turns.append(record)
-
-    turns.sort(key=lambda item: (str(item.get("episode_id") or ""), int(item.get("turn_id") or 0)))
-
-    tmp_path = path.with_suffix(".json.tmp")
-    with tmp_path.open("w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
-    tmp_path.replace(path)
+    _write_json_atomic(path, payload)
     return path
+
+
+def append_memory_trace(trace_root: str | Path, payload: dict[str, Any]) -> Path:
+    """
+    Backward-compatible alias.
+
+    The old JSONL snapshot was removed because it duplicates the readable trace.
+    Reintroduce JSONL only if an offline evaluator consumes line-delimited turns.
+    """
+    return append_memory_turn_trace(trace_root, payload)
+
+
+# -----------------------------------------------------------------------------
+# File IO
+# -----------------------------------------------------------------------------
+
+
+def _read_json(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    tmp.replace(path)
+
+
+def _upsert_turn(turns: list[dict[str, Any]], record: dict[str, Any]) -> None:
+    key = record.get("turn_id")
+    for i, old in enumerate(turns):
+        if old.get("turn_id") == key:
+            turns[i] = record
+            return
+    turns.append(record)

@@ -69,40 +69,36 @@ def _infer_action_from_memory(hit: RetrievalHit) -> str:
     return ""
 
 
-def _unsafe_block_threshold() -> float:
-    return float(APPLICABILITY_CONFIG.get("unsafe_block_score", 0.35))
-
-
 def _skill_apply_threshold() -> float:
     return float(APPLICABILITY_CONFIG.get("skill_apply_score", 0.40))
 
 
+def _reusable_memory_threshold() -> float:
+    return float(APPLICABILITY_CONFIG.get("reusable_memory_score", 0.30))
+
+
 def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
     action = _infer_action_from_memory(hit)
+    reusable = hit.score >= _reusable_memory_threshold()
 
-    if _is_negative_experience(hit):
-        outcome = _outcome_type(hit)
-        if outcome == "unsafe" and action and hit.score >= _unsafe_block_threshold():
-            return MemoryApplicabilityAssessment(
-                memory_id=hit.memory_id,
-                memory_type=hit.memory_type,
-                decision="block",
-                reason=(
-                    "Retrieved high-confidence unsafe experience with overlapping action; "
-                    "block repeating this risky path."
-                ),
-                action_bias={action: -0.9},
-                blocked_actions=[action],
-            )
+    if not reusable:
         return MemoryApplicabilityAssessment(
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
-            decision="hint",
-            reason=(
-                "Retrieved negative experience. Treat as a cautionary signal; "
-                "discourage rather than block unless clearly unsafe and high-confidence."
-            ),
-            action_bias={action: -0.45} if action else {},
+            decision="ignore",
+            reason="Retrieved memory score is below the reusable-memory threshold.",
+            action_bias={},
+            blocked_actions=[],
+        )
+
+    if _is_negative_experience(hit):
+        bias = {action: -0.35} if action else {}
+        return MemoryApplicabilityAssessment(
+            memory_id=hit.memory_id,
+            memory_type=hit.memory_type,
+            decision="apply",
+            reason="Retrieved negative experience is reusable as a caution for the same local decision point.",
+            action_bias=bias,
             blocked_actions=[],
         )
 
@@ -110,9 +106,9 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
         return MemoryApplicabilityAssessment(
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
-            decision="hint",
-            reason="Retrieved positive experience may provide a useful local action hint.",
-            action_bias={action: 0.35} if action else {},
+            decision="apply",
+            reason="Retrieved positive experience is reusable for the current local decision point.",
+            action_bias={action: 0.30} if action else {},
             blocked_actions=[],
         )
 
@@ -120,20 +116,17 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
         return MemoryApplicabilityAssessment(
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
-            decision="hint",
-            reason=(
-                "Retrieved skill is potentially useful, but retrieval alone is not enough "
-                "to automatically apply it; check boundary conditions."
-            ),
-            action_bias={action: 0.30} if action else {},
+            decision="apply",
+            reason="Retrieved skill is reusable because its trigger and boundary match the current step.",
+            action_bias={action: 0.25} if action else {},
             blocked_actions=[],
         )
 
     return MemoryApplicabilityAssessment(
         memory_id=hit.memory_id,
         memory_type=hit.memory_type,
-        decision="hint",
-        reason="Retrieved knowledge may provide relevant background guidance.",
+        decision="apply",
+        reason="Retrieved knowledge is reusable background for the current decision point.",
         action_bias={},
         blocked_actions=[],
     )
@@ -143,48 +136,31 @@ def _postprocess_llm_assessment(
     hit: RetrievalHit,
     assessment: MemoryApplicabilityAssessment,
 ) -> MemoryApplicabilityAssessment:
-    action = _infer_action_from_memory(hit)
-    outcome = _outcome_type(hit)
-
-    if assessment.decision not in {"apply", "hint", "block", "ignore"}:
+    if assessment.decision not in {"apply", "ignore"}:
         return _rule_memory_assessment(hit)
 
     assessment.memory_id = hit.memory_id
     assessment.memory_type = hit.memory_type
 
-    if hit.memory_type == "skill" and assessment.decision == "apply" and hit.score < _skill_apply_threshold():
-        assessment.decision = "hint"
-        assessment.reason = (
-            assessment.reason
-            or "Skill score is below apply threshold; downgrade to hint."
-        )
-
-    if hit.memory_type == "experience" and outcome == "failure" and assessment.decision == "block":
-        assessment.decision = "hint"
+    if assessment.decision == "apply" and hit.score < _reusable_memory_threshold():
+        assessment.decision = "ignore"
+        assessment.action_bias = {}
         assessment.blocked_actions = []
-        if action and not assessment.action_bias:
-            assessment.action_bias = {action: -0.45}
         assessment.reason = (
             assessment.reason
-            or "Failure experience should discourage, not hard-block, unless unsafe."
+            or "Memory score is below reusable threshold; ignore."
         )
 
-    if hit.memory_type == "experience" and outcome == "unsafe" and assessment.decision == "block":
-        if hit.score < _unsafe_block_threshold() or not action:
-            assessment.decision = "hint"
-            assessment.blocked_actions = []
-            if action and not assessment.action_bias:
-                assessment.action_bias = {action: -0.45}
-            assessment.reason = (
-                assessment.reason
-                or "Unsafe experience was not similar enough for hard block; downgrade to hint."
-            )
+    if hit.memory_type == "skill" and assessment.decision == "apply" and hit.score < _skill_apply_threshold():
+        assessment.decision = "ignore"
+        assessment.action_bias = {}
+        assessment.reason = assessment.reason or "Skill score is below reusable skill threshold."
 
-    assessment.blocked_actions = [
-        str(item).upper()
-        for item in assessment.blocked_actions
-        if str(item).upper() in DEFAULT_ACTIONS
-    ]
+    if assessment.decision == "ignore":
+        assessment.action_bias = {}
+        assessment.blocked_actions = []
+
+    assessment.blocked_actions = []
     assessment.action_bias = {
         str(key).upper(): float(value)
         for key, value in (assessment.action_bias or {}).items()
@@ -199,8 +175,9 @@ def _llm_memory_assessment(
     memory_query: MemoryQuery,
     llm_client: LLMClient,
     debug: dict[str, object] | None = None,
+    strict: bool = True,
 ) -> MemoryApplicabilityAssessment:
-    fallback = _rule_memory_assessment(hit)
+    rule_assessment = _rule_memory_assessment(hit)
     payload = {
         "case_state": case_state.to_dict(),
         "memory_query": memory_query.to_dict(),
@@ -210,50 +187,64 @@ def _llm_memory_assessment(
             "score": hit.score,
             "content": hit.content,
         },
-        "allowed_decisions": ["apply", "hint", "block", "ignore"],
+        "allowed_decisions": ["apply", "ignore"],
         "allowed_actions": DEFAULT_ACTIONS,
         "instruction": (
-            "Judge whether this memory applies to the current case. "
-            "Retrieved skill should not automatically apply; use apply only when boundary conditions fit. "
-            "Failure experiences should discourage; unsafe experiences may block only when highly applicable."
+            "Select whether this memory is reusable for the current decision point. "
+            "Return apply only when trigger, boundary, evidence state, and action timing match. "
+            "Return ignore for partial matches, diagnosis-only overlap, or unavailable evidence."
         ),
     }
     prompt = applicability_prompt(payload)
     if debug is not None:
         debug["mode"] = "llm"
         debug["hit"] = payload["retrieved_memory"]
-        debug["rule_fallback_assessment"] = fallback.to_dict()
+        debug["rule_assessment"] = rule_assessment.to_dict()
         debug["llm_available"] = llm_client.available()
         debug["payload"] = payload
         debug["prompt"] = prompt
     if not llm_client.available():
+        message = f"Applicability LLM mode requested but memory LLM is unavailable for memory {hit.memory_id}"
+        if strict:
+            raise RuntimeError(message)
         if debug is not None:
             debug["used_fallback"] = True
             debug["fallback_reason"] = "llm_unavailable"
-            debug["final_assessment"] = fallback.to_dict()
-        return fallback
+            debug["final_assessment"] = rule_assessment.to_dict()
+        return rule_assessment
 
     raw_output = llm_client.generate_json(prompt, max_tokens=900)
-    parsed, _, _ = parse_validate_repair(
+    raw_empty = not str(raw_output or "").strip() or str(raw_output or "").strip() == "{}"
+    parsed, ok, errors = parse_validate_repair(
         raw_output,
         APPLICABILITY_SCHEMA,
-        fallback.to_dict(),
+        rule_assessment.to_dict(),
     )
     if debug is not None:
         debug["raw_output"] = raw_output
         debug["parsed_output"] = parsed
+        debug["validation_ok"] = ok
+        debug["validation_errors"] = errors
+    if raw_empty or not ok:
+        message = (
+            f"Applicability LLM output invalid for memory {hit.memory_id}: "
+            f"errors={errors}, raw_output={raw_output!r}"
+        )
+        if strict:
+            raise RuntimeError(message)
+        logger.warning(message)
     try:
         assessment = MemoryApplicabilityAssessment.from_dict(parsed)
     except Exception as exc:
-        logger.warning(
-            "LLM applicability assessment parse failed for memory %s: %s",
-            hit.memory_id, exc,
-        )
+        message = f"LLM applicability assessment parse failed for memory {hit.memory_id}: {exc}"
+        if strict:
+            raise RuntimeError(message) from exc
+        logger.warning(message)
         if debug is not None:
             debug["used_fallback"] = True
             debug["fallback_reason"] = f"parse_exception: {exc}"
-            debug["final_assessment"] = fallback.to_dict()
-        return fallback
+            debug["final_assessment"] = rule_assessment.to_dict()
+        return rule_assessment
     result = _postprocess_llm_assessment(hit, assessment)
     if debug is not None:
         debug["used_fallback"] = False
@@ -320,20 +311,10 @@ def _aggregate_action_assessments(
                 item.score_delta += float(delta)
             except Exception:
                 pass
-            if assessment.decision in {"apply", "hint"} and delta > 0:
+            if assessment.decision == "apply" and delta > 0:
                 item.supporting_memory_ids.append(assessment.memory_id)
             if delta < 0:
                 item.warning_memory_ids.append(assessment.memory_id)
-
-        if assessment.decision == "block":
-            for action in assessment.blocked_actions:
-                action = str(action).upper()
-                if not action:
-                    continue
-                item = ensure(action)
-                item.blocked = True
-                item.warning_memory_ids.append(assessment.memory_id)
-                item.reason = assessment.reason or "Blocked by retrieved memory."
 
     for item in action_map.values():
         item.supporting_memory_ids = list(dict.fromkeys(item.supporting_memory_ids))
@@ -356,6 +337,7 @@ def apply_applicability_control(
     mode: str = "rule",
     llm_client: LLMClient | None = None,
     debug: dict[str, object] | None = None,
+    strict: bool = True,
 ) -> ApplicabilityResult:
     memory_assessments: list[MemoryApplicabilityAssessment] = []
     if debug is not None:
@@ -374,7 +356,10 @@ def apply_applicability_control(
                 memory_query,
                 llm_client,
                 debug=hit_debug if debug is not None else None,
+                strict=strict,
             )
+        elif mode in {"llm", "hybrid"} and strict:
+            raise RuntimeError("Applicability LLM mode requested but llm_client is None")
         else:
             assessment = _rule_memory_assessment(hit)
             if debug is not None:
@@ -385,7 +370,10 @@ def apply_applicability_control(
         if debug is not None:
             debug["hit_assessments"].append(hit_debug)
 
-    hard_blocked, risk_warning = _hard_block_actions(case_state)
+    if APPLICABILITY_CONFIG.get("enable_rule_action_guards", False):
+        hard_blocked, risk_warning = _hard_block_actions(case_state)
+    else:
+        hard_blocked, risk_warning = [], ""
     action_assessments = _aggregate_action_assessments(memory_assessments, hard_blocked)
     if debug is not None:
         debug["hard_blocked_actions"] = hard_blocked

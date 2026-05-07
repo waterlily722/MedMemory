@@ -98,7 +98,7 @@ def test_full_offline_pipeline():
                           "not for young patients without risk factors",
             outcome_type=OutcomeType.SUCCESS.value,
             action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "troponin"}],
-            retrieval_tags=["chest_pain", "troponin"],
+            tags=["chest_pain", "troponin"],
         )
         exp2 = ExperienceCard(
             memory_id="exp_002",
@@ -108,7 +108,7 @@ def test_full_offline_pipeline():
             boundary_text="use when chest pain with cardiac risk factors",
             outcome_type=OutcomeType.SUCCESS.value,
             action_sequence=[{"action_type": "REQUEST_LAB", "action_label": "troponin"}],
-            retrieval_tags=["chest_pain", "troponin"],
+            tags=["chest_pain", "troponin"],
         )
 
         # Insert and verify

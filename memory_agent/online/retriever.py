@@ -34,9 +34,7 @@ def experience_to_text(payload: dict[str, Any]) -> str:
             f"Outcome: {payload.get('outcome_text', '')}",
             f"Boundary: {payload.get('boundary_text', '')}",
             f"Action sequence: {flatten_payload(payload.get('action_sequence', []))}",
-            f"Retrieval tags: {_join(payload.get('retrieval_tags', []))}",
-            f"Risk tags: {_join(payload.get('risk_tags', []))}",
-            f"Failure mode: {payload.get('failure_mode', '')}",
+            f"Tags: {_join(payload.get('tags') or payload.get('retrieval_tags') or [])}",
         ]
     )
 
@@ -48,12 +46,9 @@ def skill_to_text(payload: dict[str, Any]) -> str:
             f"Situation: {payload.get('situation_text', '')}",
             f"Goal: {payload.get('goal_text', '')}",
             f"Procedure: {payload.get('procedure_text', '')}",
-            f"Boundary: {payload.get('boundary_text', '')}",
             f"Procedure steps: {flatten_payload(payload.get('procedure', []))}",
-            f"Contraindications: {_join(payload.get('contraindications', []))}",
-            f"Evidence count: {payload.get('evidence_count', '')}",
-            f"Success rate: {payload.get('success_rate', '')}",
-            f"Unsafe rate: {payload.get('unsafe_rate', '')}",
+            f"Boundary: {payload.get('boundary_text', '')}",
+            f"Tags: {_join(payload.get('tags') or payload.get('retrieval_tags') or [])}",
         ]
     )
 
@@ -140,7 +135,7 @@ def _score_memory(
         text = memory_to_text(memory_type, payload)
         score = token_cosine(query.query_text, text)
         # Tag bonus (only for token-based, since tags are already in the embedding text)
-        tags = payload.get("retrieval_tags") or payload.get("tags") or []
+        tags = payload.get("tags") or payload.get("retrieval_tags") or []
         if isinstance(tags, list) and tags:
             score += 0.05 * token_cosine(
                 query.query_text, " ".join(str(tag) for tag in tags)

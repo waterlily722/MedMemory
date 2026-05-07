@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import asdict, is_dataclass
+from dataclasses import asdict, fields, is_dataclass
 from enum import Enum
 from typing import Any
 
@@ -50,4 +50,8 @@ class SerializableMixin:
             raise ValueError(f"{cls.__name__}.from_dict received None")
         if not isinstance(data, dict):
             raise TypeError(f"{cls.__name__}.from_dict expected dict, got {type(data)}")
-        return cls(**dict(data))
+        values = dict(data)
+        if is_dataclass(cls):
+            allowed = {field.name for field in fields(cls)}
+            values = {key: value for key, value in values.items() if key in allowed}
+        return cls(**values)

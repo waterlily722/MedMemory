@@ -55,65 +55,21 @@ CASE_STATE_CONFIG = {
     "initial_finalize_risk": "high",
     "default_local_goal": "collect_missing_critical_info",
     "default_uncertainty_summary": "initial state with unresolved diagnostic uncertainty",
-    "fallback_problem_summary": "initial clinical problem unclear",
     "risk_levels": ["low", "medium", "high"],
-    "critical_slot_templates": {
-        "chest pain": [
-            "onset",
-            "radiation",
-            "associated dyspnea",
-            "exertional trigger",
-            "cardiac history",
-            "ECG or troponin",
-        ],
-        "shortness of breath": [
-            "onset",
-            "progression",
-            "fever or cough",
-            "oxygen saturation",
-            "cardiac history",
-            "CXR or imaging",
-        ],
-        "altered mental status": [
-            "onset",
-            "baseline mental status",
-            "focal neurologic symptoms",
-            "fever",
-            "medication exposure",
-            "trauma",
-        ],
-        "abdominal pain": [
-            "onset",
-            "location",
-            "duration",
-            "fever",
-            "vomiting",
-            "stool or urinary symptoms",
-        ],
-        "bleeding": [
-            "amount",
-            "duration",
-            "hemodynamic symptoms",
-            "medication exposure",
-            "prior bleeding history",
-        ],
-    },
-    "default_critical_slots": [
-        "timeline",
-        "associated symptoms",
-        "severity",
-        "risk factors",
-        "targeted exam",
-    ],
 }
 
 # Applicability heuristics and thresholds used by the online controller
 APPLICABILITY_CONFIG = {
+    "reusable_memory_score": 0.30,
     "unsafe_block_score": 0.35,
     "skill_apply_score": 0.40,
-    "hard_block_finalize_on_high_risk": True,
-    "hard_block_finalize_missing_info_min": 3,
-    "image_unreviewed_warning": True,
+    # Memory applicability should select reusable retrieved memories. Rule-only
+    # action guards are off by default so guidance is driven by memory content,
+    # not hard-coded safety blocks.
+    "enable_rule_action_guards": False,
+    "hard_block_finalize_on_high_risk": False,
+    "hard_block_finalize_missing_info_min": 0,
+    "image_unreviewed_warning": False,
     "hard_block_reason": "Configured safety rule blocked this action.",
     "risk_warning_text": {
         "high_finalize_risk": "finalize_risk is high",
@@ -130,6 +86,7 @@ TRACE_CONFIG = {
     "include_observation_payload": False,
     "include_llm_io": False,
     "include_prompt_payload": False,
+    "include_applicability_debug": False,
     "max_text_chars": 600,
     "max_hits_per_type": 5,
 }

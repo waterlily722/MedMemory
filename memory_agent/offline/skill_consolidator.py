@@ -79,7 +79,7 @@ def _unique_case_count(cluster: list[ExperienceCard]) -> int:
     case_ids = {
         case_id
         for exp in cluster
-        for case_id in exp.source_case_ids
+        for case_id in (exp.source or {}).get("case_ids", [])
         if case_id
     }
     return len(case_ids)
@@ -122,20 +122,25 @@ def _build_rule_skill(
 
     return SkillCard(
         memory_id=f"skill_{seed.memory_id}_{skill_index}",
+        memory_type="skill",
         skill_name=f"skill_{skill_index}",
         situation_text=seed.situation_text,
         goal_text="Select a high-yield local action path before finalizing diagnosis.",
         procedure_text=seed.action_text,
         boundary_text=seed.boundary_text,
         procedure=seed.action_sequence,
-        contraindications=[],
-        source_experience_ids=_source_experience_ids(cluster),
-        evidence_count=support_count,
-        unique_case_count=unique_cases,
-        success_rate=round(success_rate, 4),
-        unsafe_rate=round(unsafe_rate, 4),
+        tags=_unique([tag for item in cluster for tag in item.tags]),
         confidence=min(0.99, round(success_rate * (1.0 - unsafe_rate), 4)),
-        version=1,
+        support_count=support_count,
+        source={
+            "experience_ids": _source_experience_ids(cluster),
+            "case_ids": _unique([
+                case_id
+                for item in cluster
+                for case_id in (item.source or {}).get("case_ids", [])
+                if case_id
+            ]),
+        },
     )
 
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import uuid
 from typing import Any
 
 from ..llm import LLMClient, experience_merge_prompt, parse_validate_repair
@@ -93,14 +92,24 @@ def merge_experience(base: ExperienceCard, incoming: ExperienceCard) -> Experien
         else incoming.action_sequence
     )
 
-    merged.retrieval_tags = _unique(base.retrieval_tags + incoming.retrieval_tags)
-    merged.risk_tags = _unique(base.risk_tags + incoming.risk_tags)
+    merged.tags = _unique(base.tags + incoming.tags)
 
     merged.confidence = max(base.confidence, incoming.confidence)
 
-    merged.source_episode_ids = _unique(base.source_episode_ids + incoming.source_episode_ids)
-    merged.source_case_ids = _unique(base.source_case_ids + incoming.source_case_ids)
-    merged.source_turn_ids = _unique(base.source_turn_ids + incoming.source_turn_ids)
+    merged.source = {
+        "episode_ids": _unique(
+            list((base.source or {}).get("episode_ids") or [])
+            + list((incoming.source or {}).get("episode_ids") or [])
+        ),
+        "case_ids": _unique(
+            list((base.source or {}).get("case_ids") or [])
+            + list((incoming.source or {}).get("case_ids") or [])
+        ),
+        "turn_ids": _unique(
+            list((base.source or {}).get("turn_ids") or [])
+            + list((incoming.source or {}).get("turn_ids") or [])
+        ),
+    }
 
     return merged
 
@@ -111,13 +120,11 @@ def decide_merge_rule(
 ) -> dict[str, Any]:
     for existing in similar_existing:
         if _same_trigger(existing, new_experience) and not _same_direction(existing, new_experience):
-            conflict_group_id = existing.conflict_group_id or f"conflict_{uuid.uuid4().hex[:10]}"
             return {
                 "merge_decision": "conflict",
                 "target_memory_ids": [existing.memory_id, new_experience.memory_id],
                 "reason": "same situation/action but opposite outcome",
                 "merged_experience": {},
-                "conflict_group_id": conflict_group_id,
             }
 
         if _can_merge(existing, new_experience):
@@ -127,7 +134,6 @@ def decide_merge_rule(
                 "target_memory_ids": [existing.memory_id, new_experience.memory_id],
                 "reason": "same situation/action/outcome direction",
                 "merged_experience": merged.to_dict(),
-                "conflict_group_id": "",
             }
 
     return {
@@ -135,7 +141,6 @@ def decide_merge_rule(
         "target_memory_ids": [],
         "reason": "no compatible existing memory",
         "merged_experience": new_experience.to_dict(),
-        "conflict_group_id": "",
     }
 
 

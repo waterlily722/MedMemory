@@ -50,18 +50,11 @@ def _apply_conflict_group(
     existing_items: list[ExperienceCard],
     experience: ExperienceCard,
     target_ids: list[str],
-    conflict_group_id: str,
 ) -> None:
-    conflict_group_id = conflict_group_id or experience.conflict_group_id or ""
-
-    for target_id in target_ids:
-        existing = _find_by_id(existing_items, target_id)
-        if existing is None:
-            continue
-        existing.conflict_group_id = conflict_group_id
-        store.upsert(existing)
-
-    experience.conflict_group_id = conflict_group_id
+    # Simplified ExperienceCard no longer stores conflict_group_id. Preserve the
+    # incoming conflicting experience as a separate row; target_ids are retained
+    # only in the merge decision metadata/logging path.
+    _ = existing_items, target_ids
     store.upsert(experience)
 
 
@@ -117,9 +110,8 @@ def write_memory_from_distilled_episode(
 
         if merge_decision == "conflict":
             conflict_count += 1
-            conflict_group_id = str(decision.get("conflict_group_id") or "")
             target_ids = [str(item) for item in decision.get("target_memory_ids", [])]
-            _apply_conflict_group(store, existing, experience, target_ids, conflict_group_id)
+            _apply_conflict_group(store, existing, experience, target_ids)
             written_ids.append(experience.memory_id)
             existing = store.list_all()
             continue

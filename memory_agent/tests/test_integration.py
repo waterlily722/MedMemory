@@ -138,9 +138,8 @@ def test_memory_to_text_experience():
         "outcome_text": "normal",
         "boundary_text": "cardiac risk",
         "action_sequence": [{"action_type": "ASK", "action_label": "ask about pain"}],
-        "retrieval_tags": ["chest_pain"],
-        "risk_tags": [],
-        "failure_mode": "",
+        "tags": ["chest_pain"],
+        "source": {},
     }
     text = memory_to_text("experience", payload)
     assert "chest pain" in text
