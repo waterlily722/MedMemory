@@ -1,0 +1,258 @@
+{
+  "schema": "memory_trace.memory_only.v2",
+  "case_id": "20007890",
+  "turns": [
+    {
+      "case_id": "20007890",
+      "turn_id": 1,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 32-year-old female patient based on the available clinical presentation.",
+        "current_turn": "turn_1: 20007890 12670153 20007890 2148-01-11 00:27:00 2148-01-12 14:27:00 EU OBSERVATION CLINIC REFERRAL 2148-01-11 00:27:00 2148-01-11 01:28:00 F 32 English WHITE SINGLE Assess and diagnose the 32-year-old female patient based on the available cl",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [
+          "Chief Complaint",
+          "HPI",
+          "Past Medical History",
+          "Social History",
+          "Physical Examination Findings",
+          "Test Results-Labs",
+          "Test Results-Microbiology",
+          "Test Results-Imaging",
+          "CXR",
+          "Medrecon"
+        ],
+        "active_hypotheses": [
+          "Asthma with acute exacerbation",
+          "Aspirin-exacerbated respiratory disease (AERD)"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "AERD typically begins in early- to mid-adulthood",
+          "Hyposmia or anosmia is reported in more than 90% of patients",
+          "Reactions to NSAIDs are universal with bronchoconstriction in close to 90% of patients",
+          "AERD is diagnosed based on medical history, with oral aspirin challenge as the most definitive method",
+          "AERD patients may have asthma, chronic rhinosinusitis with nasal polyps, and intolerance of aspirin and other NSAIDs"
+        ],
+        "recent_negative_evidence": [
+          "The reason for onset of AERD is currently unknown",
+          "No strong genetic predisposition to or basis of AERD has been found",
+          "No relationship between past use of NSAIDs and onset of AERD"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 1,
+        "query_text": "AERD vs asthma exacerbation with missing HPI and exam; high finalize risk; need targeted history and imaging review before diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 2,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 32-year-old female patient based on the available clinical presentation.",
+        "current_turn": "turn_2: I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes a few times a day, sometimes a few times a week. They’re worse at night and when I’m active or exposed to cold air. I also cough a",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [
+          "Chief Complaint",
+          "HPI",
+          "Past Medical History",
+          "Social History",
+          "Physical Examination Findings",
+          "Test Results-Labs",
+          "Test Results-Microbiology",
+          "Test Results-Imaging",
+          "CXR",
+          "Medrecon"
+        ],
+        "active_hypotheses": [
+          "Asthma with acute exacerbation",
+          "Aspirin-exacerbated respiratory disease (AERD)"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "AERD typically begins in early- to mid-adulthood",
+          "Hyposmia or anosmia is reported in more than 90% of patients",
+          "Reactions to NSAIDs are universal with bronchoconstriction in close to 90% of patients",
+          "AERD is diagnosed based on medical history, with oral aspirin challenge as the most definitive method",
+          "AERD patients may have asthma, chronic rhinosinusitis with nasal polyps, and intolerance of aspirin and other NSAIDs"
+        ],
+        "recent_negative_evidence": [
+          "The reason for onset of AERD is currently unknown",
+          "No strong genetic predisposition to or basis of AERD has been found",
+          "No relationship between past use of NSAIDs and onset of AERD"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 2,
+        "query_text": "wheezing and chest tightness worsening with activity and cold air; asthma exacerbation vs AERD uncertainty; missing HPI, exam, labs; high finalize risk; need targeted history and imaging review before diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma with nasal polyps, anosmia, aspirin sensitivity, and exercise-induced symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma with nasal polyps, anosmia, aspirin sensitivity, and exercise-induced symptoms\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 3,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 32-year-old female patient based on the available clinical presentation.",
+        "current_turn": "turn_3: [Document 1] (ID: 3152_10, Score: 0.892)\nIn asthma with aspirin sensitivity -36-96% have nasal polyps with rhinosinusitis [bib_ref] Nasal polyps in asthma and rhinitis. A review of 6,037 patients, Settipane [/bib_ref].\nFamily history. A fam",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [
+          "Chief Complaint",
+          "HPI",
+          "Past Medical History",
+          "Social History",
+          "Physical Examination Findings",
+          "Test Results-Labs",
+          "Test Results-Microbiology",
+          "Test Results-Imaging",
+          "CXR",
+          "Medrecon"
+        ],
+        "active_hypotheses": [
+          "Asthma with acute exacerbation",
+          "Aspirin-exacerbated respiratory disease (AERD)"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "Family history of atopy, seasonal rhinitis, or asthma increases likelihood of AR",
+          "Aspirin and other NSAIDs can cause severe asthma exacerbation in sensitized individuals",
+          "Samter's triad includes asthma, chronic rhinosinusitis with nasal polyps, and aspirin sensitivity",
+          "Exercise-induced asthma is characterized by shortness of breath during sustained aerobic exercise",
+          "Beta-blockers may cause bronchospasm and should be used with caution in asthma patients"
+        ],
+        "recent_negative_evidence": [
+          "The reason for onset of AERD is currently unknown",
+          "No strong genetic predisposition to or basis of AERD has been found",
+          "No relationship between past use of NSAIDs and onset of AERD"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 3,
+        "query_text": "asthma with aspirin sensitivity and nasal polyps; uncertainty remains due to missing HPI and exam; avoid premature diagnosis; need targeted history and imaging review before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) with asthma, nasal polyps, and anosmia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) with asthma, nasal polyps, and anosmia}\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    }
+  ]
+}

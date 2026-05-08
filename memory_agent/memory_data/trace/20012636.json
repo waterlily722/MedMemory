@@ -64,6 +64,152 @@
         "risk_warning": "",
         "why_not_finalize": "",
         "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 2,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 27-year-old female patient based on the available clinical presentation.",
+        "current_turn": "turn_2: I first noticed the symptoms a few weeks ago, and they’ve been coming and going — not constant, but pretty painful when they flare up. My fingers, especially the index and middle ones, get red, swollen, and tender, and sometimes there’s pus",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acute paronychia due to bacterial infection (e.g., Staphylococcus aureus)"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "medical",
+          "0",
+          "judge_agent",
+          "http://127.0.0.1:30002/v1",
+          "None"
+        ],
+        "recent_negative_evidence": [
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20012636"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 2,
+        "query_text": "fluctuating finger pain with redness and pus; acute paronychia suspected but needs physical exam confirmation; finalize diagnosis risky without imaging or lab; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"signs and symptoms of paronychia in adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"signs and symptoms of paronychia in adults\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 3,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 27-year-old female patient based on the available clinical presentation.",
+        "current_turn": "turn_3: [Document 1] (ID: 10297_0, Score: 0.877)\nParonychia (patient information)\nFor the WikiDoc page for this topic, click here\n\n# Overview\nParonychia is a skin infection that occurs around the nails.\n\n# What are the symptoms of Paronychia?\nThe m",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acute paronychia due to bacterial infection (e.g., Staphylococcus aureus)"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "medical",
+          "judge_agent",
+          "http://127.0.0.1:30002/v1",
+          "None",
+          "I first noticed the symptoms a few weeks ago, and they’ve been coming and going — not constant, but pretty painful when they flare up. My fingers, especially the index and middle ones, get red, swollen, and tender, and sometimes there’s pus coming out. It started after I kept biting my nails and washing my hands a lot — I’ve been doing that for months, so I think that might’ve triggered it."
+        ],
+        "recent_negative_evidence": [
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20012636"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 3,
+        "query_text": "paronychia with uncertain acute vs chronic; need physical exam confirmation; avoid premature diagnosis; missing imaging or lab to rule out abscess or fungal cause"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent trauma or injury to your fingers, or have you had any history of nail biting or biting your nails frequently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent trauma or injury to your fingers, or have you had any history of nail biting or biting your nails frequently?\"}}\n</tool_call>",
+        "blocked_by_memory": false
       }
     }
   ]

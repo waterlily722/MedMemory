@@ -87,6 +87,285 @@
         "risk_warning": "",
         "why_not_finalize": "",
         "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your main symptoms and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your main symptoms and when they started?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 2,
+      "case_memory": {
+        "problem_summary": "67 yo woman with past medical history of endometrial adenocarcinoma s/p TAH BSO and hypothyroidism, presenting with constipation, diarrhea with mucus, cramping abdominal pain, lightheadedness, syncope, and right ankle fracture.",
+        "current_turn": "turn_2: I’ve been constipated for 12 days, and in the past few days, I’ve also had diarrhea that looks like it has mucus. I’m not experiencing any blood in my stool or toilet bowl. I’ve also been having cramping pain in my lower abdomen for about a month, which gets worse when I strain to have a bowel movement — especially after taking Miralax and Mag Citrate. \n\nA few days ago, while straining, I felt lightheaded, then lost consciousness. I was on the floor for about an hour before my husband found me. When I came to, I felt like my ankle was breaking — I ended up with a right ankle fracture. ...[truncated]",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [
+          "CBC with differential (to check for basophilia)",
+          "Bone marrow biopsy (if basophilia confirmed)",
+          "Genetic testing for myeloproliferative neoplasms",
+          "Ultrasound of spleen",
+          "CT abdomen/pelvis (to evaluate for bowel obstruction, diverticulitis, or other abdominal pathology)",
+          "Stool studies (to evaluate for infection or inflammatory bowel disease)",
+          "Colonoscopy (to evaluate for colitis or malignancy)",
+          "Stress test (as planned by patient)",
+          "Cardiac enzymes (to evaluate for myocardial infarction)",
+          "Electrolytes and renal function (to evaluate for dehydration or electrolyte imbalance)"
+        ],
+        "active_hypotheses": [
+          "Diverticulitis",
+          "Irritable bowel syndrome (IBS)",
+          "Colitis",
+          "Bowel obstruction",
+          "Chronic myeloid leukemia (CML) or other myeloproliferative neoplasm (if basophilia confirmed)",
+          "Mast cell activation syndrome (MCAS)",
+          "Inflammatory bowel disease (IBD)",
+          "Infection (e.g., tuberculosis, influenza)",
+          "Autoimmune disease",
+          "Drug-induced basophilia"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "No basophilia lab result available",
+          "Cramping pain worsens with straining during bowel movements",
+          "Syncope associated with straining",
+          "Ankle fracture occurred during syncope episode",
+          "No blood in stool or toilet bowl"
+        ],
+        "recent_negative_evidence": [
+          "No history of recent trauma or fall",
+          "No history of recent infection or allergic reaction",
+          "No history of recent drug use or food ingestion",
+          "No history of recent stress test",
+          "No history of recent surgery or procedure"
+        ],
+        "modalities": [
+          "text"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 2,
+        "query_text": "Abdominal pain with syncope during straining; missing CBC, cardiac enzymes, and imaging; avoid premature diagnosis; need targeted labs and imaging before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 3,
+      "case_memory": {
+        "problem_summary": "67 yo woman with past medical history of endometrial adenocarcinoma s/p TAH BSO and hypothyroidism, presenting with constipation, diarrhea with mucus, cramping abdominal pain, lightheadedness, syncope, and right ankle fracture.",
+        "current_turn": "turn_3: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [
+          "CBC with differential (to check for basophilia)",
+          "Bone marrow biopsy (if basophilia confirmed)",
+          "Genetic testing for myeloproliferative neoplasms",
+          "Ultrasound of spleen",
+          "CT abdomen/pelvis (to evaluate for bowel obstruction, diverticulitis, or other abdominal pathology)",
+          "Stool studies (to evaluate for infection or inflammatory bowel disease)",
+          "Colonoscopy (to evaluate for colitis or malignancy)",
+          "Stress test (as planned by patient)",
+          "Cardiac enzymes (to evaluate for myocardial infarction)",
+          "Electrolytes and renal function (to evaluate for dehydration or electrolyte imbalance)"
+        ],
+        "active_hypotheses": [
+          "Diverticulitis",
+          "Irritable bowel syndrome (IBS)",
+          "Colitis",
+          "Bowel obstruction",
+          "Chronic myeloid leukemia (CML) or other myeloproliferative neoplasm (if basophilia confirmed)",
+          "Mast cell activation syndrome (MCAS)",
+          "Inflammatory bowel disease (IBD)",
+          "Infection (e.g., tuberculosis, influenza)",
+          "Autoimmune disease",
+          "Drug-induced basophilia"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "No basophilia lab result available",
+          "Cramping pain worsens with straining during bowel movements",
+          "Syncope associated with straining",
+          "Ankle fracture occurred during syncope episode",
+          "No blood in stool or toilet bowl"
+        ],
+        "recent_negative_evidence": [
+          "No history of recent trauma or fall",
+          "No history of recent infection or allergic reaction",
+          "No history of recent drug use or food ingestion",
+          "No history of recent stress test",
+          "No history of recent surgery or procedure"
+        ],
+        "modalities": [
+          "text"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 3,
+        "query_text": "Abdominal pain with syncope during straining; basophilia not confirmed; missing CBC, cardiac enzymes, and imaging; avoid premature diagnosis; prioritize targeted labs and imaging before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"constipation, diarrhea with mucus, abdominal cramping, syncope, and ankle fracture in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"constipation, diarrhea with mucus, abdominal cramping, syncope, and ankle fracture in elderly female\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 4,
+      "case_memory": {
+        "problem_summary": "67 yo woman with past medical history of endometrial adenocarcinoma s/p TAH BSO and hypothyroidism, presenting with constipation, diarrhea with mucus, cramping abdominal pain, lightheadedness, syncope, and right ankle fracture.",
+        "current_turn": "turn_4: [Document 1] (ID: 21818_3, Score: 0.850)\n- Age factor: Mostly seen in middle-age and older adult population.\n\n- Gender: Females are more likely to have fecal incontinence when compared to men. The major risk factor being the complications d",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [
+          "CBC with differential (to check for basophilia)",
+          "Bone marrow biopsy (if basophilia confirmed)",
+          "Genetic testing for myeloproliferative neoplasms",
+          "Ultrasound of spleen",
+          "CT abdomen/pelvis (to evaluate for bowel obstruction, diverticulitis, or other abdominal pathology)",
+          "Stool studies (to evaluate for infection or inflammatory bowel disease)",
+          "Colonoscopy (to evaluate for colitis or malignancy)",
+          "Stress test (as planned by patient)",
+          "Cardiac enzymes (to evaluate for myocardial infarction)",
+          "Electrolytes and renal function (to evaluate for dehydration or electrolyte imbalance)"
+        ],
+        "active_hypotheses": [
+          "Diverticulitis",
+          "Irritable bowel syndrome (IBS)",
+          "Colitis",
+          "Bowel obstruction",
+          "Chronic myeloid leukemia (CML) or other myeloproliferative neoplasm (if basophilia confirmed)",
+          "Mast cell activation syndrome (MCAS)",
+          "Inflammatory bowel disease (IBD)",
+          "Infection (e.g., tuberculosis, influenza)",
+          "Autoimmune disease",
+          "Drug-induced basophilia"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "No basophilia lab result available",
+          "Cramping pain worsens with straining during bowel movements",
+          "Syncope associated with straining",
+          "Ankle fracture occurred during syncope episode",
+          "No blood in stool or toilet bowl"
+        ],
+        "recent_negative_evidence": [
+          "No history of recent infection or allergic reaction",
+          "No history of recent drug use or food ingestion",
+          "No history of recent stress test",
+          "No history of recent surgery or procedure",
+          "{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "modalities": [
+          "text"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 4,
+        "query_text": "Abdominal pain with syncope during straining; basophilia not confirmed; missing CBC, cardiac enzymes, and CT abdomen; avoid premature diagnosis; need targeted labs and imaging before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
       }
     }
   ]

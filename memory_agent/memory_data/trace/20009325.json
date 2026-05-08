@@ -1,0 +1,289 @@
+{
+  "schema": "memory_trace.memory_only.v2",
+  "case_id": "20009325",
+  "turns": [
+    {
+      "case_id": "20009325",
+      "turn_id": 1,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+        "current_turn": "turn_1: 20009325 13889335 20009325 2143-02-20 16:43:00 2143-02-24 13:22:00 OBSERVATION ADMIT CLINIC REFERRAL 2143-02-20 16:43:00 2143-02-20 17:47:00 M 69 English WHITE MARRIED Medicare Assess and diagnose the 69-year-old male patient based on the a",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acquired coagulation factor deficiency"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+          "Acquired coagulation factor deficiency"
+        ],
+        "recent_negative_evidence": [
+          "Von Willebrand disease (VWD) is a type of blood-clotting disorder. It is the most common hereditary coagulopathy in humans, affecting 1% of the population. An acquired form of VWD can sometimes result from other medical conditions. Most people with VWD have no symptoms. Those that do usually have bl",
+          "Basic tests performed in any patient with bleeding problems are a complete blood count-CBC (especially platelet counts), activated partial thromboplastin time-APTT, prothrombin time with International Normalized Ratio-PTINR, thrombin time-TT, and fibrinogen level. Patients with abnormal tests typica",
+          "Activated protein C resistance (APCR) is a hypercoagulability (an increased tendency of the blood to clot) characterized by a lack of a response to activated protein C (APC), which normally helps prevent blood from clotting excessively. This results in an increased risk of venous thrombosis (blood c",
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20009325"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 1,
+        "query_text": "Acquired coagulation factor deficiency with high finalize risk; missing imaging and lab confirmation; avoid premature closure; need targeted evidence before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 2,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+        "current_turn": "turn_2: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acquired coagulation factor deficiency"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "WHITE",
+          "MARRIED",
+          "Medicare",
+          "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+          "Acquired coagulation factor deficiency"
+        ],
+        "recent_negative_evidence": [
+          "Von Willebrand disease (VWD) is a type of blood-clotting disorder. It is the most common hereditary coagulopathy in humans, affecting 1% of the population. An acquired form of VWD can sometimes result from other medical conditions. Most people with VWD have no symptoms. Those that do usually have bl",
+          "Basic tests performed in any patient with bleeding problems are a complete blood count-CBC (especially platelet counts), activated partial thromboplastin time-APTT, prothrombin time with International Normalized Ratio-PTINR, thrombin time-TT, and fibrinogen level. Patients with abnormal tests typica",
+          "Activated protein C resistance (APCR) is a hypercoagulability (an increased tendency of the blood to clot) characterized by a lack of a response to activated protein C (APC), which normally helps prevent blood from clotting excessively. This results in an increased risk of venous thrombosis (blood c",
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20009325"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 2,
+        "query_text": "Acquired coagulation factor deficiency with no new clinical findings; high finalize risk due to lack of supporting lab or imaging; need memory about targeted diagnostic next steps before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, weight loss, or unusual fatigue lately?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, weight loss, or unusual fatigue lately?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 3,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+        "current_turn": "turn_3: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acquired coagulation factor deficiency"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "WHITE",
+          "MARRIED",
+          "Medicare",
+          "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+          "Acquired coagulation factor deficiency"
+        ],
+        "recent_negative_evidence": [
+          "Von Willebrand disease (VWD) is a type of blood-clotting disorder. It is the most common hereditary coagulopathy in humans, affecting 1% of the population. An acquired form of VWD can sometimes result from other medical conditions. Most people with VWD have no symptoms. Those that do usually have bl",
+          "Basic tests performed in any patient with bleeding problems are a complete blood count-CBC (especially platelet counts), activated partial thromboplastin time-APTT, prothrombin time with International Normalized Ratio-PTINR, thrombin time-TT, and fibrinogen level. Patients with abnormal tests typica",
+          "Activated protein C resistance (APCR) is a hypercoagulability (an increased tendency of the blood to clot) characterized by a lack of a response to activated protein C (APC), which normally helps prevent blood from clotting excessively. This results in an increased risk of venous thrombosis (blood c",
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20009325"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 3,
+        "query_text": "Acquired coagulation factor deficiency with no new clinical findings; high finalize risk due to lack of supporting lab or imaging; need memory about targeted lab review before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 4,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+        "current_turn": "turn_4: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acquired coagulation factor deficiency"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "WHITE",
+          "MARRIED",
+          "Medicare",
+          "Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+          "Acquired coagulation factor deficiency"
+        ],
+        "recent_negative_evidence": [
+          "Von Willebrand disease (VWD) is a type of blood-clotting disorder. It is the most common hereditary coagulopathy in humans, affecting 1% of the population. An acquired form of VWD can sometimes result from other medical conditions. Most people with VWD have no symptoms. Those that do usually have bl",
+          "Basic tests performed in any patient with bleeding problems are a complete blood count-CBC (especially platelet counts), activated partial thromboplastin time-APTT, prothrombin time with International Normalized Ratio-PTINR, thrombin time-TT, and fibrinogen level. Patients with abnormal tests typica",
+          "Activated protein C resistance (APCR) is a hypercoagulability (an increased tendency of the blood to clot) characterized by a lack of a response to activated protein C (APC), which normally helps prevent blood from clotting excessively. This results in an increased risk of venous thrombosis (blood c",
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20009325"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 4,
+        "query_text": "Acquired coagulation factor deficiency with no new clinical findings; high finalize risk due to lack of supporting lab or imaging; need memory about targeted lab review before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      }
+    }
+  ]
+}
