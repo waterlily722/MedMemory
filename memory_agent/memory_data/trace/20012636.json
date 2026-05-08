@@ -1,0 +1,70 @@
+{
+  "schema": "memory_trace.memory_only.v2",
+  "case_id": "20012636",
+  "turns": [
+    {
+      "case_id": "20012636",
+      "turn_id": 1,
+      "case_memory": {
+        "problem_summary": "Assess and diagnose the 27-year-old female patient based on the available clinical presentation.",
+        "current_turn": "turn_1: 20012636 18628876 20012636 2172-03-04 16:55:00 2172-03-07 12:30:00 EW EMER. EMERGENCY ROOM 2172-03-04 16:55:00 2172-03-04 17:00:00 F 27 English WHITE MARRIED Private Assess and diagnose the 27-year-old female patient based on the available",
+        "local_goal": "collect_missing_critical_info",
+        "missing_info": [],
+        "active_hypotheses": [
+          "Acute paronychia due to bacterial infection (e.g., Staphylococcus aureus)"
+        ],
+        "finalize_risk": "high",
+        "recent_key_evidence": [
+          "I am a 27-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 27-year-old female patient based on the available clinical presentation..",
+          "medical",
+          "judge_agent",
+          "http://127.0.0.1:30002/v1",
+          "None"
+        ],
+        "recent_negative_evidence": [
+          "/oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20012636"
+        ],
+        "modalities": [
+          "text",
+          "lab"
+        ],
+        "reviewed_modalities": [
+          "lab"
+        ]
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 1,
+        "query_text": "Acute paronychia suspected; awaiting physical exam or lab confirmation for acute vs. chronic; finalize risk high; need memory about targeted questions before diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "applied_memory_ids": [],
+        "ignored_memory_ids": [],
+        "memory_assessments": [],
+        "recommended_actions": [],
+        "discouraged_actions": [],
+        "blocked_actions": [],
+        "used_memory_ids": [],
+        "warning_memory_ids": [],
+        "risk_warning": "",
+        "why_not_finalize": "",
+        "rationale": ""
+      }
+    }
+  ]
+}

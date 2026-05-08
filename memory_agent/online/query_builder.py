@@ -12,14 +12,23 @@ def _join(values: list[Any], limit: int = 6) -> str:
     return "; ".join(cleaned)
 
 
-def _tail(values: list[Any], limit: int = 5) -> list[str]:
-    cleaned = [str(value).strip() for value in values or [] if str(value).strip()]
-    return cleaned[-limit:]
-
-
 def _latest_turn_text(history: str) -> str:
     parts = [part.strip() for part in str(history or "").split(" | ") if part.strip()]
     return parts[-1] if parts else ""
+
+
+def _exclude_current_turn(values: list[Any], current_turn: str, limit: int = 5) -> list[str]:
+    """Keep recent evidence that is not just the current turn repeated."""
+    current = str(current_turn or "")
+    cleaned: list[str] = []
+    for value in values or []:
+        text = str(value).strip()
+        if not text:
+            continue
+        if text[:80] and text[:80] in current:
+            continue
+        cleaned.append(text)
+    return cleaned[-limit:]
 
 
 def case_memory_for_query(case_state: CaseState) -> dict[str, Any]:
@@ -28,13 +37,14 @@ def case_memory_for_query(case_state: CaseState) -> dict[str, Any]:
     This intentionally avoids the full cumulative interaction history so each
     turn query reflects the current state without repeating every prior turn.
     """
+    current_turn = _latest_turn_text(case_state.interaction_history_summary)
     return {
         "case_id": case_state.case_id,
         "turn_id": case_state.turn_id,
         "problem_summary": case_state.problem_summary,
-        "current_turn": _latest_turn_text(case_state.interaction_history_summary),
-        "recent_key_evidence": _tail(case_state.key_evidence, 5),
-        "recent_negative_evidence": _tail(case_state.negative_evidence, 5),
+        "current_turn": current_turn,
+        "recent_key_evidence": _exclude_current_turn(case_state.key_evidence, current_turn, 5),
+        "recent_negative_evidence": _exclude_current_turn(case_state.negative_evidence, current_turn, 5),
         "missing_info": list(case_state.missing_info or [])[:10],
         "active_hypotheses": list(case_state.active_hypotheses or [])[:8],
         "local_goal": case_state.local_goal,

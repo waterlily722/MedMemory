@@ -54,13 +54,22 @@ def _get(d: dict[str, Any] | None, key: str, default: Any = None) -> Any:
     return (d or {}).get(key, default)
 
 
-def _tail(values: list[Any], limit: int = 5) -> list[Any]:
-    return list(values or [])[-limit:]
-
-
 def _latest_turn_text(history: str) -> str:
     parts = [part.strip() for part in str(history or "").split(" | ") if part.strip()]
     return parts[-1] if parts else ""
+
+
+def _exclude_current_turn(values: list[Any], current_turn: str, limit: int = 5) -> list[Any]:
+    current = str(current_turn or "")
+    cleaned: list[Any] = []
+    for value in values or []:
+        text = str(value).strip()
+        if not text:
+            continue
+        if text[:80] and text[:80] in current:
+            continue
+        cleaned.append(value)
+    return cleaned[-limit:]
 
 
 # -----------------------------------------------------------------------------
@@ -71,15 +80,16 @@ def _latest_turn_text(history: str) -> str:
 def _case_view(case_state: dict[str, Any] | None) -> dict[str, Any]:
     """Only keep fields needed to understand why query/guidance changed."""
     c = case_state or {}
+    current_turn = _latest_turn_text(c.get("interaction_history_summary") or "")
     return {
         "problem_summary": _clip(c.get("problem_summary")),
-        "current_turn": _clip(_latest_turn_text(c.get("interaction_history_summary") or "")),
+        "current_turn": _clip(current_turn),
         "local_goal": c.get("local_goal"),
         "missing_info": c.get("missing_info") or [],
         "active_hypotheses": c.get("active_hypotheses") or [],
         "finalize_risk": c.get("finalize_risk"),
-        "recent_key_evidence": [_clip(x) for x in _tail(c.get("key_evidence") or [], 5)],
-        "recent_negative_evidence": [_clip(x) for x in _tail(c.get("negative_evidence") or [], 5)],
+        "recent_key_evidence": [_clip(x) for x in _exclude_current_turn(c.get("key_evidence") or [], current_turn, 5)],
+        "recent_negative_evidence": [_clip(x) for x in _exclude_current_turn(c.get("negative_evidence") or [], current_turn, 5)],
         "modalities": c.get("modality_flags") or [],
         "reviewed_modalities": c.get("reviewed_modalities") or [],
     }
