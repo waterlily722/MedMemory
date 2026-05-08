@@ -6,6 +6,18 @@ QUERY_BUILDER_SCHEMA = {
     "dict_fields": [],
 }
 
+CASE_MEMORY_SCHEMA = {
+    "required": [
+        "case_id",
+        "turn_id",
+        "chief_complaint",
+        "current_turn_information",
+        "prior_information_summary",
+    ],
+    "list_fields": ["current_turn_information"],
+    "dict_fields": [],
+}
+
 APPLICABILITY_SCHEMA = {
     "required": [
         "memory_id",

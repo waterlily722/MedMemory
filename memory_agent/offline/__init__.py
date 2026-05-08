@@ -3,7 +3,7 @@ from __future__ import annotations
 from .episode_distiller import distill_from_trajectory
 from .experience_extractor import (
     extract_experiences,
-    select_high_value_turns,
+    select_episode_turns,
 )
 from .experience_merger import (
     decide_merge_llm,
@@ -16,7 +16,7 @@ from .skill_consolidator import consolidate_skills_from_store
 __all__ = [
     "distill_from_trajectory",
     "extract_experiences",
-    "select_high_value_turns",
+    "select_episode_turns",
     "decide_merge_rule",
     "decide_merge_llm",
     "merge_experience",

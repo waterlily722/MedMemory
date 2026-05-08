@@ -253,32 +253,7 @@ def _llm_memory_assessment(
 
 
 def _hard_block_actions(case_state: CaseState) -> tuple[list[str], str]:
-    blocked: list[str] = []
-    warnings: list[str] = []
-
-    warning_text = APPLICABILITY_CONFIG.get("risk_warning_text", {})
-
-    if (
-        APPLICABILITY_CONFIG.get("hard_block_finalize_on_high_risk", True)
-        and case_state.finalize_risk == "high"
-    ):
-        blocked.append(FINALIZE_ACTION)
-        warnings.append(str(warning_text.get("high_finalize_risk", "finalize_risk is high")))
-
-    missing_info_min = int(APPLICABILITY_CONFIG.get("hard_block_finalize_missing_info_min", 3))
-    if missing_info_min > 0 and len(case_state.missing_info) >= missing_info_min:
-        if FINALIZE_ACTION not in blocked:
-            blocked.append(FINALIZE_ACTION)
-        warnings.append(str(warning_text.get("missing_info", "multiple critical missing information slots remain unresolved")))
-
-    if (
-        APPLICABILITY_CONFIG.get("image_unreviewed_warning", True)
-        and "image" in case_state.modality_flags
-        and "image" not in case_state.reviewed_modalities
-    ):
-        warnings.append(str(warning_text.get("image_unreviewed", "image modality is available but not yet reviewed")))
-
-    return blocked, "; ".join(warnings)
+    return [], ""
 
 
 def _aggregate_action_assessments(

@@ -18,8 +18,11 @@ from memory_agent.schemas import (
     CaseState,
     MemoryQuery,
     MemoryRetrievalResult,
+    RetrievalHit,
     ExperienceCard,
     OutcomeType,
+    ApplicabilityResult,
+    MemoryApplicabilityAssessment,
 )
 from memory_agent.online.case_updater import (
     init_case_state,
@@ -49,9 +52,7 @@ from memory_agent.offline.experience_merger import (
 )
 from memory_agent.offline.episode_distiller import distill_from_trajectory, _to_dict_record
 from memory_agent.offline.experience_extractor import (
-    select_high_value_turns,
-    _is_high_value_turn,
-    _turn_priority,
+    select_episode_turns,
 )
 from memory_agent.offline.skill_consolidator import (
     _is_positive,
@@ -77,8 +78,8 @@ def test_init_case_state():
     }
     cs = init_case_state(bundle)
     assert cs.case_id == "c001"
-    assert "chest pain" in cs.problem_summary
-    assert cs.finalize_risk == "high"
+    assert "chest pain" in cs.chief_complaint
+    assert cs.acquired_information == []
     assert cs.turn_id == 0
 
 
@@ -86,14 +87,14 @@ def test_init_case_state_empty():
     cs = init_case_state({})
     assert cs.case_id == ""
     assert cs.turn_id == 0
-    assert cs.problem_summary
+    assert cs.chief_complaint == ""
 
 
 def test_update_case_state_rule():
-    prev = CaseState(case_id="c001", turn_id=0, problem_summary="chest pain")
+    prev = CaseState(case_id="c001", turn_id=0, chief_complaint="chest pain")
     updated = update_case_state_rule(prev, {"question": "I have chest pain"})
     assert updated.turn_id == 1
-    assert len(updated.key_evidence) > 0
+    assert len(updated.acquired_information) > 0
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -104,16 +105,16 @@ def test_build_memory_query_rule():
     cs = CaseState(
         case_id="c001",
         turn_id=2,
-        problem_summary="chest pain",
-        key_evidence=["ECG normal"],
-        missing_info=["troponin"],
-        finalize_risk="high",
+        chief_complaint="chest pain",
+        acquired_information=[
+            {"turn_id": 1, "source_path": "observation.question", "content": "chest pain"},
+            {"turn_id": 2, "source_path": "observation.tool_outputs.ecg", "content": "ECG normal"},
+        ],
     )
     mq = build_memory_query_rule(cs)
     assert mq.case_id == "c001"
     assert "chest pain" in mq.query_text
     assert "ECG normal" in mq.query_text
-    assert "troponin" in mq.query_text
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -151,19 +152,19 @@ def test_memory_to_text_experience():
 # ═══════════════════════════════════════════════════════════════════════
 
 def test_hard_block_actions_high_risk():
-    cs = CaseState(case_id="c001", finalize_risk="high", missing_info=["a", "b", "c"])
+    cs = CaseState(case_id="c001")
     blocked, warning = _hard_block_actions(cs)
-    assert "FINALIZE_DIAGNOSIS" in blocked
+    assert "FINALIZE_DIAGNOSIS" not in blocked
 
 
 def test_hard_block_actions_low_risk():
-    cs = CaseState(case_id="c001", finalize_risk="low", missing_info=[])
+    cs = CaseState(case_id="c001")
     blocked, warning = _hard_block_actions(cs)
     assert "FINALIZE_DIAGNOSIS" not in blocked
 
 
 def test_apply_applicability_control_no_memories():
-    cs = CaseState(case_id="c001", finalize_risk="medium")
+    cs = CaseState(case_id="c001")
     mq = MemoryQuery(case_id="c001", query_text="chest pain")
     result = MemoryRetrievalResult()
     ar = apply_applicability_control(cs, mq, result, mode="rule")
@@ -200,28 +201,26 @@ def test_decide_merge_rule_insert_new():
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# High value turn selection
+# Episode turn selection
 # ═══════════════════════════════════════════════════════════════════════
 
-def test_select_high_value_turns_high_reward():
+def test_select_episode_turns_keeps_failed_turns():
     turns = [
         {"reward": 1.0, "selected_action": {}, "env_info": {}},
         {"reward": 0.0, "selected_action": {}, "env_info": {}},
     ]
-    selected = select_high_value_turns(turns, limit=5)
-    assert len(selected) == 1
+    selected = select_episode_turns(turns, limit=5)
+    assert len(selected) == 2
 
 
-def test_select_high_value_turns_blocked_action():
+def test_select_episode_turns_applies_limit_from_end():
     turns = [
-        {
-            "reward": 0.0,
-            "selected_action": {"blocked_by_memory": True},
-            "env_info": {},
-        },
+        {"turn_id": 1},
+        {"turn_id": 2},
+        {"turn_id": 3},
     ]
-    selected = select_high_value_turns(turns, limit=5)
-    assert len(selected) == 1
+    selected = select_episode_turns(turns, limit=2)
+    assert [turn["turn_id"] for turn in selected] == [2, 3]
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -253,15 +252,32 @@ def test_guidance_to_text_empty():
 
 
 def test_guidance_to_text_with_content():
-    from memory_agent.schemas import MemoryGuidance, ApplicabilityResult, ActionAssessment
+    from memory_agent.schemas import MemoryGuidance
     result = ApplicabilityResult(
-        hard_blocked_actions=["FINALIZE_DIAGNOSIS"],
-        action_assessments=[
-            ActionAssessment(action_type="ASK", score_delta=0.5),
+        memory_assessments=[
+            MemoryApplicabilityAssessment(
+                memory_id="m1",
+                memory_type="experience",
+                decision="apply",
+            ),
         ],
-        risk_warning="high finalize risk",
     )
-    guidance = build_memory_guidance(result)
+    retrieval = MemoryRetrievalResult(
+        positive_experience_hits=[
+            RetrievalHit(
+                memory_id="m1",
+                memory_type="experience",
+                score=0.9,
+                content={
+                    "situation_text": "acute chest pain",
+                    "action_text": "ask onset and exertional trigger",
+                    "outcome_text": "prior case improved differential",
+                },
+            )
+        ]
+    )
+    guidance = build_memory_guidance(result, retrieval)
     text = guidance_to_text(guidance)
-    assert "ASK" in text
-    assert "FINALIZE_DIAGNOSIS" in text
+    assert "acute chest pain" in text
+    assert "ask onset" in text
+    assert "m1" in text

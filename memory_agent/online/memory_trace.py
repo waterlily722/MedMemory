@@ -6,7 +6,6 @@ from typing import Any
 
 from ..schemas import (
     ApplicabilityResult,
-    CaseState,
     MemoryGuidance,
     MemoryQuery,
     MemoryRetrievalResult,
@@ -14,7 +13,7 @@ from ..schemas import (
 from ..utils.config import TRACE_CONFIG
 
 
-TRACE_SCHEMA = "memory_trace.memory_only.v2"
+TRACE_SCHEMA = "memory_trace.memory_only.v3"
 HIT_GROUPS = (
     "positive_experience_hits",
     "negative_experience_hits",
@@ -47,6 +46,8 @@ def _clip(x: Any, max_chars: int | None = None) -> Any:
         return x
     text = str(x)
     limit = max_chars or int(_cfg("max_text_chars", 600))
+    if limit <= 0:
+        return text
     return text if len(text) <= limit else text[:limit] + "...[truncated]"
 
 
@@ -54,44 +55,20 @@ def _get(d: dict[str, Any] | None, key: str, default: Any = None) -> Any:
     return (d or {}).get(key, default)
 
 
-def _latest_turn_text(history: str) -> str:
-    parts = [part.strip() for part in str(history or "").split(" | ") if part.strip()]
-    return parts[-1] if parts else ""
-
-
-def _exclude_current_turn(values: list[Any], current_turn: str, limit: int = 5) -> list[Any]:
-    current = str(current_turn or "")
-    cleaned: list[Any] = []
-    for value in values or []:
-        text = str(value).strip()
-        if not text:
-            continue
-        if text[:80] and text[:80] in current:
-            continue
-        cleaned.append(value)
-    return cleaned[-limit:]
-
-
 # -----------------------------------------------------------------------------
 # Compact views
 # -----------------------------------------------------------------------------
 
 
-def _case_view(case_state: dict[str, Any] | None) -> dict[str, Any]:
+def _case_memory_view(case_memory: dict[str, Any] | None) -> dict[str, Any]:
     """Only keep fields needed to understand why query/guidance changed."""
-    c = case_state or {}
-    current_turn = _latest_turn_text(c.get("interaction_history_summary") or "")
+    compact = case_memory or {}
     return {
-        "problem_summary": _clip(c.get("problem_summary")),
-        "current_turn": _clip(current_turn),
-        "local_goal": c.get("local_goal"),
-        "missing_info": c.get("missing_info") or [],
-        "active_hypotheses": c.get("active_hypotheses") or [],
-        "finalize_risk": c.get("finalize_risk"),
-        "recent_key_evidence": [_clip(x) for x in _exclude_current_turn(c.get("key_evidence") or [], current_turn, 5)],
-        "recent_negative_evidence": [_clip(x) for x in _exclude_current_turn(c.get("negative_evidence") or [], current_turn, 5)],
-        "modalities": c.get("modality_flags") or [],
-        "reviewed_modalities": c.get("reviewed_modalities") or [],
+        "chief_complaint": _clip(compact.get("chief_complaint")),
+        "current_turn_information": [
+            _clip(x) for x in compact.get("current_turn_information") or []
+        ],
+        "prior_information_summary": _clip(compact.get("prior_information_summary")),
     }
 
 
@@ -194,24 +171,10 @@ def _selection_guidance_view(
         for item in assessments
         if item.get("decision") == "apply" and item.get("memory_id")
     ]
-    ignored = [
-        item.get("memory_id")
-        for item in assessments
-        if item.get("decision") == "ignore" and item.get("memory_id")
-    ]
     return {
         "mode": (app_debug or {}).get("mode"),
-        "applied_memory_ids": applied,
-        "ignored_memory_ids": ignored,
-        "memory_assessments": assessments,
-        "recommended_actions": guidance.get("recommended_actions") or [],
-        "discouraged_actions": guidance.get("discouraged_actions") or [],
-        "blocked_actions": guidance.get("blocked_actions") or app.get("hard_blocked_actions") or [],
-        "used_memory_ids": guidance.get("used_memory_ids") or applied,
-        "warning_memory_ids": guidance.get("warning_memory_ids") or [],
-        "risk_warning": guidance.get("risk_warning") or app.get("risk_warning") or "",
-        "why_not_finalize": guidance.get("why_not_finalize") or "",
-        "rationale": guidance.get("rationale") or "",
+        "selected_memory_ids": applied,
+        "selected_memories": guidance.get("selected_memories") or [],
     }
 
 
@@ -221,7 +184,7 @@ def _selection_guidance_view(
 
 
 def build_trace_payload(
-    case_state: CaseState,
+    case_state: Any,
     memory_query: MemoryQuery,
     retrieval_result: MemoryRetrievalResult,
     applicability_result: ApplicabilityResult,
@@ -245,7 +208,7 @@ def build_trace_payload(
         "memory_guidance": memory_guidance.to_dict(),
         "selected_action": selected_action or {},
         "memory_debug": memory_debug or {},
-        "blocked_actions": list(memory_guidance.blocked_actions),
+        "blocked_actions": [],
     }
 
 
@@ -263,8 +226,6 @@ def compact_turn_record(turn_record: dict[str, Any] | Any) -> dict[str, Any]:
     r = _to_dict(turn_record)
     d = r.get("memory_debug") or {}
 
-    case_dbg = d.get("case_state_update") or {}
-    case_builder_dbg = case_dbg.get("current_turn_update") or case_dbg
     query_dbg = d.get("query_builder") or {}
     retrieval_dbg = d.get("retrieval") or {}
     app_dbg = d.get("applicability") or {}
@@ -277,11 +238,7 @@ def compact_turn_record(turn_record: dict[str, Any] | Any) -> dict[str, Any]:
     out = {
         "case_id": r.get("case_id"),
         "turn_id": r.get("turn_id"),
-        "case_memory": _case_view(
-            case_dbg.get("final_case_state")
-            or case_builder_dbg.get("final_case_state")
-            or r.get("case_state")
-        ),
+        "case_memory": _case_memory_view(query_dbg.get("final_case_memory") or query_dbg.get("case_memory")),
         "query": query_dbg.get("final_query") or r.get("memory_query") or {},
         "retrieval": _retrieval_view(retrieval_result),
         "selection_guidance": _selection_guidance_view(final_app, final_guidance, app_dbg),

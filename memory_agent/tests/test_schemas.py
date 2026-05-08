@@ -101,7 +101,7 @@ def test_serializable_mixin_from_dict_none():
 
 def test_serializable_mixin_nested():
     """TurnRecord with typed nested fields serializes correctly."""
-    cs = CaseState(case_id="case_001", problem_summary="chest pain")
+    cs = CaseState(case_id="case_001", chief_complaint="chest pain")
     tr = TurnRecord(
         episode_id="ep_001",
         case_id="case_001",
@@ -111,7 +111,7 @@ def test_serializable_mixin_nested():
     d = tr.to_dict()
     assert d["episode_id"] == "ep_001"
     assert d["case_state"]["case_id"] == "case_001"
-    assert d["case_state"]["problem_summary"] == "chest pain"
+    assert d["case_state"]["chief_complaint"] == "chest pain"
 
 
 def test_memory_retrieval_result_custom_from_dict():
@@ -149,27 +149,25 @@ def test_applicability_result_custom_from_dict():
 # ═══════════════════════════════════════════════════════════════════════
 
 def test_case_state_creation():
-    cs = CaseState(case_id="c001", turn_id=0, problem_summary="chest pain")
+    cs = CaseState(case_id="c001", turn_id=0, chief_complaint="chest pain")
     assert cs.case_id == "c001"
-    assert cs.finalize_risk == "high"
-    assert cs.modality_flags == []
+    assert cs.acquired_information == []
+    assert cs.chief_complaint == "chest pain"
 
 
 def test_case_state_roundtrip():
     cs = CaseState(
         case_id="c001",
         turn_id=3,
-        problem_summary="shortness of breath",
-        key_evidence=["low O2 sat", "cough"],
-        active_hypotheses=["pneumonia", "COPD"],
-        finalize_risk="medium",
-        modality_flags=["text", "lab", "image"],
+        chief_complaint="shortness of breath",
+        acquired_information=[
+            {"turn_id": 1, "source_path": "observation.question", "content": "cough"}
+        ],
     )
     d = cs.to_dict()
     restored = CaseState.from_dict(d)
-    assert restored.key_evidence == ["low O2 sat", "cough"]
-    assert restored.finalize_risk == "medium"
-    assert restored.modality_flags == ["text", "lab", "image"]
+    assert restored.acquired_information[0]["content"] == "cough"
+    assert restored.chief_complaint == "shortness of breath"
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -187,9 +185,13 @@ def test_memory_query():
 
 def test_memory_guidance():
     mg = MemoryGuidance(
-        recommended_actions=["ASK", "REQUEST_LAB"],
-        blocked_actions=["FINALIZE_DIAGNOSIS"],
-        rationale="missing critical info",
+        selected_memories=[
+            {
+                "memory_id": "m1",
+                "memory_type": "experience",
+                "content": {"situation": "chest pain", "action": "ask duration"},
+            }
+        ],
     )
-    assert mg.recommended_actions == ["ASK", "REQUEST_LAB"]
-    assert "FINALIZE_DIAGNOSIS" in mg.blocked_actions
+    assert mg.selected_memories[0]["memory_id"] == "m1"
+    assert mg.selected_memories[0]["content"]["situation"] == "chest pain"

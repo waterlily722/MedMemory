@@ -158,7 +158,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
     def __init__(
         self,
         *args: Any,
-        case_update_mode: str = "llm",
+        case_update_mode: str = "observed",
         query_builder_mode: str = "llm",
         applicability_mode: str = "llm",
         experience_extraction_mode: str = "llm",
@@ -433,7 +433,10 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             debug=memory_debug.get("applicability") if memory_debug is not None else None,
             strict=self.strict_memory_errors,
         )
-        self.latest_guidance = build_memory_guidance(self.latest_applicability)
+        self.latest_guidance = build_memory_guidance(
+            self.latest_applicability,
+            self.latest_retrieval,
+        )
         if memory_debug is not None:
             memory_debug["guidance"] = {
                 "structured": self.latest_guidance.to_dict(),
@@ -661,20 +664,14 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         return "UPDATE_HYPOTHESIS"
 
     def _is_action_blocked(self, action_type: str) -> bool:
-        if not action_type or self.latest_guidance is None:
-            return False
-        return action_type in set(self.latest_guidance.blocked_actions)
+        return False
 
     def _rewrite_blocked_output(self, model_output: Any, action_type: str) -> Any:
         warning = {
             "blocked_by_memory": True,
             "blocked_action_type": action_type,
             "replacement_action_type": "UPDATE_HYPOTHESIS",
-            "reason": (
-                self.latest_guidance.why_not_finalize
-                if self.latest_guidance
-                else "blocked by memory guidance"
-            ),
+            "reason": "blocked by memory guidance",
         }
         if isinstance(model_output, dict):
             rewritten = copy.deepcopy(model_output)

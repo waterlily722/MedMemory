@@ -5,6 +5,7 @@ from typing import Any
 
 from .schemas import (
     APPLICABILITY_SCHEMA,
+    CASE_MEMORY_SCHEMA,
     EXPERIENCE_EXTRACTION_SCHEMA,
     EXPERIENCE_MERGE_SCHEMA,
     QUERY_BUILDER_SCHEMA,
@@ -35,9 +36,10 @@ Task:
 Create one compact query_text for retrieving useful memories at the current diagnostic step.
 
 The input contains compact case_memory, not the full transcript:
-- current_turn is the newly exposed information for this turn.
-- recent_key_evidence and recent_negative_evidence are prior compact state.
-- Build the query from current_turn plus the current case state.
+- chief_complaint is the original chief complaint.
+- current_turn_information is the newly exposed information for this turn.
+- prior_information_summary is an LLM summary of earlier exposed information.
+- Build the query from CaseMemory, not raw CaseState.
 - Do not reconstruct or repeat the whole interaction history.
 
 The query should represent what an experienced doctor would want to remember right now,
@@ -45,11 +47,9 @@ not merely the suspected diagnosis.
 
 Think clinically:
 1. What is the current patient problem representation?
-2. What uncertainty is still unresolved?
-3. What evidence has already been checked?
-4. What evidence is still missing or unreviewed?
-5. What is the most valuable next action?
-6. What diagnostic mistake should be avoided?
+2. What new information matters this turn?
+3. What prior information is relevant for memory search?
+4. What is the most valuable next action or reusable memory need?
 
 The query should retrieve memories about:
 - useful next-step decisions
@@ -81,12 +81,55 @@ Bad query examples:
 
 Rules:
 - query_text should contain 2-4 short clinical clauses.
-- Include image, CXR, lab, or multimodal status when clinically relevant.
+- Include image, CXR, lab, or multimodal status only when it appears in CaseMemory.
 - Mention FINALIZE_DIAGNOSIS only if the current issue is whether finalization is safe.
 - Prefer reusable reasoning needs over literal case details.
 
 Schema:
 {_dump(QUERY_BUILDER_SCHEMA)}
+
+Input:
+{_dump(payload)}
+""".strip()
+
+
+def case_memory_prompt(payload: dict[str, Any]) -> str:
+    return f"""
+You are a clinical case-memory extractor for a doctor agent.
+
+{STRICT_JSON_RULES}
+
+Task:
+Create a compact CaseMemory from CaseState.
+
+CaseState is a faithful ledger of information already exposed to the doctor agent.
+Do not add facts that are not in CaseState.
+Do not infer diagnoses, missing tests, risk labels, or hidden patient information.
+
+CaseMemory should contain:
+1. chief_complaint:
+   Copy the chief complaint from CaseState. Keep it concise.
+
+2. current_turn_information:
+   Include the important information exposed in the latest turn only.
+   Preserve concrete facts, tool results, patient answers, and exam outputs.
+   Do not summarize away values that may matter clinically.
+
+3. prior_information_summary:
+   Summarize information from earlier turns only.
+   This is not the current turn.
+   Keep it clinically useful and chronological enough to understand what the doctor already knows.
+   If there is no earlier information, use an empty string.
+
+Rules:
+- Use only CaseState.acquired_information.
+- Do not copy the entire raw ledger unless it is short.
+- Do not include patient identifiers.
+- Keep current_turn_information as a list of concise strings.
+- Return exactly the schema below.
+
+Schema:
+{_dump(CASE_MEMORY_SCHEMA)}
 
 Input:
 {_dump(payload)}
@@ -176,11 +219,14 @@ You are a clinical experience extractor for a medical memory system.
 {STRICT_JSON_RULES}
 
 Task:
-Extract 1 to 3 reusable ExperienceCards from selected high-value turns.
+Extract 1 to 3 reusable ExperienceCards from the complete episode turns.
 
 The goal is NOT to summarize the full case.
 The goal is to capture what a real doctor should remember from this interaction
 when facing a similar future diagnostic decision point.
+Use both successful and failed episodes. Failed trajectories can produce useful
+negative or cautionary experiences about premature closure, missed evidence, or
+low-value actions.
 
 Extract an experience only if it teaches one of:
 - a useful next-step decision

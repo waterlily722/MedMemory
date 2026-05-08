@@ -87,6 +87,12 @@ TRACE_CONFIG = {
     "include_llm_io": False,
     "include_prompt_payload": False,
     "include_applicability_debug": False,
-    "max_text_chars": 600,
+    "max_text_chars": 0,
     "max_hits_per_type": 5,
+}
+
+LLM_CONFIG = {
+    "experience_extraction_max_output_tokens": 1200,
+    "experience_extraction_max_turns": 10,
+    "experience_extraction_max_text_chars": 600,
 }

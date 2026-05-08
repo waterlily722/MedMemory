@@ -52,6 +52,17 @@ class LLMClient:
             )
             return "{}"
 
+        configured_max = os.getenv("MEMORY_LLM_MAX_OUTPUT_TOKENS")
+        if configured_max:
+            try:
+                max_tokens = min(max_tokens, max(1, int(configured_max)))
+            except ValueError:
+                logger.warning(
+                    "Invalid MEMORY_LLM_MAX_OUTPUT_TOKENS=%r; using max_tokens=%d",
+                    configured_max,
+                    max_tokens,
+                )
+
         payload = {
             "model": self.model,
             "messages": [
@@ -86,6 +97,18 @@ class LLMClient:
                 response_ctx = urllib.request.urlopen(request, timeout=self.timeout)
             with response_ctx as response:
                 raw = response.read().decode("utf-8")
+        except urllib.error.HTTPError as exc:
+            body = ""
+            try:
+                body = exc.read().decode("utf-8", errors="replace")
+            except Exception:
+                body = ""
+            logger.warning(
+                "LLMClient HTTP error: %s; response_body=%s",
+                exc,
+                body[:2000],
+            )
+            return "{}"
         except (urllib.error.URLError, TimeoutError, OSError) as exc:
             logger.warning("LLMClient HTTP error: %s", exc)
             return "{}"

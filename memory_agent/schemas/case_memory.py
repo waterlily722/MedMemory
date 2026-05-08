@@ -6,8 +6,9 @@ from .common import SerializableMixin
 
 
 @dataclass
-class CaseState(SerializableMixin):
+class CaseMemory(SerializableMixin):
     case_id: str
     turn_id: int = 0
     chief_complaint: str = ""
-    acquired_information: list[dict] = field(default_factory=list)
+    current_turn_information: list[str] = field(default_factory=list)
+    prior_information_summary: str = ""

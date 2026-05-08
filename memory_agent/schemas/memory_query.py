@@ -9,19 +9,18 @@ from .common import SerializableMixin
 class MemoryQuery(SerializableMixin):
     """Retrieval query for memory search.
 
-    ``query_text`` is a flat text string that bundles the following signals from
-    the current case state for embedding / cosine-similarity matching:
+    ``query_text`` is a flat text string built from CaseMemory for embedding /
+    cosine-similarity matching.
 
-    - Clinical situation overview & problem summary
-    - Local goal and diagnostic uncertainty
-    - Key positive and negative evidence
-    - Critical missing information
-    - Finalize risk level
+    - Chief complaint
+    - Current-turn information
+    - LLM summary of prior exposed information
     - Candidate next actions
 
     Construction:
-    - Rule mode (default): concatenates :class:`CaseState` fields into one text.
-    - LLM mode: asks the LLM to produce a concise query from CaseState fields.
+    - Rule mode: concatenates :class:`CaseMemory` fields into one text.
+    - LLM mode: first extracts CaseMemory from CaseState, then asks the LLM to
+      produce a concise retrieval query from CaseMemory.
 
     See :func:`online.query_builder.build_memory_query` for details.
     """

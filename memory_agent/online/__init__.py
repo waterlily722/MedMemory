@@ -10,6 +10,9 @@ from .case_updater import (
 from .memory_guidance import build_memory_guidance, guidance_to_text
 from .memory_trace import append_memory_trace, append_memory_turn_trace, build_trace_payload
 from .query_builder import (
+    build_case_memory,
+    build_case_memory_llm,
+    build_case_memory_rule,
     build_memory_query,
     build_memory_query_llm,
     build_memory_query_rule,
@@ -23,6 +26,9 @@ __all__ = [
     "update_case_state_rule",
     "update_case_state_llm",
     "build_memory_query",
+    "build_case_memory",
+    "build_case_memory_rule",
+    "build_case_memory_llm",
     "build_memory_query_rule",
     "build_memory_query_llm",
     "retrieve_multi_memory",

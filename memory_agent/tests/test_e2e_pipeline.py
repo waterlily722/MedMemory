@@ -42,16 +42,16 @@ def test_full_online_pipeline():
     }
     cs = init_case_state(bundle)
     assert cs.case_id == "e2e_001"
-    assert "chest pain" in cs.problem_summary
-    assert cs.finalize_risk == "high"
+    assert "chest pain" in cs.chief_complaint
+    assert cs.acquired_information == []
     assert cs.turn_id == 0
 
     # 2. Update CaseState from observation (like env after ask_patient)
     obs = {"question": "I have chest pain for 2 days, worse when exercising"}
     cs = update_case_state_rule(cs, obs)
     assert cs.turn_id == 1
-    assert len(cs.key_evidence) >= 1
-    assert any("chest pain" in ev for ev in cs.key_evidence)
+    assert len(cs.acquired_information) >= 1
+    assert any("chest pain" in item["content"] for item in cs.acquired_information)
 
     # 3. Build memory query
     mq = build_memory_query_rule(cs, candidate_actions=["ASK", "REQUEST_LAB"])
@@ -67,18 +67,16 @@ def test_full_online_pipeline():
         # 5. Applicability control
         ar = apply_applicability_control(cs, mq, result, mode="rule")
         assert isinstance(ar, ApplicabilityResult)
-        # HIGH finalize_risk → hard block FINALIZE_DIAGNOSIS
-        assert "FINALIZE_DIAGNOSIS" in ar.hard_blocked_actions
+        assert "FINALIZE_DIAGNOSIS" not in ar.hard_blocked_actions
 
         # 6. Build guidance
         guidance = build_memory_guidance(ar)
         assert isinstance(guidance, MemoryGuidance)
-        assert "FINALIZE_DIAGNOSIS" in guidance.blocked_actions
+        assert guidance.selected_memories == []
 
         # 7. Guidance to text
         text = guidance_to_text(guidance)
-        assert "Blocked" in text
-        assert "FINALIZE_DIAGNOSIS" in text
+        assert text == ""
 
     print("  ✓ Full online pipeline OK")
 
@@ -179,12 +177,12 @@ def test_distill_from_trajectory():
 
 
 def test_hard_block_rules():
-    """Test that finalize_risk=high blocks FINALIZE_DIAGNOSIS."""
-    cs = CaseState(case_id="test", finalize_risk="high", missing_info=["a", "b", "c"])
+    """CaseState no longer applies hard-coded clinical blocks."""
+    cs = CaseState(case_id="test")
     blocked, _ = _hard_block_actions(cs)
-    assert "FINALIZE_DIAGNOSIS" in blocked
+    assert "FINALIZE_DIAGNOSIS" not in blocked
 
-    cs2 = CaseState(case_id="test", finalize_risk="low", missing_info=[])
+    cs2 = CaseState(case_id="test")
     blocked2, _ = _hard_block_actions(cs2)
     assert "FINALIZE_DIAGNOSIS" not in blocked2
 
