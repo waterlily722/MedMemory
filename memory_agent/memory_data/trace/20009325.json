@@ -8,24 +8,118 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation."
+          "I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+          "Acquired coagulation factor deficiency",
+          "Von Willebrand disease",
+          "Activated protein C resistance",
+          "Antiphospholipid syndrome"
         ],
         "prior_information_summary": ""
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 1,
-        "query_text": "69-year-old male presenting with nonspecific systemic symptoms; need targeted history and exam before diagnostic decision; avoid premature closure"
+        "query_text": "69-year-old male with coagulation factor deficiency; consider von Willebrand, APC resistance, or antiphospholipid syndrome; need memory on targeted diagnostic next steps before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.2299,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2031,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.1958,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.1938,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -56,17 +150,118 @@
       "query": {
         "case_id": "20009325",
         "turn_id": 2,
-        "query_text": "No prior problems or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "No prior issues reported in current area; need memory about targeted history before imaging or lab decisions; avoid premature diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.3559,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.337,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_18df2d4ba080",
+              "type": "experience",
+              "score": 0.3362,
+              "outcome": "partial_success",
+              "situation": "When a patient presents with no specific symptoms but there is suspicion of coagulation factor deficiency, and no lab or imaging evidence is available, the doctor should avoid premature diagnosis and instead target a focused history for fatigue or weakness.",
+              "action": "Ask the patient about persistent fatigue, weakness, or lack of energy affecting daily activities, as this can be a key clue in coagulation disorders.",
+              "boundary": "Use this memory when no lab or imaging results are available and the patient reports no specific symptoms; do not use if lab results are pending or imaging is available and not yet reviewed.",
+              "tags": [
+                "fatigue",
+                "coagulation_factor_deficiency",
+                "targeted_history",
+                "missing_lab",
+                "missing_imaging",
+                "coagulation_disorder",
+                "broad_differential",
+                "weakness",
+                "coagulation_deficiency",
+                "nonspecific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_66d619260f4b",
+              "type": "experience",
+              "score": 0.3271,
+              "outcome": "success",
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3217,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -74,13 +269,135 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_c1b9cd65437a",
+          "exp_de56cfe5a213",
+          "exp_18df2d4ba080",
+          "exp_66d619260f4b",
+          "exp_1d1f58137abc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c1b9cd65437a",
+            "memory_type": "experience",
+            "score": 0.3559,
+            "content": {
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.337,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_18df2d4ba080",
+            "memory_type": "experience",
+            "score": 0.3362,
+            "content": {
+              "situation": "When a patient presents with no specific symptoms but there is suspicion of coagulation factor deficiency, and no lab or imaging evidence is available, the doctor should avoid premature diagnosis and instead target a focused history for fatigue or weakness.",
+              "action": "Ask the patient about persistent fatigue, weakness, or lack of energy affecting daily activities, as this can be a key clue in coagulation disorders.",
+              "outcome": "This targeted question revealed a potential clue that could guide further diagnostic steps, even in the absence of lab or imaging results.",
+              "boundary": "Use this memory when no lab or imaging results are available and the patient reports no specific symptoms; do not use if lab results are pending or imaging is available and not yet reviewed.",
+              "outcome_type": "partial_success",
+              "tags": [
+                "fatigue",
+                "coagulation_factor_deficiency",
+                "targeted_history",
+                "missing_lab",
+                "missing_imaging",
+                "coagulation_disorder",
+                "broad_differential",
+                "weakness",
+                "coagulation_deficiency",
+                "nonspecific_symptoms"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_66d619260f4b",
+            "memory_type": "experience",
+            "score": 0.3271,
+            "content": {
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3217,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, or changes in appetite?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, or changes in appetite?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -101,13 +418,103 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2823,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.2306,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2274,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2267,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2101,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -120,8 +527,8 @@
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any fever, night sweats, or unexplained bruising or bleeding?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any fever, night sweats, or unexplained bruising or bleeding?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, energy levels, or overall well-being recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, energy levels, or overall well-being recently?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -142,54 +549,103 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
-          "skill": [],
-          "knowledge": []
-        }
-      },
-      "selection_guidance": {
-        "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
-      },
-      "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent falls, weakness, or difficulty with mobility?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent falls, weakness, or difficulty with mobility?\"}}\n</tool_call>",
-        "blocked_by_memory": false
-      }
-    },
-    {
-      "case_id": "20009325",
-      "turn_id": 5,
-      "case_memory": {
-        "chief_complaint": "",
-        "current_turn_information": [
-          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
-        ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. Previous turns repeated patient's statement about no known issues in the area."
-      },
-      "query": {
-        "case_id": "20009325",
-        "turn_id": 5,
-        "query_text": "Patient reports no known issues in the area; need memory about targeted history to rule out missed evidence; avoid premature diagnosis; consider updating hypothesis before finalizing"
-      },
-      "retrieval": {
-        "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
-          "skill": 0,
-          "knowledge": 0
-        },
-        "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2823,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.2306,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2274,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2267,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2101,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -209,28 +665,118 @@
     },
     {
       "case_id": "20009325",
-      "turn_id": 6,
+      "turn_id": 5,
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. Previous turns repeated the same statement about no known problems or abnormal findings."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
-        "turn_id": 6,
-        "query_text": "Patient reports no known problems or abnormal findings; need memory about targeted history to uncover hidden coagulation issues; avoid premature diagnosis closure; consider updating hypothesis before finalizing"
+        "turn_id": 5,
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3391,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3026,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2907,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2877,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2846,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -238,13 +784,218 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_1d1f58137abc",
+          "exp_de56cfe5a213"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3391,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.3026,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, confusion, or memory problems?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, confusion, or memory problems?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any episodes of dizziness, confusion, or changes in mental status?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any episodes of dizziness, confusion, or changes in mental status?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 6,
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3391,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3026,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2907,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2877,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2846,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1d1f58137abc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3391,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms like nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms like nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -256,22 +1007,115 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. Previous turns repeated patient's statement about no known issues in the area."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, on Medicare, English-speaking. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 7,
-        "query_text": "Patient reports no known issues in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3391,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3026,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2897,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2872,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2846,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -279,13 +1123,38 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_1d1f58137abc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3391,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any urinary problems, such as frequency, urgency, or incontinence?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any urinary problems, such as frequency, urgency, or incontinence?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any urinary symptoms, such as frequency, urgency, or pain during urination?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any urinary symptoms, such as frequency, urgency, or pain during urination?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -297,36 +1166,293 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
+        "prior_information_summary": "69-year-old male patient admitted via clinic referral; admission type: OBSERVATION ADMIT; diagnostic window: 2143-02-20 16:43:00 to 2143-02-20 17:47:00; objective: assess and diagnose based on clinical presentation; final result: acquired coagulation factor deficiency; knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome; patient reports no known bleeding issues or abnormal findings in relevant areas."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 8,
-        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "no known bleeding issues or abnormal findings reported; need memory about targeted history to rule out coagulation disorders; avoid premature diagnosis without imaging or lab confirmation"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 2,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.4149,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_66d619260f4b",
+              "type": "experience",
+              "score": 0.3827,
+              "outcome": "success",
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.3673,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_18df2d4ba080",
+              "type": "experience",
+              "score": 0.3625,
+              "outcome": "partial_success",
+              "situation": "When a patient presents with no specific symptoms but there is suspicion of coagulation factor deficiency, and no lab or imaging evidence is available, the doctor should avoid premature diagnosis and instead target a focused history for fatigue or weakness.",
+              "action": "Ask the patient about persistent fatigue, weakness, or lack of energy affecting daily activities, as this can be a key clue in coagulation disorders.",
+              "boundary": "Use this memory when no lab or imaging results are available and the patient reports no specific symptoms; do not use if lab results are pending or imaging is available and not yet reviewed.",
+              "tags": [
+                "fatigue",
+                "coagulation_factor_deficiency",
+                "targeted_history",
+                "missing_lab",
+                "missing_imaging",
+                "coagulation_disorder",
+                "broad_differential",
+                "weakness",
+                "coagulation_deficiency",
+                "nonspecific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.3509,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2763,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            },
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.2711,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_c1b9cd65437a",
+          "exp_66d619260f4b",
+          "exp_7727ee159a10",
+          "exp_18df2d4ba080",
+          "exp_4765617a150d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c1b9cd65437a",
+            "memory_type": "experience",
+            "score": 0.4149,
+            "content": {
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_66d619260f4b",
+            "memory_type": "experience",
+            "score": 0.3827,
+            "content": {
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.3673,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_18df2d4ba080",
+            "memory_type": "experience",
+            "score": 0.3625,
+            "content": {
+              "situation": "When a patient presents with no specific symptoms but there is suspicion of coagulation factor deficiency, and no lab or imaging evidence is available, the doctor should avoid premature diagnosis and instead target a focused history for fatigue or weakness.",
+              "action": "Ask the patient about persistent fatigue, weakness, or lack of energy affecting daily activities, as this can be a key clue in coagulation disorders.",
+              "outcome": "This targeted question revealed a potential clue that could guide further diagnostic steps, even in the absence of lab or imaging results.",
+              "boundary": "Use this memory when no lab or imaging results are available and the patient reports no specific symptoms; do not use if lab results are pending or imaging is available and not yet reviewed.",
+              "outcome_type": "partial_success",
+              "tags": [
+                "fatigue",
+                "coagulation_factor_deficiency",
+                "targeted_history",
+                "missing_lab",
+                "missing_imaging",
+                "coagulation_disorder",
+                "broad_differential",
+                "weakness",
+                "coagulation_deficiency",
+                "nonspecific_symptoms"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_4765617a150d",
+            "memory_type": "experience",
+            "score": 0.3509,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent diarrhea, constipation, or abdominal pain?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent diarrhea, constipation, or abdominal pain?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, muscle weakness, or skin changes recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, muscle weakness, or skin changes recently?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -338,22 +1464,115 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, on Medicare, English-speaking. Previous turns repeated the same patient statement about no known issues in the area."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, on Medicare, English-speaking. No prior symptoms or abnormal findings reported in recent turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 9,
-        "query_text": "Patient denies known issues in the area; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3391,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3026,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2897,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2872,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2846,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -361,13 +1580,38 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_1d1f58137abc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3391,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, swelling, or stiffness, especially in the morning?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, swelling, or stiffness, especially in the morning?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, bruising, or unexplained bleeding?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, bruising, or unexplained bleeding?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -377,24 +1621,121 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+          "I’ve noticed easy bruising and occasional nosebleeds. I also get heavy menstrual periods sometimes, and I’ve had trouble stopping bleeding after minor cuts or dental work. I don’t recall any unexplained bleeding, but I do notice bruises more often than I used to."
         ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is male, white, married, Medicare-insured, English-speaking. No prior symptoms or abnormal findings reported in recent turns."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral, no prior bleeding issues reported, objective is to assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 10,
-        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "new bleeding symptoms in elderly male; need memory about targeted coagulation workup; avoid premature diagnosis; review prior labs and imaging if available"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.3627,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_66d619260f4b",
+              "type": "experience",
+              "score": 0.3478,
+              "outcome": "success",
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.3454,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3435,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3369,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -402,13 +1743,86 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_c1b9cd65437a",
+          "exp_66d619260f4b",
+          "exp_1d1f58137abc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c1b9cd65437a",
+            "memory_type": "experience",
+            "score": 0.3627,
+            "content": {
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_66d619260f4b",
+            "memory_type": "experience",
+            "score": 0.3478,
+            "content": {
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3435,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any skin changes, such as rashes, discoloration, or unusual lesions?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any skin changes, such as rashes, discoloration, or unusual lesions?\"}}\n</tool_call>",
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -418,24 +1832,120 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+          "exam_type: labs",
+          "source: none",
+          "result: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
         ],
-        "prior_information_summary": "69-year-old male patient admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in recent turns."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports easy bruising, occasional nosebleeds, heavy menstrual periods, and trouble stopping bleeding after minor cuts or dental work. No prior bleeding history reported."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 11,
-        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "labs not available; patient has bleeding symptoms; need memory about targeted diagnostic next steps before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3249,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2931,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2928,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.2881,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2697,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -447,9 +1957,9 @@
         "selected_memories": []
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent emotional changes, such as depression, anxiety, or mood swings?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent emotional changes, such as depression, anxiety, or mood swings?\"}}\n</tool_call>",
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of easy bruising, nosebleeds, and prolonged bleeding in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of easy bruising, nosebleeds, and prolonged bleeding in elderly males\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -459,38 +1969,228 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+          "I’ve noticed easy bruising and occasional nosebleeds. I also get heavy menstrual periods sometimes, and I’ve had trouble stopping bleeding after minor cuts or dental work. I don’t recall any unexplained bleeding, but I do notice bruises more often than I used to."
         ],
-        "prior_information_summary": "69-year-old male patient admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is male, 69 years old, white, married, Medicare-insured, English-speaking. No prior symptoms or abnormal findings reported in recent turns."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral, no prior bleeding issues reported, admitted for assessment of clinical presentation. Patient has no known abnormal findings related to bleeding. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 12,
-        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "new bleeding symptoms in patient with no prior history; need memory about targeted coagulation workup; avoid premature diagnosis; consider imaging or lab review if available"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 1,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_18df2d4ba080",
+              "type": "experience",
+              "score": 0.4252,
+              "outcome": "partial_success",
+              "situation": "When a patient presents with no specific symptoms but there is suspicion of coagulation factor deficiency, and no lab or imaging evidence is available, the doctor should avoid premature diagnosis and instead target a focused history for fatigue or weakness.",
+              "action": "Ask the patient about persistent fatigue, weakness, or lack of energy affecting daily activities, as this can be a key clue in coagulation disorders.",
+              "boundary": "Use this memory when no lab or imaging results are available and the patient reports no specific symptoms; do not use if lab results are pending or imaging is available and not yet reviewed.",
+              "tags": [
+                "fatigue",
+                "coagulation_factor_deficiency",
+                "targeted_history",
+                "missing_lab",
+                "missing_imaging",
+                "coagulation_disorder",
+                "broad_differential",
+                "weakness",
+                "coagulation_deficiency",
+                "nonspecific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.3952,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3913,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_66d619260f4b",
+              "type": "experience",
+              "score": 0.3713,
+              "outcome": "success",
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.3598,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2599,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_c1b9cd65437a",
+          "exp_1d1f58137abc",
+          "exp_66d619260f4b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c1b9cd65437a",
+            "memory_type": "experience",
+            "score": 0.3952,
+            "content": {
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3913,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_66d619260f4b",
+            "memory_type": "experience",
+            "score": 0.3713,
+            "content": {
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent headaches, dizziness, or balance issues?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent headaches, dizziness, or balance issues?\"}}\n</tool_call>",
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of easy bruising and bleeding in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of easy bruising and bleeding in elderly males\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -500,24 +2200,125 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+          "I’ve noticed easy bruising and occasional nosebleeds. I also get heavy menstrual periods sometimes, and I’ve had trouble stopping bleeding after minor cuts or dental work. I don’t recall any unexplained bleeding, but I do notice bruises more often than I used to.",
+          "[Document 1] (ID: 8031_0, Score: 0.886)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...",
+          "[Document 2] (ID: 34334_3, Score: 0.858)\n## Moderate to Severe Bruises\nIf bruising is severe, (harm score 2-3) it may be dangerous, or it can cause serious complications.  Further bleeding and excess fluid may accumulate causing a hard, fluctuating lump or swelling hematoma.  This has the potential to cause compartment syndrome as the swel...",
+          "[Document 3] (ID: 34334_2, Score: 0.855)\n## Light Bruises\nAt low levels of damage producing low-level bruising, the individual will feel some pain, either initially or delayed.  The skin and surrounding region show inflammation, becoming red, tender and swollen due to the release of histamines.  Repeated impacts worsen bruises, increasing ...",
+          "[Document 4] (ID: 10978_4, Score: 0.847)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...",
+          "[Document 5] (ID: 7442_2, Score: 0.846)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T..."
         ],
-        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, on Medicare, English-speaking. No prior symptoms reported in recent turns."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral, with no prior reported bleeding issues. Patient has a history of easy bruising, occasional nosebleeds, heavy menstrual periods, and difficulty stopping bleeding after minor cuts or dental work. No prior abnormal findings reported. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient’s chief complaint is to assess and diagnose based on clinical presentation."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 13,
-        "query_text": "No prior symptoms reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "easy bruising and bleeding after minor trauma; new report of heavy menstrual periods; need memory about targeted coagulation workup before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2086,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2072,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.199,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.1964,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.1857,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -529,9 +2330,9 @@
         "selected_memories": []
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your hearing or sense of smell/taste?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your hearing or sense of smell/taste?\"}}\n</tool_call>",
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Von Willebrand disease symptoms and diagnosis in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Von Willebrand disease symptoms and diagnosis in elderly males\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -541,24 +2342,125 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+          "I’ve noticed easy bruising and occasional nosebleeds. I also get heavy menstrual periods sometimes, and I’ve had trouble stopping bleeding after minor cuts or dental work. I don’t recall any unexplained bleeding, but I do notice bruises more often than I used to.",
+          "Tool output: [Document 1] (ID: 10978_5, Score: 0.875) Diagnostic Study of Choice: There is no single diagnostic study of choice for the diagnosis of von Willebrand disease, but von Willebrand disease can be diagnosed based on screening tests followed by confirmatory tests. The screening tests for VWD that are selected by the National Heart, Lung, and...",
+          "Tool output: [Document 2] (ID: 10978_0, Score: 0.867) Von Willebrand’s disease overview: Von Willebrand’s disease is an genetic coagulation disorder with resultant abnormality in platelet adhesion and aggregation. Von Willebrand disease (vWD) is the most common genetic coagulation disorder described in humans.  It affects up to 1% of the popul...",
+          "Tool output: [Document 3] (ID: 10978_6, Score: 0.867) The diagnosis of von Willebrand’s disease (VWD) begins with a relevant personal or family history of mucocutaneous bleeding. When VWD is suspected, several levels of testing are needed in order to make diagnosis. Initail tests involve measurement of VWF antigen (VWF:Ag) level, Factor VIII activity (...",
+          "Tool output: [Document 4] (ID: 10978_3, Score: 0.865) Epidemiology and Demographics: The prevalence of von Willebrand’s disease is 0.6 to 1.3%. It is estimated that the referral prevalence of von Willebrand’s disease is approximately 1 case per 10,000 persons. The actual abnormality (which does not necessarily lead to disease) occurs in 0.9-3% of the ...",
+          "Tool output: [Document 5] (ID: 16956_4, Score: 0.861) Role in disease: Hereditary or acquired defects of VWF lead to von Willebrand disease (vWD), a bleeding diathesis of the skin and mucous membranes, causing nosebleeds, menorrhagia, and gastrointestinal bleeding. The point at which the mutation occurs determines the severity of the bleeding diathesi..."
         ],
-        "prior_information_summary": "69-year-old male patient admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is male, 69 years old, white, married, Medicare-insured, English-speaking. Previous turns repeated the same statement about no known problems or abnormal findings in the area."
+        "prior_information_summary": "69-year-old male patient admitted for observation. Chief complaint: Assess and diagnose based on clinical presentation. Patient reports easy bruising, occasional nosebleeds, heavy menstrual periods, and difficulty stopping bleeding after minor cuts or dental work. No prior bleeding issues reported. Patient has no known abnormal findings related to bleeding. Labs not available. Knowledge base includes information on Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Final result: Acquired coagulation factor deficiency."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 14,
-        "query_text": "Patient reports no known problems or abnormal findings in the area; need memory about targeted history to rule out missed evidence; avoid premature diagnosis closure; consider updating hypothesis before finalizing"
+        "query_text": "patient reports mucocutaneous bleeding and menorrhagia; von Willebrand disease suspected; need targeted testing for VWF antigen and Factor VIII; avoid premature diagnosis without confirmatory labs"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2547,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2478,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.2415,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.2233,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            },
+            {
+              "id": "exp_c1b9cd65437a",
+              "type": "experience",
+              "score": 0.2218,
+              "outcome": "success",
+              "situation": "When a patient has clinical suspicion of coagulation factor deficiency but no lab or imaging evidence is available, avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request targeted labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_deficiency",
+                "targeted_lab",
+                "targeted_imaging",
+                "missing_lab",
+                "missing_imaging",
+                "clinical_suspicion"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -570,9 +2472,9 @@
         "selected_memories": []
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent cough, sputum production, or hoarseness?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent cough, sputum production, or hoarseness?\"}}\n</tool_call>",
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Von Willebrand Disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Von Willebrand Disease}\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -584,22 +2486,123 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "69-year-old male patient admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is male, 69 years old, white, married, Medicare-insured, English-speaking. No prior symptoms or abnormal findings reported in earlier turns."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral, no prior reported issues. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. No lab, imaging, or microbiology results found. Multiple tool outputs returned no results for labs, CXR, imaging, microbiology."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 15,
-        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+        "query_text": "No prior reported issues; current turn confirms no known problems or abnormal findings; no labs, imaging, or microbiology results available; need memory about targeted history or tests before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.4665,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.4499,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_66d619260f4b",
+              "type": "experience",
+              "score": 0.434,
+              "outcome": "success",
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.4084,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_71bc8d0f0863",
+              "type": "experience",
+              "score": 0.4051,
+              "outcome": "success",
+              "situation": "When no lab or imaging results are available and clinical suspicion is low, avoid finalizing any diagnosis until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "missing_lab",
+                "image_review_needed",
+                "premature_closure",
+                "diagnostic_anchoring",
+                "missing_imaging",
+                "broad_differential"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -607,13 +2610,135 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_de56cfe5a213",
+          "exp_7727ee159a10",
+          "exp_66d619260f4b",
+          "exp_1d1f58137abc",
+          "exp_71bc8d0f0863"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.4665,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.4499,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_66d619260f4b",
+            "memory_type": "experience",
+            "score": 0.434,
+            "content": {
+              "situation": "When a patient denies symptoms across multiple systems and no lab or imaging results are available, the doctor should avoid premature diagnosis and instead request targeted labs or imaging to rule out coagulation disorders.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "coagulation_factor_deficiency",
+                "missing_lab",
+                "missing_imaging",
+                "avoid_premature_closure",
+                "coagulation_disorder",
+                "targeted_history",
+                "image_review_needed",
+                "premature_closure",
+                "denied_symptoms",
+                "targeted_lab",
+                "targeted_imaging",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.4084,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_71bc8d0f0863",
+            "memory_type": "experience",
+            "score": 0.4051,
+            "content": {
+              "situation": "When no lab or imaging results are available and clinical suspicion is low, avoid finalizing any diagnosis until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "missing_lab",
+                "image_review_needed",
+                "premature_closure",
+                "diagnostic_anchoring",
+                "missing_imaging",
+                "broad_differential"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your sleep patterns or energy levels?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your sleep patterns or energy levels?\"}}\n</tool_call>",
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly males and possible systemic causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly males and possible systemic causes\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     }

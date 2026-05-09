@@ -37,7 +37,7 @@ def diagnosis_to_text(diagnosis: Any) -> str:
 
 def extract_gold_diagnosis(payload: dict[str, Any] | None) -> str:
     osce = unwrap_osce_examination(payload)
-    for key in ("Correct_Diagnosis", "Principal_Diagnosis"):
+    for key in ("Correct_Diagnosis", "Principal_Diagnosis", "Final_Result"):
         text = diagnosis_to_text(osce.get(key))
         if text:
             return text

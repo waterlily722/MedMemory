@@ -94,7 +94,7 @@ vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --host 0.0.0.0 \
   --port 30000 \
   --dtype bfloat16 \
-  --max-model-len 32768 \
+  --max-model-len 64k \
   --tensor-parallel-size 2 \
   --gpu-memory-utilization 0.9 \
   --trust-remote-code
@@ -269,7 +269,7 @@ python examples/MedGym/run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 1 \
+  --max_cases 3 \
   --no_cxr \
   --parser_name qwen \
   --judge_model judge_agent \

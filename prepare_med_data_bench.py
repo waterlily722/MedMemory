@@ -7,8 +7,6 @@ import json
 import os
 from typing import Any, Dict, List, Tuple
 
-from memory_agent.utils.medenv_adapter import extract_gold_diagnosis, unwrap_osce_examination
-
 # bench 下按是否有 CXR 使用的子目录（相对 bench 根目录）
 SUBDIR_WITH_CXR = "with_img/ed_hosp"
 SUBDIR_NO_CXR = "without_img/hosp_only"
@@ -50,11 +48,11 @@ def load_cases_from_bench(
         case_id = os.path.splitext(os.path.basename(ehr_path))[0].replace("ehr_", "")
         obj = load_json(ehr_path)
         if isinstance(obj, dict) and "ehr" in obj and isinstance(obj["ehr"], dict):
-            ehr = unwrap_osce_examination(obj["ehr"]).copy()
-            knowledge = obj.get("knowledge") or ehr.get("knowledge") or []
+            ehr = obj["ehr"].copy()
+            knowledge = obj.get("knowledge") or []
         else:
-            ehr = unwrap_osce_examination(obj) if isinstance(obj, dict) else {}
-            knowledge = ehr.get("knowledge") or []
+            ehr = obj if isinstance(obj, dict) else {}
+            knowledge = []
 
         # 将 CXR 中 dicoms 的 jpg_path 解析为基于 case 目录的绝对路径
         if "CXR" in ehr and isinstance(ehr["CXR"], list):
@@ -68,7 +66,7 @@ def load_cases_from_bench(
                         # 保留原 jpg_path 便于兼容
                         # d["jpg_path"] 不变
 
-        gold = extract_gold_diagnosis(ehr)
+        gold = (ehr.get("Final_Result") or "") if isinstance(ehr, dict) else ""
 
         cases.append({
             "case_id": case_id,

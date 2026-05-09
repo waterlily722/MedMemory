@@ -8,7 +8,7 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I am a 67-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 67-year-old female patient presenting with ___ yo woman with past medical history of endometrial.."
+          "I am a 67-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 67-year-old female patient presenting with ___ yo woman with past medical history of endometrial."
         ],
         "prior_information_summary": ""
       },
@@ -19,13 +19,89 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 4,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2573,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2232,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.2074,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.182,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -38,8 +114,8 @@
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -49,39 +125,286 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been constipated for 12 days, and then for several days now I’ve had diarrhea that looks like mucus. I don’t have blood in my stool or in the toilet bowl.",
-          "I’ve also been having cramping pain in my lower abdomen for about a month, which gets worse when I strain to have a bowel movement — even after taking Miralax and Mag Citrate.",
-          "A few days ago, when I was straining, I got lightheaded. I went back to my bedroom and was getting out of the bathroom when I suddenly felt dizzy, lost consciousness, and came to as I felt like my ankle was breaking.",
+          "I’ve been constipated for 12 days, but lately I’ve had several days of diarrhea that looks like mucus.",
+          "I’m also having cramping pain in my lower abdomen that’s been going on for about a month.",
+          "I’ve been straining to have a bowel movement even after taking Miralax and Mag Citrate, and when I did, I felt lightheaded.",
+          "I passed out while getting out of the bathroom and woke up thinking I broke my ankle.",
           "I was on the floor for about an hour before my husband found me.",
-          "In the ER, I had a right ankle fracture, and orthopedic surgery put a splint on it.",
-          "I’m still having abdominal discomfort now, but I’m breathing fine on room air.",
-          "I don’t have fever, chills, headache, or any other symptoms like nausea, vomiting, or pain with urination."
+          "I’m now breathing fine on room air, but I still have abdominal discomfort.",
+          "I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma/depression (mother), heart murmur (sister). Chief complaint: ___ yo woman with past medical history of endometrial. HPI: constipation x12 days, diarrhea with mucus, cramping lower abdominal pain x1 month, lightheadedness during straining, syncope with ankle fracture, splint applied. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint. ROS: denies fever, chills, headache, nausea, vomiting, dysuria, hematuria. Final result: fracture of lateral malleolus, closed. Knowledge: Basophilia definition, causes, diagnosis."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma, depression (mother), heart murmur (sister). Chief complaint: ___ yo woman with past medical history of endometrial. HPI: constipation x12 days, diarrhea with mucus, cramping lower abdominal pain x1 month, lightheadedness during straining, syncope with ankle fracture, now abdominal discomfort. VS: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: right ankle fracture, splint applied, no guarding/rebound, right basilar rales, no organomegaly. ROS: denies fever, chills, night sweats, headache, etc. Final result: Fracture of lateral malleolus, closed. Knowledge: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 2,
-        "query_text": "abdominal pain with mucus diarrhea and syncope during straining; new info includes ankle fracture and low BP; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure"
+        "query_text": "syncope with abdominal pain and mucus diarrhea; need memory about evaluating for bowel obstruction or ischemia; avoid premature diagnosis without imaging or labs; consider hypotension and straining-related syncope"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.4708,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.4485,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.4113,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.389,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3772,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.3269,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2ccb5b4beda6",
+              "type": "experience",
+              "score": 0.3064,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_intolerance",
+                "hyposmia",
+                "nasal_polyps",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2929,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_9e6b0fc77ab7",
+          "exp_4765617a150d",
+          "exp_de56cfe5a213",
+          "exp_7727ee159a10"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_9e6b0fc77ab7",
+            "memory_type": "experience",
+            "score": 0.4708,
+            "content": {
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_4765617a150d",
+            "memory_type": "experience",
+            "score": 0.4485,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.4113,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.389,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "REQUEST_LAB",
@@ -98,36 +421,304 @@
         "current_turn_information": [
           "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for right ankle fracture after syncope while straining to have bowel movement. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism. Symptoms: constipation x12 days, then diarrhea with mucus, cramping abdominal pain x1 month, lightheadedness, syncope, abdominal discomfort. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint. Denies fever, chills, nausea, vomiting, hematuria, melena, hematochezia. Past med: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history asthma, depression (mother), heart murmur (sister)."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history of asthma, depression (mother), heart murmur (sister). Presenting with constipation x12 days, mucus-like diarrhea, cramping lower abdominal pain x1 month, lightheadedness during straining, syncope, right ankle fracture, splinted. Vitals: T 99.1, BP 118/68, HR 61, RR 18, O2 96% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint. Denies fever, chills, nausea, vomiting, blood in stool/urine. Final result: Fracture of lateral malleolus, closed."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 3,
-        "query_text": "abdominal pain and syncope in post-hysterectomy patient; labs pending; need memory about targeted workup before finalizing diagnosis; avoid premature closure"
+        "query_text": "constipation and abdominal pain with no labs available; need targeted history and exam before imaging decision; avoid premature diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.4436,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.4144,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.4141,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.4006,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3972,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.2859,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2ccb5b4beda6",
+              "type": "experience",
+              "score": 0.2728,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_intolerance",
+                "hyposmia",
+                "nasal_polyps",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2718,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_9e6b0fc77ab7",
+          "exp_1d1f58137abc",
+          "exp_de56cfe5a213",
+          "exp_7727ee159a10",
+          "exp_c677a8306f7b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_9e6b0fc77ab7",
+            "memory_type": "experience",
+            "score": 0.4436,
+            "content": {
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.4144,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.4141,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.4006,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_c677a8306f7b",
+            "memory_type": "experience",
+            "score": 0.3972,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "UPDATE_HYPOTHESIS",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping abdominal pain, dizziness, and syncope in elderly female\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping abdominal pain, dizziness, and syncope in elderly female\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping abdominal pain, syncope, and lightheadedness in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping abdominal pain, syncope, and lightheadedness in elderly female\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -137,40 +728,306 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been constipated for 12 days, and then for several days now I’ve had diarrhea that looks like mucus. I don’t have blood in my stool or in the toilet bowl. I’ve also been having cramping pain in my lower abdomen for about a month, which gets worse when I strain to have a bowel movement — even after taking Miralax and Mag Citrate.",
-          "A few days ago, when I was straining, I got lightheaded. I went back to my bedroom and was getting out of the bathroom when I suddenly felt dizzy, lost consciousness, and came to as I felt like my ankle was breaking. I was on the floor for about an hour before my husband found me.",
-          "In the ER, I had a right ankle fracture, and orthopedic surgery put a splint on it. I’m still having abdominal discomfort now, but I’m breathing fine on room air. I don’t have fever, chills, headache, or any other symptoms like nausea, vomiting, or pain with urination."
+          "I’ve been constipated for 12 days, but lately I’ve had several days of diarrhea that looks like mucus. I’m also having cramping pain in my lower abdomen that’s been going on for about a month. I’ve been straining to have a bowel movement even after taking Miralax and Mag Citrate, and when I did, I felt lightheaded. I passed out while getting out of the bathroom and woke up thinking I broke my ankle. I was on the floor for about an hour before my husband found me. I’m now breathing fine on room air, but I still have abdominal discomfort. I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine.",
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "[Document 1] (ID: 22058_8, Score: 0.856)\n- Anaphylaxis, angioedema, fever, headache, pain, peripheral edema.\nNervous\n- Aggressive behavior, agitation, ataxia, coma, confusion, decreased consciousness, delirium, dizziness, dysarthria, encephalopathy, hallucinations, paresthesia, psychosis, seizure, somnolence, tremors. These symptoms may be...\n\n[Document 2] (ID: 114_365, Score: 0.855)\n# S: Subjective\nThe patient may complain of some or all of the following: watery diarrhea (can be profuse), abdominal pain or cramping, flatulence, nausea, vomiting, anorexia, fever, and weight loss.\nThe history should include questions about the presence and characteristics of the symptoms listed a...\n\n[Document 3] (ID: 9438_4, Score: 0.854)\n### Gastrointestinal\nAbdominal pain, anorexia, constipation, hepatitis, malaise, mild transient abnormalities in liver function tests, nausea, parotitis, pseudo-obstruction (including colonic pseudo-obstruction), salivary gland pain, and vomiting.\n\n### Genitourinary\nDecreased sexual activity, diffic...\n\n[Document 4] (ID: 31555_12, Score: 0.854)\n- Digestive System: Anorexia, abdominal pain, constipation, diarrhea, dyspepsia, elevated liver enzymes, flatulence, gross bleeding/perforation, heartburn, nausea, ulcers (gastric/duodenal), vomiting.\n- Hemic and Lymphatic System: Anemia, increased bleeding time.\n- Nervous System: Dizziness, headach...\n\n[Document 5] (ID: 32359_5, Score: 0.853)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina..."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for right ankle fracture (closed lateral malleolus) after syncope while straining to have bowel movement. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: married, white, English-speaking, Medicare. Family history: asthma/depression (mother), heart murmur (sister). Physical exam: vitals stable, no fever, no guarding/rebound, soft abdomen, right ankle in splint. ROS negative for systemic symptoms. Objective: assess and diagnose patient presenting with constipation, diarrhea, abdominal cramping, syncope, and ankle fracture."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma, depression (mother), heart murmur (sister). Chief complaint: constipation x12 days, diarrhea with mucus, cramping abdominal pain x1 month. History: straining to have BM, lightheadedness, syncope, right ankle fracture, splint placed. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint. ROS: denies fever, chills, night sweats, headache, etc. Final result: Fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 4,
-        "query_text": "abdominal cramping with constipation and diarrhea, syncope during straining, ankle fracture; need memory about evaluating for bowel obstruction or ischemia; avoid premature diagnosis without imaging or labs"
+        "query_text": "chronic constipation with new diarrhea and syncope; need memory about evaluating for bowel obstruction or ischemia; avoid premature diagnosis without imaging or labs"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.456,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.4339,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.4052,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3876,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.3813,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.3368,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2ccb5b4beda6",
+              "type": "experience",
+              "score": 0.3125,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_intolerance",
+                "hyposmia",
+                "nasal_polyps",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.3033,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_9e6b0fc77ab7",
+          "exp_4765617a150d",
+          "exp_de56cfe5a213",
+          "exp_c677a8306f7b",
+          "exp_7727ee159a10"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_9e6b0fc77ab7",
+            "memory_type": "experience",
+            "score": 0.456,
+            "content": {
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_4765617a150d",
+            "memory_type": "experience",
+            "score": 0.4339,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.4052,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_c677a8306f7b",
+            "memory_type": "experience",
+            "score": 0.3876,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.3813,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, changes in appetite, or fatigue?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, changes in appetite, or fatigue?\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your diet, medications, or weight?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your diet, medications, or weight?\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -180,38 +1037,280 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been feeling more tired lately, and I’ve noticed I’ve lost a little weight without trying. My appetite hasn’t been great either — I’ve been eating less than usual, even though I’m not sure why."
+          "I haven’t made any major changes to my diet lately, but I have noticed I’ve been feeling more tired than usual and have had some itching, especially on my arms and legs.",
+          "I’ve also been experiencing some mild right upper quadrant pain.",
+          "I haven’t changed any medications recently, but I did start taking a new antihistamine last month for occasional allergies — I’m not sure if that’s related.",
+          "My weight has stayed about the same, but I’ve been eating a little less because I’ve been feeling less hungry due to the fatigue."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for right ankle fracture after syncope while straining to have bowel movement. History: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism. Symptoms: constipation x12 days, then diarrhea with mucus, cramping abdominal pain x1 month, lightheadedness, syncope, abdominal discomfort. No fever, chills, nausea, vomiting, hematochezia. Physical: vitals stable, soft abdomen, right ankle in splint. ROS negative for systemic symptoms. Past med: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family: asthma, depression (mother), heart murmur (sister)."
+        "prior_information_summary": "67-year-old female, admitted via ER for constipation x12 days, now with diarrhea resembling mucus, cramping lower abdominal pain x1 month, straining to BM after Miralax/Mag Citrate, lightheadedness, syncope, right ankle fracture, splinted. Past med: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Abdomen: soft, non-distended, no guarding/rebound. Ext: right ankle in splint. ROS: denies fever, chills, nausea, vomiting, blood in stool/urine. Physical: right basilar rales, no JVD, systolic murmur LUSB, no organomegaly. Final result: fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 5,
-        "query_text": "new complaint of fatigue and weight loss with decreased appetite; need memory about targeted history for endocrine or malignancy; avoid premature diagnosis without labs or imaging review"
+        "query_text": "patient with endometrial cancer history and new fatigue, itching, RUQ pain; need memory about targeted history for systemic symptoms and possible metabolic or hepatic causes; avoid premature diagnosis without imaging or labs"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.4387,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.4283,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.4231,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.4096,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.4054,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.3238,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2ccb5b4beda6",
+              "type": "experience",
+              "score": 0.3042,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_intolerance",
+                "hyposmia",
+                "nasal_polyps",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2987,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_1d1f58137abc",
+          "exp_de56cfe5a213",
+          "exp_7727ee159a10",
+          "exp_4765617a150d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.4387,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.4283,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.4231,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_4765617a150d",
+            "memory_type": "experience",
+            "score": 0.4054,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
-        "action_type": "FINALIZE_DIAGNOSIS",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of abdominal pain, constipation, diarrhea with mucus, weight loss, fatigue in elderly female with endometrial cancer history\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of abdominal pain, constipation, diarrhea with mucus, weight loss, fatigue in elderly female with endometrial cancer history\"}}\n</tool_call>",
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of syncope with abdominal pain, constipation, diarrhea, and itching in elderly female with endometrial cancer history\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of syncope with abdominal pain, constipation, diarrhea, and itching in elderly female with endometrial cancer history\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -221,24 +1320,123 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been feeling more tired lately, and I’ve noticed I’ve lost a little weight without trying. My appetite hasn’t been great either — I’ve been eating less than usual, even though I’m not sure why."
+          "I haven’t made any major changes to my diet lately, but I have noticed I’ve been feeling more tired than usual and have had some itching, especially on my arms and legs.",
+          "I’ve also been experiencing some mild right upper quadrant pain.",
+          "I haven’t changed any medications recently, but I did start taking a new antihistamine last month for occasional allergies — I’m not sure if that’s related.",
+          "My weight has stayed about the same, but I’ve been eating a little less because I’ve been feeling less hungry due to the fatigue."
         ],
-        "prior_information_summary": "67-year-old F, admitted via ER for right ankle fracture after syncope while straining to have bowel movement. HPI: 12-day constipation, then mucoid diarrhea, cramping abdominal pain for 1 month, lightheadedness, syncope, and ankle fracture. Denies blood in stool, fever, chills, nausea, vomiting, dysuria. Past medical history: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: married, Medicare, English, White. Physical: vitals stable, soft abdomen, no guarding, right ankle in splint. ROS negative for systemic symptoms. Labs: no result found. Tool outputs suggest possible GI, metabolic, or systemic causes for symptoms."
+        "prior_information_summary": "67-year-old female, admitted via ER for constipation x12 days, now with diarrhea resembling mucus, cramping lower abdominal pain x1 month, straining to have BM after Miralax/Mag Citrate, lightheadedness, syncope, right ankle fracture, splinted. VS: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Abdomen soft, non-distended, no guarding/rebound. Past med: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: married, Medicare, English, White. Family: asthma/depression (mother), heart murmur (sister). Physical: RRR systolic murmur LUSB, right basilar rales, no wheeze, no organomegaly. Final result: fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 6,
-        "query_text": "patient reports fatigue, weight loss, decreased appetite; new symptom exposure; labs pending; need memory about targeted history and workup for endocrine or malignancy-related causes before finalizing diagnosis"
+        "query_text": "patient with endometrial cancer history and new fatigue, itching, RUQ pain; new antihistamine use; need memory about targeted history for systemic symptoms and imaging review before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3257,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3092,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.3084,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_18df2d4ba080",
+              "type": "experience",
+              "score": 0.2872,
+              "outcome": "partial_success",
+              "situation": "When a patient presents with no specific symptoms but there is suspicion of coagulation factor deficiency, and no lab or imaging evidence is available, the doctor should avoid premature diagnosis and instead target a focused history for fatigue or weakness.",
+              "action": "Ask the patient about persistent fatigue, weakness, or lack of energy affecting daily activities, as this can be a key clue in coagulation disorders.",
+              "boundary": "Use this memory when no lab or imaging results are available and the patient reports no specific symptoms; do not use if lab results are pending or imaging is available and not yet reviewed.",
+              "tags": [
+                "fatigue",
+                "coagulation_factor_deficiency",
+                "targeted_history",
+                "missing_lab",
+                "missing_imaging",
+                "coagulation_disorder",
+                "broad_differential",
+                "weakness",
+                "coagulation_deficiency",
+                "nonspecific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.282,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -246,49 +1444,81 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
-      },
-      "selected_action": {
-        "action_type": "REQUEST_LAB",
-        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
-        "blocked_by_memory": false
-      }
-    },
-    {
-      "case_id": "20002287",
-      "turn_id": 7,
-      "case_memory": {
-        "chief_complaint": "___ yo woman with past medical history of endometrial",
-        "current_turn_information": [
-          "Tool output for imaging: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        "selected_memory_ids": [
+          "exp_1d1f58137abc",
+          "exp_de56cfe5a213",
+          "exp_7727ee159a10"
         ],
-        "prior_information_summary": "67-year-old female, history of endometrial adenocarcinoma s/p TAH + BSO and hypothyroidism. Presenting with constipation for 12 days, then diarrhea with mucus, cramping abdominal pain for 1 month, lightheadedness during straining, syncope, right ankle fracture, splint applied. Currently has abdominal discomfort, no fever, no blood in stool, no urinary symptoms. Vitals: T 99.1, BP 118/68, HR 61, RR 18, O2 sat 96% RA. Physical: soft abdomen, no guarding, no rebound, right ankle in splint. Social history: family history of asthma, depression (mother), heart murmur (sister)."
-      },
-      "query": {
-        "case_id": "20002287",
-        "turn_id": 7,
-        "query_text": "abdominal pain with prior endometrial cancer history; imaging unavailable; need memory about targeted diagnostic next steps before finalizing diagnosis"
-      },
-      "retrieval": {
-        "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
-          "skill": 0,
-          "knowledge": 0
-        },
-        "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
-          "skill": [],
-          "knowledge": []
-        }
-      },
-      "selection_guidance": {
-        "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3257,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.3092,
+            "content": {
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.3084,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "FINALIZE_DIAGNOSIS",
@@ -299,51 +1529,530 @@
     },
     {
       "case_id": "20002287",
-      "turn_id": 8,
+      "turn_id": 7,
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I had a fall and became dizzy when I was exiting the bathroom. I lost consciousness and hit the floor, and my husband found me an hour later. I also felt a “breaking” sensation in my ankle, which turned out to be a fracture. I was straining to have a bowel movement after taking Miralax and Mag Citrate when I first felt lightheaded. I don’t recall any falls or dizziness unrelated to bowel movements before that."
+          "exam_type: imaging, source: none, result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
         ],
-        "prior_information_summary": "67-year-old female, history of endometrial adenocarcinoma s/p TAH + BSO and hypothyroidism. Presenting with constipation for 12 days, recent diarrhea with mucus, cramping lower abdominal pain for 1 month, lightheadedness during straining, syncope, and right ankle fracture. No fever, chills, blood in stool/urine. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint. ROS negative for systemic symptoms. Past medical history: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family history: asthma, depression (mot...[truncated]"
+        "prior_information_summary": "67-year-old female, history of endometrial adenocarcinoma s/p TAH + BSO and hypothyroidism. Presenting with constipation for 12 days, then diarrhea with mucus, cramping abdominal pain for 1 month, lightheadedness, syncope, and right ankle fracture. Currently breathing comfortably on RA, c/o abdominal discomfort. ROS negative for fever, chills, night sweats, headache, etc. Past medical history: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma, depression (mother), heart murmur (sister). Physical exam: vitals stable, no guarding/rebound, right ankle in splint, no skin lesions. Final result: fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
-        "turn_id": 8,
-        "query_text": "syncope during bowel movement with ankle fracture; need memory about cardiac vs. orthopedic causes; avoid premature diagnosis without ECG or imaging review"
+        "turn_id": 7,
+        "query_text": "abdominal pain with recent fracture and prior endometrial cancer; imaging not available; need memory about targeted history and exam before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.3452,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3406,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3314,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3236,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.3086,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.2674,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2ccb5b4beda6",
+              "type": "experience",
+              "score": 0.2552,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_intolerance",
+                "hyposmia",
+                "nasal_polyps",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2542,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "applied_memory_ids": [],
-        "ignored_memory_ids": [],
-        "memory_assessments": [],
-        "recommended_actions": [],
-        "discouraged_actions": [],
-        "blocked_actions": [],
-        "used_memory_ids": [],
-        "warning_memory_ids": [],
-        "risk_warning": "",
-        "why_not_finalize": "",
-        "rationale": ""
+        "selected_memory_ids": [
+          "exp_9e6b0fc77ab7",
+          "exp_1d1f58137abc",
+          "exp_de56cfe5a213",
+          "exp_c677a8306f7b",
+          "exp_7727ee159a10"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_9e6b0fc77ab7",
+            "memory_type": "experience",
+            "score": 0.3452,
+            "content": {
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3406,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.3314,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_c677a8306f7b",
+            "memory_type": "experience",
+            "score": 0.3236,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7727ee159a10",
+            "memory_type": "experience",
+            "score": 0.3086,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
-        "action_type": "UPDATE_HYPOTHESIS",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"angiodysplasia symptoms in elderly females with syncope and alternating constipation and diarrhea\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"angiodysplasia symptoms in elderly females with syncope and alternating constipation and diarrhea\"}}\n</tool_call>",
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of constipation followed by diarrhea with mucus, abdominal cramping, syncope, weight loss, fever, itching, and RUQ pain in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of constipation followed by diarrhea with mucus, abdominal cramping, syncope, weight loss, fever, itching, and RUQ pain in elderly female\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I’ve had some unexplained weight loss lately, and I’ve been feeling a low-grade fever off and on. My appetite has also been worse than usual—I’ve noticed I’m not as hungry as I used to be, and I’ve been eating less than normal. I’ve also been feeling more tired than usual, and I’ve had some itching, especially on my skin, which I think might be from histamine release. I’ve been experiencing some right upper quadrant discomfort too."
+        ],
+        "prior_information_summary": "67-year-old female, admitted via ER for right ankle fracture after syncope while straining to have bowel movement. History: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism. Symptoms: constipation for 12 days, then diarrhea with mucus, cramping abdominal pain for 1 month, lightheadedness, syncope, and abdominal discomfort. Physical: vitals stable, no guarding/rebound, right ankle in splint. ROS negative for fever, chills, hematochezia, etc. Past med: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family: asthma, depression (mother), heart murmur (sister)."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 8,
+        "query_text": "new symptoms of weight loss, fever, fatigue, and RUQ discomfort; need memory about targeted history and labs before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.3338,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3283,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3171,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.2841,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.2837,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5e5d3e357966",
+              "type": "experience",
+              "score": 0.2599,
+              "outcome": "unsafe",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity, but no imaging or lab results are available, and the clinician finalizes a diagnosis of AERD without confirming nasal polyp status, the action is unsafe and leads to premature closure.",
+              "action": "Avoid finalizing a diagnosis of AERD without confirming nasal polyp status via imaging or exam, as nasal polyps are a key diagnostic criterion.",
+              "boundary": "Use this memory when nasal polyp status is unknown and diagnosis of AERD is being considered; do not use if nasal polyps are confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "nasal_polyps",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1d1f58137abc",
+          "exp_de56cfe5a213",
+          "exp_c677a8306f7b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.3338,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_de56cfe5a213",
+            "memory_type": "experience",
+            "score": 0.3283,
+            "content": {
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "outcome": "This action prevented premature closure and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_c677a8306f7b",
+            "memory_type": "experience",
+            "score": 0.3171,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Colorectal cancer}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Colorectal cancer}\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     },
@@ -353,27 +2062,124 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "Patient reports lightheadedness during straining to have bowel movement after taking Miralax and Mag Citrate.",
-          "Patient lost consciousness while exiting bathroom, felt \"breaking\" sensation in ankle, was found on floor for 1 hour.",
-          "Patient now breathing comfortably on RA, c/o abdominal discomfort.",
-          "Denies fever, chills, night sweats, headache, vision changes, rhinorrhea, congestion, sore throat, cough, chest pain, nausea, vomiting, BRBPR, melena, hematochezia, dysuria, hematuria."
+          "Patient reports constipation for 12 days, now with diarrhea resembling mucus",
+          "Cramping pain in lower abdomen for 1 month, worsened by straining",
+          "Straining to have BM (after Miralax and Mag Citrate) led to lightheadedness",
+          "Lost consciousness while exiting bathroom, felt ankle breaking",
+          "On floor for 1 hour before husband found her",
+          "Right ankle fracture with splint",
+          "Currently breathing comfortably on RA, c/o abdominal discomfort",
+          "Denies fever, chills, night sweats, headache, vision changes, rhinorrhea, congestion, sore throat, cough, chest pain, nausea, vomiting, BRBPR, melena, hematochezia, dysuria, hematuria"
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for evaluation of constipation, diarrhea with mucus, cramping abdominal pain for 1 month, history of endometrial adenocarcinoma s/p TAH + BSO and hypothyroidism. VS: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical exam: soft non-distended abdomen, no guarding/rebound, right ankle fracture in splint. ROS negative for systemic symptoms. Social history: family history of asthma, depression (mother), heart murmur (sister)."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU observation. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma, depression (mother), heart murmur (sister). Physical exam: vitals stable, no guarding/rebound, right ankle fracture with splint. ROS negative for systemic symptoms. Final result: fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 9,
-        "query_text": "lightheadedness and syncope during bowel movement with ankle fracture; need memory about orthostatic vitals and cardiac evaluation; avoid premature diagnosis without imaging or ECG"
+        "query_text": "abdominal cramping and diarrhea with recent syncope; right ankle fracture already managed; need to avoid premature diagnosis; consider targeted history for bowel obstruction or ischemia"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.3331,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.2701,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.2678,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.252,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_7727ee159a10",
+              "type": "experience",
+              "score": 0.2409,
+              "outcome": "success",
+              "situation": "When a patient has abdominal pain, syncope, and new systemic symptoms like fatigue and skin itching, but no imaging or labs are available, request targeted labs or imaging to rule out coagulation disorders or systemic complications.",
+              "action": "Request labs or imaging to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "fatigue",
+                "skin_itching",
+                "missing_lab",
+                "image_review_needed",
+                "targeted_history",
+                "systemic_symptoms",
+                "broad_differential"
+              ]
+            }
+          ],
           "negative_experience": [],
           "skill": [],
           "knowledge": []
@@ -381,22 +2187,42 @@
       },
       "selection_guidance": {
         "mode": "llm",
-        "applied_memory_ids": [],
-        "ignored_memory_ids": [],
-        "memory_assessments": [],
-        "recommended_actions": [],
-        "discouraged_actions": [],
-        "blocked_actions": [],
-        "used_memory_ids": [],
-        "warning_memory_ids": [],
-        "risk_warning": "",
-        "why_not_finalize": "",
-        "rationale": ""
+        "selected_memory_ids": [
+          "exp_9e6b0fc77ab7"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_9e6b0fc77ab7",
+            "memory_type": "experience",
+            "score": 0.3331,
+            "content": {
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            }
+          }
+        ]
       },
       "selected_action": {
         "action_type": "FINALIZE_DIAGNOSIS",
-        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{angiodysplasia}\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{angiodysplasia}\"}}\n</tool_call>",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{angiodysplasia of the gastrointestinal tract}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{angiodysplasia of the gastrointestinal tract}\"}}\n</tool_call>",
         "blocked_by_memory": false
       }
     }

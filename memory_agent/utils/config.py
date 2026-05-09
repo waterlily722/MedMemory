@@ -51,12 +51,6 @@ MEMORY_ACTION_CONFIG = {
     "finalize_action": "FINALIZE_DIAGNOSIS",
 }
 
-CASE_STATE_CONFIG = {
-    "initial_finalize_risk": "high",
-    "default_local_goal": "collect_missing_critical_info",
-    "default_uncertainty_summary": "initial state with unresolved diagnostic uncertainty",
-    "risk_levels": ["low", "medium", "high"],
-}
 
 # Applicability heuristics and thresholds used by the online controller
 APPLICABILITY_CONFIG = {
@@ -92,7 +86,7 @@ TRACE_CONFIG = {
 }
 
 LLM_CONFIG = {
-    "experience_extraction_max_output_tokens": 1200,
-    "experience_extraction_max_turns": 10,
-    "experience_extraction_max_text_chars": 600,
+    "experience_extraction_max_output_tokens": 2000,
+    "experience_extraction_max_turns": 15,
+    "experience_extraction_max_text_chars": 1600,
 }
