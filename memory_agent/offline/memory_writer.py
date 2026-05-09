@@ -8,7 +8,7 @@ from ..memory_store import ExperienceMemoryStore
 
 logger = logging.getLogger(__name__)
 from ..schemas import DistilledEpisode, ExperienceCard
-from ..utils.config import MEMORY_ROOT_DIRNAME
+from ..utils.config import MEMORY_ROOT_DIRNAME, MERGE_CONFIG
 from ..utils.scoring import cosine_similarity
 from .experience_extractor import extract_experiences
 from .experience_merger import decide_merge_llm, decide_merge_rule
@@ -23,8 +23,10 @@ def _root(root_dir: str | None) -> Path:
 def _similar_existing(
     experience: ExperienceCard,
     existing: list[ExperienceCard],
-    limit: int = 20,
+    limit: int | None = None,
 ) -> list[ExperienceCard]:
+    if limit is None:
+        limit = int(MERGE_CONFIG.get("candidate_top_k", 20) or 20)
     scored: list[tuple[float, ExperienceCard]] = []
 
     for item in existing:
@@ -36,26 +38,6 @@ def _similar_existing(
 
     scored.sort(key=lambda pair: pair[0], reverse=True)
     return [item for score, item in scored[:limit] if score > 0.0]
-
-
-def _find_by_id(items: list[ExperienceCard], memory_id: str) -> ExperienceCard | None:
-    for item in items:
-        if item.memory_id == memory_id:
-            return item
-    return None
-
-
-def _apply_conflict_group(
-    store: ExperienceMemoryStore,
-    existing_items: list[ExperienceCard],
-    experience: ExperienceCard,
-    target_ids: list[str],
-) -> None:
-    # Simplified ExperienceCard no longer stores conflict_group_id. Preserve the
-    # incoming conflicting experience as a separate row; target_ids are retained
-    # only in the merge decision metadata/logging path.
-    _ = existing_items, target_ids
-    store.upsert(experience)
 
 
 def write_memory_from_distilled_episode(
@@ -91,8 +73,7 @@ def write_memory_from_distilled_episode(
 
     written_ids: list[str] = []
     merged_count = 0
-    conflict_count = 0
-    discarded_count = 0
+    inserted_count = 0
 
     for experience in extracted:
         candidates = _similar_existing(experience, existing)
@@ -103,18 +84,6 @@ def write_memory_from_distilled_episode(
             decision = decide_merge_rule(experience, candidates)
 
         merge_decision = str(decision.get("merge_decision") or "insert_new")
-
-        if merge_decision == "discard":
-            discarded_count += 1
-            continue
-
-        if merge_decision == "conflict":
-            conflict_count += 1
-            target_ids = [str(item) for item in decision.get("target_memory_ids", [])]
-            _apply_conflict_group(store, existing, experience, target_ids)
-            written_ids.append(experience.memory_id)
-            existing = store.list_all()
-            continue
 
         if merge_decision == "merge":
             merged_payload = decision.get("merged_experience") or experience.to_dict()
@@ -127,6 +96,7 @@ def write_memory_from_distilled_episode(
 
         store.upsert(experience)
         written_ids.append(experience.memory_id)
+        inserted_count += 1
         existing.append(experience)
 
     result = {
@@ -134,15 +104,14 @@ def write_memory_from_distilled_episode(
         "written_experience_ids": written_ids,
         "extracted_count": len(extracted),
         "merged_count": merged_count,
-        "conflict_count": conflict_count,
-        "discarded_count": discarded_count,
+        "inserted_count": inserted_count,
         "experience_store_count": len(store.list_all()),
     }
 
     logger.info(
-        "Memory write done — episode=%s extracted=%d merged=%d conflict=%d discarded=%d "
+        "Memory write done — episode=%s extracted=%d merged=%d inserted=%d "
         "total_store=%d",
         distilled.episode_id, len(extracted), merged_count,
-        conflict_count, discarded_count, result["experience_store_count"],
+        inserted_count, result["experience_store_count"],
     )
     return result

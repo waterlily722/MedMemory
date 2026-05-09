@@ -7,7 +7,7 @@ from memory_agent.schemas import ExperienceCard
 
 
 class ExperienceMergeTests(unittest.TestCase):
-    def test_merge_and_conflict(self):
+    def test_merge_and_insert_new(self):
         base = ExperienceCard(
             memory_id="exp-1",
             situation_text="chest pain",
@@ -28,8 +28,8 @@ class ExperienceMergeTests(unittest.TestCase):
             source_episode_ids=["ep-2"],
             source_case_ids=["case-2"],
         )
-        conflict = decide_merge_rule(incoming, [base])
-        self.assertEqual(conflict["merge_decision"], "conflict")
+        insert_new = decide_merge_rule(incoming, [base])
+        self.assertEqual(insert_new["merge_decision"], "insert_new")
 
         same = ExperienceCard(
             memory_id="exp-3",

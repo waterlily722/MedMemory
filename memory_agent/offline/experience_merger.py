@@ -119,19 +119,11 @@ def decide_merge_rule(
     similar_existing: list[ExperienceCard],
 ) -> dict[str, Any]:
     for existing in similar_existing:
-        if _same_trigger(existing, new_experience) and not _same_direction(existing, new_experience):
-            return {
-                "merge_decision": "conflict",
-                "target_memory_ids": [existing.memory_id, new_experience.memory_id],
-                "reason": "same situation/action but opposite outcome",
-                "merged_experience": {},
-            }
-
         if _can_merge(existing, new_experience):
             merged = merge_experience(existing, new_experience)
             return {
                 "merge_decision": "merge",
-                "target_memory_ids": [existing.memory_id, new_experience.memory_id],
+                "target_memory_ids": [existing.memory_id],
                 "reason": "same situation/action/outcome direction",
                 "merged_experience": merged.to_dict(),
             }
@@ -151,6 +143,9 @@ def decide_merge_llm(
 ) -> dict[str, Any]:
     fallback = decide_merge_rule(new_experience, similar_existing)
 
+    if not similar_existing:
+        return fallback
+
     if not llm_client.available():
         return fallback
 
@@ -159,9 +154,10 @@ def decide_merge_llm(
         "similar_existing": [item.to_dict() for item in similar_existing],
         "rule_decision": fallback,
         "instruction": (
-            "Decide whether to insert, merge, discard, or mark conflict. "
-            "Never merge opposite outcomes. "
-            "If same situation/action but opposite outcome, use conflict."
+            "Decide whether to merge the new experience into one retrieved "
+            "candidate or insert it as a separate new memory. "
+            "Never merge opposite outcomes or incompatible boundaries; choose "
+            "insert_new when uncertain."
         ),
     }
 
@@ -172,7 +168,7 @@ def decide_merge_llm(
     )
 
     decision = str(parsed.get("merge_decision") or "insert_new")
-    if decision not in {"insert_new", "merge", "discard", "conflict"}:
+    if decision not in {"insert_new", "merge"}:
         logger.warning(
             "LLM merge returned invalid decision=%r; falling back to rule", decision
         )
@@ -181,5 +177,17 @@ def decide_merge_llm(
     if decision == "merge" and not isinstance(parsed.get("merged_experience"), dict):
         logger.warning("LLM merge decided 'merge' but merged_experience is not dict; fallback")
         return fallback
+
+    if decision == "merge":
+        candidate_ids = {item.memory_id for item in similar_existing}
+        target_ids = [str(item) for item in parsed.get("target_memory_ids") or []]
+        target_id = next((mid for mid in target_ids if mid in candidate_ids), "")
+        merged = parsed.get("merged_experience") or {}
+        merged_id = str(merged.get("memory_id") or "")
+        if not target_id or merged_id != target_id:
+            logger.warning(
+                "LLM merge did not preserve a retrieved candidate memory_id; fallback"
+            )
+            return fallback
 
     return parsed

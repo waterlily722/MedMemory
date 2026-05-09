@@ -51,7 +51,7 @@ EXPERIENCE_MERGE_SCHEMA = {
     "list_fields": ["target_memory_ids"],
     "dict_fields": ["merged_experience"],
     "enum_fields": {
-        "merge_decision": ["insert_new", "merge", "discard", "conflict"],
+        "merge_decision": ["insert_new", "merge"],
     },
 }
 

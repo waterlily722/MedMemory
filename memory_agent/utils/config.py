@@ -22,6 +22,7 @@ MERGE_CONFIG = {
     "semantic_threshold": 0.80,
     "action_threshold": 0.75,
     "boundary_threshold": 0.50,
+    "candidate_top_k": 20,
 }
 
 SKILL_CONFIG = {

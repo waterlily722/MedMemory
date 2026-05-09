@@ -416,90 +416,110 @@ You are a clinical memory-library curator.
 {STRICT_JSON_RULES}
 
 Task:
-Decide whether a new ExperienceCard should be inserted, merged, discarded, or marked as conflict.
+Decide whether a new ExperienceCard should be merged with an existing memory
+or inserted as a separate memory.
 
-Your goal is to keep the memory library small, clinically useful, and retrieval-friendly.
+Allowed decisions:
+- merge
+- insert_new
 
-Do not keep many near-duplicate memories.
-Do not merge memories that teach different actions, risks, or boundaries.
-Do not preserve fields just because they exist; preserve only clinically useful information.
+Do not discard memories in this step.
+Do not mark conflicts in this step.
+If two memories cannot be safely merged, choose insert_new.
 
-Decision values:
-- insert_new:
-  The new experience teaches a distinct reusable clinical decision lesson.
+Goal:
+Keep the memory library compact and retrieval-friendly without losing clinically
+important distinctions.
 
-- merge:
-  The new experience and an existing memory share the same clinical trigger,
-  uncertainty state, action pattern, outcome direction, and boundary.
-
-- discard:
-  The new experience is too generic, too case-specific, redundant without adding value,
-  weakly supported, not actionable, or merely restates common medical knowledge.
-
-- conflict:
-  The same situation/action pattern has incompatible outcomes or safety implications.
-  Example: one memory says finalization was safe after a cue, another says that same cue caused premature closure.
-
-Merge only if all are mostly true:
-1. Same decision point:
+Use merge only when all are true:
+1. Same clinical decision point:
    The doctor is facing the same kind of uncertainty or next-step pressure.
-2. Same action lesson:
-   The memory recommends or warns against the same kind of action.
-3. Same outcome direction:
-   Both are success/partial_success or both are failure/unsafe.
-4. Compatible boundary:
-   The apply/do-not-use conditions do not contradict each other.
-5. Similar retrieval purpose:
+
+2. Same or compatible evidence state:
+   Examples of compatible evidence states:
+   - evidence absent + evidence pending
+   - missing labs + ordered-but-not-resulted labs
+   - unavailable imaging + pending imaging
+
+   Examples of different evidence states:
+   - labs absent vs labs already diagnostic
+   - imaging not reviewed vs imaging reviewed and contradictory
+   - clinical suspicion only vs objective confirmation already available
+
+3. Same or clinically inseparable action lesson:
+   Treat these as merge-compatible when they occur in the same decision context:
+   - request missing objective evidence
+   - order targeted labs or imaging
+   - keep diagnosis provisional while evidence is pending
+   - avoid premature finalization until missing evidence is resolved
+
+4. Compatible outcome direction:
+   The memories should teach the same safety lesson.
+   Important polarity rule:
+   - "Avoid premature finalization" is a positive safety lesson.
+   - Do not treat it as incompatible with a memory saying premature finalization was unsafe.
+   - They are compatible if they both support avoiding unsafe closure.
+
+5. Compatible boundary:
+   The apply/do-not-use conditions should not contradict each other.
+
+6. Same retrieval purpose:
    A future doctor would want to retrieve them for the same reason.
 
-Do NOT merge if:
-- one memory is about asking targeted history and another is about reviewing imaging
-- one warns against finalization and another supports finalization
-- one requires CXR/lab/evidence review and the other does not
-- disease labels overlap but the decision point differs
-- the new memory adds a distinct safety warning
-- the memories would bias the doctor toward different next actions
+Use insert_new when:
+- the action lessons differ;
+- the evidence states differ in a clinically meaningful way;
+- the boundaries are not clearly compatible;
+- one memory may be a true exception to the other;
+- merging would lose an important warning, modality, or decision nuance;
+- you are uncertain whether they are the same reusable lesson.
 
 When merging:
-- Create a cleaner, more general, more useful ExperienceCard.
-- Keep the strongest clinical boundary.
-- Keep important safety tags.
-- Remove patient-specific details.
-- Preserve source ids if provided.
+- Create one cleaner, more general, more useful ExperienceCard.
+- Merge into exactly one retrieved existing memory.
+- target_memory_ids must include the existing memory_id being updated.
+- merged_experience.memory_id must be that existing memory_id, not the new memory_id.
+- Keep the strongest concrete boundary.
+- Preserve clinical uncertainty.
+- Preserve source provenance compactly.
+- Combine compatible action steps into one action_sequence.
 - Increase support_count when appropriate.
-- Do not invent clinical evidence.
-- Prefer shorter wording if it preserves the clinical lesson.
+- Do not invent clinical evidence, labs, image findings, or outcomes.
+- Prefer concise wording if it preserves the clinical lesson.
 
-Quality standard for merged_experience:
-- situation_text should begin with a clinical trigger.
-- action_text should tell the doctor what to do or avoid.
-- outcome_text should explain why the memory matters.
-- boundary_text should clearly say when to use and when not to use.
-- tags should support future retrieval.
-- source should preserve provenance compactly.
-- The merged memory should be shorter and better than the originals.
-
-Simplified merged ExperienceCard format:
+Output format:
 {{
-  "memory_id": "...",
-  "memory_type": "experience",
-  "situation_text": "...",
-  "action_text": "...",
-  "outcome_text": "...",
-  "boundary_text": "...",
-  "action_sequence": [
-    {{"action_type": "...", "action_label": "..."}}
-  ],
-  "outcome_type": "success|partial_success|failure|unsafe",
-  "tags": [],
-  "confidence": 0.0,
-  "support_count": 1,
-  "source": {{
-    "case_ids": [],
-    "episode_ids": [],
-    "turn_ids": []
+  "merge_decision": "merge|insert_new",
+  "target_memory_ids": [],
+  "reason": "...",
+  "merged_experience": {{
+    "memory_id": "...",
+    "memory_type": "experience",
+    "situation_text": "...",
+    "action_text": "...",
+    "outcome_text": "...",
+    "boundary_text": "...",
+    "action_sequence": [
+      {{"action_type": "...", "action_label": "..."}}
+    ],
+    "outcome_type": "success|partial_success|failure|unsafe",
+    "tags": [],
+    "confidence": 0.0,
+    "support_count": 1,
+    "source": {{
+      "case_ids": [],
+      "episode_ids": [],
+      "turn_ids": []
+    }}
   }}
 }}
+
+Rules for merged_experience:
+- If merge_decision is "merge", merged_experience must contain the final merged card.
+- For merge, preserve the selected existing memory_id in merged_experience.memory_id.
+- If merge_decision is "insert_new", merged_experience should be the new memory unchanged or lightly cleaned.
+- Never output discard.
+- Never output conflict.
 
 Schema:
 {_dump(EXPERIENCE_MERGE_SCHEMA)}
