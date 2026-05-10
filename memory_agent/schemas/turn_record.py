@@ -29,6 +29,10 @@ class TurnRecord(SerializableMixin):
     applicability_result: Optional[ApplicabilityResult] = None
     memory_guidance: Optional[MemoryGuidance] = None
 
+    # Clean doctor/environment interaction used for offline experience mining.
+    # This intentionally excludes retrieval/applicability/debug payloads.
+    clinical_turn: dict[str, Any] = field(default_factory=dict)
+
     selected_action: dict[str, Any] = field(default_factory=dict)
     memory_debug: dict[str, Any] = field(default_factory=dict)
 

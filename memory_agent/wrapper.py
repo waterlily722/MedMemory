@@ -505,6 +505,13 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             retrieval_result=self.latest_retrieval,
             applicability_result=self.latest_applicability,
             memory_guidance=self.latest_guidance,
+            clinical_turn=self._build_clinical_turn(
+                self.pending_selected_action,
+                env_observation,
+                env_info,
+                reward,
+                done,
+            ),
             selected_action=dict(self.pending_selected_action),
             memory_debug=dict(self.latest_memory_debug or {}),
             env_observation=self._safe_payload(env_observation),
@@ -517,6 +524,63 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             append_memory_turn_trace(self.trace_root, record.to_dict())
         self.pending_selected_action = {}
         self.pending_selected_action_blocked = False
+
+    def _parse_tool_call_text(self, value: Any) -> dict[str, Any]:
+        text = str(value or "").strip()
+        if not text:
+            return {}
+        start = text.find("<tool_call>")
+        end = text.find("</tool_call>")
+        if start >= 0 and end > start:
+            text = text[start + len("<tool_call>"):end].strip()
+        try:
+            parsed = json.loads(text)
+        except Exception:
+            return {}
+        if not isinstance(parsed, dict):
+            return {}
+        args = parsed.get("arguments") or {}
+        if isinstance(args, str):
+            try:
+                args = json.loads(args)
+            except Exception:
+                args = {"raw": args}
+        if not isinstance(args, dict):
+            args = {}
+        return {
+            "tool_name": str(parsed.get("name") or ""),
+            "arguments": args,
+        }
+
+    def _build_clinical_turn(
+        self,
+        selected_action: dict[str, Any],
+        env_observation: Any,
+        env_info: dict[str, Any],
+        reward: float,
+        done: bool,
+    ) -> dict[str, Any]:
+        action = dict(selected_action or {})
+        parsed_tool = self._parse_tool_call_text(action.get("raw"))
+        tool_name = parsed_tool.get("tool_name") or str(
+            action.get("tool_name") or action.get("name") or ""
+        )
+        arguments = parsed_tool.get("arguments") or action.get("arguments") or {}
+        if not isinstance(arguments, dict):
+            arguments = {"raw": str(arguments)}
+
+        observation = self._safe_payload(env_observation, max_chars=1200)
+        info = self._safe_payload(env_info, max_chars=1200)
+        return {
+            "turn_id": self.case_state.turn_id if self.case_state else 0,
+            "doctor_action_type": action.get("action_type") or "",
+            "tool_name": tool_name,
+            "arguments": arguments,
+            "patient_or_tool_response": observation,
+            "env_info": info,
+            "reward": float(reward or 0.0),
+            "done": bool(done),
+        }
 
     # ------------------------------------------------------------------
     # Offline write

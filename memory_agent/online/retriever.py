@@ -191,9 +191,15 @@ def _experience_hits(
             query_embedding=query_embedding,
             memory_embedding=mem_vec,
         )
-        is_negative = card.outcome_type in {
-            OutcomeType.FAILURE.value, OutcomeType.UNSAFE.value
-        }
+        tags = {str(tag).lower() for tag in (payload.get("tags") or [])}
+        if "negative" in tags:
+            is_negative = True
+        elif "positive" in tags:
+            is_negative = False
+        else:
+            is_negative = card.outcome_type in {
+                OutcomeType.FAILURE.value, OutcomeType.UNSAFE.value
+            }
 
         if is_negative and score < negative_min_score:
             continue

@@ -40,7 +40,10 @@ _POSITIVE_OUTCOMES = {OutcomeType.SUCCESS.value, OutcomeType.PARTIAL_SUCCESS.val
 
 
 def _is_negative_experience(hit: RetrievalHit) -> bool:
-    return hit.memory_type == "experience" and _outcome_type(hit) in _NEGATIVE_OUTCOMES
+    tags = {str(tag).lower() for tag in (hit.content.get("tags") or [])}
+    return hit.memory_type == "experience" and (
+        "negative" in tags or _outcome_type(hit) in _NEGATIVE_OUTCOMES
+    )
 
 
 def _infer_action_from_steps(steps: object) -> str:

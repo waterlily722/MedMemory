@@ -83,3 +83,9 @@ SKILL_SCHEMA = {
         "support_count": {"min": 1, "max": 999999},
     },
 }
+
+SKILL_EXTRACTION_SCHEMA = {
+    "required": ["skills"],
+    "list_fields": ["skills"],
+    "dict_fields": [],
+}

@@ -9,6 +9,7 @@ from .schemas import (
     EXPERIENCE_EXTRACTION_SCHEMA,
     EXPERIENCE_MERGE_SCHEMA,
     QUERY_BUILDER_SCHEMA,
+    SKILL_EXTRACTION_SCHEMA,
     SKILL_SCHEMA,
 )
 
@@ -219,14 +220,19 @@ You are a clinical experience extractor for a medical memory system.
 {STRICT_JSON_RULES}
 
 Task:
-Extract 1 to 3 reusable ExperienceCards from the complete episode turns.
+Extract 1 to 3 reusable ExperienceCards from the clean clinical episode trace.
 
 The goal is NOT to summarize the full case.
 The goal is to capture what a real doctor should remember from this interaction
 when facing a similar future diagnostic decision point.
-Use both successful and failed episodes. Failed trajectories can produce useful
-negative or cautionary experiences about premature closure, missed evidence, or
-low-value actions.
+
+Use episode_outcome.success to choose the experience polarity:
+- If success=true, extract positive experiences from useful local diagnostic actions.
+- If success=false, use the provided gold_diagnosis to understand what was missed,
+  then extract negative/cautionary experiences about premature closure, missed
+  evidence, wrong direction, or low-value actions.
+- For failed episodes, do not create memories that simply say "consider the gold
+  diagnosis". Extract what action should have been taken or avoided.
 
 Extract an experience only if it teaches one of:
 - a useful next-step decision
@@ -322,7 +328,14 @@ Simplified ExperienceCard fields:
    - unsafe: the action risked patient safety or premature closure
 
 9. tags:
-   Use reusable clinical and reasoning tags.
+   The first tag must be exactly one of:
+   - positive
+   - negative
+
+   Use positive for successful reusable local actions.
+   Use negative for failed, unsafe, missed, or cautionary local lessons.
+
+   After the polarity tag, use reusable clinical and reasoning tags.
    Include syndrome tags, action tags, and risk tags when useful.
 
    Good tag examples:
@@ -371,6 +384,8 @@ Quality requirements:
 - Preserve clinical uncertainty.
 - Prefer decision memories over diagnosis memories.
 - Include negative or unsafe experiences when they teach what to avoid.
+- Failed episodes must explicitly use the gold diagnosis only as outcome context,
+  not as a diagnosis hint to memorize.
 - Keep the memory reusable across future cases.
 - Do not invent evidence, image findings, labs, or outcomes.
 - Do not include long case details that will hurt retrieval.
@@ -536,11 +551,13 @@ You are a clinical skill miner and diagnostic workflow architect.
 {STRICT_JSON_RULES}
 
 Task:
-Refine one reusable SkillCard from repeated useful ExperienceCards.
+Refine one cross-episode consolidated SkillCard from repeated useful ExperienceCards.
 
 A skill is not a case summary.
 A skill is not a disease definition.
-A skill is a reusable diagnostic workflow that a doctor can adapt at a similar future decision point.
+A consolidated skill is a reusable diagnostic workflow that a doctor can adapt at a similar future decision point.
+Unlike episode-level skills, this skill must represent repeated support across
+multiple experiences or cases.
 
 Create a skill only when the provided experiences show a repeated pattern:
 - similar type of clinical uncertainty
@@ -630,7 +647,9 @@ Simplified SkillCard fields:
    Avoid vague boundaries like "use in similar cases".
 
 9. tags:
-   Use reusable clinical and reasoning tags.
+   The first tag must be "positive".
+   The second tag must be "consolidated_skill".
+   After those markers, use reusable clinical and reasoning tags.
    Include syndrome tags, workflow tags, and safety tags when useful.
 
    Good tag examples:
@@ -667,7 +686,8 @@ Simplified SkillCard fields:
    Example:
    {{
      "experience_ids": [],
-     "case_ids": []
+     "case_ids": [],
+     "skill_origin": ["cross_episode_consolidation"]
    }}
    Do not invent ids.
 
@@ -691,17 +711,91 @@ Output format:
     {{"action_type": "...", "action_label": "..."}}
   ],
   "boundary_text": "...",
-  "tags": [],
+  "tags": ["positive", "consolidated_skill"],
   "confidence": 0.0,
   "support_count": 1,
   "source": {{
     "experience_ids": [],
-    "case_ids": []
+    "case_ids": [],
+    "skill_origin": ["cross_episode_consolidation"]
   }}
 }}
 
 Schema:
 {_dump(SKILL_SCHEMA)}
+
+Input:
+{_dump(payload)}
+""".strip()
+
+
+def skill_extraction_prompt(payload: dict[str, Any]) -> str:
+    return f"""
+You are a clinical skill miner for a medical diagnostic agent.
+
+{STRICT_JSON_RULES}
+
+Task:
+Extract episode-level SkillCards from one correctly diagnosed clinical episode.
+
+Only extract skills when episode_outcome.success is true.
+If success is false, output {{"skills": []}}.
+
+An episode-level skill is a reusable action sequence observed in this single
+successful case. It is not yet cross-case validated. It is not a diagnosis label
+and not a case summary.
+
+Use the clean clinical episode trace to identify action sequences that helped:
+- ask targeted questions
+- request focused labs, imaging, or exams
+- retrieve focused knowledge at the right time
+- update or broaden hypotheses
+- delay finalization until evidence was sufficient
+- finalize only when the evidence state became adequate
+
+Do not extract:
+- skills that only say "consider diagnosis X"
+- generic medical knowledge
+- one-step obvious actions without reusable workflow value
+- actions contradicted by the episode outcome
+
+Output format:
+{{
+  "skills": [
+    {{
+      "memory_id": "...",
+      "memory_type": "skill",
+      "skill_name": "...",
+      "situation_text": "...",
+      "goal_text": "...",
+      "procedure_text": "...",
+      "procedure": [
+        {{"action_type": "...", "action_label": "..."}}
+      ],
+      "boundary_text": "...",
+      "tags": ["positive", "..."],
+      "confidence": 0.0,
+      "support_count": 1,
+      "source": {{
+        "case_ids": [],
+        "episode_ids": [],
+        "turn_ids": []
+      }}
+    }}
+  ]
+}}
+
+Rules:
+- Every extracted skill must have "positive" as the first tag and
+  "episode_skill" as the second tag.
+- Set source.skill_origin to ["episode_level"].
+- Preserve source ids only when they are provided in the input.
+- Do not invent clinical evidence, labs, image findings, or outcomes.
+- Keep procedures short, ordered, and executable.
+- Include concrete apply and do-not-use conditions in boundary_text.
+
+Schema:
+{_dump(SKILL_EXTRACTION_SCHEMA)}
 
 Input:
 {_dump(payload)}

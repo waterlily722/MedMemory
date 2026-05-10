@@ -174,24 +174,40 @@ def _compact_selected_action(action: dict[str, Any]) -> dict[str, Any]:
     return compact
 
 
-def _compact_turn(turn: dict[str, Any]) -> dict[str, Any]:
+def _compact_clinical_turn(turn: dict[str, Any]) -> dict[str, Any]:
+    clinical = turn.get("clinical_turn") if isinstance(turn.get("clinical_turn"), dict) else {}
+    if clinical:
+        return {
+            "turn_id": clinical.get("turn_id") or turn.get("turn_id", 0),
+            "doctor_action_type": clinical.get("doctor_action_type") or "",
+            "tool_name": clinical.get("tool_name") or "",
+            "arguments": clinical.get("arguments") or {},
+            "patient_or_tool_response": _compact_observation(
+                clinical.get("patient_or_tool_response")
+            ),
+            "reward": _safe_float(clinical.get("reward"), _safe_float(turn.get("reward"), 0.0)),
+            "done": bool(clinical.get("done", turn.get("done", False))),
+        }
+
     action = _selected_action(turn)
+    raw = action.get("raw") or action.get("action_label") or action
     return {
         "turn_id": turn.get("turn_id", 0),
-        "case_state": _compact_case_state(turn.get("case_state")),
-        "memory_query": _compact_memory_query(turn.get("memory_query")),
-        "memory_guidance": _compact_memory_guidance(turn.get("memory_guidance")),
-        "selected_action": _compact_selected_action(action),
-        "selected_action_blocked": bool(
-            turn.get("selected_action_blocked")
-            or action.get("blocked_by_memory")
-            or action.get("blocked")
-        ),
-        "env_observation": _compact_observation(turn.get("env_observation")),
-        "env_info": _compact_env_info(turn.get("env_info")),
+        "doctor_action_type": action.get("action_type") or "",
+        "tool_name": action.get("tool_name") or action.get("name") or "",
+        "arguments": action.get("arguments") or {},
+        "doctor_action": _clip_text(raw, 500),
+        "patient_or_tool_response": _compact_observation(turn.get("env_observation")),
         "reward": _safe_float(turn.get("reward"), 0.0),
         "done": bool(turn.get("done", False)),
     }
+
+
+def build_clinical_episode_trace(
+    turn_records: list[dict[str, Any]],
+    limit: int = MAX_EPISODE_TURNS_FOR_EXTRACTION,
+) -> list[dict[str, Any]]:
+    return [_compact_clinical_turn(turn) for turn in select_episode_turns(turn_records, limit)]
 
 
 def _fallback_memory_id() -> str:
@@ -232,6 +248,22 @@ def _card_from_raw(
     except Exception:
         outcome_type = OutcomeType.PARTIAL_SUCCESS.value
 
+    feedback = distilled.feedback if isinstance(distilled.feedback, dict) else {}
+    episode_success = bool(feedback.get("success", False))
+    if not episode_success and outcome_type in {
+        OutcomeType.SUCCESS.value,
+        OutcomeType.PARTIAL_SUCCESS.value,
+    }:
+        outcome_type = OutcomeType.FAILURE.value
+    polarity_tag = (
+        "negative"
+        if outcome_type in {OutcomeType.FAILURE.value, OutcomeType.UNSAFE.value}
+        else "positive"
+    )
+    tags = [str(item) for item in raw.get("tags") or [] if str(item)]
+    tags = [tag for tag in tags if tag not in {"positive", "negative"}]
+    tags.insert(0, polarity_tag)
+
     raw_source = raw.get("source") if isinstance(raw.get("source"), dict) else {}
     source_case_ids = [str(item) for item in raw_source.get("case_ids") or [] if str(item)]
     source_episode_ids = [str(item) for item in raw_source.get("episode_ids") or [] if str(item)]
@@ -251,7 +283,7 @@ def _card_from_raw(
         boundary_text=boundary_text,
         action_sequence=_normalize_action_sequence(raw.get("action_sequence")),
         outcome_type=outcome_type,
-        tags=[str(item) for item in raw.get("tags") or [] if str(item)],
+        tags=tags,
         confidence=max(0.0, min(1.0, _safe_float(raw.get("confidence"), 0.5))),
         support_count=max(1, int(_safe_float(raw.get("support_count"), 1))),
         source={
@@ -294,20 +326,28 @@ def extract_experiences(
         )
         return []
 
-    episode_turns = select_episode_turns(distilled.turn_records)
-    if not episode_turns:
+    clinical_trace = build_clinical_episode_trace(distilled.turn_records)
+    if not clinical_trace:
         logger.info(
             "No turns in episode %s — skipping extraction",
             distilled.episode_id,
         )
         return []
 
+    feedback = distilled.feedback if isinstance(distilled.feedback, dict) else {}
+    episode_success = bool(feedback.get("success", False))
     payload = {
         "episode_id": distilled.episode_id,
         "case_id": distilled.case_id,
         "episode_summary": _clip_text(distilled.summary, 2000),
-        "feedback": distilled.feedback,
-        "episode_turns": [_compact_turn(turn) for turn in episode_turns],
+        "episode_outcome": {
+            "success": episode_success,
+            "final_diagnosis": feedback.get("final_diagnosis") or "",
+            "gold_diagnosis": feedback.get("gold_diagnosis") or "",
+            "total_reward": feedback.get("total_reward") or 0.0,
+            "summary": feedback.get("summary") or "",
+        },
+        "clinical_episode_trace": clinical_trace,
         "max_experiences": MAX_EXPERIENCES_PER_EPISODE,
     }
     prompt = experience_extraction_prompt(payload)
@@ -315,7 +355,7 @@ def extract_experiences(
         "Experience extraction prompt size for episode %s: %d chars, %d turns, max_output_tokens=%d",
         distilled.episode_id,
         len(prompt),
-        len(episode_turns),
+        len(clinical_trace),
         MAX_EXPERIENCE_EXTRACTION_OUTPUT_TOKENS,
     )
     parsed, _, _ = parse_validate_repair(
@@ -335,6 +375,6 @@ def extract_experiences(
 
     logger.info(
         "Extracted %d experience cards from episode %s (episode turns used: %d)",
-        len(cards), distilled.episode_id, len(episode_turns),
+        len(cards), distilled.episode_id, len(clinical_trace),
     )
     return cards

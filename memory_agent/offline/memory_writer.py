@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from ..memory_store import ExperienceMemoryStore
+from ..memory_store import ExperienceMemoryStore, SkillMemoryStore
 
 logger = logging.getLogger(__name__)
 from ..schemas import DistilledEpisode, ExperienceCard
@@ -12,6 +12,7 @@ from ..utils.config import MEMORY_ROOT_DIRNAME, MERGE_CONFIG
 from ..utils.scoring import cosine_similarity
 from .experience_extractor import extract_experiences
 from .experience_merger import decide_merge_llm, decide_merge_rule
+from .skill_extractor import extract_skills_from_distilled_episode
 
 
 def _root(root_dir: str | None) -> Path:
@@ -45,15 +46,16 @@ def write_memory_from_distilled_episode(
     root_dir: str | None = None,
     experience_extraction_mode: str = "llm",
     experience_merge_mode: str = "rule",
+    skill_extraction_mode: str = "llm",
     llm_client=None,
 ) -> dict[str, Any]:
     """
-    Write ExperienceCards from a distilled episode.
+    Write ExperienceCards and episode-level SkillCards from a distilled episode.
 
     Important:
       - Experience extraction defaults to LLM.
       - If no LLM is available, extraction returns [] and nothing is written.
-      - Skill mining is not done here.
+      - Skill extraction only runs for successful episodes.
     """
     distilled = (
         distilled_episode
@@ -108,10 +110,30 @@ def write_memory_from_distilled_episode(
         "experience_store_count": len(store.list_all()),
     }
 
+    skill_store = SkillMemoryStore(root)
+    skills = extract_skills_from_distilled_episode(
+        distilled,
+        mode=skill_extraction_mode,
+        llm_client=llm_client,
+    )
+    written_skill_ids: list[str] = []
+    for skill in skills:
+        skill_store.upsert(skill)
+        written_skill_ids.append(skill.memory_id)
+
+    result.update(
+        {
+            "written_skill_ids": written_skill_ids,
+            "skill_extracted_count": len(skills),
+            "skill_store_count": len(skill_store.list_all()),
+        }
+    )
+
     logger.info(
-        "Memory write done — episode=%s extracted=%d merged=%d inserted=%d "
-        "total_store=%d",
+        "Memory write done — episode=%s exp_extracted=%d merged=%d inserted=%d "
+        "exp_total=%d skill_extracted=%d skill_total=%d",
         distilled.episode_id, len(extracted), merged_count,
         inserted_count, result["experience_store_count"],
+        len(skills), result["skill_store_count"],
     )
     return result

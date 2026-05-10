@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from .episode_distiller import distill_from_trajectory
 from .experience_extractor import (
+    build_clinical_episode_trace,
     extract_experiences,
     select_episode_turns,
 )
@@ -12,9 +13,11 @@ from .experience_merger import (
 )
 from .memory_writer import write_memory_from_distilled_episode
 from .skill_consolidator import consolidate_skills_from_store
+from .skill_extractor import extract_skills_from_distilled_episode
 
 __all__ = [
     "distill_from_trajectory",
+    "build_clinical_episode_trace",
     "extract_experiences",
     "select_episode_turns",
     "decide_merge_rule",
@@ -22,4 +25,5 @@ __all__ = [
     "merge_experience",
     "write_memory_from_distilled_episode",
     "consolidate_skills_from_store",
+    "extract_skills_from_distilled_episode",
 ]

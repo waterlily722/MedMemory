@@ -129,7 +129,15 @@ def _build_rule_skill(
         procedure_text=seed.action_text,
         boundary_text=seed.boundary_text,
         procedure=seed.action_sequence,
-        tags=_unique([tag for item in cluster for tag in item.tags]),
+        tags=_unique(
+            ["positive", "consolidated_skill"]
+            + [
+                tag
+                for item in cluster
+                for tag in item.tags
+                if tag not in {"positive", "negative", "episode_skill", "consolidated_skill"}
+            ]
+        ),
         confidence=min(0.99, round(success_rate * (1.0 - unsafe_rate), 4)),
         support_count=support_count,
         source={
@@ -140,6 +148,7 @@ def _build_rule_skill(
                 for case_id in (item.source or {}).get("case_ids", [])
                 if case_id
             ]),
+            "skill_origin": ["cross_episode_consolidation"],
         },
     )
 
