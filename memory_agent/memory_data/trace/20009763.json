@@ -19,28 +19,181 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 2,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_4765617a150d",
+              "type": "experience",
+              "score": 0.3388,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like weight loss or fever without imaging or lab results, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "weight_loss",
+                "fever",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "fatigue"
+              ]
+            },
+            {
+              "id": "exp_de56cfe5a213",
+              "type": "experience",
+              "score": 0.3375,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal pain, syncope, and systemic symptoms like fatigue or weight loss without imaging or labs, request targeted imaging or labs before finalizing any diagnosis.",
+              "action": "Request targeted imaging or labs to obtain objective evidence before finalizing any diagnosis, especially when clinical suspicion exists but no supporting data is available.",
+              "boundary": "Use this memory when clinical suspicion exists but no lab or imaging results are available; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "syncope",
+                "systemic_symptoms",
+                "image_review_needed",
+                "missing_lab",
+                "broad_differential",
+                "fatigue",
+                "weight_loss",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_1d1f58137abc",
+              "type": "experience",
+              "score": 0.336,
+              "outcome": "success",
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_9e6b0fc77ab7",
+              "type": "experience",
+              "score": 0.3299,
+              "outcome": "success",
+              "situation": "When a patient presents with abdominal cramping, alternating constipation and diarrhea with mucus, and syncope, but no imaging or lab results are available, avoid premature diagnosis and delay until objective evidence is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "abdominal_pain",
+                "constipation",
+                "diarrhea",
+                "syncope",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab",
+                "abdominal_cramping",
+                "constipation_diarrhea",
+                "mucus",
+                "missing_imaging",
+                "mucus_diarrhea"
+              ]
+            },
+            {
+              "id": "exp_c677a8306f7b",
+              "type": "experience",
+              "score": 0.3295,
+              "outcome": "success",
+              "situation": "When a patient presents with asthma-like symptoms and aspirin sensitivity but lacks objective diagnostic evidence such as imaging or labs, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "tags": [
+                "asthma",
+                "aspirin_exacerbated_respiratory_disease",
+                "missing_lab",
+                "premature_closure",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_71b443f9e212",
+              "type": "experience",
+              "score": 0.2731,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "chest_pain",
+                "dyspnea",
+                "nasal_polyps",
+                "aspirin_intolerance",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2ccb5b4beda6",
+              "type": "experience",
+              "score": 0.2606,
+              "outcome": "failure",
+              "situation": "When a patient presents with wheezing, shortness of breath, and NSAID intolerance with hyposmia, and nasal polyp status is unknown, premature finalization of AERD without imaging or exam leads to diagnostic error.",
+              "action": "Avoid finalizing AERD diagnosis without confirming nasal polyp status via imaging or exam.",
+              "boundary": "Use when NSAID intolerance and hyposmia are present and nasal polyp status is unknown; do not use if nasal polyps are already confirmed or if imaging is unavailable or contraindicated.",
+              "tags": [
+                "asthma",
+                "aspirin_intolerance",
+                "hyposmia",
+                "nasal_polyps",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
-      },
-      "selected_action": {
-        "action_type": "REQUEST_LAB",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your left hip pain? For example, is it sharp, dull, constant, or intermittent?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your left hip pain? For example, is it sharp, dull, constant, or intermittent?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "selected_memory_ids": [
+          "exp_1d1f58137abc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1d1f58137abc",
+            "memory_type": "experience",
+            "score": 0.336,
+            "content": {
+              "situation": "When a patient presents with nonspecific symptoms and no diagnostic evidence is available, avoid premature finalization and continue targeted history until objective data is obtained.",
+              "action": "Delay finalizing any diagnosis until labs or imaging results are available, as premature closure can lead to missed diagnoses or unnecessary interventions.",
+              "outcome": "This action prevented premature diagnosis and ensured diagnostic steps were grounded in objective evidence rather than clinical suspicion alone.",
+              "boundary": "Use this memory when no lab or imaging results are available and clinical suspicion is low; do not use if labs or imaging are already ordered and results are pending or available.",
+              "outcome_type": "success",
+              "tags": [
+                "nonspecific_symptoms",
+                "delay_finalization",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "broad_differential",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
       }
     },
     {
