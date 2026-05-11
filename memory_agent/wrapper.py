@@ -3,9 +3,12 @@ from __future__ import annotations
 import copy
 import json
 import logging
+import re
 import uuid
 from pathlib import Path
 from typing import Any
+
+from rllm.utils.diagnose_acc import diagnosis_match_lenient
 
 logger = logging.getLogger(__name__)
 
@@ -52,6 +55,13 @@ from .utils.config import MEMORY_ACTION_CONFIG
 ACTION_MAP = dict(MEMORY_ACTION_CONFIG["tool_to_action"])
 DEFAULT_ACTIONS = list(MEMORY_ACTION_CONFIG["default_actions"])
 FINALIZE_ACTION = str(MEMORY_ACTION_CONFIG["finalize_action"])
+
+BOXED_DIAGNOSIS_RE = re.compile(r"\\box(?:ed)?\{(.+?)\}", re.S)
+
+
+def _extract_boxed_diagnosis(text: str) -> str:
+    match = BOXED_DIAGNOSIS_RE.search(text or "")
+    return match.group(1).strip() if match else ""
 
 
 class MemoryWrappedMedicalAgent(_BaseAgent):
@@ -552,6 +562,26 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             "arguments": args,
         }
 
+    def _extract_final_diagnosis_from_action(self, action: dict[str, Any]) -> str:
+        parsed = self._parse_tool_call_text(action.get("raw"))
+        args = parsed.get("arguments") if isinstance(parsed, dict) else {}
+        if not isinstance(args, dict):
+            args = {}
+
+        for key in ("diagnosis", "final_diagnosis"):
+            value = args.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+
+        for key in ("final_response", "result", "response"):
+            value = args.get(key)
+            if isinstance(value, str) and value.strip():
+                boxed = _extract_boxed_diagnosis(value)
+                return boxed or value.strip()
+
+        raw = str(action.get("raw") or action.get("action_label") or "")
+        return _extract_boxed_diagnosis(raw) or raw.strip()
+
     def _build_clinical_turn(
         self,
         selected_action: dict[str, Any],
@@ -596,9 +626,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             return
 
         # ── Extract fields from env info dict ─────────────────────────
-        # Env finalize returns: {"is_correct": ..., "metadata": {...}, "response": ...}
-        is_correct = bool(info.get("is_correct", False))
-
         # Total reward from trajectory (sum of step rewards) or fallback
         total_reward = float(
             sum(record.reward for record in self.turn_records) or reward or 0.0
@@ -608,16 +635,13 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         final_diagnosis = ""
         if self.turn_records:
             last_action = self.turn_records[-1].selected_action or {}
-            final_diagnosis = str(
-                last_action.get("action_label")
-                or last_action.get("raw")
-                or ""
-            )
+            final_diagnosis = self._extract_final_diagnosis_from_action(last_action)
 
-        # Gold diagnosis: from cached bundle (medenv_case_bundle -> ehr -> Correct_Diagnosis)
+        # Gold diagnosis: from cached bundle / task fields.
         gold_diagnosis = ""
         bundle_ehr = (
             self._case_bundle.get("ehr")
+            or (self._case_bundle.get("context") or {}).get("ehr")
             or (self._case_bundle.get("medenv_case_bundle") or {}).get("ehr")
             or {}
         )
@@ -625,16 +649,23 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             gold_diagnosis = str(
                 bundle_ehr.get("Correct_Diagnosis")
                 or bundle_ehr.get("Principal_Diagnosis")
+                or bundle_ehr.get("Final_Result")
                 or ""
             )
         # Also check task-level ground_truth
         if not gold_diagnosis:
             gold_diagnosis = str(
                 info.get("gold_diagnosis")
+                or info.get("ground_truth")
                 or self._case_bundle.get("ground_truth")
                 or self._case_bundle.get("gold_diagnosis")
                 or ""
             )
+
+        # Keep memory extraction success identical to diagnose_acc.py summary.
+        # Judge/env is_correct may use a different rule, but memory positive vs
+        # negative should follow the evaluator shown in the run summary.
+        is_correct = diagnosis_match_lenient(final_diagnosis, gold_diagnosis)
 
         summary = str(
             info.get("summary")

@@ -2,6 +2,9 @@
 import argparse
 import asyncio
 import os
+import sys
+from datetime import datetime
+from pathlib import Path
 
 from transformers import AutoTokenizer
 
@@ -22,15 +25,65 @@ from prepare_med_data_bench import prepare_med_data, SUBDIR_WITH_CXR, SUBDIR_NO_
 from memory_agent.utils.config import MEMORY_ROOT_DIRNAME
 
 
+LOCAL_OPENAI_BASE_URL = "http://localhost:30000/v1"
+DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
+DEEPSEEK_DEFAULT_MODEL = "deepseek-chat"
+
+
+class Tee:
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+            stream.flush()
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
+
+
+def resolve_doctor_endpoint(args):
+    provider = args.provider.strip().lower()
+    if provider == "deepseek":
+        args.base_url = (
+            args.base_url.strip()
+            or os.getenv("DEEPSEEK_BASE_URL", "").strip()
+            or DEEPSEEK_BASE_URL
+        )
+        args.api_key = args.api_key or os.getenv("DEEPSEEK_API_KEY", "")
+        args.model = (
+            args.model.strip()
+            or os.getenv("DEEPSEEK_MODEL", "").strip()
+            or DEEPSEEK_DEFAULT_MODEL
+        )
+        if not args.api_key:
+            raise ValueError("DeepSeek provider requires --api_key or DEEPSEEK_API_KEY.")
+        return
+
+    args.base_url = args.base_url.strip() or LOCAL_OPENAI_BASE_URL
+    args.api_key = args.api_key or "None"
+    args.model = args.model.strip()
+    if not args.model:
+        raise ValueError("--model is required unless --provider deepseek supplies a default.")
+
+
 def main():
     register_med_tools()
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--model", required=True, help="Doctor served model name (e.g., --served-model-name doctor_agent).")
+    parser.add_argument(
+        "--provider",
+        default="local",
+        choices=["local", "deepseek"],
+        help="Doctor API provider. Use deepseek for the OpenAI-compatible DeepSeek API.",
+    )
+    parser.add_argument("--model", default="", help="Doctor served model name. DeepSeek defaults to deepseek-chat.")
     parser.add_argument("--tokenizer_path", required=True, help="Local tokenizer/model path for AutoTokenizer.")
-    parser.add_argument("--base_url", default="http://localhost:30000/v1")
-    parser.add_argument("--api_key", default="None")
+    parser.add_argument("--base_url", default="", help="OpenAI-compatible API base URL.")
+    parser.add_argument("--api_key", default="", help="OpenAI-compatible API key.")
     parser.add_argument("--case_dir", required=True, help="Bench 根目录，例如 /data/xuxiang/mimic-iv/bench")
     parser.add_argument("--max_cases", type=int, default=10)
     parser.add_argument("--repeat_k", type=int, default=1)
@@ -64,7 +117,44 @@ def main():
     parser.add_argument("--memory_llm_model", default="")
     parser.add_argument("--memory_llm_base_url", default="")
     parser.add_argument("--memory_llm_api_key", default="")
+    parser.add_argument(
+        "--summary_log_dir",
+        default=str(Path(__file__).resolve().parent / "logs"),
+        help="Directory for per-run evaluation summary logs. Set empty string to disable.",
+    )
+    parser.add_argument(
+        "--run_log_dir",
+        default=str(Path(__file__).resolve().parent / "logs"),
+        help="Directory for realtime stdout/stderr run logs. Set empty string to disable.",
+    )
+    parser.add_argument(
+        "--print_examples",
+        type=int,
+        default=-1,
+        help="Number of eval examples to print. Use -1 for all, 0 for none.",
+    )
+    parser.add_argument(
+        "--example_text_chars",
+        type=int,
+        default=0,
+        help="Number of final-output chars per example. Use 0 for full text.",
+    )
     args = parser.parse_args()
+    resolve_doctor_endpoint(args)
+
+    run_log_file = None
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    if args.run_log_dir:
+        timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        mode = "memory" if args.enable_memory else "no_memory"
+        cxr_mode = "no_cxr" if args.no_cxr else "with_cxr"
+        log_name = f"run_{timestamp}_{mode}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
+        run_log_path = Path(args.run_log_dir) / log_name
+        run_log_path.parent.mkdir(parents=True, exist_ok=True)
+        run_log_file = run_log_path.open("w", encoding="utf-8")
+        sys.stdout = Tee(sys.stdout, run_log_file)
+        sys.stderr = Tee(sys.stderr, run_log_file)
 
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
     if "RETRIEVAL_SERVER_URL" not in os.environ:
@@ -182,7 +272,6 @@ def main():
     sampling_params = {
         "temperature": args.temperature,
         "top_p": args.top_p,
-        "model": args.model,
     }
 
     engine = AgentExecutionEngine(
@@ -191,7 +280,12 @@ def main():
         env_class=MedicalDialogueEnv,
         env_args=env_args,
         engine_name="openai",
-        rollout_engine_args={"base_url": args.base_url, "api_key": args.api_key},
+        rollout_engine_args={
+            "base_url": args.base_url,
+            "api_key": args.api_key,
+            "model": args.model,
+            "use_chat_completions": args.provider == "deepseek",
+        },
         tokenizer=tokenizer,
         sampling_params=sampling_params,
         max_response_length=args.max_response_length,
@@ -200,7 +294,24 @@ def main():
     )
 
     results = asyncio.run(engine.execute_tasks(tasks))
-    evaluate_doctor_results(results, tasks, print_examples=3)
+    log_path = None
+    if args.summary_log_dir:
+        timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        mode = "memory" if args.enable_memory else "no_memory"
+        cxr_mode = "no_cxr" if args.no_cxr else "with_cxr"
+        log_name = f"summary_{timestamp}_{mode}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
+        log_path = Path(args.summary_log_dir) / log_name
+    evaluate_doctor_results(
+        results,
+        tasks,
+        print_examples=args.print_examples,
+        example_text_chars=args.example_text_chars,
+        log_path=log_path,
+    )
+    if run_log_file:
+        sys.stdout = original_stdout
+        sys.stderr = original_stderr
+        run_log_file.close()
 
 
 if __name__ == "__main__":

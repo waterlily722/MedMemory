@@ -269,13 +269,27 @@ python examples/MedGym/run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 30 \
+  --max_cases 20 \
   --no_cxr \
   --parser_name qwen \
-  --judge_model judge_agent \
-  --judge_base_url http://127.0.0.1:30002/v1 \
   --enable_memory \
   --log_memory_trace
+  # --judge_model judge_agent \
+  # --judge_base_url http://127.0.0.1:30002/v1 \
+
+
+export DEEPSEEK_API_KEY="your_deepseek_api_key"
+
+python examples/MedGym/run_med_with_tool.py \
+  --provider deepseek \
+  --model deepseek-v4-flash \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --no_cxr \
+  --max_cases 3 \
+  --repeat_k 1
+
+
 
 # 有 CXR 模式（去掉 --no_cxr 即可）
 python examples/MedGym/run_med_with_tool.py \
