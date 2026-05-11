@@ -9,7 +9,6 @@ from .prompts import (
     experience_extraction_prompt,
     experience_merge_prompt,
     query_builder_prompt,
-    skill_consolidation_prompt,
     skill_extraction_prompt,
 )
 from .schemas import (
@@ -31,7 +30,6 @@ __all__ = [
     "applicability_prompt",
     "experience_extraction_prompt",
     "experience_merge_prompt",
-    "skill_consolidation_prompt",
     "skill_extraction_prompt",
     "QUERY_BUILDER_SCHEMA",
     "CASE_MEMORY_SCHEMA",

@@ -159,8 +159,6 @@ def _compact_selected_action(action: dict[str, Any]) -> dict[str, Any]:
         "name",
         "arguments",
         "final_response",
-        "blocked_by_memory",
-        "blocked",
     ):
         if key not in action:
             continue

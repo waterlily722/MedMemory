@@ -1,0 +1,294 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20012636",
+  "turns": [
+    {
+      "case_id": "20012636",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 27-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 27-year-old female patient based on the available clinical presentation."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 1,
+        "query_text": "new patient presentation with no prior history; need targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Symptoms started a few weeks ago, intermittent but painful when flaring.",
+          "Index and middle fingers affected: redness, swelling, tenderness, pus discharge.",
+          "Symptoms began after chronic nail biting and frequent hand washing for months."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 2,
+        "query_text": "hand infection with pus discharge and history of nail biting; need memory about targeted questions for source of infection; avoid premature diagnosis without imaging or lab review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"paronychia symptoms and causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"paronychia symptoms and causes\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 10297_0, Score: 0.904) - Paronychia (patient information): painful, red, swollen area around the nail.",
+          "Tool output: Document 2 (ID: 30106_0, Score: 0.889) - Paronychia: bacterial or fungal infection at nail site, acute or chronic.",
+          "Tool output: Document 3 (ID: 30106_1, Score: 0.878) - Common causes: Candida albicans, excessive hand immersion, Staphylococcus aureus, trauma.",
+          "Tool output: Document 4 (ID: 16609_1, Score: 0.866) - Symptoms: suppurative inflammation, possible secondary bacterial/fungal infection.",
+          "Tool output: Document 5 (ID: 12007_1, Score: 0.866) - Skin lesions may be secondarily infected by Staphylococcus aureus or Candida albicans."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment. Chief concern: diagnose based on clinical presentation. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia is inflammation around nail, often bacterial or fungal; symptoms include redness, swelling, pain, pus; risk factors include hand washing and trauma; treatment includes antibiotics or antifungals. Patient reports symptoms flaring up, especially index and middle fingers, with redness, swelling, tenderness, and pus; started after chronic nail biting and frequent hand washing."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 3,
+        "query_text": "Paronychia with pus and finger involvement; need memory about targeted treatment options and avoiding premature closure; review prior hand trauma and hygiene history"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent trauma or injury to your fingers, or have you been biting your nails frequently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent trauma or injury to your fingers, or have you been biting your nails frequently?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been biting my nails frequently."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment. Symptoms began weeks ago, intermittent but painful flares with redness, swelling, and pus from index and middle fingers. Triggered by chronic nail biting and frequent hand washing."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 4,
+        "query_text": "nail biting causing finger infections; new report of frequent biting; need memory about targeted questions to assess infection severity and avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "27-year-old female patient admitted via emergency room for assessment and diagnosis. Chief complaint involves painful, intermittent symptoms affecting index and middle fingers with redness, swelling, and pus. Patient reports chronic nail biting and frequent hand washing as risk factors. Knowledge base indicates paronychia as likely diagnosis, with acute form typically bacterial (Staphylococcus aureus) and chronic form often fungal (Candida albicans)."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 5,
+        "query_text": "paronychia with pus and redness; labs not available; need memory about targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "27-year-old female patient admitted via emergency room for assessment. Chief concern: onychia and paronychia of finger. Symptoms: intermittent pain, redness, swelling, pus from index and middle fingers. History: chronic nail biting and frequent hand washing. Knowledge base: paronychia is inflammation around nail, acute form often bacterial (Staphylococcus aureus), chronic form often fungal (Candida albicans). Risk factors: hand washing, trauma to cuticle. Treatment: antibiotics or antifungals, incision and drainage if pus. Patient is married, white, English-speaking, private insurance."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 6,
+        "query_text": "paronychia with pus and no labs or imaging; need memory about targeted questions before finalizing diagnosis; avoid premature closure without evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3354,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_86e012075faa",
+              "type": "experience",
+              "score": 0.3139,
+              "outcome": "failure",
+              "situation": "When a patient reports syncope after straining with bowel symptoms and has a history of itching and mild fever, the doctor should not finalize diagnosis without considering systemic or infectious causes, especially if there is no clear gastrointestinal explanation.",
+              "action": "Order labs including CBC, electrolytes, and inflammatory markers, and consider imaging if obstruction or infection is suspected.",
+              "boundary": "Use this memory when syncope occurs after straining with bowel symptoms and the patient has itching and mild fever; do not use if labs are already available and show no systemic abnormalities or if imaging confirms no obstruction.",
+              "tags": [
+                "negative",
+                "syncope",
+                "fever",
+                "itching",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    }
+  ]
+}

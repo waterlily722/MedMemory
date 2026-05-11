@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import json
 import logging
 import re
@@ -8,7 +7,7 @@ import uuid
 from pathlib import Path
 from typing import Any
 
-from rllm.utils.diagnose_acc import diagnosis_match_lenient
+from rllm.rewards.med_diagnosis_reward import result_reward, result_reward_judge
 
 logger = logging.getLogger(__name__)
 
@@ -76,8 +75,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         done episode -> DistilledEpisode -> LLM experience extraction
         -> merge/write ExperienceStore.
 
-    The base doctor agent remains responsible for action generation unless
-    enforce_memory_blocks=True, in which case blocked actions are rewritten.
+    The base doctor agent remains responsible for action generation.
     """
 
     # ------------------------------------------------------------------
@@ -187,7 +185,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         memory_embedding_model: str = "",
         memory_embedding_base_url: str = "",
         memory_embedding_api_key: str = "",
-        enforce_memory_blocks: bool = False,
         strict_memory_errors: bool = True,
         no_cxr: bool = False,
         **kwargs: Any,
@@ -210,7 +207,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.disable_experience_memory = disable_experience_memory
         self.disable_skill_memory = disable_skill_memory
         self.disable_knowledge_memory = disable_knowledge_memory
-        self.enforce_memory_blocks = enforce_memory_blocks
         self.strict_memory_errors = strict_memory_errors
         self.no_cxr = no_cxr
         self.memory_llm = LLMClient(
@@ -232,7 +228,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.latest_guidance: MemoryGuidance | None = None
         self.latest_memory_debug: dict[str, Any] = {}
         self.pending_selected_action: dict[str, Any] = {}
-        self.pending_selected_action_blocked: bool = False
         self.turn_records: list[TurnRecord] = []
         self.episode_finalized = False
         # Cached original task bundle (set during first update_from_env call)
@@ -377,23 +372,10 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             model_output = kwargs["output"]
 
         parsed_action = self._parse_selected_action(model_output)
-        action_type = str(parsed_action.get("action_type") or "").upper()
-        blocked = self._is_action_blocked(action_type)
-        parsed_action["blocked_by_memory"] = bool(blocked)
-
-        rewritten_output = model_output
-        if blocked and self.enforce_memory_blocks:
-            rewritten_output = self._rewrite_blocked_output(model_output, action_type)
-            # pending_selected_action records the *actually executed* action
-            parsed_action = self._parse_selected_action(rewritten_output)
-            parsed_action["original_action"] = action_type
-            parsed_action["blocked_by_memory"] = True
-
         self.pending_selected_action = parsed_action
-        self.pending_selected_action_blocked = blocked
 
-        base_result = self._call_base("update_from_model", rewritten_output, **kwargs)
-        return base_result if base_result is not None else rewritten_output
+        base_result = self._call_base("update_from_model", model_output, **kwargs)
+        return base_result if base_result is not None else model_output
 
     def _run_memory_pipeline(self, memory_debug: dict[str, Any] | None = None) -> None:
         if self.case_state is None:
@@ -533,7 +515,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if self.log_memory_trace:
             append_memory_turn_trace(self.trace_root, record.to_dict())
         self.pending_selected_action = {}
-        self.pending_selected_action_blocked = False
 
     def _parse_tool_call_text(self, value: Any) -> dict[str, Any]:
         text = str(value or "").strip()
@@ -581,6 +562,45 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
 
         raw = str(action.get("raw") or action.get("action_label") or "")
         return _extract_boxed_diagnosis(raw) or raw.strip()
+
+    def _is_final_diagnosis_correct_by_reward(
+        self,
+        final_diagnosis: str,
+        gold_diagnosis: str,
+        info: dict[str, Any],
+    ) -> bool:
+        if not gold_diagnosis:
+            return False
+
+        judge_model_name = str(
+            info.get("judge_model_name")
+            or self._case_bundle.get("judge_model_name")
+            or ""
+        ).strip()
+        judge_base_url = str(
+            info.get("judge_base_url")
+            or self._case_bundle.get("judge_base_url")
+            or ""
+        ).strip()
+        judge_api_key = (
+            info.get("judge_api_key")
+            or self._case_bundle.get("judge_api_key")
+            or self._case_bundle.get("api_key")
+            or "None"
+        )
+
+        if judge_model_name and judge_base_url:
+            _, metadata = result_reward_judge(
+                final_diagnosis,
+                gold_diagnosis,
+                judge_model_name=judge_model_name,
+                judge_base_url=judge_base_url,
+                api_key=judge_api_key,
+            )
+            return bool(metadata.get("judge_consistent", False))
+
+        _, metadata = result_reward(final_diagnosis, gold_diagnosis)
+        return bool(metadata.get("ground_truth_contained", False))
 
     def _build_clinical_turn(
         self,
@@ -662,10 +682,14 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 or ""
             )
 
-        # Keep memory extraction success identical to diagnose_acc.py summary.
-        # Judge/env is_correct may use a different rule, but memory positive vs
-        # negative should follow the evaluator shown in the run summary.
-        is_correct = diagnosis_match_lenient(final_diagnosis, gold_diagnosis)
+        # Keep memory extraction success identical to diagnose_acc.py summary:
+        # use med_diagnosis_reward.py result reward logic, including judge mode
+        # when judge_model_name + judge_base_url are configured.
+        is_correct = self._is_final_diagnosis_correct_by_reward(
+            final_diagnosis,
+            gold_diagnosis,
+            info,
+        )
 
         summary = str(
             info.get("summary")
@@ -723,7 +747,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 "action_type": self._normalize_action_type(str(action_type)),
                 "action_label": str(action_label),
                 "raw": model_output,
-                "blocked_by_memory": False,
             }
 
         text = str(model_output or "")
@@ -731,7 +754,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             "action_type": self._infer_action_type_from_text(text),
             "action_label": text[:240],
             "raw": text,
-            "blocked_by_memory": False,
         }
 
     def _normalize_action_type(self, action: str) -> str:
@@ -757,28 +779,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if "ask" in lowered or "patient" in lowered or "question" in lowered:
             return "ASK"
         return "UPDATE_HYPOTHESIS"
-
-    def _is_action_blocked(self, action_type: str) -> bool:
-        return False
-
-    def _rewrite_blocked_output(self, model_output: Any, action_type: str) -> Any:
-        warning = {
-            "blocked_by_memory": True,
-            "blocked_action_type": action_type,
-            "replacement_action_type": "UPDATE_HYPOTHESIS",
-            "reason": "blocked by memory guidance",
-        }
-        if isinstance(model_output, dict):
-            rewritten = copy.deepcopy(model_output)
-            rewritten.update(warning)
-            rewritten["action_type"] = "UPDATE_HYPOTHESIS"
-            return rewritten
-        return {
-            "action_type": "UPDATE_HYPOTHESIS",
-            "action_label": "reconsider plan due to memory safety block",
-            "raw_blocked_output": str(model_output),
-            **warning,
-        }
 
     # ------------------------------------------------------------------
     # Helpers
@@ -827,7 +827,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.latest_applicability = None
         self.latest_guidance = None
         self.pending_selected_action = {}
-        self.pending_selected_action_blocked = False
         self.turn_records = []
         self.episode_finalized = False
 

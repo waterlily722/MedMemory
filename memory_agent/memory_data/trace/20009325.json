@@ -1,0 +1,968 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20009325",
+  "turns": [
+    {
+      "case_id": "20009325",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation.",
+          "Acquired coagulation factor deficiency",
+          "Von Willebrand disease",
+          "Activated protein C resistance",
+          "Antiphospholipid syndrome"
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 1,
+        "query_text": "69-year-old male with coagulation factor deficiency; consider von Willebrand, APC resistance, or antiphospholipid syndrome; need memory on targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, on Medicare, English-speaking."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 2,
+        "query_text": "No prior problems or abnormal findings reported; need memory about targeted history to rule out coagulation disorder triggers; avoid premature diagnosis without further evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, night sweats, or unexplained weight loss recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, night sweats, or unexplained weight loss recently?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose patient based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms reported in current turn."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 3,
+        "query_text": "No prior symptoms reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or sleep patterns?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or sleep patterns?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose patient based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms reported in turns 2 and 3."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 4,
+        "query_text": "No prior symptoms reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or palpitations?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or palpitations?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 5,
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, redness, or pain in your joints or muscles?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, redness, or pain in your joints or muscles?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I haven’t noticed any swelling, redness, or pain in my joints or muscles."
+        ],
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no prior issues in the relevant area and no abnormal findings reported."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 6,
+        "query_text": "no joint or muscle symptoms reported; need memory about targeted history for bleeding or clotting signs; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2891,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_86e012075faa",
+              "type": "experience",
+              "score": 0.272,
+              "outcome": "failure",
+              "situation": "When a patient reports syncope after straining with bowel symptoms and has a history of itching and mild fever, the doctor should not finalize diagnosis without considering systemic or infectious causes, especially if there is no clear gastrointestinal explanation.",
+              "action": "Order labs including CBC, electrolytes, and inflammatory markers, and consider imaging if obstruction or infection is suspected.",
+              "boundary": "Use this memory when syncope occurs after straining with bowel symptoms and the patient has itching and mild fever; do not use if labs are already available and show no systemic abnormalities or if imaging confirms no obstruction.",
+              "tags": [
+                "negative",
+                "syncope",
+                "fever",
+                "itching",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no bleeding issues, no joint swelling, redness, or pain. Previous turns repeated similar statements about no problems in relevant areas."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 7,
+        "query_text": "Patient reports no relevant symptoms or findings; need memory about targeted history to rule out missed bleeding signs; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f4922899d7a5",
+              "type": "experience",
+              "score": 0.2593,
+              "outcome": "failure",
+              "situation": "When a patient has hip pain with stiffness and swelling, and the history suggests osteoarthritis, what should the doctor do to avoid missing a systemic cause?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss, and consider imaging to rule out infection or vasculitis.",
+              "boundary": "Use when hip pain is persistent and structural, but only if systemic symptoms are absent; do not use if systemic symptoms are present or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "systemic_symptoms",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.2611,
+              "outcome": null,
+              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
+              "action": null,
+              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "tags": [
+                "positive",
+                "episode_skill"
+              ]
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any urinary symptoms such as frequency, urgency, or blood in urine?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any urinary symptoms such as frequency, urgency, or blood in urine?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral for observation. Chief complaint is unspecified. No reported bleeding issues, joint swelling, or pain. No known abnormalities in coagulation or bleeding history. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 8,
+        "query_text": "Unspecified chief complaint; patient denies local symptoms or abnormalities; need memory about targeted history to identify bleeding risk or coagulation triggers; avoid premature diagnosis without further evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e200407cb894",
+              "type": "experience",
+              "score": 0.3136,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
+              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "tags": [
+                "negative",
+                "asthma",
+                "reduced_smell",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2795bbcb89e",
+              "type": "experience",
+              "score": 0.286,
+              "outcome": "failure",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
+              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "diabetic_patient",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.2653,
+              "outcome": null,
+              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
+              "action": null,
+              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "tags": [
+                "positive",
+                "episode_skill"
+              ]
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any neurological symptoms such as headaches, dizziness, or numbness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any neurological symptoms such as headaches, dizziness, or numbness?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I haven’t experienced any headaches, dizziness, or numbness."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no issues with bleeding, swelling, redness, pain in joints/muscles, or neurological symptoms. Previous turns confirm no abnormal findings in relevant areas."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 9,
+        "query_text": "No neurological symptoms reported; need memory about targeted history before imaging or lab decisions; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e200407cb894",
+              "type": "experience",
+              "score": 0.2861,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
+              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "tags": [
+                "negative",
+                "asthma",
+                "reduced_smell",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2795bbcb89e",
+              "type": "experience",
+              "score": 0.2841,
+              "outcome": "failure",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
+              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "diabetic_patient",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, hearing, or balance?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, hearing, or balance?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, redness, or pain; no headaches, dizziness, or numbness. Previous turns repeated similar statements about no known issues in relevant areas."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 10,
+        "query_text": "Patient reports no known issues in relevant areas; prior summary indicates coagulation factor deficiency; need memory about targeted history to rule out missed etiology before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes such as rashes, itching, or discoloration?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes such as rashes, itching, or discoloration?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no bleeding issues, no joint swelling/pain, no headaches/dizziness/numbness, and no known abnormalities in relevant areas."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 11,
+        "query_text": "No bleeding or joint symptoms reported; need memory about targeted history for coagulation factor deficiency; avoid premature diagnosis closure; consider imaging or lab review if not yet done"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 2,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e2795bbcb89e",
+              "type": "experience",
+              "score": 0.3301,
+              "outcome": "failure",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
+              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "diabetic_patient",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e200407cb894",
+              "type": "experience",
+              "score": 0.318,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
+              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "tags": [
+                "negative",
+                "asthma",
+                "reduced_smell",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_f4922899d7a5",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When a patient has hip pain with stiffness and swelling, and the history suggests osteoarthritis, what should the doctor do to avoid missing a systemic cause?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss, and consider imaging to rule out infection or vasculitis.",
+              "boundary": "Use when hip pain is persistent and structural, but only if systemic symptoms are absent; do not use if systemic symptoms are present or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "systemic_symptoms",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_002",
+              "type": "skill",
+              "score": 0.2167,
+              "outcome": null,
+              "situation": "Patient reports intermittent finger symptoms with pus discharge.",
+              "action": null,
+              "boundary": "Apply when nail-biting or trauma is suspected; do not use if no nail-related behavior is reported.",
+              "tags": [
+                "positive",
+                "episode_skill"
+              ]
+            },
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.205,
+              "outcome": null,
+              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
+              "action": null,
+              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "tags": [
+                "positive",
+                "episode_skill"
+              ]
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual fatigue, weakness, or general malaise?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual fatigue, weakness, or general malaise?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, redness, or pain; no headaches, dizziness, or numbness. Previous turns repeated similar statements about no known issues in relevant areas."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 12,
+        "query_text": "Patient reports no known issues in relevant areas; prior info includes coagulation factor deficiency and autoimmune conditions; need memory about targeted history to rule out missed etiology before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.205,
+              "outcome": null,
+              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
+              "action": null,
+              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "tags": [
+                "positive",
+                "episode_skill"
+              ]
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in elderly patients without clear localizing complaints\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in elderly patients without clear localizing complaints\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 3639_20, Score: 0.855) - Pain often not detected in nursing home residents and older people with cognitive impairment.",
+          "Tool output: Document 2 (ID: 24040_2, Score: 0.854) - Directed history should be obtained for symptoms, past medical history, family history, social history, occupational, alcohol.",
+          "Tool output: Document 3 (ID: 4480_126, Score: 0.849) - Diagnostic issues for anxiety in older patients; DSM-5 modifications may assist.",
+          "Tool output: Document 4 (ID: 8848_1, Score: 0.848) - Age, gender, race data for unspecified condition.",
+          "Tool output: Document 5 (ID: 4019_9, Score: 0.848) - Symptoms: dyspnea, cough, midinspiratory squeaks; constitutional symptoms: weight loss, flu-like symptoms."
+        ],
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20, discharged 2143-02-24. No reported joint/muscle swelling, pain, headaches, dizziness, numbness. No known bleeding issues or abnormal findings. Objective: assess and diagnose patient. Final result: acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, Antiphospholipid syndrome."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 13,
+        "query_text": "Patient with dyspnea and cough; need targeted history on symptoms and social factors; avoid premature diagnosis; consider imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_9ffa75d466b8",
+              "type": "experience",
+              "score": 0.3766,
+              "outcome": "failure",
+              "situation": "When a patient presents with dull aching hip pain, stiffness, and swelling, especially in a diabetic patient, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to evaluate for osteoarthritis or other structural causes, rather than relying on history alone.",
+              "boundary": "Use when hip pain is persistent and structural, but only if imaging is available; do not use if imaging is unavailable or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "diabetic_patient",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.376,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e2795bbcb89e",
+              "type": "experience",
+              "score": 0.3653,
+              "outcome": "failure",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
+              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "diabetic_patient",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.3341,
+              "outcome": null,
+              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
+              "action": null,
+              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "tags": [
+                "positive",
+                "episode_skill"
+              ]
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: labs",
+          "source: none",
+          "result: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, pain, headaches, dizziness, or numbness. No reported bleeding issues or abnormal findings in relevant areas. Multiple turns (1-13) contain patient affirming no issues in specific areas, with tool outputs including lab result not found and general diagnostic guidance."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 14,
+        "query_text": "labs not found; need memory about next-step diagnostic actions; avoid premature diagnosis; consider updating hypothesis with available evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: CXR, source: none, result: No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20, discharged on 2143-02-24. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, pain, headaches, dizziness, or numbness. Repeatedly states no known bleeding issues or abnormal findings. Tool outputs indicate no lab results and no CXR result available."
+      },
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 15,
+        "query_text": "CXR result not available; need memory about next steps before finalizing diagnosis; avoid premature closure; consider targeted lab or imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e200407cb894",
+              "type": "experience",
+              "score": 0.2994,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
+              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "tags": [
+                "negative",
+                "asthma",
+                "reduced_smell",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2795bbcb89e",
+              "type": "experience",
+              "score": 0.263,
+              "outcome": "failure",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
+              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "diabetic_patient",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    }
+  ]
+}

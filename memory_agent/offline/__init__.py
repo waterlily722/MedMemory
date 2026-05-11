@@ -12,7 +12,6 @@ from .experience_merger import (
     merge_experience,
 )
 from .memory_writer import write_memory_from_distilled_episode
-from .skill_consolidator import consolidate_skills_from_store
 from .skill_extractor import extract_skills_from_distilled_episode
 
 __all__ = [
@@ -24,6 +23,5 @@ __all__ = [
     "decide_merge_llm",
     "merge_experience",
     "write_memory_from_distilled_episode",
-    "consolidate_skills_from_store",
     "extract_skills_from_distilled_episode",
 ]

@@ -1,0 +1,262 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20002287",
+  "turns": [
+    {
+      "case_id": "20002287",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I am a 67-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 67-year-old female patient presenting with ___ yo woman with past medical history of endometrial.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 1,
+        "query_text": "67-year-old female with endometrial history; need targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I’ve been constipated for 12 days, but lately I’ve had several days of diarrhea that looks like mucus.",
+          "I’m also having cramping pain in my lower abdomen, which started about a month ago and gets worse when I strain to have a bowel movement — even after taking Miralax and Mag Citrate.",
+          "When I strained recently, I got lightheaded, then dizzy, and lost consciousness.",
+          "I was on the floor for about an hour before my husband found me.",
+          "I felt like my ankle “broke” when I came to.",
+          "I’m currently breathing fine on room air, but I still have abdominal discomfort.",
+          "I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine."
+        ],
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history of asthma, depression (mother), heart murmur (sister). Presenting with constipation x12 days, mucus-like diarrhea, cramping lower abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness with straining, right ankle fracture (splinted), abdominal discomfort. Vitals: T 99.1, BP 118/68, HR 61, RR 18, O2 sat 96% RA. Physical: soft abdomen, no guarding/rebound, right basilar rales, splint on right ankle, diminished RLE strength. Denies fever, chills, night sweats, hematochezia, melena, hematuria, dysuria. Final result: Fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 2,
+        "query_text": "abdominal pain with constipation and mucus diarrhea; new report of syncope with straining and ankle fracture; need memory about targeted neuro/cardiac history before imaging; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history of asthma, depression (mother), heart murmur (sister). HPI: constipation x12 days, diarrhea with mucus, cramping lower abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness after straining to BM, right ankle fracture, splint applied. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint, no C/C/E. ROS: denies fever, chills, nausea, vomiting, blood in stool/urine."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 3,
+        "query_text": "67yo female with endometrial cancer history and new GI symptoms; labs pending; need memory about targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping pain, syncope, and ankle pain in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping pain, syncope, and ankle pain in elderly female\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I’ve been constipated for 12 days, but lately I’ve had several days of diarrhea that looks like mucus. I’m also having cramping pain in my lower abdomen, which started about a month ago and gets worse when I strain to have a bowel movement — even after taking Miralax and Mag Citrate. When I strained recently, I got lightheaded, then dizzy, and lost consciousness. I was on the floor for about an hour before my husband found me. I felt like my ankle “broke” when I came to. I’m currently breathing fine on room air, but I still have abdominal discomfort. I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine."
+        ],
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma/depression (mother), heart murmur (sister). Chief complaint: constipation x12 days, mucus-like diarrhea, cramping abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness with straining, right ankle fracture. Physical exam: vitals stable, no fever, no guarding/rebound, soft abdomen, right ankle in splint. ROS negative for systemic symptoms. Final result: fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 4,
+        "query_text": "abdominal pain with mucus diarrhea and syncope on straining; right ankle fracture already documented; need memory about evaluating for bowel obstruction or ischemia before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your diet, medication, or activity level that might correlate with your symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your diet, medication, or activity level that might correlate with your symptoms?\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I’ve been noticing more fatigue lately, and I’ve also had some itching, especially on my arms and legs.",
+          "I’ve been eating pretty normally, but I’ve started taking a new antihistamine for the itching — I’m not sure if that’s related.",
+          "I haven’t changed my activity level much, but I’ve been feeling more sluggish than usual.",
+          "I also had a mild fever a couple of weeks ago that didn’t last long.",
+          "I’m not sure if any of this is connected, but I thought I’d mention it."
+        ],
+        "prior_information_summary": "67-year-old female, admitted via ER for constipation x12 days, now with diarrhea resembling mucus, cramping lower abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness after straining, right ankle fracture, splinted. Past medical history: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism. Social history: family history of asthma, depression (mother), heart murmur (sister). Physical: vitals stable, no fever, no guarding/rebound, right basilar rales, soft abdomen, right ankle in splint. Denies blood in stool/urine, fever, chills, nausea, vomiting, BRBPR, melena, hematochezia, dysuria, hematuria. ROS negative. No skin lesions. Depressed affect. Knowledge base: Basophilia definition, causes, diagnosis."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 5,
+        "query_text": "new symptoms of fatigue, itching, and mild fever; need memory about targeted history for systemic causes; avoid premature diagnosis without lab/imaging review; consider endocrine or hematologic etiology"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of constipation followed by diarrhea with mucus, cramping, syncope, ankle pain, fatigue, itching, and mild fever in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of constipation followed by diarrhea with mucus, cramping, syncope, ankle pain, fatigue, itching, and mild fever in elderly female\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I’ve been noticing more fatigue lately, and I’ve also had some itching, especially on my arms and legs. I’ve been eating pretty normally, but I’ve started taking a new antihistamine for the itching — I’m not sure if that’s related. I haven’t changed my activity level much, but I’ve been feeling more sluggish than usual. I also had a mild fever a couple of weeks ago that didn’t last long. I’m not sure if any of this is connected, but I thought I’d mention it."
+        ],
+        "prior_information_summary": "67-year-old F, admitted via ER for constipation x12 days, now diarrhea with mucus, cramping pain in lower abdomen for 1 month, worsened with straining (after Miralax/Mag Citrate), lightheadedness, syncope, felt ankle 'break' on floor for 1hr before husband found her. VS: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Right ankle fracture, splinted. Abdominal discomfort, no fever, chills, nausea, vomiting, blood in stool/urine. PMH: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. FH: asthma, depression (mother), heart murmur (sister). Physical: soft abdomen, no guarding/rebound, R basilar rales, no organomegaly, RLE diminished due to splint, depressed affect, no skin lesions. Labs: no result found. Tool outputs: relevant documents on diarrhea, cramps, fever, itching, antihistamines."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 6,
+        "query_text": "new complaint of fatigue, itching, and mild fever; need memory about antihistamine use and possible systemic causes; avoid premature diagnosis without lab or imaging review; consider updating hypothesis before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticular disease with possible bowel obstruction and dehydration-induced syncope.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticular disease with possible bowel obstruction and dehydration-induced syncope.}\"}}\n</tool_call>",
+        "blocked_by_memory": false
+      }
+    }
+  ]
+}

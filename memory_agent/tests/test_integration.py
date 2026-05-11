@@ -54,11 +54,6 @@ from memory_agent.offline.episode_distiller import distill_from_trajectory, _to_
 from memory_agent.offline.experience_extractor import (
     select_episode_turns,
 )
-from memory_agent.offline.skill_consolidator import (
-    _is_positive,
-    _is_unsafe,
-    _cluster_positive_experiences,
-)
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -221,24 +216,6 @@ def test_select_episode_turns_applies_limit_from_end():
     ]
     selected = select_episode_turns(turns, limit=2)
     assert [turn["turn_id"] for turn in selected] == [2, 3]
-
-
-# ═══════════════════════════════════════════════════════════════════════
-# Skill consolidator helpers
-# ═══════════════════════════════════════════════════════════════════════
-
-def test_is_positive():
-    assert _is_positive(ExperienceCard(memory_id="a", outcome_type=OutcomeType.SUCCESS.value)) is True
-    assert _is_positive(ExperienceCard(memory_id="b", outcome_type=OutcomeType.FAILURE.value)) is False
-
-
-def test_is_unsafe():
-    assert _is_unsafe(ExperienceCard(memory_id="a", outcome_type=OutcomeType.UNSAFE.value)) is True
-    assert _is_unsafe(ExperienceCard(memory_id="b", outcome_type=OutcomeType.SUCCESS.value)) is False
-
-
-def test_cluster_empty():
-    assert _cluster_positive_experiences([]) == []
 
 
 # ═══════════════════════════════════════════════════════════════════════

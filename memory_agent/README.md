@@ -28,7 +28,7 @@ memory_agent/
 │   ├── experience_extractor.py   # 经验提取（LLM）
 │   ├── experience_merger.py      # 经验合并
 │   ├── memory_writer.py          # 记忆写入
-│   └── skill_consolidator.py     # 技能归纳
+│   └── skill_extractor.py        # 从诊断正确 episode 提取动作序列技能
 ├── memory_store/      # JSONL 持久化
 ├── llm/               # LLM / Embedding 客户端
 ├── utils/             # 工具函数（tokenizer, cosine similarity）
@@ -269,7 +269,7 @@ python examples/MedGym/run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 20 \
+  --max_cases 5 \
   --no_cxr \
   --parser_name qwen \
   --enable_memory \
