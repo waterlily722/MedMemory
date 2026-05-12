@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from typing import Any
 
 from ..llm import LLMClient, experience_merge_prompt, parse_validate_repair
@@ -9,7 +10,7 @@ logger = logging.getLogger(__name__)
 from ..llm.schemas import EXPERIENCE_MERGE_SCHEMA
 from ..schemas import ExperienceCard, OutcomeType
 from ..utils.config import MERGE_CONFIG
-from ..utils.scoring import cosine_similarity
+from ..utils.scoring import bm25_similarity, cosine_similarity as token_cosine
 
 
 def _threshold(name: str, default: float) -> float:
@@ -32,25 +33,31 @@ def _same_direction(left: ExperienceCard, right: ExperienceCard) -> bool:
 def _same_trigger(left: ExperienceCard, right: ExperienceCard) -> bool:
     situation_threshold = _threshold("semantic_threshold", 0.80)
     action_threshold = _threshold("action_threshold", 0.75)
+    if _merge_scoring_mode() != "fielded_bm25":
+        situation_score = token_cosine(left.situation_text, right.situation_text)
+        action_score = token_cosine(left.action_text, right.action_text)
+    else:
+        situation_score = bm25_similarity(left.situation_text, right.situation_text)
+        action_score = bm25_similarity(left.action_text, right.action_text)
 
     return (
-        cosine_similarity(left.situation_text, right.situation_text) >= situation_threshold
-        and cosine_similarity(left.action_text, right.action_text) >= action_threshold
+        situation_score >= situation_threshold
+        and action_score >= action_threshold
     )
 
 
-def _boundary_compatible(left: ExperienceCard, right: ExperienceCard) -> bool:
-    if not left.boundary_text or not right.boundary_text:
-        return True
-    boundary_threshold = _threshold("boundary_threshold", 0.50)
-    return cosine_similarity(left.boundary_text, right.boundary_text) >= boundary_threshold
+def _merge_scoring_mode() -> str:
+    return str(
+        os.environ.get("MEDGYM_MERGE_SCORING")
+        or MERGE_CONFIG.get("candidate_scoring")
+        or "cosine"
+    ).strip().lower()
 
 
 def _can_merge(left: ExperienceCard, right: ExperienceCard) -> bool:
     return (
         _same_trigger(left, right)
         and _same_direction(left, right)
-        and _boundary_compatible(left, right)
     )
 
 

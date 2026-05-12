@@ -1,0 +1,607 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20054149",
+  "turns": [
+    {
+      "case_id": "20054149",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "I am a 47-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 47-year-old male patient presenting with Suicidal ideation with plan to throw self in front of bus."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 1,
+        "query_text": "Suicidal ideation with active plan; need memory about targeted safety questions and risk assessment before finalization; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2046,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2512,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent life stressors or traumatic events that might be contributing to your suicidal ideation?"
+        },
+        "patient_or_tool_response": "{'question': 'I was feeling rejuvinated after being discharged from the hospital, but then I started feeling increasingly depressed once I was back on the street. The cars, traffic, and noise bother me a lot. I haven’t slept well since I’ve been back out there, but I slept well in the hospital. I don’t feel paranoid right now, and I feel safe in the unit. I don’t think anything specific happened recently that caused this — it just started happening the past four days. I’m worried about things and people around me, which agitates me daily, but I can’t give you an example of it. I don’t feel like I’m in danger or that anyone is threatening me. I also don’t think I’ve had any hallucinations or thoughts of harming others. I’m Pentecostal, and I know suicide isn’t something my religion supports, which helps me not act on these thoughts.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent life stressors or traumatic events that might be contributing to your suicidal ideation?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent life stressors or traumatic events that might be contributing to your suicidal ideation?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20054149",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "I was feeling rejuvinated after being discharged from the hospital, but then I started feeling increasingly depressed once I was back on the street.",
+          "The cars, traffic, and noise bother me a lot.",
+          "I haven’t slept well since I’ve been back out there, but I slept well in the hospital.",
+          "I don’t feel paranoid right now, and I feel safe in the unit.",
+          "I don’t think anything specific happened recently that caused this — it just started happening the past four days.",
+          "I’m worried about things and people around me, which agitates me daily, but I can’t give you an example of it.",
+          "I don’t feel like I’m in danger or that anyone is threatening me.",
+          "I also don’t think I’ve had any hallucinations or thoughts of harming others.",
+          "I’m Pentecostal, and I know suicide isn’t something my religion supports, which helps me not act on these thoughts."
+        ],
+        "prior_information_summary": "47-year-old male with schizophrenia, paranoid type, and HIV (CD4 135 on admission). Discharged 4 days ago. Reports feeling 'rejuvinated' after discharge, then increasingly depressed. Denies changes in interest, guilt, psychomotor slowing. Denies auditory/visual hallucinations, history of desire to harm others. Physical exam: well-nourished, no distress, normal HEENT, no focal tenderness, clear lungs, regular CV, soft abdomen, no edema. Neurological: intact cranial nerves, motor strength full, reflexes 2+, coordination normal. Final result: Paranoid type schizophrenia, chronic. Knowledge base includes disorganized schizophrenia, schizoaffective disorder, and schizophreniform disorder definitions."
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 2,
+        "query_text": "Suicidal ideation with recent onset depression post-discharge; patient denies hallucinations or homicidal ideation but reports sleep disturbance and environmental agitation; need memory about targeted safety assessment before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1947,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'be22af41-4184-4d59-94ff-57d63e1b6b83': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20054149",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "47-year-old male with schizophrenia, paranoid type, and HIV (CD4 135 on admission). Chief complaint: suicidal ideation with plan to throw self in front of bus. History: Discharged 4 days ago, felt 'rejuvinated' after good sleep and food, then increasingly depressed since being back on the street. Symptoms include sleep disturbance, agitation from noise/traffic, no changes in interest, guilt, or psychomotor slowing. Denies hallucinations, delusions, or desire to harm others. Denies history of violence. No family history. Physical exam: well-nourished, no distress, normal HEENT, no focal neurological deficits. Final result: Paranoid type schizophrenia, chronic."
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 3,
+        "query_text": "Suicidal ideation with active plan; labs not available; need memory about targeted safety questions and next-step interventions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2048,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1994,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.1838,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of depression in adults"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'dfc3adca-d3cb-4733-b389-23b247973547': '[Document 1] (ID: 2559_5, Score: 0.875)\\n# Box 1 Depression definitions (taken from DSM-IV)\\nSubthreshold depressive symptoms: Fewer than 5\\xa0symptoms of depression.\\nMild depression: Few, if any, symptoms in excess of the 5 required to make the diagnosis, and symptoms result in only minor functional impairment.\\nModerate depression: Symptoms o...\\n\\n[Document 2] (ID: 4034_14, Score: 0.866)\\nDepression or the presence of depressive symptoms is a well-known comorbid condition for individuals with diabetes. In addition to being a barrier to effective diabetes self-management, depression is linked to poor glycemic control (39) and diabetes complications [bib_ref] Association of depression ...\\n\\n[Document 3] (ID: 2559_0, Score: 0.866)\\nDepression in adults with a chronic physical health problem: recognition and management\\nThis guideline covers identifying, treating and managing depression in people aged 18 and over who also have a chronic physical health problem such as cancer, heart disease or diabetes. It aims to improve the car...\\n\\n[Document 4] (ID: 6684_1, Score: 0.864)\\n# What causes Depression in Elderly?\\n- In the elderly, a number of life changes can increase the risk for depression, or mak...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.5,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of depression in adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of depression in adults\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20054149",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "I was feeling rejuvinated after being discharged from the hospital, but then I started feeling increasingly depressed once I was back on the street.",
+          "The cars, traffic, and noise bother me a lot.",
+          "I haven’t slept well since I’ve been back out there, but I slept well in the hospital.",
+          "I don’t feel paranoid right now, and I feel safe in the unit.",
+          "I don’t think anything specific happened recently that caused this — it just started happening the past four days.",
+          "I’m worried about things and people around me, which agitates me daily, but I can’t give you an example of it.",
+          "I don’t feel like I’m in danger or that anyone is threatening me.",
+          "I also don’t think I’ve had any hallucinations or thoughts of harming others.",
+          "I’m Pentecostal, and I know suicide isn’t something my religion supports, which helps me not act on these thoughts."
+        ],
+        "prior_information_summary": "47-year-old male with schizophrenia, paranoid type, and HIV (CD4 135 on admission). Discharged 4 days ago. Reports feeling 'rejuvinated' after discharge, then developed depression. Denies changes in interest, guilt, psychomotor slowing. Denies hallucinations or desire to harm others. Physical exam shows no acute abnormalities. Final result: Paranoid type schizophrenia, chronic."
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 4,
+        "query_text": "Suicidal ideation with recent onset depression post-discharge; patient denies hallucinations or homicidal ideation but reports sleep disturbance and environmental agitation; need memory about targeted safety assessment before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1947,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any changes in appetite, weight, or energy levels recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I felt rejuvinated after good sleep and food when I was discharged, but then I started feeling increasingly depressed. I haven’t slept well since being back on the street, but I slept well at the hospital. I don’t know if I’ve had changes in appetite or weight, and I’m not sure about energy levels — I just know I’m feeling more down lately.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in appetite, weight, or energy levels recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in appetite, weight, or energy levels recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20054149",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "I felt rejuvinated after good sleep and food when I was discharged, but then I started feeling increasingly depressed.",
+          "I haven’t slept well since being back on the street, but I slept well at the hospital.",
+          "I don’t know if I’ve had changes in appetite or weight, and I’m not sure about energy levels — I just know I’m feeling more down lately."
+        ],
+        "prior_information_summary": "47-year-old male with schizophrenia and HIV, discharged 4 days ago. Reports feeling rejuvinated post-discharge but now increasingly depressed since returning to street. Symptoms include sleep disturbance, agitation from noise/traffic, no hallucinations or homicidal ideation. Denies paranoia, family/religion as protective factors. No history of violence or substance use. Physical exam normal. Final result: Paranoid type schizophrenia, chronic."
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 5,
+        "query_text": "Suicidal ideation with plan; new report of worsening depression post-discharge; sleep disturbance since returning to street; need memory about targeted safety questions and avoiding premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of suicidal ideation and risk factors"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'11863098-9296-414c-a5ca-fd5dd601de17': '[Document 1] (ID: 7653_0, Score: 0.892)\\nSuicidal ideation (patient information)\\n\\n# Overview\\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\\n\\n# What are the symptoms of Suicide?\\n...\\n\\n[Document 2] (ID: 21908_5, Score: 0.887)\\n# Natural History, Complications, and Prognosis\\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\\n- Elderly patients with severe depression,...\\n\\n[Document 3] (ID: 21908_3, Score: 0.885)\\n# Causes\\nCommon causes of suicidal ideation include \\n- Intensive cannabis use\\n- Substance use disorders (alcohol, cocaine, inhalants)\\n- Major depressive disorder\\n- Bipolar disorder\\n- Bereavement\\n- High stress\\n- Sexual assault\\n- Medical comorbidity\\n- Non-marital status\\n\\n# Epidemiology and Demographic...\\n\\n[Document 4] (ID: 7527_5, Score: 0.885)\\n# Possible warning signs\\nThe warning signs listed are not necessarily risk factors for suicide and may include common behav...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of suicidal ideation and risk factors\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of suicidal ideation and risk factors\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20054149",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "I felt rejuvinated after good sleep and food when I was discharged, but then I started feeling increasingly depressed.",
+          "I haven’t slept well since being back on the street, but I slept well at the hospital.",
+          "I don’t know if I’ve had changes in appetite or weight, and I’m not sure about energy levels — I just know I’m feeling more down lately."
+        ],
+        "prior_information_summary": "47-year-old male with schizophrenia and HIV, admitted for suicidal ideation with plan to throw self in front of bus. Discharged 4 days ago, felt rejuvinated after good sleep and food. Since discharge, increasingly depressed, poor sleep, agitated by cars, traffic, noise. Denies changes in interest, guilt, psychomotor slowing. Denies hallucinations, thoughts of harming others. Believes religion (Pentecostal) and family stop him from acting on suicidal thoughts. No history of violence. Physical exam normal. Final result: Paranoid type schizophrenia, chronic."
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 6,
+        "query_text": "Suicidal ideation with recent worsening depression and poor sleep since discharge; need memory about targeted mood and sleep history before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any prior episodes of depression or suicidal thoughts? Have you ever been hospitalized for mental health reasons?"
+        },
+        "patient_or_tool_response": "{'question': 'I have not had any prior episodes of depression or suicidal thoughts. I have never been hospitalized for mental health reasons before.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any prior episodes of depression or suicidal thoughts? Have you ever been hospitalized for mental health reasons?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any prior episodes of depression or suicidal thoughts? Have you ever been hospitalized for mental health reasons?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20054149",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Suicidal ideation with plan to throw self in front of bus",
+        "current_turn_information": [
+          "I have not had any prior episodes of depression or suicidal thoughts.",
+          "I have never been hospitalized for mental health reasons before."
+        ],
+        "prior_information_summary": "47-year-old male with schizophrenia and HIV, discharged 4 days ago, feeling rejuvinated initially but now increasingly depressed since returning to street environment. Reports sleep disturbance, agitation from noise/traffic, no hallucinations or homicidal ideation. Denies changes in interest, guilt, or psychomotor slowing. Has suicidal ideation with plan to throw self in front of traffic but says he would not act due to family and religious beliefs. Physical exam normal. Final result: Paranoid type schizophrenia, chronic."
+      },
+      "query": {
+        "case_id": "20054149",
+        "turn_id": 7,
+        "query_text": "Suicidal ideation with active plan; new info: no prior episodes or hospitalizations; need memory about targeted safety questions and avoiding premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.216,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1886,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b879d1375ee5",
+              "type": "experience",
+              "score": 0.288,
+              "outcome": "failure",
+              "situation": "When a patient presents with suicidal ideation and a history of suicide attempts, and the clinical picture strongly suggests depression, but there is no evidence of manic or hypomanic episodes, the doctor should not finalize a diagnosis of Major Depressive Disorder without considering Bipolar II disorder as a possible alternative.",
+              "action": "Ask targeted questions about previous mood episodes, including periods of elevated mood, energy, or irritability, to differentiate between unipolar depression and Bipolar II disorder.",
+              "boundary": "Use this memory when the patient has a history of suicide attempts and current depressive symptoms, but only if there is no evidence of prior hypomanic or manic episodes; do not use if the patient reports clear history of elevated mood or energy periods.",
+              "tags": [
+                "negative",
+                "suicidal_ideation",
+                "bipolar_ii",
+                "premature_closure",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.2575,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Major Depressive Disorder with Suicidal Ideation}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'57ce3f51-64fd-4aa7-9e79-66bcb569667f': '{\"diagnosis\": \"Major Depressive Disorder with Suicidal Ideation\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Major Depressive Disorder with Suicidal Ideation}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Major Depressive Disorder with Suicidal Ideation}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

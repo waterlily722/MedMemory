@@ -1,0 +1,2130 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20118546",
+  "turns": [
+    {
+      "case_id": "20118546",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "turn_1 observation.case_id: 20118546",
+          "turn_1 observation.context.ehr.Meta.subject_id: 13180195",
+          "turn_1 observation.context.ehr.Meta.hadm_id: 20118546",
+          "turn_1 observation.context.ehr.Meta.admittime: 2119-10-09 21:45:00",
+          "turn_1 observation.context.ehr.Meta.dischtime: 2119-10-13 15:05:00",
+          "turn_1 observation.context.ehr.Meta.admission_type: URGENT",
+          "turn_1 observation.context.ehr.Meta.admission_location: PHYSICIAN REFERRAL",
+          "turn_1 observation.context.ehr.Meta.diagnostic_window.start: 2119-10-09 21:45:00",
+          "turn_1 observation.context.ehr.Meta.diagnostic_window.end: 2119-10-11 05:11:00",
+          "turn_1 observation.context.ehr.Patient_info.gender: F",
+          "turn_1 observation.context.ehr.Patient_info.age: 27",
+          "turn_1 observation.context.ehr.Patient_info.language: English",
+          "turn_1 observation.context.ehr.Patient_info.marital_status: MARRIED",
+          "turn_1 observation.context.ehr.Patient_info.insurance: Private",
+          "turn_1 observation.context.ehr.Objective_for_Doctor: Assess and diagnose the 27-year-old female patient based on the available clinical presentation.",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].label: Hematocrit",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].value: 36.8",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].label: Hemoglobin",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].value: 13.4",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].valueuom: g/dL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].label: MCH",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].value: 31.8",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].valueuom: pg",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].label: MCHC",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].value: 36.4",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].valueuom: g/dL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].label: MCV",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].value: 87",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].valueuom: fL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].label: Platelet Count",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].value: 149",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].valueuom: K/uL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].flag: abnormal",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].label: RDW",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].value: 14.2",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].label: Red Blood Cells",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].value: 4.21",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].valueuom: m/uL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].label: White Blood Cells",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].value: 12.2",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].valueuom: K/uL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].flag: abnormal",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].label: RDW-SD",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].value: 44.3",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].valueuom: fL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].label: INR(PT)",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].value: 1.0",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].label: PT",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].value: 10.3",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].valueuom: sec",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].label: PTT",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].value: 25.8",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].valueuom: sec",
+          "turn_1 observation.context.ehr.Final_Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture",
+          "turn_1 observation.context.knowbase[0].name: Prelabor rupture of membranes",
+          "turn_1 observation.context.knowbase[0].introduction: Prelabor rupture of membranes (PROM), previously known as premature rupture of membranes, is breakage of the amniotic sac before the onset of labour. Women usually experience a painless gush or a steady leakage of fluid from the vagina. Complications in the baby may include premature birth, cord compression, and infection. Complications in the mother may include placental abruption and postpartum endometritis. Risk factors include infection of the amniotic fluid, prior PROM, bleeding in the later parts of pregnancy, smoking, and a mother who is underweight. Diagnosis is suspected based on symptoms and speculum exam and may be supported by testing the vaginal fluid or by ultrasound. If it occurs before 37 weeks it is known as PPROM (preterm prelabor rupture of membranes) otherwise it is known as term PROM. Treatment is based on how far along a woman is in pregnancy and whether complications are present. In those at or near term without any complications, induction of labor is generally recommended. Time may also be provided for labor to begin spontaneously. In those 24 to 34 weeks of gestation without complications corticosteroids and close observation is recommended. A 2017 Cochrane review found waiting generally resulted in better outcomes in those before 37 weeks. Antibiotics may be given for those at risk of Group B streptococcus. Delivery is generally indicated in those with complications, regardless of how far along in pregnancy. About 8% of term pregnancies are complicated by PROM while about 30% of preterm births are complicated by PROM. Before 24 weeks PROM occurs in fewer than 1% of pregnancies. Prognosis is primarily determined by complications related to prematurity such as necrotizing enterocolitis, intraventricular hemorrhage, and cerebral palsy.",
+          "turn_1 observation.context.knowbase[0].signs_and_symptoms: Most women will experience a painless leakage of fluid out of the vagina. They may notice either a distinct \"gush\" or a steady flow of small amounts of watery fluid in the absence of steady uterine contractions. Loss of fluid may be associated with the baby becoming easier to feel through the belly (due to the loss of the surrounding fluid), decreased uterine size, or meconium (fetal stool) seen in the fluid.",
+          "turn_1 observation.context.knowbase[0].diagnosis: To confirm if a woman has experienced PROM, a clinician must prove that the fluid leaking from the vagina is amniotic fluid, and that labor has not yet started. To do this, a careful medical history is taken, a gynecological exam is conducted using a sterile speculum, and an ultrasound of the uterus is performed. History: a person with PROM typically recalls a sudden \"gush\" of fluid loss from the vagina, or steady loss of small amounts of fluid. Sterile speculum exam: a clinician will insert a sterile speculum into the vagina in order to see inside and perform the following evaluations. Digital cervical exams, in which gloved fingers are inserted into the vagina to measure the cervix, are avoided until the women is in active labor to reduce the risk of infection. Pooling test: Pooling is when a collection of amniotic fluid can be seen in the back of the vagina (vaginal fornix). Sometimes leakage of fluid from the cervical opening can be seen when the person coughs or performs a valsalva maneuver. Nitrazine test: A sterile cotton swab is used to collect fluid from the vagina and place it on nitrazine (phenaphthazine) paper. Amniotic fluid is mildly basic (pH 7.1–7.3) compared to normal vaginal secretions which are acidic (pH 4.5–6). Basic fluid, like amniotic fluid, will turn the nitrazine paper from orange to dark blue. Fern test: A sterile cotton swab is used to collect fluid from the vagina and place it on a microscope slide. After drying, amniotic fluid will form a crystallization pattern called arborization which resembles leaves of a fern plant when viewed under a microscope. Fibronectin and alpha-fetoprotein blood tests === Classification === Prelabor rupture of membranes (PROM): when the fetal membranes rupture early, at least one hour before labor has started. Prolonged PROM: a case of prelabor rupture of membranes in which more than 18 hours has passed between the rupture and the onset of labor. Preterm prelabor rupture of membranes (PPROM): prelabor rupture of membranes that occurs before 37 weeks gestation. Midtrimester PPROM or pre-viable PPROM: prelabor rupture of membranes that occurs before 24 weeks' gestation. Before this age, the fetus cannot survive outside of the mother's womb. === Additional tests === The following tests should only be used if the diagnosis is still unclear after the standard tests above. Ultrasound: Ultrasound can measure the amount of fluid still in the uterus surrounding the fetus. If the fluid levels are low, PROM is more likely. This is helpful in cases when the diagnosis is not certain, but is not, by itself, definitive. Immune-chromatological tests are helpful, if negative, to rule out PROM, but are not that helpful if positive since the false-positive rate is relatively high (19–30%). Indigo carmine dye test: a needle is used to inject indigo carmine dye (blue) into the amniotic fluid that remains in the uterus through the abdominal wall. In the case of PROM, blue dye can be seen on a stained tampon or pad after about 15–30 minutes. This method can be used to definitively make a diagnosis, but is rarely done because it is invasive and increases risk of infection. But, can be helpful if the diagnosis is still unclear after the above evaluations have been done. It is unclear if different methods of assessing the fetus in a woman with PPROM affects outcomes. === False positives === Like amniotic fluid, blood, semen, vaginal secretions in the presence of infection, soap, urine, and cervical mucus also have an alkaline pH and can also turn nitrazine paper blue. Cervical mucus can also make a pattern similar to ferning on a microscope slide, but it is usually patchy and with less branching. === Differential diagnosis === Other conditions that may present similarly to premature rupture of membranes are the following: Urinary incontinence: leakage of small amounts of urine is common in the last part of pregnancy Normal vaginal secretions of pregnancy Increased sweat or moisture around the perineum Increased cervical discharge: this can happen when there is a genital tract infection Semen Douching Vesicovaginal fistula: an abnormal connection between the bladder and the vagina Loss of the mucus plug\n\nOther conditions that may present similarly to premature rupture of membranes are the following: Urinary incontinence: leakage of small amounts of urine is common in the last part of pregnancy Normal vaginal secretions of pregnancy Increased sweat or moisture around the perineum Increased cervical discharge: this can happen when there is a genital tract infection Semen Douching Vesicovaginal fistula: an abnormal connection between the bladder and the vagina Loss of the mucus plug",
+          "turn_1 observation.context.case_dir: /oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20118546",
+          "turn_1 observation.context.medenv_case_bundle.case_id: 20118546",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.subject_id: 13180195",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.hadm_id: 20118546",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.admittime: 2119-10-09 21:45:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.dischtime: 2119-10-13 15:05:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.admission_type: URGENT",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.admission_location: PHYSICIAN REFERRAL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.diagnostic_window.start: 2119-10-09 21:45:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.diagnostic_window.end: 2119-10-11 05:11:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.gender: F",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.age: 27",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.language: English",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.marital_status: MARRIED",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.insurance: Private",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Objective_for_Doctor: Assess and diagnose the 27-year-old female patient based on the available clinical presentation.",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].label: Hematocrit",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].value: 36.8",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].valueuom: %",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[1].label: Hemoglobin",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[1].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[1].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[1].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[1].value: 13.4",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[1].valueuom: g/dL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[2].label: MCH",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[2].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[2].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[2].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[2].value: 31.8",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[2].valueuom: pg",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[3].label: MCHC",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[3].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[3].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[3].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[3].value: 36.4",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[3].valueuom: g/dL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[4].label: MCV",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[4].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[4].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[4].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[4].value: 87",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[4].valueuom: fL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].label: Platelet Count",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].value: 149",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].valueuom: K/uL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[5].flag: abnormal",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[6].label: RDW",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[6].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[6].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[6].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[6].value: 14.2",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[6].valueuom: %",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[7].label: Red Blood Cells",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[7].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[7].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[7].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[7].value: 4.21",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[7].valueuom: m/uL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].label: White Blood Cells",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].value: 12.2",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].valueuom: K/uL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[8].flag: abnormal",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[9].label: RDW-SD",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[9].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[9].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[9].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[9].value: 44.3",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[9].valueuom: fL",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[10].label: INR(PT)",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[10].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[10].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[10].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[10].value: 1.0",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[11].label: PT",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[11].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[11].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[11].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[11].value: 10.3",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[11].valueuom: sec",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[12].label: PTT",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[12].fluid: Blood",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[12].category: Hematology",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[12].charttime: 2119-10-09 22:21:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[12].value: 25.8",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[12].valueuom: sec",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Final_Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture",
+          "turn_1 observation.context.medenv_case_bundle.knowledge[0].name: Prelabor rupture of membranes",
+          "turn_1 observation.context.medenv_case_bundle.knowledge[0].introduction: Prelabor rupture of membranes (PROM), previously known as premature rupture of membranes, is breakage of the amniotic sac before the onset of labour. Women usually experience a painless gush or a steady leakage of fluid from the vagina. Complications in the baby may include premature birth, cord compression, and infection. Complications in the mother may include placental abruption and postpartum endometritis. Risk factors include infection of the amniotic fluid, prior PROM, bleeding in the later parts of pregnancy, smoking, and a mother who is underweight. Diagnosis is suspected based on symptoms and speculum exam and may be supported by testing the vaginal fluid or by ultrasound. If it occurs before 37 weeks it is known as PPROM (preterm prelabor rupture of membranes) otherwise it is known as term PROM. Treatment is based on how far along a woman is in pregnancy and whether complications are present. In those at or near term without any complications, induction of labor is generally recommended. Time may also be provided for labor to begin spontaneously. In those 24 to 34 weeks of gestation without complications corticosteroids and close observation is recommended. A 2017 Cochrane review found waiting generally resulted in better outcomes in those before 37 weeks. Antibiotics may be given for those at risk of Group B streptococcus. Delivery is generally indicated in those with complications, regardless of how far along in pregnancy. About 8% of term pregnancies are complicated by PROM while about 30% of preterm births are complicated by PROM. Before 24 weeks PROM occurs in fewer than 1% of pregnancies. Prognosis is primarily determined by complications related to prematurity such as necrotizing enterocolitis, intraventricular hemorrhage, and cerebral palsy.",
+          "turn_1 observation.context.medenv_case_bundle.knowledge[0].signs_and_symptoms: Most women will experience a painless leakage of fluid out of the vagina. They may notice either a distinct \"gush\" or a steady flow of small amounts of watery fluid in the absence of steady uterine contractions. Loss of fluid may be associated with the baby becoming easier to feel through the belly (due to the loss of the surrounding fluid), decreased uterine size, or meconium (fetal stool) seen in the fluid.",
+          "turn_1 observation.context.medenv_case_bundle.knowledge[0].diagnosis: To confirm if a woman has experienced PROM, a clinician must prove that the fluid leaking from the vagina is amniotic fluid, and that labor has not yet started. To do this, a careful medical history is taken, a gynecological exam is conducted using a sterile speculum, and an ultrasound of the uterus is performed. History: a person with PROM typically recalls a sudden \"gush\" of fluid loss from the vagina, or steady loss of small amounts of fluid. Sterile speculum exam: a clinician will insert a sterile speculum into the vagina in order to see inside and perform the following evaluations. Digital cervical exams, in which gloved fingers are inserted into the vagina to measure the cervix, are avoided until the women is in active labor to reduce the risk of infection. Pooling test: Pooling is when a collection of amniotic fluid can be seen in the back of the vagina (vaginal fornix). Sometimes leakage of fluid from the cervical opening can be seen when the person coughs or performs a valsalva maneuver. Nitrazine test: A sterile cotton swab is used to collect fluid from the vagina and place it on nitrazine (phenaphthazine) paper. Amniotic fluid is mildly basic (pH 7.1–7.3) compared to normal vaginal secretions which are acidic (pH 4.5–6). Basic fluid, like amniotic fluid, will turn the nitrazine paper from orange to dark blue. Fern test: A sterile cotton swab is used to collect fluid from the vagina and place it on a microscope slide. After drying, amniotic fluid will form a crystallization pattern called arborization which resembles leaves of a fern plant when viewed under a microscope. Fibronectin and alpha-fetoprotein blood tests === Classification === Prelabor rupture of membranes (PROM): when the fetal membranes rupture early, at least one hour before labor has started. Prolonged PROM: a case of prelabor rupture of membranes in which more than 18 hours has passed between the rupture and the onset of labor. Preterm prelabor rupture of membranes (PPROM): prelabor rupture of membranes that occurs before 37 weeks gestation. Midtrimester PPROM or pre-viable PPROM: prelabor rupture of membranes that occurs before 24 weeks' gestation. Before this age, the fetus cannot survive outside of the mother's womb. === Additional tests === The following tests should only be used if the diagnosis is still unclear after the standard tests above. Ultrasound: Ultrasound can measure the amount of fluid still in the uterus surrounding the fetus. If the fluid levels are low, PROM is more likely. This is helpful in cases when the diagnosis is not certain, but is not, by itself, definitive. Immune-chromatological tests are helpful, if negative, to rule out PROM, but are not that helpful if positive since the false-positive rate is relatively high (19–30%). Indigo carmine dye test: a needle is used to inject indigo carmine dye (blue) into the amniotic fluid that remains in the uterus through the abdominal wall. In the case of PROM, blue dye can be seen on a stained tampon or pad after about 15–30 minutes. This method can be used to definitively make a diagnosis, but is rarely done because it is invasive and increases risk of infection. But, can be helpful if the diagnosis is still unclear after the above evaluations have been done. It is unclear if different methods of assessing the fetus in a woman with PPROM affects outcomes. === False positives === Like amniotic fluid, blood, semen, vaginal secretions in the presence of infection, soap, urine, and cervical mucus also have an alkaline pH and can also turn nitrazine paper blue. Cervical mucus can also make a pattern similar to ferning on a microscope slide, but it is usually patchy and with less branching. === Differential diagnosis === Other conditions that may present similarly to premature rupture of membranes are the following: Urinary incontinence: leakage of small amounts of urine is common in the last part of pregnancy Normal vaginal secretions of pregnancy Increased sweat or moisture around the perineum Increased cervical discharge: this can happen when there is a genital tract infection Semen Douching Vesicovaginal fistula: an abnormal connection between the bladder and the vagina Loss of the mucus plug\n\nOther conditions that may present similarly to premature rupture of membranes are the following: Urinary incontinence: leakage of small amounts of urine is common in the last part of pregnancy Normal vaginal secretions of pregnancy Increased sweat or moisture around the perineum Increased cervical discharge: this can happen when there is a genital tract infection Semen Douching Vesicovaginal fistula: an abnormal connection between the bladder and the vagina Loss of the mucus plug",
+          "turn_1 observation.context.medenv_case_bundle.source_field_refs[0]: ehr"
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 1,
+        "query_text": "27-year-old female with urgent admission; labs show abnormal WBC and platelet count; need memory about differential diagnosis before finalizing PROM; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1991,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did your symptoms start, and have they been continuous or intermittent?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.09090909090909091,
+        "turn_reward": 0.018181818181818184,
+        "importance": 0.09090909090909091
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been continuous or intermittent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 2,
+        "query_text": "PROM case with abnormal labs; need memory about targeted next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed a painless gush or steady leakage of watery fluid from my vagina, and I haven’t had any regular contractions. I’ve also noticed that the baby feels easier to feel through my belly, and I’m not sure if my uterus has gotten smaller. Sometimes, when I cough or strain, I see fluid coming from my cervix.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, admission location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 3,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1958,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1955,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1921,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a90e6145-37ad-4f83-bf58-82d83185b889': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, admission location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 4,
+        "query_text": "PROM case with abnormal labs; need memory about targeted next steps before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "painless vaginal fluid leakage in pregnant women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e6e3f7ec-3c77-4494-a74b-f7d61370c891': '[Document 1] (ID: 3624_10, Score: 0.853)\\nClinical diagnosis may be easy when patients are presenting with heavy watery vaginal discharge or when clear fluid can be seen leaking from the cervical os. However, recent data suggest that in 47% of the cases, clinicians are uncertain regarding the diagnosis of PPROM based on clinical examination...\\n\\n[Document 2] (ID: 11322_5, Score: 0.853)\\n## History and Symptoms\\nThe hallmark of PROM is pooling of fluid. A history of leakage of clear fluid from the vagina is suggestive of PROM.\\n## Physical Examination\\nPatients with PROM usually appear well, some may be in active labor. Physical examination of patients is usually remarkable for leakage...\\n\\n[Document 3] (ID: 1786_43, Score: 0.849)\\nasymptomatic bacteriuria\\nHIV, hepatitis\\xa0B and syphilis.\\nOffer rapid HIV testing to women thought to be at high risk of infection, which might include:\\nrecent migrants from countries with high rates of HIV infection\\nwomen who misuse substances intravenously\\nsuspected sexual abuse.\\nExplain to a woman ...\\n\\n[Document 4] (ID: 4716_76, Score: 0.849)\\n# Condom-loaded catheter intrauterine tamponade versus uterovaginal packing\\nThe trial (212 women) took place at a single ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.18181818181818182,
+        "delta": 0.09090909090909091,
+        "turn_reward": 0.018181818181818184,
+        "importance": 0.09090909090909091
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"painless vaginal fluid leakage in pregnant women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"painless vaginal fluid leakage in pregnant women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 5,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1958,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1955,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1921,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{PROM (Premature Rupture of Membranes)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'711a1fbf-42be-4229-9d91-c5df64dc2247': '{\"diagnosis\": \"PROM (Premature Rupture of Membranes)\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.45454545454545453,
+        "delta": 0.2727272727272727,
+        "turn_reward": 0.05454545454545454,
+        "importance": 0.2727272727272727
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{PROM (Premature Rupture of Membranes)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{PROM (Premature Rupture of Membranes)}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 6,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or imaging review; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3204,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2701,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2646,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2383,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2258,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3363,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e027d02565b1",
+              "type": "experience",
+              "score": 0.3224,
+              "outcome": "unsafe",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            },
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3173,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your skin, such as rashes, discoloration, or unusual bruising?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your skin, such as rashes, discoloration, or unusual bruising?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your skin, such as rashes, discoloration, or unusual bruising?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 7,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or imaging review; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3204,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2701,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2646,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2383,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2258,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3363,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e027d02565b1",
+              "type": "experience",
+              "score": 0.3224,
+              "outcome": "unsafe",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            },
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3173,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any headaches, dizziness, or changes in vision?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any headaches, dizziness, or changes in vision?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any headaches, dizziness, or changes in vision?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 8,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2485,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2475,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2031,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1986,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1853,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.269,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2677,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2667,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent stressors, changes in sleep patterns, or emotional disturbances?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent stressors, changes in sleep patterns, or emotional disturbances?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent stressors, changes in sleep patterns, or emotional disturbances?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 9,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or imaging review; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3204,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2701,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2646,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2383,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2258,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3363,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e027d02565b1",
+              "type": "experience",
+              "score": 0.3224,
+              "outcome": "unsafe",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            },
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3173,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common non-specific symptoms in young healthy females without localized complaints"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4253c457-7570-4f6e-8796-16b3e69c7366': '[Document 1] (ID: 1562_7, Score: 0.849)\\nsymptoms and signs of potential postnatal mental health problems and how to seek help\\nsymptoms and signs of potential postnatal physical problems and how to seek help\\nthe importance of pelvic floor exercises, how to do them and when to seek help (see the NICE guideline on pelvic floor dysfunction)\\nf...\\n\\n[Document 2] (ID: 4903_42, Score: 0.848)\\n# Values and preferences:\\nThe lack of evidence for assessments and interventions in the postnatal period highlights the need for urgent high quality research into this area. However, even in the current situation, clear recommendations for routine postnatal care of the mother are needed for setting ...\\n\\n[Document 3] (ID: 4342_4, Score: 0.848)\\n## Characteristic symptoms\\nThere is a broad spectrum of clinical presentation of NAS. Early in the course of illness patients may have nonspecific symptoms and signs, and the clinical manifestations may evolve over days to weeks to include more specific symptoms.\\nA gastrointestinal prodrome of nause...\\n\\n[Document 4] (ID: 2255_5, Score: 0.847)\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nBulging fontanelle\\nSymptom ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in young healthy females without localized complaints\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in young healthy females without localized complaints\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Diagnosis: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 10,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2485,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2475,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2031,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1986,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1853,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.269,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2677,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2667,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a06e681d-cd72-46f6-9703-af283f70e7db': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Diagnosis: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 11,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2126,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.1977,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1893,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.1872,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1804,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'57633c7f-9405-4305-ad7c-d4174f8cf8a4': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Admission type: URGENT, location: PHYSICIAN REFERRAL. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Final Result: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 12,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2485,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2475,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2031,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1986,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1853,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.269,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2677,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2667,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'134c979f-8d0c-43ae-ae4e-880b435bf2f7': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Diagnosis: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 13,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2126,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.1977,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1893,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.1872,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1804,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "microbiology"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d7fa367c-4b4f-4556-90e9-306d29119d37': '{\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\\\"microbiology\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old female, admitted urgently on 2119-10-09 21:45:00, discharged 2119-10-13 15:05:00. Diagnosis: Full-term premature rupture of membranes, onset of labor within 24 hours of rupture. Labs: Hematocrit 36.8%, Hemoglobin 13.4 g/dL, MCH 31.8 pg, MCHC 36.4 g/dL, MCV 87 fL, Platelet Count 149 K/uL (abnormal), RDW 14.2%, Red Blood Cells 4.21 m/uL, White Blood Cells 12.2 K/uL (abnormal), RDW-SD 44.3 fL, INR(PT) 1.0, PT 10.3 sec, PTT 25.8 sec. Knowledge: Prelabor rupture of membranes (PROM) definition, signs, symptoms, diagnosis, classification, tests, false positives, differential diagnosis."
+      },
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 14,
+        "query_text": "PROM case with abnormal labs; need memory about next-step testing or hypothesis updating before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2126,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.1977,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1893,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.1872,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1804,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Non-specific symptoms without identifiable organic cause}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c065acbf-32ab-4bee-aa67-742c83c54941': '{\"diagnosis\": \"Non-specific symptoms without identifiable organic cause\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Non-specific symptoms without identifiable organic cause}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Non-specific symptoms without identifiable organic cause}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

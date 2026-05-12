@@ -1,0 +1,1144 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20025379",
+  "turns": [
+    {
+      "case_id": "20025379",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I am a 57-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 57-year-old male patient presenting with Volume overload and PMH of CAD s/p PCI LAD/LCx ___.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 1,
+        "query_text": "Volume overload in 57-year-old male with CAD history; need targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.21,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2585,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight gain, swelling in your legs or ankles, or shortness of breath?"
+        },
+        "patient_or_tool_response": "{'question': 'I gained 3 pounds overnight, despite taking double my normal torsemide dose. I don’t have swelling in my legs or ankles, and I don’t have shortness of breath.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight gain, swelling in your legs or ankles, or shortness of breath?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight gain, swelling in your legs or ankles, or shortness of breath?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I gained 3 pounds overnight, despite taking double my normal torsemide dose.",
+          "I don’t have swelling in my legs or ankles,",
+          "I don’t have shortness of breath."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD, complicated by LVAD hematoma s/p evacuation, endocarditis leading to AI and prosthetic AVR, IDDM, Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Patient gained 3lbs overnight despite doubling torsemide. Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic. Small IVF bolus improved milrinone gtt pressures but still suggestive of volume overload. Contradictory exam and pressures thought multifactorial: RV failure, possible pericardial constriction, kinked LVAD outflow tract. Deemed euvolemic and transitioned to Torsemide 80mg PO daily. Discharged off home amlodipine, on lower digoxin dose due to suspicion for digoxin toxicity. Fludricortistone dose increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB, or CP. Admission physical: JVP 16cm, 2+ pitting edema extending to mid-shin. Discharge physical: no edema, fine bibasilar crackles, dry weight 106.4kg, discharge weight 106.8kg. Final Result: Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 2,
+        "query_text": "Volume overload despite diuresis; new info: weight gain without edema or SOB; need memory on managing volume status with LVAD; avoid premature diagnosis; consider RV dysfunction or pericardial constriction"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_eba29a47563e",
+              "type": "experience",
+              "score": 0.2514,
+              "outcome": "failure",
+              "situation": "When a patient reports recent weight gain without classic signs of volume overload like edema or dyspnea, but has a history of CAD and is on diuretics, the doctor should not finalize diagnosis without reviewing imaging or labs.",
+              "action": "Request a CXR and labs to evaluate for volume overload or other causes of weight gain, especially in patients with CAD and diuretic use.",
+              "boundary": "Use this memory when the patient has CAD and reports weight gain without classic signs; do not use if imaging or labs are already available and conclusive, or if the patient has clear evidence of another cause.",
+              "tags": [
+                "negative",
+                "volume_overload",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'73133f26-dd33-475e-b9ce-14c64a64c133': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I gained 3 pounds overnight, despite taking double my normal torsemide dose.",
+          "I don’t have swelling in my legs or ankles, and I don’t have shortness of breath.",
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD, complicated by LVAD hematoma s/p evacuation, endocarditis leading to AI and prosthetic AVR, IDDM, Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Discharged on Torsemide 80mg PO daily, off amlodipine, lower digoxin dose. Fludricortistone increased from 0.1mg to 0.2mg daily. Denies F/C, HA, N/V/D, worsening cough, SOB, CP. Physical exam: JVP 16cm, 2+ pitting edema in legs extending to mid-shin. Discharge weight 106.8 kg (235.45 lb)."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 3,
+        "query_text": "Volume overload with weight gain despite diuretic; no edema or SOB; labs missing; need memory about targeted questions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_eba29a47563e",
+              "type": "experience",
+              "score": 0.325,
+              "outcome": "failure",
+              "situation": "When a patient reports recent weight gain without classic signs of volume overload like edema or dyspnea, but has a history of CAD and is on diuretics, the doctor should not finalize diagnosis without reviewing imaging or labs.",
+              "action": "Request a CXR and labs to evaluate for volume overload or other causes of weight gain, especially in patients with CAD and diuretic use.",
+              "boundary": "Use this memory when the patient has CAD and reports weight gain without classic signs; do not use if imaging or labs are already available and conclusive, or if the patient has clear evidence of another cause.",
+              "tags": [
+                "negative",
+                "volume_overload",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_eba29a47563e"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_eba29a47563e",
+            "memory_type": "experience",
+            "score": 0.325,
+            "content": {
+              "situation": "When a patient reports recent weight gain without classic signs of volume overload like edema or dyspnea, but has a history of CAD and is on diuretics, the doctor should not finalize diagnosis without reviewing imaging or labs.",
+              "action": "Request a CXR and labs to evaluate for volume overload or other causes of weight gain, especially in patients with CAD and diuretic use.",
+              "outcome": "This action would have revealed underlying heart failure with volume overload or other causes, preventing premature closure.",
+              "boundary": "Use this memory when the patient has CAD and reports weight gain without classic signs; do not use if imaging or labs are already available and conclusive, or if the patient has clear evidence of another cause.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "volume_overload",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "Volume overload in patients with CAD post PCI"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'343cb5ab-e3fa-435b-8630-e6940007436a': '[Document 1] (ID: 5219_0, Score: 0.865)\\nPCI in the patient with severely depressed ventricular function\\n# Overview\\nHeart failure (HF) is a major public health problem. In the United States, 5 million patients have heart failure and annually more than one million are hospitalized with heart failure. In addition 50,000 patients die of heart...\\n\\n[Document 2] (ID: 3574_18, Score: 0.859)\\n## Detection of cad: with prior test results (protocols may include vasodilator perfusion cmr or dobutamine stress function cmr)\\n## Clinical scenario 5: evaluation of cad in patients with post percutaneous coronary intervention (pci) or coronary artery bypass grafting (cabg)\\n\\n[Document 3] (ID: 3106_33, Score: 0.859)\\n## Signs and symptoms of volume overload or depletion\\nVarious signs and symptoms are associated with volume overload or depletion: breathlessness, orthopnea, edema, elevated jugular venous pressure, cardiomegaly, lung congestion, light-headedness, cramps, erectile dysfunction, thirst, and weight gai...\\n\\n[Document 4] (ID: 3665_13, Score: 0.855)\\nOpen Access This article is distributed under the terms of the Creative Commons Attribution Noncommercial License which permits any noncommercial use,...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Volume overload in patients with CAD post PCI\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Volume overload in patients with CAD post PCI\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I gained 3 pounds overnight, despite taking double my normal torsemide dose.",
+          "I don’t have swelling in my legs or ankles, and I don’t have shortness of breath."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD, complicated by LVAD hematoma s/p evacuation, endocarditis leading to AI and prosthetic AVR, IDDM, Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Discharged on Torsemide 80mg PO daily, off home amlodipine, lower digoxin dose. Fludricortistone dose increased from 0.1mg to 0.2mg daily. Denies F/C, HA, N/V/D, worsening cough, SOB, CP. Physical exam: JVP 16cm, 2+ pitting edema in legs extending to mid-shin. Discharge weight 106.8 kg. No edema on discharge. History of recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and intermittent diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Hypovolemia after small IVF bolus. Milrinone gtt pressures improved but still suggestive of volume overload. Contradictory exam and pressures thought multifactorial: RV failure, possible pericardial constriction, kinked LVAD outflow tract. Deemed euvolemic. Final Result: Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 4,
+        "query_text": "Volume overload despite diuresis; new weight gain without edema or SOB; need memory about reconciling exam vs. pressures; avoid premature diagnosis; consider RV dysfunction or pericardial constriction"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your urine output or any episodes of dizziness or lightheadedness?"
+        },
+        "patient_or_tool_response": "{'question': 'I have noticed that I’ve been gaining weight — my wife said I gained 3 pounds overnight — even though I took double my usual torsemide dose. I haven’t noticed any changes in my urine output, and I don’t recall any episodes of dizziness or lightheadedness.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your urine output or any episodes of dizziness or lightheadedness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your urine output or any episodes of dizziness or lightheadedness?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I have noticed that I’ve been gaining weight — my wife said I gained 3 pounds overnight — even though I took double my usual torsemide dose.",
+          "I haven’t noticed any changes in my urine output,",
+          "and I don’t recall any episodes of dizziness or lightheadedness."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD in ___ ___omplicated by LVAD hematoma s/p evacuation in ___, endocarditis leading to AI and prosthetic AVR, IDDM, and Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Patient gained 3lbs overnight despite doubling torsemide dose. Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and intermittent diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic. Small IVF bolus improved milrinone gtt pressures but still suggestive of volume overload. Contradictory exam and pressures thought multifactorial: RV failure, possible pericardial constriction, kinked LVAD outflow tract. Deemed euvolemic and transitioned to Torsemide 80mg PO daily on discharge. Discharged off home amlodipine and on lower digoxin dose due to suspicion for digoxin toxicity. Upon arrival, patient’s torsemide decreased from 80mg BID to 80mg daily. Fludricortistone increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB, or CP. Admission physical: JVP 16cm, 2+ pitting edema in ___ extending to mid-shin. Discharge physical: no edema, JVP 0 at 90 degrees, fine bibasilar crackles. Dry weight 106.4kg, discharge weight 106.8kg."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 5,
+        "query_text": "Volume overload despite diuresis; new weight gain despite doubled torsemide; need memory about evaluating RV dysfunction or pericardial constriction; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2673,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Mechanism of volume overload in CAD post PCI and management"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'21d65f24-3b94-4d7f-938f-45b8a390aab1': '[Document 1] (ID: 5219_0, Score: 0.852)\\nPCI in the patient with severely depressed ventricular function\\n# Overview\\nHeart failure (HF) is a major public health problem. In the United States, 5 million patients have heart failure and annually more than one million are hospitalized with heart failure. In addition 50,000 patients die of heart...\\n\\n[Document 2] (ID: 15112_11, Score: 0.851)\\n### Decreasing Ventricular Wall Stress\\nThis positive effect of mechanical support on perfusion pressure is further enhanced by the ability of the pump to decrease ventricular wall stress. Post-infarct, the inability of the heart to efficiently pump blood leads to acute (and chronic) volume overload ...\\n\\n[Document 3] (ID: 15700_10, Score: 0.849)\\n## Variation in Preload and Afterload\\n- When preload increases the following changes are observed:\\nIncreased end diastolic volume\\nIncreased stroke volume\\nNo changes in pressure\\n- Increased end diastolic volume\\n- Increased stroke volume\\n- No changes in pressure\\n- When afterload increases the followin...\\n\\n[Document 4] (ID: 15700_7, Score: 0.848)\\nWhen the afterload increases, it makes it harder for the heart to pump the blood, and thus the volume remaining in the v...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.5,
+        "delta": 0.08333333333333331,
+        "turn_reward": 0.016666666666666663,
+        "importance": 0.08333333333333331
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Mechanism of volume overload in CAD post PCI and management\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Mechanism of volume overload in CAD post PCI and management\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I gained 3 pounds overnight, despite taking double my normal torsemide dose. I don’t have swelling in my legs or ankles, and I don’t have shortness of breath.",
+          "I have noticed that I’ve been gaining weight — my wife said I gained 3 pounds overnight — even though I took double my usual torsemide dose. I haven’t noticed any changes in my urine output, and I don’t recall any episodes of dizziness or lightheadedness."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD in ___ ___omplicated by LVAD hematoma s/p evacuation in ___, endocarditis leading to AI and prosthetic AVR, IDDM, and Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Patient gained 3lbs overnight despite double torsemide dose. Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and intermittent diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic. Small IVF bolus improved milrinone gtt pressures but still suggestive of volume overload. Contradictory exam and pressures thought multifactorial: RV failure, possible pericardial constriction, kinked LVAD outflow tract. Deemed euvolemic and transitioned to Torsemide 80mg PO daily. Discharged off home amlodipine, on lower digoxin dose due to suspicion for digoxin toxicity. Fludricortistone dose increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB, or CP. Admission physical: JVP 16cm, 2+ pitting edema in ___ extending to mid-shin. Discharge physical: no edema, fine bibasilar crackles, dry weight 106.4kg, discharge weight 106.8kg. Final Result: Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 6,
+        "query_text": "Volume overload despite double torsemide; patient denies SOB or edema but gained 3lbs overnight; need memory about targeted history for fluid balance and diuresis response; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1952,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1867,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2633,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Volume overload due to inadequate diuretic response in a patient with CAD post PCI}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ff85a1fc-43ab-484e-bc9b-5feeb885385a': '{\"diagnosis\": \"Volume overload due to inadequate diuretic response in a patient with CAD post PCI\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Volume overload due to inadequate diuretic response in a patient with CAD post PCI}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Volume overload due to inadequate diuretic response in a patient with CAD post PCI}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I gained an additional 3 pounds overnight, despite taking double my normal torsemide dose. I don’t know if this is recent weight gain or if my appetite has changed — I wasn’t told anything about appetite changes."
+        ],
+        "prior_information_summary": "Patient is a 57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD in ___ ___omplicated by LVAD hematoma s/p evacuation in ___, endocarditis leading to AI and prosthetic AVR, IDDM, and Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs notable for INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. On repeat check morning of ___, INR was reportedly 3.6 and Hct 22.9. Patient had gained 3lbs overnight despite double torsemide dose. Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. Underwent RHC with elevated right and left-sided filling pressures. Diuresed with Lasix gtt and intermittent diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic, received small IVF bolus, milrinone gtt pressures improved but still suggestive of volume overload. Contradictory exam and pressures thought multifactorial (RV failure, pericardial constriction, kinked LVAD outflow tract). Deemed euvolemic, transitioned to Torsemide 80mg PO daily on discharge. Discharged off home amlodipine, on lower digoxin dose due to suspicion for digoxin toxicity. Upon arrival, patient endorsed history, torsemide decreased from 80mg BID to 80mg daily, fludricortistone increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB or CP. Admission physical: JVP 16cm, 2+ pitting edema extending to mid-shin. Discharge physical: no edema, dry weight 106.4kg, discharge weight 106.8kg. Final result: Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 7,
+        "query_text": "Volume overload despite diuresis; new weight gain despite double torsemide; need memory about diuretic response and fluid status; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2919,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.2257,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2229,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2165,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2122,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.356,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_eba29a47563e",
+              "type": "experience",
+              "score": 0.3391,
+              "outcome": "failure",
+              "situation": "When a patient reports recent weight gain without classic signs of volume overload like edema or dyspnea, but has a history of CAD and is on diuretics, the doctor should not finalize diagnosis without reviewing imaging or labs.",
+              "action": "Request a CXR and labs to evaluate for volume overload or other causes of weight gain, especially in patients with CAD and diuretic use.",
+              "boundary": "Use this memory when the patient has CAD and reports weight gain without classic signs; do not use if imaging or labs are already available and conclusive, or if the patient has clear evidence of another cause.",
+              "tags": [
+                "negative",
+                "volume_overload",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_31a89b51741f",
+              "type": "experience",
+              "score": 0.3377,
+              "outcome": "failure",
+              "situation": "When a patient presents with a solitary pulmonary nodule and a history of breast cancer, but no symptoms like weight loss or fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis.",
+              "action": "Do not finalize diagnosis without reviewing available imaging or obtaining specific tests for BIA-ALCL, such as imaging findings or fluid analysis.",
+              "boundary": "Use this memory when imaging or specific tests are unavailable and the patient has no symptoms; do not use if imaging or fluid analysis is available or if symptoms suggest BIA-ALCL.",
+              "tags": [
+                "negative",
+                "missing_imaging",
+                "premature_closure",
+                "chest_pain"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_eba29a47563e"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_eba29a47563e",
+            "memory_type": "experience",
+            "score": 0.3391,
+            "content": {
+              "situation": "When a patient reports recent weight gain without classic signs of volume overload like edema or dyspnea, but has a history of CAD and is on diuretics, the doctor should not finalize diagnosis without reviewing imaging or labs.",
+              "action": "Request a CXR and labs to evaluate for volume overload or other causes of weight gain, especially in patients with CAD and diuretic use.",
+              "outcome": "This action would have revealed underlying heart failure with volume overload or other causes, preventing premature closure.",
+              "boundary": "Use this memory when the patient has CAD and reports weight gain without classic signs; do not use if imaging or labs are already available and conclusive, or if the patient has clear evidence of another cause.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "volume_overload",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Heart Failure with Volume Overload}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'088302d9-7c83-4434-a61b-07ed367dbcb2': '{\"diagnosis\": \"Heart Failure with Volume Overload\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Heart Failure with Volume Overload}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Heart Failure with Volume Overload}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I’ve had some shortness of breath, especially when lying down, and I’ve noticed swelling in my ankles. I also get a feeling of fatigue and sometimes feel dizzy, particularly when I’m standing up quickly. I’ve had occasional palpitations too, and I’m not sure if they’re related to my heart."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD in ___ ___omplicated by LVAD hematoma s/p evacuation in ___, endocarditis leading to AI and prosthetic AVR, IDDM, and Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Gained 3lbs overnight despite double torsemide dose (80mg BID). Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic, improved with IVF and milrinone gtt. Contradictory exam and pressures thought multifactorial (RV failure, pericardial constriction, kinked LVAD outflow tract). Deemed euvolemic, transitioned to Torsemide 80mg PO daily. Discharged off home amlodipine, lower digoxin dose (suspicion for toxicity). Fludricortistone dose increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB, or CP. Admitted 2164-12-30 15:57:00, discharged 2165-01-09 17:15:00. Admission weight 106.4kg, discharge weight 106.8kg. Physical exam: JVP 16cm, 2+ pitting edema in ___ extending to mid-shin. Discharge exam: no edema, JVP 0 at 90 degrees. Final Result: Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 8,
+        "query_text": "Volume overload with new symptoms of orthostatic dizziness and palpitations; need memory about evaluating for hemodynamic instability or LVAD dysfunction; avoid premature diagnosis without imaging or lab correlation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2007,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.193,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1901,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.2767,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.266,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2615,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4bc8d1c2-bc05-4e7f-861d-1fdaf115070e': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5833333333333334,
+        "conf_after": 0.5833333333333334,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I’ve had some shortness of breath, especially when lying down, and I’ve noticed swelling in my ankles. I also get a feeling of fatigue and sometimes feel dizzy, particularly when I’m standing up quickly. I’ve had occasional palpitations too, and I’m not sure if they’re related to my heart."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD in ___ ___omplicated by LVAD hematoma s/p evacuation in ___, endocarditis leading to AI and prosthetic AVR, IDDM, and Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Gained 3lbs overnight despite double torsemide dose. Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic, improved with IVF and milrinone gtt. Contradictory exam and pressures thought multifactorial (RV failure, pericardial constriction, kinked LVAD outflow tract). Deemed euvolemic, transitioned to Torsemide 80mg PO daily. Discharged off home amlodipine, on lower digoxin dose due to suspicion for digoxin toxicity. Fludricortistone dose increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB, or CP. Physical exam: JVP 16cm, 2+ pitting edema in ___ extending to mid-shin. Discharge weight 106.8kg (235.45lb)."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 9,
+        "query_text": "Volume overload with new symptoms of orthostasis and palpitations; need memory about targeted history for cardiac output and LVAD function; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2336,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2116,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2005,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.193,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1901,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2945,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2903,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.288,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "Symptoms and signs of heart failure in CAD patients post-PCI"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ce9d22cf-bf46-4c14-9fac-6100695bd3cd': '[Document 1] (ID: 5219_0, Score: 0.890)\\nPCI in the patient with severely depressed ventricular function\\n# Overview\\nHeart failure (HF) is a major public health problem. In the United States, 5 million patients have heart failure and annually more than one million are hospitalized with heart failure. In addition 50,000 patients die of heart...\\n\\n[Document 2] (ID: 3574_18, Score: 0.878)\\n## Detection of cad: with prior test results (protocols may include vasodilator perfusion cmr or dobutamine stress function cmr)\\n## Clinical scenario 5: evaluation of cad in patients with post percutaneous coronary intervention (pci) or coronary artery bypass grafting (cabg)\\n\\n[Document 3] (ID: 5127_1, Score: 0.875)\\n- Constricting discomfort in the front of the chest, or in the neck, shoulders, jaw, or arms\\n- Precipitated by physical exertion\\n- relieved by rest or TNG within about 5 minutes\\n- Typical and atypical features of anginal chest pain and non-anginal chest pain are not defined\\ndifferently in men and wo...\\n\\n[Document 4] (ID: 14416_3, Score: 0.873)\\n### History and Symptoms\\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average surviv...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5833333333333334,
+        "conf_after": 0.5833333333333334,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Symptoms and signs of heart failure in CAD patients post-PCI\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Symptoms and signs of heart failure in CAD patients post-PCI\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025379",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Volume overload",
+        "current_turn_information": [
+          "I’ve noticed I’ve been gaining weight — my wife said I gained 3 pounds overnight. I’ve also been taking double my usual torsemide dose (80mg BID instead of daily), but I’m still feeling volume overloaded. I don’t know if that’s affecting my appetite, thirst, or urination — I haven’t paid much attention to those changes. I’m not sure if I’ve noticed any specific changes in those areas."
+        ],
+        "prior_information_summary": "57-year-old male with PMH of CAD s/p PCI LAD/LCx, HFrEF (EF 20%; unos 1B) s/p Heartware LVAD in ___ ___omplicated by LVAD hematoma s/p evacuation in ___, endocarditis leading to AI and prosthetic AVR, IDDM, and Addison's disease. Presented as direct admission from home for supratherapeutic INR and volume overload. Labs: INR 5.2, Hgb 7.6 from 8.5 on discharge, pro-BNP 1808, LDH 357, Cr 1.5. Repeat check: INR 3.6, Hct 22.9. Patient gained 3lbs overnight despite double torsemide dose. Recent complicated admission for sub-therapeutic INR and chronic decompensated heart failure. RHC showed elevated right and left-sided filling pressures. Diuresed with Lasix gtt and intermittent diuril boluses. Course c/b orthostasis and LVAD waveform dampening with standing, suggestive of RV dysfunction. Subsequently hypovolemic, improved with IVF and milrinone gtt. Contradictory exam and pressures thought multifactorial (RV failure, pericardial constriction, kinked LVAD outflow tract). Deemed euvolemic, transitioned to Torsemide 80mg PO daily. Discharged off home amlodipine, on lower digoxin dose due to suspicion for digoxin toxicity. Fludricortistone dose increased from 0.1mg to 0.2mg daily. Currently denies F/C, HA, N/V/D, worsening cough, SOB, or CP. Admission physical: JVP 16cm, 2+ pitting edema in ___ extending to mid-shin. Discharge physical: no edema, fine bibasilar crackles, dry weight 106.4kg, discharge weight 106.8kg. Final Result: Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease."
+      },
+      "query": {
+        "case_id": "20025379",
+        "turn_id": 10,
+        "query_text": "Volume overload persists despite double torsemide; patient reports no specific symptom changes; need memory about targeted symptom assessment and diuresis adjustment; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {},
+        "patient_or_tool_response": "{}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5833333333333334,
+        "conf_after": 0.5833333333333334,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "The final diagnosis is: \\\\boxed{Heart Failure with Volume Overload}.",
+        "raw": "The final diagnosis is: \\\\boxed{Heart Failure with Volume Overload}."
+      }
+    }
+  ]
+}

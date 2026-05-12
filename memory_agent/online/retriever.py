@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import math
+import os
 from pathlib import Path
 from typing import Any
 
@@ -9,7 +10,13 @@ from ..llm import EmbeddingClient
 from ..memory_store import ExperienceMemoryStore, KnowledgeMemoryStore, SkillMemoryStore
 from ..schemas import MemoryQuery, MemoryRetrievalResult, OutcomeType, RetrievalHit
 from ..utils.config import MEMORY_ROOT_DIRNAME, RETRIEVAL_CONFIG
-from ..utils.scoring import cosine_similarity as token_cosine, flatten_payload
+from ..utils.scoring import (
+    bm25_similarity,
+    cosine_similarity as token_cosine,
+    flatten_payload,
+    tag_overlap_score,
+    tokenize,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +55,6 @@ def skill_to_text(payload: dict[str, Any]) -> str:
             f"Procedure: {payload.get('procedure_text', '')}",
             f"Procedure steps: {flatten_payload(payload.get('procedure', []))}",
             f"Boundary: {payload.get('boundary_text', '')}",
-            f"Tags: {_join(payload.get('tags') or payload.get('retrieval_tags') or [])}",
         ]
     )
 
@@ -71,6 +77,14 @@ def memory_to_text(memory_type: str, payload: dict[str, Any]) -> str:
     if memory_type == "knowledge":
         return knowledge_to_text(payload)
     return flatten_payload(payload)
+
+
+def _fallback_scoring_mode() -> str:
+    return str(
+        os.environ.get("MEDGYM_RETRIEVAL_FALLBACK_SCORING")
+        or RETRIEVAL_CONFIG.get("fallback_scoring")
+        or "cosine"
+    ).strip().lower()
 
 
 def _embedding_cosine(vec_a: list[float], vec_b: list[float]) -> float:
@@ -126,20 +140,34 @@ def _score_memory(
 
     Priority:
     1. If both embeddings available → embedding cosine similarity.
-    2. Else → token-based cosine similarity on the flattened text.
-    3. Tag bonus (+0.05) is applied on top of the text score.
+    2. Else use configured fallback scoring:
+       - cosine: previous token-cosine over full memory text.
+       - fielded_bm25: field-weighted BM25 for experience/skill.
     """
     if query_embedding is not None and memory_embedding is not None:
         score = _embedding_cosine(query_embedding, memory_embedding)
+    elif _fallback_scoring_mode() != "fielded_bm25":
+        text = memory_to_text(memory_type, payload)
+        score = token_cosine(query.query_text, text)
+    elif memory_type == "experience":
+        tags = payload.get("tags") or payload.get("retrieval_tags") or []
+        score = (
+            0.40 * bm25_similarity(query.query_text, str(payload.get("situation_text") or ""))
+            + 0.25 * bm25_similarity(query.query_text, str(payload.get("action_text") or ""))
+            + 0.20 * bm25_similarity(query.query_text, str(payload.get("boundary_text") or ""))
+            + 0.10 * bm25_similarity(query.query_text, str(payload.get("outcome_text") or ""))
+            + 0.05 * tag_overlap_score(tokenize(query.query_text), tags if isinstance(tags, list) else [])
+        )
+    elif memory_type == "skill":
+        score = (
+            0.35 * bm25_similarity(query.query_text, str(payload.get("situation_text") or ""))
+            + 0.25 * bm25_similarity(query.query_text, str(payload.get("goal_text") or ""))
+            + 0.25 * bm25_similarity(query.query_text, str(payload.get("procedure_text") or ""))
+            + 0.15 * bm25_similarity(query.query_text, str(payload.get("boundary_text") or ""))
+        )
     else:
         text = memory_to_text(memory_type, payload)
         score = token_cosine(query.query_text, text)
-        # Tag bonus (only for token-based, since tags are already in the embedding text)
-        tags = payload.get("tags") or payload.get("retrieval_tags") or []
-        if isinstance(tags, list) and tags:
-            score += 0.05 * token_cosine(
-                query.query_text, " ".join(str(tag) for tag in tags)
-            )
     return max(0.0, min(1.0, score))
 
 

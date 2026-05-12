@@ -61,20 +61,11 @@ def _skill_from_raw(raw: dict[str, Any], distilled: DistilledEpisode) -> SkillCa
     if not procedure:
         return None
 
-    tags = [str(item) for item in raw.get("tags") or [] if str(item)]
-    tags = [tag for tag in tags if tag not in {"negative", "episode_skill"}]
-    if "positive" in tags:
-        tags = ["positive"] + [tag for tag in tags if tag != "positive"]
-    else:
-        tags.insert(0, "positive")
-    tags.insert(1, "episode_skill")
-
     raw_source = raw.get("source") if isinstance(raw.get("source"), dict) else {}
     source = {
         "episode_ids": [str(item) for item in raw_source.get("episode_ids") or [] if str(item)],
         "case_ids": [str(item) for item in raw_source.get("case_ids") or [] if str(item)],
         "turn_ids": [str(item) for item in raw_source.get("turn_ids") or [] if str(item)],
-        "skill_origin": ["episode_level"],
     }
     if distilled.episode_id and distilled.episode_id not in source["episode_ids"]:
         source["episode_ids"].append(distilled.episode_id)
@@ -90,7 +81,6 @@ def _skill_from_raw(raw: dict[str, Any], distilled: DistilledEpisode) -> SkillCa
         procedure_text=str(raw.get("procedure_text") or "").strip(),
         procedure=procedure,
         boundary_text=str(raw.get("boundary_text") or "").strip(),
-        tags=tags,
         confidence=max(0.0, min(1.0, _safe_float(raw.get("confidence"), 0.5))),
         support_count=max(1, int(_safe_float(raw.get("support_count"), 1))),
         source=source,

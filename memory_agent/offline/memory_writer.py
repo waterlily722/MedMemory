@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from pathlib import Path
 from typing import Any
 
@@ -8,8 +9,9 @@ from ..memory_store import ExperienceMemoryStore, SkillMemoryStore
 
 logger = logging.getLogger(__name__)
 from ..schemas import DistilledEpisode, ExperienceCard
+from ..schemas import OutcomeType
 from ..utils.config import MEMORY_ROOT_DIRNAME, MERGE_CONFIG
-from ..utils.scoring import cosine_similarity
+from ..utils.scoring import bm25_scores, cosine_similarity as token_cosine, tag_overlap_score
 from .experience_extractor import extract_experiences
 from .experience_merger import decide_merge_llm, decide_merge_rule
 from .skill_extractor import extract_skills_from_distilled_episode
@@ -28,17 +30,93 @@ def _similar_existing(
 ) -> list[ExperienceCard]:
     if limit is None:
         limit = int(MERGE_CONFIG.get("candidate_top_k", 20) or 20)
-    scored: list[tuple[float, ExperienceCard]] = []
+    candidates = [
+        item for item in existing
+        if _same_outcome_direction(experience, item)
+    ]
+    if not candidates:
+        return []
 
-    for item in existing:
+    scoring_mode = _merge_scoring_mode()
+    if scoring_mode != "fielded_bm25":
+        new_text = _experience_similarity_text(experience)
+        scored = [
+            (token_cosine(new_text, _experience_similarity_text(item)), item)
+            for item in candidates
+        ]
+        scored.sort(key=lambda pair: pair[0], reverse=True)
+        return [item for score, item in scored[:limit] if score > 0.0]
+
+    situation_scores = _normalize_scores(
+        bm25_scores(
+            experience.situation_text,
+            [item.situation_text for item in candidates],
+        )
+    )
+    action_scores = _normalize_scores(
+        bm25_scores(
+            experience.action_text,
+            [item.action_text for item in candidates],
+        )
+    )
+    boundary_scores = _normalize_scores(
+        bm25_scores(
+            experience.boundary_text,
+            [item.boundary_text for item in candidates],
+        )
+    )
+
+    scored: list[tuple[float, ExperienceCard]] = []
+    for idx, item in enumerate(candidates):
         score = (
-            0.7 * cosine_similarity(experience.situation_text, item.situation_text)
-            + 0.3 * cosine_similarity(experience.action_text, item.action_text)
+            0.45 * situation_scores[idx]
+            + 0.30 * action_scores[idx]
+            + 0.15 * boundary_scores[idx]
+            + 0.10 * tag_overlap_score(experience.tags, item.tags)
         )
         scored.append((score, item))
-
     scored.sort(key=lambda pair: pair[0], reverse=True)
     return [item for score, item in scored[:limit] if score > 0.0]
+
+
+def _merge_scoring_mode() -> str:
+    return str(
+        os.environ.get("MEDGYM_MERGE_SCORING")
+        or MERGE_CONFIG.get("candidate_scoring")
+        or "cosine"
+    ).strip().lower()
+
+
+def _experience_similarity_text(experience: ExperienceCard) -> str:
+    return "\n".join(
+        [
+            experience.situation_text or "",
+            experience.action_text or "",
+            experience.outcome_text or "",
+            experience.boundary_text or "",
+            " ".join(str(tag) for tag in (experience.tags or [])),
+        ]
+    )
+
+
+def _positive_outcome(card: ExperienceCard) -> bool:
+    return card.outcome_type in {
+        OutcomeType.SUCCESS.value,
+        OutcomeType.PARTIAL_SUCCESS.value,
+    }
+
+
+def _same_outcome_direction(left: ExperienceCard, right: ExperienceCard) -> bool:
+    return _positive_outcome(left) == _positive_outcome(right)
+
+
+def _normalize_scores(scores: list[float]) -> list[float]:
+    if not scores:
+        return []
+    max_score = max(scores)
+    if max_score <= 0.0:
+        return [0.0 for _ in scores]
+    return [max(0.0, score / max_score) for score in scores]
 
 
 def write_memory_from_distilled_episode(
@@ -103,6 +181,7 @@ def write_memory_from_distilled_episode(
 
     result = {
         "episode_id": distilled.episode_id,
+        "merge_scoring_mode": _merge_scoring_mode(),
         "written_experience_ids": written_ids,
         "extracted_count": len(extracted),
         "merged_count": merged_count,

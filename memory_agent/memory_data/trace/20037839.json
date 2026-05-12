@@ -1,0 +1,1745 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20037839",
+  "turns": [
+    {
+      "case_id": "20037839",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 65-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 65-year-old female patient based on the available clinical presentation.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 1,
+        "query_text": "65-year-old female presenting with nonspecific symptoms; need targeted history and exam before next steps; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2053,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2041,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.1895,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2828,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2714,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2686,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been noticing my vision has been getting worse over time, especially with colors looking washed out — like reds aren’t as vivid anymore. It started slowly, and I didn’t realize how bad it was until someone pointed it out. I’ve also noticed a kind of blur or haze in the center of my vision, which has gotten worse. It’s not painful, and I can still see fine out of the corners of my eyes — I’ve been using my peripheral vision more to compensate. The changes are in both eyes, and I haven’t had any eye pain. My vision has been getting worse gradually, but I haven’t lost much yet — just a noticeable drop in clarity and color. The optic disc might look pale, but I haven’t had any eye exams to confirm that.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Vision has been getting worse over time, especially with colors looking washed out — like reds aren’t as vivid anymore.",
+          "Started slowly, didn’t realize how bad it was until someone pointed it out.",
+          "Noticed a kind of blur or haze in the center of my vision, which has gotten worse.",
+          "Not painful, can still see fine out of the corners of my eyes — using peripheral vision more to compensate.",
+          "Changes are in both eyes, no eye pain.",
+          "Vision worsening gradually, noticeable drop in clarity and color, but not yet lost much.",
+          "Optic disc might look pale, but no eye exams to confirm that."
+        ],
+        "prior_information_summary": "65-year-old female patient admitted for observation. Chief complaint: Assess and diagnose based on clinical presentation. Patient has no specific chief complaint stated. Medical history includes: gender F, age 65, race WHITE, married, Medicare insurance. Admission type: OBSERVATION ADMIT. Admission location: PHYSICIAN REFERRAL. Diagnostic window: 2204-12-28 17:32:00 to 2204-12-28 20:33:00. Objective: Assess and diagnose patient. Final result: Other optic neuritis. Knowledge base includes: Optic neuropathy and Toxic and nutritional optic neuropathy, with details on signs, symptoms, causes, and diagnosis. No prior clinical findings or exam results provided."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 2,
+        "query_text": "vision changes with color desaturation and central blur; no eye exam or imaging yet; need memory about targeted history and exam before finalizing optic neuropathy diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2432,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1937,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1921,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.3282,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.257,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8c9a9d92bd6f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8c9a9d92bd6f",
+            "memory_type": "experience",
+            "score": 0.3282,
+            "content": {
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "outcome": "This action would have revealed macular changes consistent with optic neuritis or other central retinal pathology, preventing premature closure on age-related macular degeneration.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "eye exam"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'da550090-c229-4784-b84d-0cfa4e8b0ba4': '{\"exam_type\": \"eye exam\", \"source\": \"none\", \"result\": \"No result for \\\\\"eye exam\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"eye exam\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"eye exam\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"eye exam\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "65-year-old female patient, admitted via physician referral on 2204-12-28. Chief complaint: Assess and diagnose based on clinical presentation. Patient reports gradual, painless vision loss with color desaturation (especially reds), central blur, and use of peripheral vision. Bilateral, symmetric, no eye pain. No prior eye exam. Knowledge base includes optic neuropathy and toxic/nutritional optic neuropathy. Final result: Other optic neuritis."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 3,
+        "query_text": "vision loss with color desaturation and no prior eye exam; need memory about targeted history and exam before imaging or lab; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2865,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2498,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2485,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2393,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2221,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3791,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.3658,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3575,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8c9a9d92bd6f",
+          "exp_b36ecb08deb2"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8c9a9d92bd6f",
+            "memory_type": "experience",
+            "score": 0.3658,
+            "content": {
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "outcome": "This action would have revealed macular changes consistent with optic neuritis or other central retinal pathology, preventing premature closure on age-related macular degeneration.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_b36ecb08deb2",
+            "memory_type": "experience",
+            "score": 0.3575,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "outcome": "This action prevented premature closure and avoided missing the gold diagnosis of amphetamine poisoning, which would have been revealed by toxicology testing.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "gradual vision loss, color desaturation, central haze, bilateral, no pain, optic disc pallor"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fc107b45-b5ea-4eb1-be3a-ac0576e4226a': '[Document 1] (ID: 7848_2, Score: 0.861)\\n# Signs and symptoms\\nVision loss in toxic and nutritional optic neuropathy is bilateral, symmetric, painless, gradual, and progressive.  Dyschromatopsia, a change in color vision, is often the first symptom.  Some patients notice that certain colors, particularly red, are less bright or vivid; other...\\n\\n[Document 2] (ID: 20401_8, Score: 0.840)\\n- Ciliary body: Disturbance of accommodation with symptoms of blurred vision. This reaction is dose related and reversible with cessation of therapy.\\n- Cornea: Transient edema, punctate to lineal opacities, decreased corneal sensitivity. The corneal changes, with or without accompanying symptoms (bl...\\n\\n[Document 3] (ID: 29434_9, Score: 0.834)\\nCataracts, decreased hearing, diplopia, lacrimation disorder\\n\\nProstatic disorder\\n\\n- Severe vision decrease, equivalent of ≥4 lines, within 7 days after treatment has been reported in 1%-5% of patients. Partial recovery of vision was observed in some patients. Photosensitivity reactions usually occur...\\n\\n[Document 4] (ID: 28449_2, Score: 0.831)\\n## Transient Vision Loss (<24 hours)\\n- Amaurosis fugax\\n- Vision loss is unilateral and lasts only minutes\\n- Migrane\\n- Visi...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"gradual vision loss, color desaturation, central haze, bilateral, no pain, optic disc pallor\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"gradual vision loss, color desaturation, central haze, bilateral, no pain, optic disc pallor\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Vision has been getting worse over time, especially with colors looking washed out — like reds aren’t as vivid anymore.",
+          "Started slowly, noticed only after someone pointed it out.",
+          "Blur or haze in the center of vision, worsening.",
+          "Not painful, peripheral vision preserved, using peripheral vision more to compensate.",
+          "Changes in both eyes, no eye pain.",
+          "Gradual vision loss, noticeable drop in clarity and color.",
+          "Optic disc might look pale, but no eye exam confirmed.",
+          "Tool output: eye exam result not found, no knowledge base available for approximate answer.",
+          "Tool output: top document matches toxic and nutritional optic neuropathy signs and symptoms, including dyschromatopsia, bilateral painless gradual vision loss, central scotoma, and normal pupil response."
+        ],
+        "prior_information_summary": "65-year-old female, admitted for observation, with no chief complaint initially. Patient has Medicare, is married, white, English-speaking. Objective: assess and diagnose based on clinical presentation. Final result: other optic neuritis. Knowledge base includes optic neuropathy and toxic/nutritional optic neuropathy, detailing signs, symptoms, causes, and diagnostic approaches. No prior exam results or patient history provided beyond admission details."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 4,
+        "query_text": "bilateral painless gradual vision loss with dyschromatopsia; need memory about toxic/nutritional optic neuropathy workup; avoid premature diagnosis without lab or imaging; update hypothesis before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1913,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2935,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.2529,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been exposed to any toxins, had any recent infections, or taken any new medications recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I haven’t been exposed to any known toxins recently. I haven’t had any recent infections either. As for medications, I haven’t started any new ones — though I do take ethambutol for tuberculosis, and I’ve noticed my color vision has been changing lately, especially reds looking washed out. I’m not sure if that’s related, but I’ve been monitoring it.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been exposed to any toxins, had any recent infections, or taken any new medications recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been exposed to any toxins, had any recent infections, or taken any new medications recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I haven’t been exposed to any known toxins recently.",
+          "I haven’t had any recent infections either.",
+          "As for medications, I haven’t started any new ones — though I do take ethambutol for tuberculosis, and I’ve noticed my color vision has been changing lately, especially reds looking washed out.",
+          "I’m not sure if that’s related, but I’ve been monitoring it."
+        ],
+        "prior_information_summary": "65-year-old female patient with gradual, painless vision loss, bilateral and symmetric, with dyschromatopsia (especially reds washed out), central visual field defect, and preserved peripheral vision. No eye pain. Patient takes ethambutol for tuberculosis. No recent toxin exposure or infections. Eye exam result not available. Knowledge base indicates optic neuropathy, including toxic and nutritional causes, with signs including color vision loss, central scotoma, and temporal pallor. Final result: Other optic neuritis."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 5,
+        "query_text": "vision changes with ethambutol use; new report of color vision alteration; need memory about toxic optic neuropathy management; avoid premature diagnosis without eye exam"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.2567,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "ethambutol side effects on vision, optic neuropathy"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a443d31d-a93c-4920-a73d-364ea26f9a30': '[Document 1] (ID: 293_69, Score: 0.929)\\nHarms. In a recent review of the tolerability of TB drugs, ethambutol was associated with serious adverse events in 6 of 1,325 (0.5%) patients (23). This is consistent with previous reports of ethambutol toxicity, in which optic neuropathy (including optic neuritis and retrobulbar neuritis) was attr...\\n\\n[Document 2] (ID: 4059_66, Score: 0.927)\\nHarms. In a recent review of the tolerability of TB drugs, ethambutol was associated with serious adverse events in 6 of 1,325 (0.5%) patients. This is consistent with previous reports of ethambutol toxicity, in which optic neuropathy (including optic neuritis and retrobulbar neuritis) was attribute...\\n\\n[Document 3] (ID: 6909_0, Score: 0.915)\\nEthambutol hydrochloride adverse reactions\\n# Adverse Reactions\\nMYAMBUTOL may produce decreases in visual acuity, including irreversible blindness, which appear to be due to optic neuritis. Optic neuropathy including optic neuritis or retrobulbar neuritis occurring in association with ethambutol ther...\\n\\n[Document 4] (ID: 5875_0, Score: 0.913)\\nEthambutol hydrochloride warnings and precautions\\n\\n# Warnings\\nMYAMBUTOL may produce decreases in visual acuity which appear ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 1.0,
+        "delta": 0.33333333333333337,
+        "turn_reward": 0.06666666666666668,
+        "importance": 0.33333333333333337
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"ethambutol side effects on vision, optic neuropathy\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"ethambutol side effects on vision, optic neuropathy\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Patient takes ethambutol for tuberculosis.",
+          "Patient reports color vision changes, especially reds appearing washed out.",
+          "Patient reports gradual, painless vision loss with central blur.",
+          "Patient has bilateral vision loss with preserved peripheral vision.",
+          "Patient has no eye pain.",
+          "Ethambutol toxicity can cause optic neuropathy with dyschromatopsia and central visual deficits.",
+          "Vision loss from ethambutol is reversible if discontinued, but rarely returns to baseline."
+        ],
+        "prior_information_summary": "65-year-old female patient with no recent toxin exposure or infections. Reports gradual, painless bilateral vision loss with central blur and dyschromatopsia (especially reds washed out). Uses peripheral vision to compensate. No eye pain. History of ethambutol use for tuberculosis. Knowledge base indicates optic neuropathy can be caused by toxins, nutrition, or medications like ethambutol. Final result: Other optic neuritis."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 6,
+        "query_text": "Ethambutol-induced optic neuropathy with dyschromatopsia and central vision loss; vision loss reversible if discontinued; need memory about avoiding premature diagnosis and confirming medication history"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.2723,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Ethambutol-induced optic neuropathy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ec0eebbb-ac27-414c-b44d-1f9478147a70': '{\"diagnosis\": \"Ethambutol-induced optic neuropathy\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Ethambutol-induced optic neuropathy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Ethambutol-induced optic neuropathy}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I haven’t made any recent changes to my diet or nutritional intake.",
+          "I haven’t noticed any weight loss or signs of malnutrition, and I don’t have any known systemic illnesses like diabetes or hypertension.",
+          "I haven’t been exposed to any toxins or taken any new medications that might affect my vision.",
+          "I’ve been eating normally, and I don’t have any history of gastric bypass or vitamin deficiencies.",
+          "I haven’t had any recent infections, surgeries, or episodes of hypotension either."
+        ],
+        "prior_information_summary": "65-year-old female patient with bilateral, symmetric, painless, gradual vision loss. Noted dyschromatopsia (especially reds), central visual field defects, and preserved peripheral vision. Pupils respond normally to light. No recent dietary changes, systemic illness, toxin exposure, or new medications. No history of gastric bypass or vitamin deficiencies. No recent infections, surgeries, or hypotension. Objective: Assess and diagnose based on clinical presentation. Final result: Other optic neuritis."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 7,
+        "query_text": "bilateral painless vision loss with dyschromatopsia; no dietary, systemic, or toxin history; need memory about targeted neuro-ophthalmic workup before finalizing optic neuritis diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2433,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.211,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_ebc143551b22",
+              "type": "experience",
+              "score": 0.2078,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor do next?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss to rule out infection or malignancy.",
+              "boundary": "Use when hip pain is mechanical and localized; do not use if systemic symptoms are present or if imaging is already available.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.2733,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2539,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Age-related macular degeneration}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'31fffa13-4d60-4e8b-b9b9-5fbff0517144': '{\"diagnosis\": \"Age-related macular degeneration\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Age-related macular degeneration}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Age-related macular degeneration}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 4019_9, Score: 0.855) - Symptoms: dyspnea, cough, midinspiratory squeaks, constitutional symptoms (weight loss, flu-like symptoms).",
+          "Tool output: Document 2 (ID: 22925_2, Score: 0.853) - Age: all groups; Gender: affects men and women equally; Race: no data.",
+          "Tool output: Document 3 (ID: 5743_1, Score: 0.853) - Age: all groups; Gender: affects men and women equally; Race: no data.",
+          "Tool output: Document 4 (ID: 8848_1, Score: 0.853) - Age: all groups; Gender: affects men and women equally; Race: no data.",
+          "Tool output: Document 5 (ID: 114_372, Score: 0.851) - Subjective: CNS symptoms including floaters, scotomata, \"flashing lights,\" loss of peripheral vision, headache, difficulty concentrating, sleepiness."
+        ],
+        "prior_information_summary": "Patient is 65-year-old female, admitted via physician referral for observation. Chief complaint: Assess and diagnose based on clinical presentation. No prior eye-related problems reported. Labs tool output: no result found. Knowledge base: optic neuropathy and toxic/nutritional optic neuropathy details provided."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 8,
+        "query_text": "CNS symptoms including floaters and vision loss; new tool outputs suggest optic neuropathy; need memory about targeted history and imaging review before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your vision, such as floaters, blurred vision, or difficulty concentrating?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed my colors seem less vivid lately, especially reds. I also get a bit of blur when I look straight ahead, but my peripheral vision feels fine. I haven’t had any pain or sudden changes — it’s been a slow, gradual thing. I’m not sure if it’s just me, but I’ve been feeling like I’m not seeing as clearly as before.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, such as floaters, blurred vision, or difficulty concentrating?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, such as floaters, blurred vision, or difficulty concentrating?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed my colors seem less vivid lately, especially reds.",
+          "I also get a bit of blur when I look straight ahead, but my peripheral vision feels fine.",
+          "I haven’t had any pain or sudden changes — it’s been a slow, gradual thing.",
+          "I’m not sure if it’s just me, but I’ve been feeling like I’m not seeing as clearly as before."
+        ],
+        "prior_information_summary": "65-year-old female patient, admitted via physician referral for observation. No prior eye-related issues reported. Objective: assess and diagnose based on clinical presentation. Final result: Other optic neuritis. Knowledge base includes optic neuropathy and toxic/nutritional optic neuropathy details."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 9,
+        "query_text": "gradual visual blurring and color desaturation; need memory about targeted history for nutritional/toxic causes; avoid premature diagnosis without lab or imaging review; consider optic neuropathy differential"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2016,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.197,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.325,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2734,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2577,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "gradual vision changes, color desaturation, and blurred central vision in 65-year-old females"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c78b9833-9a62-44a4-8051-c8d055f031dd': '[Document 1] (ID: 20401_8, Score: 0.835)\\n- Ciliary body: Disturbance of accommodation with symptoms of blurred vision. This reaction is dose related and reversible with cessation of therapy.\\n- Cornea: Transient edema, punctate to lineal opacities, decreased corneal sensitivity. The corneal changes, with or without accompanying symptoms (bl...\\n\\n[Document 2] (ID: 24522_0, Score: 0.831)\\nBlurred vision\\n\\n# Overview\\nBlurred vision is a common ocular symptom which is define as a sudden or gradual loss of clarity or sharpness of vision and difficulty to see fine details.It can present unilateral or bilateral.\\n\\n# Historical Perspective\\nThere is not much information regarding the historic...\\n\\n[Document 3] (ID: 4805_9, Score: 0.830)\\n# Strength of the recommendation: Strong\\nQuality of evidence: Low\\n- All of the primary studies available were carried out in high-income countries.\\n- The recommendation is applicable to people over 60 years of age (who may or may not visit primary care facilities to present with complaints of low vi...\\n\\n[Document 4] (ID: 17907_4, Score: 0.829)\\n## History and Symptoms\\n- Patients present in infancy with symptoms of chronic diarrhea, steatorrhea, failure to thrive.\\n-...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"gradual vision changes, color desaturation, and blurred central vision in 65-year-old females\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"gradual vision changes, color desaturation, and blurred central vision in 65-year-old females\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed my colors seem less vivid lately, especially reds. I also get a bit of blur when I look straight ahead, but my peripheral vision feels fine. I haven’t had any pain or sudden changes — it’s been a slow, gradual thing. I’m not sure if it’s just me, but I’ve been feeling like I’m not seeing as clearly as before."
+        ],
+        "prior_information_summary": "Patient is a 65-year-old female, admitted via physician referral for observation. No prior eye-related issues reported. No abnormal findings mentioned. Labs show no results. Patient reports gradual, painless vision changes including color desaturation and central blur, with preserved peripheral vision."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 10,
+        "query_text": "gradual vision changes with color desaturation and central blur; no prior eye issues or lab results; need memory about targeted eye exam or imaging before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2396,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2079,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2017,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1967,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1933,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.3426,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3693794c1882",
+              "type": "experience",
+              "score": 0.2632,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, cough, respiratory distress, diarrhea, and low lymphocytes, and a positive PCR test for a virus, but no lab or imaging results are available, what should the doctor do?",
+              "action": "Do not finalize a diagnosis of viral pneumonia without reviewing available lab results or imaging. Request specific lab data (e.g., lymphocyte count, PCR type) and review chest X-ray if available to confirm or rule out specific viral etiologies.",
+              "boundary": "Use this memory when there is a positive PCR for a virus and clinical signs of viral pneumonia, but no supporting lab or imaging data; do not use if lab or imaging data is available and confirms the diagnosis or rules out alternatives.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2612,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8c9a9d92bd6f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8c9a9d92bd6f",
+            "memory_type": "experience",
+            "score": 0.3426,
+            "content": {
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "outcome": "This action would have revealed macular changes consistent with optic neuritis or other central retinal pathology, preventing premature closure on age-related macular degeneration.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c8f5098d-9569-4e6d-8922-2fbcdced4160': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: imaging",
+          "source: none",
+          "result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is a 65-year-old female. Chief complaint: gradual, painless vision loss with color distortion (especially reds), central visual field loss, preserved peripheral vision. No prior eye problems or abnormal findings reported. Labs and imaging results not available. Knowledge base includes optic neuropathy and toxic/nutritional optic neuropathy. Final result: Other optic neuritis."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 11,
+        "query_text": "vision loss with color distortion and central field loss; imaging result unavailable; need memory about targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2086,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.2035,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1825,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8c9a9d92bd6f",
+              "type": "experience",
+              "score": 0.3508,
+              "outcome": "failure",
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8c9a9d92bd6f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8c9a9d92bd6f",
+            "memory_type": "experience",
+            "score": 0.3508,
+            "content": {
+              "situation": "When a patient presents with central vision loss, color vision changes, and gradual onset without pain, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without reviewing relevant imaging.",
+              "action": "Request a dilated fundus exam and optical coherence tomography (OCT) to evaluate for macular pathology, especially when central vision loss and color desaturation are present.",
+              "outcome": "This action would have revealed macular changes consistent with optic neuritis or other central retinal pathology, preventing premature closure on age-related macular degeneration.",
+              "boundary": "Use this memory when central vision loss and color changes are present with no imaging or lab results; do not use if imaging is available and shows clear macular pathology or if the patient is under 50 years old with acute onset.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "central_vision_loss",
+                "color_vision_changes",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of gradual color desaturation and central blurred vision in elderly women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c162d799-30ef-4c7b-8bf1-7c87cf6d56a3': '[Document 1] (ID: 24522_0, Score: 0.855)\\nBlurred vision\\n\\n# Overview\\nBlurred vision is a common ocular symptom which is define as a sudden or gradual loss of clarity or sharpness of vision and difficulty to see fine details.It can present unilateral or bilateral.\\n\\n# Historical Perspective\\nThere is not much information regarding the historic...\\n\\n[Document 2] (ID: 18710_0, Score: 0.849)\\nSandbox: Golnaz Holm\\n\\n# Overview\\nBlurred vision is a common ocular symptom which is define as a sudden or gradual loss of clarity or sharpness of vision and difficulty to see fine details.It can present unilateral or bilateral.\\n\\n# Historical Perspective\\nThere is not much information regarding the hi...\\n\\n[Document 3] (ID: 20401_8, Score: 0.847)\\n- Ciliary body: Disturbance of accommodation with symptoms of blurred vision. This reaction is dose related and reversible with cessation of therapy.\\n- Cornea: Transient edema, punctate to lineal opacities, decreased corneal sensitivity. The corneal changes, with or without accompanying symptoms (bl...\\n\\n[Document 4] (ID: 7848_2, Score: 0.846)\\n# Signs and symptoms\\nVision loss in toxic and nutritional optic neuropathy is bilateral, symmetric, painless, gradual, and...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of gradual color desaturation and central blurred vision in elderly women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of gradual color desaturation and central blurred vision in elderly women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed my colors seem less vivid lately, especially reds. I also get a bit of blur when I look straight ahead, but my peripheral vision feels fine. I haven’t had any pain or sudden changes — it’s been a slow, gradual thing. I’m not sure if it’s just me, but I’ve been feeling like I’m not seeing as clearly as before."
+        ],
+        "prior_information_summary": "Patient is a 65-year-old female, admitted for observation. Chief complaint not specified. No prior eye-related problems reported. Labs and imaging results not available. Knowledge base includes optic neuropathy and toxic/nutritional optic neuropathy, with symptoms like loss of vision, dyschromatopsia, and central scotoma. Final result: Other optic neuritis."
+      },
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 12,
+        "query_text": "gradual visual changes with dyschromatopsia; need memory about targeted history for nutritional/toxic causes; avoid premature diagnosis without imaging or labs; consider updating hypothesis before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1846,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2801,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2618,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.258,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Optic Neuropathy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d98c37fc-232c-4af7-b911-8e6f3b42e1fc': '{\"diagnosis\": \"Optic Neuropathy\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Optic Neuropathy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Optic Neuropathy}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

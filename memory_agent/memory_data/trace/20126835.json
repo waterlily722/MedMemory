@@ -1,0 +1,1620 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20126835",
+  "turns": [
+    {
+      "case_id": "20126835",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 62-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 62-year-old male patient based on the available clinical presentation."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 1,
+        "query_text": "62-year-old male presenting with nonspecific symptoms; need targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1974,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1962,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1895,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1888,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.288,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.287,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2767,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing recently, including when they started and how they affect your daily life?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently, including when they started and how they affect your daily life?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently, including when they started and how they affect your daily life?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "62-year-old male, admitted emergently (EW EMER.) on 2146-12-17 02:00:00, discharged 2146-12-27 18:52:00. Admission via physician referral. Final diagnosis: Other specified sepsis. Objective: Assess and diagnose the 62-year-old male patient based on available clinical presentation. Knowledge base includes sepsis and Janeway lesion details. Patient is White, single, Medicare-insured, English-speaking. Sepsis guidelines and differential diagnosis provided."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 2,
+        "query_text": "sepsis diagnosis with no new focal findings reported; need memory about targeted history to rule out missed sources; avoid premature finalization without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2315,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1917,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1911,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1901,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.189,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3474,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3282,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3205,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0d4a16154d9b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0d4a16154d9b",
+            "memory_type": "experience",
+            "score": 0.3282,
+            "content": {
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "outcome": "Premature finalization led to missing the correct diagnosis of viral pneumonia, which could have been confirmed with imaging or lab tests.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, fatigue, fever, or night sweats?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had a fever recently, and I’ve also been feeling very tired. I haven’t noticed any night sweats or significant weight loss, but my heart has been racing, and I’ve been breathing faster than usual. I’m also a bit confused at times, especially when I’m trying to focus.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had a fever recently, and I’ve also been feeling very tired. I haven’t noticed any night sweats or significant weight loss, but my heart has been racing, and I’ve been breathing faster than usual. I’m also a bit confused at times, especially when I’m trying to focus."
+        ],
+        "prior_information_summary": "62-year-old male, admitted via emergency physician referral. Chief complaint: Assess and diagnose the 62-year-old male patient based on the available clinical presentation. Patient is single, white, English-speaking, Medicare-insured. Admission type: EW EMER. Admission time: 2146-12-17 02:00:00. Discharge time: 2146-12-27 18:52:00. Diagnostic window: 2146-12-17 02:00:00 to 2146-12-17 02:06:00. Final result: Other specified sepsis. Knowledge base includes sepsis and Janeway lesion definitions, signs, symptoms, diagnosis, prognosis, and differential diagnosis. Patient reports no prior issues in the area of concern."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 3,
+        "query_text": "fever, fatigue, tachycardia, tachypnea, and confusion; need targeted history for infection source and vital signs; avoid premature diagnosis without imaging or labs; consider sepsis workup"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.227,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1977,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1977,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e9ce600c7811",
+              "type": "experience",
+              "score": 0.3428,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3288,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.3258,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e9ce600c7811"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e9ce600c7811",
+            "memory_type": "experience",
+            "score": 0.3428,
+            "content": {
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "outcome": "Premature finalization led to a missed diagnosis of 'Other specified sepsis' because key lab evidence was not pursued, delaying appropriate targeted treatment.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a392cac5-71eb-4317-b599-e1b69a06c1e3': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "62-year-old male, admitted emergently (EW EMER.) on 2146-12-17 02:00:00, discharged 2146-12-27 18:52:00. Chief complaint: Assess and diagnose the 62-year-old male patient based on the available clinical presentation. Patient reports fever, fatigue, tachycardia, tachypnea, and confusion. No known prior issues or abnormal findings in the area. Final result: Other specified sepsis. Knowledge base includes sepsis and Janeway lesion details."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 4,
+        "query_text": "sepsis diagnosis with incomplete labs; need memory about targeted lab requests before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2016,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3109,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2719,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e9ce600c7811",
+              "type": "experience",
+              "score": 0.2641,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3109,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of fever, fatigue, tachycardia, tachypnea, confusion in elderly male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c30b9e30-1e09-41e7-ba3d-55752c5eda90': '[Document 1] (ID: 21917_1, Score: 0.868)\\nSymptoms begin with an overall feeling of illness, similar to influenza, excessive sweating, nausea, dizziness and hot flashes. Observers will notice brain function impairment that deteriorates rapidly. As the situation develops, the patient will have difficulty breathing, an elevated heart rate, ca...\\n\\n[Document 2] (ID: 8371_3, Score: 0.868)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 3] (ID: 6561_9, Score: 0.867)\\n- Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported in about 5 of 100 patients. Mental confusion and short-term memory loss have been reported. Headache, somnolence, nightmares, and insomnia have also been reported.\\n- Cardiovascul...\\n\\n[Document 4] (ID: 22972_3, Score: 0.866)\\n## Vital signs:\\n- Fever: High-grade fevers that are usually accompanied by chills and night sweats.\\n- Tachycardia\\n- Tachypn...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fever, fatigue, tachycardia, tachypnea, confusion in elderly male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fever, fatigue, tachycardia, tachypnea, confusion in elderly male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had a fever recently, and I’ve also been feeling very tired. I haven’t noticed any night sweats or significant weight loss, but my heart has been racing, and I’ve been breathing faster than usual. I’m also a bit confused at times, especially when I’m trying to focus."
+        ],
+        "prior_information_summary": "62-year-old male, admitted via emergency physician referral. Chief complaint: Assess and diagnose the 62-year-old male patient based on the available clinical presentation. No prior problems reported in relevant areas. Patient has no known abnormal findings. Patient is single, white, English-speaking, Medicare-insured. Admission type: EW EMER. Admission time: 2146-12-17 02:00:00. Discharge time: 2146-12-27 18:52:00. Final result: Other specified sepsis. Knowledge base includes sepsis and Janeway lesion definitions, signs, symptoms, diagnosis, prognosis, and differential diagnosis. Labs tool output: No result for 'labs' found in the record and no knowledge base available for an approximate answer."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 5,
+        "query_text": "fever, fatigue, tachycardia, tachypnea, and confusion; need targeted history and exam before final diagnosis; avoid premature closure; labs not available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2245,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1832,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e9ce600c7811",
+              "type": "experience",
+              "score": 0.3231,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2761,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.2742,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e9ce600c7811"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e9ce600c7811",
+            "memory_type": "experience",
+            "score": 0.3231,
+            "content": {
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "outcome": "Premature finalization led to a missed diagnosis of 'Other specified sepsis' because key lab evidence was not pursued, delaying appropriate targeted treatment.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent exposure to sick individuals, traveled to areas with outbreaks, or been in close contact with animals?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to sick individuals, traveled to areas with outbreaks, or been in close contact with animals?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to sick individuals, traveled to areas with outbreaks, or been in close contact with animals?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "62-year-old male, admitted emergently (EW EMER.) on 2146-12-17 02:00:00, discharged 2146-12-27 18:52:00. Chief complaint: Assess and diagnose the 62-year-old male patient based on the available clinical presentation. Patient reports fever, fatigue, tachycardia, tachypnea, and confusion. Labs not available. Knowledge base includes sepsis and Janeway lesion information. Final result: Other specified sepsis."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 6,
+        "query_text": "fever and confusion with no focal findings reported; need memory about targeted history to rule out sepsis source; avoid premature diagnosis without labs or imaging"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2727,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2553,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2269,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2225,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2146,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3906,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.3658,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3554,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'450542ef-d4b5-4b56-824f-299bf5cae507': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: CXR",
+          "source: none",
+          "result: No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "62-year-old male, admitted via emergency physician referral, presenting with fever, fatigue, tachycardia, tachypnea, and confusion. No prior abnormal findings reported. Labs and CXR results not available. Knowledge base includes sepsis and Janeway lesion information."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 7,
+        "query_text": "CXR not available; need memory about next steps for fever and confusion without imaging; avoid premature diagnosis; consider sepsis and Janeway lesion context"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1978,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2781,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.2677,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            },
+            {
+              "id": "exp_e9ce600c7811",
+              "type": "experience",
+              "score": 0.2608,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis for fever, tachycardia, tachypnea, confusion in elderly male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3326e7be-5a55-4b44-92b7-b683e2e7e321': '[Document 1] (ID: 8371_3, Score: 0.865)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 2] (ID: 23503_2, Score: 0.860)\\n# Differential Diagnosis\\nIn alphabetical order.  \\n- Acute bacterial endocarditis\\n- Coxsackievirus\\n- Cutaneous vasculitis\\n- Disseminated Intravascular Coagulation (DIC)\\n- Echovirus\\n- Erythema multiforme\\n- Idiopathic thrombocytopenia purpura\\n- Meningococcemia\\n- Polyarteritis Nodosa\\n- Rocky Mountain Sp...\\n\\n[Document 3] (ID: 29033_3, Score: 0.859)\\n# Differentiating  from other Diseases\\nThe differentiating features are largely based on both EKG findings and cardiovascular examination.\\n- Atrial fibrillation is irregularly irregular, while the other rhythms such as atrial flutter, sinus tachycardia, AV nodal reentry tachycardia and paroxysmal su...\\n\\n[Document 4] (ID: 616_63, Score: 0.856)\\nIn May 2001, a man aged 38 years sought medical attention in Tennessee with complaints of headache, fever, sore throat, and...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for fever, tachycardia, tachypnea, confusion in elderly male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for fever, tachycardia, tachypnea, confusion in elderly male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had a fever recently, and I’ve also been feeling very tired. I haven’t noticed any night sweats or significant weight loss, but my heart has been racing, and I’ve been breathing faster than usual. I’m also a bit confused at times, especially when I’m trying to focus.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer.",
+          "[Document 1] (ID: 8371_3, Score: 0.865)\n## Diagnostic Criteria\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...",
+          "[Document 2] (ID: 23503_2, Score: 0.860)\n# Differential Diagnosis\nIn alphabetical order.  \n- Acute bacterial endocarditis\n- Coxsackievirus\n- Cutaneous vasculitis\n- Disseminated Intravascular Coagulation (DIC)\n- Echovirus\n- Erythema multiforme\n- Idiopathic thrombocytopenia purpura\n- Meningococcemia\n- Polyarteritis Nodosa\n- Rocky Mountain Sp...",
+          "[Document 3] (ID: 29033_3, Score: 0.859)\n# Differentiating  from other Diseases\nThe differentiating features are largely based on both EKG findings and cardiovascular examination.\n- Atrial fibrillation is irregularly irregular, while the other rhythms such as atrial flutter, sinus tachycardia, AV nodal reentry tachycardia and paroxysmal su...",
+          "[Document 4] (ID: 616_63, Score: 0.856)\nIn May 2001, a man aged 38 years sought medical attention in Tennessee with complaints of headache, fever, sore throat, and vomiting. He was treated 3 days previously by his primary care physician who diagnosed pneumonia and prescribed azithromycin and levofloxacin, but his fevers persisted. He was ...",
+          "[Document 5] (ID: 27791_3, Score: 0.855)\n## Diagnostic Criteria\n- 0–19 years of age with fever >3 days\nAND\n- Two of the following:\n- Rash or bilateral non-purulent conjunctivitis or mucocutaneous inflammation signs (oral, hands or feet)\n- Hypotension or shock\n- Features of myocardial dysfunction, pericarditis, valvulitis, or coronary abnor..."
+        ],
+        "prior_information_summary": "62-year-old male, admitted via emergency physician referral, admitted 2146-12-17 02:00:00, discharged 2146-12-27 18:52:00. Chief complaint: Assess and diagnose the 62-year-old male patient based on the available clinical presentation. Final result: Other specified sepsis. Knowledge base includes sepsis and Janeway lesion. Patient is male, 62 years old, white, single, Medicare, English-speaking. Objective: Assess and diagnose patient. Sepsis definition, signs, symptoms, diagnosis, prognosis, and differential diagnosis provided. Janeway lesion definition, diagnosis, and differential diagnosis provided. Labs and CXR results not available. Patient reports no prior issues in the area. No abnormal findings reported."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 8,
+        "query_text": "fever, fatigue, tachycardia, and confusion; no CXR or lab results available; need targeted history and exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2722,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2553,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2304,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2208,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1967,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3711,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3676,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3457,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0d4a16154d9b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0d4a16154d9b",
+            "memory_type": "experience",
+            "score": 0.3676,
+            "content": {
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "outcome": "Premature finalization led to missing the correct diagnosis of viral pneumonia, which could have been confirmed with imaging or lab tests.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your appetite, or any gastrointestinal symptoms like nausea, vomiting, or diarrhea?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your appetite, or any gastrointestinal symptoms like nausea, vomiting, or diarrhea?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your appetite, or any gastrointestinal symptoms like nausea, vomiting, or diarrhea?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "62-year-old male, admitted emergently (EW EMER.) on 2146-12-17 02:00:00, discharged 2146-12-27 18:52:00. Chief complaint: Assess and diagnose the 62-year-old male patient based on the available clinical presentation. Patient reports fever, fatigue, tachycardia, tachypnea, and confusion. Labs and CXR results not available. Final diagnosis: Other specified sepsis. Knowledge base includes sepsis and Janeway lesion details."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 9,
+        "query_text": "Patient with sepsis diagnosis; new info: no prior issues in affected area; need memory about targeted history before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1877,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.2553,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "severe infections causing fever, tachycardia, tachypnea, confusion in elderly"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6222387f-c74e-4ae2-83c0-8b6a7f8da6e7': '[Document 1] (ID: 22972_3, Score: 0.865)\\n## Vital signs:\\n- Fever: High-grade fevers that are usually accompanied by chills and night sweats.\\n- Tachycardia\\n- Tachypnea\\n## General:\\n- Patient looks ill\\n## Skin:\\n- Maculopapular or punctate rash\\n- Erythema nodosum\\n- Spider nevi if hepatic decompensation is present\\n## HEENT:\\n- Jaundice\\n- Congest...\\n\\n[Document 2] (ID: 26329_11, Score: 0.863)\\n- Common clinical manifestations of CRS may include: high fever (often spiking, up to 107°F), chills/rigors, headache, tremor, nausea/vomiting, diarrhea, abdominal pain, malaise, muscle/joint aches and pains, and generalized weakness. Less frequently reported adverse experiences include: minor derma...\\n\\n[Document 3] (ID: 27791_3, Score: 0.861)\\n## Diagnostic Criteria\\n- 0–19 years of age with fever >3 days\\nAND\\n- Two of the following:\\n- Rash or bilateral non-purulent conjunctivitis or mucocutaneous inflammation signs (oral, hands or feet)\\n- Hypotension or shock\\n- Features of myocardial dysfunction, pericarditis, valvulitis, or coronary abnor...\\n\\n[Document 4] (ID: 3446_66, Score: 0.861)\\n), and the inability P p .01 to take oral medications (OR, 8.3; 95% CI, 1.4-50.3; ) P p .02 were found to be significant...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"severe infections causing fever, tachycardia, tachypnea, confusion in elderly\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"severe infections causing fever, tachycardia, tachypnea, confusion in elderly\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Fever",
+          "Feeling very tired",
+          "Heart racing",
+          "Breathing faster than usual",
+          "Confused at times",
+          "No night sweats",
+          "No significant weight loss"
+        ],
+        "prior_information_summary": "62-year-old male, admitted via emergency physician referral, admitted 2146-12-17 02:00:00, discharged 2146-12-27 18:52:00. Diagnosis: Other specified sepsis. Knowledge base includes sepsis definition, signs/symptoms, diagnosis, prognosis, and Janeway lesion. No lab or CXR results found. Patient reports no prior problems or abnormal findings in relevant areas."
+      },
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 10,
+        "query_text": "Fever, tachycardia, tachypnea, confusion; no lab or CXR results; need memory about targeted diagnostic steps before finalizing sepsis diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1957,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2576,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.257,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Sepsis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5d2a2582-fbf0-496f-97d5-479c00cfc4c7': '{\"diagnosis\": \"Sepsis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Sepsis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Sepsis}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

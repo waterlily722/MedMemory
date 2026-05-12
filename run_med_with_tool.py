@@ -118,6 +118,29 @@ def main():
     parser.add_argument("--memory_llm_base_url", default="")
     parser.add_argument("--memory_llm_api_key", default="")
     parser.add_argument(
+        "--retrieval_mode",
+        default="cosine",
+        choices=["cosine", "fielded_bm25", "embedding"],
+        help=(
+            "Online memory retrieval scoring mode for controlled experiments. "
+            "embedding requires --memory_embedding_model and --memory_embedding_base_url."
+        ),
+    )
+    parser.add_argument("--memory_embedding_model", default="")
+    parser.add_argument("--memory_embedding_base_url", default="")
+    parser.add_argument("--memory_embedding_api_key", default="")
+    parser.add_argument(
+        "--merge_scoring_mode",
+        default="same_as_retrieval",
+        choices=["same_as_retrieval", "cosine", "fielded_bm25"],
+        help="Offline experience merge candidate/scoring mode for paired ablations.",
+    )
+    parser.add_argument(
+        "--disable_memory_write",
+        action="store_true",
+        help="Freeze memory store during online retrieval ablations.",
+    )
+    parser.add_argument(
         "--summary_log_dir",
         default=str(Path(__file__).resolve().parent / "logs"),
         help="Directory for per-run evaluation summary logs. Set empty string to disable.",
@@ -142,6 +165,27 @@ def main():
     args = parser.parse_args()
     resolve_doctor_endpoint(args)
 
+    os.environ["MEDGYM_RETRIEVAL_FALLBACK_SCORING"] = (
+        "fielded_bm25" if args.retrieval_mode == "fielded_bm25" else "cosine"
+    )
+    merge_scoring_mode = (
+        args.merge_scoring_mode
+        if args.merge_scoring_mode != "same_as_retrieval"
+        else (
+            "fielded_bm25"
+            if args.retrieval_mode == "fielded_bm25"
+            else "cosine"
+        )
+    )
+    os.environ["MEDGYM_MERGE_SCORING"] = merge_scoring_mode
+
+    if args.enable_memory and args.retrieval_mode == "embedding":
+        if not (args.memory_embedding_model and args.memory_embedding_base_url):
+            raise ValueError(
+                "--retrieval_mode embedding requires --memory_embedding_model "
+                "and --memory_embedding_base_url."
+            )
+
     run_log_file = None
     original_stdout = sys.stdout
     original_stderr = sys.stderr
@@ -149,7 +193,12 @@ def main():
         timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         mode = "memory" if args.enable_memory else "no_memory"
         cxr_mode = "no_cxr" if args.no_cxr else "with_cxr"
-        log_name = f"run_{timestamp}_{mode}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
+        retrieval_tag = (
+            f"_{args.retrieval_mode}_merge-{merge_scoring_mode}"
+            if args.enable_memory else ""
+        )
+        write_tag = "_frozen" if args.enable_memory and args.disable_memory_write else ""
+        log_name = f"run_{timestamp}_{mode}{retrieval_tag}{write_tag}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
         run_log_path = Path(args.run_log_dir) / log_name
         run_log_path.parent.mkdir(parents=True, exist_ok=True)
         run_log_file = run_log_path.open("w", encoding="utf-8")
@@ -226,10 +275,14 @@ def main():
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
+            "disable_memory_write": args.disable_memory_write,
             "strict_memory_errors": not args.allow_memory_fallback,
             "memory_llm_model": memory_llm_model,
             "memory_llm_base_url": memory_llm_base_url,
             "memory_llm_api_key": memory_llm_api_key,
+            "memory_embedding_model": args.memory_embedding_model,
+            "memory_embedding_base_url": args.memory_embedding_base_url,
+            "memory_embedding_api_key": args.memory_embedding_api_key,
             "no_cxr": args.no_cxr,
         }
 
@@ -255,10 +308,14 @@ def main():
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
+            "disable_memory_write": args.disable_memory_write,
             "strict_memory_errors": not args.allow_memory_fallback,
             "memory_llm_model": memory_llm_model,
             "memory_llm_base_url": memory_llm_base_url,
             "memory_llm_api_key": memory_llm_api_key,
+            "memory_embedding_model": args.memory_embedding_model,
+            "memory_embedding_base_url": args.memory_embedding_base_url,
+            "memory_embedding_api_key": args.memory_embedding_api_key,
             "no_cxr": args.no_cxr,
         }
 
@@ -299,7 +356,12 @@ def main():
         timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         mode = "memory" if args.enable_memory else "no_memory"
         cxr_mode = "no_cxr" if args.no_cxr else "with_cxr"
-        log_name = f"summary_{timestamp}_{mode}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
+        retrieval_tag = (
+            f"_{args.retrieval_mode}_merge-{merge_scoring_mode}"
+            if args.enable_memory else ""
+        )
+        write_tag = "_frozen" if args.enable_memory and args.disable_memory_write else ""
+        log_name = f"summary_{timestamp}_{mode}{retrieval_tag}{write_tag}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
         log_path = Path(args.summary_log_dir) / log_name
     evaluate_doctor_results(
         results,

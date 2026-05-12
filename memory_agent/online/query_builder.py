@@ -105,7 +105,7 @@ def build_case_memory_llm(
             f"CaseMemory LLM output invalid for case_id={case_state.case_id!r} "
             f"turn_id={case_state.turn_id}: errors={errors}, raw_output={raw_output!r}"
         )
-        if strict:
+        if strict and not raw_empty:
             raise RuntimeError(message)
         parsed = rule_memory.to_dict()
     try:
@@ -119,7 +119,7 @@ def build_case_memory_llm(
         debug["case_memory_parsed_output"] = parsed
         debug["case_memory_validation_ok"] = ok
         debug["case_memory_validation_errors"] = errors
-        debug["case_memory_used_fallback"] = result.to_dict() == rule_memory.to_dict() and not ok
+        debug["case_memory_used_fallback"] = result.to_dict() == rule_memory.to_dict() and (raw_empty or not ok)
         debug["final_case_memory"] = result.to_dict()
     return result
 
@@ -270,7 +270,7 @@ def build_memory_query_llm(
             f"Memory query LLM output invalid for case_id={case_state.case_id!r} "
             f"turn_id={case_state.turn_id}: errors={errors}, raw_output={raw_output!r}"
         )
-        if strict:
+        if strict and not raw_empty:
             raise RuntimeError(message)
         query_text = rule_query.query_text
     result = MemoryQuery(
@@ -283,7 +283,7 @@ def build_memory_query_llm(
         debug["parsed_output"] = parsed
         debug["validation_ok"] = ok
         debug["validation_errors"] = errors
-        debug["used_fallback"] = query_text == rule_query.query_text and not ok
+        debug["used_fallback"] = query_text == rule_query.query_text and (raw_empty or not ok)
         debug["final_query"] = result.to_dict()
     return result
 

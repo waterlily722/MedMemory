@@ -178,6 +178,25 @@ def _selection_guidance_view(
     }
 
 
+def _clinical_turn_view(clinical: dict[str, Any] | None) -> dict[str, Any]:
+    c = clinical or {}
+    if not c:
+        return {}
+    return {
+        "tool_name": c.get("tool_name") or "",
+        "doctor_action_type": c.get("doctor_action_type") or "",
+        "arguments": c.get("arguments") or {},
+        "patient_or_tool_response": _clip(c.get("patient_or_tool_response")),
+        "reward": c.get("reward"),
+        "done": c.get("done"),
+        "conf_before": c.get("conf_before"),
+        "conf_after": c.get("conf_after"),
+        "delta": c.get("delta"),
+        "turn_reward": c.get("turn_reward"),
+        "importance": c.get("importance"),
+    }
+
+
 # -----------------------------------------------------------------------------
 # Public builders
 # -----------------------------------------------------------------------------
@@ -243,6 +262,14 @@ def compact_turn_record(turn_record: dict[str, Any] | Any) -> dict[str, Any]:
         "retrieval": _retrieval_view(retrieval_result),
         "selection_guidance": _selection_guidance_view(final_app, final_guidance, app_dbg),
     }
+    if retrieval_dbg.get("retrieval_mode"):
+        out["retrieval"]["mode"] = retrieval_dbg.get("retrieval_mode")
+    if "embedding_available" in retrieval_dbg:
+        out["retrieval"]["embedding_available"] = retrieval_dbg.get("embedding_available")
+
+    clinical_turn = _clinical_turn_view(r.get("clinical_turn"))
+    if clinical_turn:
+        out["clinical_turn"] = clinical_turn
 
     if _cfg("include_applicability_debug", False):
         out["applicability_debug"] = {

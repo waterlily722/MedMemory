@@ -33,18 +33,34 @@
           "negative_experience": [],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
         "selected_memory_ids": [],
         "selected_memories": []
       },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing recently, including when they started and how they've progressed?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently, including when they started and how they've progressed?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently, including when they started and how they've progressed?\"}}\n</tool_call>"
       }
     },
     {
@@ -64,28 +80,111 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 1,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.182,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2972,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2857,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2534,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
         "selected_memory_ids": [],
         "selected_memories": []
       },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, changes in appetite, or fatigue?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, night sweats, or unexplained weight loss recently?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, night sweats, or unexplained weight loss recently?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, changes in appetite, or fatigue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, changes in appetite, or fatigue?\"}}\n</tool_call>"
       }
     },
     {
@@ -105,28 +204,180 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 3,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1933,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.18,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3252,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.325,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3242,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.325,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3242,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent fever, night sweats, or unexplained fatigue?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or sleep patterns?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or sleep patterns?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent fever, night sweats, or unexplained fatigue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent fever, night sweats, or unexplained fatigue?\"}}\n</tool_call>"
       }
     },
     {
@@ -146,28 +397,180 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 3,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1933,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.18,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3252,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.325,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3242,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.325,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3242,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your energy levels, such as feeling unusually tired or weak?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or palpitations?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or palpitations?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, such as feeling unusually tired or weak?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, such as feeling unusually tired or weak?\"}}\n</tool_call>"
       }
     },
     {
@@ -187,28 +590,196 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 4,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3446,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3323,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any chest pain, shortness of breath, or discomfort when breathing?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, redness, or pain in your joints or muscles?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, redness, or pain in your joints or muscles?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or discomfort when breathing?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or discomfort when breathing?\"}}\n</tool_call>"
       }
     },
     {
@@ -217,74 +788,207 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "I haven’t noticed any swelling, redness, or pain in my joints or muscles."
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no prior issues in the relevant area and no abnormal findings reported."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose patient based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 6,
-        "query_text": "no joint or muscle symptoms reported; need memory about targeted history for bleeding or clotting signs; avoid premature diagnosis without imaging or lab confirmation"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 2,
+          "positive_experience": 4,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [
+          "positive_experience": [
             {
-              "id": "exp_527401053a55",
+              "id": "exp_198a65e4b651",
               "type": "experience",
-              "score": 0.2891,
-              "outcome": "failure",
-              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
-              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
-              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
               "tags": [
-                "negative",
-                "abdominal_pain",
-                "syncope",
-                "ankle_pain",
-                "missing_imaging",
-                "premature_closure"
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
               ]
             },
             {
-              "id": "exp_86e012075faa",
+              "id": "exp_5a035963c148",
               "type": "experience",
-              "score": 0.272,
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3446,
               "outcome": "failure",
-              "situation": "When a patient reports syncope after straining with bowel symptoms and has a history of itching and mild fever, the doctor should not finalize diagnosis without considering systemic or infectious causes, especially if there is no clear gastrointestinal explanation.",
-              "action": "Order labs including CBC, electrolytes, and inflammatory markers, and consider imaging if obstruction or infection is suspected.",
-              "boundary": "Use this memory when syncope occurs after straining with bowel symptoms and the patient has itching and mild fever; do not use if labs are already available and show no systemic abnormalities or if imaging confirms no obstruction.",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
               "tags": [
                 "negative",
-                "syncope",
-                "fever",
-                "itching",
+                "non_specific_symptoms",
                 "missing_lab",
-                "premature_closure"
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3323,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
               ]
             }
           ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any joint pain, swelling, or stiffness, particularly in the morning?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
-        "action_type": "REQUEST_LAB",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, swelling, or stiffness, particularly in the morning?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, swelling, or stiffness, particularly in the morning?\"}}\n</tool_call>"
       }
     },
     {
@@ -295,68 +999,205 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no bleeding issues, no joint swelling, redness, or pain. Previous turns repeated similar statements about no problems in relevant areas."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 7,
-        "query_text": "Patient reports no relevant symptoms or findings; need memory about targeted history to rule out missed bleeding signs; avoid premature diagnosis closure"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 1,
-          "skill": 1,
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [
+          "positive_experience": [
             {
-              "id": "exp_f4922899d7a5",
+              "id": "exp_198a65e4b651",
               "type": "experience",
-              "score": 0.2593,
-              "outcome": "failure",
-              "situation": "When a patient has hip pain with stiffness and swelling, and the history suggests osteoarthritis, what should the doctor do to avoid missing a systemic cause?",
-              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss, and consider imaging to rule out infection or vasculitis.",
-              "boundary": "Use when hip pain is persistent and structural, but only if systemic symptoms are absent; do not use if systemic symptoms are present or if imaging is unavailable.",
-              "tags": [
-                "negative",
-                "hip_pain",
-                "systemic_symptoms",
-                "targeted_history",
-                "conflicting_evidence"
-              ]
-            }
-          ],
-          "skill": [
-            {
-              "id": "skill_001",
-              "type": "skill",
-              "score": 0.2611,
-              "outcome": null,
-              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
-              "action": null,
-              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
               "tags": [
                 "positive",
-                "episode_skill"
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
               ]
             }
           ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3446,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3323,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any changes in your bowel habits, such as constipation, diarrhea, or blood in the stool?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any urinary symptoms such as frequency, urgency, or blood in urine?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any urinary symptoms such as frequency, urgency, or blood in urine?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in your bowel habits, such as constipation, diarrhea, or blood in the stool?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in your bowel habits, such as constipation, diarrhea, or blood in the stool?\"}}\n</tool_call>"
       }
     },
     {
@@ -367,85 +1208,205 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral for observation. Chief complaint is unspecified. No reported bleeding issues, joint swelling, or pain. No known abnormalities in coagulation or bleeding history. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 8,
-        "query_text": "Unspecified chief complaint; patient denies local symptoms or abnormalities; need memory about targeted history to identify bleeding risk or coagulation triggers; avoid premature diagnosis without further evidence"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 2,
-          "skill": 1,
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [
+          "positive_experience": [
             {
-              "id": "exp_e200407cb894",
+              "id": "exp_198a65e4b651",
               "type": "experience",
-              "score": 0.3136,
-              "outcome": "failure",
-              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
-              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
               "tags": [
-                "negative",
-                "asthma",
-                "reduced_smell",
-                "premature_closure",
-                "image_review_needed",
-                "missing_lab"
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
               ]
             },
             {
-              "id": "exp_e2795bbcb89e",
+              "id": "exp_5a035963c148",
               "type": "experience",
-              "score": 0.286,
-              "outcome": "failure",
-              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
-              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
-              "tags": [
-                "negative",
-                "hip_pain",
-                "diabetic_patient",
-                "image_review_needed",
-                "premature_closure"
-              ]
-            }
-          ],
-          "skill": [
-            {
-              "id": "skill_001",
-              "type": "skill",
-              "score": 0.2653,
-              "outcome": null,
-              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
-              "action": null,
-              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
               "tags": [
                 "positive",
-                "episode_skill"
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
               ]
             }
           ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3446,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3323,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your urinary habits, such as difficulty urinating, blood in urine, or frequent urination?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any neurological symptoms such as headaches, dizziness, or numbness?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any neurological symptoms such as headaches, dizziness, or numbness?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your urinary habits, such as difficulty urinating, blood in urine, or frequent urination?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your urinary habits, such as difficulty urinating, blood in urine, or frequent urination?\"}}\n</tool_call>"
       }
     },
     {
@@ -454,73 +1415,207 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "I haven’t experienced any headaches, dizziness, or numbness."
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no issues with bleeding, swelling, redness, pain in joints/muscles, or neurological symptoms. Previous turns confirm no abnormal findings in relevant areas."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 9,
-        "query_text": "No neurological symptoms reported; need memory about targeted history before imaging or lab decisions; avoid premature diagnosis closure"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 2,
+          "positive_experience": 4,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [
+          "positive_experience": [
             {
-              "id": "exp_e200407cb894",
+              "id": "exp_198a65e4b651",
               "type": "experience",
-              "score": 0.2861,
-              "outcome": "failure",
-              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
-              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
               "tags": [
-                "negative",
-                "asthma",
-                "reduced_smell",
-                "premature_closure",
-                "image_review_needed",
-                "missing_lab"
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
               ]
             },
             {
-              "id": "exp_e2795bbcb89e",
+              "id": "exp_5a035963c148",
               "type": "experience",
-              "score": 0.2841,
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3446,
               "outcome": "failure",
-              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
-              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
               "tags": [
                 "negative",
-                "hip_pain",
-                "diabetic_patient",
-                "image_review_needed",
-                "premature_closure"
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3323,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
               ]
             }
           ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any headaches, dizziness, or changes in vision?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, hearing, or balance?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, hearing, or balance?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any headaches, dizziness, or changes in vision?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any headaches, dizziness, or changes in vision?\"}}\n</tool_call>"
       }
     },
     {
@@ -531,37 +1626,189 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, redness, or pain; no headaches, dizziness, or numbness. Previous turns repeated similar statements about no known issues in relevant areas."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, on Medicare, English-speaking. No prior symptoms reported in recent turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 10,
-        "query_text": "Patient reports no known issues in relevant areas; prior summary indicates coagulation factor deficiency; need memory about targeted history to rule out missed etiology before finalizing diagnosis"
+        "query_text": "No prior symptoms reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 3,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1933,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.18,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3252,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.325,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3242,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.325,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3242,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any memory problems, confusion, or difficulty concentrating?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes such as rashes, itching, or discoloration?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes such as rashes, itching, or discoloration?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any memory problems, confusion, or difficulty concentrating?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any memory problems, confusion, or difficulty concentrating?\"}}\n</tool_call>"
       }
     },
     {
@@ -572,114 +1819,205 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no bleeding issues, no joint swelling/pain, no headaches/dizziness/numbness, and no known abnormalities in relevant areas."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose patient based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 11,
-        "query_text": "No bleeding or joint symptoms reported; need memory about targeted history for coagulation factor deficiency; avoid premature diagnosis closure; consider imaging or lab review if not yet done"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 4,
           "negative_experience": 3,
-          "skill": 2,
+          "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          ],
           "negative_experience": [
             {
-              "id": "exp_e2795bbcb89e",
+              "id": "exp_b36ecb08deb2",
               "type": "experience",
-              "score": 0.3301,
+              "score": 0.3446,
               "outcome": "failure",
-              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
-              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
               "tags": [
                 "negative",
-                "hip_pain",
-                "diabetic_patient",
-                "image_review_needed",
-                "premature_closure"
-              ]
-            },
-            {
-              "id": "exp_e200407cb894",
-              "type": "experience",
-              "score": 0.318,
-              "outcome": "failure",
-              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
-              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
-              "tags": [
-                "negative",
-                "asthma",
-                "reduced_smell",
+                "non_specific_symptoms",
+                "missing_lab",
                 "premature_closure",
-                "image_review_needed",
-                "missing_lab"
+                "toxicology_needed"
               ]
             },
             {
-              "id": "exp_f4922899d7a5",
+              "id": "exp_29e5d8eae41a",
               "type": "experience",
-              "score": 0.2922,
+              "score": 0.3323,
               "outcome": "failure",
-              "situation": "When a patient has hip pain with stiffness and swelling, and the history suggests osteoarthritis, what should the doctor do to avoid missing a systemic cause?",
-              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss, and consider imaging to rule out infection or vasculitis.",
-              "boundary": "Use when hip pain is persistent and structural, but only if systemic symptoms are absent; do not use if systemic symptoms are present or if imaging is unavailable.",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
               "tags": [
                 "negative",
-                "hip_pain",
-                "systemic_symptoms",
-                "targeted_history",
-                "conflicting_evidence"
-              ]
-            }
-          ],
-          "skill": [
-            {
-              "id": "skill_002",
-              "type": "skill",
-              "score": 0.2167,
-              "outcome": null,
-              "situation": "Patient reports intermittent finger symptoms with pus discharge.",
-              "action": null,
-              "boundary": "Apply when nail-biting or trauma is suspected; do not use if no nail-related behavior is reported.",
-              "tags": [
-                "positive",
-                "episode_skill"
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
               ]
             },
             {
-              "id": "skill_001",
-              "type": "skill",
-              "score": 0.205,
-              "outcome": null,
-              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
-              "action": null,
-              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
               "tags": [
-                "positive",
-                "episode_skill"
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
               ]
             }
           ],
+          "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any skin changes, such as rashes, discoloration, or unusual growths?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual fatigue, weakness, or general malaise?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual fatigue, weakness, or general malaise?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes, such as rashes, discoloration, or unusual growths?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes, such as rashes, discoloration, or unusual growths?\"}}\n</tool_call>"
       }
     },
     {
@@ -690,51 +2028,205 @@
         "current_turn_information": [
           "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, redness, or pain; no headaches, dizziness, or numbness. Previous turns repeated similar statements about no known issues in relevant areas."
+        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient is white, married, speaks English, insured by Medicare. No prior symptoms or abnormal findings reported in earlier turns."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 12,
-        "query_text": "Patient reports no known issues in relevant areas; prior info includes coagulation factor deficiency and autoimmune conditions; need memory about targeted history to rule out missed etiology before finalizing diagnosis"
+        "query_text": "No prior symptoms or abnormal findings reported; need memory about targeted history before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
-          "skill": 1,
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
-          "skill": [
+          "positive_experience": [
             {
-              "id": "skill_001",
-              "type": "skill",
-              "score": 0.205,
-              "outcome": null,
-              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
-              "action": null,
-              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
               "tags": [
                 "positive",
-                "episode_skill"
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.226,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2088,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
               ]
             }
           ],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3446,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3323,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a",
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3323,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3292,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent falls, balance issues, or unexplained bruises?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had some easy bruising and occasional nosebleeds, but no falls or balance issues. I haven’t noticed any unexplained bruises lately, though I do get bruises more easily than before.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in elderly patients without clear localizing complaints\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in elderly patients without clear localizing complaints\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent falls, balance issues, or unexplained bruises?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent falls, balance issues, or unexplained bruises?\"}}\n</tool_call>"
       }
     },
     {
@@ -743,107 +2235,144 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "Tool output: Document 1 (ID: 3639_20, Score: 0.855) - Pain often not detected in nursing home residents and older people with cognitive impairment.",
-          "Tool output: Document 2 (ID: 24040_2, Score: 0.854) - Directed history should be obtained for symptoms, past medical history, family history, social history, occupational, alcohol.",
-          "Tool output: Document 3 (ID: 4480_126, Score: 0.849) - Diagnostic issues for anxiety in older patients; DSM-5 modifications may assist.",
-          "Tool output: Document 4 (ID: 8848_1, Score: 0.848) - Age, gender, race data for unspecified condition.",
-          "Tool output: Document 5 (ID: 4019_9, Score: 0.848) - Symptoms: dyspnea, cough, midinspiratory squeaks; constitutional symptoms: weight loss, flu-like symptoms."
+          "I’ve had some easy bruising and occasional nosebleeds, but no falls or balance issues. I haven’t noticed any unexplained bruises lately, though I do get bruises more easily than before."
         ],
-        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20, discharged 2143-02-24. No reported joint/muscle swelling, pain, headaches, dizziness, numbness. No known bleeding issues or abnormal findings. Objective: assess and diagnose patient. Final result: acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, Antiphospholipid syndrome."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no prior bleeding issues or abnormal findings. Multiple turns (1-12) confirm no known problems in bleeding area."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 13,
-        "query_text": "Patient with dyspnea and cough; need targeted history on symptoms and social factors; avoid premature diagnosis; consider imaging review"
+        "query_text": "easy bruising and nosebleeds without prior bleeding history; need memory about targeted coagulation workup before finalizing diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 1,
           "negative_experience": 3,
-          "skill": 1,
+          "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [
+          "positive_experience": [
             {
-              "id": "exp_9ffa75d466b8",
+              "id": "exp_d9f7ae6caf06",
               "type": "experience",
-              "score": 0.3766,
-              "outcome": "failure",
-              "situation": "When a patient presents with dull aching hip pain, stiffness, and swelling, especially in a diabetic patient, and initial labs and imaging are unavailable, what should the doctor do next?",
-              "action": "Request targeted imaging of the hip to evaluate for osteoarthritis or other structural causes, rather than relying on history alone.",
-              "boundary": "Use when hip pain is persistent and structural, but only if imaging is available; do not use if imaging is unavailable or if the patient has systemic symptoms suggesting vasculitis or infection.",
-              "tags": [
-                "negative",
-                "hip_pain",
-                "diabetic_patient",
-                "image_review_needed",
-                "premature_closure"
-              ]
-            },
-            {
-              "id": "exp_527401053a55",
-              "type": "experience",
-              "score": 0.376,
-              "outcome": "failure",
-              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
-              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
-              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
-              "tags": [
-                "negative",
-                "abdominal_pain",
-                "syncope",
-                "ankle_pain",
-                "missing_imaging",
-                "premature_closure"
-              ]
-            },
-            {
-              "id": "exp_e2795bbcb89e",
-              "type": "experience",
-              "score": 0.3653,
-              "outcome": "failure",
-              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
-              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
-              "tags": [
-                "negative",
-                "hip_pain",
-                "diabetic_patient",
-                "image_review_needed",
-                "premature_closure"
-              ]
-            }
-          ],
-          "skill": [
-            {
-              "id": "skill_001",
-              "type": "skill",
-              "score": 0.3341,
-              "outcome": null,
-              "situation": "Patient presents with finger pain, redness, swelling, and intermittent pus discharge.",
-              "action": null,
-              "boundary": "Apply when patient reports finger symptoms; do not use if symptoms are generalized or non-localized.",
+              "score": 0.1919,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
               "tags": [
                 "positive",
-                "episode_skill"
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
               ]
             }
           ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3389,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2609,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2596,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3389,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9fbe908d-a2fd-457f-9725-5cde9acd6932': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "REQUEST_LAB",
         "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
       }
     },
     {
@@ -852,41 +2381,175 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "exam_type: labs",
-          "source: none",
-          "result: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+          "Patient reports easy bruising and occasional nosebleeds, no falls or balance issues, no unexplained bruises lately, but bruises more easily than before.",
+          "Lab test result for 'labs' not found in record and no knowledge base available for approximate answer."
         ],
-        "prior_information_summary": "69-year-old male patient, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, pain, headaches, dizziness, or numbness. No reported bleeding issues or abnormal findings in relevant areas. Multiple turns (1-13) contain patient affirming no issues in specific areas, with tool outputs including lab result not found and general diagnostic guidance."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20 16:43:00, discharged 2143-02-24 13:22:00. Objective: Assess and diagnose patient based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient has no prior reported bleeding issues or abnormal findings. Multiple turns (1-13) confirm no prior problems in bleeding area."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 14,
-        "query_text": "labs not found; need memory about next-step diagnostic actions; avoid premature diagnosis; consider updating hypothesis with available evidence"
+        "query_text": "easy bruising and nosebleeds with no prior bleeding history; lab result missing; need memory about targeted coagulation workup before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 3,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2214,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2161,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1871,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3299,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2604,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2527,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3299,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of easy bruising and nosebleeds in elderly males"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e709e520-1a98-49b9-a49b-90367e02c738': '[Document 1] (ID: 8031_0, Score: 0.872)\\nEasy bruising resident survival guide\\nSynonyms and keywords:\\n\\n# Overview\\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\\n\\n[Document 2] (ID: 34334_3, Score: 0.849)\\n## Moderate to Severe Bruises\\nIf bruising is severe, (harm score 2-3) it may be dangerous, or it can cause serious complications.  Further bleeding and excess fluid may accumulate causing a hard, fluctuating lump or swelling hematoma.  This has the potential to cause compartment syndrome as the swel...\\n\\n[Document 3] (ID: 10636_1, Score: 0.848)\\n# What causes a Nosebleed?\\n- Allergic rhinitis\\n- An object stuck in the nose\\n- Barotrauma\\n- Blowing the nose very hard\\n- Chemical irritants\\n- Direct injury to nose, including a broken nose\\n- Nose picking\\n- Overuse of decongestant nasal sprays\\n- Repeated sneezing\\n- Surgery on the face or nose\\n- Takin...\\n\\n[Document 4] (ID: 20940_1, Score: 0.845)\\n# Causes\\n- Adults\\nMore common: Vasculopathic (diabetes, hypertension, atherosclerosis), trauma, idiopathic.\\nLess common: I...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
-        "action_type": "REVIEW_IMAGE",
-        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of easy bruising and nosebleeds in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of easy bruising and nosebleeds in elderly males\"}}\n</tool_call>"
       }
     },
     {
@@ -895,73 +2558,115 @@
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "exam_type: CXR, source: none, result: No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+          "I’ve had some easy bruising and occasional nosebleeds, but no falls or balance issues. I haven’t noticed any unexplained bruises lately, though I do get bruises more easily than before.",
+          "Tool output: No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "Tool output: Document 1 (ID: 8031_0, Score: 0.872) - Easy bruising resident survival guide",
+          "Tool output: Document 2 (ID: 34334_3, Score: 0.849) - Moderate to Severe Bruises",
+          "Tool output: Document 3 (ID: 10636_1, Score: 0.848) - What causes a Nosebleed?",
+          "Tool output: Document 4 (ID: 20940_1, Score: 0.845) - Causes",
+          "Tool output: Document 5 (ID: 19076_3, Score: 0.843) - Diagnostic Criteria"
         ],
-        "prior_information_summary": "Patient is a 69-year-old male, admitted via clinic referral on 2143-02-20, discharged on 2143-02-24. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no joint/muscle swelling, pain, headaches, dizziness, or numbness. Repeatedly states no known bleeding issues or abnormal findings. Tool outputs indicate no lab results and no CXR result available."
+        "prior_information_summary": "69-year-old male, admitted via clinic referral on 2143-02-20, discharged 2143-02-24. Objective: Assess and diagnose based on clinical presentation. Final result: Acquired coagulation factor deficiency. Knowledge base includes Von Willebrand disease, Activated protein C resistance, and Antiphospholipid syndrome. Patient reports no prior issues in the area, but has easy bruising and occasional nosebleeds. Previous turns: repeated patient statements of no prior problems, followed by report of easy bruising and nosebleeds."
       },
       "query": {
         "case_id": "20009325",
         "turn_id": 15,
-        "query_text": "CXR result not available; need memory about next steps before finalizing diagnosis; avoid premature closure; consider targeted lab or imaging review"
+        "query_text": "easy bruising and nosebleeds with no prior issues; need memory about targeted coagulation workup before final diagnosis; avoid premature closure"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 2,
+          "positive_experience": 1,
+          "negative_experience": 1,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.19,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
           "negative_experience": [
             {
-              "id": "exp_e200407cb894",
+              "id": "exp_29e5d8eae41a",
               "type": "experience",
-              "score": 0.2994,
+              "score": 0.3289,
               "outcome": "failure",
-              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
-              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
               "tags": [
                 "negative",
-                "asthma",
-                "reduced_smell",
+                "missing_lab",
                 "premature_closure",
-                "image_review_needed",
-                "missing_lab"
-              ]
-            },
-            {
-              "id": "exp_e2795bbcb89e",
-              "type": "experience",
-              "score": 0.263,
-              "outcome": "failure",
-              "situation": "When a patient reports hip pain with stiffness and swelling, and the initial history suggests osteoarthritis, what should the doctor avoid?",
-              "action": "Avoid finalizing a diagnosis of osteoarthritis without imaging or physical exam confirmation, especially in diabetic patients with persistent symptoms.",
-              "boundary": "Use when hip pain is persistent and structural, but only if imaging or physical exam is unavailable; do not use if imaging is available or if the patient has systemic symptoms suggesting vasculitis or infection.",
-              "tags": [
-                "negative",
-                "hip_pain",
-                "diabetic_patient",
-                "image_review_needed",
-                "premature_closure"
+                "coagulation_deficiency"
               ]
             }
           ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3289,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent headaches, especially around your temples, or any tenderness in your scalp or jaw?"
+        },
+        "patient_or_tool_response": "{}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
-        "action_type": "REQUEST_LAB",
-        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent headaches, especially around your temples, or any tenderness in your scalp or jaw?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent headaches, especially around your temples, or any tenderness in your scalp or jaw?\"}}\n</tool_call>"
       }
     }
   ]

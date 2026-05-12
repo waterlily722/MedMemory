@@ -269,14 +269,25 @@ python examples/MedGym/run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 5 \
+  --max_cases 50 \
   --no_cxr \
   --parser_name qwen \
   --enable_memory \
-  --log_memory_trace
-  # --judge_model judge_agent \
-  # --judge_base_url http://127.0.0.1:30002/v1 \
+  --log_memory_trace \
+  --judge_model judge_agent \
+  --judge_base_url http://127.0.0.1:30002/v1 
 
+# 没有MEMORY
+python examples/MedGym/run_med_with_tool.py \
+  --model doctor_agent \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --base_url http://127.0.0.1:30000/v1 \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 50 \
+  --no_cxr \
+  --parser_name qwen \
+  --judge_model judge_agent \
+  --judge_base_url http://127.0.0.1:30002/v1 
 
 export DEEPSEEK_API_KEY="your_deepseek_api_key"
 
@@ -332,3 +343,37 @@ python examples/MedGym/run_med_with_tool.py \
 - `memory_query` 基于当前 turn 已进入 `CaseState` 的信息生成。也就是说，本轮 observation 会先更新 `CaseState`，再构造 query、检索 memory、生成 guidance。
 - 每个 turn 的 `memory_debug` 用于调试 memory 构造链路，包含 `case_state_update`、`candidate_actions`、`query_builder`、`retrieval`、`applicability`、`guidance`。默认不保存完整 observation、LLM prompt、raw output，避免和 trajectory 重复；需要深调 LLM IO 时，可在 `memory_agent/utils/config.py` 的 `TRACE_CONFIG` 中打开 `include_llm_io` / `include_prompt_payload` / `include_observation_payload`。
 - `<case_id>.jsonl`：兼容旧调试流程的逐步 memory snapshot 日志，默认关闭；需要时在 `TRACE_CONFIG.write_jsonl_snapshot` 中打开。
+
+
+# baseline: no memory
+python examples/MedGym/run_med_with_tool.py ... \
+  --max_cases 50 \
+  --no_cxr
+
+# memory + cosine retrieve + cosine merge
+python examples/MedGym/run_med_with_tool.py \
+  --model doctor_agent \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --base_url http://127.0.0.1:30000/v1 \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 50 \
+  --no_cxr \
+  --enable_memory \
+  --retrieval_mode cosine \
+  --disable_memory_write \
+  --merge_scoring_mode same_as_retrieval \
+  --log_memory_trace
+
+# memory + BM25 retrieve + BM25 merge
+python examples/MedGym/run_med_with_tool.py \
+  --model doctor_agent \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --base_url http://127.0.0.1:30000/v1 \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 50 \
+  --no_cxr \
+  --enable_memory \
+  --retrieval_mode fielded_bm25 \
+    --disable_memory_write \
+  --merge_scoring_mode same_as_retrieval \
+  --log_memory_trace

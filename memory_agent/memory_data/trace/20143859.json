@@ -1,0 +1,542 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20143859",
+  "turns": [
+    {
+      "case_id": "20143859",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "I am a 37-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 37-year-old female patient presenting with transhepatic dialysis catheter displaced."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 1,
+        "query_text": "transhepatic dialysis catheter displaced; need memory about next-step decisions for catheter management; avoid premature diagnosis; consider imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did you first notice the displacement of the transhepatic dialysis catheter?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.2857142857142857,
+        "turn_reward": 0.05714285714285714,
+        "importance": 0.2857142857142857
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first notice the displacement of the transhepatic dialysis catheter?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first notice the displacement of the transhepatic dialysis catheter?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20143859",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "37-year-old female with ESRD on HD from IgA nephropathy, schizoaffective disorder, depression, anemia, GERD, hypothyroidism, RLE DVT, esophagitis; history of multiple failed access procedures, s/p R brachial artery to RA AVG (thrombosed), s/p R transhepatic HD catheter placement (replaced 6x last year), s/p L iliac stent, s/p ex lap and LOA for SBO; self-mutilating disorder pulling out catheter; recent t-wave inversions, mild troponin bump (21), no chest pain; imaging: transhepatic catheter replaced via existing tract, tip in right atrium, no complications; PE: stable, R flank site non-bleeding, no drainage/erythema; objective: assess and diagnose patient presenting with displaced transhepatic dialysis catheter."
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 2,
+        "query_text": "transhepatic catheter displaced with no reported local issues; review prior imaging and access history; avoid premature diagnosis; need targeted questions about catheter stability and recent maneuvers"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2081,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2567,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent symptoms such as pain, swelling, fever, or changes in urine output?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5714285714285714,
+        "conf_after": 0.5714285714285714,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent symptoms such as pain, swelling, fever, or changes in urine output?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent symptoms such as pain, swelling, fever, or changes in urine output?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20143859",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "37-year-old female with ESRD on HD from IgA nephropathy, schizoaffective disorder, depression, anemia, GERD, hypothyroidism, RLE DVT, esophagitis; history of multiple failed access procedures, s/p R brachial artery to RA AVG (thrombosed), s/p R transhepatic HD catheter placement (replaced 6x last year), s/p L iliac stent, s/p ex lap and LOA for SBO; self-mutilating disorder pulling out catheter; recent t-wave inversions, mild troponin bump (21), no chest pain; imaging: transhepatic catheter replaced via existing tract, tip in right atrium, no complications; PE: stable, R flank site non-bleeding, no drainage/erythema; objective: assess and diagnose patient presenting with displaced transhepatic dialysis catheter."
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 3,
+        "query_text": "transhepatic catheter displaced with no reported local issues; review prior imaging and access history; avoid premature diagnosis; consider targeted questions about catheter stability and recent maneuvers"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2081,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2567,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'03282918-7d84-4feb-8727-11d2f5322d91': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5714285714285714,
+        "conf_after": 0.5714285714285714,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20143859",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "37-year-old female with ESRD on HD from IgA nephropathy, schizoaffective disorder, depression, anemia, GERD, hypothyroidism, RLE DVT, esophagitis. History of multiple failed access procedures, s/p R transhepatic HD catheter placement, L iliac stent, ex lap and LOA for SBO. Self-mutilating disorder pulling out catheter. Recent t-wave inversions, mild troponin bump (21), no chest pain. Imaging: successful replacement of transhepatic catheter via existing tract, tip in right atrium, no complications. PE: stable vitals, R flank site non-bleeding, no drainage, no erythema."
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 4,
+        "query_text": "transhepatic catheter displaced with recent imaging success; labs missing; need memory about next-step testing or hypothesis update before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2109,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.195,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4804cebb-6561-4247-ae00-70936c469f78': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5714285714285714,
+        "conf_after": 0.5714285714285714,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20143859",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "37-year-old female with ESRD on HD from IgA nephropathy, schizoaffective disorder, depression, anemia, GERD, hypothyroidism, RLE DVT, esophagitis; history of multiple failed access procedures, self-mutilating disorder pulling out catheter, recent t-wave inversions, mild troponin bump; physical exam shows R flank catheter site non-bleeding, no drainage, no erythema; imaging shows replacement of transhepatic catheter via existing tract, tip in right atrium, catheter ready to use."
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 5,
+        "query_text": "transhepatic catheter displaced with imaging confirmation of tip in right atrium; no imaging result available for review; need memory about next-step actions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "transhepatic dialysis catheter displacement complications"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7df2ec9e-aadb-4881-aa72-152ed9d095c9': '[Document 1] (ID: 25046_4, Score: 0.874)\\n# Complications\\nThe complications of liver dialysis are:\\n- Hemorrhage\\n- Secondary infections\\n- Hypotension\\n# Related Chapters\\n- American Society for Artificial Internal Organs and European Society for Artificial Organs\\n- Artificial extracorporeal liver support\\n- Bioartificial liver device\\n# Referenc...\\n\\n[Document 2] (ID: 23427_21, Score: 0.865)\\n## Transjugular intrahepatic portosystemic shunt\\nTransjugular intrahepatic portosystemic shunts (TIPS) involve decompression of the high pressures in the portal circulation by placing a small stent between a portal and hepatic vein.  They have also been shown to improve renal function in patients wi...\\n\\n[Document 3] (ID: 25046_1, Score: 0.861)\\n# Indications\\nAccepted indications for liver dialysis include the following:\\n- Acute liver failure\\n- Acute on chronic liver failure\\n- Acute liver injury following paracetamol overdose\\n- Acutely decmpensated liver cirrhosis\\n- Budd Chiari syndrome\\n- Endotoxemia\\n- Fulminant hepatic failure\\n- Fulminant ...\\n\\n[Document 4] (ID: 3330_20, Score: 0.856)\\n## Complications\\nThe procedure-related morbidity and mortality of TIPS are much lower than for conventional surgical shu...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5714285714285714,
+        "conf_after": 0.7142857142857143,
+        "delta": 0.1428571428571429,
+        "turn_reward": 0.02857142857142858,
+        "importance": 0.1428571428571429
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"transhepatic dialysis catheter displacement complications\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"transhepatic dialysis catheter displacement complications\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20143859",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "Tool output: Document 1: Complications of liver dialysis include hemorrhage, secondary infections, hypotension.",
+          "Tool output: Document 2: Transjugular intrahepatic portosystemic shunts (TIPS) decompress portal hypertension and may improve renal function.",
+          "Tool output: Document 3: Indications for liver dialysis include acute liver failure, acute on chronic liver failure, paracetamol overdose, decompensated cirrhosis, Budd Chiari syndrome, endotoxemia, fulminant hepatic failure.",
+          "Tool output: Document 4: TIPS procedure-related morbidity/mortality: fatal complications 1.7% (range 0.6-4.3%), inversely related to procedure volume.",
+          "Tool output: Document 5: Main complications: bleeding, infection, heart failure, liver failure, kidney failure, fever, vascular/bile duct damage (<5%); hepatic encephalopathy affects one-third of patients."
+        ],
+        "prior_information_summary": "37-year-old female with ESRD on HD due to IgA nephropathy, schizoaffective disorder, depression, anemia, GERD, hypothyroidism, RLE DVT, esophagitis. History of multiple failed access procedures, s/p R brachial artery to RA AVG (thrombosed), s/p R transhepatic HD catheter placement (replaced 6x), s/p L iliac stent, s/p ex lap and LOA for SBO. Self-mutilating disorder pulling out catheter. Recent seizures (negative for intracranial bleed, no anti-seizure meds). New t-wave inversions on EKG, mild troponin bump (21), no chest pain. PE: chronically ill, R flank catheter site non-bleeding, no drainage/erythema. Fluoroscopic replacement of transhepatic catheter via existing tract, tip in right atrium, no immediate complications. Final result: Fitting and adjustment of extracorporeal dialysis catheter."
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 6,
+        "query_text": "transhepatic catheter displacement with prior failed access attempts; new t-wave inversions and troponin bump; need memory about cardiac monitoring and imaging review before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been diagnosed with any liver-related conditions such as cirrhosis, acute liver failure, or hepatic encephalopathy?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.7142857142857143,
+        "conf_after": 0.7142857142857143,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been diagnosed with any liver-related conditions such as cirrhosis, acute liver failure, or hepatic encephalopathy?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been diagnosed with any liver-related conditions such as cirrhosis, acute liver failure, or hepatic encephalopathy?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20143859",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "transhepatic dialysis catheter displaced",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "37-year-old female with ESRD on HD from IgA nephropathy, schizoaffective disorder, depression, anemia, GERD, hypothyroidism, RLE DVT, esophagitis. History of multiple failed dialysis access procedures, including R brachial artery to RA AVG (thrombosed), R transhepatic HD catheter placement (replaced 6 times last year). Self-mutilating disorder causing catheter removal. Recent t-wave inversions, mild troponin bump (21), no chest pain. Negative head CT for intracranial bleed. No anti-seizure meds. Physical exam: R flank catheter site non-bleeding, no drainage, no erythema. Fluoroscopic replacement of transhepatic catheter via existing tract; catheter tip in right atrium, no immediate complications. Final result: Fitting and adjustment of extracorporeal dialysis catheter."
+      },
+      "query": {
+        "case_id": "20143859",
+        "turn_id": 7,
+        "query_text": "transhepatic catheter displaced with recent fluoroscopic replacement; patient denies local symptoms; need memory about post-procedure monitoring and avoiding premature closure; consider imaging review if symptoms emerge"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1929,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1867,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Transhepatic dialysis catheter displacement without immediate complications, requiring urgent imaging and clinical evaluation for potential complications such as hemorrhage, infection, or organ dysfunction.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6a19f6f7-763c-4604-b37d-d2204a909367': '{\"diagnosis\": \"Transhepatic dialysis catheter displacement without immediate complications, requiring urgent imaging and clinical evaluation for potential complications such as hemorrhage, infection, or organ dysfunction.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.7142857142857143,
+        "conf_after": 0.7142857142857143,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Transhepatic dialysis catheter displacement without immediate complications, requiring urgent imaging and clinical evaluation for potential c",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Transhepatic dialysis catheter displacement without immediate complications, requiring urgent imaging and clinical evaluation for potential complications such as hemorrhage, infection, or organ dysfunction.}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

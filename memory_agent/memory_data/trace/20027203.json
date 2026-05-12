@@ -1,0 +1,1241 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20027203",
+  "turns": [
+    {
+      "case_id": "20027203",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 78-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 78-year-old male patient presenting with Mr ___ is a ___ gentleman who speaks ___ and his history is obtained with the assistance of a translator in clinic, but briefly, he recently underwent routine s.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 1,
+        "query_text": "78-year-old male with vague recent decline; new info includes translator-assisted history; need memory about targeted questions before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing recently, including when they started and how they affect your daily life?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently, including when they started and how they affect your daily life?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently, including when they started and how they affect your daily life?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history includes routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease found on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating; no abdominal distension, surgical incisions c/d/I; no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 2,
+        "query_text": "post-op sigmoidectomy patient with no new symptoms; need memory about post-surgical complications or recurrence signs; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2439,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1894,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_a8f87508a2dd",
+              "type": "experience",
+              "score": 0.2847,
+              "outcome": "failure",
+              "situation": "When a patient reports no symptoms after ileostomy closure but the clinical context suggests potential complications, and initial history is unremarkable, the doctor should avoid premature finalization without ruling out key complications.",
+              "action": "Do not finalize diagnosis without reviewing imaging or surgical records confirming ileostomy closure status and absence of complications.",
+              "boundary": "Use this memory when the patient denies symptoms but the clinical context raises suspicion for ileostomy-related issues; do not use if imaging or surgical records are available and confirm closure without complications.",
+              "tags": [
+                "negative",
+                "ileostomy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2715,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.269,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any changes in your energy levels, appetite, weight, or any unexplained fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed I’ve been feeling more tired lately, even after getting enough rest. I’ve also lost some weight without trying, and my appetite has been off—sometimes I don’t feel hungry, other times I eat more than usual but still feel weak. I haven’t had any noticeable changes in my bowel habits, but I’ve noticed some blood in my stool recently, which I didn’t expect. I’m not sure if it’s related, but I’m worried about it.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in your energy levels, appetite, weight, or any unexplained fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in your energy levels, appetite, weight, or any unexplained fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve been feeling more tired lately, even after getting enough rest.",
+          "I’ve also lost some weight without trying, and my appetite has been off—sometimes I don’t feel hungry, other times I eat more than usual but still feel weak.",
+          "I haven’t had any noticeable changes in my bowel habits, but I’ve noticed some blood in my stool recently, which I didn’t expect.",
+          "I’m not sure if it’s related, but I’m worried about it."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history includes routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease found on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating, VSS, no abdominal distension, no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 3,
+        "query_text": "new symptoms of fatigue, weight loss, and occult blood in stool post-sigmoidectomy; need memory about targeted workup before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2099,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1875,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2643,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2528,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_438c0c10d2fd",
+              "type": "experience",
+              "score": 0.2521,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained symptoms and the initial history is unremarkable, repeatedly asking about weight loss, fatigue, fever, or night sweats yields negative responses, but the final diagnosis is anemia, the doctor should avoid premature closure and consider requesting a complete blood count.",
+              "action": "Request a complete blood count to objectively assess for anemia and rule out other hematologic causes.",
+              "boundary": "Use this memory when patient history is unremarkable and symptoms are non-specific; do not use if a CBC is already ordered or if the patient has a known hematologic condition.",
+              "tags": [
+                "negative",
+                "anemia",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.2159,
+              "outcome": null,
+              "situation": "Patient reports blood in stool, altered bowel habits, weight loss, and fatigue, and is over 50 years old.",
+              "action": null,
+              "boundary": "Apply only when patient is over 50 and reports unexplained weight loss or rectal bleeding. Do not use if symptoms are absent or non-specific.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f19b5d3b-a9cb-4bca-8d3d-6be7e71820fd': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history includes routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease found on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating, no abdominal distension, no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 4,
+        "query_text": "post-op sigmoidectomy with no labs available; need memory about next-step testing or hypothesis updating before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.182,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7892224c-6807-4e1e-a813-de48e54dec76': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve been feeling more tired lately, even after getting enough rest. I’ve also lost some weight without trying, and my appetite has been off—sometimes I don’t feel hungry, other times I eat more than usual but still feel weak. I haven’t had any noticeable changes in my bowel habits, but I’ve noticed some blood in my stool recently, which I didn’t expect. I’m not sure if it’s related, but I’m worried about it."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history of routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating; no chest pain, no shortness of breath, no abdominal distension, no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 5,
+        "query_text": "new complaint of fatigue, weight loss, and occult blood in stool; need memory about targeted workup for post-op colorectal cancer recurrence; avoid premature diagnosis closure; consider imaging or labs before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1989,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1812,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2667,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2555,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of anemia in elderly patients including fatigue, weight loss, and blood in stool"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'48440146-e6ff-485f-933f-06688f946de1': '[Document 1] (ID: 14108_4, Score: 0.890)\\n# Clinical features\\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\\n\\n[Document 2] (ID: 7996_4, Score: 0.890)\\n# Clinical features\\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\\n\\n[Document 3] (ID: 14108_7, Score: 0.871)\\n# Natural History, Complications and Prognosis\\n- In most cases, patients affected with pernicious anemia remain asymptomatic for many years.\\n- Early manifestations include fatigue, shortness of breath, pallor and weakness.\\n- Long standing untreated pernicious anemia results in irreversible neurologi...\\n\\n[Document 4] (ID: 7996_7, Score: 0.871)\\n# Natural History, Complications and Prognosis\\n- In most cases, patients affected with pernicious anemia remain asymptomati...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of anemia in elderly patients including fatigue, weight loss, and blood in stool\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of anemia in elderly patients including fatigue, weight loss, and blood in stool\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve been feeling more tired lately, even after getting enough rest. I’ve also lost some weight without trying, and my appetite has been off—sometimes I don’t feel hungry, other times I eat more than usual but still feel weak. I haven’t had any noticeable changes in my bowel habits, but I’ve noticed some blood in my stool recently, which I didn’t expect. I’m not sure if it’s related, but I’m worried about it."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history of routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating; no chest pain, no shortness of breath, no abdominal distension, no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 6,
+        "query_text": "new complaint of fatigue, weight loss, and occult blood in stool; need memory about targeted workup for post-op colorectal cancer recurrence; avoid premature diagnosis closure; consider imaging or labs before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1989,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1812,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2667,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2555,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your skin color, such as looking paler than usual, or any unusual bruising or bleeding episodes?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed I’ve been feeling more tired lately, and my skin has looked a little paler than usual. I haven’t had any unusual bruising, but I have noticed some blood in my stool, which I didn’t mention before — it’s been happening intermittently. I’ve also lost a bit of weight without trying to, and my bowel habits have changed, sometimes constipation, sometimes looser stools. I’m not sure if it’s related, but I’ve been feeling weak and sometimes nauseous too.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your skin color, such as looking paler than usual, or any unusual bruising or bleeding episodes?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your skin color, such as looking paler than usual, or any unusual bruising or bleeding episodes?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve been feeling more tired lately, and my skin has looked a little paler than usual.",
+          "I haven’t had any unusual bruising, but I have noticed some blood in my stool, which I didn’t mention before — it’s been happening intermittently.",
+          "I’ve also lost a bit of weight without trying to, and my bowel habits have changed, sometimes constipation, sometimes looser stools.",
+          "I’m not sure if it’s related, but I’ve been feeling weak and sometimes nauseous too."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history of routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating; no chest pain, no shortness of breath, no abdominal distension, no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 7,
+        "query_text": "newly reported fatigue, pallor, occult blood in stool, weight loss, and altered bowel habits; need memory about targeted lab work and imaging review before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2632,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "query": "symptoms and causes of gastrointestinal bleeding in elderly patients with weight loss and fatigue"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c1ff0b4c-7e28-422b-82a2-d1e489d41ed3': '[Document 1] (ID: 32044_4, Score: 0.873)\\n## Age\\n- Rare in children\\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\\n- Largely due to the increase in the prevalence ...\\n\\n[Document 2] (ID: 7357_0, Score: 0.867)\\nLower gastrointestinal bleeding overview\\n\\n# Overview\\nLower gastrointestinal bleeding is defined as blood loss originating distal to the ligament of Treitz. It accounts for 24% to 33% of all hospital admissions for gastrointestinal bleeding and is responsible for 1% of hospital admissions in the Unit...\\n\\n[Document 3] (ID: 24613_6, Score: 0.867)\\nGastrointestinal—GI-rectal bleeding, black stools, hemorrhoidal bleeding, bleeding from known duodenal ulcer, dysphagia, hiccups, ulcer attack, sour taste, pancreatitis, rectal pain, diverticulitis.\\n\\nLaboratory test changes—Liver function abnormalities.\\n\\nHematologic—Prolonged prothrombin time, ecchy...\\n\\n[Document 4] (ID: 7442_2, Score: 0.866)\\n# Epidemiology and Demographics\\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper sourc...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and causes of gastrointestinal bleeding in elderly patients with weight loss and fatigue\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and causes of gastrointestinal bleeding in elderly patients with weight loss and fatigue\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve been feeling more tired lately, and my skin has looked a little paler than usual.",
+          "I have noticed some blood in my stool, which I didn’t mention before — it’s been happening intermittently.",
+          "I’ve also lost a bit of weight without trying to, and my bowel habits have changed, sometimes constipation, sometimes looser stools.",
+          "I’m not sure if it’s related, but I’ve been feeling weak and sometimes nauseous too."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history of routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating, VSS, no abdominal distension, no lower extremity edema; final result: malignant neoplasm of sigmoid colon."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 8,
+        "query_text": "newly reported fatigue, pallor, occult blood in stool, weight loss, and altered bowel habits; need memory about targeted workup for post-op colorectal cancer recurrence; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2705,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any abdominal pain, bloating, or changes in bowel habits such as diarrhea or constipation recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had some abdominal pain lately, and I’ve noticed my bowel habits have changed—sometimes I get constipation, other times diarrhea. I’ve also been feeling more bloated than usual.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any abdominal pain, bloating, or changes in bowel habits such as diarrhea or constipation recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any abdominal pain, bloating, or changes in bowel habits such as diarrhea or constipation recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had some abdominal pain lately, and I’ve noticed my bowel habits have changed—sometimes I get constipation, other times diarrhea. I’ve also been feeling more bloated than usual."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history includes routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease found on pelvis imaging; PMH: HLD, HTN, DM on insulin; physical exam: minimal pain, tolerating regular diet, ambulating; no chest pain, no shortness of breath, no abdominal distension, surgical incisions c/d/I; no lower extremity edema; final result: malignant neoplasm of sigmoid colon; patient speaks Chinese, history obtained with translator; chief complaint: fatigue, weight loss, appetite changes, blood in stool, weakness, nausea, altered bowel habits."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 9,
+        "query_text": "altered bowel habits and bloating post-sigmoidectomy; need memory about targeted symptom history and imaging review; avoid premature diagnosis closure; consider lab or imaging update before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2312,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2104,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2017,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1881,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1857,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2961,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2653,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2645,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "common causes of lower GI bleeding with weight loss, fatigue, and abdominal pain in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'81944ad2-df20-4ebc-8add-06c979bbd98d': '[Document 1] (ID: 32044_4, Score: 0.885)\\n## Age\\n- Rare in children\\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\\n- Largely due to the increase in the prevalence ...\\n\\n[Document 2] (ID: 7357_2, Score: 0.877)\\n# Differentiating lower gastrointestinal bleeding from Other Diseases\\nSeveral diseases present with lower gastrointestinal bleeding and must be differentiated from each other. The common diseases responsible for lower GI bleeding include diverticulosis, angiodysplasia, hemorrhoids, anal fissures, me...\\n\\n[Document 3] (ID: 32044_6, Score: 0.871)\\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\\nElde...\\n\\n[Document 4] (ID: 7442_2, Score: 0.871)\\n# Epidemiology and Demographics\\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper sourc...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of lower GI bleeding with weight loss, fatigue, and abdominal pain in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of lower GI bleeding with weight loss, fatigue, and abdominal pain in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20027203",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had some abdominal pain lately, and I’ve noticed my bowel habits have changed—sometimes I get constipation, other times diarrhea. I’ve also been feeling more bloated than usual."
+        ],
+        "prior_information_summary": "78-year-old male, admitted after laparoscopic sigmoidectomy; history of routine surveillance colonoscopy revealing sigmoid colon mass; preoperative CEA 6; no metastatic disease on pelvis imaging; minimal pain, tolerating regular diet, ambulating; no chest pain, no shortness of breath; no abdominal distension, surgical incisions c/d/I; no lower extremity edema; PMH: HLD, HTN, DM on insulin; language: Chinese, assisted by translator; race: Asian; marital status: married; insurance: Medicare; final result: Malignant neoplasm of sigmoid colon; knowledge base: Colorectal cancer, Appendix cancer, Familial adenomatous polyposis."
+      },
+      "query": {
+        "case_id": "20027203",
+        "turn_id": 10,
+        "query_text": "Abdominal pain with altered bowel habits and bloating; need memory about targeted history and exam before imaging decision; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2281,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2149,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2084,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2035,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.1946,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3084,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2939,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.2882,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Diverticular disease with lower gastrointestinal bleeding}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'15316a97-295a-42ed-a03c-fe43d6137dd6': '{\"diagnosis\": \"Diverticular disease with lower gastrointestinal bleeding\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticular disease with lower gastrointestinal bleeding}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticular disease with lower gastrointestinal bleeding}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

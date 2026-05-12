@@ -1,0 +1,895 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20131412",
+  "turns": [
+    {
+      "case_id": "20131412",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "I am a 43-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 43-year-old female patient presenting with Altered MS and history of opiate dependence who.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 1,
+        "query_text": "Altered mental status in 43-year-old female with opiate dependence; need memory about targeted history and exam before imaging or lab; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2641,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2328,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2298,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2113,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1955,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3143,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.305,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2853,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been experiencing any specific symptoms such as dizziness, confusion, fatigue, or changes in mood or behavior?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been feeling disoriented to time and events. I also had a headache that felt like constant pressure over my forehead and crown — it’s something I’ve never had before, and Advil didn’t help. I had slurred speech and felt like I was intoxicated, according to EMS. I don’t have dizziness, confusion, or changes in mood or behavior that I can describe beyond the disorientation and headache. I’m not sure if the headache is related to withdrawal or something else — I’ve been getting methadone and suboxone on the street, and I lost my prescriptions. I’ve also been dealing with stress from recent burglaries and vandalism.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any specific symptoms such as dizziness, confusion, fatigue, or changes in mood or behavior?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any specific symptoms such as dizziness, confusion, fatigue, or changes in mood or behavior?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "I’ve been feeling disoriented to time and events.",
+          "I also had a headache that felt like constant pressure over my forehead and crown — it’s something I’ve never had before, and Advil didn’t help.",
+          "I had slurred speech and felt like I was intoxicated, according to EMS.",
+          "I don’t have dizziness, confusion, or changes in mood or behavior that I can describe beyond the disorientation and headache.",
+          "I’m not sure if the headache is related to withdrawal or something else — I’ve been getting methadone and suboxone on the street, and I lost my prescriptions.",
+          "I’ve also been dealing with stress from recent burglaries and vandalism."
+        ],
+        "prior_information_summary": "43-year-old female, history of chronic opiate use, bipolar disorder, migraines, seizure disorder, peripheral neuropathy, and recent methadone/suboxone use. Presenting with altered mental status, headache, slurred speech, and EMS report of intoxication. Labs show urine tox with benzos, barbs, amphet. Physical exam: alert, oriented x3, no meningismus, normal neurological exam except for RLE knee pain. Final result: Toxic encephalopathy."
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 2,
+        "query_text": "altered mental status with new headache and slurred speech; recent opioid/benzodiazepine exposure; need memory about toxic encephalopathy workup; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1998,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.197,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1883,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8758b0aecd58",
+              "type": "experience",
+              "score": 0.3464,
+              "outcome": "failure",
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2861,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.254,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8758b0aecd58"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8758b0aecd58",
+            "memory_type": "experience",
+            "score": 0.3464,
+            "content": {
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "outcome": "This action would have revealed the presence of toxic substances causing encephalopathy, preventing premature closure on opioid withdrawal.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a3593b3b-9810-4b0a-8050-0b862c881ae3': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "I’ve been feeling disoriented to time and events.",
+          "I also had a headache that felt like constant pressure over my forehead and crown — it’s something I’ve never had before, and Advil didn’t help.",
+          "I had slurred speech and felt like I was intoxicated, according to EMS.",
+          "I don’t have dizziness, confusion, or changes in mood or behavior that I can describe beyond the disorientation and headache.",
+          "I’m not sure if the headache is related to withdrawal or something else — I’ve been getting methadone and suboxone on the street, and I lost my prescriptions.",
+          "I’ve also been dealing with stress from recent burglaries and vandalism."
+        ],
+        "prior_information_summary": "43-year-old female, history of chronic opiate use, bipolar disorder, migraines, seizure disorder, peripheral neuropathy, and recent methadone/suboxone use. Presenting with altered mental status, headache, slurred speech, and EMS report of intoxication. Labs show urine tox with benzos, barbs, amphet. Physical exam: alert, oriented x3, no meningismus, normal neurological exam except for RLE knee pain. Final result: Toxic encephalopathy. Knowledge base includes CSF leak, Parry–Romberg syndrome, and post-dural-puncture headache."
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 3,
+        "query_text": "altered mental status with new headache and slurred speech; recent opioid/benzodiazepine exposure; need memory about toxic encephalopathy workup; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1998,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.197,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1883,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8758b0aecd58",
+              "type": "experience",
+              "score": 0.3464,
+              "outcome": "failure",
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2861,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.254,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8758b0aecd58"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8758b0aecd58",
+            "memory_type": "experience",
+            "score": 0.3464,
+            "content": {
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "outcome": "This action would have revealed the presence of toxic substances causing encephalopathy, preventing premature closure on opioid withdrawal.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "opiate withdrawal symptoms including headache, slurred speech, disorientation"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c29f4c7a-3376-449a-8688-a10a53f09b11': '[Document 1] (ID: 4701_67, Score: 0.886)\\n# Degree of opioid intoxication and withdrawal\\nFeatures of opioid intoxication include drooping eyelids and constricted pupils, sedation, reduced respiratory rate, head nodding, and itching and scratching (due to histamine release).\\nFeatures of opioid withdrawal include yawning, anxiety, muscle ache...\\n\\n[Document 2] (ID: 22755_4, Score: 0.882)\\n- During the induction phase of methadone maintenance treatment, patients are being withdrawn from heroin and may therefore show typical withdrawal symptoms, which should be differentiated from methadone-induced side-effects. They may exhibit some or all of the following symptoms associated with acu...\\n\\n[Document 3] (ID: 7606_0, Score: 0.881)\\nOpiate withdrawal (patient information)\\n\\n# Overview\\n- Opiate withdrawal refers to the wide range of symptoms that occur after stopping or dramatically reducing opiate drugs after heavy and prolonged use (several weeks or more).\\n- Opiate drugs include:\\n- Heroin,\\n- Morphine,\\n- Codeine,\\n- Oxycontin,\\n- ...\\n\\n[Document 4] (ID: 4701_196, Score: 0.880)\\n# Opioid-use disorders\\nA group of conditions associated with the use of opioids. In ICD-I0, section F11.0-9 (\"Mental and ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"opiate withdrawal symptoms including headache, slurred speech, disorientation\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"opiate withdrawal symptoms including headache, slurred speech, disorientation\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "I’ve been feeling disoriented to time and events.",
+          "I also had a headache that felt like constant pressure over my forehead and crown — it’s something I’ve never had before, and Advil didn’t help.",
+          "I had slurred speech and felt like I was intoxicated, according to EMS.",
+          "I don’t have dizziness, confusion, or changes in mood or behavior that I can describe beyond the disorientation and headache.",
+          "I’m not sure if the headache is related to withdrawal or something else — I’ve been getting methadone and suboxone on the street, and I lost my prescriptions.",
+          "I’ve also been dealing with stress from recent burglaries and vandalism."
+        ],
+        "prior_information_summary": "43-year-old female, history of chronic opiate use, bipolar disorder, migraines, seizure disorder, peripheral neuropathy. Presented with altered mental status, headache (constant pressure over frontal/crown), slurred speech, and clinical intoxication. EMS noted similar findings. Labs show urine tox with benzos, barbs, amphet. LP findings pending. Physical exam: alert, oriented x3, no meningismus, normal neuro exam except for RLE knee pain. Vitals: 97, 58, 103/68, 12, 100% RA. Final result: Toxic encephalopathy."
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 4,
+        "query_text": "altered mental status with new headache and slurred speech; toxic encephalopathy suspected; need memory about avoiding premature diagnosis; review LP pending results and consider withdrawal vs. toxin interaction"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8758b0aecd58",
+              "type": "experience",
+              "score": 0.2778,
+              "outcome": "failure",
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your pupils, such as them being unusually small or dilated?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t noticed any changes in my pupils. They were normal—pupils equal and reactive to light, as noted in the exam.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your pupils, such as them being unusually small or dilated?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your pupils, such as them being unusually small or dilated?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "No, I haven’t noticed any changes in my pupils. They were normal—pupils equal and reactive to light, as noted in the exam."
+        ],
+        "prior_information_summary": "43-year-old female with history of opiate dependence, brought in by EMS; disoriented to time and event, slurred speech, appeared intoxicated; headache described as constant pressure over frontal and crown, never experienced before; Advil ineffective; history of methadone/suboxone use, attributes symptoms to valium withdrawal; no dizziness, confusion, mood changes; recent stress from burglaries and vandalism; past medical history includes chronic opiate use, bipolar disorder, migraines, seizure disorder, peripheral neuropathy; physical exam shows alert and oriented, normal pupils, no meningismus, no muscle weakness, dry cracked hands, odd affect; labs notable for urine tox with benzos, barbs, amphet; LP findings pending; admitted for pain; final result: Toxic encephalopathy."
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 5,
+        "query_text": "Altered mental status with normal pupils; need memory about toxic encephalopathy workup; avoid premature diagnosis without LP results; consider withdrawal vs. toxin effects"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8758b0aecd58",
+              "type": "experience",
+              "score": 0.2696,
+              "outcome": "failure",
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "opiate withdrawal vs opioid intoxication: distinguishing symptoms including headache, slurred speech, disorientation"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'24be672b-afb7-4294-880c-e73eb1b66724': '[Document 1] (ID: 4701_67, Score: 0.882)\\n# Degree of opioid intoxication and withdrawal\\nFeatures of opioid intoxication include drooping eyelids and constricted pupils, sedation, reduced respiratory rate, head nodding, and itching and scratching (due to histamine release).\\nFeatures of opioid withdrawal include yawning, anxiety, muscle ache...\\n\\n[Document 2] (ID: 31397_10, Score: 0.866)\\n- The opioid abstinence or withdrawal syndrome is characterized by some or all of the following: restlessness, lacrimation, rhinorrhea, yawning, perspiration, chills, myalgia, and mydriasis. Other symptoms also may develop, including irritability, anxiety, backache, joint pain, weakness, abdominal c...\\n\\n[Document 3] (ID: 4701_196, Score: 0.865)\\n# Opioid-use disorders\\nA group of conditions associated with the use of opioids. In ICD-I0, section F11.0-9 (\"Mental and behavioural disorders due to psychoactive substance use (opioids)\") contains a wide variety of disorders of different severity and clinical form, all having in common the use of o...\\n\\n[Document 4] (ID: 12561_8, Score: 0.861)\\n- The opioid abstinence or withdrawal syndrome is characterized by some or all of the following: restlessness, lacrimat...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"opiate withdrawal vs opioid intoxication: distinguishing symptoms including headache, slurred speech, disorientation\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"opiate withdrawal vs opioid intoxication: distinguishing symptoms including headache, slurred speech, disorientation\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "I’ve been feeling disoriented to time and events.",
+          "I also had a headache that felt like constant pressure over my forehead and crown — it’s something I’ve never had before, and Advil didn’t help.",
+          "I had slurred speech and felt like I was intoxicated, according to EMS.",
+          "I don’t have dizziness, confusion, or changes in mood or behavior that I can describe beyond the disorientation and headache.",
+          "I’m not sure if the headache is related to withdrawal or something else — I’ve been getting methadone and suboxone on the street, and I lost my prescriptions.",
+          "I’ve also been dealing with stress from recent burglaries and vandalism.",
+          "No, I haven’t noticed any changes in my pupils. They were normal—pupils equal and reactive to light, as noted in the exam."
+        ],
+        "prior_information_summary": "43-year-old female, history of chronic opiate use, bipolar disorder, migraines, seizure disorder, peripheral neuropathy, and recent methadone/suboxone use. Presenting with altered mental status, headache, slurred speech, and EMS report of intoxication. Labs show urine tox with benzos, barbs, amphet. Physical exam: alert, oriented x3, no meningismus, normal CN II-XII, no motor deficits. Final result: Toxic encephalopathy. Knowledge base includes CSF leak, Parry–Romberg syndrome, and post-dural-puncture headache."
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 6,
+        "query_text": "altered mental status with new headache and slurred speech; recent opioid/benzodiazepine exposure; need to review imaging and labs before finalizing toxic encephalopathy; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1803,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8758b0aecd58",
+              "type": "experience",
+              "score": 0.3519,
+              "outcome": "failure",
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8758b0aecd58"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_8758b0aecd58",
+            "memory_type": "experience",
+            "score": 0.3519,
+            "content": {
+              "situation": "When a patient presents with altered mental status and reports recent substance use, but no lab or imaging results are available, and the differential includes both toxic encephalopathy and opioid withdrawal, what should the doctor do?",
+              "action": "Request a targeted toxicology screen and review any available imaging to rule out toxic encephalopathy before finalizing opioid withdrawal as the diagnosis.",
+              "outcome": "This action would have revealed the presence of toxic substances causing encephalopathy, preventing premature closure on opioid withdrawal.",
+              "boundary": "Use this memory when altered mental status is present with recent substance use and no toxicology or imaging results; do not use if toxicology or imaging is available and confirms toxic encephalopathy.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "altered_mental_status",
+                "toxic_encephalopathy",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Opioid Withdrawal Syndrome}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2268b993-5531-4819-8e35-a0a84137e7bc': '{\"diagnosis\": \"Opioid Withdrawal Syndrome\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Opioid Withdrawal Syndrome}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Opioid Withdrawal Syndrome}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "current_turn_information": [
+          "I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening.",
+          "I also think I’m going through withdrawal from Valium because I lost my prescription.",
+          "I don’t know if I’ve used any other opioids or illicit substances recently, but the urine tox screen was positive for benzos, barbiturates, and amphetamines.",
+          "I’m not sure what that means or if it’s from something I used or just from withdrawal."
+        ],
+        "prior_information_summary": "43-year-old female, history of opiate dependence, brought in by EMS, disoriented, slurred speech, clinically intoxicated. Headache described as constant pressure over frontal and crown, not relieved by Advil. No muscle weakness, no dysarthria or gait disturbance. Completed methadone taper, currently using methadone and suboxone illicitly. Last methadone dose yesterday AM, last suboxone yesterday evening. Attributes symptoms to Valium withdrawal. No grand mal seizure (last one 18 minutes, per pt). One son with shunt. Recently burglarized and vandalized. In ED: VS 97, 4, 58, 103/68, 12, 100% RA. Labs: urine tox positive for benzos, barbs, amphet. LP: flow limiting stenosis, aneurysm >3mm, or dissection, dominant vertebral artery. Final read pending recon. IV mg, valium 5 mg, Zofran. Admitted for pain. Current VS: 98, 3, 66, 92/52, 16, 99% RA. Headache now bearable. Past medical history: chronic opiate use, bipolar disorder, IBS, chronic back/knee pain, endometriosis, migraines, seizure disorder, GERD, peripheral neuropathy, kidney stones, squamous cell carcinoma. Social history: mother with ovarian cancer. Physical exam: vitals 97, 9, 102/50, 64, 16, 100RA. Gen: NAD, alert x3. HEENT: PERRL, EOMI, MMM, sclera anicteric, not injected. Neck: no LAD, JVD, meningismus. Cardiovascular: RRR, normal s1, s2, no murmurs. Respiratory: clear bilaterally. Abd: normoactive bowel sounds, soft, non-tender. Extremities: no edema, 2+ DP pulses. Neurological: CN II-XII intact, normal attention, MS ___ in BUEs and BLEs except RLE ___ knee pain, no protonator drift, finger to nose intact. Integument: dry cracked hands. Psychiatric: odd affect. Final result: Toxic encephalopathy."
+      },
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 7,
+        "query_text": "Altered mental status with opioid and benzodiazepine withdrawal history; urine tox positive for benzos and amphetamines; need memory about differentiating withdrawal vs. toxic encephalopathy; avoid premature diagnosis before imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Opioid withdrawal with altered mental status}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d2fcdd1d-2341-4349-987b-bda495f1a5cb': '{\"diagnosis\": \"Opioid withdrawal with altered mental status\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Opioid withdrawal with altered mental status}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Opioid withdrawal with altered mental status}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

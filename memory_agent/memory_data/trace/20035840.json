@@ -1,0 +1,1510 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20035840",
+  "turns": [
+    {
+      "case_id": "20035840",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "I am a 67-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 67-year-old male patient presenting with Headaches."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 1,
+        "query_text": "Headaches in 67-year-old male; need memory about targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1989,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1809,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any specific triggers or patterns with your headaches, such as timing, duration, or associated symptoms like nausea, vomiting, or visual disturbances?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific triggers or patterns with your headaches, such as timing, duration, or associated symptoms like nausea, vomiting, or visual disturbances?\"}}\n</",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific triggers or patterns with your headaches, such as timing, duration, or associated symptoms like nausea, vomiting, or visual disturbances?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. HPI: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Physical exam: Neurologically intact pre-op and on discharge. Imaging: Diagnostic cerebral angiography (left common carotid) showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 2,
+        "query_text": "Headaches post-car accident with known left posterior/temporal AVM; new info: no reported focal neurological issues; imaging reviewed; need memory about avoiding premature diagnosis closure before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your blood pressure, vision, or cognitive function?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed my blood pressure is higher in my arms than in my legs, and my legs often feel cold. I also get tired easily, especially when walking or doing light activities, and sometimes I feel dizzy or short of breath. My feet and legs sometimes ache or feel numb during exercise. I’ve also had trouble feeding when I was younger, and I was very weak and pale early on. My heart races a lot, and I’ve had trouble breathing sometimes. I’ve also noticed that my pulse feels weaker in my legs compared to my arms.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your blood pressure, vision, or cognitive function?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your blood pressure, vision, or cognitive function?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "I’ve noticed my blood pressure is higher in my arms than in my legs, and my legs often feel cold.",
+          "I also get tired easily, especially when walking or doing light activities, and sometimes I feel dizzy or short of breath.",
+          "My feet and legs sometimes ache or feel numb during exercise.",
+          "I’ve also had trouble feeding when I was younger, and I was very weak and pale early on.",
+          "My heart races a lot, and I’ve had trouble breathing sometimes.",
+          "I’ve also noticed that my pulse feels weaker in my legs compared to my arms."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. History: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Social history: Family history non-contributory. Pre-op and discharge: Neurologically intact. Diagnostic imaging: Left common carotid artery angiography showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system. Objective: Assess and diagnose patient presenting with headaches."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 3,
+        "query_text": "Headaches with new vascular symptoms; need memory about evaluating for peripheral vascular disease or autonomic dysfunction; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1839,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.181,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3245,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.285,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2652,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a1c2264a-63f6-4b95-b896-c5a4152e7213': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "I’ve noticed my blood pressure is higher in my arms than in my legs, and my legs often feel cold.",
+          "I also get tired easily, especially when walking or doing light activities, and sometimes I feel dizzy or short of breath.",
+          "My feet and legs sometimes ache or feel numb during exercise.",
+          "I’ve also had trouble feeding when I was younger, and I was very weak and pale early on.",
+          "My heart races a lot, and I’ve had trouble breathing sometimes.",
+          "I’ve also noticed that my pulse feels weaker in my legs compared to my arms."
+        ],
+        "prior_information_summary": "67-year-old male, presenting with headaches after a car accident; incidental finding of left posterior/temporal AVM; underwent AVM resection; history of headaches, arthritis, gout, cervical spondylosis, LBP, reflux, diverticulitis with bowel resection; neurologically intact pre-op and on discharge; diagnostic cerebral angiography confirmed no residual AVM or early shunting; final result: anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 4,
+        "query_text": "Headaches with new vascular symptoms; need memory about evaluating for peripheral vascular disease or autonomic dysfunction; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1839,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.181,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3245,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.285,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2652,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of hypertension with leg coldness, fatigue, dizziness, and weak pulse in legs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5419a876-0deb-451d-8676-fb1e48849583': '[Document 1] (ID: 10778_1, Score: 0.869)\\n# Indications\\n- Essential hypertension\\n- Coronary heart disease (prevention of angina attacks)\\n- Secondary prevention after a myocardial infarction\\n- Treatment of heart failure.\\n- Migraine prophylaxis\\n- Adjunct in treatment of hyperthyroidism\\n\\n# Side effects\\nSide effects are usually mild. Transient ...\\n\\n[Document 2] (ID: 9438_2, Score: 0.867)\\n### Cardiovascular\\nCongestive heart failure; cerebrovascular accident; electrocardiographic abnormalities (i.e., bradycardia, sick sinus syndrome disturbances and arrhythmias); chest pain; orthostatic symptoms; syncope; increases in blood pressure; sinus bradycardia and atrioventricular (AV) block w...\\n\\n[Document 3] (ID: 19076_4, Score: 0.866)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 4] (ID: 8402_51, Score: 0.865)\\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\\n- Pain in th...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.5,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of hypertension with leg coldness, fatigue, dizziness, and weak pulse in legs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of hypertension with leg coldness, fatigue, dizziness, and weak pulse in legs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "I’ve noticed my blood pressure is higher in my arms than in my legs, and my legs often feel cold.",
+          "I also get tired easily, especially when walking or doing light activities, and sometimes I feel dizzy or short of breath.",
+          "My feet and legs sometimes ache or feel numb during exercise.",
+          "I’ve also had trouble feeding when I was younger, and I was very weak and pale early on.",
+          "My heart races a lot, and I’ve had trouble breathing sometimes.",
+          "I’ve also noticed that my pulse feels weaker in my legs compared to my arms."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. History: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Physical exam: Neurologically intact pre-op and on discharge. Diagnostic imaging: Left common carotid artery angiography showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system. Knowledge base: Interrupted aortic arch, pulmonary atresia, coarctation of the aorta."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 5,
+        "query_text": "Headaches with new vascular symptoms; need memory about coarctation or aortic arch anomalies; avoid premature diagnosis; review prior imaging and labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2587,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.239,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2252,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2065,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2026,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.3348,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3321,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_31a89b51741f",
+              "type": "experience",
+              "score": 0.308,
+              "outcome": "failure",
+              "situation": "When a patient presents with a solitary pulmonary nodule and a history of breast cancer, but no symptoms like weight loss or fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis.",
+              "action": "Do not finalize diagnosis without reviewing available imaging or obtaining specific tests for BIA-ALCL, such as imaging findings or fluid analysis.",
+              "boundary": "Use this memory when imaging or specific tests are unavailable and the patient has no symptoms; do not use if imaging or fluid analysis is available or if symptoms suggest BIA-ALCL.",
+              "tags": [
+                "negative",
+                "missing_imaging",
+                "premature_closure",
+                "chest_pain"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_54d9edbbf290"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_54d9edbbf290",
+            "memory_type": "experience",
+            "score": 0.3348,
+            "content": {
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "outcome": "This action would have revealed critical clues like fever, weight loss, or neurologic deficits that point to temporal arteritis or cerebrovascular anomalies, preventing premature closure on a benign headache diagnosis.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent trauma, falls, or episodes of loss of consciousness?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I had a car accident recently, and that’s when I started having headaches. I don’t recall losing consciousness, but I was in the car during the accident.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, falls, or episodes of loss of consciousness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, falls, or episodes of loss of consciousness?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "Yes, I had a car accident recently, and that’s when I started having headaches. I don’t recall losing consciousness, but I was in the car during the accident."
+        ],
+        "prior_information_summary": "67-year-old M patient with headaches, history of left posterior/temporal AVM resection, past medical history including headaches, arthritis, gout, cervical spondylosis, LBP, reflux, diverticulitis with bowel resection. Neurologically intact pre-op and on discharge. Diagnostic cerebral angiography showed no residual AVM or shunting. Final result: Anomalies of cerebrovascular system. Patient reports hypertension in arms vs legs, cold legs, fatigue, dizziness, shortness of breath, leg pain/numbness during exercise, poor feeding, weakness, rapid heart rate, weak leg pulses. No known prior issues with cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 6,
+        "query_text": "Headaches post-car accident; need memory about trauma-related headache evaluation; review prior imaging and vascular history; avoid premature diagnosis without neuro exam or imaging"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2106,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2079,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2903,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.2578,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2567,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "post-traumatic headaches after car accident with symptoms like cold legs, fatigue, dizziness, and weak pulse"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'969bfafa-ed7a-4bb9-a5bb-7d0d32fdd11e': \"[Document 1] (ID: 19076_4, Score: 0.855)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 2] (ID: 29537_8, Score: 0.849)\\n- Nervous System/Psychiatric: Parkinsonism, Bell's palsy, decreased mental acuity, involuntary choreoathetotic movements, symptoms of cerebrovascular insufficiency, psychic disturbances including nightmares and reversible mild psychoses or depression, headache, sedation, asthenia or weakness, dizzin...\\n\\n[Document 3] (ID: 14908_2, Score: 0.849)\\n# Signs and symptoms\\nPeople who have had concussions may experience physical, mental, or emotional symptoms, which can appear immediately or weeks to months after the initial injury. As time goes on, symptoms become predominantly psychological ones, such as anxiety, rather than the physical symptoms...\\n\\n[Document 4] (ID: 13126_1, Score: 0.847)\\n# Signs and symptoms\\n- Headaches aggravated by Valsalva maneuvers, such as yawning, laughing, crying, coughing, sneezing ...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.75,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-traumatic headaches after car accident with symptoms like cold legs, fatigue, dizziness, and weak pulse\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-traumatic headaches after car accident with symptoms like cold legs, fatigue, dizziness, and weak pulse\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "Yes, I had a car accident recently, and that’s when I started having headaches. I don’t recall losing consciousness, but I was in the car during the accident."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. HPI: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Social history: Family history non-contributory. Pre-op and discharge: Neurologically intact. Diagnostic imaging: Left common carotid artery angiography showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system. Patient reports: Blood pressure higher in arms than legs, cold legs, easy fatigue, dizziness, shortness of breath, leg pain/numbness during exercise, trouble feeding and weakness in infancy, rapid heart rate, palpitations, weaker leg pulses vs. arms."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 7,
+        "query_text": "Headaches post-car accident; new exposure of trauma history; need memory about trauma-related headache evaluation; avoid premature diagnosis without imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2655,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Post-traumatic headache with possible underlying vascular or neurological complications due to recent car accident.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'80c25b0d-8cfa-495b-9585-4606a0e2443d': '{\"diagnosis\": \"Post-traumatic headache with possible underlying vascular or neurological complications due to recent car accident.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-traumatic headache with possible underlying vascular or neurological complications due to recent car accident.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-traumatic headache with possible underlying vascular or neurological complications due to recent car accident.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. HPI: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Physical exam: Neurologically intact pre-op and on discharge. Imaging: Diagnostic cerebral angiography (left common carotid) showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 8,
+        "query_text": "Headaches post-car accident with known AVM; labs not available; need memory about targeted history or imaging review before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2831,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2801,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2744,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2586,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2303,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3658,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_7922b18d9057",
+              "type": "experience",
+              "score": 0.3534,
+              "outcome": "failure",
+              "situation": "When a patient reports seizures and developmental delays without clear acute symptoms, but the initial history is unremarkable, the doctor should not prematurely finalize a diagnosis without reviewing imaging or labs.",
+              "action": "Avoid finalizing a diagnosis of epilepsy with developmental delay without first requesting and reviewing relevant imaging or lab results to rule out mimics or underlying causes.",
+              "boundary": "Use this memory when seizures and developmental delays are present but no imaging or labs are available; do not use if imaging or labs are available and not reviewed.",
+              "tags": [
+                "negative",
+                "epilepsy",
+                "developmental_delay",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e027d02565b1",
+              "type": "experience",
+              "score": 0.3456,
+              "outcome": "unsafe",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3658,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b3ea89da-b2d3-46ad-a467-e57bccf4db20': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "I had a car accident, and that’s when I developed the headache. There was no fall or head injury mentioned specifically, but the accident involved trauma. I also had an incidental finding of a left posterior/temporal AVM, and I’m being treated for that."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. History: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Physical exam: Neurologically intact pre-op and on discharge. Diagnostic imaging: Left common carotid artery angiography showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 9,
+        "query_text": "Headache post-trauma with known AVM; new info: no head injury but trauma exposure; need memory about headache triggers and AVM-related complications; avoid premature diagnosis before imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2331,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2247,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2125,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2109,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2089,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.3077,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_d765c9f8902c",
+              "type": "experience",
+              "score": 0.2798,
+              "outcome": "failure",
+              "situation": "When evaluating a headache in an elderly patient with no clear red flags, but with a high suspicion for temporal arteritis due to age, the initial history and labs are unhelpful and confidence remains low.",
+              "action": "Avoid premature diagnosis and instead request imaging to rule out cerebrovascular anomalies, which is the gold standard for this age group with atypical headache presentation.",
+              "boundary": "Use this memory when the patient is elderly with headache and no red flags, but when imaging is not yet obtained; do not use if imaging is already available or if the patient has clear temporal arteritis symptoms like jaw claudication or vision changes.",
+              "tags": [
+                "negative",
+                "headache",
+                "elderly",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3239df377c64",
+              "type": "experience",
+              "score": 0.2758,
+              "outcome": "failure",
+              "situation": "When a patient reports neck pain, swelling, arm weakness, dizziness, and chest tightness after a motorcycle collision, but no imaging or lab results are available, and the initial history is non-specific, what should the doctor do?",
+              "action": "Request focused imaging of the cervical and thoracic spine, and ask targeted questions about neurological symptoms and trauma mechanism to avoid premature closure on spinal injury.",
+              "boundary": "Use when trauma mechanism suggests spinal involvement and symptoms are neurological; do not use if patient denies trauma or symptoms are purely musculoskeletal without neurological signs.",
+              "tags": [
+                "negative",
+                "trauma",
+                "spinal_injury",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{AVM-related headache}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c566c33b-a9d1-452c-8388-f6e8b2a04a46': '{\"diagnosis\": \"AVM-related headache\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{AVM-related headache}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{AVM-related headache}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "I’ve had trouble feeding and seem to have lost my appetite lately. I’ve also been feeling very tired and weak, and I’m breathing faster than usual. My lower body feels cold, and my pulse on the left side doesn’t feel as strong as the right. I’ve noticed my legs get tired easily, especially when I move around. I’ve also had some trouble with my breathing, and I’ve been more exhausted than normal lately."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. History: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Social history: Family history non-contributory. Pre-op and discharge: Neurologically intact. Diagnostic angiography (left common carotid) showed no residual AVM or shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 10,
+        "query_text": "Headaches with new systemic symptoms including fatigue, tachypnea, cold extremities, and asymmetric pulse; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1985,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of temporal arteritis in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'09c89505-b2ea-4042-867f-6ef1fb470294': '[Document 1] (ID: 13034_3, Score: 0.918)\\n# Natural History, Complications and Prognosis\\nThe symptoms of temporal arteritis usually develop in the fifth decade of life, and start with symptoms such as headache, fatigue, jaw claudication, and vision problems. Common complications of temporal arteritis include blindness, aortic aneurysm, stro...\\n\\n[Document 2] (ID: 13034_2, Score: 0.901)\\n# Differentiating Temporal Arteritis from Other Diseases\\nThe differential of temporal arteritis include Takayasu arteritis, neurofibromatosis 1 and 2, fibromuscular dysplasia, Ehlers-Danlos syndrome, polymyalgia rheumatica (PMR), amyloidosis, and cerebral aneurysm.\\n\\n# Epidemiology and Demographics\\nI...\\n\\n[Document 3] (ID: 6466_1, Score: 0.890)\\n# Symptoms and diagnosis\\nThere are several constitutional symptoms of temporal arteritis that may aid in diagnosis of AAION such as jaw claudication (spasms of the jaw muscle), scalp tenderness, unintentional weight loss, fatigue, myalgias and loss of appetite. However, many cases are asymptomatic. ...\\n\\n[Document 4] (ID: 13034_6, Score: 0.888)\\n## Medical Therapy\\nThe mainstay of treatment for temporal arteritis is corticosteroids. Damage may be irreversible if trea...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of temporal arteritis in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of temporal arteritis in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "I’ve had trouble feeding and seem to have lost my appetite lately. I’ve also been feeling very tired and weak, and I’m breathing faster than usual. My lower body feels cold, and my pulse on the left side doesn’t feel as strong as the right. I’ve noticed my legs get tired easily, especially when I move around. I’ve also had some trouble with my breathing, and I’ve been more exhausted than normal lately."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission. Chief complaint: Headaches. History: Developed headache after car accident; incidental finding of left posterior/temporal AVM; presented electively for AVM resection. Past medical history: Headaches, arthritis, gout, cervical spondylosis C4-C7, LBP, reflux, diverticulitis with bowel resection. Physical exam: Neurologically intact pre-op and on discharge. Imaging: Diagnostic cerebral angiography (left common carotid) showed no residual AVM or early shunting; no thromboembolic complications. Final result: Anomalies of cerebrovascular system. Knowledge base: Interrupted aortic arch, pulmonary atresia, coarctation of the aorta."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 11,
+        "query_text": "Headaches with new systemic symptoms including fatigue, tachypnea, cold extremities, and asymmetric pulse; need memory about targeted history and exam before imaging decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2103,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1872,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1823,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Temporal Arteritis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7d6810fa-9397-41b1-9818-094bf4bfba7d': '{\"diagnosis\": \"Temporal Arteritis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Temporal Arteritis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Temporal Arteritis}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035840",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Headaches",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "67-year-old male, admitted for surgical same-day admission, presenting with headaches after a car accident. Incidental finding of left posterior/temporal AVM, underwent AVM resection. Diagnostic cerebral angiography confirmed resolution of AVM. No residual arteriovenous malformation or thromboembolic complications. Past medical history includes headaches, arthritis, gout, cervical spondylosis, LBP, reflux, diverticulitis with bowel resection. Neurologically intact pre- and post-op. Objective: Assess and diagnose the 67-year-old male patient presenting with Headaches."
+      },
+      "query": {
+        "case_id": "20035840",
+        "turn_id": 12,
+        "query_text": "Headaches post-AVM resection; new info: no prior issues in area; need memory about headache triggers and imaging review before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Temporal Arteritis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a5bdfb6b-7db4-4862-8f64-52b9c8a03302': '{\"diagnosis\": \"Temporal Arteritis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Temporal Arteritis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Temporal Arteritis}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

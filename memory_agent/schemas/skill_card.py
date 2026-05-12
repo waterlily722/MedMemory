@@ -22,7 +22,6 @@ class SkillCard(SerializableMixin):
 
     # safety boundary
     boundary_text: str = ""
-    tags: list[str] = field(default_factory=list)
 
     # lightweight evidence
     confidence: float = 0.5
@@ -37,8 +36,6 @@ class SkillCard(SerializableMixin):
             raise TypeError(f"{cls.__name__}.from_dict expected dict, got {type(data)}")
 
         values = dict(data)
-        if not values.get("tags"):
-            values["tags"] = list(values.get("retrieval_tags") or [])
 
         raw_source = values.get("source")
         source = dict(raw_source) if isinstance(raw_source, dict) else {}

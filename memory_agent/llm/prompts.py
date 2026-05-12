@@ -587,7 +587,6 @@ Output format:
         {{"action_type": "...", "action_label": "..."}}
       ],
       "boundary_text": "...",
-      "tags": ["positive", "..."],
       "confidence": 0.0,
       "support_count": 1,
       "source": {{
@@ -600,9 +599,6 @@ Output format:
 }}
 
 Rules:
-- Every extracted skill must have "positive" as the first tag and
-  "episode_skill" as the second tag.
-- Set source.skill_origin to ["episode_level"].
 - Preserve source ids only when they are provided in the input.
 - Do not invent clinical evidence, labs, image findings, or outcomes.
 - Keep procedures short, ordered, and executable.

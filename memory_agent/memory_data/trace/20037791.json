@@ -1,0 +1,1331 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20037791",
+  "turns": [
+    {
+      "case_id": "20037791",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "Assess and diagnose the 50-year-old male patient presenting with Neck and arm pain.",
+          "I am a 50-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 50-year-old male patient presenting with Neck and arm pain.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 1,
+        "query_text": "Neck and arm pain in 50-year-old male; need targeted history and exam before imaging or lab decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2481,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2472,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2266,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2161,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2117,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3325,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.324,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3233,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.3233,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the nature of your neck and arm pain? Is it sharp, dull, burning, or tingling? Where exactly is the pain located in your neck and arms?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your neck and arm pain? Is it sharp, dull, burning, or tingling? Where exactly is the pain located in your neck and arms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your neck and arm pain? Is it sharp, dull, burning, or tingling? Where exactly is the pain located in your neck and arms?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "50-year-old male, presenting with neck and arm pain. History of high blood pressure and diabetes. Family history of cancer and heart disease. Physical exam shows left shoulder girdle and biceps atrophy, decreased sensation in left hand, progressive weakness in grip strength, and limitation in cervical spine movement with pain on left rotation. Imaging: cervical fusion (C4-C6), chest X-ray shows low lung volumes and widened superior mediastinum. Final diagnosis: cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 2,
+        "query_text": "Neck and arm pain with prior diagnosis of cervical spondylosis; new info: no prior issues or abnormal findings reported; need memory about targeted history to rule out new etiology; avoid premature finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2047,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3099,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2523,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.252,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.3099,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any specific triggers or activities that make the neck or arm pain worse or better?"
+        },
+        "patient_or_tool_response": "{'question': 'I notice the pain gets worse with activity and also when I’m sitting or standing. I don’t think it gets better with anything specific — not really.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific triggers or activities that make the neck or arm pain worse or better?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific triggers or activities that make the neck or arm pain worse or better?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "I notice the pain gets worse with activity and also when I’m sitting or standing. I don’t think it gets better with anything specific — not really."
+        ],
+        "prior_information_summary": "50-year-old male, presenting with neck and arm pain. History of high blood pressure and diabetes. Family history of cancer and heart disease. Severe left arm pain and weakness over past year. Pain with activity and at rest. Steroid injections without relief. Pain with sitting and standing. Physical exam: atrophy of left shoulder girdle and biceps, decreased sensation in left hand, progressive weakness in grip strength, limitation in cervical spine motion (rotation to left causes severe pain). Imaging: cervical fusion (C4-C6), chest X-ray shows low lung volumes. Final diagnosis: cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 3,
+        "query_text": "Neck and arm pain worsening with activity and posture; prior diagnosis of cervical spondylosis without myelopathy; need memory about targeted neuro exam or imaging review before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1949,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1938,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.187,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1848,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3515,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2949,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2813,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any numbness, weakness, or tingling in your arms or hands? Or any difficulty with fine motor skills like buttoning a shirt or holding a pen?"
+        },
+        "patient_or_tool_response": "{'question': 'I have numbness in my left hand and progressive weakness in my grip strength. I also have difficulty with fine motor skills — it’s harder for me to hold a pen or button a shirt.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any numbness, weakness, or tingling in your arms or hands? Or any difficulty with fine motor skills like buttoning a shirt or holding a pen?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any numbness, weakness, or tingling in your arms or hands? Or any difficulty with fine motor skills like buttoning a shirt or holding a pen?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "I have numbness in my left hand and progressive weakness in my grip strength.",
+          "I also have difficulty with fine motor skills — it’s harder for me to hold a pen or button a shirt."
+        ],
+        "prior_information_summary": "50-year-old male with neck and arm pain; history of high blood pressure and diabetes; severe left arm pain and weakness over past year; pain with activity and at rest; no relief from steroid injections; pain with sitting and standing; decreased sensation in left hand, progressive grip weakness; atrophy of left shoulder girdle and biceps; limitation in cervical spine motion; rotation to left causes severe neck and arm pain; postoperative imaging shows anterior fusion C4-C6; chest X-ray shows low lung volumes and widened superior mediastinum; final diagnosis: cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 4,
+        "query_text": "Neck and arm pain with new hand numbness and grip weakness; review prior imaging and consider myelopathy; avoid premature diagnosis; need targeted neuro exam before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1923,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3239,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2581,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.3239,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c91dbc1d-e072-4296-9e16-d76013a5d245': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "50-year-old male patient with neck and arm pain. History of severe left arm pain and weakness for a year, no relief from steroid injections. Pain worsens with activity, sitting, and standing. Has decreased sensation in left hand and progressive weakness in grip strength. Physical exam shows atrophy of left shoulder girdle and biceps, limited cervical spine motion, and no significant neurological deficits except for left-sided weakness. Imaging shows anterior fusion with interbody spacers spanning C4 through C6. Final diagnosis: Cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 5,
+        "query_text": "Neck and arm pain with prior imaging and diagnosis; labs not available; need memory about targeted next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2481,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2445,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.243,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2342,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2283,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3815,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3057,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_c95ca4534af0",
+              "type": "experience",
+              "score": 0.2975,
+              "outcome": "failure",
+              "situation": "When a patient presents with hematuria, fever, and flank pain, and has a known history of cystic kidney disease, but no imaging results are available, the doctor should not finalize a diagnosis without confirming imaging findings.",
+              "action": "Request and review available imaging studies (e.g., ultrasound or CT) before finalizing a diagnosis involving complications of cystic kidney disease.",
+              "boundary": "Use this memory when imaging is available and relevant to the differential; do not use if imaging is unavailable or if the patient has no known cystic kidney disease.",
+              "tags": [
+                "negative",
+                "missing_image",
+                "premature_closure",
+                "cystic_kidney_disease"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.3815,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'86daad1b-6ba7-46bf-a643-245b0db511a5': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "I notice the pain gets worse with activity and also when I’m sitting or standing. I don’t think it gets better with anything specific — not really.",
+          "I have numbness in my left hand and progressive weakness in my grip strength. I also have difficulty with fine motor skills — it’s harder for me to hold a pen or button a shirt.",
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "50-year-old male, admitted for surgical same-day admission. Chief complaint: neck and arm pain. History of high blood pressure and diabetes. Family history of cancer and heart disease. Physical exam: atrophy of left shoulder girdle and biceps, decreased sensation in left hand, progressive weakness in grip strength, limitation in cervical spine motion with pain on left rotation. Imaging: cervical fusion C4-C6, chest X-ray shows low lung volumes and widened superior mediastinum. Final result: cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 6,
+        "query_text": "Neck and arm pain with progressive weakness and numbness; new info on fine motor deficits; no labs or imaging available; need memory about targeted neuro exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2232,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2174,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2084,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.194,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3158,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.261,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.3158,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Neck and arm pain with numbness and weakness in hand: possible causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9815b53b-3b4f-4c58-9494-49751ec07c91': '[Document 1] (ID: 14555_2, Score: 0.872)\\n# Warning signs\\nRSI conditions have many varied symptoms. The following may indicate the onset of an RSI.\\n- Recurring pain (myalgia) or soreness in neck, shoulders, upper back, wrists or hands.\\n- Tingling, numbness, coldness or loss of sensation.\\n- Loss of grip strength, lack of endurance, weakness....\\n\\n[Document 2] (ID: 19184_1, Score: 0.867)\\n# Differential Diagnosis of Causes of Wrist and hand pain\\nCauses include;  \\n- Carpal Tunnel Syndrome\\n- Most frequent cause of wrist discomfort and morbidity\\n- Linked to repetative activities\\n- For example: writing, typing, etc.\\n- Symptoms are a consequence of the mendian nerve becoming trapped benea...\\n\\n[Document 3] (ID: 26541_0, Score: 0.859)\\nSandbox:Mazia\\n# Overview\\nHistory\\nPatients with Pancoast syndrome may present with referred pain over the scapula to the shoulder as the result of damage to the afferent pain fibers of the sympathetic trunk. The symptoms are typical of the location of the tumor in the superior sulcus or thoracic inle...\\n\\n[Document 4] (ID: 21531_1, Score: 0.854)\\n## History and Symptoms\\nSymptoms include paralysis of intrinsic hand muscles, and ulnar nerve distribution numbness. Invo...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Neck and arm pain with numbness and weakness in hand: possible causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Neck and arm pain with numbness and weakness in hand: possible causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "I notice the pain gets worse with activity and also when I’m sitting or standing. I don’t think it gets better with anything specific — not really.",
+          "I have numbness in my left hand and progressive weakness in my grip strength. I also have difficulty with fine motor skills — it’s harder for me to hold a pen or button a shirt.",
+          "{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "[Document 1] (ID: 14555_2, Score: 0.872)\n# Warning signs\nRSI conditions have many varied symptoms. The following may indicate the onset of an RSI.\n- Recurring pain (myalgia) or soreness in neck, shoulders, upper back, wrists or hands.\n- Tingling, numbness, coldness or loss of sensation.\n- Loss of grip strength, lack of endurance, weakness....\n\n[Document 2] (ID: 19184_1, Score: 0.867)\n# Differential Diagnosis of Causes of Wrist and hand pain\nCauses include;  \n- Carpal Tunnel Syndrome\n- Most frequent cause of wrist discomfort and morbidity\n- Linked to repetative activities\n- For example: writing, typing, etc.\n- Symptoms are a consequence of the mendian nerve becoming trapped benea...\n\n[Document 3] (ID: 26541_0, Score: 0.859)\nSandbox:Mazia\n# Overview\nHistory\nPatients with Pancoast syndrome may present with referred pain over the scapula to the shoulder as the result of damage to the afferent pain fibers of the sympathetic trunk. The symptoms are typical of the location of the tumor in the superior sulcus or thoracic inle...\n\n[Document 4] (ID: 21531_1, Score: 0.854)\n## History and Symptoms\nSymptoms include paralysis of intrinsic hand muscles, and ulnar nerve distribution numbness. Involvement of T1 may result in Horner's syndrome. It can be contrasted to Erb-Duchenne's palsy, which affects C5 and  C6.\n\n## Physical Examination\n\n## Laboratory Findings\n\n## Imaging...\n\n[Document 5] (ID: 15281_1, Score: 0.853)\n## The Elderly\nBecause of such symptoms, people often mistake cervical spine disorder indicators for coronary artery disease, and although individuals of any age can develop spine threatening injuries, the people that are affected by it the most are the elderly. This is because as one ages spinal di..."
+        ],
+        "prior_information_summary": "50-year-old male, admitted for surgical same-day admission. Chief complaint: neck and arm pain. History of high blood pressure and diabetes. Family history of cancer and heart disease. Physical exam: atrophy of left shoulder girdle and biceps, decreased sensation in left hand, progressive weakness in grip strength, limitation in cervical spine motion, especially with left rotation. Imaging: cervical fusion (C4-C6), chest X-ray shows low lung volumes and widened superior mediastinum. Final diagnosis: cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 7,
+        "query_text": "Neck and arm pain with progressive weakness and numbness; new info includes activity-related worsening and fine motor deficits; imaging and labs not available; need memory about targeted neuro/orthopedic history before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.2772,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent trauma, falls, or lifting heavy objects that might have contributed to this pain?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t had any recent trauma, falls, or lifting heavy objects. The pain started gradually, and I haven’t done anything physically strenuous lately. I’ve just been moving around normally, but it’s been getting worse over time, especially when I bend forward or sit for long periods.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, falls, or lifting heavy objects that might have contributed to this pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, falls, or lifting heavy objects that might have contributed to this pain?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "No, I haven’t had any recent trauma, falls, or lifting heavy objects. The pain started gradually, and I haven’t done anything physically strenuous lately. I’ve just been moving around normally, but it’s been getting worse over time, especially when I bend forward or sit for long periods."
+        ],
+        "prior_information_summary": "50-year-old male with neck and arm pain; history of high blood pressure and diabetes; family history of cancer and heart disease; severe left arm pain and weakness for past year; pain with activity and at rest; no relief from steroid injections; pain with sitting and standing; decreased sensation in left hand, progressive weakness in grip strength; atrophy of left shoulder girdle and biceps; limitation in cervical spine motion; rotation to left causes severe neck and arm pain; cervical fusion C4-C6; chest X-ray shows low lung volumes and widened superior mediastinum; final diagnosis: cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 8,
+        "query_text": "Neck and arm pain with progressive weakness and atrophy; new info: no trauma, gradual onset, worse with bending/sitting; prior imaging and diagnosis of cervical spondylosis; need memory about targeted neuro exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3219,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.3219,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Cervical radiculopathy symptoms and causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'aa0fb974-fe71-4eb8-961e-df9f84b635e7': '[Document 1] (ID: 26257_0, Score: 0.896)\\nRadiculopathy\\n\\n# Overview\\nRadiculopathy is not a specific condition, but rather a description of a problem in which one or more nerves are affected and do not work properly (a neuropathy). The emphasis is on the nerve root (\"radix\" = \"root\"). This can result in pain (radicular pain), weakness, numbn...\\n\\n[Document 2] (ID: 15281_1, Score: 0.884)\\n## The Elderly\\nBecause of such symptoms, people often mistake cervical spine disorder indicators for coronary artery disease, and although individuals of any age can develop spine threatening injuries, the people that are affected by it the most are the elderly. This is because as one ages spinal di...\\n\\n[Document 3] (ID: 1757_38, Score: 0.883)\\n# Radiculopathy\\nIrritation or damage to a nerve root as it exits the spinal canal. It is most commonly caused by mechanical compression from a prolapsed intervertebral disc or degenerative arthritis of the spine. Less frequently, an infection such as herpes zoster or Lyme disease is the cause. Sympt...\\n\\n[Document 4] (ID: 15281_0, Score: 0.881)\\nCervical spine disorder\\n\\n# Overview\\nCervical Spine Disorders are illnesses that are relatively detrimental to ones physic...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Cervical radiculopathy symptoms and causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Cervical radiculopathy symptoms and causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037791",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Neck and arm pain",
+        "current_turn_information": [
+          "No recent trauma, falls, or lifting heavy objects.",
+          "Pain started gradually, worsening over time, especially with bending forward or sitting for long periods.",
+          "Tool output: [Document 1] (ID: 26257_0, Score: 0.896) Radiculopathy: Irritation or damage to a nerve root as it exits the spinal canal. Most commonly caused by mechanical compression from a prolapsed intervertebral disc or degenerative arthritis of the spine.",
+          "Tool output: [Document 2] (ID: 15281_1, Score: 0.884) Cervical spine disorder: Most common in elderly; symptoms often mistaken for coronary artery disease."
+        ],
+        "prior_information_summary": "50-year-old male with neck and arm pain. History of high blood pressure and diabetes. Family history of cancer and heart disease. Severe left arm pain and weakness for past year. Pain with activity and at rest. Steroid injections without relief. Pain with sitting and standing. Decreased sensation in left hand, progressive weakness in grip strength. Atrophy of left shoulder girdle and biceps. Normal gait. Moderate lower back pain without severe radicular pain. Limitation in cervical spine motion; rotation to left causes severe neck and arm pain. Imaging: Cervical fusion (C4-C6), chest X-ray shows low lung volumes. Final diagnosis: Cervical spondylosis without myelopathy."
+      },
+      "query": {
+        "case_id": "20037791",
+        "turn_id": 9,
+        "query_text": "Neck and arm pain with progressive weakness and sensory loss; new info suggests radiculopathy and cervical spine disorder; imaging reviewed (C4-C6 fusion, low lung volumes); avoid premature diagnosis; need targeted neuro exam before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.301,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2fdda3e3df92"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2fdda3e3df92",
+            "memory_type": "experience",
+            "score": 0.301,
+            "content": {
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "outcome": "This action would have revealed cervical spondylosis without myelopathy, which is the gold diagnosis, and prevented misdiagnosis of radiculopathy.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Cervical Radiculopathy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'236bae51-1daf-474d-9d79-c68685d91a72': '{\"diagnosis\": \"Cervical Radiculopathy\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cervical Radiculopathy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cervical Radiculopathy}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

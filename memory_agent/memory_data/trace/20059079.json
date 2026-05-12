@@ -1,0 +1,628 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20059079",
+  "turns": [
+    {
+      "case_id": "20059079",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "I am a 45-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 45-year-old female patient presenting with Cauda equina and several medical.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 1,
+        "query_text": "Cauda equina presentation in 45-year-old female; need targeted history and exam before imaging decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2449,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2013,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3075,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_da8e5db64b80",
+              "type": "experience",
+              "score": 0.2632,
+              "outcome": "failure",
+              "situation": "When a patient presents with unilateral foot drop and gait abnormalities without clear back pain or bowel/bladder symptoms, but has a history of trauma, the clinician should not finalize a diagnosis of cauda equina syndrome without imaging.",
+              "action": "Request imaging to evaluate for structural spinal pathology, such as spondylolisthesis, before finalizing a diagnosis of cauda equina syndrome.",
+              "boundary": "Use this memory when trauma is reported and neurological deficits are present, but only if imaging is available and not yet performed; do not use if imaging is unavailable or if the patient has clear signs of cauda equina syndrome (e.g., saddle anesthesia, bowel/bladder dysfunction).",
+              "tags": [
+                "negative",
+                "spinal_trauma",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been experiencing any symptoms such as lower back pain, numbness or weakness in the legs, bladder or bowel dysfunction, or loss of sensation around the groin or saddle area?"
+        },
+        "patient_or_tool_response": "{'question': 'I have left foot drop and difficulty standing on my left heel. I’m not sure about lower back pain, numbness, or weakness in my legs, bladder or bowel issues, or loss of sensation around the groin or saddle area — I was not told if I’m experiencing those.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any symptoms such as lower back pain, numbness or weakness in the legs, bladder or bowel dysfunction, or loss of sensation around the groin or saddle ",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any symptoms such as lower back pain, numbness or weakness in the legs, bladder or bowel dysfunction, or loss of sensation around the groin or saddle area?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20059079",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "I have left foot drop and difficulty standing on my left heel.",
+          "I’m not sure about lower back pain, numbness, or weakness in my legs, bladder or bowel issues, or loss of sensation around the groin or saddle area — I was not told if I’m experiencing those."
+        ],
+        "prior_information_summary": "45-year-old female with longstanding L4-L5 listhesis, asymptomatic until recent fall with back pain, burning left buttock to foot, left foot weakness/drop, urinary retention history, cystoscopy negative, bilateral L4 spondylosis with severe central stenosis, recent unintentional voiding, constipation, intermittent voiding difficulty, pain rated at rest and activity, exacerbating with walking/standing/lying on side. Past medical history: asthma, COPD, colonic diverticulitis with colectomy, gastric ulcer, DVT with Coumadin/IVC filter, bipolar disorder, PTSD. Physical exam: 5'5\" tall, 310 lbs, BP 113/69, pulse 58, left foot drop, cannot stand on left heel, forward flexed gait, normal spine alignment, left tibialis anterior weakness, absent patellar/Achilles reflexes, no clonus, Babinski downgoing, symmetric hip/knee motion, negative straight leg raise. Final result: Spondylolisthesis."
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 2,
+        "query_text": "Cauda equina presentation with new left foot drop and heel-standing difficulty; need targeted neuro exam and imaging review; avoid premature diagnosis without bladder/bowel assessment; consider spinal stenosis progression"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_da8e5db64b80",
+              "type": "experience",
+              "score": 0.257,
+              "outcome": "failure",
+              "situation": "When a patient presents with unilateral foot drop and gait abnormalities without clear back pain or bowel/bladder symptoms, but has a history of trauma, the clinician should not finalize a diagnosis of cauda equina syndrome without imaging.",
+              "action": "Request imaging to evaluate for structural spinal pathology, such as spondylolisthesis, before finalizing a diagnosis of cauda equina syndrome.",
+              "boundary": "Use this memory when trauma is reported and neurological deficits are present, but only if imaging is available and not yet performed; do not use if imaging is unavailable or if the patient has clear signs of cauda equina syndrome (e.g., saddle anesthesia, bowel/bladder dysfunction).",
+              "tags": [
+                "negative",
+                "spinal_trauma",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8750513b-ac35-4d5a-a96b-51adda9e5a15': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20059079",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "I have left foot drop and difficulty standing on my left heel. I’m not sure about lower back pain, numbness, or weakness in my legs, bladder or bowel issues, or loss of sensation around the groin or saddle area — I was not told if I’m experiencing those."
+        ],
+        "prior_information_summary": "45-year-old female with longstanding L4-L5 listhesis, asymptomatic until recent fall with back pain, burning left buttock to foot, left foot weakness/drop, urinary retention history, cystoscopy negative for bladder/urethral issues, bilateral L4 spondylosis with severe central stenosis, recent unintentional voiding, constipation, intermittent voiding difficulty, pain rated at rest and with activity, exacerbated by walking, standing, lying on side. Past medical history: asthma, COPD, colonic diverticulitis with colectomy, gastric ulcer, DVT with Coumadin/IVC filter, bipolar disorder, PTSD. Physical exam: 5'5\" tall, 310 lbs, BP 113/69, HR 58, left foot drop, cannot stand on left heel, forward flexed gait, normal spine alignment, left tibialis anterior weakness, absent patellar/Achilles reflexes, no clonus, Babinski downgoing, full hip/knee motion, negative straight leg raise. Final result: Spondylolisthesis. Knowledge base: Achondroplasia, Cervical rib, Ellis–Van Creveld syndrome."
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 3,
+        "query_text": "Cauda equina presentation with left foot drop and heel-standing difficulty; new report of uncertain bladder/bowel symptoms; need targeted neurologic and voiding history before imaging decision; avoid premature diagnosis without full symptom correlation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_da8e5db64b80",
+              "type": "experience",
+              "score": 0.2801,
+              "outcome": "failure",
+              "situation": "When a patient presents with unilateral foot drop and gait abnormalities without clear back pain or bowel/bladder symptoms, but has a history of trauma, the clinician should not finalize a diagnosis of cauda equina syndrome without imaging.",
+              "action": "Request imaging to evaluate for structural spinal pathology, such as spondylolisthesis, before finalizing a diagnosis of cauda equina syndrome.",
+              "boundary": "Use this memory when trauma is reported and neurological deficits are present, but only if imaging is available and not yet performed; do not use if imaging is unavailable or if the patient has clear signs of cauda equina syndrome (e.g., saddle anesthesia, bowel/bladder dysfunction).",
+              "tags": [
+                "negative",
+                "spinal_trauma",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2214ec98-d186-44c5-bdb1-ea00d3ec1822': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20059079",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "I have left foot drop and difficulty standing on my left heel. I’m not sure about lower back pain, numbness, or weakness in my legs, bladder or bowel issues, or loss of sensation around the groin or saddle area — I was not told if I’m experiencing those."
+        ],
+        "prior_information_summary": "45-year-old female with longstanding L4-L5 spondylosis and listhesis; recent fall with back pain, burning left buttock to foot, left foot drop, urinary retention, cystoscopy negative for bladder/urethral issues; bilateral L4 spondylosis with severe central stenosis; unintentional voiding, constipation, intermittent voiding difficulty; physical exam: 5' tall, 310 lbs, BP 113/69, pulse 58, left foot drop, cannot stand on left heel, forward flexed gait, normal spine alignment, left tibialis anterior weakness, absent patellar/Achilles reflexes, no clonus, Babinski downgoing, negative straight leg raise; final result: Spondylolisthesis."
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 4,
+        "query_text": "Cauda equina presentation with new left foot drop and heel-standing difficulty; prior imaging and exam show spondylolisthesis and neurologic deficits; need memory about urgency of MRI review before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "Cauda equina syndrome symptoms and diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'aca41b61-37e9-454d-b468-f7fd2ce0f76c': '[Document 1] (ID: 17082_5, Score: 0.908)\\nCommon physical examination findings of cauda equina syndrome include\\n- Hypesthesia\\n- Saddle dysesthesia\\n- Lasegue sign\\n- Decreased knee and ankle reflex bilaterally.\\n- Asymmetric calf wasting\\n- Lower limb weakness\\n- Positive Babinski sign\\n- Impaired proprioception\\nLaboratory findinds\\n- There are no...\\n\\n[Document 2] (ID: 17082_3, Score: 0.904)\\n# Differentiating cauda equina syndrome from other Diseases\\n- Cauda equina syndrome must be differentiated from spinal disc herniation, epidural hematoma, spinal tumor/metastasis,  spinal stenosis, and diabetic amyotrophy.\\n\\n# Epidemiology and Demographics\\n- The incidence of cauda equina syndrome is ...\\n\\n[Document 3] (ID: 17082_4, Score: 0.904)\\n# Natural History, Complications, and Prognosis\\n- If left untreated, 100% progress to permanent nerve damage and neurological deficit.\\n- Common complications of cauda equina syndrome include\\nMicturition dysfunction 48%\\nDefecation dysfunction 42%,\\nSexual dysfunction 53%\\nSciatica 48%\\nAltered sensation...\\n\\n[Document 4] (ID: 17082_0, Score: 0.897)\\nCauda equina syndrome\\n# Overview\\nThe cauda equina is a collection of nerves at the end of the spinal cord. These nerves c...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Cauda equina syndrome symptoms and diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Cauda equina syndrome symptoms and diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20059079",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "Document 1: Common physical examination findings of cauda equina syndrome include hypesthesia, saddle dysesthesia, Lasegue sign, decreased knee and ankle reflex bilaterally, asymmetric calf wasting, lower limb weakness, positive Babinski sign, impaired proprioception.",
+          "Document 2: Cauda equina syndrome must be differentiated from spinal disc herniation, epidural hematoma, spinal tumor/metastasis, spinal stenosis, and diabetic amyotrophy.",
+          "Document 3: If left untreated, 100% progress to permanent nerve damage and neurological deficit. Common complications include micturition dysfunction 48%, defecation dysfunction 42%, sexual dysfunction 53%, sciatica 48%, altered sensation.",
+          "Document 4: Cauda equina syndrome is due to compression of the cauda equina in the lumbar region. The cauda equina consists of spinal nerves L2-L5, S1-S5, and the coccygeal nerve.",
+          "Document 5: Medical Treatment: 5.4 mg/kg·h of methylprednisolone (IV) for 2 days, 5 mg of dexamethasone (IV) every 12 h."
+        ],
+        "prior_information_summary": "45-year-old female with longstanding L4-L5 spondylosis and listhesis; recent fall with back pain, burning left buttock to foot, left foot drop, urinary retention, constipation, intermittent voiding difficulty; physical exam: 310 lb, BP 113/69, pulse 58, left foot drop, cannot stand on left heel, negative straight leg raise, bilateral L4 spondylosis with severe central stenosis at L4-L5; past medical history: asthma, COPD, colonic diverticulitis with colectomy, gastric ulcer, DVT with Coumadin/IVC filter, bipolar disorder, PTSD; final result: Spondylolisthesis."
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 5,
+        "query_text": "Cauda equina syndrome with new exam findings including foot drop and reflex changes; need memory about urgency of imaging review and avoiding premature closure; consider methylprednisolone protocol and differentiate from disc herniation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in bladder or bowel function, or any sexual dysfunction?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed unintentional voiding of urine recently—twice in the past two days. Before that, I had intermittent trouble starting to urinate, but no accidental leakage. As for bowel function, I’ve only had constipation and no unintentional loss of stool. I haven’t noticed any sexual dysfunction.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in bladder or bowel function, or any sexual dysfunction?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in bladder or bowel function, or any sexual dysfunction?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20059079",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "I’ve noticed unintentional voiding of urine recently—twice in the past two days.",
+          "Before that, I had intermittent trouble starting to urinate, but no accidental leakage.",
+          "As for bowel function, I’ve only had constipation and no unintentional loss of stool.",
+          "I haven’t noticed any sexual dysfunction."
+        ],
+        "prior_information_summary": "45-year-old female with longstanding L4-L5 spondylosis and listhesis; recent fall with back pain, left foot drop, burning pain radiating to left foot; history of urinary retention, cystoscopy without bladder/urethral abnormalities; bilateral L4 spondylosis with severe central stenosis at L4-L5; current pain rating unspecified; physical exam shows left foot drop, inability to stand on left heel, normal reflexes, no clonus, Babinski downgoing; past medical history includes asthma, COPD, colonic diverticulitis with colectomy, gastric ulcer, DVT, bipolar disorder, PTSD; final result: Spondylolisthesis."
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 6,
+        "query_text": "Cauda equina presentation with new urinary symptoms; need memory about urgency to review imaging and rule out neurological progression; avoid premature diagnosis without imaging confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.203,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1985,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1836,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3146,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_da8e5db64b80",
+              "type": "experience",
+              "score": 0.2605,
+              "outcome": "failure",
+              "situation": "When a patient presents with unilateral foot drop and gait abnormalities without clear back pain or bowel/bladder symptoms, but has a history of trauma, the clinician should not finalize a diagnosis of cauda equina syndrome without imaging.",
+              "action": "Request imaging to evaluate for structural spinal pathology, such as spondylolisthesis, before finalizing a diagnosis of cauda equina syndrome.",
+              "boundary": "Use this memory when trauma is reported and neurological deficits are present, but only if imaging is available and not yet performed; do not use if imaging is unavailable or if the patient has clear signs of cauda equina syndrome (e.g., saddle anesthesia, bowel/bladder dysfunction).",
+              "tags": [
+                "negative",
+                "spinal_trauma",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2557,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Cauda equina syndrome}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d3f2f859-f339-430d-ab27-bbe240698f45': '{\"diagnosis\": \"Cauda equina syndrome\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cauda equina syndrome}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cauda equina syndrome}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20059079",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Cauda equina",
+        "current_turn_information": [
+          "I have only had constipation without any unintentional loss of stool."
+        ],
+        "prior_information_summary": "45-year-old female with longstanding L4-L5 listhesis, asymptomatic until recent fall in park with pop in back, causing spontaneous onset of back pain, burning pain radiating to left foot, left foot weakness and foot drop. History of urinary retention, evaluated by urologist with cystoscopy showing no bladder/urethral abnormalities. Bilateral L4 spondylosis with severe central stenosis at L4-L5. Recent unintentional voiding of urine. Bowel: constipation only. Pain rated at rest and with activity, exacerbated by walking, prolonged standing, lying on side. Physical exam: left foot drop, cannot stand on heels on left, forward flexed posture, normal spinal alignment, bilateral lower extremity weakness except left tibialis anterior, absent patellar and Achilles reflexes, no clonus, Babinski downgoing, full hip/knee motion, negative straight leg raise. Past medical history: asthma, COPD, colonic diverticulitis with colectomy, gastric ulcer, DVT with Coumadin/IVC filter, bipolar disorder, PTSD. Final result: Spondylolisthesis."
+      },
+      "query": {
+        "case_id": "20059079",
+        "turn_id": 7,
+        "query_text": "Cauda equina presentation with new constipation; need memory about bowel/bladder dysfunction in spinal stenosis; avoid premature diagnosis without imaging review; consider targeted neuro exam before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Cauda Equina Syndrome}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ff8b31f0-1fb1-4a02-9c05-c5e0a735e333': '{\"diagnosis\": \"Cauda Equina Syndrome\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cauda Equina Syndrome}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cauda Equina Syndrome}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

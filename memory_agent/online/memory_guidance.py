@@ -46,7 +46,6 @@ def _memory_content_view(hit: RetrievalHit) -> dict[str, Any]:
             "goal": content.get("goal_text") or "",
             "procedure": content.get("procedure_text") or content.get("procedure") or "",
             "boundary": content.get("boundary_text") or "",
-            "tags": content.get("tags") or [],
         }
     if memory_type == "knowledge":
         return {

@@ -65,14 +65,12 @@ SKILL_SCHEMA = {
         "procedure_text",
         "procedure",
         "boundary_text",
-        "tags",
         "confidence",
         "support_count",
         "source",
     ],
     "list_fields": [
         "procedure",
-        "tags",
     ],
     "dict_fields": ["source"],
     "enum_fields": {

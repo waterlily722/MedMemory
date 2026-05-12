@@ -1,0 +1,1244 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20136375",
+  "turns": [
+    {
+      "case_id": "20136375",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "I am a 76-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 76-year-old male patient presenting with nausea, vomiting and CLL."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 1,
+        "query_text": "nausea and vomiting in 76-year-old male with CLL; need memory about targeted history and labs before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.218,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1804,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2525,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2516,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any fever, chills, or weight loss in the past few weeks?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t had any fever, chills, or weight loss in the past few weeks.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, or weight loss in the past few weeks?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, or weight loss in the past few weeks?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "No, I haven’t had any fever, chills, or weight loss in the past few weeks."
+        ],
+        "prior_information_summary": "76-year-old male, admitted via emergency room for nausea, vomiting. History includes CLL, SCC, BCC, HTN. Received first round of cisplatin yesterday. Symptoms began after chemotherapy. Vitals: initial 97, 143/115, 93, 18, 99%RA; prior transfer 70, 131/63, 17, 100%RA. Currently has returned nausea and dry heaves. Denies fever, chills, nightsweats, chest pain, SOB, orthopnea, PND, edema, abdominal pain, hematochezia, melena, neurological complaints. Past medical history: basal cell epitheliomas, squamous cell carcinomas, CLL, HTN, hyperuricemia, melanoma, hyperlipidemia, anxiety, CKD stage 3. Social history: married, non-contributory family history. Physical exam: VS 96, 142/78, 71, 16, 100%RA; general: well-developed, well-nourished, no acute distress; HEENT: mouth slightly dry; CV: regular rate and rhythm, no murmurs; LUNGS: clear bilaterally; ABD: soft, non-tender, normal bowel sounds; EXT: no C/C/E; NEURO: alert, oriented x3, motor function grossly intact. Objective: Assess and diagnose patient presenting with nausea, vomiting and CLL."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 2,
+        "query_text": "nausea and vomiting post cisplatin; patient denies fever or weight loss; need memory about chemotherapy-related GI toxicity vs other causes; avoid premature diagnosis without lab or imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1892,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3653,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_2328f1b427f6",
+              "type": "experience",
+              "score": 0.2794,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping abdominal pain, syncope, and weight loss, and the initial hypothesis points toward GI causes without imaging or lab confirmation, what should the doctor do?",
+              "action": "Request imaging to evaluate for structural causes like fracture or mass, especially when syncope and weight loss are present, as these suggest systemic involvement beyond simple GI dysfunction.",
+              "boundary": "Use this memory when syncope, weight loss, or systemic symptoms are present alongside GI complaints; do not use if imaging is unavailable or if the patient is too unstable for imaging, or if the history clearly points to a non-structural cause.",
+              "tags": [
+                "negative",
+                "syncope",
+                "weight_loss",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2734,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any bleeding or bruising recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any bleeding or bruising recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any bleeding or bruising recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "76-year-old male, admitted via emergency room for nausea, vomiting. History includes CLL, SCC, BCC, HTN. Received first round of cisplatin yesterday. Symptoms began after chemotherapy. Vitals: initial 97, 143/115, 93, 18, 99%RA; prior transfer 70, 131/63, 17, 100%RA. Currently has returned nausea and dry heaves. Denies fever, chills, weight loss, abdominal pain, hematochezia, melena, neurological complaints. Physical exam: VS 96, 142/78, 71, 16, 100%RA. General: WDWN, NAD. HEENT: MM slightly dry. CV: RRR, no MRG. LUNGS: CTA bilaterally, no wheezes, rales, rhonci. ABD: soft, NT, normal BS, no organomegaly. EXT: no C/C/E. NEURO: A/O x 3, motor function grossly intact. Past medical history: basal cell epitheliomas, squamous cell carcinomas, CLL, HTN, hyperuricemia, melanoma, hyperlipidemia, anxiety, CKD stage 3. Social history: non-contributory family history. Objective: Assess and diagnose patient presenting with nausea, vomiting and CLL."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 3,
+        "query_text": "nausea and vomiting post cisplatin; patient denies fever or abdominal pain; need memory about targeted history before imaging or lab; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2645,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2249,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2232,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2107,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2089,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3649,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3345,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3188,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_319b5f0239cc",
+          "exp_b36ecb08deb2"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_319b5f0239cc",
+            "memory_type": "experience",
+            "score": 0.3649,
+            "content": {
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "outcome": "Premature finalization led to misdiagnosis; the gold diagnosis was calculus of ureter, which could have been identified with targeted imaging or lab work.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_b36ecb08deb2",
+            "memory_type": "experience",
+            "score": 0.3188,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "outcome": "This action prevented premature closure and avoided missing the gold diagnosis of amphetamine poisoning, which would have been revealed by toxicology testing.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b89c9b84-24b8-440d-b398-e21b105850e2': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "76-year-old male, admitted via emergency room for nausea, vomiting. History includes CLL, SCC, BCC, HTN. Received first round of cisplatin yesterday. Symptoms began after cisplatin. Denies hematemesis, abdominal pain. Vitals: initial 97, 143/115, 93, 18, 99%RA; prior transfer 70, 131/63, 17, 100%RA. Current symptoms: nausea returned, dry heaves. No fever, chills, weight loss. No neurological complaints. Physical exam: VS 96, 142/78, 71, 16, 100%RA. General: WDWN, NAD. HEENT: MM slightly dry. CV: RRR, no MRG. LUNGS: CTA bilaterally, no wheezes, rales, rhonci. ABD: soft, NT, normal BS, no organomegaly. EXT: no C/C/E. NEURO: A/O x 3, motor function grossly intact. Past medical history: basal cell epitheliomas, squamous cell carcinomas, CLL, HTN, hyperuricemia, melanoma, hyperlipidemia, anxiety, CKD stage 3. Social history: non-contributory family history."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 4,
+        "query_text": "nausea and vomiting post-cisplatin; labs pending; need memory about chemotherapy side effects and targeted lab requests; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2582,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "CLL complications and symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3c0dc65a-0e3a-4e6b-b153-6491948796df': '[Document 1] (ID: 25922_9, Score: 0.883)\\n# Natural History, Complications and Prognosis\\n- The majority of patients with lymphocytosis remain asymptomatic unless there is significant lymphadenopathy or infection.\\n- Early clinical features can include, but do not necessarily need to include, fever, fatigue, night sweats, weight loss, and lym...\\n\\n[Document 2] (ID: 1376_4, Score: 0.876)\\n## Chronic lymphocytic leukaemia has a substantial effect on quality of life\\nCLL is the most common form of leukaemia and is associated with fatigue and recurrent infections. The patient experts explained that the disease is commonly relapsing–remitting and so patients are often thinking about the n...\\n\\n[Document 3] (ID: 3691_54, Score: 0.873)\\n## Risk of other diseases\\nInfections Th e risk of infections is related to progressive defect both in antibody-and cell-mediated immunity. In addition, therapy may worsen immune impairment, particularly fl udarabine and anti-CD20 antibodies, but also B-cell receptor inhibitors. For this reason, infe...\\n\\n[Document 4] (ID: 25922_10, Score: 0.872)\\n## Symptoms\\n- Symptoms of lymphocytosis may include the following:\\n- Weight loss\\n- Fever\\n- Night sweats\\n- Palpable lympha...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CLL complications and symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CLL complications and symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "No, I haven’t had any fever, chills, or weight loss in the past few weeks.",
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "[Document 1] (ID: 25922_9, Score: 0.883)\n# Natural History, Complications and Prognosis\n- The majority of patients with lymphocytosis remain asymptomatic unless there is significant lymphadenopathy or infection.\n- Early clinical features can include, but do not necessarily need to include, fever, fatigue, night sweats, weight loss, and lym...\n\n[Document 2] (ID: 1376_4, Score: 0.876)\n## Chronic lymphocytic leukaemia has a substantial effect on quality of life\nCLL is the most common form of leukaemia and is associated with fatigue and recurrent infections. The patient experts explained that the disease is commonly relapsing–remitting and so patients are often thinking about the n...\n\n[Document 3] (ID: 3691_54, Score: 0.873)\n## Risk of other diseases\nInfections Th e risk of infections is related to progressive defect both in antibody-and cell-mediated immunity. In addition, therapy may worsen immune impairment, particularly fl udarabine and anti-CD20 antibodies, but also B-cell receptor inhibitors. For this reason, infe...\n\n[Document 4] (ID: 25922_10, Score: 0.872)\n## Symptoms\n- Symptoms of lymphocytosis may include the following:\n- Weight loss\n- Fever\n- Night sweats\n- Palpable lymphadenopathy\n- Abdominal pain if splenomegaly is present\n- Fatigue if marrow replacement occurs affecting normal erythropoiesis\n- Infection\n- Bleeding if marrow replacement occurs af...\n\n[Document 5] (ID: 1219_2, Score: 0.869)\n# The condition\nChronic lymphocytic leukaemia (CLL) is a malignant disorder of white blood cells and is the most common type of leukaemia in England. The patient experts explained that the physical and psychological effects of CLL have a debilitating effect on their daily lives. The risk of CLL incr..."
+        ],
+        "prior_information_summary": "76-year-old male, admitted for nausea, vomiting, and CLL. History includes past medical conditions: basal cell epitheliomas, squamous cell carcinomas, CLL, HTN, hyperuricemia, melanoma, hyperlipidemia, anxiety, CKD stage 3. Social history: married, non-contributory family history. Chief complaint: nausea, vomiting. HPI: presents post cisplatin chemotherapy; initial vitals in ED: 97, 143/115, 93, 18, 99%RA; prior vitals: 70, 131/63, 17, 100%RA. Currently, nausea returned with dry heaves. Denies fever, chills, night sweats, chest pain, SOB, orthopnea, PND, edema, abdominal pain, hematochezia, melena, neurological complaints. Physical exam: VS 96, 142/78, 71, 16, 100%RA; general: WDWN, NAD; HEENT: MM slightly dry; CV: RRR, no MRG; LUNGS: CTA bilaterally, no wheezes, rales, rhonci; ABD: soft, NT, normal BS, no organomegaly; EXT: no C/C/E; NEURO: A/O x 3, motor function grossly intact. Final result: Nausea with vomiting. Objective: Assess and diagnose 76-year-old male presenting with nausea, vomiting and CLL."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 5,
+        "query_text": "nausea and vomiting post cisplatin; no fever or weight loss reported; need memory about targeted history for chemotherapy side effects; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2111,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2079,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1903,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1863,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3646,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_31a89b51741f",
+              "type": "experience",
+              "score": 0.3106,
+              "outcome": "failure",
+              "situation": "When a patient presents with a solitary pulmonary nodule and a history of breast cancer, but no symptoms like weight loss or fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis.",
+              "action": "Do not finalize diagnosis without reviewing available imaging or obtaining specific tests for BIA-ALCL, such as imaging findings or fluid analysis.",
+              "boundary": "Use this memory when imaging or specific tests are unavailable and the patient has no symptoms; do not use if imaging or fluid analysis is available or if symptoms suggest BIA-ALCL.",
+              "tags": [
+                "negative",
+                "missing_imaging",
+                "premature_closure",
+                "chest_pain"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2989,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_31a89b51741f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_31a89b51741f",
+            "memory_type": "experience",
+            "score": 0.3106,
+            "content": {
+              "situation": "When a patient presents with a solitary pulmonary nodule and a history of breast cancer, but no symptoms like weight loss or fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis.",
+              "action": "Do not finalize diagnosis without reviewing available imaging or obtaining specific tests for BIA-ALCL, such as imaging findings or fluid analysis.",
+              "outcome": "Finalizing diagnosis without reviewing imaging or specific tests led to a wrong direction and missed the gold diagnosis of solitary pulmonary nodule.",
+              "boundary": "Use this memory when imaging or specific tests are unavailable and the patient has no symptoms; do not use if imaging or fluid analysis is available or if symptoms suggest BIA-ALCL.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_imaging",
+                "premature_closure",
+                "chest_pain"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swollen lymph nodes, abdominal pain, or fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swollen lymph nodes, abdominal pain, or fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swollen lymph nodes, abdominal pain, or fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "76-year-old male, admitted via emergency room for nausea, vomiting, and CLL. History includes CLL, SCC, BCC, HTN, hyperuricemia, melanoma, hyperlipidemia, anxiety, CKD stage 3. Patient received first round of cisplatin yesterday, developed nausea and dry heaves today. No fever, chills, weight loss, abdominal pain, hematemesis, melena, or neurological symptoms. Review of systems negative. Physical exam: VS 96, 142/78, 71, 16, 100%RA; general: well-developed, no distress; HEENT: mouth slightly dry; CV: regular rate, no murmurs; LUNGS: clear bilaterally; ABD: soft, no organomegaly; EXT: no C/C/E; NEURO: alert, oriented, motor function intact. Objective: Assess and diagnose patient presenting with nausea, vomiting and CLL."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 6,
+        "query_text": "nausea and vomiting post cisplatin; patient denies focal symptoms or systemic signs; need memory about managing chemotherapy-induced nausea; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2296,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.223,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.1876,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.3383,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3182,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.3014,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Nausea and vomiting in CLL"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e8863df6-4693-4c3f-b8a5-e06bf8d6394a': '[Document 1] (ID: 20298_7, Score: 0.859)\\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\\n\\n[Document 2] (ID: 5526_0, Score: 0.854)\\nNausea, vomiting, diarrhea, fatigue and abdominal pain\\n\\n# Differentials based on nausea, vomiting, diarrhea, fatigue and abdominal pain\\nGastric dumping syndrome should be differentiated from other diseases presenting with nausea, vomiting, diarrhea, fatigue and abdominal pain. The differentials incl...\\n\\n[Document 3] (ID: 31116_6, Score: 0.850)\\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%...\\n\\n[Document 4] (ID: 31685_7, Score: 0.850)\\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse reacti...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 1.0,
+        "delta": 0.6666666666666667,
+        "turn_reward": 0.13333333333333336,
+        "importance": 0.6666666666666667
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Nausea and vomiting in CLL\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Nausea and vomiting in CLL\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "No, I haven’t had any fever, chills, or weight loss in the past few weeks.",
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "Nausea, vomiting, diarrhea, fatigue and abdominal pain",
+          "The most common adverse reactions (≥20%) of any grade were neutropenia, diarrhea, nausea, anemia, upper respiratory tract infection, thrombocytopenia, and fatigue."
+        ],
+        "prior_information_summary": "76-year-old male, admitted for nausea, vomiting, and CLL. History includes recent cisplatin chemotherapy, no fever, chills, or weight loss. Past medical history: CLL, SCC, BCC, HTN, hyperuricemia, melanoma, hyperlipidemia, anxiety, CKD stage 3. Social history: married, non-contributory family history. Physical exam: VS 96, 142/78, 71, 16, 100%RA; no organomegaly, neurologically intact. Review of systems: denies fever, chills, night sweats, chest pain, SOB, orthopnea, PND, edema, abdominal pain, hematochezia, melena, neurological complaints. No significant findings on physical exam. Knowledge base includes dysphagia and fecal incontinence definitions and causes. Labs not available. Tool output: no lab results found."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 7,
+        "query_text": "nausea, vomiting, diarrhea, fatigue, abdominal pain; recent cisplatin chemo; no fever or weight loss; labs not available; need targeted history and exam before imaging or lab decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2343,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2287,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1966,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1947,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1877,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3364,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.316,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.2914,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{CLL-related nausea and vomiting}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0741baf8-d8ac-4853-8a50-c72047a197f1': '{\"diagnosis\": \"CLL-related nausea and vomiting\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{CLL-related nausea and vomiting}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{CLL-related nausea and vomiting}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "No, I haven’t noticed any fever, chills, or night sweats recently.",
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "Nausea, vomiting, diarrhea, fatigue and abdominal pain",
+          "The majority of patients with lymphocytosis remain asymptomatic unless there is significant lymphadenopathy or infection.",
+          "CLL is the most common form of leukaemia and is associated with fatigue and recurrent infections.",
+          "Symptoms of lymphocytosis may include the following: Weight loss, Fever, Night sweats, Palpable lymphadenopathy, Abdominal pain if splenomegaly is present, Fatigue if marrow replacement occurs affecting normal erythropoiesis, Infection, Bleeding if marrow replacement occurs affecting normal thrombopoiesis."
+        ],
+        "prior_information_summary": "76-year-old male, admitted for nausea, vomiting, and CLL. History includes CLL, SCC, BCC, HTN, and recent cisplatin chemotherapy. Denies fever, chills, night sweats, chest pain, SOB, orthopnea, PND, edema, abdominal pain, hematochezia, melena, or neurological complaints. Review of systems negative. Physical exam: VS 96, 142/78, 71, 16, 100%RA. General: WDWN male, NAD. HEENT: MM slightly dry. CV: RRR, no MRG. LUNGS: CTA bilaterally, no wheezes, rales, or rhonci. ABD: soft, NT, normal BS, no organomegaly. EXT: no C/C/E. NEURO: A/O x 3, answers all questions appropriately, motor function grossly intact. Final result: Nausea with vomiting. Past medical history: basal cell epitheliomas, squamous cell carcinomas, CLL diagnosed in ___ , HTN, Hyperuricemia, h/o melanoma, Hyperlipidemia, Anxiety, CKD stage 3. Social history: ___ , Family History: Non-contributory. Objective for doctor: Assess and diagnose the 76-year-old male patient presenting with nausea, vomiting and CLL."
+      },
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 8,
+        "query_text": "nausea, vomiting with CLL; new info denies fever/chills/night sweats; need memory about targeted history for abdominal pain or infection; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1912,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2852,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2767,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2766,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Chronic Lymphocytic Leukaemia (CLL) with associated nausea and vomiting as part of its systemic manifestations or treatment-related side effects}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f849884a-6b44-4766-a711-c687a6b6aad9': '{\"diagnosis\": \"Chronic Lymphocytic Leukaemia (CLL) with associated nausea and vomiting as part of its systemic manifestations or treatment-related side effects\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic Lymphocytic Leukaemia (CLL) with associated nausea and vomiting as part of its systemic manifestations or treatment-related side effe",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic Lymphocytic Leukaemia (CLL) with associated nausea and vomiting as part of its systemic manifestations or treatment-related side effects}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

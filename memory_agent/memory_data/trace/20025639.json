@@ -1,0 +1,1491 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20025639",
+  "turns": [
+    {
+      "case_id": "20025639",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Assess and diagnose the 30-year-old male patient based on the available clinical presentation.",
+          "Epilepsy, unspecified, not intractable, without status epilepticus"
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 1,
+        "query_text": "Epilepsy diagnosis without status epilepticus; need memory about next-step actions before finalizing; avoid premature closure; consider targeted history or imaging if available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2156,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2149,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2054,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2992,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2686,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.2547,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did your symptoms first start, and have they been continuous or intermittent?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "30-year-old male patient admitted for evaluation. Admission type: EU OBSERVATION. Admission location: PHYSICIAN REFERRAL. Admission time: 2191-01-27 23:13:00. Discharge time: 2191-01-28 11:57:00. Diagnostic window: 2191-01-27 23:13:00 to 2191-01-28 06:08:00. Patient is male, 30 years old, Spanish-speaking, Hispanic/Latino-Dominican, married, Medicaid-insured. Objective: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Final Result: Epilepsy, unspecified, not intractable, without status epilepticus. Knowledge base includes Dravet syndrome, Infantile epileptic spasms syndrome, and Lennox–Gastaut syndrome with their respective diagnostic criteria, symptoms, causes, and prognoses."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 2,
+        "query_text": "Patient admitted for epilepsy evaluation; current turn reports no prior issues in the affected area; need memory about targeted history to rule out focal triggers; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2155,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1898,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1831,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2828,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2685,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.2536,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having seizures since around six months old, often triggered by fever or even warm baths. They’re prolonged—sometimes lasting more than 15 minutes—and I’ve had them both with and without fever. The seizures started out as convulsions, and over time, I’ve developed other types, like myoclonic jerks. I also have trouble with motor skills and language development, and I often feel very tired or have trouble sleeping. I’ve noticed that my seizures get worse as I get older, and they’re very hard to control with medicine. I also sometimes have trouble with balance and coordination, and I’ve had episodes where I’ve fallen suddenly.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having seizures since around six months old, often triggered by fever or even warm baths.",
+          "They’re prolonged—sometimes lasting more than 15 minutes—and I’ve had them both with and without fever.",
+          "The seizures started out as convulsions, and over time, I’ve developed other types, like myoclonic jerks.",
+          "I also have trouble with motor skills and language development, and I often feel very tired or have trouble sleeping.",
+          "I’ve noticed that my seizures get worse as I get older, and they’re very hard to control with medicine.",
+          "I also sometimes have trouble with balance and coordination, and I’ve had episodes where I’ve fallen suddenly."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient has no prior reported issues in the area. Patient is Hispanic/Latino-Dominican, married, speaks Spanish, insured by Medicaid. Admission type: EU OBSERVATION. Admission location: PHYSICIAN REFERRAL. Diagnostic window: 2191-01-27 23:13:00 to 2191-01-28 06:08:00. Final Result: Epilepsy, unspecified, not intractable, without status epilepticus. Knowledge base includes Dravet syndrome, Infantile epileptic spasms syndrome, and Lennox–Gastaut syndrome with their respective diagnostic criteria, symptoms, causes, and prognoses."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 3,
+        "query_text": "seizures since infancy with evolving types and poor control; new info on motor/language delay and worsening with age; need memory on diagnostic criteria for Dravet, Lennox–Gastaut, and infantile spasms; avoid premature diagnosis without imaging or lab review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Epilepsy in children with febrile seizures, myoclonic jerks, motor skill deficits, and developmental delay"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'390cbf8f-8bb4-4ac5-9932-833e314e72cd': '[Document 1] (ID: 20580_2, Score: 0.872)\\n# Classification\\nIn juvenile myoclonic epilepsy, seizures usually involve the neck, shoulders, and upper arms. These seizures typically occur shortly after waking up. They normally begin between puberty and early adulthood. They can usually be controlled with medication, but it must be taken for lif...\\n\\n[Document 2] (ID: 12814_0, Score: 0.864)\\nJuvenile myoclonic epilepsy\\nJuvenile myoclonic epilepsy (JME), also known as Janz syndrome, is a fairly common form of idiopathic generalized epilepsy, representing 5-10% of all epilepsies. This disorder typically first manifests itself between the ages of 12 and 18 with myoclonus occurring early in...\\n\\n[Document 3] (ID: 21319_1, Score: 0.864)\\n### Neurologic\\n- Generalized seizures\\n- Tonic seizures (a generalized seizure involving a sudden stiffening of the limbs).\\n- Partial seizures\\n- Myoclonic seizures\\n- Profound mental and physical retardation\\n- Encephalopathy\\n\\n## Laboratory Findings\\n\\n### EEG\\n- OS is characterized by a “burst suppressio...\\n\\n[Document 4] (ID: 3667_5, Score: 0.860)\\n## Pediatric epilepsy\\nDiagnosis of basic seizures follows the diagnosis guideline of International League against Epilepsy...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Epilepsy in children with febrile seizures, myoclonic jerks, motor skill deficits, and developmental delay\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Epilepsy in children with febrile seizures, myoclonic jerks, motor skill deficits, and developmental delay\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having seizures since around six months old, often triggered by fever or even warm baths. They’re prolonged—sometimes lasting more than 15 minutes—and I’ve had them both with and without fever. The seizures started out as convulsions, and over time, I’ve developed other types, like myoclonic jerks. I also have trouble with motor skills and language development, and I often feel very tired or have trouble sleeping. I’ve noticed that my seizures get worse as I get older, and they’re very hard to control with medicine. I also sometimes have trouble with balance and coordination, and I’ve had episodes where I’ve fallen suddenly."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient reports no prior issues in the area. Medical history includes prolonged seizures since infancy, triggered by fever or warm baths, evolving to myoclonic jerks. Cognitive and motor delays, sleep issues, and worsening seizures with age. Patient has no known prior abnormal findings. Final Result: Epilepsy, unspecified, not intractable, without status epilepticus. Knowledge base includes Dravet syndrome, Infantile epileptic spasms syndrome, and Lennox–Gastaut syndrome."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 4,
+        "query_text": "seizures since infancy with evolving types and worsening control; new info on motor/language delays and sleep issues; need memory about differential diagnosis including Dravet syndrome; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'97bc81f5-e443-4ca4-ae7f-82cb3d8bc2ed': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "30-year-old male patient with history of seizures since 6 months old, triggered by fever or warm baths, prolonged seizures (>15 minutes), evolving to myoclonic jerks, motor and language developmental delays, sleep issues, worsening seizures with age, hard to control with meds, balance/coordination problems, sudden falls. Patient reports no prior abnormal findings in that area. Case objective: Assess and diagnose based on clinical presentation. Final result: Epilepsy, unspecified, not intractable, without status epilepticus. Knowledge base includes Dravet syndrome, infantile epileptic spasms syndrome, Lennox–Gastaut syndrome."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 5,
+        "query_text": "Patient with history of refractory seizures and developmental delays; labs not available; need memory about targeted diagnostic next steps before finalizing epilepsy diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2641,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2049,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.1936,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1904,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.1874,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7922b18d9057",
+              "type": "experience",
+              "score": 0.3258,
+              "outcome": "failure",
+              "situation": "When a patient reports seizures and developmental delays without clear acute symptoms, but the initial history is unremarkable, the doctor should not prematurely finalize a diagnosis without reviewing imaging or labs.",
+              "action": "Avoid finalizing a diagnosis of epilepsy with developmental delay without first requesting and reviewing relevant imaging or lab results to rule out mimics or underlying causes.",
+              "boundary": "Use this memory when seizures and developmental delays are present but no imaging or labs are available; do not use if imaging or labs are available and not reviewed.",
+              "tags": [
+                "negative",
+                "epilepsy",
+                "developmental_delay",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3114,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.2686,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7922b18d9057"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7922b18d9057",
+            "memory_type": "experience",
+            "score": 0.3258,
+            "content": {
+              "situation": "When a patient reports seizures and developmental delays without clear acute symptoms, but the initial history is unremarkable, the doctor should not prematurely finalize a diagnosis without reviewing imaging or labs.",
+              "action": "Avoid finalizing a diagnosis of epilepsy with developmental delay without first requesting and reviewing relevant imaging or lab results to rule out mimics or underlying causes.",
+              "outcome": "Premature finalization led to a diagnosis that did not match the gold standard, indicating missing evidence that could have clarified the etiology.",
+              "boundary": "Use this memory when seizures and developmental delays are present but no imaging or labs are available; do not use if imaging or labs are available and not reviewed.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "epilepsy",
+                "developmental_delay",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f0c3b91a-bec7-472f-af8a-f77fcf184eae': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having seizures since around six months old, often triggered by fever or even warm baths. They’re prolonged—sometimes lasting more than 15 minutes—and I’ve had them both with and without fever. The seizures started out as convulsions, and over time, I’ve developed other types, like myoclonic jerks. I also have trouble with motor skills and language development, and I often feel very tired or have trouble sleeping. I’ve noticed that my seizures get worse as I get older, and they’re very hard to control with medicine. I also sometimes have trouble with balance and coordination, and I’ve had episodes where I’ve fallen suddenly."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient reports seizures since 6 months of age, triggered by fever or warm baths, prolonged (>15 min), evolving to myoclonic jerks. Has motor and language delays, sleep issues, worsening seizures with age, drug-resistant. History includes normal development initially, then slow development. Final Result: Epilepsy, unspecified, not intractable, without status epilepticus. Knowledge base includes Dravet syndrome, infantile spasms, Lennox-Gastaut syndrome. No lab or imaging results available."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 6,
+        "query_text": "seizures since infancy with evolving types and drug resistance; new info on worsening with age and motor/language delays; need memory about differential including Dravet or Lennox-Gastaut; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'15f41679-a706-4e8f-85a8-ba99092b1cbd': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is a 30-year-old male with a history of seizures since around 6 months of age, often triggered by fever or warm baths, prolonged seizures (>15 minutes), evolving to myoclonic jerks, motor and language developmental delays, sleep issues, worsening seizures with age, poor medication control, balance/coordination problems, and sudden falls. Patient reports no prior abnormal findings in this area. Tool outputs for labs, imaging, and CXR were not found. Knowledge base includes information on Dravet syndrome, infantile spasms, and Lennox-Gastaut syndrome, with final result indicating epilepsy, unspecified, not intractable, without status epilepticus."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 7,
+        "query_text": "epilepsy with poor control and developmental delays; no labs or imaging results available; need memory about targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.303,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2463,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2427,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2328,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2307,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7922b18d9057",
+              "type": "experience",
+              "score": 0.3244,
+              "outcome": "failure",
+              "situation": "When a patient reports seizures and developmental delays without clear acute symptoms, but the initial history is unremarkable, the doctor should not prematurely finalize a diagnosis without reviewing imaging or labs.",
+              "action": "Avoid finalizing a diagnosis of epilepsy with developmental delay without first requesting and reviewing relevant imaging or lab results to rule out mimics or underlying causes.",
+              "boundary": "Use this memory when seizures and developmental delays are present but no imaging or labs are available; do not use if imaging or labs are available and not reviewed.",
+              "tags": [
+                "negative",
+                "epilepsy",
+                "developmental_delay",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3081,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.3013,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7922b18d9057"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7922b18d9057",
+            "memory_type": "experience",
+            "score": 0.3244,
+            "content": {
+              "situation": "When a patient reports seizures and developmental delays without clear acute symptoms, but the initial history is unremarkable, the doctor should not prematurely finalize a diagnosis without reviewing imaging or labs.",
+              "action": "Avoid finalizing a diagnosis of epilepsy with developmental delay without first requesting and reviewing relevant imaging or lab results to rule out mimics or underlying causes.",
+              "outcome": "Premature finalization led to a diagnosis that did not match the gold standard, indicating missing evidence that could have clarified the etiology.",
+              "boundary": "Use this memory when seizures and developmental delays are present but no imaging or labs are available; do not use if imaging or labs are available and not reviewed.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "epilepsy",
+                "developmental_delay",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "microbiology"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a35289fe-d704-49e1-a434-663ce46e5127': '{\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\\\"microbiology\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having seizures since around six months old, often triggered by fever or even warm baths. They’re prolonged—sometimes lasting more than 15 minutes—and I’ve had them both with and without fever. The seizures started out as convulsions, and over time, I’ve developed other types, like myoclonic jerks. I also have trouble with motor skills and language development, and I often feel very tired or have trouble sleeping. I’ve noticed that my seizures get worse as I get older, and they’re very hard to control with medicine. I also sometimes have trouble with balance and coordination, and I’ve had episodes where I’ve fallen suddenly."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient reports no prior issues in the area. No lab, imaging, or microbiology results available. Knowledge base includes Dravet syndrome, infantile epileptic spasms syndrome, and Lennox–Gastaut syndrome. Final result: Epilepsy, unspecified, not intractable, without status epilepticus."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 8,
+        "query_text": "seizures since infancy with evolving types and poor control; new info on motor/language delay and worsening with age; need memory about differential diagnosis including Dravet or Lennox–Gastaut; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "EEG"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'03c5559d-3167-4ff4-a22f-23817e289f6d': '{\"exam_type\": \"EEG\", \"source\": \"none\", \"result\": \"No result for \\\\\"EEG\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"EEG\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"EEG\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having seizures since around six months old, often triggered by fever or even warm baths. They’re prolonged—sometimes lasting more than 15 minutes—and I’ve had them both with and without fever. The seizures started out as convulsions, and over time, I’ve developed other types, like myoclonic jerks. I also have trouble with motor skills and language development, and I often feel very tired or have trouble sleeping. I’ve noticed that my seizures get worse as I get older, and they’re very hard to control with medicine. I also sometimes have trouble with balance and coordination, and I’ve had episodes where I’ve fallen suddenly."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient reports seizures since 6 months of age, triggered by fever or warm baths, prolonged (>15 min), evolving to myoclonic jerks. Also reports motor/language delays, fatigue, sleep issues, worsening seizures with age, poor medication control, balance issues, and fall episodes. No prior lab, imaging, or EEG results available. Knowledge base includes Dravet syndrome, infantile spasms, and Lennox-Gastaut syndrome. Final result: Epilepsy, unspecified, not intractable, without status epilepticus."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 9,
+        "query_text": "seizures since infancy with evolving types and poor control; new info on motor/language delays and worsening with age; need memory about targeted diagnostic workup before finalizing epilepsy diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Juvenile Myoclonic Epilepsy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'83a7698a-115e-4ca1-90fb-8c22747a102d': '{\"diagnosis\": \"Juvenile Myoclonic Epilepsy\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Juvenile Myoclonic Epilepsy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Juvenile Myoclonic Epilepsy}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed my appetite has been off lately—I’m not as hungry as I used to be, and sometimes I just don’t feel like eating. My energy levels are really low too; I’m tired all the time, even after sleeping. Sleep has been a struggle—I’ve been having trouble falling asleep, and when I do, I wake up feeling unrested. I’ve also noticed that I’m more irritable and have trouble focusing, which makes it hard to keep up with daily tasks."
+        ],
+        "prior_information_summary": "Patient is a 30-year-old male, admitted for evaluation. Chief complaint not specified. Patient reports no prior issues in the area. Patient reports low appetite, low energy, sleep difficulties, irritability, and trouble focusing. Labs show no results. Tool outputs suggest symptoms like fatigue, insomnia, irritability, and low appetite. No abnormal findings reported in prior turns."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 10,
+        "query_text": "low appetite, fatigue, sleep issues, irritability; no labs or imaging yet; need memory about targeted history and exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2604,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2349,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2223,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1994,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1821,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3088,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3083,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_d85a3ae9ae01",
+              "type": "experience",
+              "score": 0.2982,
+              "outcome": "failure",
+              "situation": "When a patient describes morning panic symptoms, alcohol use, and functional decline, but no clear sleep or appetite changes, the doctor should ask targeted questions about sleep, appetite, and energy to refine the differential.",
+              "action": "Ask targeted questions about sleep, appetite, and energy levels to identify patterns consistent with alcohol withdrawal or anxiety disorder.",
+              "boundary": "Use this memory when patient reports anxiety and alcohol use, but only if no clear sleep or appetite changes are reported; do not use if these symptoms are already documented or if the patient is clearly presenting with primary anxiety.",
+              "tags": [
+                "negative",
+                "alcohol_withdrawal",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_319b5f0239cc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_319b5f0239cc",
+            "memory_type": "experience",
+            "score": 0.3083,
+            "content": {
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "outcome": "Premature finalization led to misdiagnosis; the gold diagnosis was calculus of ureter, which could have been identified with targeted imaging or lab work.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Chronic fatigue syndrome (CFS) or myalgic encephalomyelitis (ME)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'06c32e34-e808-4275-8985-34fe38cabbe8': '{\"diagnosis\": \"Chronic fatigue syndrome (CFS) or myalgic encephalomyelitis (ME)\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.42857142857142855,
+        "conf_after": 0.42857142857142855,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic fatigue syndrome (CFS) or myalgic encephalomyelitis (ME)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic fatigue syndrome (CFS) or myalgic encephalomyelitis (ME)}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had frequent seizures since around six months old, often triggered by fever or even warm baths. They started as prolonged convulsions and have progressed to other types like myoclonic seizures. I’ve also noticed developmental delays — my language and motor skills came much later than expected, and I’ve had trouble with balance and coordination. I sometimes feel dizzy or unsteady, especially when standing or walking, and I’ve had trouble sleeping, often waking up exhausted. I’ve also experienced hyperactivity and difficulty focusing, and I’ve had trouble relating to others socially."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient reports no prior issues in the area, no abnormal findings reported. Patient has history of frequent seizures since 6 months old, triggered by fever or warm baths, progressing to myoclonic seizures. Developmental delays noted: delayed language and motor skills, balance issues, sleep difficulties, hyperactivity, social difficulties. No lab, imaging, or CXR results available. Knowledge base includes Dravet syndrome, infantile epileptic spasms syndrome, and Lennox–Gastaut syndrome. Final result: Epilepsy, unspecified, not intractable, without status epilepticus."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 11,
+        "query_text": "epilepsy with developmental delays and seizure progression; new info on social and sleep issues; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2175,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1951,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1934,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2708,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "microbiology"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0393ee9a-b289-4ee9-88ee-3415c426a88e': '{\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\\\"microbiology\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had frequent seizures since around six months old, often triggered by fever or even warm baths. They started as prolonged convulsions and have progressed to other types like myoclonic seizures. I’ve also noticed developmental delays — my language and motor skills came much later than expected, and I’ve had trouble with balance and coordination. I sometimes feel dizzy or unsteady, especially when standing or walking, and I’ve had trouble sleeping, often waking up exhausted. I’ve also experienced hyperactivity and difficulty focusing, and I’ve had trouble relating to others socially."
+        ],
+        "prior_information_summary": "30-year-old male patient, admitted for evaluation. Chief complaint: Assess and diagnose the 30-year-old male patient based on the available clinical presentation. Patient reports no prior issues in the area, no abnormal findings reported. Patient has a history of frequent seizures since 6 months of age, triggered by fever or warm baths, progressing to myoclonic seizures. Developmental delays noted: delayed language and motor skills, balance/coordination issues, dizziness, sleep difficulties, hyperactivity, and social difficulties. No lab, imaging, CXR, or microbiology results available. Knowledge base includes Dravet syndrome, infantile epileptic spasms syndrome, and Lennox–Gastaut syndrome. Final result: Epilepsy, unspecified, not intractable, without status epilepticus."
+      },
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 12,
+        "query_text": "epilepsy with developmental delays and seizure progression; new info on social and sleep issues; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2175,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1951,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1934,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2708,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Epilepsy with developmental delay and associated neurological symptoms}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9e9d64e3-ed93-47a9-a77d-f5b5e834c87a': '{\"diagnosis\": \"Epilepsy with developmental delay and associated neurological symptoms\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Epilepsy with developmental delay and associated neurological symptoms}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Epilepsy with developmental delay and associated neurological symptoms}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

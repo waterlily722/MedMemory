@@ -1,0 +1,1865 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20035958",
+  "turns": [
+    {
+      "case_id": "20035958",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 70-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 70-year-old female patient based on the available clinical presentation."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 1,
+        "query_text": "70-year-old female presenting with nonspecific systemic symptoms; need targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2064,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1975,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.1925,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.19,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2c269fa4ab97",
+              "type": "experience",
+              "score": 0.3027,
+              "outcome": "failure",
+              "situation": "When a 63-year-old woman presents with non-specific symptoms and denies any systemic signs, and initial targeted history and labs are unhelpful, the doctor should avoid broad differential updates without focusing on visual or vascular clues.",
+              "action": "Request a focused ophthalmologic exam or review of any available eye imaging to rule out retinal vascular events, especially if the patient is elderly and has no clear systemic explanation.",
+              "boundary": "Use this memory when the patient is elderly with non-specific complaints and no systemic signs; do not use if there is a clear history of systemic illness, or if eye exam/imaging is unavailable or not indicated.",
+              "tags": [
+                "negative",
+                "retinal_artery_occlusion",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2936,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2727,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 2,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, fatigue, fever, night sweats, or any other systemic symptoms?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been feeling tired and weak lately. I also noticed my skin has a yellowish tint, and my liver and spleen seem to be enlarged. I’ve been getting more shortness of breath and sometimes feel dizzy. I haven’t had any fever or night sweats, but I do have some heart palpitations. My skin has also taken on a bronze color recently. I’ve been experiencing some headaches too.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, night sweats, or any other systemic symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, night sweats, or any other systemic symptoms?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 3,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'70603ae6-6a1e-446b-89e0-c5a9b56a2d54': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 4,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1917,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2624,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_438c0c10d2fd",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained symptoms and the initial history is unremarkable, repeatedly asking about weight loss, fatigue, fever, or night sweats yields negative responses, but the final diagnosis is anemia, the doctor should avoid premature closure and consider requesting a complete blood count.",
+              "action": "Request a complete blood count to objectively assess for anemia and rule out other hematologic causes.",
+              "boundary": "Use this memory when patient history is unremarkable and symptoms are non-specific; do not use if a CBC is already ordered or if the patient has a known hematologic condition.",
+              "tags": [
+                "negative",
+                "anemia",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of liver disease in elderly patients including jaundice, splenomegaly, fatigue, and bronze skin"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ecff1e48-eafa-4bfe-a305-e0501f2aa833': \"[Document 1] (ID: 3561_7, Score: 0.875)\\n## Modes of presentation\\nSymptoms are rare in early disease. In more established cases, symptoms such as right upper quadrant pain, pruritus, fatigue, jaundice, fever and weight loss are present in 47-56% of patients. Patients usually present in one of several ways: (i) no symptoms or signs but with...\\n\\n[Document 2] (ID: 11275_1, Score: 0.874)\\n# Symptoms\\nSymptoms include:\\n- Patient appears like an 'elderly man'\\n- Dry\\xa0and\\xa0flaking/peeling\\xa0skin\\xa0but no changes in\\xa0color\\n- Loss of muscle mass\\n- Sunken eyes\\n- Protruded cheeks\\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\\n- Swelling of body (edema) is generally not se...\\n\\n[Document 3] (ID: 5674_2, Score: 0.870)\\n- Liver: Hepatic dysfunction, including hepatitis and cholestatic jaundice, increases in serum transaminases (AST and/or ALT), serum bilirubin, and/or alkaline phosphatase, has been reported with AUGMENTIN. It has been reported more commonly in the elderly, in males, or in patients on prolonged trea...\\n\\n[Document 4] (ID: 20121_6, Score: 0.869)\\n## History and Symptoms\\nLiver cirrhosis may present with non specific constitutional symptoms such as fever, anorexia, fati...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of liver disease in elderly patients including jaundice, splenomegaly, fatigue, and bronze skin\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of liver disease in elderly patients including jaundice, splenomegaly, fatigue, and bronze skin\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 5,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your appetite or any unexplained weight loss?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your appetite or any unexplained weight loss?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your appetite or any unexplained weight loss?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 6,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "bronze skin color in elderly patients with liver disease"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'33cc6d19-eaf3-45e3-bf76-ac629233e4fc': '[Document 1] (ID: 3471_8, Score: 0.838)\\n## Clinical features\\nHemochromatosis is increasingly being recognized by clinicians. Nonetheless, it is still underdiagnosed, because it is often considered a rare disorder that is manifested by the clinical findings seen in fully established disease consisting of cirrhosis, diabetes, and skin pigme...\\n\\n[Document 2] (ID: 437_60, Score: 0.836)\\n# Persons Recommended for Treatment\\nTreatment is recommended for patients with chronic hepatitis C who are at greatest risk for progression to cirrhosis, as characterized by\\n- persistently elevated ALT levels; - detectable HCV RNA; and - a liver biopsy indicating either portal or bridging fibrosis o...\\n\\n[Document 3] (ID: 29525_0, Score: 0.834)\\nLiver spot\\n\\n# Overview\\nLiver spots are blemishes on the skin associated with aging and exposure to ultra-violet radiation from the sun. They are also known as age spots, sun spots, lentigos, or senile/solar lentigines. They range in color from light brown to black and are located in areas most often...\\n\\n[Document 4] (ID: 14785_20, Score: 0.831)\\n- Demographic and baseline disease characteristics were balanced between the treatment arms. Of the 208 patients, whose ra...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"bronze skin color in elderly patients with liver disease\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"bronze skin color in elderly patients with liver disease\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 7,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1917,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2624,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_438c0c10d2fd",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained symptoms and the initial history is unremarkable, repeatedly asking about weight loss, fatigue, fever, or night sweats yields negative responses, but the final diagnosis is anemia, the doctor should avoid premature closure and consider requesting a complete blood count.",
+              "action": "Request a complete blood count to objectively assess for anemia and rule out other hematologic causes.",
+              "boundary": "Use this memory when patient history is unremarkable and symptoms are non-specific; do not use if a CBC is already ordered or if the patient has a known hematologic condition.",
+              "tags": [
+                "negative",
+                "anemia",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "hemochromatosis symptoms in elderly females including bronze skin, fatigue, liver enlargement, and heart palpitations"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ecbc7668-03d6-4fc9-b15c-6558e93724a5': '[Document 1] (ID: 4502_2, Score: 0.869)\\n# Signs and Symptoms\\nBecause hemochromatosis can lead to gradual damage in a number of organs over many years, its symptoms can be confused with those of much more common diseases, such as alcoholic liver disease, diabetes, and osteoarthritis. If untreated, hemochromatosis can cause serious disease ...\\n\\n[Document 2] (ID: 14689_2, Score: 0.865)\\n# Screening\\nRoutine\\xa0screening\\xa0of the general population for hereditary hemochromatosis, that is, by genetic testing, has been evaluated by the US Preventive Services Task Force (USPSTF), among other groups. In case-finding for hereditary hemochromatosis, serum ferritin and transferrin saturation tes...\\n\\n[Document 3] (ID: 3471_10, Score: 0.865)\\nWhen patients present with symptoms, hemochromatosis should be considered when there are complaints of fatigue, right upper quadrant abdominal pain, arthralgias, (typically of the second and third metacarpophalangeal joints), chondrocalcinosis, impotence, decreased libido, and symptoms of heart fail...\\n\\n[Document 4] (ID: 27372_1, Score: 0.858)\\n# Neonatal and perinatal hemochromatosis\\nA rare fulminant disease of the liver, of unknown cause, characterized by massive...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"hemochromatosis symptoms in elderly females including bronze skin, fatigue, liver enlargement, and heart palpitations\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"hemochromatosis symptoms in elderly females including bronze skin, fatigue, liver enlargement, and heart palpitations\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 8,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1917,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2624,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_438c0c10d2fd",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained symptoms and the initial history is unremarkable, repeatedly asking about weight loss, fatigue, fever, or night sweats yields negative responses, but the final diagnosis is anemia, the doctor should avoid premature closure and consider requesting a complete blood count.",
+              "action": "Request a complete blood count to objectively assess for anemia and rule out other hematologic causes.",
+              "boundary": "Use this memory when patient history is unremarkable and symptoms are non-specific; do not use if a CBC is already ordered or if the patient has a known hematologic condition.",
+              "tags": [
+                "negative",
+                "anemia",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Hemochromatosis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'257e33ec-15e6-4b33-800e-7f1bc338c563': '{\"diagnosis\": \"Hemochromatosis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Hemochromatosis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Hemochromatosis}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 9,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.233,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.217,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2053,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2019,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1986,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2869,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2556,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.2548,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "chronic liver disease symptoms in elderly female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'52410cdb-09af-49c5-86c5-0821fb3b8530': \"[Document 1] (ID: 3561_7, Score: 0.867)\\n## Modes of presentation\\nSymptoms are rare in early disease. In more established cases, symptoms such as right upper quadrant pain, pruritus, fatigue, jaundice, fever and weight loss are present in 47-56% of patients. Patients usually present in one of several ways: (i) no symptoms or signs but with...\\n\\n[Document 2] (ID: 23427_9, Score: 0.865)\\n# Risk factors\\n- Risk factors for acute liver failure\\nChronic alcohol abuse\\nPoor nutritional status\\nFemale sex\\nAge >40 years\\nPregnancy\\nChronic hepatitis B\\nChronic pain and narcotic use\\nComplementary and alternative medicine hepatotoxicity\\nAcetaminophen and antidepressant therapy\\nChronic hepatitis C\\n...\\n\\n[Document 3] (ID: 15955_2, Score: 0.864)\\n# Differential Diagnosis\\n- Advanced age\\n- Chronic active hepatitis\\n- Cirrhosis\\n- Drugs\\n- HIV infection\\n- Mixed Connective Tissue Disease\\n- Multiple Sclerosis\\n- Necrotizing vasculitis\\n- Periarteritis nodosa\\n- Pregnant women\\n- Pulmonary Fibrosis\\n- Raynaud's Disease\\n- Rheumatoid Arthritis\\n- Silicone ge...\\n\\n[Document 4] (ID: 12020_2, Score: 0.862)\\n## History and Symptoms\\nAlcoholic hepatitis is suspected to occur in patients with excessive drinking over the decades.Sym...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"chronic liver disease symptoms in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"chronic liver disease symptoms in elderly female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 10,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.233,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.217,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2053,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2019,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1986,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2869,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2556,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.2548,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Chronic Liver Disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'723e85c3-d174-46bb-b008-1818a5f820d5': '{\"diagnosis\": \"Chronic Liver Disease\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic Liver Disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic Liver Disease}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient, admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes Congenital dyserythropoietic anemia and Sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 11,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about differentiating congenital dyserythropoietic vs sideroblastic anemia; avoid premature diagnosis; consider targeted lab or imaging review before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.211,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2037,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1944,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2643,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2536,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fa036d3f-5208-4a85-90cf-8984f5234924': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 12,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9b99283b-f786-4fb0-b87d-c5726680b0e1': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 13,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific symptoms in elderly: fatigue, decreased appetite, possible diagnoses"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b61526b7-d35c-4022-a528-0922f668b2ff': \"[Document 1] (ID: 8779_1, Score: 0.858)\\n### Age >65 years\\n- Malignancies (specifically digestive and non-hematologic)\\n- Dementia\\n- Stroke\\n- Parkinson's disease\\n- Polymyalgia rheumatica\\n- Oral disorders.\\n\\n### Age <65 years\\n- Endocrine disorders\\n- Infections such as TB and HIV\\n- Psychiatric disorders such as depression, anxiety, and OCD\\n- M...\\n\\n[Document 2] (ID: 4772_25, Score: 0.858)\\n# Special popula ions\\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\\nMost persons experience fever (83-99%), cough ...\\n\\n[Document 3] (ID: 4541_4, Score: 0.856)\\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months.\\n\\n[Document 4] (ID: 1450_42, Score: 0.856)\\nAppetite loss (unexplained) with cough or fatigue or shortness of breath or chest pain or weight loss (unexplained), 40\\xa0and over\\nLung or mesothelioma\\nOffer an urgent chest X‑ray (to be done within 2\\xa0weeks)\\nAppetite loss or early satiety (p...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly: fatigue, decreased appetite, possible diagnoses\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly: fatigue, decreased appetite, possible diagnoses\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic, symptomatic, and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 14,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1941,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any unexplained weight loss, even if you haven't been actively trying to lose weight?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unexplained weight loss, even if you haven't been actively trying to lose weight?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unexplained weight loss, even if you haven't been actively trying to lose weight?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20035958",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [],
+        "prior_information_summary": "70-year-old female patient admitted via clinic referral for EU observation. Chief complaint: Assess and diagnose based on clinical presentation. Labs show: MCH 31.1 pg, MCHC 34.3 g/dL, MCV 91 fL, Platelet Count 203 K/uL, RDW 15.3%, Red Blood Cells 1.96 m/uL (abnormal), White Blood Cells 4.2 K/uL, RDW-SD 50.9 fL (abnormal). Final Result: Anemia, unspecified. Knowledge base includes congenital dyserythropoietic anemia and sideroblastic anemia with diagnostic and prognostic details."
+      },
+      "query": {
+        "case_id": "20035958",
+        "turn_id": 15,
+        "query_text": "Anemia with abnormal RBC and RDW; need memory about targeted diagnostic steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1917,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_438c0c10d2fd",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained symptoms and the initial history is unremarkable, repeatedly asking about weight loss, fatigue, fever, or night sweats yields negative responses, but the final diagnosis is anemia, the doctor should avoid premature closure and consider requesting a complete blood count.",
+              "action": "Request a complete blood count to objectively assess for anemia and rule out other hematologic causes.",
+              "boundary": "Use this memory when patient history is unremarkable and symptoms are non-specific; do not use if a CBC is already ordered or if the patient has a known hematologic condition.",
+              "tags": [
+                "negative",
+                "anemia",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific symptoms in elderly women: fatigue, decreased appetite, no weight loss, possible diagnoses"
+        },
+        "patient_or_tool_response": "{}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly women: fatigue, decreased appetite, no weight loss, possible diagnoses\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly women: fatigue, decreased appetite, no weight loss, possible diagnoses\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

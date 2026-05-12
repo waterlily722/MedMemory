@@ -1,0 +1,1704 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20021470",
+  "turns": [
+    {
+      "case_id": "20021470",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "I am a 75-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 75-year-old female patient presenting with direct admission for evaluation of pelvic mass."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 1,
+        "query_text": "pelvic mass in 75-year-old female; need memory about targeted history and exam before imaging decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.3077,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2872,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2269,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1913,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3021,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.2731,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2602,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_60b4b6935e50"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_60b4b6935e50",
+            "memory_type": "experience",
+            "score": 0.3077,
+            "content": {
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "outcome": "This action prevented premature finalization and ensured that malignancy was considered, aligning with best practices for pelvic masses in elderly women.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any specific symptoms such as pelvic pain, bloating, changes in bowel or bladder habits, or unexplained weight loss?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had pelvic pain sometimes, especially when I’m having my period. I also feel bloated a lot, and I’ve noticed I need to go to the bathroom more often, especially at night. I’ve had some trouble with constipation too, and my periods have been heavier than before — I’ve had to start taking iron supplements because I’m often tired. I’ve also had pain during sex. I haven’t lost weight, but I’ve noticed my belly has gotten bigger, even though I’m not pregnant.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as pelvic pain, bloating, changes in bowel or bladder habits, or unexplained weight loss?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as pelvic pain, bloating, changes in bowel or bladder habits, or unexplained weight loss?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "I’ve had pelvic pain sometimes, especially when I’m having my period.",
+          "I also feel bloated a lot, and I’ve noticed I need to go to the bathroom more often, especially at night.",
+          "I’ve had some trouble with constipation too, and my periods have been heavier than before — I’ve had to start taking iron supplements because I’m often tired.",
+          "I’ve also had pain during sex.",
+          "I haven’t lost weight, but I’ve noticed my belly has gotten bigger, even though I’m not pregnant."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass at T-12/L1 suspicious for metastasis with epidural mass and cord compression. Currently asymptomatic except for back pain managed with TENS, Vicodin, and Skelaxin. Denies B/B incontinence, constipation, focal weakness, or saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, or abdominal fullness. States possible 2 lb weight loss. Past medical history includes CAD, prosthetic mitral valve, TIA, low back pain, migraines, hypertension, hyperlipidemia, GI bleed, osteoporosis. Family history: strokes in grandmother and mother. Physical exam: well-appearing, slightly pale, no obvious pain. Neuro exam: intact CN, normal strength, sensation, no saddle anesthesia. Final result: Intramural leiomyoma of uterus. Knowledge base: Uterine fibroid diagnosis, signs/symptoms, prognosis, and imaging."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 2,
+        "query_text": "pelvic mass with new symptoms of bloating, urinary frequency, constipation, and dyspareunia; need memory about targeted history and exam before imaging decision; avoid premature diagnosis without ruling out malignancy"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2574,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2324,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2093,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1877,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3296,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3194,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.316,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_b33d0edba005",
+          "exp_3db53c65aa33"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_b33d0edba005",
+            "memory_type": "experience",
+            "score": 0.3296,
+            "content": {
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "outcome": "Avoided premature closure; imaging and labs would have revealed malignancy or confirmed benign fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_3db53c65aa33",
+            "memory_type": "experience",
+            "score": 0.3194,
+            "content": {
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "outcome": "This action would have revealed whether the mass was a leiomyoma or another benign condition, preventing premature cancer diagnosis.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ef44545c-a2c0-4319-a9dc-61027a1d2da2': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "I’ve had pelvic pain sometimes, especially when I’m having my period.",
+          "I also feel bloated a lot, and I’ve noticed I need to go to the bathroom more often, especially at night.",
+          "I’ve had some trouble with constipation too, and my periods have been heavier than before — I’ve had to start taking iron supplements because I’m often tired.",
+          "I’ve also had pain during sex.",
+          "I haven’t lost weight, but I’ve noticed my belly has gotten bigger, even though I’m not pregnant."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass and newly found pelvic mass. Pain located midline lower back, radiating to legs. Uses TENS unit and Vicodin/Skelaxin for back pain. Bone lesion at T-12/L1 suspicious for metastasis. Epidural mass with cord compression. Denies B/B incontinence, constipation, focal weakness, saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, abdominal fullness. May have lost 2 lbs. Past medical history: CAD, prosthetic mitral valve, TIA, low back pain, migraines, hypertension, hyperlipidemia, GI bleed, osteoporosis. Family history: strokes in grandmother and mother. Physical exam: well-appearing, slightly pale, no obvious pain. Neuro: intact CN, normal strength, sensation, no saddle anesthesia. Final result: Intramural leiomyoma of uterus. Knowledge base: Uterine fibroid diagnosis, signs/symptoms, prognosis."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 3,
+        "query_text": "pelvic mass with new symptoms of bloating, urinary frequency, constipation, and dyspareunia; need memory about targeted history and exam before imaging decision; avoid premature diagnosis without ruling out malignancy"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2574,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2324,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2093,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1877,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3296,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3194,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.316,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_b33d0edba005",
+          "exp_3db53c65aa33"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_b33d0edba005",
+            "memory_type": "experience",
+            "score": 0.3296,
+            "content": {
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "outcome": "Avoided premature closure; imaging and labs would have revealed malignancy or confirmed benign fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_3db53c65aa33",
+            "memory_type": "experience",
+            "score": 0.3194,
+            "content": {
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "outcome": "This action would have revealed whether the mass was a leiomyoma or another benign condition, preventing premature cancer diagnosis.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of pelvic mass in postmenopausal women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4aebcf12-702a-4964-bf4b-8f80893a60ce': '[Document 1] (ID: 26791_3, Score: 0.887)\\n## History and Symptoms\\nThe most common symptom is lower abdominal or pelvic pain with pressure character that can be associated with vaginal bleeding. Other associated symptoms such as dyspareunia, bloating, and abdominal distension, urinary symptoms raise suspicion of malignancy\\nThe onset and dura...\\n\\n[Document 2] (ID: 25923_0, Score: 0.885)\\nPelvic masses\\n\\n# Epidemiology and demographics\\nPelvic masses are most commonly found in women, pelvic masses can also occur in men. Cases besides bladder distension and pregnancy need to be ruled out before workup. Consider every case as a malignancy. As age increases, so does the liklihood that mal...\\n\\n[Document 3] (ID: 19106_8, Score: 0.880)\\n- Low back pain, pain with certain movements\\n\\n- Urinary tract:\\n\\nDysuria, polyuria\\n\\n- Dysuria, polyuria\\n\\n- Psychological:\\n\\nStress, depression, anxiety, anger\\n\\n- Stress, depression, anxiety, anger\\n\\n- Be careful about the symptoms that suggest life-threatening conditions such as\\xa0:\\n\\nunexplained weight l...\\n\\n[Document 4] (ID: 22381_1, Score: 0.871)\\n## History and Symptoms\\n- A feeling as if sitting on a small ball\\n- Difficult or painful sexual intercourse\\n- Frequent ur...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of pelvic mass in postmenopausal women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of pelvic mass in postmenopausal women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "I’ve had pelvic pain sometimes, especially when I’m having my period.",
+          "I also feel bloated a lot, and I’ve noticed I need to go to the bathroom more often, especially at night.",
+          "I’ve had some trouble with constipation too, and my periods have been heavier than before — I’ve had to start taking iron supplements because I’m often tired.",
+          "I’ve also had pain during sex.",
+          "I haven’t lost weight, but I’ve noticed my belly has gotten bigger, even though I’m not pregnant."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass and newly found pelvic mass. Pain located midline lower back, radiating to legs. Uses TENS unit and Vicodin/Skelaxin for back pain. Bone lesion at T-12/L1 suspicious for metastasis, epidural mass with cord compression. Denies B/B incontinence, constipation, focal weakness, saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, abdominal fullness. May have lost 2 lbs. Past medical history: CAD, prosthetic mitral valve, TIA, low back pain, migraines, HTN, hyperlipidemia, GI bleed, osteoporosis. Family history: strokes in grandmother and mother. Physical exam: VS 97.6, 142/78, 111, 16, 98% RA. Well-appearing, slightly pale, no obvious pain. Neuro: intact CN, normal strength, sensation, no saddle anesthesia. Final result: Intramural leiomyoma of uterus. Knowledge base: Uterine fibroid info including signs/symptoms, diagnosis, prognosis."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 4,
+        "query_text": "pelvic mass with new symptoms of bloating, urinary frequency, constipation, and dyspareunia; need memory about targeted history and exam before imaging decision; avoid premature diagnosis without ruling out malignancy"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2574,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2324,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2093,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1877,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3296,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3194,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.316,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_b33d0edba005",
+          "exp_3db53c65aa33"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_b33d0edba005",
+            "memory_type": "experience",
+            "score": 0.3296,
+            "content": {
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "outcome": "Avoided premature closure; imaging and labs would have revealed malignancy or confirmed benign fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_3db53c65aa33",
+            "memory_type": "experience",
+            "score": 0.3194,
+            "content": {
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "outcome": "This action would have revealed whether the mass was a leiomyoma or another benign condition, preventing premature cancer diagnosis.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your menstrual cycle, such as irregular bleeding or bleeding between periods?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve noticed my periods have been heavier than usual lately, and I’ve had to change pads more often. I’ve also been feeling more tired than normal, which I think might be from losing too much blood. I haven’t had any bleeding between periods, but I do get some lower back pain sometimes, especially around my period.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your menstrual cycle, such as irregular bleeding or bleeding between periods?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your menstrual cycle, such as irregular bleeding or bleeding between periods?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "Yes, I’ve noticed my periods have been heavier than usual lately, and I’ve had to change pads more often.",
+          "I’ve also been feeling more tired than normal, which I think might be from losing too much blood.",
+          "I haven’t had any bleeding between periods, but I do get some lower back pain sometimes, especially around my period."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass and newly found pelvic mass. Pain located midline lower back, radiating to legs. Uses TENS unit and Vicodin/Skelaxin for back pain. Denies B/B incontinence, constipation, focal weakness, saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, abdominal fullness. May have lost 2 lbs. Past medical history: CAD, prosthetic mitral valve, TIA, low back pain, migraines, HTN, hyperlipidemia, GI bleed, osteoporosis. Social history: family history of strokes. Physical exam: VS stable, no obvious pain, neuro exam intact. Final result: Intramural leiomyoma of uterus. Knowledge base: Uterine fibroid info including symptoms, diagnosis, prognosis."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 5,
+        "query_text": "pelvic mass with new bleeding and fatigue symptoms; need memory about targeted history for anemia or coagulopathy; avoid premature diagnosis without lab or imaging review; consider uterine fibroid vs. malignancy"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2736,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2384,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2083,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1972,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.1955,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3498,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2939,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2838,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'82278742-fda0-4418-9b78-c38c255b1f41': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "tool_output: imaging, no result found, no knowledge base available"
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for pelvic mass; history of mechanical MVR, CAD, 1V CABG; back pain with radiation to legs, managed with TENS, Vicodin, Skelaxin; spinal lesion at T12/L1 suspicious for metastasis; epidural mass with cord compression concern; denies B/B incontinence, constipation, focal weakness, saddle anesthesia; reports L calf tightness and occasional tingling in L foot; denies weight loss or appetite change; past medical history: CAD, MVR, TIA, low back pain, migraines, HTN, hyperlipidemia, GI bleed, osteoporosis; family history: strokes in mother and grandmother; physical exam: VS 97.6, BP 142/78, HR 111, RR 16, SpO2 98% RA; well-appearing, slightly pale; no obvious pain; neuro: intact CN, normal strength, sensation, no saddle anesthesia; final result: intramural leiomyoma of uterus; knowledge base: uterine fibroid info including signs, symptoms, diagnosis, prognosis."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 6,
+        "query_text": "pelvic mass with imaging unavailable; need memory about next-step imaging or alternative diagnostics; avoid premature diagnosis; consider metastatic workup given spinal lesion and T12/L1 cord compression concern"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2125,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2077,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "workup for pelvic mass in 75-year-old female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a0997f7e-c60f-4488-bd27-4868d580d522': \"[Document 1] (ID: 25923_0, Score: 0.861)\\nPelvic masses\\n\\n# Epidemiology and demographics\\nPelvic masses are most commonly found in women, pelvic masses can also occur in men. Cases besides bladder distension and pregnancy need to be ruled out before workup. Consider every case as a malignancy. As age increases, so does the liklihood that mal...\\n\\n[Document 2] (ID: 25314_0, Score: 0.858)\\nSandbox/branch\\n\\n# Approach to a female of child-bearing age\\n\\n# Do's\\n- Consider abdominal aortic aneurysm, mesenteric ischemia and malignancy in patients above 50 years as it is much less likely for younger patients.\\n- Perform pelvic and testicular examination in patients with low abdominal pain.\\n- R...\\n\\n[Document 3] (ID: 25923_1, Score: 0.856)\\n## MRI and CT\\n- Pelvic CT\\n- Abdominal CT\\n\\n## Echocardiography or Ultrasound\\n- Pelvic ultrasound for masses in the uterus to determine existence, size & composition.\\n\\n## Other Diagnostic Studies\\n- Colonoscopy to exclude colon cancer\\n- Bladder catheterization if culprit may be bladder distension\\n\\n# Tr...\\n\\n[Document 4] (ID: 10312_3, Score: 0.852)\\n## Back\\n- Back examination of patients with  is usually normal.\\nOR\\n- Point tenderness over __ vertebrae (e.g. L3-L4)\\n- Sa...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.5,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"workup for pelvic mass in 75-year-old female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"workup for pelvic mass in 75-year-old female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "I’ve had pelvic pain sometimes, especially when I’m having my period. I also feel bloated a lot, and I’ve noticed I need to go to the bathroom more often, especially at night. I’ve had some trouble with constipation too, and my periods have been heavier than before — I’ve had to start taking iron supplements because I’m often tired. I’ve also had pain during sex. I haven’t lost weight, but I’ve noticed my belly has gotten bigger, even though I’m not pregnant.",
+          "Yes, I’ve noticed my periods have been heavier than usual lately, and I’ve had to change pads more often. I’ve also been feeling more tired than normal, which I think might be from losing too much blood. I haven’t had any bleeding between periods, but I do get some lower back pain sometimes, especially around my period."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass at T-12/L1 suspicious for metastasis with bony involvement and epidural mass causing cord compression. Patient denies B/B incontinence, constipation, focal weakness, saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, abdominal fullness. States possible 2 lb weight loss. Past medical history includes CAD, prosthetic mitral valve, TIA, low back pain, migraines, hypertension, hyperlipidemia, GI bleed, osteoporosis. Family history: strokes in grandmother and mother. Physical exam: VS 97.6, 142/78, 111, 16, 98% RA. Well-appearing, slightly pale, no obvious pain. Neuro: intact CN, normal strength, sensation, no saddle anesthesia. Final result: Intramural leiomyoma of uterus. Knowledge base: Uterine fibroid (benign smooth muscle tumor), signs/symptoms include pelvic pain, bloating, urinary frequency, constipation, heavy bleeding, dyspareunia. Diagnosis via ultrasound/MRI. Prognosis: rare malignancy (leiomyosarcoma)."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 7,
+        "query_text": "pelvic mass with new symptoms of bloating, urinary frequency, constipation, heavy bleeding, and dyspareunia; need memory about targeted imaging or biopsy before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.281,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2714,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2442,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2049,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2016,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3412,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3009,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3007,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_3db53c65aa33"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_3db53c65aa33",
+            "memory_type": "experience",
+            "score": 0.3412,
+            "content": {
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "outcome": "This action would have revealed whether the mass was a leiomyoma or another benign condition, preventing premature cancer diagnosis.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained weight loss, changes in appetite, or night sweats?"
+        },
+        "patient_or_tool_response": "{'question': 'I may have lost 2 lbs recently, but I don’t think it’s significant. I haven’t noticed any major changes in my appetite, and I don’t have any night sweats.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, changes in appetite, or night sweats?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, changes in appetite, or night sweats?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "I may have lost 2 lbs recently, but I don’t think it’s significant. I haven’t noticed any major changes in my appetite, and I don’t have any night sweats."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass and newly found pelvic mass. Pain located midline lower back, radiating to legs, managed with TENS, Vicodin, Skelaxin. T-12/L1 lesion suspicious for metastasis with epidural mass and cord compression. Denies B/B incontinence, constipation, focal weakness, saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, abdominal fullness. May have lost 2 lbs recently. Past medical history: CAD, prosthetic mitral valve, TIA, low back pain, migraines, HTN, hyperlipidemia, GI bleed, osteoporosis. Family history: strokes in grandmother and mother. Physical exam: VS 97.6, 142/78, 111, 16, 98% RA. Well-appearing, slightly pale, no obvious pain. Neuro: intact CN, normal strength, sensation, no saddle anesthesia. Final result: Intramural leiomyoma of uterus."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 8,
+        "query_text": "pelvic mass with recent weight loss; need memory about targeted history for malignancy risk; avoid premature diagnosis without imaging review; consider metastatic workup"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2185,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.1891,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.338,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2741,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Uterine cancer}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fb7652c9-b89e-42c4-8e70-d269d07c0d0e': '{\"diagnosis\": \"Uterine cancer\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Uterine cancer}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Uterine cancer}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021470",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "direct admission for evaluation of pelvic mass",
+        "current_turn_information": [
+          "No recent trauma or surgeries.",
+          "Changes in bladder habits: needing to go more often, even when not drinking much.",
+          "Lower back pain and discomfort during sex.",
+          "Pressure in rectal area lately.",
+          "Document 1: History and Symptoms - lower abdominal/pelvic pain with pressure, vaginal bleeding, dyspareunia, bloating, abdominal distension, urinary symptoms raise suspicion of malignancy.",
+          "Document 2: Pelvic masses - most commonly found in women, consider every case as malignancy, likelihood increases with age.",
+          "Document 3: Imaging - pelvic ultrasound for masses in uterus to determine existence, size & composition.",
+          "Document 4: Non-surgical management of pelvic organ prolapse.",
+          "Document 5: Imaging - do not use MRI, CT, X-ray for routine assessment of urinary incontinence; ultrasound only for residual urine volume."
+        ],
+        "prior_information_summary": "75-year-old female, direct admission for evaluation of pelvic mass. History of mechanical MVR and CAD s/p 1V CABG. Outpatient workup revealed spinal mass and newly found pelvic mass. Pain located midline lower back, radiating to legs. Uses TENS unit and Vicodin/Skelaxin for back pain. Bone lesion at T-12/L1 suspicious for metastasis, epidural mass with cord pressure. Denies B/B incontinence, constipation, focal weakness, saddle anesthesia. Endorses L calf tightness and occasional tingling in L foot. Denies worsening fatigue, nausea/vomiting, abdominal fullness. May have lost 2 lbs. Past medical history: CAD, prosthetic mitral valve, TIA, low back pain, migraines, hypertension, hyperlipidemia, GI bleed, osteoporosis. Social history: family history of strokes. Physical exam: VS 97.6, 142/78, 111, 16, 98% RA. Well-appearing, slightly pale, no obvious pain. Neuro: intact CN, normal strength, sensation, no saddle anesthesia. Final result: Intramural leiomyoma of uterus. Knowledge base: Uterine fibroid - benign smooth muscle tumor, common in women 50+, symptoms include pelvic pain, heavy bleeding, pressure on bladder, pain during sex, back pain. Diagnosis: ultrasound/MRI sufficient. Prognosis: rare malignancy (leiomyosarcoma), growth after menopause raises concern. Coexisting disorders: anemia, constipation, hydronephrosis possible. Treatment: NSAIDs, iron supplements, surgery if symptomatic. Patient reports pelvic pain, bloating, constipation, frequent urination, fatigue, dyspareunia, lower back pain. Labs and imaging results not found in record."
+      },
+      "query": {
+        "case_id": "20021470",
+        "turn_id": 9,
+        "query_text": "pelvic mass with new urinary and sexual symptoms; need to review ultrasound findings; avoid premature diagnosis without imaging; consider malignancy risk in 75-year-old female"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.3441,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2248,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2034,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1894,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3103,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.2697,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.2578,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_60b4b6935e50"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_60b4b6935e50",
+            "memory_type": "experience",
+            "score": 0.3441,
+            "content": {
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "outcome": "This action prevented premature finalization and ensured that malignancy was considered, aligning with best practices for pelvic masses in elderly women.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Uterine cancer}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0b38701b-6cba-4f85-9bdc-7da0c51a1e25': '{\"diagnosis\": \"Uterine cancer\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Uterine cancer}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Uterine cancer}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

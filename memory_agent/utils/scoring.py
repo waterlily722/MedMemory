@@ -57,3 +57,62 @@ def cosine_similarity(text_a: str, text_b: str) -> float:
         return 0.0
 
     return dot / (norm_a * norm_b)
+
+
+def bm25_scores(
+    query: str,
+    documents: list[str],
+    *,
+    k1: float = 1.2,
+    b: float = 0.75,
+) -> list[float]:
+    query_tokens = tokenize(query)
+    doc_tokens = [tokenize(doc) for doc in documents]
+    if not query_tokens or not doc_tokens:
+        return [0.0 for _ in documents]
+
+    doc_freq: Counter[str] = Counter()
+    for tokens in doc_tokens:
+        for token in set(tokens):
+            doc_freq[token] += 1
+
+    n_docs = len(doc_tokens)
+    doc_lengths = [len(tokens) for tokens in doc_tokens]
+    avgdl = sum(doc_lengths) / n_docs if n_docs else 0.0
+    if avgdl <= 0.0:
+        return [0.0 for _ in documents]
+
+    query_terms = set(query_tokens)
+    scores: list[float] = []
+    for tokens, doc_len in zip(doc_tokens, doc_lengths, strict=False):
+        if not tokens:
+            scores.append(0.0)
+            continue
+        tf = Counter(tokens)
+        score = 0.0
+        for term in query_terms:
+            freq = tf.get(term, 0)
+            if freq <= 0:
+                continue
+            df = doc_freq.get(term, 0)
+            idf = math.log((n_docs - df + 0.5) / (df + 0.5) + 1.0)
+            denom = freq + k1 * (1.0 - b + b * doc_len / avgdl)
+            score += idf * (freq * (k1 + 1.0)) / denom
+        scores.append(score)
+    return scores
+
+
+def bm25_similarity(query: str, document: str) -> float:
+    score = bm25_scores(query, [document])[0]
+    self_score = bm25_scores(query, [query])[0]
+    if self_score <= 0.0:
+        return 0.0
+    return max(0.0, min(1.0, score / self_score))
+
+
+def tag_overlap_score(left: list[Any], right: list[Any]) -> float:
+    left_set = {str(item).strip().lower() for item in left if str(item).strip()}
+    right_set = {str(item).strip().lower() for item in right if str(item).strip()}
+    if not left_set or not right_set:
+        return 0.0
+    return len(left_set & right_set) / len(left_set | right_set)

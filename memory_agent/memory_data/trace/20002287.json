@@ -19,28 +19,142 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 3,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2376,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2043,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1899,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2888,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2793,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_2c269fa4ab97",
+              "type": "experience",
+              "score": 0.2721,
+              "outcome": "failure",
+              "situation": "When a 63-year-old woman presents with non-specific symptoms and denies any systemic signs, and initial targeted history and labs are unhelpful, the doctor should avoid broad differential updates without focusing on visual or vascular clues.",
+              "action": "Request a focused ophthalmologic exam or review of any available eye imaging to rule out retinal vascular events, especially if the patient is elderly and has no clear systemic explanation.",
+              "boundary": "Use this memory when the patient is elderly with non-specific complaints and no systemic signs; do not use if there is a clear history of systemic illness, or if eye exam/imaging is unavailable or not indicated.",
+              "tags": [
+                "negative",
+                "retinal_artery_occlusion",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
         "selected_memory_ids": [],
         "selected_memories": []
       },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe your main symptom or how you've been feeling recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been constipated for about 12 days, but lately I’ve had several days of diarrhea that looks like it has mucus. I’ve also been having cramping pain in my lower abdomen for about a month. When I tried to have a bowel movement after taking Miralax and Mag Citrate, I started straining and felt lightheaded. I went back to my bedroom and was exiting the bathroom when I got dizzy, passed out, and when I came to, I felt like my ankle was breaking. I was on the floor for about an hour before my husband found me. I’m currently breathing fine on room air, but I still have abdominal discomfort. I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your main symptom or how you've been feeling recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your main symptom or how you've been feeling recently?\"}}\n</tool_call>"
       }
     },
     {
@@ -49,45 +163,240 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been constipated for 12 days, but lately I’ve had several days of diarrhea that looks like mucus.",
-          "I’m also having cramping pain in my lower abdomen, which started about a month ago and gets worse when I strain to have a bowel movement — even after taking Miralax and Mag Citrate.",
-          "When I strained recently, I got lightheaded, then dizzy, and lost consciousness.",
+          "I’ve been constipated for about 12 days, but lately I’ve had several days of diarrhea that looks like it has mucus.",
+          "I’ve also been having cramping pain in my lower abdomen for about a month.",
+          "When I tried to have a bowel movement after taking Miralax and Mag Citrate, I started straining and felt lightheaded.",
+          "I went back to my bedroom and was exiting the bathroom when I got dizzy, passed out, and when I came to, I felt like my ankle was breaking.",
           "I was on the floor for about an hour before my husband found me.",
-          "I felt like my ankle “broke” when I came to.",
           "I’m currently breathing fine on room air, but I still have abdominal discomfort.",
           "I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history of asthma, depression (mother), heart murmur (sister). Presenting with constipation x12 days, mucus-like diarrhea, cramping lower abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness with straining, right ankle fracture (splinted), abdominal discomfort. Vitals: T 99.1, BP 118/68, HR 61, RR 18, O2 sat 96% RA. Physical: soft abdomen, no guarding/rebound, right basilar rales, splint on right ankle, diminished RLE strength. Denies fever, chills, night sweats, hematochezia, melena, hematuria, dysuria. Final result: Fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family history: asthma, depression (mother), heart murmur (sister). Presenting with constipation x12 days, mucus-like diarrhea, cramping lower abdominal pain x1 month, lightheadedness during straining, syncope, right ankle fracture, splint applied. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right basilar rales, splint on right ankle. Denies fever, chills, night sweats, hematochezia, melena, hematuria, dysuria. Final result: Fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 2,
-        "query_text": "abdominal pain with constipation and mucus diarrhea; new report of syncope with straining and ankle fracture; need memory about targeted neuro/cardiac history before imaging; avoid premature diagnosis"
+        "query_text": "syncope with abdominal pain and mucus diarrhea; need memory about evaluating for bowel obstruction or ischemia; avoid premature diagnosis; review imaging and labs"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2518,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2158,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2109,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.199,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1973,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.4223,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.3555,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3464,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_527401053a55",
+          "exp_7f6f4a437b1b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_527401053a55",
+            "memory_type": "experience",
+            "score": 0.4223,
+            "content": {
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "outcome": "This action would have revealed structural abnormalities or signs of obstruction, preventing misdiagnosis and guiding toward the correct diagnosis of lateral malleolus fracture.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7f6f4a437b1b",
+            "memory_type": "experience",
+            "score": 0.3555,
+            "content": {
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "outcome": "This action would have revealed a potential fracture, which was the gold diagnosis, and prevented misdirection toward systemic disease.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2449bd5a-6f9d-4c6e-92f8-ef76be922506': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "REQUEST_LAB",
         "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
       }
     },
     {
@@ -98,37 +407,185 @@
         "current_turn_information": [
           "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history of asthma, depression (mother), heart murmur (sister). HPI: constipation x12 days, diarrhea with mucus, cramping lower abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness after straining to BM, right ankle fracture, splint applied. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right ankle in splint, no C/C/E. ROS: denies fever, chills, nausea, vomiting, blood in stool/urine."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. History: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: family history of asthma/depression (mother), heart murmur (sister). HPI: constipation x12 days, diarrhea with mucus, cramping lower abdominal pain x1 month, lightheadedness during straining, syncope with ankle pain, right ankle fracture, splint applied. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical: soft abdomen, no guarding/rebound, right basilar rales, right ankle in splint, depressed affect. Denies fever, chills, blood in stool/urine, etc. Final result: Fracture of lateral malleolus, closed."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 3,
-        "query_text": "67yo female with endometrial cancer history and new GI symptoms; labs pending; need memory about targeted diagnostic next steps before finalizing diagnosis"
+        "query_text": "patient with endometrial cancer history and new abdominal symptoms; labs pending; need memory about targeted diagnostic next steps before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.253,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2524,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2076,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1905,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1871,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3101,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.2672,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2656,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
         "selected_memory_ids": [],
         "selected_memories": []
       },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of constipation followed by diarrhea with mucus, abdominal cramping, dizziness, syncope, and ankle pain in elderly female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ef1387de-b800-4060-a638-f0af250cf25a': '[Document 1] (ID: 8686_5, Score: 0.856)\\n- Metabolic and Nutritional Disorders: Peripheral edema, SGOT increase, and SGPT increase.\\n- Musculoskeletal System: Leg cramps and myalgia.\\n- Nervous System: Abnormal dreams, amnesia, confusion, depression, emotional lability, insomnia, nervousness, paresthesia, speech disorder, thinking abnormalit...\\n\\n[Document 2] (ID: 114_365, Score: 0.854)\\n# S: Subjective\\nThe patient may complain of some or all of the following: watery diarrhea (can be profuse), abdominal pain or cramping, flatulence, nausea, vomiting, anorexia, fever, and weight loss.\\nThe history should include questions about the presence and characteristics of the symptoms listed a...\\n\\n[Document 3] (ID: 31555_12, Score: 0.852)\\n- Digestive System: Anorexia, abdominal pain, constipation, diarrhea, dyspepsia, elevated liver enzymes, flatulence, gross bleeding/perforation, heartburn, nausea, ulcers (gastric/duodenal), vomiting.\\n- Hemic and Lymphatic System: Anemia, increased bleeding time.\\n- Nervous System: Dizziness, headach...\\n\\n[Document 4] (ID: 6561_9, Score: 0.852)\\n- Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
       "selected_action": {
         "action_type": "UPDATE_HYPOTHESIS",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping pain, syncope, and ankle pain in elderly female\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, cramping pain, syncope, and ankle pain in elderly female\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, abdominal cramping, dizziness, syncope, and ankle pain in elderly female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of constipation followed by diarrhea with mucus, abdominal cramping, dizziness, syncope, and ankle pain in elderly female\"}}\n</tool_call>"
       }
     },
     {
@@ -137,39 +594,257 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been constipated for 12 days, but lately I’ve had several days of diarrhea that looks like mucus. I’m also having cramping pain in my lower abdomen, which started about a month ago and gets worse when I strain to have a bowel movement — even after taking Miralax and Mag Citrate. When I strained recently, I got lightheaded, then dizzy, and lost consciousness. I was on the floor for about an hour before my husband found me. I felt like my ankle “broke” when I came to. I’m currently breathing fine on room air, but I still have abdominal discomfort. I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine."
+          "I’ve been constipated for about 12 days, but lately I’ve had several days of diarrhea that looks like it has mucus. I’ve also been having cramping pain in my lower abdomen for about a month. When I tried to have a bowel movement after taking Miralax and Mag Citrate, I started straining and felt lightheaded. I went back to my bedroom and was exiting the bathroom when I got dizzy, passed out, and when I came to, I felt like my ankle was breaking. I was on the floor for about an hour before my husband found me. I’m currently breathing fine on room air, but I still have abdominal discomfort. I don’t have fever, chills, nausea, vomiting, or any blood in my stool or urine.",
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "Document 1: Metabolic and Nutritional Disorders: Peripheral edema, SGOT increase, and SGPT increase. Musculoskeletal System: Leg cramps and myalgia. Nervous System: Abnormal dreams, amnesia, confusion, depression, emotional lability, insomnia, nervousness, paresthesia, speech disorder, thinking abnormalit... Document 2: S: Subjective: Watery diarrhea (can be profuse), abdominal pain or cramping, flatulence, nausea, vomiting, anorexia, fever, and weight loss. Document 3: Digestive System: Anorexia, abdominal pain, constipation, diarrhea, dyspepsia, elevated liver enzymes, flatulence, gross bleeding/perforation, heartburn, nausea, ulcers (gastric/duodenal), vomiting. Hemic and Lymphatic System: Anemia, increased bleeding time. Nervous System: Dizziness, headach... Document 4: Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported in about 5 of 100 patients. Mental confusion and short-term memory loss have been reported. Headache, somnolence, nightmares, and insomnia have also been reported. Cardiovascul... Document 5: Anaphylaxis, angioedema, fever, headache, pain, peripheral edema. Nervous: Aggressive behavior, agitation, ataxia, coma, confusion, decreased consciousness, delirium, dizziness, dysarthria, encephalopathy, hallucinations, paresthesia, psychosis, seizure, somnolence, tremors. These symptoms may be..."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma/depression (mother), heart murmur (sister). Chief complaint: constipation x12 days, mucus-like diarrhea, cramping abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness with straining, right ankle fracture. Physical exam: vitals stable, no fever, no guarding/rebound, soft abdomen, right ankle in splint. ROS negative for systemic symptoms. Final result: fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
+        "prior_information_summary": "67-year-old female, admitted via ER for EU OBSERVATION. Past medical history: endometrial adenocarcinoma s/p TAH + BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social history: family history of asthma, depression (mother), heart murmur (sister). Chief complaint: constipation x12 days, diarrhea with mucus, cramping abdominal pain x1 month. History: straining to have BM after Miralax and Mag Citrate → lightheadedness → dizziness, loss of consciousness, felt ankle breaking → found on floor x1hr. ED vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Right ankle fracture, splint placed. Currently breathing comfortably on RA, abdominal discomfort. ROS: denies fever, chills, night sweats, headache, vision changes, rhinorrhea, congestion, sore throat, cough, chest pain, nausea, vomiting, BRBPR, melena, hematochezia, dysuria, hematuria. Physical exam: vitals T 99.1, BP 118/68, HR 61, RR 18, 96% RA. General: NAD. HEENT: EOMI, PERRLA, MMM, no cervical LAD, no JVD. Cardiac: RRR systolic flow murmur at LUSB, no g/r. Lung: right basilar rales, no dullness, CTAB, no wheeze. Abdomen: soft, non-distended, ttp across R and L LQ, no guarding, no rebound, no organomegaly. Ext: warm, no C/C/E, ___ in splint. Neuro: CN II-XII intact. Strength: symmetric UE, diminished RLE secondary to splint. Sensation: symmetric UE and ___ b/l. Psych: depressed affect, A+Ox3. Skin: no lesions. Final result: Fracture of lateral malleolus, closed. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 4,
-        "query_text": "abdominal pain with mucus diarrhea and syncope on straining; right ankle fracture already documented; need memory about evaluating for bowel obstruction or ischemia before finalizing diagnosis; avoid premature closure"
+        "query_text": "abdominal pain with mucus diarrhea and syncope after straining; missing labs and imaging review; need targeted history before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.2157,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2142,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2079,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2077,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2065,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3578,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_40f53905f719",
+              "type": "experience",
+              "score": 0.3196,
+              "outcome": "failure",
+              "situation": "When a patient presents with syncope triggered by straining during bowel movements, along with alternating constipation and diarrhea, abdominal cramping, and weight loss, and initial labs and imaging are unavailable, what should the doctor do?",
+              "action": "Request focused imaging of the lower extremity, specifically the ankle, to rule out a fracture before pursuing cardiac syncope as the primary diagnosis.",
+              "boundary": "Use this memory when syncope is triggered by defecation, there is abdominal pain and bowel dysfunction, and imaging of the lower extremity is not yet performed — do not use if imaging is already completed or if syncope is clearly not related to bowel movements.",
+              "tags": [
+                "negative",
+                "syncope",
+                "abdominal_pain",
+                "bowel_dysfunction",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.3145,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
+        "selected_memory_ids": [
+          "exp_527401053a55",
+          "exp_40f53905f719",
+          "exp_7f6f4a437b1b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_527401053a55",
+            "memory_type": "experience",
+            "score": 0.3578,
+            "content": {
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "outcome": "This action would have revealed structural abnormalities or signs of obstruction, preventing misdiagnosis and guiding toward the correct diagnosis of lateral malleolus fracture.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_40f53905f719",
+            "memory_type": "experience",
+            "score": 0.3196,
+            "content": {
+              "situation": "When a patient presents with syncope triggered by straining during bowel movements, along with alternating constipation and diarrhea, abdominal cramping, and weight loss, and initial labs and imaging are unavailable, what should the doctor do?",
+              "action": "Request focused imaging of the lower extremity, specifically the ankle, to rule out a fracture before pursuing cardiac syncope as the primary diagnosis.",
+              "outcome": "This action would have revealed the true cause — a lateral malleolus fracture — and prevented misdirection toward cardiac syncope, which was not supported by physical exam or imaging.",
+              "boundary": "Use this memory when syncope is triggered by defecation, there is abdominal pain and bowel dysfunction, and imaging of the lower extremity is not yet performed — do not use if imaging is already completed or if syncope is clearly not related to bowel movements.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "syncope",
+                "abdominal_pain",
+                "bowel_dysfunction",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7f6f4a437b1b",
+            "memory_type": "experience",
+            "score": 0.3145,
+            "content": {
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "outcome": "This action would have revealed a potential fracture, which was the gold diagnosis, and prevented misdirection toward systemic disease.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swelling in your legs or ankles recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
       },
       "selected_action": {
         "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your diet, medication, or activity level that might correlate with your symptoms?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your diet, medication, or activity level that might correlate with your symptoms?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling in your legs or ankles recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling in your legs or ankles recently?\"}}\n</tool_call>"
       }
     },
     {
@@ -178,43 +853,190 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been noticing more fatigue lately, and I’ve also had some itching, especially on my arms and legs.",
-          "I’ve been eating pretty normally, but I’ve started taking a new antihistamine for the itching — I’m not sure if that’s related.",
-          "I haven’t changed my activity level much, but I’ve been feeling more sluggish than usual.",
-          "I also had a mild fever a couple of weeks ago that didn’t last long.",
-          "I’m not sure if any of this is connected, but I thought I’d mention it."
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "67-year-old female, admitted via ER for constipation x12 days, now with diarrhea resembling mucus, cramping lower abdominal pain x1 month, lightheadedness/dizziness/loss of consciousness after straining, right ankle fracture, splinted. Past medical history: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism. Social history: family history of asthma, depression (mother), heart murmur (sister). Physical: vitals stable, no fever, no guarding/rebound, right basilar rales, soft abdomen, right ankle in splint. Denies blood in stool/urine, fever, chills, nausea, vomiting, BRBPR, melena, hematochezia, dysuria, hematuria. ROS negative. No skin lesions. Depressed affect. Knowledge base: Basophilia definition, causes, diagnosis."
+        "prior_information_summary": "67-year-old female, admitted via ER for episode of constipation for 12 days, then diarrhea with mucus, cramping lower abdominal pain for 1 month, lightheadedness during straining, syncope, and sensation of ankle breaking. Found on floor for 1 hour. VS: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Right ankle fracture, splinted. Abdominal discomfort. Denies fever, chills, nausea, vomiting, blood in stool/urine. PMH: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family: asthma, depression (mother), heart murmur (sister). Physical: vitals stable, no guarding/rebound, soft abdomen, right ankle in splint, no C/C/E. ROS negative. Knowledge base: Basophilia definition, causes, diagnosis."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 5,
-        "query_text": "new symptoms of fatigue, itching, and mild fever; need memory about targeted history for systemic causes; avoid premature diagnosis without lab/imaging review; consider endocrine or hematologic etiology"
+        "query_text": "67yo female with endometrial cancer history and new abdominal pain; current turn denies pelvic symptoms; need memory about targeted pelvic exam or imaging review before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2194,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.213,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1973,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1946,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1831,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2657,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2569,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2502,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
-        }
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
       },
       "selection_guidance": {
         "mode": "llm",
         "selected_memory_ids": [],
         "selected_memories": []
       },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "causes of syncope with abdominal pain and diarrhea in elderly female with endometrial cancer history"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'cdaf57b1-d2a2-4364-ab9a-4a8660aa0804': \"[Document 1] (ID: 10730_4, Score: 0.857)\\n## Natural history\\n- The cancer usually presents with jaundice, light-colored stools, dark urine, pain in the upper or middle abdomen and back, unexplained weight loss, anorexia, fatigue and symptoms according to the hormone produced.\\n- Patients with VIPoma may progress to develop watery diarrhea, a...\\n\\n[Document 2] (ID: 1450_27, Score: 0.854)\\nSee the section on primary care investigations for information on tests for ovarian cancer\\nThese recommendations apply to women aged 18\\xa0and over\\nDiarrhoea or constipation with weight loss, 60 and over\\nPancreatic\\nConsider an urgent direct access CT scan (to be done within 2\\xa0weeks), or an urgent ultra...\\n\\n[Document 3] (ID: 18895_1, Score: 0.850)\\n## Causes in Alphabetical Order\\n- Abdominal surgery\\n- Bowel obstruction\\n- Caesarean section\\n- Colorectal cancer\\n- Crohn's disease\\n- Desmoplasia\\n- Endometriosis\\n- Essential iris atrophy\\n- Fascioloides magna\\n- Helicobacter pylori\\n- Herniorrhaphy\\n- Infection\\n- Intrauterine pressure\\n- Laparotomy\\n- Organ...\\n\\n[Document 4] (ID: 10434_1, Score: 0.849)\\nCommon causes include:\\n- Gastric outlet obstruction\\n- Small bowel obstruction\\n- Irritable bowel syndrome\\n- Pancreatic ade...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
       "selected_action": {
-        "action_type": "FINALIZE_DIAGNOSIS",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of constipation followed by diarrhea with mucus, cramping, syncope, ankle pain, fatigue, itching, and mild fever in elderly female\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of constipation followed by diarrhea with mucus, cramping, syncope, ankle pain, fatigue, itching, and mild fever in elderly female\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of syncope with abdominal pain and diarrhea in elderly female with endometrial cancer history\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of syncope with abdominal pain and diarrhea in elderly female with endometrial cancer history\"}}\n</tool_call>"
       }
     },
     {
@@ -223,25 +1045,698 @@
       "case_memory": {
         "chief_complaint": "___ yo woman with past medical history of endometrial",
         "current_turn_information": [
-          "I’ve been noticing more fatigue lately, and I’ve also had some itching, especially on my arms and legs. I’ve been eating pretty normally, but I’ve started taking a new antihistamine for the itching — I’m not sure if that’s related. I haven’t changed my activity level much, but I’ve been feeling more sluggish than usual. I also had a mild fever a couple of weeks ago that didn’t last long. I’m not sure if any of this is connected, but I thought I’d mention it."
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
         ],
-        "prior_information_summary": "67-year-old F, admitted via ER for constipation x12 days, now diarrhea with mucus, cramping pain in lower abdomen for 1 month, worsened with straining (after Miralax/Mag Citrate), lightheadedness, syncope, felt ankle 'break' on floor for 1hr before husband found her. VS: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Right ankle fracture, splinted. Abdominal discomfort, no fever, chills, nausea, vomiting, blood in stool/urine. PMH: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. FH: asthma, depression (mother), heart murmur (sister). Physical: soft abdomen, no guarding/rebound, R basilar rales, no organomegaly, RLE diminished due to splint, depressed affect, no skin lesions. Labs: no result found. Tool outputs: relevant documents on diarrhea, cramps, fever, itching, antihistamines."
+        "prior_information_summary": "67-year-old female, admitted via ER for episode of syncope after straining during bowel movement, with history of endometrial adenocarcinoma s/p TAH+BSO and hypothyroidism. Symptoms include 12-day constipation, recent mucus-like diarrhea, cramping lower abdominal pain for 1 month, lightheadedness, syncope, and right ankle fracture. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical exam: soft abdomen, no guarding/rebound, right ankle in splint. Denies fever, chills, blood in stool/urine. Past medical history: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family history: asthma, depression (mother), heart murmur (sister)."
       },
       "query": {
         "case_id": "20002287",
         "turn_id": 6,
-        "query_text": "new complaint of fatigue, itching, and mild fever; need memory about antihistamine use and possible systemic causes; avoid premature diagnosis without lab or imaging review; consider updating hypothesis before finalizing"
+        "query_text": "syncope after straining with constipation and abdominal pain; new info: no prior pelvic issues; need memory about evaluating for hypoperfusion or cardiac cause before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 1,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
           "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Colorectal cancer}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0f769e41-ee83-44dc-a0c8-ada229cbe9df': '{\"diagnosis\": \"Colorectal cancer\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Colorectal cancer}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Colorectal cancer}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I’ve been feeling more tired lately, and I’ve lost a little weight without trying to. My appetite hasn’t been great either—I’ve been eating less than usual."
+        ],
+        "prior_information_summary": "67-year-old F, admitted via ER for episode of constipation x12 days, now with diarrhea resembling mucus, cramping lower abdominal pain x1 month, worsened with straining (after Miralax/Mag Citrate), lightheadedness, syncope, felt ankle \"breaking\" during fall, now breathing comfortably on RA, abdominal discomfort. Denies fever, chills, nausea, vomiting, blood in stool/urine. Past med: endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Social: married, family history asthma/depression (mother), heart murmur (sister). Physical: vitals stable, no guarding/rebound, right ankle in splint, no C/C/E, neuro intact, depressed affect. Final result: fracture of lateral malleolus, closed. Labs and imaging tools returned no results."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 7,
+        "query_text": "patient with endometrial cancer history and new fatigue/weight loss; newly reported appetite decline; labs and imaging pending; need memory about targeted workup before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.4395,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.3564,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.3467,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.307,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.2822,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b50ce4db888b",
+              "type": "experience",
+              "score": 0.3934,
+              "outcome": "failure",
+              "situation": "When a patient presents with back pain, leg pain, and recent weight loss, and the initial history suggests possible drug-related complications, but labs and imaging are unavailable, what should the doctor do?",
+              "action": "Request immediate imaging and labs to evaluate for acute kidney failure, especially given the temporal association with medication changes and systemic symptoms.",
+              "boundary": "Use this memory when systemic symptoms like weight loss, night sweats, and pain are present with recent medication changes and no imaging or labs available; do not use if imaging or labs are already available or if the patient has clear signs of rheumatoid arthritis without systemic features.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "systemic_symptoms"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.391,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b33d0edba005",
+              "type": "experience",
+              "score": 0.3718,
+              "outcome": "failure",
+              "situation": "When a patient presents with pelvic pain, increased urinary frequency, and heavy menstrual bleeding with a history of uterine fibroids, and initial imaging and labs are unavailable, the doctor should avoid premature finalization without ruling out malignancy.",
+              "action": "Request imaging and labs to rule out malignancy before finalizing diagnosis as fibroid recurrence.",
+              "boundary": "Use when patient has pelvic mass symptoms and history of fibroids, but only if imaging or labs are available; do not use if imaging or labs are missing or inconclusive.",
+              "tags": [
+                "negative",
+                "pelvic_pain",
+                "heavy_bleeding",
+                "history_of_fibroids",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.3698,
+              "outcome": null,
+              "situation": "Patient reports blood in stool, altered bowel habits, weight loss, and fatigue, and is over 50 years old.",
+              "action": null,
+              "boundary": "Apply only when patient is over 50 and reports unexplained weight loss or rectal bleeding. Do not use if symptoms are absent or non-specific.",
+              "tags": []
+            },
+            {
+              "id": "skill_002",
+              "type": "skill",
+              "score": 0.2506,
+              "outcome": null,
+              "situation": "Initial history suggests osteoarthritis, but patient has uncontrolled diabetes and age >50.",
+              "action": null,
+              "boundary": "Apply only after initial history and physical exam suggest osteoarthritis. Do not use if patient is under 50 or has no diabetes.",
+              "tags": []
+            },
+            {
+              "id": "skill_1",
+              "type": "skill",
+              "score": 0.2115,
+              "outcome": null,
+              "situation": "Patient reports pain, redness, swelling around nails with pus discharge, triggered by nail biting and frequent hand washing.",
+              "action": null,
+              "boundary": "Use only when patient reports nail-related symptoms with possible infection signs.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_6617ff54ad7e",
+          "exp_d51c5ca122ef",
+          "exp_dc7af3564350",
+          "exp_3db53c65aa33"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_6617ff54ad7e",
+            "memory_type": "experience",
+            "score": 0.4395,
+            "content": {
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "outcome": "This clarified the presence of abdominal pain and appetite loss, strengthening suspicion for malignancy and directing imaging toward the colon.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_d51c5ca122ef",
+            "memory_type": "experience",
+            "score": 0.3564,
+            "content": {
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "outcome": "This action revealed structural evidence of malignancy, directly supporting colorectal cancer diagnosis and avoiding premature closure on non-specific symptoms.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_dc7af3564350",
+            "memory_type": "experience",
+            "score": 0.3467,
+            "content": {
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "outcome": "This action directly addressed the key red flags and led to a correct diagnosis, avoiding premature closure on non-specific symptoms.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_3db53c65aa33",
+            "memory_type": "experience",
+            "score": 0.391,
+            "content": {
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "outcome": "This action would have revealed whether the mass was a leiomyoma or another benign condition, preventing premature cancer diagnosis.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Diverticulitis with possible complications including syncope due to hypoperfusion or anemia and weight loss due to chronic inflammation or malabsorption.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f199ef57-6983-45ef-b36c-1fae539d0b9c': '{\"diagnosis\": \"Diverticulitis with possible complications including syncope due to hypoperfusion or anemia and weight loss due to chronic inflammation or malabsorption.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticulitis with possible complications including syncope due to hypoperfusion or anemia and weight loss due to chronic inflammation or ma",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticulitis with possible complications including syncope due to hypoperfusion or anemia and weight loss due to chronic inflammation or malabsorption.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "Patient reports fatigue, weight loss, decreased appetite.",
+          "Tool output for imaging: No result found.",
+          "Tool output for labs: No result found.",
+          "Syncope overview and related cardiovascular causes retrieved."
+        ],
+        "prior_information_summary": "67-year-old female, admitted via ER for syncope after dizziness and loss of consciousness while exiting bathroom. History includes endometrial adenocarcinoma s/p TAH+BSO, hypothyroidism, hypercholesterolemia, allergic rhinitis, and tonsillectomy. Current symptoms: constipation for 12 days, mucus-like diarrhea, cramping abdominal pain for 1 month, lightheadedness during straining, right ankle fracture (splinted), abdominal discomfort. Vitals: T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Physical exam: soft abdomen, no guarding/rebound, right ankle in splint. ROS negative for fever, chills, blood in stool/urine, etc. Past social history: family history of asthma, depression (mother), heart murmur (sister)."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 8,
+        "query_text": "syncope with fatigue and weight loss; no imaging or lab results yet; need targeted history and exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2936,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2763,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2612,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2527,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2516,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3746,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.3465,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3441,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0d4a16154d9b",
+          "exp_7f6f4a437b1b",
+          "exp_7744e1418ec9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0d4a16154d9b",
+            "memory_type": "experience",
+            "score": 0.3746,
+            "content": {
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "outcome": "Premature finalization led to missing the correct diagnosis of viral pneumonia, which could have been confirmed with imaging or lab tests.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7f6f4a437b1b",
+            "memory_type": "experience",
+            "score": 0.3465,
+            "content": {
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "outcome": "This action would have revealed a potential fracture, which was the gold diagnosis, and prevented misdirection toward systemic disease.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_7744e1418ec9",
+            "memory_type": "experience",
+            "score": 0.3441,
+            "content": {
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "outcome": "This action would have revealed gastric pathology, preventing premature closure on a benign diagnosis and aligning with the gold diagnosis of gastritis with bleeding.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent falls, dizziness, or lightheadedness unrelated to bowel movements?"
+        },
+        "patient_or_tool_response": "{'question': 'I had lightheadedness when straining to have a bowel movement, and then I became dizzy, lost consciousness, and fell — I think that’s what you’re asking about. I was getting up from the bathroom and felt like I was going to pass out. I didn’t have any falls or dizziness unrelated to bowel movements before that.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent falls, dizziness, or lightheadedness unrelated to bowel movements?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent falls, dizziness, or lightheadedness unrelated to bowel movements?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I had lightheadedness when straining to have a bowel movement, and then I became dizzy, lost consciousness, and fell — I think that’s what you’re asking about. I was getting up from the bathroom and felt like I was going to pass out. I didn’t have any falls or dizziness unrelated to bowel movements before that."
+        ],
+        "prior_information_summary": "67-year-old female, history of endometrial adenocarcinoma s/p TAH + BSO and hypothyroidism. Presenting with constipation for 12 days, recent diarrhea with mucus, cramping lower abdominal pain for 1 month, lightheadedness during straining, syncope while exiting bathroom, right ankle fracture, now breathing comfortably on RA with abdominal discomfort. Denies fever, chills, nausea, vomiting, blood in stool or urine. Physical exam: vitals stable, no guarding/rebound, right ankle in splint. ROS negative for systemic symptoms. Past medical history: hypothyroidism, hypercholesterolemia, allergic rhinitis, tonsillectomy. Family history: asthma, depression (mother), heart murmur (sister)."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 9,
+        "query_text": "syncope during straining with recent bowel symptoms; need memory about evaluating for orthostatic hypotension or cardiac cause; avoid premature diagnosis without labs or imaging; consider targeted history before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1839,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.2556,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
@@ -251,11 +1746,116 @@
         "selected_memory_ids": [],
         "selected_memories": []
       },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "causes of syncope during defecation in elderly female with constipation and diarrhea"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'00727c86-32af-4255-b340-cba4f363d577': '[Document 1] (ID: 23046_4, Score: 0.857)\\n# Risk Factors\\nSyncope is a sign of insufficient cerebral blood flow and it should be evaluated for the underlying cause. Possible underlying risk factors of cardiac syncope include  Older age (>60 y), male sex,\\u2003presence of known ischemic heart disease, structural heart disease, previous arrhythmias...\\n\\n[Document 2] (ID: 32044_7, Score: 0.852)\\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\\n\\n[Document 3] (ID: 21818_3, Score: 0.845)\\n- Age factor: Mostly seen in middle-age and older adult population.\\n\\n- Gender: Females are more likely to have fecal incontinence when compared to men. The major risk factor being the complications during childbirth that damage the anal sphincter and injure the pelvic floor muscles and nerves such a...\\n\\n[Document 4] (ID: 4583_68, Score: 0.844)\\n# Stroke Assessment Across the Continuum of Care\\nIf the client has all of the above, this is highly indicative of a neuro...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of syncope during defecation in elderly female with constipation and diarrhea\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of syncope during defecation in elderly female with constipation and diarrhea\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20002287",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "___ yo woman with past medical history of endometrial",
+        "current_turn_information": [
+          "I had lightheadedness when straining to have a bowel movement, and then I became dizzy, lost consciousness, and fell — I think that’s what you’re asking about. I was getting up from the bathroom and felt like I was going to pass out. I didn’t have any falls or dizziness unrelated to bowel movements before that."
+        ],
+        "prior_information_summary": "67-year-old female, history of endometrial adenocarcinoma s/p TAH + BSO and hypothyroidism. Presenting with constipation for 12 days, recent diarrhea with mucus, cramping lower abdominal pain for 1 month, straining to have BM (after Miralax and Mag Citrate) leading to lightheadedness, then dizziness, loss of consciousness, and feeling like ankle breaking; found on floor for 1 hour. In ED: VS T 97.8, HR 52, BP 119/47, RR 20, 98% RA. Right ankle fracture, splint placed. Currently breathing comfortably on RA, c/o abdominal discomfort. Denies fever, chills, night sweats, headache, vision changes, rhinorrhea, congestion, sore throat, cough, chest pain, nausea, vomiting, BRBPR, melena, hematochezia, dysuria, hematuria. Physical exam: vitals T 99.1, BP 118/68, HR 61, RR 18, 96% RA. General: NAD. HEENT: EOMI, PERRLA, MMM, no cervical LAD, no JVD. Cardiac: RRR systolic flow murmur at LUSB, no g/r. Lung: Right basilar rales, no dullness, CTAB, no wheeze. Abdomen: soft, non-distended, ttp across R and L LQ, no guarding, no rebound, no organomegaly. Ext: warm, no C/C/E, ___ in splint. Neuro: CN II-XII intact. Strength: symmetric UE, diminished RLE secondary to splint. Sensation: symmetric UE and ___ b/l. Psych: depressed affect, A+Ox3. Skin: no lesions. Past med: hypothyroidism, hypercholesterolemia, allergic rhinitis, endometrial adenocarcinoma s/p TAH BSO, tonsillectomy. Social: family history asthma, depression (mother), heart murmur (sister)."
+      },
+      "query": {
+        "case_id": "20002287",
+        "turn_id": 10,
+        "query_text": "syncope after straining with bowel movement; need memory about cardiac vs. orthostatic causes; review ECG and labs; avoid premature diagnosis without full workup"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_86e012075faa",
+              "type": "experience",
+              "score": 0.2739,
+              "outcome": "failure",
+              "situation": "When a patient reports syncope after straining with bowel symptoms and has a history of itching and mild fever, the doctor should not finalize diagnosis without considering systemic or infectious causes, especially if there is no clear gastrointestinal explanation.",
+              "action": "Order labs including CBC, electrolytes, and inflammatory markers, and consider imaging if obstruction or infection is suspected.",
+              "boundary": "Use this memory when syncope occurs after straining with bowel symptoms and the patient has itching and mild fever; do not use if labs are already available and show no systemic abnormalities or if imaging confirms no obstruction.",
+              "tags": [
+                "negative",
+                "syncope",
+                "fever",
+                "itching",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.253,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Cardiac syncope with possible underlying arrhythmia or structural heart disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'94e46375-41b5-4940-810c-feb0de70df31': '{\"diagnosis\": \"Cardiac syncope with possible underlying arrhythmia or structural heart disease\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
       "selected_action": {
         "action_type": "FINALIZE_DIAGNOSIS",
-        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticular disease with possible bowel obstruction and dehydration-induced syncope.}\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diverticular disease with possible bowel obstruction and dehydration-induced syncope.}\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cardiac syncope with possible underlying arrhythmia or structural heart disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cardiac syncope with possible underlying arrhythmia or structural heart disease}\"}}\n</tool_call>"
       }
     }
   ]

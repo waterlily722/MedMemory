@@ -1,0 +1,1091 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20028601",
+  "turns": [
+    {
+      "case_id": "20028601",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient presenting with Acute SI in wake of increasing anxiety and long h/o anxiety."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 1,
+        "query_text": "Acute SI in wake of increasing anxiety; new info: 58-year-old male with long history of anxiety; need memory about targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any chest pain, shortness of breath, or palpitations along with your anxiety symptoms?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve had episodes where I felt my heart racing, shortness of breath, and sometimes like I was about to pass out — especially when I’m in crowded places or even just thinking about going out. It’s tied to the anxiety, and I’ve started avoiding situations where I think I might not be able to escape or get help if I panic. I’ve also noticed that when I’m alone or when someone leaves the house, I get really anxious — like I’m not sure I can handle being by myself. Sometimes I feel like I’m not in control, and that fear makes me stay inside even when I need medical help.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or palpitations along with your anxiety symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or palpitations along with your anxiety symptoms?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "Yes, I’ve had episodes where I felt my heart racing, shortness of breath, and sometimes like I was about to pass out — especially when I’m in crowded places or even just thinking about going out. It’s tied to the anxiety, and I’ve started avoiding situations where I think I might not be able to escape or get help if I panic.",
+          "I’ve also noticed that when I’m alone or when someone leaves the house, I get really anxious — like I’m not sure I can handle being by myself.",
+          "Sometimes I feel like I’m not in control, and that fear makes me stay inside even when I need medical help."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and past substance use (PSA). Admitted yesterday with acute suicidal ideation in context of increasing anxiety. History includes prior admission for anxiety, recent 2-month psych stay, missed follow-up appointments. Symptoms include morning anxiety, SI with tightness, tingling, sweating, feeling hot, fear of dying, feeling crazy. Self-treats with alcohol (1 pint vodka daily, last use 4 days prior). No DTs or withdrawal. Past medical history: HTN, HLD, HCV+, herniorrhaphy, mild COPD, CKD, angina. Social history: divorced, white, English-speaking, Medicare. Family history: mother with diabetes, father died of heart/kidney failure, one healthy brother. PE deferred; seen by cardiology for new-onset CP. Final result: Dysthymic disorder. Knowledge base includes agoraphobia and body dysmorphic disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 2,
+        "query_text": "acute SI with anxiety exacerbation; new info on panic symptoms in crowds and alone; need memory about avoiding premature diagnosis; consider agoraphobia and body dysmorphic disorder; avoid alcohol use before imaging or lab decisions"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1821,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0510ba88a9d8",
+              "type": "experience",
+              "score": 0.2568,
+              "outcome": "failure",
+              "situation": "When a patient reports worsening anxiety with panic-like symptoms and self-treatment with alcohol, but no clear timeline or lab evidence, the doctor should avoid premature diagnosis and seek specific evidence.",
+              "action": "Request a focused lab panel to rule out metabolic or endocrine causes before finalizing a diagnosis of alcohol withdrawal or anxiety disorder.",
+              "boundary": "Use this memory when anxiety symptoms are severe and alcohol use is reported, but only if labs are unavailable or inconclusive; do not use if labs are available and show no metabolic abnormalities.",
+              "tags": [
+                "negative",
+                "alcohol_withdrawal",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3358a064-6665-42f0-ba43-b7375730537c': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "Patient reports episodes of heart racing, shortness of breath, and feeling like passing out, especially in crowded places or when thinking about going out.",
+          "Patient avoids situations where escape or help may be difficult.",
+          "Patient experiences anxiety when alone or when someone leaves the house.",
+          "Patient feels like they are not in control and stays inside even when needing medical help."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and past substance use (PSA). Admitted yesterday with acute suicidal feelings in context of increasing anxiety. History includes prior admission for anxiety, recent 2-month stay at facility, missed follow-up appointments. Self-treats anxiety with alcohol (1 pint vodka daily, last use 4 days prior). No evidence of DTs or withdrawal. Past medical history includes HTN, HLD, HCV+, herniorrhaphy, mild COPD, CKD, angina. Social history includes divorced, white, English-speaking, Medicare-insured. Family history: mother with diabetes, father died of heart/kidney failure, one healthy brother. Physical exam deferred; seen by cardiology for new-onset CP. Final result: Dysthymic disorder. Knowledge base includes agoraphobia and body dysmorphic disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 3,
+        "query_text": "Acute SI with agoraphobic symptoms; new info on avoidance behaviors and alcohol use; need memory about targeted history for panic attacks or cardiac etiology; avoid premature diagnosis without ruling out cardiac causes"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1878,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2558,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of anxiety disorder with panic attacks and agoraphobia in adults"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f9035356-e834-4685-8216-9fabdbf91389': \"[Document 1] (ID: 26852_8, Score: 0.891)\\nAgoraphobia is often described as a fear of having 'no place to run or hide' if one does have a panic attack. Common examples include: driving, airplanes, malls, moving out of the house, etc.\\n\\n# Panic disorder\\nPeople who have repeated, persistent attacks or feel severe anxiety about having another a...\\n\\n[Document 2] (ID: 28048_7, Score: 0.886)\\n## History and Symptoms\\nSymptoms of agoraphobia may include the following:\\n- Fear of crowds, bridges, and/or being outside alone\\n- Fear of losing control of oneself in a public place\\n- Feeling dependent upon others\\n- Feeling helpless\\n- Feeling that one’s body or surroundings are not real\\n- Being eas...\\n\\n[Document 3] (ID: 28048_5, Score: 0.885)\\nThe attack typically has an abrupt onset, building to maximum intensity within 10 to 15 minutes, and rarely lasts longer than 30 minutes.\\n\\nThese symptoms include palpitations, sweating, trembling, and shortness of breath. Many patients report a fear of dying, or losing control of emotions or behavio...\\n\\n[Document 4] (ID: 9228_0, Score: 0.884)\\nPanic attack (patient information)\\nFor the WikiDoc page for this topic, click here\\n\\n# Overview\\nPanic attack is an anxiety ...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.5,
+        "delta": 0.5,
+        "turn_reward": 0.1,
+        "importance": 0.5
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of anxiety disorder with panic attacks and agoraphobia in adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of anxiety disorder with panic attacks and agoraphobia in adults\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "Yes, I’ve had episodes where I felt my heart racing, shortness of breath, and sometimes like I was about to pass out — especially when I’m in crowded places or even just thinking about going out. It’s tied to the anxiety, and I’ve started avoiding situations where I think I might not be able to escape or get help if I panic. I’ve also noticed that when I’m alone or when someone leaves the house, I get really anxious — like I’m not sure I can handle being by myself. Sometimes I feel like I’m not in control, and that fear makes me stay inside even when I need medical help."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and PSA (EtOH, heroin). Recently admitted for acute suicidal feelings in context of increasing anxiety. History includes prior admission for anxiety, 2-month stay at facility, missed follow-up appointments. Symptoms include morning anxiety, self-treatment with alcohol (1 pint vodka daily, last use 4 days prior). No DTs or withdrawal symptoms. Past medical history: HTN, HLD, HCV+, herniorrhaphy, mild COPD, CKD, angina. Social history: divorced, white, English-speaking, Medicare-insured. Family history: mother with diabetes, father died of heart/kidney failure, one healthy brother. PE deferred; seen by Cardiology Team for new onset CP. Final result: Dysthymic disorder. Knowledge base includes Agoraphobia and Body Dysmorphic Disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 4,
+        "query_text": "acute SI with anxiety history and alcohol use; new report of panic symptoms and avoidance; need memory about targeted psych eval before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1863,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e1e0f75a784e",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "failure",
+              "situation": "When a patient reports alcohol use and anxiety symptoms, but no clear evidence of withdrawal or metabolic cause, the doctor should update the hypothesis to include alcohol withdrawal and avoid anchoring on primary anxiety disorders.",
+              "action": "Update the hypothesis to include alcohol withdrawal syndrome and consider comorbid anxiety, especially if patient reports self-treatment with alcohol and worsening symptoms.",
+              "boundary": "Use this memory when patient reports alcohol use and anxiety symptoms, but only if no clear metabolic or endocrine causes are ruled out; do not use if patient has clear history of primary anxiety disorder without alcohol use.",
+              "tags": [
+                "negative",
+                "alcohol_withdrawal",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_0510ba88a9d8",
+              "type": "experience",
+              "score": 0.2593,
+              "outcome": "failure",
+              "situation": "When a patient reports worsening anxiety with panic-like symptoms and self-treatment with alcohol, but no clear timeline or lab evidence, the doctor should avoid premature diagnosis and seek specific evidence.",
+              "action": "Request a focused lab panel to rule out metabolic or endocrine causes before finalizing a diagnosis of alcohol withdrawal or anxiety disorder.",
+              "boundary": "Use this memory when anxiety symptoms are severe and alcohol use is reported, but only if labs are unavailable or inconclusive; do not use if labs are available and show no metabolic abnormalities.",
+              "tags": [
+                "negative",
+                "alcohol_withdrawal",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any specific triggers or situations that consistently lead to these episodes of anxiety and physical symptoms?"
+        },
+        "patient_or_tool_response": "{'question': 'I noticed my anxiety and physical symptoms get worse in the morning. That’s when I feel the tightness, tingling, sweating, and like I’m going to die or going crazy. I’ve been self-treating those symptoms by drinking alcohol — one pint of vodka daily — and I last drank four days before admission. I don’t know if anything else specifically triggers them, but missing my follow-up appointments and not getting consistent care might be making it worse.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific triggers or situations that consistently lead to these episodes of anxiety and physical symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific triggers or situations that consistently lead to these episodes of anxiety and physical symptoms?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "turn_5 observation.question: I noticed my anxiety and physical symptoms get worse in the morning. That’s when I feel the tightness, tingling, sweating, and like I’m going to die or going crazy. I’ve been self-treating those symptoms by drinking alcohol — one pint of vodka daily — and I last drank four days before admission. I don’t know if anything else specifically triggers them, but missing my follow-up appointments and not getting consistent care might be making it worse."
+        ],
+        "prior_information_summary": "turn_1 observation.case_id: 20028601\nturn_1 observation.context.ehr.Meta.subject_id: 15962008\nturn_1 observation.context.ehr.Meta.hadm_id: 20028601\nturn_1 observation.context.ehr.Meta.admittime: 2171-10-28 08:31:00\nturn_1 observation.context.ehr.Meta.dischtime: 2171-10-29 17:12:00\nturn_1 observation.context.ehr.Meta.admission_type: URGENT\nturn_1 observation.context.ehr.Meta.admission_location: INTERNAL TRANSFER TO OR FROM PSYCH\nturn_1 observation.context.ehr.Meta.diagnostic_window.start: 2171-10-28 08:31:00\nturn_1 observation.context.ehr.Meta.diagnostic_window.end: 2171-10-28 13:00:00\nturn_1 observation.context.ehr.Patient_info.gender: M\nturn_1 observation.context.ehr.Patient_info.age: 58\nturn_1 observation.context.ehr.Patient_info.language: English\nturn_1 observation.context.ehr.Patient_info.race: WHITE\nturn_1 observation.context.ehr.Patient_info.marital_status: DIVORCED\nturn_1 observation.context.ehr.Patient_info.insurance: Medicare\nturn_1 observation.context.ehr.Objective_for_Doctor: Assess and diagnose the 58-year-old male patient presenting with Acute SI in wake of increasing anxiety and long h/o anxiety.\nturn_1 observation.context.ehr.History.Chief_Complaint: Acute SI in wake of increasing anxiety\nturn_1 observation.context.ehr.History.HPI: ___ y/o male with long h/o anxiety, depression, and PSA admitted\nto ___ yesterday with acute suicidal feelings in setting of\nPatient last admitted to ___-4 for anxiety in ___,\nrecently s/p 2-month stay at ___\nHe was scheduled\nto follow-up with outside providers (Dr\n___,\ncounselor ___, but missed his appointments\nOn\npresentation to ED, patient reported increased anxiety with SI\ntightness, tingling of extremities, sweating, feeling hot,\nfeeling like he is going to die, and feeling like he is going\ncrazy\nPatient reported symptoms primarily in the morning, for\nwhich he has been self-treating with alcohol\nReported drinking\none pint of vodka daily, last EtOH use four days prior to\nadmission\nNo evidence of DTs or withdrawal symptoms\nturn_1 observation.context.ehr.History.Past_Medical_History: - PSA (EtOH, heroin)\n- anxiety, depression s/p suicide attempt ___\n- HTN\n- HLD\n- HCV+\n- s/p inguinal and umbilical herniorrhaphy\n- Mild COPD\n- CKD\n- angina\nturn_1 observation.context.ehr.History.Social_History: ___\nFamily History:\nMr. ___ has a living mother with diabetes ___ and father \nwho died of heart and kidney failure. He has one healthy \nbrother.\nturn_1 observation.context.ehr.Physical_Examination_Findings: PE deferred\nSeen by Cardiology Team this AM for new onset CP\nturn_1 observation.context.ehr.Final_Result: Dysthymic disorder\nturn_1 observation.context.knowbase[0].name: Agoraphobia\nturn_1 observation.context.knowbase[0].introduction: Agoraphobia is an anxiety disorder characterized by symptoms of anxiety in situations where the person perceives their environment to be unsafe with no way to escape. These situations can include public transit, shopping centers, crowds and queues, or simply being outside their home on their own. Being in these situations may result in a panic attack. Those affected will go to great lengths to avoid these situations. In severe cases, people may become completely unable to leave their homes. Agoraphobia is believed to be due to a combination of genetic and environmental factors. The condition often runs in families, and stressful or traumatic events such as the death of a parent or being attacked may be a trigger. In the DSM-5, agoraphobia is classified as a phobia along with specific phobias and social phobia. Other conditions that can produce similar symptoms include separation anxiety, post-traumatic stress disorder, and major depressive disorder. The diagnosis of agoraphobia has been shown to be comorbid with depression, substance abuse, and suicidal ideation. Without treatment, it is uncommon for agoraphobia to resolve. Treatment is typically with a type of counselling called cognitive behavioral therapy (CBT). CBT results in resolution for about half of people. In some instances, those with a diagnosis of agoraphobia have reported taking benzodiazepines and antipsychotics. Agoraphobia affects about 1.7% of adults. Women are affected about twice as often as men. The condition is rare in children, often begins in adolescence or early adulthood, and becomes more common at age 65 or above.\nturn_1 observation.context.knowbase[0].signs_and_symptoms: Agoraphobia is a condition where individuals become anxious in unfamiliar environments or where they perceive that they have little control. Triggers for this anxiety may include wide-open spaces, crowds (social anxiety), or traveling (even short distances). Agoraphobia is often, but not always, compounded by a fear of social embarrassment, as a person experiencing agoraphobia fears the onset of a panic attack and appearing distraught in public. Most of the time they avoid these areas and stay in the comfort of a known, controllable space, usually their home. Agoraphobia is also defined as \"a fear, sometimes terrifying, by those who have experienced one or more panic attacks\". In these cases, the patient is fearful of a particular place because they have previously experienced a panic attack at the same location. Fearing the onset of another panic attack, the patient is fearful or avoids a location. Some refuse to leave their homes in medical emergencies because the fear of being outside of their comfort areas is too great. The person with this condition can sometimes go to great lengths to avoid the locations where they have experienced the onset of a panic attack. Agoraphobia, as described in this manner, is a symptom professionals check when making a diagnosis of panic disorder. Other syndromes like obsessive–compulsive disorder or post-traumatic stress disorder can also cause agoraphobia. Any irrational fear that keeps one from going outside can cause the syndrome. People with agoraphobia may experience temporary separation anxiety disorder when certain individuals of the household depart from the residence temporarily, such as a parent or spouse, or when they are left home alone. These situations can result in an increase in anxiety or a panic attack or feeling the need to separate themselves from family or friends. People with agoraphobia sometimes fear waiting outside for long periods of time; that symptom can be called \"macrophobia\". === Panic attacks === Agoraphobia patients can experience sudden panic attacks when traveling to places where they fear they are out of control, help would be difficult to obtain, or they could be embarrassed. During a panic attack, epinephrine is released in large amounts, triggering the body's natural fight-or-flight response. A panic attack typically has an abrupt onset, building to maximum intensity within 10 to 15 minutes, and rarely lasts longer than 30 minutes. Symptoms of a panic attack include palpitations, rapid heartbeat, sweating, trembling, nausea, vomiting, dizziness, tightness in the throat, and shortness of breath. Many patients report a fear of dying, fear of losing control of emotions, or fear of losing control of behaviors.\nturn_1 observation.context.knowbase[0].causes: Agoraphobia is believed to be due to a combination of genetic and environmental factors. The condition often runs in families, and stressful or traumatic events such as the death of a parent or being attacked may be a trigger. Research has uncovered a link between agoraphobia and difficulties with spatial orientation. Individuals without agoraphobia are able to maintain balance by combining information from their vestibular system, their visual system, and their proprioceptive sense. A disproportionate number of agoraphobics have weak vestibular function and consequently rely more on visual or tactile signals. They may become disoriented when visual cues are sparse (as in wide-open spaces) or overwhelming (as in crowds). Likewise, they may be confused by sloping or irregular surfaces. In a virtual reality study, agoraphobics showed more difficulty integrating sensory changes than non-agoraphobics and are \"more sensitive to sensory conflicts\" than the general population. === Substance-induced === Chronic use of tranquilizers and sleeping pills such as benzodiazepines has been linked to onset of agoraphobia. In 10 patients who had developed agoraphobia during benzodiazepine dependence, symptoms abated within the first year of assisted withdrawal. Similarly, alcohol use disorders are associated with panic with or without agoraphobia; this association may be due to the long-term effects of alcohol consumption causing a distortion in brain chemistry. Tobacco smoking has also been associated with the development and emergence of agoraphobia, often with panic disorder; it is uncertain how tobacco smoking results in anxiety-panic with or without agoraphobia symptoms, but the direct effects of nicotine dependence or the effects of tobacco smoke on breathing have been suggested as possible causes. Self-medication or a combination of factors may also explain the association between tobacco smoking and agoraphobia and panic. === Attachment theory === Some scholars have explained agoraphobia as an attachment deficit, i.e., the temporary loss of the ability to tolerate spatial separations from a secure base. Recent empirical research has also linked attachment and spatial theories of agoraphobia. === Spatial theory === In the social sciences, a perceived clinical bias exists in agoraphobia research. Branches of the social sciences, especially geography, have increasingly become interested in what may be thought of as a spatial phenomenon. One such approach links the development of agoraphobia with modernity. Factors considered contributing to agoraphobia within modernity are the ubiquity of cars and urbanization. These have helped develop the expansion of public space and the contraction of private space, thus creating a conflict in the mind of agoraphobic individuals. === Evolutionary perspectives === Some evolutionary models propose that agoraphobia—like other specific phobias—may be rooted in adaptive mechanisms that helped early humans avoid threats in open or unfamiliar environments. From this viewpoint, fear and avoidance behaviors could have been selectively favored if they aided survival—for instance, by prompting individuals to steer clear of potentially dangerous surroundings or minimize exposure to predators and pathogens. According to preparedness models, human defensive systems are especially sensitive to cues linked to ancestral threats and can rapidly form strong, lasting fear associations with them. In modern life, such defenses might become mismatched to relatively low-risk environments, producing disproportionate anxiety responses. An additional evolutionary psychology view is that the more unusual primary agoraphobia without panic attacks may be due to a different mechanism from agoraphobia with panic attacks. Primary agoraphobia without panic attacks may be a specific phobia explained by it once having been evolutionarily advantageous to avoid exposed, large, open spaces without cover or concealment. Agoraphobia with panic attacks may be an avoidance response secondary to the panic attacks, due to fear of the situations in which the panic attacks occurred.\nturn_1 observation.context.knowbase[0].diagnosis: Most people who present to mental health specialists develop agoraphobia after the onset of panic disorder. Agoraphobia is best understood as an adverse behavioral outcome of repeated panic attacks and subsequent anxiety and preoccupation with these attacks that leads to an avoidance of situations where a panic attack could occur. Early treatment of panic disorder can often prevent agoraphobia. Agoraphobia is typically determined when symptoms are worse than panic disorder, but also do not meet the criteria for other mental disorders such as depression. === Agoraphobia without history of panic disorder === Agoraphobia without a history of panic disorder (also called primary agoraphobia) is an anxiety disorder where the individual with the diagnosis does not meet the DSM-5 criteria for panic disorder. Agoraphobia typically develops as a result of having panic disorder. In a small minority of cases, however, agoraphobia can develop by itself without being triggered by the onset of panic attacks. Agoraphobia can be caused by traumatic experiences, such as bullying or abuse. Historically, there has been debate over whether agoraphobia without panic genuinely existed, or whether it was simply a manifestation of other disorders such as panic disorder, generalized anxiety disorder, avoidant personality disorder and social phobia. One researcher said: \"out of 41 agoraphobics seen (at a clinic) during a period of 1 year, only 1 fit the diagnosis of agoraphobia without panic attacks, and even this particular classification was questionable...Do not expect to see too many agoraphobics without panic\". In spite of this earlier skepticism, current thinking is that agoraphobia without panic disorder is indeed a valid, unique illness which has gone largely unnoticed, since those with the condition are far less likely to seek clinical treatment. According to the DSM-IV-TR, a widely used manual for diagnosing mental disorders, the condition is diagnosed when agoraphobia is present without panic disorder where symptoms are not caused by or are unreasonable to an underlying medical problem or pharmacological influence. The DSM-5 decoupled agoraphobia and panic disorder, making them separate disorders that can be diagnosed together.\nturn_1 observation.context.knowbase[1].name: Body dysmorphic disorder\nturn_1 observation.context.knowbase[1].introduction: Body dysmorphic disorder (BDD), also known in some contexts as dysmorphophobia or dysmorphia, is a mental disorder defined by an overwhelming preoccupation with a perceived flaw in one's physical appearance. In BDD's delusional variant, the flaw is imagined. When an actual visible difference exists, its importance is disproportionately magnified in the mind of the individual. Whether the physical issue is real or imagined, ruminations concerning this perceived defect become pervasive and intrusive, consuming substantial mental bandwidth for extended periods each day. This excessive preoccupation induces severe emotional distress and also disrupts daily functioning and activities. The DSM-5 places BDD within the obsessive–compulsive spectrum, distinguishing it from disorders such as anorexia nervosa. BDD is estimated to affect from 0.7% to 2.4% of the population. It usually starts during adolescence and affects both men and women. The BDD subtype muscle dysmorphia, perceiving the body as too small, affects mostly men. In addition to thinking about it, the sufferer typically checks and compares the perceived flaw repetitively and can adopt unusual routines to avoid social contact that exposes it. Fearing the stigma of vanity, they usually hide this preoccupation. Commonly overlooked even by psychiatrists, BDD has been underdiagnosed. As the disorder severely impairs quality of life due to educational and occupational dysfunction and social isolation, those experiencing BDD tend to have high rates of suicidal thoughts and may attempt suicide.\nturn_1 observation.context.knowbase[1].signs_and_symptoms: Dislike of one's appearance is common, but individuals with BDD have extreme misperceptions about their physical appearance. Whereas vanity involves a quest to aggrandize the appearance, BDD is experienced as a quest to merely normalize the appearance. Although delusional in about one of three cases, the appearance concern is usually non-delusional, an overvalued idea. The bodily area of focus is commonly face, skin, stomach, arms and legs, but can be nearly any part of the body. In addition, multiple areas can be focused on simultaneously. A subtype of body dysmorphic disorder is bigorexia (anorexia reverse or muscle dysphoria). In muscular dysphoria, patients perceive their body as excessively thin despite being muscular and trained. Many seek dermatological treatment or cosmetic surgery, which typically does not resolve the distress. On the other hand, attempts at self-treatment, as by skin picking, can create lesions where none previously existed. BDD is a disorder in the obsessive–compulsive spectrum, but involves more depression and social avoidance despite a degree of overlap with obsessive–compulsive disorder (OCD). BDD often associates with social anxiety disorder (SAD). Some experience delusions that others are covertly pointing out their flaws. Cognitive testing and neuroimaging suggest both a bias toward detailed visual analysis and a tendency toward emotional hyper-arousal. Most generally, one experiencing BDD ruminates over the perceived bodily defect several hours daily or longer, uses either social avoidance or camouflaging with cosmetics or apparel, repetitively checks the appearance, compares it to that of other people, and might often seek verbal reassurances. One might sometimes avoid mirrors, repetitively change outfits, groom excessively, or restrict eating. BDD's severity can wax and wane, and flareups tend to yield absences from school, work, or socializing, sometimes leading to protracted social isolation, with some becoming housebound for extended periods. Social impairment is usually greatest, sometimes approaching avoidance of all social activities. Poor concentration and motivation impair academic and occupational performance. The distress of BDD tends to exceed that of major depressive disorder and rates of suicidal ideation and attempts are especially high.\nturn_1 observation.context.knowbase[1].causes: As with most mental disorders, BDD's cause is likely intricate, altogether biopsychosocial, through an interaction of multiple factors, including genetic, developmental, psychological, social, and cultural. BDD usually develops during early adolescence, although many patients note earlier trauma, abuse, neglect, teasing, or bullying. In many cases, social anxiety earlier in life precedes BDD. Though twin studies on BDD are few, one estimated its heritability at 43%. Yet other factors may be introversion, negative body image, perfectionism, heightened aesthetic sensitivity, and childhood abuse and neglect. === Childhood trauma === The development of body dysmorphia can stem from trauma caused by parents/guardians, family, or close friends. In a study published in 2021 about the prevalence of childhood maltreatment among adults with body dysmorphia, researchers found that more than 75% of respondents had experienced some form of abuse as children. Indeed, the researchers found that adults who had a history of emotional neglect as children were especially vulnerable to BDD, though other forms of abuse, including physical and sexual abuse, were also identified as significant risk factors. As the children progress into their adult years, they start to visualise the abuse that has been done to their bodies, and start finding ways to hide, cover, or change it so they are not reminded of the trauma that they endured as an adolescent. === Social media === Constant use of social media and \"selfie taking\" may translate into low self-esteem and body dysmorphic tendencies. The sociocultural theory of self-esteem states that the messages given by media and peers about the importance of appearance are internalized by individuals who adopt others' standards of beauty as their own. Due to excessive social media use and selfie taking, individuals may become preoccupied about presenting an ideal photograph for the public. Specifically, females' mental health has been the most affected by persistent exposure to social media. Girls with BDD present symptoms of low self-esteem and negative self-evaluation. Due to social media's expectations, a factor of why individuals have body dysmorphia can come from women comparing themselves with media images of ideal female attractiveness, a perceived discrepancy between their actual attractiveness and the media's standard of attractiveness is likely to result. Researchers in Istanbul Bilgi University and Bogazici University in Turkey found that individuals who have low self-esteem participate more often in trends of taking selfies along with using social media to mediate their interpersonal interaction in order to fulfill their self-esteem needs. The self-verification theory, explains how individuals use selfies to gain verification from others through likes and comments. Social media may therefore trigger one's misconception about their physical look. Similar to those with body dysmorphic tendencies, such behavior may lead to constant seeking of approval, self-evaluation and even depression. In 2019 systematic review using Web of Science, PsycINFO, and PubMed databases was used to identify social networking site patterns. In particular appearance focused social media use was found to be significantly associated with greater body image dissatisfaction. It is highlighted that comparisons appear between body image dissatisfaction and BDD symptomatology. They concluded that heavy social media use may mediate the onset of sub-threshold BDD. Individuals with BDD tend to engage in heavy plastic surgery use. In 2018, the plastic surgeon Dr. Tijon Esho coined term \"Snapchat Dysmorphia\" to describe a trend of patients seeking plastic surgeries to mimic \"filtered\" pictures. Filtered photos, such as those on Instagram and Snapchat, often present unrealistic and unattainable looks that may be a causal factor in triggering BDD. === Sociocultural perspective === Historically, body dysmorphic disorder (BDD) was originally coined \"dysmorphophobia\", a term which was widely applied in research literature among the Japanese, Russians, and Europeans. However, in American literature, the appearance of BDD was still overlooked in the 1980s. It was introduced in the DSM-III by the APA, and the diagnostic criteria were not properly defined, as the non-delusional and delusional factors were not separated. This was later resolved with the revision of the DSM-III, which aided many by providing appropriate treatment for patients. BDD was initially considered non-delusional in European research, and was grouped with \"monosymptomatic hypochondriacal psychoses\" – delusional paranoia disorders, before being introduced in the DSM-III. In 1991, the demographics of individuals who experience BDD were primarily single women aged 19 or older. This statistic has not changed over the decades; women are still considered the predominant gender to experience BDD. With the rise of social media platforms, individuals are easily able to seek validation and openly compare their physical appearance to online influences, finding more flaws and defects in their own appearance. This leads to attempts to conceal the defect such as seeking out surgeons to resolve the issue of perceived ugliness. Universally, it is evident that different cultures place much emphasis on correcting the human body aesthetic, and that this preoccupation with body image is not exclusive to just one society; one example is the binding of women's feet in Chinese culture. Whilst physically editing the body is not unique to any one culture, research suggests that it is more common throughout Western society and is on the rise. On close observation of contemporary Western societies, there has been an increase in disorders such as Body dysmorphic disorder, arising from ideals around the aesthetic of the human body. Scholars such as Nancy Scheper-Hughes have suggested such demand placed upon Western bodies has been around since the beginning of the 19th century, and that it has been driven by sexuality. Research also shows that BDD is linked to high comorbidity and suicidality rates. Furthermore, it appears that Caucasian women show higher rates of body dissatisfaction than women of different ethnic backgrounds and societies. Socio-cultural models depict and emphasise the way thinness is valued, and beauty is obsessed over in Western culture, where advertising, marketing, and social media play a large role in manicuring the \"perfect\" body shape, size, and look. The billions of dollars spent to sell products become causal factors of image conscious societies. Advertising also supports a specific ideal body image and creates a social capital in how individuals can acquire this ideal. However, personal attitudes towards the body do vary cross-culturally. Some of this variability can be accounted for due to factors such as food insecurity, poverty, climate, and fertility management. Cultural groups who experience food insecurity generally prefer larger-bodied women. However, many societies that have abundant access to food also value moderate to larger bodies. This is evident in a comparative study of body image, body perception, body satisfaction, body-related self-esteem, and overall self-esteem of German, Guatemalan Q'eqchi' and Colombian women. Unlike the German and Colombian women, the Q'eqchi' women in this study live in the jungles of Guatemala and remain relatively removed from modern technology and secure food resources. The study found that the Q'eqchi' women did not have notably higher body satisfaction when compared to the German or Colombian women. Nevertheless, the Q'eqchi' women also showed the greatest distortion in their own body perception, estimating their physique to be slimmer than it actually was. It is thought this could be due to a lack of access to body monitoring tools such as mirrors, scales, technology, and clothing choices, but in this instance, body distortion does not seem to influence body satisfaction. This has also been shown in groups of lower-income African American women, where the acceptance of larger bodies is not necessarily equivalent to positive body image. Similar studies have noted a high prevalence of BDD in East Asian societies, where facial dissatisfaction is especially common, indicating that this is not just a Western phenomenon.\nturn_1 observation.context.knowbase[1].diagnosis: Estimates of prevalence and gender distribution have varied widely via discrepancies in diagnosis and reporting. In American psychiatry, BDD gained diagnostic criteria in the DSM-IV, having been historically unrecognized, only making its first appearance in the DSM in 1987, but clinicians' knowledge of it, especially among general practitioners, is constricted. Meanwhile, shame about having the bodily concern, and fear of the stigma of vanity, makes many hide even having the concern. Via shared symptoms, BDD is commonly misdiagnosed as social anxiety disorder, obsessive–compulsive disorder, major depressive disorder, or social phobia. Social anxiety disorder and BDD are highly comorbid (within those with BDD, 12–68.8% also have SAD; within those with SAD, 4.8-12% also have BDD), developing similarly in patients -BDD is even classified as a subset of SAD by some researchers. Correct diagnosis can depend on specialized questioning and correlation with emotional distress or social dysfunction. Estimates place the Body Dysmorphic Disorder Questionnaire's sensitivity at 100% (0% false negatives) and specificity at 92.5% (7.5% false positives). BDD is also comorbid with eating disorders, up to 12% comorbidity in one study. Both eating and body dysmorphic disorders are concerned with physical appearance, but eating disorders tend to focus more on weight rather than one's general appearance. BDD is classified as an obsessive–compulsive disorder in DSM-5. It is important to treat people with BDD as soon as possible because the person may have already been suffering for an extended period of time and as BDD has a high suicide rate, at 2–12 times higher than the national average. === Comorbidity === BDD is frequently comorbid with anxiety, depression, psychotic, or bipolar spectrum disorders. BDD is particularly associated with anxiety disorders, especially social anxiety disorder, as individuals often fear being judged for their appearance and avoid social interactions. BDD also frequently coexists with depression, with feelings of sadness and hopelessness often arising when obsessing over perceived flaws, sometimes leading to suicidal ideation and the development of MDD. Although, OCD compulsions can be more varied, BDD-related compulsions typically are center around appearance, which is what led to its inclusion within the obsessive-compulsive spectrum in the DSM-5 (American Psychiatric Association, 2013). Anorexia nervosa and bulimia nervosa are eating disorders which are commonly observed in individuals with BDD, as altered body image concerns lead to disordered eating behaviors in an attempt to alter perceived flaws.\nturn_1 observation.context.case_dir: /oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20028601\nturn_1 observation.context.medenv_case_bundle.case_id: 20028601\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.subject_id: 15962008\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.hadm_id: 20028601\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.admittime: 2171-10-28 08:31:00\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.dischtime: 2171-10-29 17:12:00\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.admission_type: URGENT\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.admission_location: INTERNAL TRANSFER TO OR FROM PSYCH\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.diagnostic_window.start: 2171-10-28 08:31:00\nturn_1 observation.context.medenv_case_bundle.ehr.Meta.diagnostic_window.end: 2171-10-28 13:00:00\nturn_1 observation.context.medenv_case_bundle.ehr.Patient_info.gender: M\nturn_1 observation.context.medenv_case_bundle.ehr.Patient_info.age: 58\nturn_1 observation.context.medenv_case_bundle.ehr.Patient_info.language: English\nturn_1 observation.context.medenv_case_bundle.ehr.Patient_info.race: WHITE\nturn_1 observation.context.medenv_case_bundle.ehr.Patient_info.marital_status: DIVORCED\nturn_1 observation.context.medenv_case_bundle.ehr.Patient_info.insurance: Medicare\nturn_1 observation.context.medenv_case_bundle.ehr.Objective_for_Doctor: Assess and diagnose the 58-year-old male patient presenting with Acute SI in wake of increasing anxiety and long h/o anxiety.\nturn_1 observation.context.medenv_case_bundle.ehr.History.Chief_Complaint: Acute SI in wake of increasing anxiety\nturn_1 observation.context.medenv_case_bundle.ehr.History.HPI: ___ y/o male with long h/o anxiety, depression, and PSA admitted\nto ___ yesterday with acute suicidal feelings in setting of\nPatient last admitted to ___-4 for anxiety in ___,\nrecently s/p 2-month stay at ___\nHe was scheduled\nto follow-up with outside providers (Dr\n___,\ncounselor ___, but missed his appointments\nOn\npresentation to ED, patient reported increased anxiety with SI\ntightness, tingling of extremities, sweating, feeling hot,\nfeeling like he is going to die, and feeling like he is going\ncrazy\nPatient reported symptoms primarily in the morning, for\nwhich he has been self-treating with alcohol\nReported drinking\none pint of vodka daily, last EtOH use four days prior to\nadmission\nNo evidence of DTs or withdrawal symptoms\nturn_1 observation.context.medenv_case_bundle.ehr.History.Past_Medical_History: - PSA (EtOH, heroin)\n- anxiety, depression s/p suicide attempt ___\n- HTN\n- HLD\n- HCV+\n- s/p inguinal and umbilical herniorrhaphy\n- Mild COPD\n- CKD\n- angina\nturn_1 observation.context.medenv_case_bundle.ehr.History.Social_History: ___\nFamily History:\nMr. ___ has a living mother with diabetes ___ and father \nwho died of heart and kidney failure. He has one healthy \nbrother.\nturn_1 observation.context.medenv_case_bundle.ehr.Physical_Examination_Findings: PE deferred\nSeen by Cardiology Team this AM for new onset CP\nturn_1 observation.context.medenv_case_bundle.ehr.Final_Result: Dysthymic disorder\nturn_1 observation.context.medenv_case_bundle.knowledge[0].name: Agoraphobia\nturn_1 observation.context.medenv_case_bundle.knowledge[0].introduction: Agoraphobia is an anxiety disorder characterized by symptoms of anxiety in situations where the person perceives their environment to be unsafe with no way to escape. These situations can include public transit, shopping centers, crowds and queues, or simply being outside their home on their own. Being in these situations may result in a panic attack. Those affected will go to great lengths to avoid these situations. In severe cases, people may become completely unable to leave their homes. Agoraphobia is believed to be due to a combination of genetic and environmental factors. The condition often runs in families, and stressful or traumatic events such as the death of a parent or being attacked may be a trigger. In the DSM-5, agoraphobia is classified as a phobia along with specific phobias and social phobia. Other conditions that can produce similar symptoms include separation anxiety, post-traumatic stress disorder, and major depressive disorder. The diagnosis of agoraphobia has been shown to be comorbid with depression, substance abuse, and suicidal ideation. Without treatment, it is uncommon for agoraphobia to resolve. Treatment is typically with a type of counselling called cognitive behavioral therapy (CBT). CBT results in resolution for about half of people. In some instances, those with a diagnosis of agoraphobia have reported taking benzodiazepines and antipsychotics. Agoraphobia affects about 1.7% of adults. Women are affected about twice as often as men. The condition is rare in children, often begins in adolescence or early adulthood, and becomes more common at age 65 or above.\nturn_1 observation.context.medenv_case_bundle.knowledge[0].signs_and_symptoms: Agoraphobia is a condition where individuals become anxious in unfamiliar environments or where they perceive that they have little control. Triggers for this anxiety may include wide-open spaces, crowds (social anxiety), or traveling (even short distances). Agoraphobia is often, but not always, compounded by a fear of social embarrassment, as a person experiencing agoraphobia fears the onset of a panic attack and appearing distraught in public. Most of the time they avoid these areas and stay in the comfort of a known, controllable space, usually their home. Agoraphobia is also defined as \"a fear, sometimes terrifying, by those who have experienced one or more panic attacks\". In these cases, the patient is fearful of a particular place because they have previously experienced a panic attack at the same location. Fearing the onset of another panic attack, the patient is fearful or avoids a location. Some refuse to leave their homes in medical emergencies because the fear of being outside of their comfort areas is too great. The person with this condition can sometimes go to great lengths to avoid the locations where they have experienced the onset of a panic attack. Agoraphobia, as described in this manner, is a symptom professionals check when making a diagnosis of panic disorder. Other syndromes like obsessive–compulsive disorder or post-traumatic stress disorder can also cause agoraphobia. Any irrational fear that keeps one from going outside can cause the syndrome. People with agoraphobia may experience temporary separation anxiety disorder when certain individuals of the household depart from the residence temporarily, such as a parent or spouse, or when they are left home alone. These situations can result in an increase in anxiety or a panic attack or feeling the need to separate themselves from family or friends. People with agoraphobia sometimes fear waiting outside for long periods of time; that symptom can be called \"macrophobia\". === Panic attacks === Agoraphobia patients can experience sudden panic attacks when traveling to places where they fear they are out of control, help would be difficult to obtain, or they could be embarrassed. During a panic attack, epinephrine is released in large amounts, triggering the body's natural fight-or-flight response. A panic attack typically has an abrupt onset, building to maximum intensity within 10 to 15 minutes, and rarely lasts longer than 30 minutes. Symptoms of a panic attack include palpitations, rapid heartbeat, sweating, trembling, nausea, vomiting, dizziness, tightness in the throat, and shortness of breath. Many patients report a fear of dying, fear of losing control of emotions, or fear of losing control of behaviors.\nturn_1 observation.context.medenv_case_bundle.knowledge[0].causes: Agoraphobia is believed to be due to a combination of genetic and environmental factors. The condition often runs in families, and stressful or traumatic events such as the death of a parent or being attacked may be a trigger. Research has uncovered a link between agoraphobia and difficulties with spatial orientation. Individuals without agoraphobia are able to maintain balance by combining information from their vestibular system, their visual system, and their proprioceptive sense. A disproportionate number of agoraphobics have weak vestibular function and consequently rely more on visual or tactile signals. They may become disoriented when visual cues are sparse (as in wide-open spaces) or overwhelming (as in crowds). Likewise, they may be confused by sloping or irregular surfaces. In a virtual reality study, agoraphobics showed more difficulty integrating sensory changes than non-agoraphobics and are \"more sensitive to sensory conflicts\" than the general population. === Substance-induced === Chronic use of tranquilizers and sleeping pills such as benzodiazepines has been linked to onset of agoraphobia. In 10 patients who had developed agoraphobia during benzodiazepine dependence, symptoms abated within the first year of assisted withdrawal. Similarly, alcohol use disorders are associated with panic with or without agoraphobia; this association may be due to the long-term effects of alcohol consumption causing a distortion in brain chemistry. Tobacco smoking has also been associated with the development and emergence of agoraphobia, often with panic disorder; it is uncertain how tobacco smoking results in anxiety-panic with or without agoraphobia symptoms, but the direct effects of nicotine dependence or the effects of tobacco smoke on breathing have been suggested as possible causes. Self-medication or a combination of factors may also explain the association between tobacco smoking and agoraphobia and panic. === Attachment theory === Some scholars have explained agoraphobia as an attachment deficit, i.e., the temporary loss of the ability to tolerate spatial separations from a secure base. Recent empirical research has also linked attachment and spatial theories of agoraphobia. === Spatial theory === In the social sciences, a perceived clinical bias exists in agoraphobia research. Branches of the social sciences, especially geography, have increasingly become interested in what may be thought of as a spatial phenomenon. One such approach links the development of agoraphobia with modernity. Factors considered contributing to agoraphobia within modernity are the ubiquity of cars and urbanization. These have helped develop the expansion of public space and the contraction of private space, thus creating a conflict in the mind of agoraphobic individuals. === Evolutionary perspectives === Some evolutionary models propose that agoraphobia—like other specific phobias—may be rooted in adaptive mechanisms that helped early humans avoid threats in open or unfamiliar environments. From this viewpoint, fear and avoidance behaviors could have been selectively favored if they aided survival—for instance, by prompting individuals to steer clear of potentially dangerous surroundings or minimize exposure to predators and pathogens. According to preparedness models, human defensive systems are especially sensitive to cues linked to ancestral threats and can rapidly form strong, lasting fear associations with them. In modern life, such defenses might become mismatched to relatively low-risk environments, producing disproportionate anxiety responses. An additional evolutionary psychology view is that the more unusual primary agoraphobia without panic attacks may be due to a different mechanism from agoraphobia with panic attacks. Primary agoraphobia without panic attacks may be a specific phobia explained by it once having been evolutionarily advantageous to avoid exposed, large, open spaces without cover or concealment. Agoraphobia with panic attacks may be an avoidance response secondary to the panic attacks, due to fear of the situations in which the panic attacks occurred.\nturn_1 observation.context.medenv_case_bundle.knowledge[0].diagnosis: Most people who present to mental health specialists develop agoraphobia after the onset of panic disorder. Agoraphobia is best understood as an adverse behavioral outcome of repeated panic attacks and subsequent anxiety and preoccupation with these attacks that leads to an avoidance of situations where a panic attack could occur. Early treatment of panic disorder can often prevent agoraphobia. Agoraphobia is typically determined when symptoms are worse than panic disorder, but also do not meet the criteria for other mental disorders such as depression. === Agoraphobia without history of panic disorder === Agoraphobia without a history of panic disorder (also called primary agoraphobia) is an anxiety disorder where the individual with the diagnosis does not meet the DSM-5 criteria for panic disorder. Agoraphobia typically develops as a result of having panic disorder. In a small minority of cases, however, agoraphobia can develop by itself without being triggered by the onset of panic attacks. Agoraphobia can be caused by traumatic experiences, such as bullying or abuse. Historically, there has been debate over whether agoraphobia without panic genuinely existed, or whether it was simply a manifestation of other disorders such as panic disorder, generalized anxiety disorder, avoidant personality disorder and social phobia. One researcher said: \"out of 41 agoraphobics seen (at a clinic) during a period of 1 year, only 1 fit the diagnosis of agoraphobia without panic attacks, and even this particular classification was questionable...Do not expect to see too many agoraphobics without panic\". In spite of this earlier skepticism, current thinking is that agoraphobia without panic disorder is indeed a valid, unique illness which has gone largely unnoticed, since those with the condition are far less likely to seek clinical treatment. According to the DSM-IV-TR, a widely used manual for diagnosing mental disorders, the condition is diagnosed when agoraphobia is present without panic disorder where symptoms are not caused by or are unreasonable to an underlying medical problem or pharmacological influence. The DSM-5 decoupled agoraphobia and panic disorder, making them separate disorders that can be diagnosed together.\nturn_1 observation.context.medenv_case_bundle.knowledge[1].name: Body dysmorphic disorder\nturn_1 observation.context.medenv_case_bundle.knowledge[1].introduction: Body dysmorphic disorder (BDD), also known in some contexts as dysmorphophobia or dysmorphia, is a mental disorder defined by an overwhelming preoccupation with a perceived flaw in one's physical appearance. In BDD's delusional variant, the flaw is imagined. When an actual visible difference exists, its importance is disproportionately magnified in the mind of the individual. Whether the physical issue is real or imagined, ruminations concerning this perceived defect become pervasive and intrusive, consuming substantial mental bandwidth for extended periods each day. This excessive preoccupation induces severe emotional distress and also disrupts daily functioning and activities. The DSM-5 places BDD within the obsessive–compulsive spectrum, distinguishing it from disorders such as anorexia nervosa. BDD is estimated to affect from 0.7% to 2.4% of the population. It usually starts during adolescence and affects both men and women. The BDD subtype muscle dysmorphia, perceiving the body as too small, affects mostly men. In addition to thinking about it, the sufferer typically checks and compares the perceived flaw repetitively and can adopt unusual routines to avoid social contact that exposes it. Fearing the stigma of vanity, they usually hide this preoccupation. Commonly overlooked even by psychiatrists, BDD has been underdiagnosed. As the disorder severely impairs quality of life due to educational and occupational dysfunction and social isolation, those experiencing BDD tend to have high rates of suicidal thoughts and may attempt suicide.\nturn_1 observation.context.medenv_case_bundle.knowledge[1].signs_and_symptoms: Dislike of one's appearance is common, but individuals with BDD have extreme misperceptions about their physical appearance. Whereas vanity involves a quest to aggrandize the appearance, BDD is experienced as a quest to merely normalize the appearance. Although delusional in about one of three cases, the appearance concern is usually non-delusional, an overvalued idea. The bodily area of focus is commonly face, skin, stomach, arms and legs, but can be nearly any part of the body. In addition, multiple areas can be focused on simultaneously. A subtype of body dysmorphic disorder is bigorexia (anorexia reverse or muscle dysphoria). In muscular dysphoria, patients perceive their body as excessively thin despite being muscular and trained. Many seek dermatological treatment or cosmetic surgery, which typically does not resolve the distress. On the other hand, attempts at self-treatment, as by skin picking, can create lesions where none previously existed. BDD is a disorder in the obsessive–compulsive spectrum, but involves more depression and social avoidance despite a degree of overlap with obsessive–compulsive disorder (OCD). BDD often associates with social anxiety disorder (SAD). Some experience delusions that others are covertly pointing out their flaws. Cognitive testing and neuroimaging suggest both a bias toward detailed visual analysis and a tendency toward emotional hyper-arousal. Most generally, one experiencing BDD ruminates over the perceived bodily defect several hours daily or longer, uses either social avoidance or camouflaging with cosmetics or apparel, repetitively checks the appearance, compares it to that of other people, and might often seek verbal reassurances. One might sometimes avoid mirrors, repetitively change outfits, groom excessively, or restrict eating. BDD's severity can wax and wane, and flareups tend to yield absences from school, work, or socializing, sometimes leading to protracted social isolation, with some becoming housebound for extended periods. Social impairment is usually greatest, sometimes approaching avoidance of all social activities. Poor concentration and motivation impair academic and occupational performance. The distress of BDD tends to exceed that of major depressive disorder and rates of suicidal ideation and attempts are especially high.\nturn_1 observation.context.medenv_case_bundle.knowledge[1].causes: As with most mental disorders, BDD's cause is likely intricate, altogether biopsychosocial, through an interaction of multiple factors, including genetic, developmental, psychological, social, and cultural. BDD usually develops during early adolescence, although many patients note earlier trauma, abuse, neglect, teasing, or bullying. In many cases, social anxiety earlier in life precedes BDD. Though twin studies on BDD are few, one estimated its heritability at 43%. Yet other factors may be introversion, negative body image, perfectionism, heightened aesthetic sensitivity, and childhood abuse and neglect. === Childhood trauma === The development of body dysmorphia can stem from trauma caused by parents/guardians, family, or close friends. In a study published in 2021 about the prevalence of childhood maltreatment among adults with body dysmorphia, researchers found that more than 75% of respondents had experienced some form of abuse as children. Indeed, the researchers found that adults who had a history of emotional neglect as children were especially vulnerable to BDD, though other forms of abuse, including physical and sexual abuse, were also identified as significant risk factors. As the children progress into their adult years, they start to visualise the abuse that has been done to their bodies, and start finding ways to hide, cover, or change it so they are not reminded of the trauma that they endured as an adolescent. === Social media === Constant use of social media and \"selfie taking\" may translate into low self-esteem and body dysmorphic tendencies. The sociocultural theory of self-esteem states that the messages given by media and peers about the importance of appearance are internalized by individuals who adopt others' standards of beauty as their own. Due to excessive social media use and selfie taking, individuals may become preoccupied about presenting an ideal photograph for the public. Specifically, females' mental health has been the most affected by persistent exposure to social media. Girls with BDD present symptoms of low self-esteem and negative self-evaluation. Due to social media's expectations, a factor of why individuals have body dysmorphia can come from women comparing themselves with media images of ideal female attractiveness, a perceived discrepancy between their actual attractiveness and the media's standard of attractiveness is likely to result. Researchers in Istanbul Bilgi University and Bogazici University in Turkey found that individuals who have low self-esteem participate more often in trends of taking selfies along with using social media to mediate their interpersonal interaction in order to fulfill their self-esteem needs. The self-verification theory, explains how individuals use selfies to gain verification from others through likes and comments. Social media may therefore trigger one's misconception about their physical look. Similar to those with body dysmorphic tendencies, such behavior may lead to constant seeking of approval, self-evaluation and even depression. In 2019 systematic review using Web of Science, PsycINFO, and PubMed databases was used to identify social networking site patterns. In particular appearance focused social media use was found to be significantly associated with greater body image dissatisfaction. It is highlighted that comparisons appear between body image dissatisfaction and BDD symptomatology. They concluded that heavy social media use may mediate the onset of sub-threshold BDD. Individuals with BDD tend to engage in heavy plastic surgery use. In 2018, the plastic surgeon Dr. Tijon Esho coined term \"Snapchat Dysmorphia\" to describe a trend of patients seeking plastic surgeries to mimic \"filtered\" pictures. Filtered photos, such as those on Instagram and Snapchat, often present unrealistic and unattainable looks that may be a causal factor in triggering BDD. === Sociocultural perspective === Historically, body dysmorphic disorder (BDD) was originally coined \"dysmorphophobia\", a term which was widely applied in research literature among the Japanese, Russians, and Europeans. However, in American literature, the appearance of BDD was still overlooked in the 1980s. It was introduced in the DSM-III by the APA, and the diagnostic criteria were not properly defined, as the non-delusional and delusional factors were not separated. This was later resolved with the revision of the DSM-III, which aided many by providing appropriate treatment for patients. BDD was initially considered non-delusional in European research, and was grouped with \"monosymptomatic hypochondriacal psychoses\" – delusional paranoia disorders, before being introduced in the DSM-III. In 1991, the demographics of individuals who experience BDD were primarily single women aged 19 or older. This statistic has not changed over the decades; women are still considered the predominant gender to experience BDD. With the rise of social media platforms, individuals are easily able to seek validation and openly compare their physical appearance to online influences, finding more flaws and defects in their own appearance. This leads to attempts to conceal the defect such as seeking out surgeons to resolve the issue of perceived ugliness. Universally, it is evident that different cultures place much emphasis on correcting the human body aesthetic, and that this preoccupation with body image is not exclusive to just one society; one example is the binding of women's feet in Chinese culture. Whilst physically editing the body is not unique to any one culture, research suggests that it is more common throughout Western society and is on the rise. On close observation of contemporary Western societies, there has been an increase in disorders such as Body dysmorphic disorder, arising from ideals around the aesthetic of the human body. Scholars such as Nancy Scheper-Hughes have suggested such demand placed upon Western bodies has been around since the beginning of the 19th century, and that it has been driven by sexuality. Research also shows that BDD is linked to high comorbidity and suicidality rates. Furthermore, it appears that Caucasian women show higher rates of body dissatisfaction than women of different ethnic backgrounds and societies. Socio-cultural models depict and emphasise the way thinness is valued, and beauty is obsessed over in Western culture, where advertising, marketing, and social media play a large role in manicuring the \"perfect\" body shape, size, and look. The billions of dollars spent to sell products become causal factors of image conscious societies. Advertising also supports a specific ideal body image and creates a social capital in how individuals can acquire this ideal. However, personal attitudes towards the body do vary cross-culturally. Some of this variability can be accounted for due to factors such as food insecurity, poverty, climate, and fertility management. Cultural groups who experience food insecurity generally prefer larger-bodied women. However, many societies that have abundant access to food also value moderate to larger bodies. This is evident in a comparative study of body image, body perception, body satisfaction, body-related self-esteem, and overall self-esteem of German, Guatemalan Q'eqchi' and Colombian women. Unlike the German and Colombian women, the Q'eqchi' women in this study live in the jungles of Guatemala and remain relatively removed from modern technology and secure food resources. The study found that the Q'eqchi' women did not have notably higher body satisfaction when compared to the German or Colombian women. Nevertheless, the Q'eqchi' women also showed the greatest distortion in their own body perception, estimating their physique to be slimmer than it actually was. It is thought this could be due to a lack of access to body monitoring tools such as mirrors, scales, technology, and clothing choices, but in this instance, body distortion does not seem to influence body satisfaction. This has also been shown in groups of lower-income African American women, where the acceptance of larger bodies is not necessarily equivalent to positive body image. Similar studies have noted a high prevalence of BDD in East Asian societies, where facial dissatisfaction is especially common, indicating that this is not just a Western phenomenon.\nturn_1 observation.context.medenv_case_bundle.knowledge[1].diagnosis: Estimates of prevalence and gender distribution have varied widely via discrepancies in diagnosis and reporting. In American psychiatry, BDD gained diagnostic criteria in the DSM-IV, having been historically unrecognized, only making its first appearance in the DSM in 1987, but clinicians' knowledge of it, especially among general practitioners, is constricted. Meanwhile, shame about having the bodily concern, and fear of the stigma of vanity, makes many hide even having the concern. Via shared symptoms, BDD is commonly misdiagnosed as social anxiety disorder, obsessive–compulsive disorder, major depressive disorder, or social phobia. Social anxiety disorder and BDD are highly comorbid (within those with BDD, 12–68.8% also have SAD; within those with SAD, 4.8-12% also have BDD), developing similarly in patients -BDD is even classified as a subset of SAD by some researchers. Correct diagnosis can depend on specialized questioning and correlation with emotional distress or social dysfunction. Estimates place the Body Dysmorphic Disorder Questionnaire's sensitivity at 100% (0% false negatives) and specificity at 92.5% (7.5% false positives). BDD is also comorbid with eating disorders, up to 12% comorbidity in one study. Both eating and body dysmorphic disorders are concerned with physical appearance, but eating disorders tend to focus more on weight rather than one's general appearance. BDD is classified as an obsessive–compulsive disorder in DSM-5. It is important to treat people with BDD as soon as possible because the person may have already been suffering for an extended period of time and as BDD has a high suicide rate, at 2–12 times higher than the national average. === Comorbidity === BDD is frequently comorbid with anxiety, depression, psychotic, or bipolar spectrum disorders. BDD is particularly associated with anxiety disorders, especially social anxiety disorder, as individuals often fear being judged for their appearance and avoid social interactions. BDD also frequently coexists with depression, with feelings of sadness and hopelessness often arising when obsessing over perceived flaws, sometimes leading to suicidal ideation and the development of MDD. Although, OCD compulsions can be more varied, BDD-related compulsions typically are center around appearance, which is what led to its inclusion within the obsessive-compulsive spectrum in the DSM-5 (American Psychiatric Association, 2013). Anorexia nervosa and bulimia nervosa are eating disorders which are commonly observed in individuals with BDD, as altered body image concerns lead to disordered eating behaviors in an attempt to alter perceived flaws.\nturn_1 observation.context.medenv_case_bundle.source_field_refs[0]: ehr\nturn_1 observation.question: I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient presenting with Acute SI in wake of increasing anxiety and long h/o anxiety..\nturn_1 observation.medenv_case_bundle.case_id: 20028601\nturn_1 observation.medenv_case_bundle.ehr.Meta.subject_id: 15962008\nturn_1 observation.medenv_case_bundle.ehr.Meta.hadm_id: 20028601\nturn_1 observation.medenv_case_bundle.ehr.Meta.admittime: 2171-10-28 08:31:00\nturn_1 observation.medenv_case_bundle.ehr.Meta.dischtime: 2171-10-29 17:12:00\nturn_1 observation.medenv_case_bundle.ehr.Meta.admission_type: URGENT\nturn_1 observation.medenv_case_bundle.ehr.Meta.admission_location: INTERNAL TRANSFER TO OR FROM PSYCH\nturn_1 observation.medenv_case_bundle.ehr.Meta.diagnostic_window.start: 2171-10-28 08:31:00\nturn_1 observation.medenv_case_bundle.ehr.Meta.diagnostic_window.end: 2171-10-28 13:00:00\nturn_1 observation.medenv_case_bundle.ehr.Patient_info.gender: M\nturn_1 observation.medenv_case_bundle.ehr.Patient_info.age: 58\nturn_1 observation.medenv_case_bundle.ehr.Patient_info.language: English\nturn_1 observation.medenv_case_bundle.ehr.Patient_info.race: WHITE\nturn_1 observation.medenv_case_bundle.ehr.Patient_info.marital_status: DIVORCED\nturn_1 observation.medenv_case_bundle.ehr.Patient_info.insurance: Medicare\nturn_1 observation.medenv_case_bundle.ehr.Objective_for_Doctor: Assess and diagnose the 58-year-old male patient presenting with Acute SI in wake of increasing anxiety and long h/o anxiety.\nturn_1 observation.medenv_case_bundle.ehr.History.Chief_Complaint: Acute SI in wake of increasing anxiety\nturn_1 observation.medenv_case_bundle.ehr.History.HPI: ___ y/o male with long h/o anxiety, depression, and PSA admitted\nto ___ yesterday with acute suicidal feelings in setting of\nPatient last admitted to ___-4 for anxiety in ___,\nrecently s/p 2-month stay at ___\nHe was scheduled\nto follow-up with outside providers (Dr\n___,\ncounselor ___, but missed his appointments\nOn\npresentation to ED, patient reported increased anxiety with SI\ntightness, tingling of extremities, sweating, feeling hot,\nfeeling like he is going to die, and feeling like he is going\ncrazy\nPatient reported symptoms primarily in the morning, for\nwhich he has been self-treating with alcohol\nReported drinking\none pint of vodka daily, last EtOH use four days prior to\nadmission\nNo evidence of DTs or withdrawal symptoms\nturn_1 observation.medenv_case_bundle.ehr.History.Past_Medical_History: - PSA (EtOH, heroin)\n- anxiety, depression s/p suicide attempt ___\n- HTN\n- HLD\n- HCV+\n- s/p inguinal and umbilical herniorrhaphy\n- Mild COPD\n- CKD\n- angina\nturn_1 observation.medenv_case_bundle.ehr.History.Social_History: ___\nFamily History:\nMr. ___ has a living mother with diabetes ___ and father \nwho died of heart and kidney failure. He has one healthy \nbrother.\nturn_1 observation.medenv_case_bundle.ehr.Physical_Examination_Findings: PE deferred\nSeen by Cardiology Team this AM for new onset CP\nturn_1 observation.medenv_case_bundle.ehr.Final_Result: Dysthymic disorder\nturn_1 observation.medenv_case_bundle.knowledge[0].name: Agoraphobia\nturn_1 observation.medenv_case_bundle.knowledge[0].introduction: Agoraphobia is an anxiety disorder characterized by symptoms of anxiety in situations where the person perceives their environment to be unsafe with no way to escape. These situations can include public transit, shopping centers, crowds and queues, or simply being outside their home on their own. Being in these situations may result in a panic attack. Those affected will go to great lengths to avoid these situations. In severe cases, people may become completely unable to leave their homes. Agoraphobia is believed to be due to a combination of genetic and environmental factors. The condition often runs in families, and stressful or traumatic events such as the death of a parent or being attacked may be a trigger. In the DSM-5, agoraphobia is classified as a phobia along with specific phobias and social phobia. Other conditions that can produce similar symptoms include separation anxiety, post-traumatic stress disorder, and major depressive disorder. The diagnosis of agoraphobia has been shown to be comorbid with depression, substance abuse, and suicidal ideation. Without treatment, it is uncommon for agoraphobia to resolve. Treatment is typically with a type of counselling called cognitive behavioral therapy (CBT). CBT results in resolution for about half of people. In some instances, those with a diagnosis of agoraphobia have reported taking benzodiazepines and antipsychotics. Agoraphobia affects about 1.7% of adults. Women are affected about twice as often as men. The condition is rare in children, often begins in adolescence or early adulthood, and becomes more common at age 65 or above.\nturn_1 observation.medenv_case_bundle.knowledge[0].signs_and_symptoms: Agoraphobia is a condition where individuals become anxious in unfamiliar environments or where they perceive that they have little control. Triggers for this anxiety may include wide-open spaces, crowds (social anxiety), or traveling (even short distances). Agoraphobia is often, but not always, compounded by a fear of social embarrassment, as a person experiencing agoraphobia fears the onset of a panic attack and appearing distraught in public. Most of the time they avoid these areas and stay in the comfort of a known, controllable space, usually their home. Agoraphobia is also defined as \"a fear, sometimes terrifying, by those who have experienced one or more panic attacks\". In these cases, the patient is fearful of a particular place because they have previously experienced a panic attack at the same location. Fearing the onset of another panic attack, the patient is fearful or avoids a location. Some refuse to leave their homes in medical emergencies because the fear of being outside of their comfort areas is too great. The person with this condition can sometimes go to great lengths to avoid the locations where they have experienced the onset of a panic attack. Agoraphobia, as described in this manner, is a symptom professionals check when making a diagnosis of panic disorder. Other syndromes like obsessive–compulsive disorder or post-traumatic stress disorder can also cause agoraphobia. Any irrational fear that keeps one from going outside can cause the syndrome. People with agoraphobia may experience temporary separation anxiety disorder when certain individuals of the household depart from the residence temporarily, such as a parent or spouse, or when they are left home alone. These situations can result in an increase in anxiety or a panic attack or feeling the need to separate themselves from family or friends. People with agoraphobia sometimes fear waiting outside for long periods of time; that symptom can be called \"macrophobia\". === Panic attacks === Agoraphobia patients can experience sudden panic attacks when traveling to places where they fear they are out of control, help would be difficult to obtain, or they could be embarrassed. During a panic attack, epinephrine is released in large amounts, triggering the body's natural fight-or-flight response. A panic attack typically has an abrupt onset, building to maximum intensity within 10 to 15 minutes, and rarely lasts longer than 30 minutes. Symptoms of a panic attack include palpitations, rapid heartbeat, sweating, trembling, nausea, vomiting, dizziness, tightness in the throat, and shortness of breath. Many patients report a fear of dying, fear of losing control of emotions, or fear of losing control of behaviors.\nturn_1 observation.medenv_case_bundle.knowledge[0].causes: Agoraphobia is believed to be due to a combination of genetic and environmental factors. The condition often runs in families, and stressful or traumatic events such as the death of a parent or being attacked may be a trigger. Research has uncovered a link between agoraphobia and difficulties with spatial orientation. Individuals without agoraphobia are able to maintain balance by combining information from their vestibular system, their visual system, and their proprioceptive sense. A disproportionate number of agoraphobics have weak vestibular function and consequently rely more on visual or tactile signals. They may become disoriented when visual cues are sparse (as in wide-open spaces) or overwhelming (as in crowds). Likewise, they may be confused by sloping or irregular surfaces. In a virtual reality study, agoraphobics showed more difficulty integrating sensory changes than non-agoraphobics and are \"more sensitive to sensory conflicts\" than the general population. === Substance-induced === Chronic use of tranquilizers and sleeping pills such as benzodiazepines has been linked to onset of agoraphobia. In 10 patients who had developed agoraphobia during benzodiazepine dependence, symptoms abated within the first year of assisted withdrawal. Similarly, alcohol use disorders are associated with panic with or without agoraphobia; this association may be due to the long-term effects of alcohol consumption causing a distortion in brain chemistry. Tobacco smoking has also been associated with the development and emergence of agoraphobia, often with panic disorder; it is uncertain how tobacco smoking results in anxiety-panic with or without agoraphobia symptoms, but the direct effects of nicotine dependence or the effects of tobacco smoke on breathing have been suggested as possible causes. Self-medication or a combination of factors may also explain the association between tobacco smoking and agoraphobia and panic. === Attachment theory === Some scholars have explained agoraphobia as an attachment deficit, i.e., the temporary loss of the ability to tolerate spatial separations from a secure base. Recent empirical research has also linked attachment and spatial theories of agoraphobia. === Spatial theory === In the social sciences, a perceived clinical bias exists in agoraphobia research. Branches of the social sciences, especially geography, have increasingly become interested in what may be thought of as a spatial phenomenon. One such approach links the development of agoraphobia with modernity. Factors considered contributing to agoraphobia within modernity are the ubiquity of cars and urbanization. These have helped develop the expansion of public space and the contraction of private space, thus creating a conflict in the mind of agoraphobic individuals. === Evolutionary perspectives === Some evolutionary models propose that agoraphobia—like other specific phobias—may be rooted in adaptive mechanisms that helped early humans avoid threats in open or unfamiliar environments. From this viewpoint, fear and avoidance behaviors could have been selectively favored if they aided survival—for instance, by prompting individuals to steer clear of potentially dangerous surroundings or minimize exposure to predators and pathogens. According to preparedness models, human defensive systems are especially sensitive to cues linked to ancestral threats and can rapidly form strong, lasting fear associations with them. In modern life, such defenses might become mismatched to relatively low-risk environments, producing disproportionate anxiety responses. An additional evolutionary psychology view is that the more unusual primary agoraphobia without panic attacks may be due to a different mechanism from agoraphobia with panic attacks. Primary agoraphobia without panic attacks may be a specific phobia explained by it once having been evolutionarily advantageous to avoid exposed, large, open spaces without cover or concealment. Agoraphobia with panic attacks may be an avoidance response secondary to the panic attacks, due to fear of the situations in which the panic attacks occurred.\nturn_1 observation.medenv_case_bundle.knowledge[0].diagnosis: Most people who present to mental health specialists develop agoraphobia after the onset of panic disorder. Agoraphobia is best understood as an adverse behavioral outcome of repeated panic attacks and subsequent anxiety and preoccupation with these attacks that leads to an avoidance of situations where a panic attack could occur. Early treatment of panic disorder can often prevent agoraphobia. Agoraphobia is typically determined when symptoms are worse than panic disorder, but also do not meet the criteria for other mental disorders such as depression. === Agoraphobia without history of panic disorder === Agoraphobia without a history of panic disorder (also called primary agoraphobia) is an anxiety disorder where the individual with the diagnosis does not meet the DSM-5 criteria for panic disorder. Agoraphobia typically develops as a result of having panic disorder. In a small minority of cases, however, agoraphobia can develop by itself without being triggered by the onset of panic attacks. Agoraphobia can be caused by traumatic experiences, such as bullying or abuse. Historically, there has been debate over whether agoraphobia without panic genuinely existed, or whether it was simply a manifestation of other disorders such as panic disorder, generalized anxiety disorder, avoidant personality disorder and social phobia. One researcher said: \"out of 41 agoraphobics seen (at a clinic) during a period of 1 year, only 1 fit the diagnosis of agoraphobia without panic attacks, and even this particular classification was questionable...Do not expect to see too many agoraphobics without panic\". In spite of this earlier skepticism, current thinking is that agoraphobia without panic disorder is indeed a valid, unique illness which has gone largely unnoticed, since those with the condition are far less likely to seek clinical treatment. According to the DSM-IV-TR, a widely used manual for diagnosing mental disorders, the condition is diagnosed when agoraphobia is present without panic disorder where symptoms are not caused by or are unreasonable to an underlying medical problem or pharmacological influence. The DSM-5 decoupled agoraphobia and panic disorder, making them separate disorders that can be diagnosed together.\nturn_1 observation.medenv_case_bundle.knowledge[1].name: Body dysmorphic disorder\nturn_1 observation.medenv_case_bundle.knowledge[1].introduction: Body dysmorphic disorder (BDD), also known in some contexts as dysmorphophobia or dysmorphia, is a mental disorder defined by an overwhelming preoccupation with a perceived flaw in one's physical appearance. In BDD's delusional variant, the flaw is imagined. When an actual visible difference exists, its importance is disproportionately magnified in the mind of the individual. Whether the physical issue is real or imagined, ruminations concerning this perceived defect become pervasive and intrusive, consuming substantial mental bandwidth for extended periods each day. This excessive preoccupation induces severe emotional distress and also disrupts daily functioning and activities. The DSM-5 places BDD within the obsessive–compulsive spectrum, distinguishing it from disorders such as anorexia nervosa. BDD is estimated to affect from 0.7% to 2.4% of the population. It usually starts during adolescence and affects both men and women. The BDD subtype muscle dysmorphia, perceiving the body as too small, affects mostly men. In addition to thinking about it, the sufferer typically checks and compares the perceived flaw repetitively and can adopt unusual routines to avoid social contact that exposes it. Fearing the stigma of vanity, they usually hide this preoccupation. Commonly overlooked even by psychiatrists, BDD has been underdiagnosed. As the disorder severely impairs quality of life due to educational and occupational dysfunction and social isolation, those experiencing BDD tend to have high rates of suicidal thoughts and may attempt suicide.\nturn_1 observation.medenv_case_bundle.knowledge[1].signs_and_symptoms: Dislike of one's appearance is common, but individuals with BDD have extreme misperceptions about their physical appearance. Whereas vanity involves a quest to aggrandize the appearance, BDD is experienced as a quest to merely normalize the appearance. Although delusional in about one of three cases, the appearance concern is usually non-delusional, an overvalued idea. The bodily area of focus is commonly face, skin, stomach, arms and legs, but can be nearly any part of the body. In addition, multiple areas can be focused on simultaneously. A subtype of body dysmorphic disorder is bigorexia (anorexia reverse or muscle dysphoria). In muscular dysphoria, patients perceive their body as excessively thin despite being muscular and trained. Many seek dermatological treatment or cosmetic surgery, which typically does not resolve the distress. On the other hand, attempts at self-treatment, as by skin picking, can create lesions where none previously existed. BDD is a disorder in the obsessive–compulsive spectrum, but involves more depression and social avoidance despite a degree of overlap with obsessive–compulsive disorder (OCD). BDD often associates with social anxiety disorder (SAD). Some experience delusions that others are covertly pointing out their flaws. Cognitive testing and neuroimaging suggest both a bias toward detailed visual analysis and a tendency toward emotional hyper-arousal. Most generally, one experiencing BDD ruminates over the perceived bodily defect several hours daily or longer, uses either social avoidance or camouflaging with cosmetics or apparel, repetitively checks the appearance, compares it to that of other people, and might often seek verbal reassurances. One might sometimes avoid mirrors, repetitively change outfits, groom excessively, or restrict eating. BDD's severity can wax and wane, and flareups tend to yield absences from school, work, or socializing, sometimes leading to protracted social isolation, with some becoming housebound for extended periods. Social impairment is usually greatest, sometimes approaching avoidance of all social activities. Poor concentration and motivation impair academic and occupational performance. The distress of BDD tends to exceed that of major depressive disorder and rates of suicidal ideation and attempts are especially high.\nturn_1 observation.medenv_case_bundle.knowledge[1].causes: As with most mental disorders, BDD's cause is likely intricate, altogether biopsychosocial, through an interaction of multiple factors, including genetic, developmental, psychological, social, and cultural. BDD usually develops during early adolescence, although many patients note earlier trauma, abuse, neglect, teasing, or bullying. In many cases, social anxiety earlier in life precedes BDD. Though twin studies on BDD are few, one estimated its heritability at 43%. Yet other factors may be introversion, negative body image, perfectionism, heightened aesthetic sensitivity, and childhood abuse and neglect. === Childhood trauma === The development of body dysmorphia can stem from trauma caused by parents/guardians, family, or close friends. In a study published in 2021 about the prevalence of childhood maltreatment among adults with body dysmorphia, researchers found that more than 75% of respondents had experienced some form of abuse as children. Indeed, the researchers found that adults who had a history of emotional neglect as children were especially vulnerable to BDD, though other forms of abuse, including physical and sexual abuse, were also identified as significant risk factors. As the children progress into their adult years, they start to visualise the abuse that has been done to their bodies, and start finding ways to hide, cover, or change it so they are not reminded of the trauma that they endured as an adolescent. === Social media === Constant use of social media and \"selfie taking\" may translate into low self-esteem and body dysmorphic tendencies. The sociocultural theory of self-esteem states that the messages given by media and peers about the importance of appearance are internalized by individuals who adopt others' standards of beauty as their own. Due to excessive social media use and selfie taking, individuals may become preoccupied about presenting an ideal photograph for the public. Specifically, females' mental health has been the most affected by persistent exposure to social media. Girls with BDD present symptoms of low self-esteem and negative self-evaluation. Due to social media's expectations, a factor of why individuals have body dysmorphia can come from women comparing themselves with media images of ideal female attractiveness, a perceived discrepancy between their actual attractiveness and the media's standard of attractiveness is likely to result. Researchers in Istanbul Bilgi University and Bogazici University in Turkey found that individuals who have low self-esteem participate more often in trends of taking selfies along with using social media to mediate their interpersonal interaction in order to fulfill their self-esteem needs. The self-verification theory, explains how individuals use selfies to gain verification from others through likes and comments. Social media may therefore trigger one's misconception about their physical look. Similar to those with body dysmorphic tendencies, such behavior may lead to constant seeking of approval, self-evaluation and even depression. In 2019 systematic review using Web of Science, PsycINFO, and PubMed databases was used to identify social networking site patterns. In particular appearance focused social media use was found to be significantly associated with greater body image dissatisfaction. It is highlighted that comparisons appear between body image dissatisfaction and BDD symptomatology. They concluded that heavy social media use may mediate the onset of sub-threshold BDD. Individuals with BDD tend to engage in heavy plastic surgery use. In 2018, the plastic surgeon Dr. Tijon Esho coined term \"Snapchat Dysmorphia\" to describe a trend of patients seeking plastic surgeries to mimic \"filtered\" pictures. Filtered photos, such as those on Instagram and Snapchat, often present unrealistic and unattainable looks that may be a causal factor in triggering BDD. === Sociocultural perspective === Historically, body dysmorphic disorder (BDD) was originally coined \"dysmorphophobia\", a term which was widely applied in research literature among the Japanese, Russians, and Europeans. However, in American literature, the appearance of BDD was still overlooked in the 1980s. It was introduced in the DSM-III by the APA, and the diagnostic criteria were not properly defined, as the non-delusional and delusional factors were not separated. This was later resolved with the revision of the DSM-III, which aided many by providing appropriate treatment for patients. BDD was initially considered non-delusional in European research, and was grouped with \"monosymptomatic hypochondriacal psychoses\" – delusional paranoia disorders, before being introduced in the DSM-III. In 1991, the demographics of individuals who experience BDD were primarily single women aged 19 or older. This statistic has not changed over the decades; women are still considered the predominant gender to experience BDD. With the rise of social media platforms, individuals are easily able to seek validation and openly compare their physical appearance to online influences, finding more flaws and defects in their own appearance. This leads to attempts to conceal the defect such as seeking out surgeons to resolve the issue of perceived ugliness. Universally, it is evident that different cultures place much emphasis on correcting the human body aesthetic, and that this preoccupation with body image is not exclusive to just one society; one example is the binding of women's feet in Chinese culture. Whilst physically editing the body is not unique to any one culture, research suggests that it is more common throughout Western society and is on the rise. On close observation of contemporary Western societies, there has been an increase in disorders such as Body dysmorphic disorder, arising from ideals around the aesthetic of the human body. Scholars such as Nancy Scheper-Hughes have suggested such demand placed upon Western bodies has been around since the beginning of the 19th century, and that it has been driven by sexuality. Research also shows that BDD is linked to high comorbidity and suicidality rates. Furthermore, it appears that Caucasian women show higher rates of body dissatisfaction than women of different ethnic backgrounds and societies. Socio-cultural models depict and emphasise the way thinness is valued, and beauty is obsessed over in Western culture, where advertising, marketing, and social media play a large role in manicuring the \"perfect\" body shape, size, and look. The billions of dollars spent to sell products become causal factors of image conscious societies. Advertising also supports a specific ideal body image and creates a social capital in how individuals can acquire this ideal. However, personal attitudes towards the body do vary cross-culturally. Some of this variability can be accounted for due to factors such as food insecurity, poverty, climate, and fertility management. Cultural groups who experience food insecurity generally prefer larger-bodied women. However, many societies that have abundant access to food also value moderate to larger bodies. This is evident in a comparative study of body image, body perception, body satisfaction, body-related self-esteem, and overall self-esteem of German, Guatemalan Q'eqchi' and Colombian women. Unlike the German and Colombian women, the Q'eqchi' women in this study live in the jungles of Guatemala and remain relatively removed from modern technology and secure food resources. The study found that the Q'eqchi' women did not have notably higher body satisfaction when compared to the German or Colombian women. Nevertheless, the Q'eqchi' women also showed the greatest distortion in their own body perception, estimating their physique to be slimmer than it actually was. It is thought this could be due to a lack of access to body monitoring tools such as mirrors, scales, technology, and clothing choices, but in this instance, body distortion does not seem to influence body satisfaction. This has also been shown in groups of lower-income African American women, where the acceptance of larger bodies is not necessarily equivalent to positive body image. Similar studies have noted a high prevalence of BDD in East Asian societies, where facial dissatisfaction is especially common, indicating that this is not just a Western phenomenon.\nturn_1 observation.medenv_case_bundle.knowledge[1].diagnosis: Estimates of prevalence and gender distribution have varied widely via discrepancies in diagnosis and reporting. In American psychiatry, BDD gained diagnostic criteria in the DSM-IV, having been historically unrecognized, only making its first appearance in the DSM in 1987, but clinicians' knowledge of it, especially among general practitioners, is constricted. Meanwhile, shame about having the bodily concern, and fear of the stigma of vanity, makes many hide even having the concern. Via shared symptoms, BDD is commonly misdiagnosed as social anxiety disorder, obsessive–compulsive disorder, major depressive disorder, or social phobia. Social anxiety disorder and BDD are highly comorbid (within those with BDD, 12–68.8% also have SAD; within those with SAD, 4.8-12% also have BDD), developing similarly in patients -BDD is even classified as a subset of SAD by some researchers. Correct diagnosis can depend on specialized questioning and correlation with emotional distress or social dysfunction. Estimates place the Body Dysmorphic Disorder Questionnaire's sensitivity at 100% (0% false negatives) and specificity at 92.5% (7.5% false positives). BDD is also comorbid with eating disorders, up to 12% comorbidity in one study. Both eating and body dysmorphic disorders are concerned with physical appearance, but eating disorders tend to focus more on weight rather than one's general appearance. BDD is classified as an obsessive–compulsive disorder in DSM-5. It is important to treat people with BDD as soon as possible because the person may have already been suffering for an extended period of time and as BDD has a high suicide rate, at 2–12 times higher than the national average. === Comorbidity === BDD is frequently comorbid with anxiety, depression, psychotic, or bipolar spectrum disorders. BDD is particularly associated with anxiety disorders, especially social anxiety disorder, as individuals often fear being judged for their appearance and avoid social interactions. BDD also frequently coexists with depression, with feelings of sadness and hopelessness often arising when obsessing over perceived flaws, sometimes leading to suicidal ideation and the development of MDD. Although, OCD compulsions can be more varied, BDD-related compulsions typically are center around appearance, which is what led to its inclusion within the obsessive-compulsive spectrum in the DSM-5 (American Psychiatric Association, 2013). Anorexia nervosa and bulimia nervosa are eating disorders which are commonly observed in individuals with BDD, as altered body image concerns lead to disordered eating behaviors in an attempt to alter perceived flaws.\nturn_1 observation.medenv_case_bundle.source_field_refs[0]: ehr\nturn_1 observation.ground_truth: Dysthymic disorder\nturn_1 observation.data_source: medical\nturn_1 observation._case_group: 20028601\nturn_1 observation._repeat_id: 0\nturn_2 observation.question: Yes, I’ve had episodes where I felt my heart racing, shortness of breath, and sometimes like I was about to pass out — especially when I’m in crowded places or even just thinking about going out. It’s tied to the anxiety, and I’ve started avoiding situations where I think I might not be able to escape or get help if I panic. I’ve also noticed that when I’m alone or when someone leaves the house, I get really anxious — like I’m not sure I can handle being by myself. Sometimes I feel like I’m not in control, and that fear makes me stay inside even when I need medical help.\nturn_3 observation.tool_outputs.3358a064-6665-42f0-ba43-b7375730537c: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}\nturn_4 observation.tool_outputs.f9035356-e834-4685-8216-9fabdbf91389: [Document 1] (ID: 26852_8, Score: 0.891)\nAgoraphobia is often described as a fear of having 'no place to run or hide' if one does have a panic attack. Common examples include: driving, airplanes, malls, moving out of the house, etc.\n\n# Panic disorder\nPeople who have repeated, persistent attacks or feel severe anxiety about having another a...\n\n[Document 2] (ID: 28048_7, Score: 0.886)\n## History and Symptoms\nSymptoms of agoraphobia may include the following:\n- Fear of crowds, bridges, and/or being outside alone\n- Fear of losing control of oneself in a public place\n- Feeling dependent upon others\n- Feeling helpless\n- Feeling that one’s body or surroundings are not real\n- Being eas...\n\n[Document 3] (ID: 28048_5, Score: 0.885)\nThe attack typically has an abrupt onset, building to maximum intensity within 10 to 15 minutes, and rarely lasts longer than 30 minutes.\n\nThese symptoms include palpitations, sweating, trembling, and shortness of breath. Many patients report a fear of dying, or losing control of emotions or behavio...\n\n[Document 4] (ID: 9228_0, Score: 0.884)\nPanic attack (patient information)\nFor the WikiDoc page for this topic, click here\n\n# Overview\nPanic attack is an anxiety disorder in which there are repeated attacks of intense fear and anxiety, and a fear of being in places where escape might be difficult, or where help might not be available.\n\n# ...\n\n[Document 5] (ID: 9374_0, Score: 0.881)\nAgoraphobia (patient information)\nFor the WikiDoc page for this topic, click here\nSynonyms and Keywords: Panic disorder with agoraphobia, Anxiety disorder- agoraphobia\n\n# Overview\n- Panic disorder with agoraphobia is an anxiety disorder in which there are repeated attacks of intense fear and anxiety..."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 5,
+        "query_text": "acute SI with morning symptom exacerbation and alcohol self-treatment; need memory about agoraphobia triggers and substance-induced panic; avoid premature diagnosis without imaging or lab review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1927,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1865,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.184,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3081,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0510ba88a9d8",
+              "type": "experience",
+              "score": 0.2656,
+              "outcome": "failure",
+              "situation": "When a patient reports worsening anxiety with panic-like symptoms and self-treatment with alcohol, but no clear timeline or lab evidence, the doctor should avoid premature diagnosis and seek specific evidence.",
+              "action": "Request a focused lab panel to rule out metabolic or endocrine causes before finalizing a diagnosis of alcohol withdrawal or anxiety disorder.",
+              "boundary": "Use this memory when anxiety symptoms are severe and alcohol use is reported, but only if labs are unavailable or inconclusive; do not use if labs are available and show no metabolic abnormalities.",
+              "tags": [
+                "negative",
+                "alcohol_withdrawal",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.26,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "alcohol use disorder and its impact on anxiety and panic attacks"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'79f50b1a-145c-496a-868d-23b37cd9339c': \"[Document 1] (ID: 8459_3, Score: 0.886)\\n# Possible complications\\n- Substance abuse can occur when people who have panic attacks try to cope with their fear by using alcohol or illegal drugs.\\n- People with panic disorder are more likely to be unemployed, less productive at work, and to have difficult personal relationships, including marit...\\n\\n[Document 2] (ID: 9374_3, Score: 0.870)\\n# Possible complications\\n- Some people may abuse alcohol or other drugs while trying to self-medicate.\\n- Some people may be unable to function at work or in social situations.\\n- Some people may feel isolated, lonely, depressed, or suicidal.\\n\\n# Prevention\\nEarly treatment of panic disorder can often p...\\n\\n[Document 3] (ID: 28112_2, Score: 0.867)\\n## Differential Diagnosis\\n- Alcohol use disorders\\n- Alcohol intoxication\\n- Delirium\\n- Traumatic brain injury\\n\\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Intoxication\\n\\n# Anxiolytic Use Disorder\\n\\n## Differential Diagnosis\\n- Alcohol use disorder\\n- Clinically appropriate use of t...\\n\\n[Document 4] (ID: 26852_8, Score: 0.865)\\nAgoraphobia is often described as a fear of having 'no place to run or hide' if one does have a panic attack. Common exampl...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"alcohol use disorder and its impact on anxiety and panic attacks\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"alcohol use disorder and its impact on anxiety and panic attacks\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I noticed my anxiety and physical symptoms get worse in the morning. That’s when I feel the tightness, tingling, sweating, and like I’m going to die or going crazy.",
+          "I’ve been self-treating those symptoms by drinking alcohol — one pint of vodka daily — and I last drank four days before admission.",
+          "I don’t know if anything else specifically triggers them, but missing my follow-up appointments and not getting consistent care might be making it worse."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and PSA admitted yesterday with acute suicidal feelings. Symptoms include increased anxiety with SI, tightness, tingling, sweating, feeling hot, fear of dying, and feeling crazy. Symptoms primarily in morning, self-treated with alcohol (1 pint daily, last use 4 days prior). No DTs or withdrawal symptoms. Past medical history: PSA (EtOH, heroin), anxiety, depression s/p suicide attempt, HTN, HLD, HCV+, inguinal/umbilical herniorrhaphy, mild COPD, CKD, angina. Social history: divorced, living mother with diabetes, father died of heart/kidney failure, one healthy brother. Seen by Cardiology Team for new onset CP. PE deferred. Final result: Dysthymic disorder. Knowledge base: Agoraphobia, Body dysmorphic disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 6,
+        "query_text": "Acute SI with morning exacerbation and alcohol self-treatment; need memory about alcohol withdrawal vs. anxiety escalation; avoid premature diagnosis; review prior labs and imaging if available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1961,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1875,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0510ba88a9d8",
+              "type": "experience",
+              "score": 0.265,
+              "outcome": "failure",
+              "situation": "When a patient reports worsening anxiety with panic-like symptoms and self-treatment with alcohol, but no clear timeline or lab evidence, the doctor should avoid premature diagnosis and seek specific evidence.",
+              "action": "Request a focused lab panel to rule out metabolic or endocrine causes before finalizing a diagnosis of alcohol withdrawal or anxiety disorder.",
+              "boundary": "Use this memory when anxiety symptoms are severe and alcohol use is reported, but only if labs are unavailable or inconclusive; do not use if labs are available and show no metabolic abnormalities.",
+              "tags": [
+                "negative",
+                "alcohol_withdrawal",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Panic Disorder with Agoraphobia and Alcohol Use Disorder}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7662cbf3-3d61-44ca-aac4-1b4a547956ac': '{\"diagnosis\": \"Panic Disorder with Agoraphobia and Alcohol Use Disorder\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Panic Disorder with Agoraphobia and Alcohol Use Disorder}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Panic Disorder with Agoraphobia and Alcohol Use Disorder}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I’ve had episodes of dizziness and a racing heart, but I don’t think they’re tied to anxiety — they happen even when I’m calm and not stressed.",
+          "I’ve also felt like I’m about to faint, especially when I’m in crowded places or waiting outside for long periods.",
+          "I avoid those situations now because I’m scared something bad will happen."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and PSA admitted yesterday with acute suicidal feelings. Symptoms include increased anxiety, SI, tightness, tingling, sweating, feeling hot, fear of dying, and feeling crazy. Self-treats with alcohol (1 pint vodka daily, last use 4 days prior). No DTs or withdrawal. Past medical history: HTN, HLD, HCV+, mild COPD, CKD, angina. Social history: divorced, family history of diabetes and heart/kidney failure. Seen by Cardiology Team for new onset CP. PE deferred. Final result: Dysthymic disorder. Knowledge base includes agoraphobia and body dysmorphic disorder. Patient reports panic-like symptoms in crowded places, fear of losing control, and avoidance of public settings. Previous tool outputs: no labs, CXR, or imaging results found."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 7,
+        "query_text": "acute SI with panic-like symptoms in crowded places; new report of dizziness, racing heart, and near-fainting unrelated to stress; need memory about targeted history for autonomic dysfunction or cardiac etiology; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1821,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2547,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis for acute anxiety with dizziness and palpitations in 58-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ed152cfa-b604-4053-8ae2-4427c6d97906': '[Document 1] (ID: 13638_11, Score: 0.852)\\n## Differential diagnosis\\nThe differential diagnosis for irrational and confused patients is a long one and includes anxiety reactions as well as intoxication with a variety of agents, to include hallucinogenic indoles (such as LSD), cannabinoids (such as the delta-9-tetrahydrocannabinol in marijuan...\\n\\n[Document 2] (ID: 114_562, Score: 0.838)\\n# O: Objective\\nMeasure vital signs, with particular attention to heart rate (tachycardia) and respiratory rate (shortness of breath, hyperventilation).\\nPerform a physical examination, including mental status and neurologic, cardiopulmonary, and thyroid examinations.\\n# A: Assessment\\nA differential di...\\n\\n[Document 3] (ID: 4480_8, Score: 0.838)\\nphobias and for separation anxiety disorder (seven to 14 years), but later for GAD, panic disorder, and PTSD (24-50 years). Loneliness low education and adverse parenting as well as chronic somatic illnesses, such as cardiovascular disease, diabetes, asthma, and obesity may increase the risk for a l...\\n\\n[Document 4] (ID: 4198_48, Score: 0.837)\\n## Diagnosis of he\\n## Clinical symptoms\\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in whi...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for acute anxiety with dizziness and palpitations in 58-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for acute anxiety with dizziness and palpitations in 58-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I’ve had episodes of dizziness and a racing heart, but I don’t think they’re tied to anxiety — they happen even when I’m calm and not stressed.",
+          "I’ve also felt like I’m about to faint, especially when I’m in crowded places or waiting outside for long periods.",
+          "I avoid those situations now because I’m scared something bad will happen."
+        ],
+        "prior_information_summary": "58-year-old male with long h/o anxiety, depression, and PSA admitted to ___ yesterday with acute suicidal feelings in setting of patient last admitted to ___-4 for anxiety in ___, recently s/p 2-month stay at ___. Scheduled to follow-up with outside providers (Dr ___, counselor ___), but missed appointments. On presentation to ED, patient reported increased anxiety with SI tightness, tingling of extremities, sweating, feeling hot, feeling like he is going to die, and feeling like he is going crazy. Symptoms primarily in the morning, self-treating with alcohol. Reported drinking one pint of vodka daily, last EtOH use four days prior to admission. No evidence of DTs or withdrawal symptoms. Past medical history: PSA (EtOH, heroin), anxiety, depression s/p suicide attempt ___, HTN, HLD, HCV+, s/p inguinal and umbilical herniorrhaphy, Mild COPD, CKD, angina. Social history: Family history: living mother with diabetes ___, father who died of heart and kidney failure, one healthy brother. PE deferred. Seen by Cardiology Team this AM for new onset CP. Final Result: Dysthymic disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 8,
+        "query_text": "SI with anxiety history; new reports of dizziness, racing heart, near-fainting in non-stressful settings; need memory about targeted neuro/cardiac history and exam before imaging; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "cardiac causes of palpitations and dizziness in 58-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'523135f9-451e-40e0-b3fa-77be46687db8': '[Document 1] (ID: 23046_4, Score: 0.877)\\n# Risk Factors\\nSyncope is a sign of insufficient cerebral blood flow and it should be evaluated for the underlying cause. Possible underlying risk factors of cardiac syncope include  Older age (>60 y), male sex,\\u2003presence of known ischemic heart disease, structural heart disease, previous arrhythmias...\\n\\n[Document 2] (ID: 18600_1, Score: 0.861)\\n# Causes\\nThere are a vast number of causes of palpitations, including namely any condition that causes the heart to be rapidly, forcefully, or irregularly. In general, palpitations may be caused by primary abnormalities in the heart (tachycardia or forceful heart beating), reductions in oxygen carry...\\n\\n[Document 3] (ID: 15371_4, Score: 0.859)\\n### Natural History\\n- The symptoms of orthostatic hypotension mainly develop in the elderly, and start with generalized symptoms of dizziness, lightheadedness, or syncope and less frequently with headache, leg buckling, or chest pain\\n\\n### Complications\\nCommon complications of orthostatic hypotension...\\n\\n[Document 4] (ID: 18600_2, Score: 0.858)\\n# Natural History, Complications, and Prognosis\\nPatient often present with a flip flopping,fluttering,pounding or thud li...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"cardiac causes of palpitations and dizziness in 58-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"cardiac causes of palpitations and dizziness in 58-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I’ve had episodes of dizziness and a racing heart, but I don’t think they’re tied to anxiety — they happen even when I’m calm and not stressed.",
+          "I’ve also felt like I’m about to faint, especially when I’m in crowded places or waiting outside for long periods.",
+          "I avoid those situations now because I’m scared something bad will happen."
+        ],
+        "prior_information_summary": "58-year-old M patient with long h/o anxiety, depression, and PSA admitted yesterday with acute suicidal feelings. Symptoms include tightness, tingling, sweating, feeling hot, fear of dying, and feeling crazy. Self-treats with alcohol (1 pint vodka daily, last use 4 days prior). No DTs or withdrawal. Past med: anxiety, depression s/p suicide attempt, HTN, HLD, HCV+, herniorrhaphy, COPD, CKD, angina. Family: mother with diabetes, father died of heart/kidney failure, one healthy brother. PE deferred; seen by Cardiology for new onset CP. Final result: Dysthymic disorder. Knowledge base: Agoraphobia, Body dysmorphic disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 9,
+        "query_text": "acute SI with new dizziness and presyncope in anxious patient; need memory about cardiac vs. neurologic causes; avoid premature diagnosis; consider imaging or ECG review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2147,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2111,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2013,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.1988,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1945,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7f6f4a437b1b",
+              "type": "experience",
+              "score": 0.2772,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, abdominal cramping, dizziness, and syncope, especially with weight loss and low-grade fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis without ruling out mechanical or structural causes.",
+              "action": "Do not finalize diagnosis without requesting imaging or performing a focused physical exam to assess for signs of fracture or musculoskeletal injury, especially given the mechanism of syncope during straining.",
+              "boundary": "Use this memory when the patient has a history of trauma or mechanical symptoms, and imaging or physical exam is not yet performed; do not use if imaging is available and shows no fracture or if the patient has clear systemic signs of cancer.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "dizziness",
+                "syncope",
+                "weight_loss",
+                "premature_closure",
+                "missing_imaging"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2753,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.273,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any history of heart disease, high blood pressure, or diabetes? Have you noticed any pattern in your symptoms, such as occurring after meals or during specific activities?"
+        },
+        "patient_or_tool_response": "{'question': 'I have a history of high blood pressure and angina. I also have a family history of diabetes and heart/kidney issues. I’m not sure if I’ve had diabetes myself — I don’t recall being diagnosed with it. \\n\\nAs for symptom patterns, I’ve noticed my symptoms — like feeling tightness, tingling, sweating, and feeling like I’m going to die — mostly happen in the morning. They’ve been getting worse lately, and I’ve been self-treating with alcohol, drinking about a pint of vodka daily. I don’t think they’re tied to meals or specific activities, but I’m not sure — I haven’t really tracked it closely.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any history of heart disease, high blood pressure, or diabetes? Have you noticed any pattern in your symptoms, such as occurring after meals or during specific acti",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any history of heart disease, high blood pressure, or diabetes? Have you noticed any pattern in your symptoms, such as occurring after meals or during specific activities?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I have a history of high blood pressure and angina.",
+          "I also have a family history of diabetes and heart/kidney issues.",
+          "I’m not sure if I’ve had diabetes myself — I don’t recall being diagnosed with it.",
+          "As for symptom patterns, I’ve noticed my symptoms — like feeling tightness, tingling, sweating, and feeling like I’m going to die — mostly happen in the morning.",
+          "They’ve been getting worse lately, and I’ve been self-treating with alcohol, drinking about a pint of vodka daily.",
+          "I don’t think they’re tied to meals or specific activities, but I’m not sure — I haven’t really tracked it closely."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and PSA (EtOH, heroin). Recently admitted for acute suicidal feelings in context of increasing anxiety. History includes 2-month stay at facility, missed follow-up appointments. Symptoms include morning onset of anxiety, SI, tightness, tingling, sweating, feeling hot, fear of dying, and feeling crazy. Self-treats with alcohol (1 pint vodka daily, last use 4 days prior). No DTs or withdrawal symptoms. Past medical history: HTN, HLD, HCV+, inguinal/umbilical herniorrhaphy, mild COPD, CKD, angina. Social history: divorced, living mother with diabetes, father died of heart/kidney failure, one healthy brother. PE deferred; seen by Cardiology Team for new onset CP. Final result: Dysthymic disorder. Knowledge base includes Agoraphobia and Body Dysmorphic Disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 10,
+        "query_text": "acute SI with morning onset and alcohol self-treatment; new info on family history and symptom pattern; need memory about avoiding premature diagnosis; consider cardiac vs. psychiatric etiology before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "alcohol abuse and its effects on anxiety, palpitations, and dizziness in 58-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d4666352-6cf9-4a26-b56c-82b0b77baae9': '[Document 1] (ID: 33048_7, Score: 0.850)\\n## Differential Diagnosis\\n- Alcohol withdrawal\\n- Anxiety disorders\\n- Essential tremor\\n- Hypoglycemia\\n- Diabetic ketoacidosis\\n- Seizure due to infections, head injury, poisonings\\n\\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\\n\\n# Sedative Intoxication\\n\\n## Differential D...\\n\\n[Document 2] (ID: 13579_3, Score: 0.848)\\n## Potential Complications\\nThere are many potential complications that can arise due to substance abuse such as severe physiological damage, psychological changes and social changes that are often not desirable.\\nPhysiological damage is often the most obvious, observed as an abnormal condition affect...\\n\\n[Document 3] (ID: 15806_4, Score: 0.848)\\n### Precautions\\n- If there is mydriasis and photophobia, dark glasses should be worn.  Appropriate dosage precautions must be taken with infants, children, persons with mongolism, brain damage, spasticity, or light irides.  Elevated intraocular pressure, urinary difficulty and retention and constipa...\\n\\n[Document 4] (ID: 28112_2, Score: 0.843)\\n## Differential Diagnosis\\n- Alcohol use disorders\\n- Alcohol intoxication\\n- Delirium\\n- Traumatic brain injury\\n\\n## DSM-V Di...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"alcohol abuse and its effects on anxiety, palpitations, and dizziness in 58-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"alcohol abuse and its effects on anxiety, palpitations, and dizziness in 58-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20028601",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Acute SI in wake of increasing anxiety",
+        "current_turn_information": [
+          "I have a history of high blood pressure and angina. I also have a family history of diabetes and heart/kidney issues. I’m not sure if I’ve had diabetes myself — I don’t recall being diagnosed with it.",
+          "As for symptom patterns, I’ve noticed my symptoms — like feeling tightness, tingling, sweating, and feeling like I’m going to die — mostly happen in the morning. They’ve been getting worse lately, and I’ve been self-treating with alcohol, drinking about a pint of vodka daily. I don’t think they’re tied to meals or specific activities, but I’m not sure — I haven’t really tracked it closely."
+        ],
+        "prior_information_summary": "58-year-old male with long history of anxiety, depression, and PSA (EtOH, heroin). Recently admitted for acute suicidal feelings in context of increasing anxiety. History includes 2-month stay at facility, missed follow-up appointments. Symptoms include morning onset of anxiety, tightness, tingling, sweating, feeling hot, fear of dying, and feeling crazy. Self-treats with alcohol (1 pint vodka daily, last use 4 days prior). No DTs or withdrawal symptoms. Past medical history: HTN, HLD, HCV+, inguinal/umbilical herniorrhaphy, mild COPD, CKD, angina. Family history: mother with diabetes, father died of heart/kidney failure, one healthy brother. Seen by Cardiology Team for new onset CP. PE deferred. Final Result: Dysthymic disorder. Knowledge base includes Agoraphobia and Body Dysmorphic Disorder."
+      },
+      "query": {
+        "case_id": "20028601",
+        "turn_id": 11,
+        "query_text": "acute SI with morning onset and alcohol self-treatment; new info on family history and symptom pattern; need memory about avoiding premature diagnosis; consider cardiac vs. psychiatric etiology before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Alcohol Use Disorder with Associated Anxiety and Cardiac Symptoms}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7b0df40b-b165-4c31-92f5-27762b2cb22b': '{\"diagnosis\": \"Alcohol Use Disorder with Associated Anxiety and Cardiac Symptoms\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Alcohol Use Disorder with Associated Anxiety and Cardiac Symptoms}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Alcohol Use Disorder with Associated Anxiety and Cardiac Symptoms}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

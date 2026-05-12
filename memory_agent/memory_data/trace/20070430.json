@@ -1,0 +1,1039 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20070430",
+  "turns": [
+    {
+      "case_id": "20070430",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "Assess and diagnose the 40-year-old female patient presenting with Left-sided flank pain and worsening hematuria. and h/o ESRD ___ polycystic kidney disease.",
+          "I am a 40-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 40-year-old female patient presenting with Left-sided flank pain and worsening hematuria. and h/o ESRD ___ polycystic kidney disease.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 1,
+        "query_text": "Left-sided flank pain and worsening hematuria in patient with ESRD and polycystic kidney disease; need targeted history and exam before imaging or lab decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.234,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2214,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2207,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2203,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2124,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3211,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_c95ca4534af0",
+              "type": "experience",
+              "score": 0.3171,
+              "outcome": "failure",
+              "situation": "When a patient presents with hematuria, fever, and flank pain, and has a known history of cystic kidney disease, but no imaging results are available, the doctor should not finalize a diagnosis without confirming imaging findings.",
+              "action": "Request and review available imaging studies (e.g., ultrasound or CT) before finalizing a diagnosis involving complications of cystic kidney disease.",
+              "boundary": "Use this memory when imaging is available and relevant to the differential; do not use if imaging is unavailable or if the patient has no known cystic kidney disease.",
+              "tags": [
+                "negative",
+                "missing_image",
+                "premature_closure",
+                "cystic_kidney_disease"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2945,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c95ca4534af0"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c95ca4534af0",
+            "memory_type": "experience",
+            "score": 0.3171,
+            "content": {
+              "situation": "When a patient presents with hematuria, fever, and flank pain, and has a known history of cystic kidney disease, but no imaging results are available, the doctor should not finalize a diagnosis without confirming imaging findings.",
+              "action": "Request and review available imaging studies (e.g., ultrasound or CT) before finalizing a diagnosis involving complications of cystic kidney disease.",
+              "outcome": "This action would have revealed whether the cystic changes were consistent with polycystic kidney disease or if there was an acute inflammatory process, preventing premature diagnosis.",
+              "boundary": "Use this memory when imaging is available and relevant to the differential; do not use if imaging is unavailable or if the patient has no known cystic kidney disease.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_image",
+                "premature_closure",
+                "cystic_kidney_disease"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any blood in your urine recently, and if so, how has it changed over time?"
+        },
+        "patient_or_tool_response": "{'question': 'I noticed blood in my urine about three days ago. It started as noticeable hematuria, and since then, it’s been getting better — the doctor said it’s resolving. The pain I was having also improved after treatment. I’m not sure exactly how it changed over time, but I’m feeling better now.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any blood in your urine recently, and if so, how has it changed over time?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any blood in your urine recently, and if so, how has it changed over time?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20070430",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "I noticed blood in my urine about three days ago. It started as noticeable hematuria, and since then, it’s been getting better — the doctor said it’s resolving. The pain I was having also improved after treatment. I’m not sure exactly how it changed over time, but I’m feeling better now."
+        ],
+        "prior_information_summary": "40-year-old female with history of ESRD and polycystic kidney disease, s/p living related transplant, presenting with left flank pain x 6 days. Pain started ~1 week ago, sharp, radiating to back, constant, worsened over weekend. Noted hematuria 3 days PTA, presented to ED. ED findings: vitals 98.1, 135/91, 64, 16, 100%; ultrasound showed cyst with blood extension into proximal collecting system, mildly dilated; Hct 28.8 (from baseline ~34), creatinine 1.4; urinalysis: trace leukocytes, negative nitrites. Treated with cipro and Percocet. Transplant surgical team admitted. Patient reports pain improved, hematuria resolving, tolerating PO, mild nausea, thirsty, endorses dysuria, fevers, chills at home prior to admission. Denies respiratory or GI symptoms. Physical exam: tenderness left upper quadrant and flank, no guarding/rebound, pain with coughing. Vitals: 100.1 Tm, BP 138/84, 77, 20, 96% RA. Past medical history: polycystic kidney disease, depression, tubal ligation, diabetes mellitus. Family history: mother healthy, father died early, sisters with unknown status, brother healthy."
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 2,
+        "query_text": "Left flank pain and resolving hematuria; patient reports improvement but still has dysuria, fevers, chills; need memory about targeted questions to assess infection or transplant complication; avoid premature diagnosis without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1972,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1906,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1893,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2539,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e95a4cdb-ee3e-4e00-81dc-f6c77e66c40f': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20070430",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "40-year-old female with history of ESRD and polycystic kidney disease, s/p living related transplant, presenting with left flank pain x 6 days, sharp pain radiating to back, worsened over weekend, noticed hematuria 3 days PTA, treated in ED with cipro and Percocet, vitals 98.1, 135/91, 64, 16, 100%, CT showed cyst with blood in proximal collecting system, mildly dilated, Hct 28.8 (baseline ~34), creatinine 1.4, WBC trace leukocytes, negative nitrites, admitted, now pain improved, hematuria resolving, tolerating PO, mild nausea, thirsty, endorses dysuria, fevers, chills at home, denies respiratory and GI symptoms. Physical exam: Vitals 100.1 Tm, BP 138/84, 77, 20, 96% RA, moderate left upper quadrant and flank tenderness, no guarding/rebound, pain with coughing, no edema, no rashes, abdominal scars from transplant, neuro intact. Past med: polycystic kidney disease, depression, tubal ligation, diabetes. Family: mother healthy, father died early, sisters with unknown, brother healthy."
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 3,
+        "query_text": "Left flank pain with resolving hematuria and new labs missing; need memory about targeted diagnostic next steps before finalizing diagnosis; avoid premature closure without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2387,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2096,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1987,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1984,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1966,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3098,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2699,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.2662,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_319b5f0239cc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_319b5f0239cc",
+            "memory_type": "experience",
+            "score": 0.3098,
+            "content": {
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "outcome": "Premature finalization led to misdiagnosis; the gold diagnosis was calculus of ureter, which could have been identified with targeted imaging or lab work.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "complications of polycystic kidney disease in women with ESRD"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1ba5c60f-6e84-4f36-9a4f-38adf48f2d7b': '[Document 1] (ID: 9242_6, Score: 0.881)\\n## Other Diagnostic Studies\\nOther diagnostic studies for polycystic kidney disease include, genetic testing, which demonstrates, frame insertions / deletions, non-canonical splice site alterations, combined missense changes.\\n\\n# Treatment\\n\\n## Medical Therapy\\nPatients with polycystic kidney disease ar...\\n\\n[Document 2] (ID: 3306_47, Score: 0.869)\\n## Esrd\\nSix studies analyzing data from 3 data sources, [bib_ref] Ethnic and gender related differences in the risk of end-stage renal disease..., Cherikh [/bib_ref] [bib_ref] Age, gender, race, and associations with kidney failure following living kidney donation, Gibney [/bib_ref] [bib_ref] Risk o...\\n\\n[Document 3] (ID: 9242_0, Score: 0.868)\\nPolycystic kidney disease overview\\n\\n# Overview\\nAutosomal dominant polycystic kidney disease (ADPKD), previously known as adult polycystic kidney disease, is a systemic disorder characterized primarily by multiple, bilateral renal cysts, cysts in other organs namely the liver and pancreas, and cardio...\\n\\n[Document 4] (ID: 9242_4, Score: 0.864)\\n## Diagnostic Study of Choice\\nThe diagnostic study of choice for polycystic kidney disease is ultrasound. Findings on an ult...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.6,
+        "delta": 0.6,
+        "turn_reward": 0.12,
+        "importance": 0.6
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"complications of polycystic kidney disease in women with ESRD\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"complications of polycystic kidney disease in women with ESRD\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20070430",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "Patient reports hematuria is resolving.",
+          "Pain improved after treatment.",
+          "Patient feels better now.",
+          "Patient complains of mild nausea.",
+          "Patient feels thirsty.",
+          "Patient endorses dysuria, fevers and chills at home prior to admission.",
+          "Patient denies respiratory and GI symptoms."
+        ],
+        "prior_information_summary": "40-year-old female with history of ESRD due to polycystic kidney disease, s/p living related transplant complicated by acute cellular rejection. Presented with left flank pain for 6 days, started as sharp pain radiating to back, worsened over weekend. Noted hematuria 3 days PTA, presented to ED. Vital signs: T 98.1, BP 135/91, HR 64, RR 16, SpO2 100%. ED findings: mild dilation of collecting system, hematocrit 28.8 (from baseline ~34), creatinine 1.4, white cells, trace leukocytes, negative nitrites. Treated with cipro and Percocet. Admitted. Physical exam: moderate tenderness in left upper quadrant and flank, no guarding or rebound, pain with coughing. Vitals: T 100.1, BP 138/84, HR 77, RR 20, SpO2 96%. General: slow to move due to pain. Abdomen: tenderness, no rebound. Extremities: no edema. Skin: abdominal scars from prior transplant. Neuro: AAOx3, CN II-XII intact. Past medical history: polycystic kidney disease, depression, tubal ligation, diabetes mellitus. Family history: mother healthy, father died early, sisters with unknown status, brother healthy."
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 4,
+        "query_text": "Left flank pain and hematuria improving with treatment; new report of dysuria, fevers, chills; need memory about targeted history for UTI vs. transplant rejection; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1901,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1898,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2782,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2738,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.26,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any episodes of kidney stones or urinary tract infections in the past? Any history of stone-related pain or infections?"
+        },
+        "patient_or_tool_response": "{'question': 'I have had urinary tract infections before. In the past, I was treated with cipro for a UTI. I also had stone-related pain in the past, and I was sent home with Percocet for pain control. I experienced dysuria, fevers, and chills at home before this admission. I do not recall having kidney stones specifically, but I had pain that was consistent with stone-related pain.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any episodes of kidney stones or urinary tract infections in the past? Any history of stone-related pain or infections?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any episodes of kidney stones or urinary tract infections in the past? Any history of stone-related pain or infections?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20070430",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "I have had urinary tract infections before. In the past, I was treated with cipro for a UTI. I also had stone-related pain in the past, and I was sent home with Percocet for pain control. I experienced dysuria, fevers, and chills at home before this admission. I do not recall having kidney stones specifically, but I had pain that was consistent with stone-related pain."
+        ],
+        "prior_information_summary": "40-year-old female with history of ESRD due to polycystic kidney disease, s/p living related transplant complicated by acute cellular rejection; presents with left flank pain x 6 days, started as sharp pain radiating to back, worsened over weekend; noticed hematuria 3 days PTA; treated in ED with cipro for UTI and Percocet for pain; vitals: 98.1°F, 135/91, 64, 16, 100%; imaging showed cyst with blood in proximal collecting system, mildly dilated; Hct 28.8 (from baseline ~34), creatinine 1.4; urinalysis: trace leukocytes, negative nitrites; admitted; pain improved, hematuria resolving; tolerating PO, mild nausea, thirsty; denies respiratory/GI symptoms; past med: depression, tubal ligation, diabetes; family history: mother healthy, father died early, sisters with unknown status, brother healthy; physical: tenderness left upper quadrant/flank, no guarding/rebound, pain with coughing; vitals: 100.1°F, BP 138/84, 77, 20, 96% RA; general: slow to move due to pain; abdomen: moderate tenderness; extremities: no edema; skin: abdominal scars from transplant; neuro: AAOx3, CN II-XII intact, moving all extremities."
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 5,
+        "query_text": "Left flank pain with hematuria and prior UTI/stone history; new info: fevers, chills, dysuria; imaging shows cyst with blood; need memory about targeted questions before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "hematuria and flank pain in polycystic kidney disease complications"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bcc654eb-3cdd-44f7-8702-10844ceefe1f': '[Document 1] (ID: 29881_13, Score: 0.881)\\n- Nausea and Vomiting: These symptoms are due to irritation of the peritoneum and distention of the renal capsule; and are most severe when the flank pain is acute and severe originating from a renal calculi.\\n- Urinary frequency and urgency: It is due to the referred pain to the bladder area.\\n- Gros...\\n\\n[Document 2] (ID: 29881_11, Score: 0.880)\\n# Complications\\n- Acute pyelonephritis: Renal or perinephric abscess formation, sepsis, renal vein thrombosis, papillary necrosis, acute renal failure, emphysematous pyelonephritis. \\n- Urinary tract infection: pyelonephritis and/or pyonephrosis. \\n- Renal infarction: Declining renal function and/or r...\\n\\n[Document 3] (ID: 9242_4, Score: 0.880)\\n## Diagnostic Study of Choice\\nThe diagnostic study of choice for polycystic kidney disease is ultrasound. Findings on an ultrasound diagnostic of polycystic kidney disease include, atleast three unilateral or bilateral cysts in patients 15 - 39 years old, atleast two cysts in each kidney in patients...\\n\\n[Document 4] (ID: 8923_1, Score: 0.869)\\n## Symptoms\\n- Associated with renal stones:\\nColicky pain\\nHematuria\\nDysuria\\nOliguria\\nReddish brown diaper spots in younger...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"hematuria and flank pain in polycystic kidney disease complications\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"hematuria and flank pain in polycystic kidney disease complications\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20070430",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "I have had urinary tract infections before. In the past, I was treated with cipro for a UTI. I also had stone-related pain in the past, and I was sent home with Percocet for pain control. I experienced dysuria, fevers, and chills at home before this admission. I do not recall having kidney stones specifically, but I had pain that was consistent with stone-related pain."
+        ],
+        "prior_information_summary": "40-year-old female with history of ESRD due to polycystic kidney disease, s/p living related transplant complicated by acute cellular rejection. Presenting with left flank pain x 6 days, started as sharp pain radiating to back, worsened over weekend. Noted hematuria 3 days PTA, presented to ED. In ED: vitals 98.1, 135/91, 64, 16, 100%; ultrasound showed cyst with blood in proximal collecting system, mildly dilated; hematocrit 28.8 (baseline ~34), creatinine 1.4; urinalysis: trace leukocytes, negative nitrites. Treated with Dilaudid and admitted. Pain improved, hematuria resolving. Currently tolerating PO, mild nausea, thirsty. Endorses dysuria, fevers, chills prior to admission. Denies respiratory or GI symptoms. Physical exam: tenderness left upper quadrant and flank, no guarding/rebound, pain with coughing. Vitals: 100.1 Tm, BP 138/84, 77, 20, 96% RA. General: slow to move due to pain. Abdomen: moderate tenderness. Skin: abdominal scars from prior transplant. Neuro: AAOx3, CN II-XII intact."
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 6,
+        "query_text": "Left flank pain with hematuria and prior UTI/stone history; new info: dysuria, fevers, chills; need memory about imaging review and avoiding premature diagnosis before labs or imaging confirm"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2055,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2025,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Acute pyelonephritis secondary to polycystic kidney disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8c450af9-4823-4a9e-88f2-cd22b9e9f752': '{\"diagnosis\": \"Acute pyelonephritis secondary to polycystic kidney disease\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute pyelonephritis secondary to polycystic kidney disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute pyelonephritis secondary to polycystic kidney disease}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20070430",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Left-sided flank pain and worsening hematuria.",
+        "current_turn_information": [
+          "Yes, I had fevers and chills at home in the days before coming in, and I also have mild nausea. I don’t remember having a fever or chills during the ER visit, but I did have them at home before that. The nausea is mild and I’m tolerating oral meds, though I feel thirsty."
+        ],
+        "prior_information_summary": "40-year-old female with history of ESRD and polycystic kidney disease, s/p living related transplant, presenting with left flank pain x 6 days, started ~1 week ago, sharp pain radiating to back, worsened over weekend, noticed hematuria 3 days PTA, presented to ED, treated with cipro and Percocet, pain improved, hematuria resolving, vitals: 98.1, 135/91, 64, 16, 100%, hematocrit 28.8 (↓ from 34), creatinine 1.4, urine: trace leukocytes, negative nitrites, admitted, transplant surgical team noted cyst with blood extension into proximal collecting system, mildly dilated, patient now reports improved pain and resolving hematuria, tolerating PO, mild nausea, thirsty, endorses dysuria, fevers/chills at home prior to admission, denies respiratory/GI symptoms."
+      },
+      "query": {
+        "case_id": "20070430",
+        "turn_id": 7,
+        "query_text": "Left flank pain with resolving hematuria and new fevers/chills; need memory about infection vs. transplant complication; avoid premature diagnosis; consider imaging review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2705,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2497,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2471,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2425,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2342,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2856,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.2759,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_4e2576c11045",
+              "type": "experience",
+              "score": 0.2723,
+              "outcome": "failure",
+              "situation": "When a patient describes progressive facial pain starting with episodic stabbing attacks and evolving to constant severe pain with radiation and jaw-clenching triggers, and no imaging or labs are available, what should the doctor do?",
+              "action": "Avoid finalizing diagnosis without imaging; request neuroimaging to rule out cerebrovascular anomalies.",
+              "boundary": "Use when facial pain is progressive and triggered by jaw movement; do not use if imaging is already available or if pain is clearly non-neurologic.",
+              "tags": [
+                "negative",
+                "facial_pain",
+                "premature_closure",
+                "image_review_needed",
+                "missing_imaging"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Acute pyelonephritis secondary to urinary tract obstruction in a patient with polycystic kidney disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7cca359e-c666-4948-b59c-ab78f1c8972f': '{\"diagnosis\": \"Acute pyelonephritis secondary to urinary tract obstruction in a patient with polycystic kidney disease\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute pyelonephritis secondary to urinary tract obstruction in a patient with polycystic kidney disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute pyelonephritis secondary to urinary tract obstruction in a patient with polycystic kidney disease}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

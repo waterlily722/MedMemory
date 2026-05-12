@@ -1,0 +1,969 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20023059",
+  "turns": [
+    {
+      "case_id": "20023059",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "I am a 54-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 54-year-old female patient presenting with Screening colonoscopy."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 1,
+        "query_text": "Screening colonoscopy for 54-year-old female; need memory about initial diagnostic approach before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.2324,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2028,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any changes in bowel habits, such as diarrhea, constipation, or blood in your stool?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t experienced any changes in bowel habits like diarrhea, constipation, or blood in my stool. I’ve had no recent change in bowel habits at all.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in bowel habits, such as diarrhea, constipation, or blood in your stool?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in bowel habits, such as diarrhea, constipation, or blood in your stool?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "No, I haven’t experienced any changes in bowel habits like diarrhea, constipation, or blood in my stool. I’ve had no recent change in bowel habits at all."
+        ],
+        "prior_information_summary": "54-year-old female, admitted urgently for colonoscopy prep. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. Pt feels well, no systemic symptoms. Physical exam: alert, NAD, no abdominal tenderness, bowel sounds present. Objective: assess and diagnose for screening colonoscopy. Final result: special screening for malignant neoplasms of colon."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 2,
+        "query_text": "Screening colonoscopy for 54-year-old female with family history of colon cancer; no bowel habit changes reported this turn; need memory about targeted questions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2339,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.187,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any unexplained weight loss, fatigue, or abdominal discomfort?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t noticed any unexplained weight loss, fatigue, or abdominal discomfort. I feel well without complaints.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unexplained weight loss, fatigue, or abdominal discomfort?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unexplained weight loss, fatigue, or abdominal discomfort?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "No, I haven’t noticed any unexplained weight loss, fatigue, or abdominal discomfort. I feel well without complaints."
+        ],
+        "prior_information_summary": "54-year-old female, admitted urgently for colonoscopy prep. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. Pt feels well, denies abdominal pain, fever, chills, chest pain, SOB, bowel/bladder changes, dysuria, arthralgias/myalgias. Review of systems negative. Physical exam: alert, NAD, vitals AVSS, abdomen soft, bowel sounds present, extremities contracted. Objective: assess and diagnose for screening colonoscopy. Final result: special screening for malignant neoplasms of colon."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 3,
+        "query_text": "Screening colonoscopy for 54-year-old female with cerebral palsy and family history of colon cancer; patient denies symptoms; need memory about targeted history before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 1,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.272,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.2222,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2014,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1886,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1829,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2585,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_0",
+              "type": "skill",
+              "score": 0.2211,
+              "outcome": null,
+              "situation": "Patient presents for routine screening colonoscopy with no reported symptoms or clinical indications for intervention.",
+              "action": null,
+              "boundary": "Only apply when patient is asymptomatic and no clinical indications for intervention; do not use if symptoms or risk factors are present.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8ef348be-7125-416d-970b-d4e88eb8f500': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "54-year-old female, admitted urgently for colonoscopy prep. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. Pt feels well, denies abdominal pain, fever, chills, chest pain, bowel/bladder changes, weight loss, or systemic symptoms. Physical exam: alert, NAD, no organomegaly, soft abdomen, bowel sounds present, contracted extremities. Objective: assess and diagnose for screening colonoscopy. Final result: special screening for malignant neoplasms of colon."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 4,
+        "query_text": "Screening colonoscopy with no labs available; need memory about targeted next-step actions before finalizing diagnosis; avoid premature closure without lab or imaging evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2612,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2493,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2089,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2073,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.201,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3638,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.299,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2951,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "indication for screening colonoscopy in 54-year-old female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4b8cbf51-384f-4f35-be70-d7e193fe2390': '[Document 1] (ID: 2945_18, Score: 0.872)\\nThe prevalence of AAs under the age of 50 years is not significantly increased in patients under surveillance for FHCC compared with the average risk population. This supports commencing colonoscopic surveillance at the age of 50-55 years for those at moderate familial risk. As the incidence of CRC ...\\n\\n[Document 2] (ID: 4589_4, Score: 0.866)\\n# Controversies in Care\\nOther methods for CRC screening are available. There is no single infallible technique for detection, but an effective screening technique for CRC should be feasible, accurate, safe, acceptable, and cost-effective.\\n- Flexible sigmoidoscopy (FS) has been used as a once only sc...\\n\\n[Document 3] (ID: 4589_3, Score: 0.866)\\n# Average Risk Asymptomatic Patients, Aged Over 74 years\\nFor patients over the age of 75 years, the value of screening should be individually assessed taking into account a balance of the risks, benefits and patient comorbidities. Screening is not recommended after 85 years of age. 13 Increased Risk...\\n\\n[Document 4] (ID: 2017_2, Score: 0.865)\\nColonoscopy examinations may be done for several clinical reasons, including:\\nfurther investigation of symptoms suggestive o...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.42857142857142855,
+        "delta": 0.2857142857142857,
+        "turn_reward": 0.05714285714285714,
+        "importance": 0.2857142857142857
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"indication for screening colonoscopy in 54-year-old female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"indication for screening colonoscopy in 54-year-old female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 2945_18, Score: 0.872) - Colonoscopic surveillance at 50-55 for moderate familial risk.",
+          "Tool output: Document 2 (ID: 4589_4, Score: 0.866) - Flexible sigmoidoscopy as once-only screening option.",
+          "Tool output: Document 3 (ID: 4589_3, Score: 0.866) - Screening not recommended after 85.",
+          "Tool output: Document 4 (ID: 2017_2, Score: 0.865) - Colonoscopy for investigation or surveillance.",
+          "Tool output: Document 5 (ID: 3657_11, Score: 0.864) - CRC screening offered from age 50 for average risk."
+        ],
+        "prior_information_summary": "54-year-old female, admitted for screening colonoscopy. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. No recent symptoms. Physical exam: alert, NAD, no abdominal tenderness, bowel sounds present. Objective: assess and diagnose for screening colonoscopy. Labs: no result found."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 5,
+        "query_text": "Screening colonoscopy for 54-year-old with familial risk; new docs suggest age-based guidelines; need memory on optimal next-step decision before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.2352,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Screening colonoscopy for average-risk patient at age 50.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4937ec02-9466-49d0-a056-9839504c6003': '{\"diagnosis\": \"Screening colonoscopy for average-risk patient at age 50.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.42857142857142855,
+        "conf_after": 0.42857142857142855,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Screening colonoscopy for average-risk patient at age 50.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Screening colonoscopy for average-risk patient at age 50.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 4589_3, Score: 0.889) - Average Risk Asymptomatic Patients, Aged Over 74 years",
+          "Tool output: Document 2 (ID: 3091_5, Score: 0.885) - Discussion and recommendations on CRC screening",
+          "Tool output: Document 3 (ID: 3091_8, Score: 0.880) - Recommendation 3: Screening colonoscopy for asymptomatic, average-risk persons",
+          "Tool output: Document 4 (ID: 28381_1, Score: 0.879) - Uses of colonoscopy including diagnosis of colon cancer and IBD",
+          "Tool output: Document 5 (ID: 1082_0, Score: 0.879) - Recommendations for asymptomatic adult population"
+        ],
+        "prior_information_summary": "54-year-old female, admitted for screening colonoscopy. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. No recent symptoms. Physical exam: alert, NAD, no abdominal tenderness, bowel sounds present. Objective: assess and diagnose patient presenting with screening colonoscopy."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 6,
+        "query_text": "Screening colonoscopy for asymptomatic average-risk patient; new info includes screening guidelines and colonoscopy uses; need memory on appropriate next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 0,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.4488,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.4041,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2467,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1857,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_0",
+              "type": "skill",
+              "score": 0.476,
+              "outcome": null,
+              "situation": "Patient presents for routine screening colonoscopy with no reported symptoms or clinical indications for intervention.",
+              "action": null,
+              "boundary": "Only apply when patient is asymptomatic and no clinical indications for intervention; do not use if symptoms or risk factors are present.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e2c694861ba6",
+          "exp_b47a6d9a86d0",
+          "skill_0"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e2c694861ba6",
+            "memory_type": "experience",
+            "score": 0.4488,
+            "content": {
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "outcome": "Corrected diagnostic trajectory by grounding decision in evidence-based guidelines, preventing premature closure on non-screening indications.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_b47a6d9a86d0",
+            "memory_type": "experience",
+            "score": 0.4041,
+            "content": {
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "outcome": "Updated hypothesis to reflect screening appropriateness based on age and risk factors, reducing diagnostic uncertainty.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          },
+          {
+            "memory_id": "skill_0",
+            "memory_type": "skill",
+            "score": 0.476,
+            "content": {
+              "skill_name": "Screening Colonoscopy in Asymptomatic Adults",
+              "situation": "Patient presents for routine screening colonoscopy with no reported symptoms or clinical indications for intervention.",
+              "goal": "Confirm patient is appropriate for screening colonoscopy based on clinical guidelines and absence of symptoms.",
+              "procedure": "Ask targeted questions about symptoms, then retrieve evidence on screening indications for asymptomatic adults.",
+              "boundary": "Only apply when patient is asymptomatic and no clinical indications for intervention; do not use if symptoms or risk factors are present."
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asymptomatic screening colonoscopy for a 54-year-old female patient.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'65ac456f-d0ff-4725-8b0a-4313b52d9604': '{\"diagnosis\": \"Asymptomatic screening colonoscopy for a 54-year-old female patient.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.42857142857142855,
+        "conf_after": 0.42857142857142855,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic screening colonoscopy for a 54-year-old female patient.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic screening colonoscopy for a 54-year-old female patient.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "Tool output: Document 1: Average Risk Asymptomatic Patients, Aged Over 74 years",
+          "Tool output: Document 2: Patients with abdominal symptoms suggestive of colorectal cancer",
+          "Tool output: Document 3: Physical Examination and Diagnostic Studies",
+          "Tool output: Document 4: History and Symptoms",
+          "Tool output: Document 5: People with asymptomatic primary tumour"
+        ],
+        "prior_information_summary": "54-year-old female, admitted for screening colonoscopy. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. No recent symptoms. Physical exam: alert, NAD, no abdominal tenderness, bowel sounds present. Objective: assess and diagnose for screening colonoscopy."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 7,
+        "query_text": "Screening colonoscopy for asymptomatic patient; new info includes risk documents and exam findings; need memory on next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.221,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you experienced any fatigue, unexplained weight loss, or general malaise recently, even if you haven’t noticed any specific gastrointestinal symptoms?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5714285714285714,
+        "conf_after": 0.5714285714285714,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fatigue, unexplained weight loss, or general malaise recently, even if you haven’t noticed any specific gastrointestinal symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fatigue, unexplained weight loss, or general malaise recently, even if you haven’t noticed any specific gastrointestinal symptoms?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20023059",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Screening colonoscopy",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "54-year-old female, admitted urgently for screening colonoscopy. History: cerebral palsy, mental retardation, vitamin D deficiency, depression. Family history: colon cancer. Pt feels well, denies abdominal pain, fever, chills, chest pain, SOB, nausea, vomiting, diarrhea, constipation, weight loss, rectal bleeding, or changes in bowel/bladder habits. Physical exam: alert, NAD, vitals AVSS, abdomen soft, non-tender, bowel sounds present. No organomegaly or guarding. Extremities contracted. Labs: no result found. Tool output: guidelines on asymptomatic screening and symptomatic colorectal cancer."
+      },
+      "query": {
+        "case_id": "20023059",
+        "turn_id": 8,
+        "query_text": "Screening colonoscopy in asymptomatic patient with prior history of colon cancer; new info: no symptoms or findings reported; labs pending; need memory on appropriate next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2015,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asymptomatic colon cancer screening is indicated for a 54-year-old female patient. No specific symptoms or signs of colorectal cancer are present, but screening colonoscopy is recommended as part of routine preventive care for this age group.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e898c5ea-1e9c-4fac-857f-6092e1480558': '{\"diagnosis\": \"Asymptomatic colon cancer screening is indicated for a 54-year-old female patient. No specific symptoms or signs of colorectal cancer are present, but screening colonoscopy is recommended as part of routine preventive care for this age group.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5714285714285714,
+        "conf_after": 0.5714285714285714,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic colon cancer screening is indicated for a 54-year-old female patient. No specific symptoms or signs of colorectal cancer are pre",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic colon cancer screening is indicated for a 54-year-old female patient. No specific symptoms or signs of colorectal cancer are present, but screening colonoscopy is recommended as part of routine preventive care for this age group.}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,694 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20113738",
+  "turns": [
+    {
+      "case_id": "20113738",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "I am a 79-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 79-year-old female patient presenting with Right-sided facial pain and a history.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 1,
+        "query_text": "Right-sided facial pain in elderly female; need memory about targeted history and exam before imaging or lab; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2573,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2516,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2414,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2327,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2307,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3861,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3393,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3206,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the nature of the right-sided facial pain? Is it constant or intermittent, and does anything trigger or relieve it?"
+        },
+        "patient_or_tool_response": "{'question': 'The pain on the right side of my face started as sharp, stabbing attacks that lasted minutes to hours, with periods of relief in between. But over time, it became constant and severe — there’s no real pain-free time now. The pain starts on the inner part of my nose and radiates across my cheek and upper gum toward my ear. It’s much worse when I clench my jaw or chew — the pain increases immediately. Placing a towel over my right side of the face helps relieve it slightly. I don’t know any specific triggers that make it worse, and I don’t have eye tearing or redness anymore, though I did have them earlier.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of the right-sided facial pain? Is it constant or intermittent, and does anything trigger or relieve it?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of the right-sided facial pain? Is it constant or intermittent, and does anything trigger or relieve it?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20113738",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "The pain on the right side of my face started as sharp, stabbing attacks that lasted minutes to hours, with periods of relief in between.",
+          "But over time, it became constant and severe — there’s no real pain-free time now.",
+          "The pain starts on the inner part of my nose and radiates across my cheek and upper gum toward my ear.",
+          "It’s much worse when I clench my jaw or chew — the pain increases immediately.",
+          "Placing a towel over my right side of the face helps relieve it slightly.",
+          "I don’t know any specific triggers that make it worse, and I don’t have eye tearing or redness anymore, though I did have them earlier."
+        ],
+        "prior_information_summary": "79-year-old female, history of trigeminal neuralgia, SDH/SAH, macular degeneration, osteopetrosis, nasal polyps, migraines. Presented with 1-month history of severe right-sided facial pain, initially episodic, now constant. Pain radiates from inner nose to cheek/upper gum/ear, sharp stabbing, worsened by jaw clenching/chewing. Tegretol titrated, Medrol dose pack ineffective. CTA showed right-sided vessel compressing trigeminal nerve root. Neurosurgery consulted; transferred to neurology for pain management. Denies neurological deficits. Vitals: BP 158/92, SaO2 96. Neuro exam: intact cranial nerves (except mild v3 decrease right), no focal deficits. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 2,
+        "query_text": "Right-sided facial pain now constant, worsened by jaw clenching; CTA already reviewed showing vessel compression; need memory about pain management escalation before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'adaa1077-6f74-49ab-b6f8-d620d34d6e77': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20113738",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "79-year-old female with right-sided facial pain, history of trigeminal neuralgia, osteopetrosis, nasal polyps, and migraines. Pain started as sharp, stabbing attacks radiating from inner nose to ear, worsened by jaw clenching/chewing, now constant and severe. Tegretol and Medrol dose pack ineffective. CTA showed right-sided vascular anomaly compressing trigeminal nerve root. Neurological exam shows intact cranial nerves except decreased right V3 sensation. No focal deficits. Past medical history includes SDH/SAH, macular degeneration, and family history of stomach cancer. Vitals: BP 158/92, SaO2 96. Physical exam shows no systemic abnormalities except mild tremor and unsteady gait. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 3,
+        "query_text": "Right-sided facial pain with vascular anomaly compressing trigeminal nerve; labs not available; need memory about targeted next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0aeba13b-60a5-413e-b409-bdeb67650323': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20113738",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "The pain on the right side of my face started as sharp, stabbing attacks that lasted minutes to hours, with periods of relief in between. But over time, it became constant and severe — there’s no real pain-free time now. The pain starts on the inner part of my nose and radiates across my cheek and upper gum toward my ear. It’s much worse when I clench my jaw or chew — the pain increases immediately. Placing a towel over my right side of the face helps relieve it slightly. I don’t know any specific triggers that make it worse, and I don’t have eye tearing or redness anymore, though I did have them earlier."
+        ],
+        "prior_information_summary": "79-year-old female with history of trigeminal neuralgia, SDH/SAH, macular degeneration, osteopetrosis, nasal polyps, migraines. Presents with 1-month history of severe right-sided facial pain, initially episodic but now constant. Pain radiates from inner nose to cheek/upper gum/ear, sharp stabbing, worsened by jaw clenching/chewing. Tegretol titrated, Medrol dose pack ineffective. CTA showed right-sided vascular anomaly compressing trigeminal nerve root. Transferred to neurology for pain management. Neuro exam: alert, intact cranial nerves (except mild v3 decrease on right), no focal deficits. Vitals: BP 158/92, SaO2 96. Past medical history includes father with stomach cancer. No HTN/DM in family."
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 4,
+        "query_text": "Right-sided facial pain now constant, worsened by jaw clenching; CTA already reviewed showing vascular anomaly; need memory about pain management options before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "trigeminal neuralgia symptoms and diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f33f9863-3f57-4edb-83b0-c53398cd2d87': '[Document 1] (ID: 4097_54, Score: 0.920)\\n## Treatment\\nTreatment depends on the diagnosis. In the majority of cases, trigeminal neuralgia (TN) is a unilateral condition with ultra-short stabbing pain located along one or more branches of the trigeminal nerve. Numerous daily attacks may occur. The attacks are stereotypical in the individual ...\\n\\n[Document 2] (ID: 1436_1, Score: 0.910)\\n# The condition\\nTrigeminal neuralgia is a chronic pain condition that affects the trigeminal (fifth) cranial nerve, one of the most widely distributed nerves in the head. The pain occurs in areas supplied by the trigeminal nerve: the cheeks, jaw, teeth, gums, lips and around the eye or forehead. The...\\n\\n[Document 3] (ID: 4097_58, Score: 0.908)\\nSymptomatic trigeminal neuralgia may, e.g. be caused by spaceoccupying processes of the fossa posterior and by multiple sclerosis. If the cause is pressure from vessels of the cerebellopontine angle, the case is diagnosed as classical and non-symptomatic trigeminal neuralgia A combination of the ind...\\n\\n[Document 4] (ID: 2896_46, Score: 0.905)\\n## Management of trigeminal neuralgia and persistent idiopathic facial pain\\nThis guide can be separately downloaded (Addit...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"trigeminal neuralgia symptoms and diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"trigeminal neuralgia symptoms and diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20113738",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "The pain on the right side of my face started as sharp, stabbing attacks that lasted minutes to hours, with periods of relief in between. But over time, it became constant and severe — there’s no real pain-free time now. The pain starts on the inner part of my nose and radiates across my cheek and upper gum toward my ear. It’s much worse when I clench my jaw or chew — the pain increases immediately. Placing a towel over my right side of the face helps relieve it slightly. I don’t know any specific triggers that make it worse, and I don’t have eye tearing or redness anymore, though I did have them earlier."
+        ],
+        "prior_information_summary": "79-year-old female with history of trigeminal neuralgia, SDH/SAH, macular degeneration, osteopetrosis, nasal polyps, migraines. Presents with 1-month history of severe right-sided facial pain, initially episodic but now constant. Pain radiates from inner nose to cheek/upper gum/ear, sharp stabbing, worsened by jaw clenching/chewing, relieved slightly by towel. No specific triggers. Previously treated with Tegretol and Medrol dose pack without relief. Hospitalized with CTA showing right-sided vessel compressing trigeminal nerve root. Neurosurgery consulted; transferred to neurology for pain management. ROS negative for focal deficits, systemic symptoms. Physical exam: alert, BP 158/92, no cranial nerve deficits except decreased right V3, no sensory/motor deficits. Final result: Anomalies of cerebrovascular system."
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 5,
+        "query_text": "Right-sided facial pain now constant, worsened by jaw clenching, relieved by towel; prior CTA showed vessel compressing trigeminal nerve; need memory about pain management options before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent trauma, dental procedures, or neurological symptoms like numbness, tingling, or weakness in your face or limbs?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t experienced any recent trauma, dental procedures, or neurological symptoms like numbness, tingling, or weakness in my face or limbs. I’ve been feeling off occasionally, but I don’t have any focal weakness, numbness, or tingling. I also don’t have any new issues with vision, speech, or bladder/bowel control.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, dental procedures, or neurological symptoms like numbness, tingling, or weakness in your face or limbs?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, dental procedures, or neurological symptoms like numbness, tingling, or weakness in your face or limbs?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20113738",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "No recent trauma, dental procedures, or neurological symptoms like numbness, tingling, or weakness in face or limbs.",
+          "Feeling off occasionally, but no focal weakness, numbness, or tingling.",
+          "No new issues with vision, speech, or bladder/bowel control."
+        ],
+        "prior_information_summary": "79-year-old female with right-sided facial pain, history of trigeminal neuralgia, osteopetrosis, nasal polyps, migraines, and past SDH/SAH. Pain started as sharp, stabbing attacks radiating from nose to ear, worsened by jaw clenching/chewing, now constant and severe. Tegretol and Medrol dose pack ineffective. CTA showed right-sided vascular anomaly compressing trigeminal nerve root. Neurological exam shows intact cranial nerves, no focal deficits. Vitals: BP 158/92, SaO2 96. Past medical history includes macular degeneration, osteopetrosis, nasal polyps, migraines. Family history: father with stomach cancer. No HTN/DM in family."
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 6,
+        "query_text": "Right-sided facial pain with unresolved vascular anomaly; new info: no focal deficits or new neuro symptoms; need memory about next-step imaging or targeted history before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2025,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Trigeminal Neuralgia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'dd914e6d-44a7-4036-b376-18e373e2efa6': '{\"diagnosis\": \"Trigeminal Neuralgia\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Trigeminal Neuralgia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Trigeminal Neuralgia}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20113738",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Right-sided facial pain",
+        "current_turn_information": [
+          "I had a fall and felt a \"pop\" in my head back in ___ , which I think might have caused a subdural hematoma (or possibly a subarachnoid hemorrhage). I don’t remember any recent trauma to my face or head since then. I haven’t had any numbness, tingling, or weakness in my face or limbs — I specifically denied those during the review of systems. My pain is only facial and worsens with jaw clenching or chewing."
+        ],
+        "prior_information_summary": "79-year-old female with right-sided facial pain, initially episodic sharp stabbing pain radiating from nose to ear, now constant severe pain with no pain-free areas, relieved slightly by towel over face, worsened by jaw clenching/chewing, history of trigeminal neuralgia, SDH/SAH, macular degeneration, osteopetrosis, nasal polyps, migraines, family history of stomach cancer, physical exam shows intact cranial nerves, normal motor/sensory, BP 158/92, no systemic symptoms, CTA showed right-sided vascular anomaly compressing trigeminal nerve root, admitted for pain management after failed Tegretol and Medrol."
+      },
+      "query": {
+        "case_id": "20113738",
+        "turn_id": 7,
+        "query_text": "Right-sided facial pain with new history of head trauma and 'pop' sensation; CTA already reviewed showing vascular anomaly; need memory about avoiding premature diagnosis and considering trauma-related causes before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2856,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.2829,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2794,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2489,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2445,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.3413,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3352,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3239df377c64",
+              "type": "experience",
+              "score": 0.3158,
+              "outcome": "failure",
+              "situation": "When a patient reports neck pain, swelling, arm weakness, dizziness, and chest tightness after a motorcycle collision, but no imaging or lab results are available, and the initial history is non-specific, what should the doctor do?",
+              "action": "Request focused imaging of the cervical and thoracic spine, and ask targeted questions about neurological symptoms and trauma mechanism to avoid premature closure on spinal injury.",
+              "boundary": "Use when trauma mechanism suggests spinal involvement and symptoms are neurological; do not use if patient denies trauma or symptoms are purely musculoskeletal without neurological signs.",
+              "tags": [
+                "negative",
+                "trauma",
+                "spinal_injury",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Trigeminal Neuralgia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8b30d7f8-9451-4fa2-83be-ba6b2eea80d8': '{\"diagnosis\": \"Trigeminal Neuralgia\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Trigeminal Neuralgia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Trigeminal Neuralgia}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

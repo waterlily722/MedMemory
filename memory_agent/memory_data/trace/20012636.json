@@ -19,14 +19,808 @@
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2791,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2462,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2388,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.2252,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1924,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.357,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3342,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3233,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having pain, redness, and swelling around my nail, mostly on my index and middle fingers. It started suddenly, a few days ago, after I bit my hangnail while doing dishes. Now there’s some pus coming out, and it’s really tender to touch. I’ve been washing my hands a lot lately, and I’ve had a few hangnails lately too.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having pain, redness, and swelling around my nail, mostly on my index and middle fingers.",
+          "It started suddenly, a few days ago, after I bit my hangnail while doing dishes.",
+          "Now there’s some pus coming out, and it’s really tender to touch.",
+          "I’ve been washing my hands a lot lately, and I’ve had a few hangnails lately too."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment and diagnosis. Patient has no chief complaint provided. Final result: Onychia and paronychia of finger. Knowledge base includes information on paronychia: inflammation around nail, acute/chronic types, bacterial/fungal causes, signs (redness, swelling, pain, pus), risk factors (hand washing, hangnails), and treatment (antibiotics, antifungals, drainage if pus)."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 2,
+        "query_text": "acute paronychia with pus and tenderness; new info: hangnail trauma and hand washing; need memory about drainage or antibiotics; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
           "negative_experience": 0,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2418,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2129,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.1861,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
           "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ad904121-528b-43ce-b8f2-0c68d1cb0c46': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment and diagnosis. Chief concern: onychia and paronychia of finger. Patient reports sudden onset of pain, redness, swelling around nail (index and middle fingers), pus discharge, tenderness, triggered by biting hangnail during dishwashing. History of frequent hand washing and recent hangnails. Knowledge base: paronychia is inflammation around nail, acute form often bacterial (Staphylococcus aureus), chronic often fungal (Candida albicans). Signs: redness, swelling, pain, pus. Risk factors: hand washing, trauma to cuticle. Treatment: antibiotics or antifungals, drainage if pus. Final result: onychia and paronychia of finger."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 3,
+        "query_text": "acute paronychia with pus discharge; labs not available; need memory about targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.225,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.1852,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'594656c3-527a-499f-b404-0068cfc3779b': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for acute onset of nail fold inflammation. Patient reports sudden pain, redness, swelling on index and middle fingers, pus discharge, and tenderness. History of hangnail biting and frequent hand washing. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia is inflammation around nail, often bacterial (acute) or fungal (chronic), with signs including redness, swelling, pain, pus. Risk factors: hand washing, trauma to cuticle. Treatment: antibiotics or antifungals, drainage if pus. Acute paronychia often caused by Staphylococcus aureus; chronic by Candida albicans."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 4,
+        "query_text": "acute nail fold inflammation with pus discharge; no labs or imaging available; need memory about targeted questions before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2984,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2449,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1935,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1832,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2775,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2644,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.2644,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "infection of nail bed symptoms and treatment"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2c1d8389-2b0e-43cb-8f29-2d19da38fc97': '[Document 1] (ID: 10297_1, Score: 0.872)\\n# Diagnosis\\nThe doctor can usually diagnose this condition by simply looking at the sore skin.\\nPus or fluid may be drained and sent to a laboratory to determine what type of bacteria or fungus is causing the infection.\\n\\n# Treatment options\\nIf you have bacterial paronychia, soaking your nail in hot w...\\n\\n[Document 2] (ID: 24822_4, Score: 0.869)\\n# Medical test\\nHealth care and pre-hospital care providers (paramedics) often use the fingernail beds as a cursory indicator of distal tissue perfusion of individuals who may be in shock. However, this test is now accepted as reliable in young children only.\\nProcedure: briefly depress the fingernail...\\n\\n[Document 3] (ID: 30106_1, Score: 0.868)\\n## Common Causes\\n- Candida albicans\\n- Excessive immersion of hands in water\\n- Pseudomonas aeruginosa\\n- Staphylococcus aureus\\n- Streptococcus pyogenes\\n- Trauma\\n\\n## Causes by Organ System\\n\\n## Causes in Alphabetical Order\\n- Acrokeratosis paraneoplastica\\n- Afatinib\\n- Candida albicans\\n- Eikenella corrode...\\n\\n[Document 4] (ID: 9199_0, Score: 0.861)\\nNail changes (patient information)\\nFor the WikiDoc page for this topic, click here\\n# Overview\\nNail abnormalities are probl...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.6,
+        "delta": 0.39999999999999997,
+        "turn_reward": 0.08,
+        "importance": 0.39999999999999997
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"infection of nail bed symptoms and treatment\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"infection of nail bed symptoms and treatment\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 - Diagnosis: The doctor can usually diagnose this condition by simply looking at the sore skin. Pus or fluid may be drained and sent to a laboratory to determine what type of bacteria or fungus is causing the infection. Treatment options: If you have bacterial paronychia, soaking your nail in hot water...",
+          "Tool output: Document 2 - Medical test: Health care and pre-hospital care providers often use the fingernail beds as a cursory indicator of distal tissue perfusion... Procedure: briefly depress the fingernail...",
+          "Tool output: Document 3 - Common Causes: Candida albicans, Excessive immersion of hands in water, Pseudomonas aeruginosa, Staphylococcus aureus, Streptococcus pyogenes, Trauma.",
+          "Tool output: Document 4 - Nail changes overview: Problems with color, shape, texture, or thickness of fingernails or toenails. Causes: Injury...",
+          "Tool output: Document 5 - Health and care: Nails can dry out, can be infected: toe infections caused or exacerbated by dirty socks, specific types of aggressive exercise, tight footwear and walking unprotected in an unclean environment. Manicures and pedicures are health and care..."
+        ],
+        "prior_information_summary": "27-year-old female patient admitted via emergency room for assessment. Chief complaint: pain, redness, swelling around nail, index and middle fingers, started suddenly after biting hangnail while doing dishes, pus present, tender to touch, frequent hand washing and hangnails recently. No lab or imaging results available. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia is inflammation around nail, acute often bacterial (Staphylococcus aureus), chronic often fungal (Candida albicans), risk factors include hand washing and trauma, treatment includes antibiotics/antifungals, incision and drainage if pus. Signs: redness, swelling, pain, pus. Causes: trauma, bacteria, fungi. Types: acute (less than 6 weeks), chronic (more than 6 weeks)."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 5,
+        "query_text": "acute paronychia with pus and recent trauma; need memory about targeted treatment and drainage decision; avoid premature closure without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.3047,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2227,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2219,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.208,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2056,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3341,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2996,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.2706,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_5a035963c148"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_5a035963c148",
+            "memory_type": "experience",
+            "score": 0.3047,
+            "content": {
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "outcome": "This action reduced uncertainty by aligning symptoms with a specific diagnosis and prevented premature closure by ensuring no other nail conditions were missed.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "outcome_type": "success",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Paronychia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b79e7ac5-6058-4a0b-8ff9-5d0e37160311': '{\"diagnosis\": \"Paronychia\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 6,
+        "query_text": "No prior issues reported; need memory about targeted history to rule out focal symptoms; avoid premature diagnosis without further evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2838,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
           "skill": [],
           "knowledge": []
         }
@@ -37,28 +831,25 @@
         "selected_memories": []
       },
       "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been continuous or intermittent?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been continuous or intermittent?\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
       }
     },
     {
       "case_id": "20012636",
-      "turn_id": 2,
+      "turn_id": 7,
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "Symptoms started a few weeks ago, intermittent but painful when flaring.",
-          "Index and middle fingers affected: redness, swelling, tenderness, pus discharge.",
-          "Symptoms began after chronic nail biting and frequent hand washing for months."
+          "Tool output: No result for 'labs' found in the record and no knowledge base available for an approximate answer."
         ],
-        "prior_information_summary": ""
+        "prior_information_summary": "27-year-old female, admitted via emergency room on 2172-03-04 16:55:00, discharged 2172-03-07 12:30:00. Objective: Assess and diagnose based on clinical presentation. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia is inflammation around nail, often bacterial or fungal; signs include redness, swelling, pain; risk factors include hand washing, trauma; treatment includes antibiotics or antifungals. Patient reports no prior issues in the affected area."
       },
       "query": {
         "case_id": "20012636",
-        "turn_id": 2,
-        "query_text": "hand infection with pus discharge and history of nail biting; need memory about targeted questions for source of infection; avoid premature diagnosis without imaging or lab review"
+        "turn_id": 7,
+        "query_text": "No labs available; need memory about next-step diagnostic actions; avoid premature diagnosis; consider targeted questions before finalization"
       },
       "retrieval": {
         "counts": {
@@ -81,168 +872,74 @@
       },
       "selected_action": {
         "action_type": "UPDATE_HYPOTHESIS",
-        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"paronychia symptoms and causes\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"paronychia symptoms and causes\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in young adult females\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in young adult females\"}}\n</tool_call>"
       }
     },
     {
       "case_id": "20012636",
-      "turn_id": 3,
+      "turn_id": 8,
       "case_memory": {
         "chief_complaint": "",
         "current_turn_information": [
-          "Tool output: Document 1 (ID: 10297_0, Score: 0.904) - Paronychia (patient information): painful, red, swollen area around the nail.",
-          "Tool output: Document 2 (ID: 30106_0, Score: 0.889) - Paronychia: bacterial or fungal infection at nail site, acute or chronic.",
-          "Tool output: Document 3 (ID: 30106_1, Score: 0.878) - Common causes: Candida albicans, excessive hand immersion, Staphylococcus aureus, trauma.",
-          "Tool output: Document 4 (ID: 16609_1, Score: 0.866) - Symptoms: suppurative inflammation, possible secondary bacterial/fungal infection.",
-          "Tool output: Document 5 (ID: 12007_1, Score: 0.866) - Skin lesions may be secondarily infected by Staphylococcus aureus or Candida albicans."
+          "Tool output: Document 1 (ID: 4903_42, Score: 0.853) - Postnatal care recommendations.",
+          "Tool output: Document 2 (ID: 1562_7, Score: 0.847) - Postnatal mental and physical health symptoms.",
+          "Tool output: Document 3 (ID: 31553_1, Score: 0.847) - Hot/cold flashes in premenstrual period.",
+          "Tool output: Document 4 (ID: 1702_2, Score: 0.847) - Menopausal symptoms including hot flushes, joint pain, mood effects.",
+          "Tool output: Document 5 (ID: 8402_51, Score: 0.847) - Symptoms indicating pulmonary embolism, leg clot, heart attack, stroke."
         ],
-        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment. Chief concern: diagnose based on clinical presentation. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia is inflammation around nail, often bacterial or fungal; symptoms include redness, swelling, pain, pus; risk factors include hand washing and trauma; treatment includes antibiotics or antifungals. Patient reports symptoms flaring up, especially index and middle fingers, with redness, swelling, tenderness, and pus; started after chronic nail biting and frequent hand washing."
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment. Chief complaint: Assess and diagnose based on clinical presentation. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia (inflammation around nail, acute/chronic, bacterial/fungal causes, signs/symptoms, treatment). Patient has no prior issues in the affected area. Lab test result: No labs found. Prior turns: Patient reports no prior problems in the area. No clinical findings reported."
       },
       "query": {
         "case_id": "20012636",
-        "turn_id": 3,
-        "query_text": "Paronychia with pus and finger involvement; need memory about targeted treatment options and avoiding premature closure; review prior hand trauma and hygiene history"
+        "turn_id": 8,
+        "query_text": "Postnatal and menopausal symptom documents retrieved; no labs or imaging reviewed; need memory about targeted history before finalizing diagnosis"
       },
       "retrieval": {
         "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
+          "positive_experience": 1,
+          "negative_experience": 3,
           "skill": 0,
           "knowledge": 0
         },
         "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
-          "skill": [],
-          "knowledge": []
-        }
-      },
-      "selection_guidance": {
-        "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
-      },
-      "selected_action": {
-        "action_type": "ASK",
-        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent trauma or injury to your fingers, or have you been biting your nails frequently?\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent trauma or injury to your fingers, or have you been biting your nails frequently?\"}}\n</tool_call>",
-        "blocked_by_memory": false
-      }
-    },
-    {
-      "case_id": "20012636",
-      "turn_id": 4,
-      "case_memory": {
-        "chief_complaint": "",
-        "current_turn_information": [
-          "I’ve been biting my nails frequently."
-        ],
-        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment. Symptoms began weeks ago, intermittent but painful flares with redness, swelling, and pus from index and middle fingers. Triggered by chronic nail biting and frequent hand washing."
-      },
-      "query": {
-        "case_id": "20012636",
-        "turn_id": 4,
-        "query_text": "nail biting causing finger infections; new report of frequent biting; need memory about targeted questions to assess infection severity and avoid premature diagnosis"
-      },
-      "retrieval": {
-        "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
-          "skill": 0,
-          "knowledge": 0
-        },
-        "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
-          "skill": [],
-          "knowledge": []
-        }
-      },
-      "selection_guidance": {
-        "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
-      },
-      "selected_action": {
-        "action_type": "REQUEST_LAB",
-        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
-        "blocked_by_memory": false
-      }
-    },
-    {
-      "case_id": "20012636",
-      "turn_id": 5,
-      "case_memory": {
-        "chief_complaint": "",
-        "current_turn_information": [
-          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
-        ],
-        "prior_information_summary": "27-year-old female patient admitted via emergency room for assessment and diagnosis. Chief complaint involves painful, intermittent symptoms affecting index and middle fingers with redness, swelling, and pus. Patient reports chronic nail biting and frequent hand washing as risk factors. Knowledge base indicates paronychia as likely diagnosis, with acute form typically bacterial (Staphylococcus aureus) and chronic form often fungal (Candida albicans)."
-      },
-      "query": {
-        "case_id": "20012636",
-        "turn_id": 5,
-        "query_text": "paronychia with pus and redness; labs not available; need memory about targeted diagnostic next steps before finalizing diagnosis"
-      },
-      "retrieval": {
-        "counts": {
-          "positive_experience": 0,
-          "negative_experience": 0,
-          "skill": 0,
-          "knowledge": 0
-        },
-        "top_hits": {
-          "positive_experience": [],
-          "negative_experience": [],
-          "skill": [],
-          "knowledge": []
-        }
-      },
-      "selection_guidance": {
-        "mode": "llm",
-        "selected_memory_ids": [],
-        "selected_memories": []
-      },
-      "selected_action": {
-        "action_type": "REQUEST_LAB",
-        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
-        "blocked_by_memory": false
-      }
-    },
-    {
-      "case_id": "20012636",
-      "turn_id": 6,
-      "case_memory": {
-        "chief_complaint": "",
-        "current_turn_information": [
-          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
-          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
-        ],
-        "prior_information_summary": "27-year-old female patient admitted via emergency room for assessment. Chief concern: onychia and paronychia of finger. Symptoms: intermittent pain, redness, swelling, pus from index and middle fingers. History: chronic nail biting and frequent hand washing. Knowledge base: paronychia is inflammation around nail, acute form often bacterial (Staphylococcus aureus), chronic form often fungal (Candida albicans). Risk factors: hand washing, trauma to cuticle. Treatment: antibiotics or antifungals, incision and drainage if pus. Patient is married, white, English-speaking, private insurance."
-      },
-      "query": {
-        "case_id": "20012636",
-        "turn_id": 6,
-        "query_text": "paronychia with pus and no labs or imaging; need memory about targeted questions before finalizing diagnosis; avoid premature closure without evidence"
-      },
-      "retrieval": {
-        "counts": {
-          "positive_experience": 0,
-          "negative_experience": 2,
-          "skill": 0,
-          "knowledge": 0
-        },
-        "top_hits": {
-          "positive_experience": [],
+          "positive_experience": [
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.185,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
           "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3545,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
             {
               "id": "exp_527401053a55",
               "type": "experience",
-              "score": 0.3354,
+              "score": 0.2635,
               "outcome": "failure",
               "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
               "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
@@ -259,7 +956,7 @@
             {
               "id": "exp_86e012075faa",
               "type": "experience",
-              "score": 0.3139,
+              "score": 0.2596,
               "outcome": "failure",
               "situation": "When a patient reports syncope after straining with bowel symptoms and has a history of itching and mild fever, the doctor should not finalize diagnosis without considering systemic or infectious causes, especially if there is no clear gastrointestinal explanation.",
               "action": "Order labs including CBC, electrolytes, and inflammatory markers, and consider imaging if obstruction or infection is suspected.",
@@ -284,10 +981,397 @@
         "selected_memories": []
       },
       "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your menstrual cycle, hot flashes, or mood swings recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your menstrual cycle, hot flashes, or mood swings recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 9,
+        "query_text": "No prior issues reported; need memory about targeted history to rule out focal symptoms; avoid premature diagnosis without further evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2838,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2575,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any stress, anxiety, or changes in your sleep patterns recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any stress, anxiety, or changes in your sleep patterns recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 10,
+        "query_text": "No prior issues reported; need memory about targeted history to rule out focal symptoms; avoid premature diagnosis without further data"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2838,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2525,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of non-specific fatigue and malaise in young adult females\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of non-specific fatigue and malaise in young adult females\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: [Document 1] (ID: 1450_43, Score: 0.855) Fatigue (persistent) in adults Leukaemia Consider a very urgent full blood count (within 48 hours) Fatigue (unexplained) in women Ovarian Carry out tests in primary care Measure serum CA125 in primary care See the section on primary care investigations for information on tests for ovarian cancer",
+          "Tool output: [Document 2] (ID: 1041_11, Score: 0.852) Common causes and risk factors - All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases including...",
+          "Tool output: [Document 3] (ID: 19497_1, Score: 0.852) All other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse. The clinical evaluation should include: - A thorough history that covers medical and psychosocial circumstances at the onset of fa...",
+          "Tool output: [Document 4] (ID: 1477_43, Score: 0.850) Fatigue in ME/CFS typically has the following components: feeling flu-like, especially in the early days of the illness restlessness or feeling 'wired but tired' low energy or a lack of physical energy to start or finish activities of daily living and the sensation of being 'physically dr...",
+          "Tool output: [Document 5] (ID: 19497_2, Score: 0.848) NICE (UK) 2007 criteria The UK National Institute for Health and Clinical Excellence (NICE), published a multidisciplinary clinical practice guideline in 2007 in which the following criteria are employed: - fatigue that is new, persistent and/or recurrent, not explained by other conditions and ha..."
+        ],
+        "prior_information_summary": "Patient is 27-year-old female, admitted via emergency room on 2172-03-04 16:55:00, discharged 2172-03-07 12:30:00. Objective: Assess and diagnose based on clinical presentation. Final result: Onychia and paronychia of finger. Knowledge base: Paronychia — inflammation around nail, acute/chronic, bacterial/fungal causes, signs/symptoms, treatment. Patient reports no prior issues in the affected area. Labs tool returned no results. Previous tool outputs included irrelevant documents on postnatal care, menopause, and other conditions."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 11,
+        "query_text": "Persistent fatigue in young female; new tool outputs suggest leukemia or ovarian cancer; need memory about urgent blood tests or CA125; avoid premature diagnosis without ruling out depression or medication side effects"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any unexplained weight loss, changes in appetite, or persistent fatigue despite adequate rest?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any unexplained weight loss, changes in appetite, or persistent fatigue despite adequate rest?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment and diagnosis. Final result: Onychia and paronychia of finger. Knowledge base includes details on paronychia: acute/chronic types, causes (bacterial/fungal), symptoms (redness, swelling, pain, pus), risk factors (hand washing, trauma), and treatment (antibiotics/antifungals, drainage if pus). Patient reports no prior issues in the affected area."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 12,
+        "query_text": "No prior issues reported in affected area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1879,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
         "action_type": "FINALIZE_DIAGNOSIS",
-        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>",
-        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>",
-        "blocked_by_memory": false
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females: differential diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females: differential diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: [Document 1] (ID: 11186_2, Score: 0.848) # Differential Diagnosis - Other medical condition - Diabetes mellitus - Endothelial disease - Thyroid dysfunction - Central nervous system disease - Interpersonal factors - Severe relationship distress - Intimate partner violence - Stressors - Inadequate or absent sexual stimuli - Nonsexual mental ...",
+          "Tool output: [Document 2] (ID: 3452_13, Score: 0.844) ## Diagnosis in adults 1.1 We suggest that the diagnosis of PCOS be made if two of the three following criteria are met: androgen excess, ovulatory dysfunction, or PCO (Tables 1 and 2), whereas disorders that mimic the clinical features of PCOS are excluded. These include, in all women: thyroid dise...",
+          "Tool output: [Document 3] (ID: 3807_13, Score: 0.843) During adolescence, patients may experience substantial increases in disease activity. In particular, girls may experience increases in disease activity due to menstruation or the use of contraceptives containing estrogen. A family history of angioedema is suggestive of a diagnosis of HAE; however, ...",
+          "Tool output: [Document 4] (ID: 19280_2, Score: 0.842) # Classification There are many possible causes for this disorder. One such possibility is an underlying personality disorder. Individuals with FD may be trying to repeat a satisfying childhood relationship with a doctor. Perhaps also the individual has a desire to deceive or test authority figures....",
+          "Tool output: [Document 5] (ID: 8686_8, Score: 0.842) Irregular menses, secondary amenorrhea, breast enlargement, galactorrhea, and parotid gland swelling. Abnormal thyroid function tests . There have been rare spontaneous reports of polycystic ovary disease. A cause and effect relationship has not been established. Acute pancreatitis including fatal..."
+        ],
+        "prior_information_summary": "Patient is a 27-year-old female admitted via emergency room for assessment and diagnosis. Final result: Onychia and paronychia of finger. Knowledge base includes information on paronychia: inflammation around nail, acute/chronic types, bacterial/fungal causes, symptoms (redness, swelling, pain, pus), risk factors (hand washing, trauma), and treatment (antibiotics, antifungals, drainage if pus). Patient reports no prior problems or abnormal findings in the affected area. Previous tool outputs include lab results not found, irrelevant documents on postnatal care, menopause, fatigue, and other unrelated topics."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 13,
+        "query_text": "paronychia with no prior history; new tool outputs suggest unrelated conditions; need memory about targeted questions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your thyroid function, such as weight changes, fatigue, or cold intolerance?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your thyroid function, such as weight changes, fatigue, or cold intolerance?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "27-year-old female, admitted via emergency room for assessment and diagnosis. Final result: Onychia and paronychia of finger. Knowledge base includes details on paronychia: acute/chronic types, causes (bacterial/fungal), symptoms (redness, swelling, pain, pus), risk factors (hand washing, trauma), and treatment (antibiotics, antifungals, drainage if pus). Patient reports no prior issues in the affected area."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 14,
+        "query_text": "No prior issues reported in affected area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1879,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any mood changes, anxiety, or depression recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any mood changes, anxiety, or depression recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 27-year-old female admitted via emergency room for assessment and diagnosis. Final result is onychia and paronychia of finger. Knowledge base includes information on paronychia: acute/chronic types, causes (bacterial/fungal), symptoms (redness, swelling, pain, pus), risk factors (hand washing, trauma), and treatment (antibiotics, antifungals, drainage if pus). Patient reports no prior issues in the affected area."
+      },
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 15,
+        "query_text": "No prior issues reported in affected area; need memory about targeted questions to rule out missed causes of paronychia; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females: evaluation approach\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females: evaluation approach\"}}\n</tool_call>"
       }
     }
   ]

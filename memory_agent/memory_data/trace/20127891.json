@@ -1,0 +1,848 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20127891",
+  "turns": [
+    {
+      "case_id": "20127891",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 33-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 33-year-old female patient based on the available clinical presentation.",
+          "Assess and diagnose the 33-year-old female patient based on the available clinical presentation.",
+          "Unspecified asthma with (acute) exacerbation"
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20127891",
+        "turn_id": 1,
+        "query_text": "Unspecified asthma exacerbation; need memory about targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1969,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1875,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3441,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.294,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_438c0c10d2fd",
+              "type": "experience",
+              "score": 0.2875,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained symptoms and the initial history is unremarkable, repeatedly asking about weight loss, fatigue, fever, or night sweats yields negative responses, but the final diagnosis is anemia, the doctor should avoid premature closure and consider requesting a complete blood count.",
+              "action": "Request a complete blood count to objectively assess for anemia and rule out other hematologic causes.",
+              "boundary": "Use this memory when patient history is unremarkable and symptoms are non-specific; do not use if a CBC is already ordered or if the patient has a known hematologic condition.",
+              "tags": [
+                "negative",
+                "anemia",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e571193c7274"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e571193c7274",
+            "memory_type": "experience",
+            "score": 0.3441,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "outcome": "Premature finalization led to misdiagnosis; missing evidence of aspirin sensitivity or eosinophilia would have prevented this error.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes a few times a week. They’re worse at night and when I’m active or exposed to cold air. I also cough a lot, especially when I’m around triggers like dust, pet dander, or perfumes. I’ve noticed my symptoms get worse after viral infections or stress. I’ve had trouble breathing during exercise and sometimes wake up gasping for air. I’ve also lost most of my sense of smell, which started around the same time my asthma symptoms got worse. I react badly to aspirin and ibuprofen — even small doses make me wheeze and feel like I’m choking. I’ve had nasal polyps and chronic sinus issues for years, and my asthma is hard to control with regular meds. I’ve been told I have severe asthma, and I’m often hospitalized when it flares up.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.4,
+        "delta": 0.4,
+        "turn_reward": 0.08000000000000002,
+        "importance": 0.4
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20127891",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes a few times a week.",
+          "They’re worse at night and when I’m active or exposed to cold air.",
+          "I also cough a lot, especially when I’m around triggers like dust, pet dander, or perfumes.",
+          "I’ve noticed my symptoms get worse after viral infections or stress.",
+          "I’ve had trouble breathing during exercise and sometimes wake up gasping for air.",
+          "I’ve also lost most of my sense of smell, which started around the same time my asthma symptoms got worse.",
+          "I react badly to aspirin and ibuprofen — even small doses make me wheeze and feel like I’m choking.",
+          "I’ve had nasal polyps and chronic sinus issues for years, and my asthma is hard to control with regular meds.",
+          "I’ve been told I have severe asthma, and I’m often hospitalized when it flares up."
+        ],
+        "prior_information_summary": "33-year-old female patient admitted for evaluation. Chief complaint: Assess and diagnose the 33-year-old female patient based on available clinical presentation. Patient has history of asthma, nasal polyps, chronic rhinosinusitis, and aspirin/NSAID intolerance. Final result: Unspecified asthma with (acute) exacerbation. Patient is female, 33 years old, white, single, Medicaid-insured, admitted via walk-in/self-referral as an emergency. Admission time: 2167-11-25 23:50:00, discharge: 2167-11-28 17:03:00. Knowledge base includes asthma and aspirin-exacerbated respiratory disease (AERD) details."
+      },
+      "query": {
+        "case_id": "20127891",
+        "turn_id": 2,
+        "query_text": "asthma exacerbation with aspirin intolerance and olfactory loss; need memory about AERD diagnostic criteria and imaging review; avoid premature diagnosis without confirming nasal polyp status; consider targeted lab or imaging before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3195,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3081,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.274,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e571193c7274"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e571193c7274",
+            "memory_type": "experience",
+            "score": 0.3195,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "outcome": "Premature finalization led to misdiagnosis; missing evidence of aspirin sensitivity or eosinophilia would have prevented this error.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "asthma with aspirin sensitivity and nasal polyps"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0f2272a7-1840-4e83-bc30-6c3112a84a09': \"[Document 1] (ID: 3152_10, Score: 0.935)\\nIn asthma with aspirin sensitivity -36-96% have nasal polyps with rhinosinusitis [bib_ref] Nasal polyps in asthma and rhinitis. A review of 6,037 patients, Settipane [/bib_ref].\\nFamily history. A family history of atopy, seasonal rhinitis or asthma makes the diagnosis of AR more likely [bib_ref] Fre...\\n\\n[Document 2] (ID: 11251_13, Score: 0.897)\\n- Patients with asthma may have aspirin-sensitive asthma. The use of aspirin in patients with aspirin-sensitive asthma has been associated with severe bronchospasm which can be fatal. Since cross reactivity, including bronchospasm, between aspirin and other NSAIDs has been reported in such aspirin-s...\\n\\n[Document 3] (ID: 25310_0, Score: 0.893)\\nSamter's triad\\nSynonyms and keywords: AERD (aspirin-exacerbated respiratory disease); AIAR (aspirin-induced asthma and rhinitis); Widal's triad; Francis' triad; aspirin triad; aspirin allergy (a misnomer); aspirin intolerance\\n# Overview\\nSamter's triad is a medical condition consisting of asthma, asp...\\n\\n[Document 4] (ID: 31296_12, Score: 0.888)\\n## Preexisting Asthma\\n- Patients with asthma may have aspirin-sensitive asthma. The use of aspirin in patients with asp...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma with aspirin sensitivity and nasal polyps\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma with aspirin sensitivity and nasal polyps\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20127891",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes a few times a week. They’re worse at night and when I’m active or exposed to cold air.",
+          "I also cough a lot, especially when I’m around triggers like dust, pet dander, or perfumes.",
+          "I’ve noticed my symptoms get worse after viral infections or stress.",
+          "I’ve had trouble breathing during exercise and sometimes wake up gasping for air.",
+          "I’ve also lost most of my sense of smell, which started around the same time my asthma symptoms got worse.",
+          "I react badly to aspirin and ibuprofen — even small doses make me wheeze and feel like I’m choking.",
+          "I’ve had nasal polyps and chronic sinus issues for years, and my asthma is hard to control with regular meds.",
+          "I’ve been told I have severe asthma, and I’m often hospitalized when it flares up."
+        ],
+        "prior_information_summary": "33-year-old female patient admitted for evaluation. Chief complaint: Assess and diagnose based on clinical presentation. Patient has history of asthma, nasal polyps, chronic rhinosinusitis, and aspirin/NSAID intolerance. Symptoms include wheezing, shortness of breath, chest tightness, cough, worse at night and with triggers. Lost sense of smell. Severe asthma, hard to control, frequent hospitalizations. Diagnosis: Unspecified asthma with (acute) exacerbation. Knowledge base includes asthma and aspirin-exacerbated respiratory disease (AERD) details."
+      },
+      "query": {
+        "case_id": "20127891",
+        "turn_id": 3,
+        "query_text": "asthma exacerbation with aspirin intolerance and anosmia; need memory about AERD diagnostic criteria and imaging review; avoid premature diagnosis without confirming nasal polyp status; consider targeted testing before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2971,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9dbe0b8f-180a-4446-8342-e21ec1446197': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20127891",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "33-year-old female patient with asthma exacerbation, history of wheezing, shortness of breath, chest tightness, coughing, worse at night and with exercise or cold air. Symptoms triggered by dust, pet dander, perfumes, viral infections, and stress. Lost sense of smell, reacts to aspirin and ibuprofen, has nasal polyps and chronic sinus issues, severe asthma, hospitalized during flares. Diagnosed with unspecified asthma with acute exacerbation. Knowledge base includes asthma and aspirin-exacerbated respiratory disease (AERD) details."
+      },
+      "query": {
+        "case_id": "20127891",
+        "turn_id": 4,
+        "query_text": "asthma exacerbation with unresolved labs; need memory about targeted testing before finalization; avoid premature closure; consider AERD triggers"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5b158d77-394e-4927-a2ce-5b4288181175': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20127891",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "33-year-old female patient with asthma exacerbation, history of wheezing, shortness of breath, chest tightness, coughing, worse at night and with exercise or cold air. Symptoms triggered by dust, pet dander, perfumes, viral infections, and stress. Lost sense of smell, reacts to aspirin and ibuprofen, has nasal polyps and chronic sinus issues, severe asthma, hospitalized during flares. Diagnosed with unspecified asthma with acute exacerbation. Knowledge base includes asthma and aspirin-exacerbated respiratory disease (AERD) information."
+      },
+      "query": {
+        "case_id": "20127891",
+        "turn_id": 5,
+        "query_text": "asthma exacerbation with unresolved labs and CXR; need targeted evidence gathering before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2265,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.2017,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1958,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3088,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_e9ce600c7811",
+              "type": "experience",
+              "score": 0.2779,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, fatigue, night sweats, tachycardia, dyspnea, and confusion without clear localizing symptoms, and initial labs are unavailable, the doctor should avoid premature diagnosis without targeted evidence.",
+              "action": "Do not finalize a diagnosis of systemic infection or inflammation without obtaining critical labs (e.g., CBC, CRP, cultures) or imaging to rule out specific causes like sepsis or malignancy.",
+              "boundary": "Use this memory when systemic symptoms are present and labs are unavailable; do not use if labs are available or if imaging reveals a specific source of infection.",
+              "tags": [
+                "negative",
+                "fever",
+                "dyspnea",
+                "confusion",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.2767,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e571193c7274"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e571193c7274",
+            "memory_type": "experience",
+            "score": 0.3088,
+            "content": {
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "outcome": "Premature finalization led to misdiagnosis; missing evidence of aspirin sensitivity or eosinophilia would have prevented this error.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d767e374-5c21-46ed-aa51-54455231c0e1': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20127891",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "33-year-old female patient with asthma exacerbation, history of wheezing, shortness of breath, chest tightness, coughing, worse at night and with exercise or cold air. Symptoms triggered by dust, pet dander, perfumes, viral infections, and stress. Lost sense of smell, reacts to aspirin and ibuprofen, has nasal polyps and chronic sinus issues, severe asthma, hospitalized during flares. Diagnosed with unspecified asthma with acute exacerbation. Knowledge base includes asthma and aspirin-exacerbated respiratory disease (AERD) information."
+      },
+      "query": {
+        "case_id": "20127891",
+        "turn_id": 6,
+        "query_text": "asthma exacerbation with no labs or imaging results; need memory about targeted next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2734,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2517,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2388,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2207,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1988,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_be3a90c49a2f",
+              "type": "experience",
+              "score": 0.3279,
+              "outcome": "failure",
+              "situation": "When a patient presents with episodic wheezing, nocturnal symptoms, and anosmia, but no imaging or lab results are available, and the differential includes asthma with allergic or sinus components, what should the doctor avoid?",
+              "action": "Avoid finalizing the diagnosis without reviewing relevant imaging or labs, especially when anosmia and sinus symptoms are present, as these may indicate underlying sinus involvement or allergic etiology.",
+              "boundary": "Use this memory when anosmia or sinus symptoms are present and imaging or labs are unavailable; do not use if imaging or labs are available and confirmatory of asthma exacerbation.",
+              "tags": [
+                "negative",
+                "anosmia",
+                "sinus_symptoms",
+                "missing_imaging",
+                "missing_labs",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3091,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3066,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_be3a90c49a2f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_be3a90c49a2f",
+            "memory_type": "experience",
+            "score": 0.3279,
+            "content": {
+              "situation": "When a patient presents with episodic wheezing, nocturnal symptoms, and anosmia, but no imaging or lab results are available, and the differential includes asthma with allergic or sinus components, what should the doctor avoid?",
+              "action": "Avoid finalizing the diagnosis without reviewing relevant imaging or labs, especially when anosmia and sinus symptoms are present, as these may indicate underlying sinus involvement or allergic etiology.",
+              "outcome": "Premature finalization led to a diagnosis that missed the gold standard of unspecified asthma exacerbation, which may have been better supported by additional evidence.",
+              "boundary": "Use this memory when anosmia or sinus symptoms are present and imaging or labs are unavailable; do not use if imaging or labs are available and confirmatory of asthma exacerbation.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "anosmia",
+                "sinus_symptoms",
+                "missing_imaging",
+                "missing_labs",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) with severe asthma and nasal polyps}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3565b381-4d08-4f53-a36b-376d7d49a76e': '{\"diagnosis\": \"Aspirin-Exacerbated Respiratory Disease (AERD) with severe asthma and nasal polyps\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) with severe asthma and nasal polyps}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) with severe asthma and nasal polyps}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1639 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20132588",
+  "turns": [
+    {
+      "case_id": "20132588",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 31-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 31-year-old female patient based on the available clinical presentation.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 1,
+        "query_text": "New patient presentation with vague systemic symptoms; need memory about targeted history and exam before finalization; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2691,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2632,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2105,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_ebc143551b22",
+              "type": "experience",
+              "score": 0.1974,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor do next?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss to rule out infection or malignancy.",
+              "boundary": "Use when hip pain is mechanical and localized; do not use if systemic symptoms are present or if imaging is already available.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1936,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.3564,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3344,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_2c269fa4ab97",
+              "type": "experience",
+              "score": 0.3055,
+              "outcome": "failure",
+              "situation": "When a 63-year-old woman presents with non-specific symptoms and denies any systemic signs, and initial targeted history and labs are unhelpful, the doctor should avoid broad differential updates without focusing on visual or vascular clues.",
+              "action": "Request a focused ophthalmologic exam or review of any available eye imaging to rule out retinal vascular events, especially if the patient is elderly and has no clear systemic explanation.",
+              "boundary": "Use this memory when the patient is elderly with non-specific complaints and no systemic signs; do not use if there is a clear history of systemic illness, or if eye exam/imaging is unavailable or not indicated.",
+              "tags": [
+                "negative",
+                "retinal_artery_occlusion",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_38816ab67fcd",
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_38816ab67fcd",
+            "memory_type": "experience",
+            "score": 0.3564,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "outcome": "This action prevented premature closure and aligned with the gold diagnosis of schizophrenia, which was missed due to lack of targeted inquiry into psychiatric symptoms.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3344,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did your symptoms first start, and have they been continuous or intermittent?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "31-year-old female patient admitted emergently on 2173-03-02 00:29:00 via physician referral. Admission type: EW EMER. Discharged 2173-03-08 13:34:00. Objective: Assess and diagnose based on clinical presentation. Final result: Postprocedural pneumothorax. Knowledge base includes Ventilator-associated pneumonia and Mendelson's syndrome. Patient is Black/African American, single, Medicaid-insured, English-speaking."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 2,
+        "query_text": "Postprocedural pneumothorax diagnosis; current turn reports no prior issues in the area; need memory about targeted history to rule out missed causes before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2046,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1938,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, fever, weight loss, or any specific pain or discomfort?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m on a ventilator and feel very weak, like I’m constantly tired. I’ve had a fever, and my breathing feels harder — I’m getting more oxygen through the machine, and I’m not getting enough air on my own. I’ve noticed I’m breathing faster, and sometimes I hear crackling or wheezing in my chest when the nurse listens. My temperature’s been above 38°C, and my white blood cell count’s been high. I’ve also noticed my sputum has turned thick and yellowish. I’m not sure if I’m losing weight, but I’ve been eating less because I’m so tired and not feeling well. I’m also getting more oxygen than before, and my chest x-rays show new shadows — they’ve gotten worse over time.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, fever, weight loss, or any specific pain or discomfort?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, fever, weight loss, or any specific pain or discomfort?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’m on a ventilator and feel very weak, like I’m constantly tired.",
+          "I’ve had a fever, and my breathing feels harder — I’m getting more oxygen through the machine, and I’m not getting enough air on my own.",
+          "I’ve noticed I’m breathing faster, and sometimes I hear crackling or wheezing in my chest when the nurse listens.",
+          "My temperature’s been above 38°C, and my white blood cell count’s been high.",
+          "I’ve also noticed my sputum has turned thick and yellowish.",
+          "I’m not sure if I’m losing weight, but I’ve been eating less because I’m so tired and not feeling well.",
+          "I’m also getting more oxygen than before, and my chest x-rays show new shadows — they’ve gotten worse over time."
+        ],
+        "prior_information_summary": "31-year-old female, admitted emergently on 2173-03-02 00:29:00 via physician referral. Medicaid-insured, Black/African American, single. Objective: Assess and diagnose based on clinical presentation. Final result: Postprocedural pneumothorax. Knowledge base includes ventilator-associated pneumonia (VAP) and Mendelson’s syndrome. No prior symptoms or abnormalities reported in turn 2."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 3,
+        "query_text": "ventilator-dependent patient with worsening respiratory status and new chest shadows; need memory about VAP diagnostic criteria and imaging review; avoid premature diagnosis without culture confirmation; consider targeted lab or imaging next steps"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2022,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1868,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2843,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'58d68fa4-e2ba-4b8b-86da-68b860c2783c': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "31-year-old female, admitted emergently on 2173-03-02, on ventilator, reports weakness, fever (>38°C), increased oxygen needs, faster breathing, crackling/wheezing on auscultation, thick yellow sputum, elevated WBC, worsening chest x-ray shadows. Patient is single, Black/African American, Medicaid, English-speaking. Objective: Assess and diagnose based on clinical presentation. Final result: Postprocedural pneumothorax. Knowledge base includes Ventilator-associated pneumonia (VAP) and Mendelson's syndrome."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 4,
+        "query_text": "ventilator-associated pneumonia with incomplete labs; need targeted lab request before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1828,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2734,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2688,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b9b0b933-2773-445f-a70e-7b0bd799ee1a': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: CXR, source: none, result: No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is 31-year-old female, admitted emergently on 2173-03-02, admitted via physician referral. She is on a ventilator, feeling weak, with fever (>38°C), increased oxygen needs, faster breathing, crackling/wheezing on auscultation, thick yellow sputum, elevated WBC, worsening chest x-ray shadows. No prior issues reported. Knowledge base includes Ventilator-associated pneumonia (VAP) and Mendelson's syndrome. Final result: Postprocedural pneumothorax."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 5,
+        "query_text": "CXR result unavailable; patient on ventilator with worsening chest x-ray shadows and fever; need memory about next-step imaging or lab decisions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2334,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.214,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1921,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.1882,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1864,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5cf95edf3f7c",
+              "type": "experience",
+              "score": 0.3103,
+              "outcome": "failure",
+              "situation": "When a ventilated patient presents with fever, elevated WBC, respiratory distress, and thick yellow secretions, but no imaging or lab results are available, and initial clinical reasoning points toward ventilator-associated pneumonia, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without reviewing chest X-ray or obtaining relevant lab results, as the gold diagnosis is postprocedural pneumothorax, which may present similarly but requires imaging confirmation.",
+              "boundary": "Use this memory when a ventilated patient has fever, respiratory distress, and thick secretions, but only if chest X-ray and relevant labs are unavailable; do not use if imaging or labs are available or if the patient has a known recent procedure.",
+              "tags": [
+                "negative",
+                "ventilator-associated_pneumonia",
+                "postprocedural_pneumothorax",
+                "image_review_needed",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3693794c1882",
+              "type": "experience",
+              "score": 0.2722,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, cough, respiratory distress, diarrhea, and low lymphocytes, and a positive PCR test for a virus, but no lab or imaging results are available, what should the doctor do?",
+              "action": "Do not finalize a diagnosis of viral pneumonia without reviewing available lab results or imaging. Request specific lab data (e.g., lymphocyte count, PCR type) and review chest X-ray if available to confirm or rule out specific viral etiologies.",
+              "boundary": "Use this memory when there is a positive PCR for a virus and clinical signs of viral pneumonia, but no supporting lab or imaging data; do not use if lab or imaging data is available and confirms the diagnosis or rules out alternatives.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2718,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_5cf95edf3f7c"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_5cf95edf3f7c",
+            "memory_type": "experience",
+            "score": 0.3103,
+            "content": {
+              "situation": "When a ventilated patient presents with fever, elevated WBC, respiratory distress, and thick yellow secretions, but no imaging or lab results are available, and initial clinical reasoning points toward ventilator-associated pneumonia, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without reviewing chest X-ray or obtaining relevant lab results, as the gold diagnosis is postprocedural pneumothorax, which may present similarly but requires imaging confirmation.",
+              "outcome": "Finalizing diagnosis prematurely led to a wrong direction and missed the true cause, which was imaging-dependent.",
+              "boundary": "Use this memory when a ventilated patient has fever, respiratory distress, and thick secretions, but only if chest X-ray and relevant labs are unavailable; do not use if imaging or labs are available or if the patient has a known recent procedure.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "ventilator-associated_pneumonia",
+                "postprocedural_pneumothorax",
+                "image_review_needed",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "query": "clinical presentation of pneumonia in adults with fever, tachypnea, crackles, elevated WBC, yellow sputum, and worsening chest X-ray shadows"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'689f5d7d-3865-4a6c-94b4-4667c5a826cc': '[Document 1] (ID: 8371_4, Score: 0.870)\\n## Physical Examination\\nPhysical examination is important in diagnosing  hospital-acquired pneumonia, finding include fever, tachypnea, rhonchi, crackles and wheezes.  For ventilator-associated pneumonia, a deterioration in ventilator parameters such as, tachypnea, decreased tidal volume, increased ...\\n\\n[Document 2] (ID: 4031_5, Score: 0.870)\\n## Lower respiratory tract infection\\nAn acute illness (present for 21 days or less), usually with cough as the main symptom, with at least one other lower respiratory tract symptom (sputum production, dyspnoea, wheeze or chest discomfort/pain) and no alternative explanation (e.g. sinusitis or asthma...\\n\\n[Document 3] (ID: 8371_3, Score: 0.869)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 4] (ID: 20670_3, Score: 0.868)\\n## Physical Examination\\nPhysical examination may reveal fever or sometimes low body temperature, an increased respiratory ra...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"clinical presentation of pneumonia in adults with fever, tachypnea, crackles, elevated WBC, yellow sputum, and worsening chest X-ray shadows\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"clinical presentation of pneumonia in adults with fever, tachypnea, crackles, elevated WBC, yellow sputum, and worsening chest X-ray shadows\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Physical examination may reveal fever or sometimes low body temperature, an increased respiratory rate, low blood pressure, a fast heart rate, or a low oxygen saturation, which is the amount of oxygen in the blood as indicated by either pulse oximetry or blood gas analysis. P...",
+          "Physical examination is important in diagnosing hospital-acquired pneumonia, finding include fever, tachypnea, rhonchi, crackles and wheezes. For ventilator-associated pneumonia, a deterioration in ventilator parameters such as, tachypnea, decreased tidal volume, increased ...",
+          "In hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis. The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...",
+          "Lower respiratory tract infection: An acute illness (present for 21 days or less), usually with cough as the main symptom, with at least one other lower respiratory tract symptom (sputum production, dyspnoea, wheeze or chest discomfort/pain) and no alternative explanation (e.g. sinusitis or asthma...",
+          "Primary viral pneumonia: Patients with primary viral pneumonia typically become breathless within the first 48 hours of onset of fever. An initially dry cough may become productive of blood-stained sputum. Cyanosis, tachypnoea, bilateral crepitations and wheeze on chest examination and leucocytosi..."
+        ],
+        "prior_information_summary": "31-year-old female patient admitted emergently on 2173-03-02. On ventilator, reports weakness, fever (>38°C), increased oxygen needs, tachypnea, crackles/wheezes on chest exam, thick yellow sputum, elevated WBC, worsening chest x-ray shadows. No prior issues in the area. Eating less due to fatigue. Insurance: Medicaid. Race: Black/African American. Marital status: Single. Language: English. Admission type: EW EMER. Admission location: PHYSICIAN REFERRAL. Diagnostic window: 2173-03-02 00:29:00 to 01:59:00. Final result: Postprocedural pneumothorax. Objective: Assess and diagnose based on clinical presentation. Knowledge base includes Ventilator-associated pneumonia and Mendelson's syndrome."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 6,
+        "query_text": "Ventilator-associated pneumonia suspected; new info includes worsening oxygenation and crackles; need memory about targeted imaging review before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Pneumonia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'771948fd-8012-42ef-a33a-cd6b6791d4c0': '{\"diagnosis\": \"Pneumonia\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Pneumonia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Pneumonia}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: CXR",
+          "source: none",
+          "result: No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is 31-year-old female, admitted emergently on 2173-03-02. Chief complaint: Assess and diagnose based on clinical presentation. Symptoms: fever, increased fatigue, heavy breathing, dropping oxygen levels, night sweats. No prior issues in the area. Labs and CXR results not available. Knowledge base includes Ventilator-associated pneumonia and Mendelson's syndrome. Final result: Postprocedural pneumothorax."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 7,
+        "query_text": "CXR result not available; need memory about next steps before finalizing diagnosis; avoid premature closure; consider ventilator-associated pneumonia and Mendelson's syndrome"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.219,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1997,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.192,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.1914,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1874,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis for fever, fatigue, shortness of breath, night sweats in young adult female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a24b46b1-82ab-4611-9bee-2e00f45f954d': '[Document 1] (ID: 114_484, Score: 0.866)\\n# S: Subjective\\nThe patient reports fever, shortness of breath, particularly with exertion, nonproductive cough, night sweats, weight loss, or fatigue. Typically, the symptoms worsen over the course of days to weeks. Pleuritic pain and retrosternal pain or burning also may be present. There may be m...\\n\\n[Document 2] (ID: 19181_4, Score: 0.864)\\n## Laboratory Findings\\nThe folowing laboratory studies may be of use in determining the underlying cause of nightsweats.\\n- CBC w/ differential\\n- Eosinophil count\\n- Urinalysis\\n- ESR\\nMore sophisticated laboratory studies would include the following:\\n- FSH\\n- PPD\\n- HIV w/ viral load\\n- Blood cultures\\n- M...\\n\\n[Document 3] (ID: 4772_25, Score: 0.862)\\n# Special popula ions\\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\\nMost persons experience fever (83-99%), cough ...\\n\\n[Document 4] (ID: 1450_43, Score: 0.862)\\nFatigue (persistent) in adults\\nLeukaemia\\nConsider a very urgent full blood count (within 48\\xa0hours)\\nFatigue (unexplained) ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for fever, fatigue, shortness of breath, night sweats in young adult female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for fever, fatigue, shortness of breath, night sweats in young adult female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Document 1 (ID: 114_484, Score: 0.866): Patient reports fever, shortness of breath, particularly with exertion, nonproductive cough, night sweats, weight loss, or fatigue. Symptoms worsen over days to weeks. Pleuritic pain and retrosternal pain or burning may be present.",
+          "Document 2 (ID: 19181_4, Score: 0.864): Laboratory studies for nightsweats: CBC w/ differential, eosinophil count, urinalysis, ESR. Advanced tests: FSH, PPD, HIV w/ viral load, blood cultures.",
+          "Document 3 (ID: 4772_25, Score: 0.862): COVID-19 symptoms vary; most experience fever (83-99%), cough.",
+          "Document 4 (ID: 1450_43, Score: 0.862): Fatigue in adults may indicate leukemia; consider urgent full blood count. Fatigue in women may indicate ovarian issues; measure serum CA125.",
+          "Document 5 (ID: 19181_1, Score: 0.859): Night sweats may occur in early adulthood; no gender difference; may be harmless or genetic."
+        ],
+        "prior_information_summary": "Patient is 31-year-old female, admitted emergently on 2173-03-02. Chief complaint: Assess and diagnose based on clinical presentation. Symptoms: fever, increased fatigue, heavy breathing, dropping oxygen levels, night sweats. No prior issues or abnormal findings reported. Labs and CXR results not available. Knowledge base includes ventilator-associated pneumonia and Mendelson's syndrome. Final result: Postprocedural pneumothorax."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 8,
+        "query_text": "fever, shortness of breath, night sweats, weight loss; new info includes lab tests and COVID-19 symptoms; need memory about targeted diagnostics before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.2376,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_ebc143551b22",
+              "type": "experience",
+              "score": 0.2368,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor do next?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss to rule out infection or malignancy.",
+              "boundary": "Use when hip pain is mechanical and localized; do not use if systemic symptoms are present or if imaging is already available.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.2229,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2197,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2047,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3146,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2601,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_f4922899d7a5",
+              "type": "experience",
+              "score": 0.2541,
+              "outcome": "failure",
+              "situation": "When a patient has hip pain with stiffness and swelling, and the history suggests osteoarthritis, what should the doctor do to avoid missing a systemic cause?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss, and consider imaging to rule out infection or vasculitis.",
+              "boundary": "Use when hip pain is persistent and structural, but only if systemic symptoms are absent; do not use if systemic symptoms are present or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "systemic_symptoms",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.2386,
+              "outcome": null,
+              "situation": "Patient reports blood in stool, altered bowel habits, weight loss, and fatigue, and is over 50 years old.",
+              "action": null,
+              "boundary": "Apply only when patient is over 50 and reports unexplained weight loss or rectal bleeding. Do not use if symptoms are absent or non-specific.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_319b5f0239cc"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_319b5f0239cc",
+            "memory_type": "experience",
+            "score": 0.3146,
+            "content": {
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "outcome": "Premature finalization led to misdiagnosis; the gold diagnosis was calculus of ureter, which could have been identified with targeted imaging or lab work.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any unusual bruising, bleeding, or changes in your menstrual cycle recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual bruising, bleeding, or changes in your menstrual cycle recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual bruising, bleeding, or changes in your menstrual cycle recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "31-year-old female patient admitted emergently. Chief complaint: Assess and diagnose based on clinical presentation. Symptoms: fever, increased fatigue, heavy breathing, dropping oxygen levels, night sweats. No prior issues or abnormal findings reported. Labs and CXR results not available. Knowledge base includes ventilator-associated pneumonia and Mendelson's syndrome. Final result: Postprocedural pneumothorax."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 9,
+        "query_text": "fever and respiratory distress with no prior findings reported; need memory about targeted history before imaging or lab decisions; avoid premature diagnosis without CXR or lab results"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3884,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.3622,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.3473,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.343,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.3333,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.5391,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.5193,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.4621,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0d4a16154d9b",
+          "exp_b36ecb08deb2"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0d4a16154d9b",
+            "memory_type": "experience",
+            "score": 0.5391,
+            "content": {
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "outcome": "Premature finalization led to missing the correct diagnosis of viral pneumonia, which could have been confirmed with imaging or lab tests.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_b36ecb08deb2",
+            "memory_type": "experience",
+            "score": 0.4621,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "outcome": "This action prevented premature closure and avoided missing the gold diagnosis of amphetamine poisoning, which would have been revealed by toxicology testing.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a308c9f3-d365-45ca-959c-d3ca3f6dea7e': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20132588",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: labs, source: none, result: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is 31-year-old female, admitted emergently on 2173-03-02, with chief complaint of fever, increased fatigue, heavy breathing, dropping oxygen levels, and night sweats. No prior issues reported. Labs and CXR results not available. Knowledge base includes Ventilator-associated pneumonia and Mendelson's syndrome. Final result is Postprocedural pneumothorax."
+      },
+      "query": {
+        "case_id": "20132588",
+        "turn_id": 10,
+        "query_text": "fever and respiratory distress with no labs or CXR available; need memory about targeted diagnostic steps before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3236,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2801,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2613,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.2607,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2451,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3422,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3251,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.3234,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_2",
+              "type": "skill",
+              "score": 0.2701,
+              "outcome": null,
+              "situation": "Initial confidence in diagnosis is low (0.2) after symptom inquiry; no labs or imaging available.",
+              "action": null,
+              "boundary": "Only use when confidence is below 0.5 and no diagnostic tests are available.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3422,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Infection or systemic illness (e.g., tuberculosis, HIV, or autoimmune condition)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8c8ee11e-601a-4428-a77b-d68cc4daad0c': '{\"diagnosis\": \"Infection or systemic illness (e.g., tuberculosis, HIV, or autoimmune condition)\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Infection or systemic illness (e.g., tuberculosis, HIV, or autoimmune condition)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Infection or systemic illness (e.g., tuberculosis, HIV, or autoimmune condition)}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1219 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20121045",
+  "turns": [
+    {
+      "case_id": "20121045",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [
+          "turn_1 observation.case_id: 20121045",
+          "turn_1 observation.context.ehr.Meta.subject_id: 19254884",
+          "turn_1 observation.context.ehr.Meta.hadm_id: 20121045",
+          "turn_1 observation.context.ehr.Meta.admittime: 2167-11-08 17:49:00",
+          "turn_1 observation.context.ehr.Meta.dischtime: 2167-11-10 15:20:00",
+          "turn_1 observation.context.ehr.Meta.admission_type: EW EMER.",
+          "turn_1 observation.context.ehr.Meta.admission_location: EMERGENCY ROOM",
+          "turn_1 observation.context.ehr.Meta.diagnostic_window.start: 2167-11-08 17:49:00",
+          "turn_1 observation.context.ehr.Meta.diagnostic_window.end: 2167-11-08 22:00:00",
+          "turn_1 observation.context.ehr.Patient_info.gender: M",
+          "turn_1 observation.context.ehr.Patient_info.age: 27",
+          "turn_1 observation.context.ehr.Patient_info.language: English",
+          "turn_1 observation.context.ehr.Patient_info.race: WHITE",
+          "turn_1 observation.context.ehr.Patient_info.marital_status: SINGLE",
+          "turn_1 observation.context.ehr.Patient_info.insurance: Private",
+          "turn_1 observation.context.ehr.Objective_for_Doctor: Assess and diagnose the 27-year-old male patient presenting with pain rt ankle.",
+          "turn_1 observation.context.ehr.History.Chief_Complaint: pain rt ankle",
+          "turn_1 observation.context.ehr.History.HPI: ___ male s/p eversion injury of rt ankle seen at osh and dx with\nbimal ankle fx\npt is nurse here and wanted to be treated here admitted to ortho\nfor dr ___\n___ Medical History:\nnone",
+          "turn_1 observation.context.ehr.History.Social_History: ___\nFamily History:\nn/a",
+          "turn_1 observation.context.ehr.Physical_Examination_Findings: HEENT: Normocephalic, atraumatic, Pupils equal, round and\nreactive to light, Extraocular muscles intact\nOropharynx within normal limits\nChest: Clear to auscultation\nCardiovascular: Regular Rate and Rhythm, Normal first and\nsecond heart sounds\nAbdominal: Nontender, Soft\nGU/Flank: No costovertebral angle tenderness\nExtr/Back: No cyanosis, clubbing or edema\nR ankle splint\nCSM + dp 2+\nSkin: No rash\nNeuro: Speech fluent\nPsych: Normal mood\n___: No petechiae",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].label: Green Top Hold (plasma)",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[0].value: HOLD.  DISCARD GREATER THAN 4 HOURS OLD.",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].label: Basophils",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].value: 1.1",
+          "turn_1 observation.context.ehr.Test_Results-Labs[1].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].label: Eosinophils",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].value: 1.3",
+          "turn_1 observation.context.ehr.Test_Results-Labs[2].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].label: Hematocrit",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].value: 39.3",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[3].flag: abnormal",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].label: Hemoglobin",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].value: 14.0",
+          "turn_1 observation.context.ehr.Test_Results-Labs[4].valueuom: g/dL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].label: Lymphocytes",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].value: 21.6",
+          "turn_1 observation.context.ehr.Test_Results-Labs[5].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].label: MCH",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].value: 31.2",
+          "turn_1 observation.context.ehr.Test_Results-Labs[6].valueuom: pg",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].label: MCHC",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].value: 35.5",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[7].flag: abnormal",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].label: MCV",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].value: 88",
+          "turn_1 observation.context.ehr.Test_Results-Labs[8].valueuom: fL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].label: Monocytes",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].value: 5.5",
+          "turn_1 observation.context.ehr.Test_Results-Labs[9].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].label: Neutrophils",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].value: 70.5",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[10].flag: abnormal",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].label: Platelet Count",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].value: 326",
+          "turn_1 observation.context.ehr.Test_Results-Labs[11].valueuom: K/uL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].label: RDW",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].value: 12.8",
+          "turn_1 observation.context.ehr.Test_Results-Labs[12].valueuom: %",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].label: Red Blood Cells",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].value: 4.48",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].valueuom: m/uL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[13].flag: abnormal",
+          "turn_1 observation.context.ehr.Test_Results-Labs[14].label: White Blood Cells",
+          "turn_1 observation.context.ehr.Test_Results-Labs[14].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[14].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[14].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[14].value: 8.6",
+          "turn_1 observation.context.ehr.Test_Results-Labs[14].valueuom: K/uL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[15].label: INR(PT)",
+          "turn_1 observation.context.ehr.Test_Results-Labs[15].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[15].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[15].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[15].value: 1.0",
+          "turn_1 observation.context.ehr.Test_Results-Labs[16].label: PT",
+          "turn_1 observation.context.ehr.Test_Results-Labs[16].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[16].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[16].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[16].value: 12.1",
+          "turn_1 observation.context.ehr.Test_Results-Labs[16].valueuom: sec",
+          "turn_1 observation.context.ehr.Test_Results-Labs[17].label: PTT",
+          "turn_1 observation.context.ehr.Test_Results-Labs[17].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[17].category: Hematology",
+          "turn_1 observation.context.ehr.Test_Results-Labs[17].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[17].value: 23.4",
+          "turn_1 observation.context.ehr.Test_Results-Labs[17].valueuom: sec",
+          "turn_1 observation.context.ehr.Test_Results-Labs[18].label: Anion Gap",
+          "turn_1 observation.context.ehr.Test_Results-Labs[18].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[18].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[18].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[18].value: 12",
+          "turn_1 observation.context.ehr.Test_Results-Labs[18].valueuom: mEq/L",
+          "turn_1 observation.context.ehr.Test_Results-Labs[19].label: Bicarbonate",
+          "turn_1 observation.context.ehr.Test_Results-Labs[19].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[19].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[19].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[19].value: 27",
+          "turn_1 observation.context.ehr.Test_Results-Labs[19].valueuom: mEq/L",
+          "turn_1 observation.context.ehr.Test_Results-Labs[20].label: Chloride",
+          "turn_1 observation.context.ehr.Test_Results-Labs[20].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[20].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[20].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[20].value: 108",
+          "turn_1 observation.context.ehr.Test_Results-Labs[20].valueuom: mEq/L",
+          "turn_1 observation.context.ehr.Test_Results-Labs[21].label: Creatinine",
+          "turn_1 observation.context.ehr.Test_Results-Labs[21].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[21].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[21].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[21].value: 0.9",
+          "turn_1 observation.context.ehr.Test_Results-Labs[21].valueuom: mg/dL",
+          "turn_1 observation.context.ehr.Test_Results-Labs[22].label: Potassium",
+          "turn_1 observation.context.ehr.Test_Results-Labs[22].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[22].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[22].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[22].value: 4.4",
+          "turn_1 observation.context.ehr.Test_Results-Labs[22].valueuom: mEq/L",
+          "turn_1 observation.context.ehr.Test_Results-Labs[23].label: Sodium",
+          "turn_1 observation.context.ehr.Test_Results-Labs[23].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[23].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[23].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[23].value: 143",
+          "turn_1 observation.context.ehr.Test_Results-Labs[23].valueuom: mEq/L",
+          "turn_1 observation.context.ehr.Test_Results-Labs[24].label: Urea Nitrogen",
+          "turn_1 observation.context.ehr.Test_Results-Labs[24].fluid: Blood",
+          "turn_1 observation.context.ehr.Test_Results-Labs[24].category: Chemistry",
+          "turn_1 observation.context.ehr.Test_Results-Labs[24].charttime: 2167-11-08 18:15:00",
+          "turn_1 observation.context.ehr.Test_Results-Labs[24].value: 13",
+          "turn_1 observation.context.ehr.Test_Results-Labs[24].valueuom: mg/dL",
+          "turn_1 observation.context.ehr.Final_Result: Trimalleolar fracture, closed",
+          "turn_1 observation.context.knowbase[0].name: Basophilia",
+          "turn_1 observation.context.knowbase[0].introduction: Basophilia is the condition of having greater than 200 basophils/μL in the venous blood. Basophils are the least numerous of the myelogenous cells, and it is rare for their numbers to be abnormally high without changes to other blood components. Rather, basophilia is most often coupled with other white blood cell conditions such as eosinophilia, high levels of eosinophils in the blood. Basophils are easily identifiable by a blue coloration of the granules within each cell, marking them as granulocytes, in addition to segmented nuclei.",
+          "turn_1 observation.context.knowbase[0].causes: Basophilia can be attributed to many causes and is typically not sufficient evidence alone to signify a specific condition wmn isolated as a finding under microscopic examination. Coupled with other findings, such as abnormal levels of neutrophils, it may suggest the need for additional workup. As an example, additional evidence of left-shifted neutrophilia alongside basophilia indicates a potential likelihood primarily of chronic myeloid leukemia (CML), or an alternate myeloproliferative neoplasm. Additionally, basophilia in the presence of numerous circulating blasts suggests the possibility of acute myeloid leukemia. Elevation of basophils may also be representative of multiple other underlying neoplasms such as polycythemia vera (PV), myelofibrosis, thrombocythemia, or, in rare cases, solid tumors. Alternative root causes other than these neoplasmic complications are most commonly allergic reactions or chronic inflammation related to infections such as tuberculosis, influenza, inflammatory bowel disorder, or an inflammatory autoimmune disease. Moreover, basophilia can be a symptom of mast cell activation syndrome (MCAS). Chronic hemolytic anemia and infectious diseases such as smallpox also demonstrate elevated basophil levels. Certain drug usage and food ingestion can also correlate with symptoms of basophilia.",
+          "turn_1 observation.context.knowbase[0].diagnosis: Basophilia can be detected through a complete blood count (CBC). The root cause of basophilia can be determined through a bone marrow biopsy, genetic testing to look for genetic mutations, or ultrasound to determine enlargement of the spleen. A bone marrow aspirate may be used to confirm an increase in basophils or significantly high numbers of precursors to the granulocytes. Since basophilia is present in a vast range of clinical conditions, depending on a variety of underlying causes, supplemental signs and symptoms must be investigated for a diagnosis. If splenomegaly is detected, a myeloproliferative syndrome may be suspected. Intrinsically related symptoms such as fever, malaise, pruritus (itching) due to the release of histamine, fatigue, and right upper quadrant pain may be present in the afflicted patient. With some conditions, such as polycythemia vera, erythromelalgia, or burning of the palms and soles, coupled with thrombocytosis is common. This severe symptomatology may require urgent attention. If basophilia and the aforementioned symptoms are present with concurrent eosinophilia greater than 1500 cells/μL, hypereosinophilic syndrome may be considered. In cases of underlying allergic reactions or adverse sensitivity, skin rashes may be present. After symptomatic evaluation, a peripheral blood smear is examined to determine cell counts.In cases of a supposed myeloid neoplasm, a bone marrow biopsy will be performed using cytogenetic analysis. This type of testing uses the karyotypes of chromosomes for each type of leukocyte and looks for a significant abnormality in any of the conventional karyotypes which could support the diagnosis of a neoplastic process. Basophilia on its own does not cause much complication other than those related to the primary causative condition. However, basophils can degranulate causing tissue damage, but this can be avoided with early detection and intervention.",
+          "turn_1 observation.context.case_dir: /oral_llm/xiweidai/med_env/bench/without_img/hosp_only/20121045",
+          "turn_1 observation.context.medenv_case_bundle.case_id: 20121045",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.subject_id: 19254884",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.hadm_id: 20121045",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.admittime: 2167-11-08 17:49:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.dischtime: 2167-11-10 15:20:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.admission_type: EW EMER.",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.admission_location: EMERGENCY ROOM",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.diagnostic_window.start: 2167-11-08 17:49:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Meta.diagnostic_window.end: 2167-11-08 22:00:00",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.gender: M",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.age: 27",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.language: English",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.race: WHITE",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.marital_status: SINGLE",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Patient_info.insurance: Private",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Objective_for_Doctor: Assess and diagnose the 27-year-old male patient presenting with pain rt ankle.",
+          "turn_1 observation.context.medenv_case_bundle.ehr.History.Chief_Complaint: pain rt ankle",
+          "turn_1 observation.context.medenv_case_bundle.ehr.History.HPI: ___ male s/p eversion injury of rt ankle seen at osh and dx with\nbimal ankle fx\npt is nurse here and wanted to be treated here admitted to ortho\nfor dr ___\n___ Medical History:\nnone",
+          "turn_1 observation.context.medenv_case_bundle.ehr.History.Social_History: ___\nFamily History:\nn/a",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Physical_Examination_Findings: HEENT: Normocephalic, atraumatic, Pupils equal, round and\nreactive to light, Extraocular muscles intact\nOropharynx within normal limits\nChest: Clear to auscultation\nCardiovascular: Regular Rate and Rhythm, Normal first and\nsecond heart sounds\nAbdominal: Nontender, Soft\nGU/Flank: No costovertebral angle tenderness\nExtr/Back: No cyanosis, clubbing or edema\nR ankle splint\nCSM + dp 2+\nSkin: No rash\nNeuro: Speech fluent\nPsych: Normal mood\n___: No petechiae",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].label: Green Top Hold (plasma)",
+          "turn_1 observation.context.medenv_case_bundle.ehr.Test_Results-Labs[0].fluid: Blood"
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 1,
+        "query_text": "rt ankle pain post-injury with splint; labs show abnormal hematocrit, MCHC, MCV, and neutrophils; need memory about targeted imaging review before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the pain in your right ankle start, and has it been constant or intermittent?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the pain in your right ankle start, and has it been constant or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the pain in your right ankle start, and has it been constant or intermittent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCV (88 fL), MCH (31.2 pg), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL), INR (1.0), PT (12.1 sec), PTT (23.4 sec), anion gap (12 mEq/L), bicarbonate (27 mEq/L), chloride (108 mEq/L), creatinine (0.9 mg/dL), potassium (4.4 mEq/L), sodium (143 mEq/L), urea nitrogen (13 mg/dL). Final diagnosis: Trimalleolar fracture, closed. Patient is a nurse, no significant medical or family history. No skin rash, no petechiae. No costovertebral angle tenderness. No cyanosis or clubbing. No fever or malaise reported."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 2,
+        "query_text": "right ankle fracture with elevated neutrophils and basophils; no fever or rash; need memory about targeted imaging review or hypothesis update before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2404,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.213,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2025,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1931,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1862,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2916,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2591,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2516,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the nature of the pain? Is it sharp, dull, throbbing, or aching? Any specific movements that make it worse or better?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of the pain? Is it sharp, dull, throbbing, or aching? Any specific movements that make it worse or better?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of the pain? Is it sharp, dull, throbbing, or aching? Any specific movements that make it worse or better?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL). Final diagnosis: Trimalleolar fracture, closed. Patient has no significant medical or social history. No rash, no petechiae. No fever or malaise reported."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 3,
+        "query_text": "right ankle pain with confirmed trimalleolar fracture; no fever or systemic signs; need memory about targeted imaging review or next-step management before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2019,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1974,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1905,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.2513,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you recently experienced any trauma, injury, or activity that might have caused the pain in your right ankle?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I had an eversion injury to my right ankle. I was seen at the ortho service and diagnosed with a bimal ankle fracture.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you recently experienced any trauma, injury, or activity that might have caused the pain in your right ankle?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you recently experienced any trauma, injury, or activity that might have caused the pain in your right ankle?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL). Final diagnosis: Trimalleolar fracture, closed. Patient has no significant medical or social history. No rash, no petechiae. No fever or malaise reported."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 4,
+        "query_text": "right ankle pain with confirmed trimalleolar fracture; no fever or systemic signs; need memory about targeted imaging review or next-step management before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2019,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1974,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1905,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.2513,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c8deee09-031f-4b27-93dd-ac66bd208acd': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL). Final diagnosis: Trimalleolar fracture, closed. Patient has no significant medical or social history. No rash, no petechiae. No fever or malaise reported."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 5,
+        "query_text": "right ankle pain with confirmed trimalleolar fracture; no fever or systemic signs; need memory about targeted imaging review or next-step management before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2019,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1974,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1905,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_54d9edbbf290",
+              "type": "experience",
+              "score": 0.2513,
+              "outcome": "failure",
+              "situation": "When a patient presents with headache and the initial differential is broad but no key systemic symptoms are elicited, and imaging or labs are unavailable, the doctor should not finalize a diagnosis without exploring signs of systemic inflammation or vascular compromise.",
+              "action": "Ask targeted questions about systemic symptoms like fever, weight loss, fatigue, or neurologic deficits, and request imaging or labs if available to rule out systemic or vascular causes.",
+              "boundary": "Use this memory when headache is the primary complaint and no systemic symptoms are elicited; do not use if patient has clear signs of temporal arteritis (e.g., jaw claudication, vision changes) or if imaging confirms cerebrovascular anomalies.",
+              "tags": [
+                "negative",
+                "headache",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed",
+                "systemic_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7fad2764-6426-48fd-a8ba-5e71aa7fe1a4': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCV (88 fL), MCH (31.2 pg), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL), INR (1.0), PT (12.1 sec), PTT (23.4 sec), anion gap (12 mEq/L), bicarbonate (27 mEq/L), chloride (108 mEq/L), creatinine (0.9 mg/dL), potassium (4.4 mEq/L), sodium (143 mEq/L), urea nitrogen (13 mg/dL). Final diagnosis: Trimalleolar fracture, closed."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 6,
+        "query_text": "right ankle pain with confirmed trimalleolar fracture; labs show neutrophil elevation; need memory about next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "bimal ankle fracture symptoms and treatment"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d4d39e3b-1477-4957-91c3-d5d6edf39028': '[Document 1] (ID: 24411_14, Score: 0.864)\\n# Non-Operative Treatment \\n- The first step in managing a patient with a fracture is to stabilize the patient if he/she is unstable due to blood loss, etc by giving them intravenous fluids and giving them some painkillers if the pain is severe.\\n- In children, the usual plan is to attempt closed redu...\\n\\n[Document 2] (ID: 25224_8, Score: 0.862)\\n# Physical Examination\\nThe related signs and symptoms include:\\n- Edema of the ankle\\nMost of the time the edema will be a non-pitting edema\\nDepends on the edema extent, it may even lead to compartment syndrome in the anterior and internal compartment of the ankle\\n- Most of the time the edema will be ...\\n\\n[Document 3] (ID: 24411_9, Score: 0.861)\\n# Physical Examination\\nThe related signs and symptoms include:\\n- Edema of the ankle\\nMost of the time the edema will be a non-pitting edema\\nDepends on the edema extent, it may even lead to compartment syndrome in the anterior and internal compartment of the ankle\\n- Most of the time the edema will be ...\\n\\n[Document 4] (ID: 24411_10, Score: 0.860)\\n## Skin\\n- Skin examination of patients with Ankle fracture  includes:\\nBruises\\nEcchymosis\\n- Bruises\\n- Ecchymosis\\n\\n## HEE...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"bimal ankle fracture symptoms and treatment\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"bimal ankle fracture symptoms and treatment\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin 14.0 g/dL, hematocrit 39.3% (abnormal), MCHC 35.5% (abnormal), MCV 88 fL, RDW 12.8%, RBC 4.48 m/uL (abnormal), WBC 8.6 K/uL, INR 1.0, PT 12.1 sec, PTT 23.4 sec, Anion Gap 12 mEq/L, Bicarbonate 27 mEq/L, Chloride 108 mEq/L, Creatinine 0.9 mg/dL, Potassium 4.4 mEq/L, Sodium 143 mEq/L, Urea Nitrogen 13 mg/dL. Final diagnosis: Trimalleolar fracture, closed. Patient is a nurse, no significant medical or family history. No skin rash, no petechiae. No fever, malaise, or pruritus noted. Basophilia knowledge base provided."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 7,
+        "query_text": "right ankle fracture with abnormal CBC; need memory about basophilia differential and imaging review before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2152,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2137,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.185,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_794e948067a6",
+              "type": "experience",
+              "score": 0.2788,
+              "outcome": "failure",
+              "situation": "When a patient reports an ankle injury with a prior OSH diagnosis of bimal ankle fracture, but the gold diagnosis is trimalleolar fracture, and imaging is unavailable, what should the doctor do?",
+              "action": "Request imaging to confirm the fracture pattern and rule out trimalleolar involvement before finalizing diagnosis.",
+              "boundary": "Use when imaging is unavailable and prior diagnosis is inconsistent with gold standard; do not use if imaging is available or if patient history strongly suggests trimalleolar fracture.",
+              "tags": [
+                "negative",
+                "ankle_injury",
+                "missing_imaging",
+                "premature_closure",
+                "trimalleolar_fracture"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2696,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.2664,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swelling, bruising, or difficulty bearing weight on your right ankle since the injury?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, bruising, or difficulty bearing weight on your right ankle since the injury?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, bruising, or difficulty bearing weight on your right ankle since the injury?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCV (88 fL), MCH (31.2 pg), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL), INR (1.0), PT (12.1 sec), PTT (23.4 sec), anion gap (12 mEq/L), bicarbonate (27 mEq/L), chloride (108 mEq/L), creatinine (0.9 mg/dL), potassium (4.4 mEq/L), sodium (143 mEq/L), urea nitrogen (13 mg/dL). Final diagnosis: Trimalleolar fracture, closed."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 8,
+        "query_text": "right ankle pain with confirmed trimalleolar fracture; labs show neutrophil elevation; need memory about next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any numbness, tingling, or weakness in your foot or toes since the injury?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any numbness, tingling, or weakness in your foot or toes since the injury?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any numbness, tingling, or weakness in your foot or toes since the injury?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20121045",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "pain rt ankle",
+        "current_turn_information": [],
+        "prior_information_summary": "27-year-old male, admitted via emergency room for right ankle pain following eversion injury. Diagnosed with bimalleolar fracture. Physical exam: right ankle splint, CSM +, dorsiflexion 2+. Labs show elevated neutrophils (70.5%), basophils (1.1%), eosinophils (1.3%), hemoglobin (14.0 g/dL), hematocrit (39.3%), MCHC (35.5%), RDW (12.8%), RBC (4.48 m/uL), WBC (8.6 K/uL), platelets (326 K/uL). Final diagnosis: Trimalleolar fracture, closed."
+      },
+      "query": {
+        "case_id": "20121045",
+        "turn_id": 9,
+        "query_text": "right ankle fracture with splint and limited dorsiflexion; labs show neutrophil elevation; need memory about imaging review before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1837,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1802,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.2889,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_794e948067a6",
+              "type": "experience",
+              "score": 0.2813,
+              "outcome": "failure",
+              "situation": "When a patient reports an ankle injury with a prior OSH diagnosis of bimal ankle fracture, but the gold diagnosis is trimalleolar fracture, and imaging is unavailable, what should the doctor do?",
+              "action": "Request imaging to confirm the fracture pattern and rule out trimalleolar involvement before finalizing diagnosis.",
+              "boundary": "Use when imaging is unavailable and prior diagnosis is inconsistent with gold standard; do not use if imaging is available or if patient history strongly suggests trimalleolar fracture.",
+              "tags": [
+                "negative",
+                "ankle_injury",
+                "missing_imaging",
+                "premature_closure",
+                "trimalleolar_fracture"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2596,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Bimal ankle fracture}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'091fb376-e959-4ca7-ae24-d8e188afdb0f': '{\"diagnosis\": \"Bimal ankle fracture\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Bimal ankle fracture}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Bimal ankle fracture}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,997 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20068836",
+  "turns": [
+    {
+      "case_id": "20068836",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient presenting with ileostomy closure and a well-healed low anterior."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 1,
+        "query_text": "ileostomy closure in 69-year-old male; need memory about next-step diagnostic actions; avoid premature diagnosis; review prior imaging or labs if available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2125,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2066,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When was your ileostomy closed, and what were the circumstances surrounding the closure?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When was your ileostomy closed, and what were the circumstances surrounding the closure?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When was your ileostomy closed, and what were the circumstances surrounding the closure?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure following colectomy for pneumatosis coli. Well-healed low anterior anastomosis. Past medical history includes ileostomy closure, left colectomy, BPH, insomnia, obstructive sleep apnea, depression, osteoarthritis, diverticulosis, IBS, cataracts, knee replacements, lactose intolerance, hypertension. Physical exam: stable vitals, no acute distress, clean incision, normal abdomen, clear lungs, no edema. Objective: assess and diagnose patient presenting with ileostomy closure and well-healed low anterior."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 2,
+        "query_text": "ileostomy closure with no reported local issues; need memory about targeted history for post-op complications; avoid premature diagnosis; review prior imaging if available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.201,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1804,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_a8f87508a2dd",
+              "type": "experience",
+              "score": 0.2644,
+              "outcome": "failure",
+              "situation": "When a patient reports no symptoms after ileostomy closure but the clinical context suggests potential complications, and initial history is unremarkable, the doctor should avoid premature finalization without ruling out key complications.",
+              "action": "Do not finalize diagnosis without reviewing imaging or surgical records confirming ileostomy closure status and absence of complications.",
+              "boundary": "Use this memory when the patient denies symptoms but the clinical context raises suspicion for ileostomy-related issues; do not use if imaging or surgical records are available and confirm closure without complications.",
+              "tags": [
+                "negative",
+                "ileostomy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2501,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent changes in bowel habits, abdominal pain, or unexplained weight loss?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had an ileostomy closure and a previous colectomy, so my bowel habits have changed since then, but I haven’t noticed any recent new changes. I do have irritable bowel syndrome and diverticulosis, which can affect my digestion. I haven’t had any new abdominal pain lately, and I haven’t lost weight unintentionally — I was not told otherwise.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in bowel habits, abdominal pain, or unexplained weight loss?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in bowel habits, abdominal pain, or unexplained weight loss?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "I’ve had an ileostomy closure and a previous colectomy, so my bowel habits have changed since then, but I haven’t noticed any recent new changes.",
+          "I do have irritable bowel syndrome and diverticulosis, which can affect my digestion.",
+          "I haven’t had any new abdominal pain lately, and I haven’t lost weight unintentionally — I was not told otherwise."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure. History: well-healed low anterior anastomosis after colectomy for pneumatosis coli. Past medical history includes ileostomy closure, left colectomy, BPH, insomnia, obstructive sleep apnea, depression, osteoarthritis, diverticulosis, IBS, cataracts, knee replacements, lactose intolerance, hypertension. Social history: family history of diabetes, breast cancer, IBS, sleep apnea, colon cancer, testicular cancer. Physical exam: stable vitals, no acute distress, clean incision, normal bowel sounds, no edema. Objective: assess and diagnose patient presenting with ileostomy closure and well-healed low anterior."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 3,
+        "query_text": "ileostomy closure with stable post-op status; new info: no recent abdominal pain or weight loss; need memory about post-surgical bowel habit changes and IBS/diverticulosis management; avoid premature diagnosis closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1b408613-a2dc-4201-99ab-a7ac9ef06f16': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure. History: well-healed low anterior anastomosis after colectomy for pneumatosis coli. Past medical history includes ileostomy closure, left colectomy, BPH, insomnia, obstructive sleep apnea, depression, osteoarthritis, diverticulosis, IBS, cataracts, knee replacements, lactose intolerance, hypertension. Physical exam: stable vitals, no acute distress, clean incision, normal abdomen, no edema. Objective: assess and diagnose patient presenting with ileostomy closure."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 4,
+        "query_text": "ileostomy closure with no labs available; need memory about targeted questions or imaging review before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2778,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2719,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2297,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2175,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1963,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3371,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3268,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3075,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "symptoms and diagnosis after ileostomy closure and colectomy in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6e8782d8-14dd-4689-92af-b24f62384640': '[Document 1] (ID: 3381_138, Score: 0.870)\\n## Comments\\nIn a report of stoma closure surgery in 16 patients with symptomatic improvement out of 42 patients who underwent colostomies for refractory rectoanal lesions as complications of CD, 75 % required re-creation of the stoma [bib_ref] Efficacy and problems of fecal diversion for intractable...\\n\\n[Document 2] (ID: 3122_148, Score: 0.865)\\nThe surgical procedure for elderly UC patients should be performed in the same way as young patients as far as the anal sphincter muscle function is preserved since ilealpouch anal (canal) anastomosis is not contraindicated even in elderly patients. However, permanent stoma formation may be selected...\\n\\n[Document 3] (ID: 2945_43, Score: 0.861)\\n## Functional consequences and qol\\nIn a Dutch study, no difference in global QoL was noted between 51 LS patients who underwent partial colectomy and 53 patients who underwent subtotal colectomy, although functional outcome (stool frequency and social impact) was worse after subtotal colectomy than ...\\n\\n[Document 4] (ID: 24941_6, Score: 0.860)\\n# Natural History, Complications, and Prognosis\\nPatients with ileus are usually presented with abdominal pain, abdomina...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and diagnosis after ileostomy closure and colectomy in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and diagnosis after ileostomy closure and colectomy in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 3381_138, Score: 0.870) - 75% of stoma closure patients required re-creation of stoma.",
+          "Tool output: Document 2 (ID: 3122_148, Score: 0.865) - Ilealpouch anal anastomosis not contraindicated in elderly.",
+          "Tool output: Document 3 (ID: 2945_43, Score: 0.861) - No difference in global QoL between partial and subtotal colectomy.",
+          "Tool output: Document 4 (ID: 24941_6, Score: 0.860) - Ileus symptoms: abdominal pain, distention, nausea, vomiting.",
+          "Tool output: Document 5 (ID: 972_37, Score: 0.853) - Recommendations for ileostomy support: pouching, diet, antidiarrheals."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure. History: well-healed low anterior anastomosis after colectomy for pneumatosis coli. Past medical history includes ileostomy closure, left colectomy, BPH, insomnia, obstructive sleep apnea, depression, osteoarthritis, diverticulosis, IBS, cataracts, knee replacements, lactose intolerance, hypertension. Social history: family history of diabetes, breast cancer, IBS, sleep apnea, colon cancer, testicular cancer. Physical exam: stable vitals, no acute distress, clean incision, normal bowel sounds. Objective: assess and diagnose patient presenting with ileostomy closure."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 5,
+        "query_text": "ileostomy closure with recent tool outputs on re-creation rates and QoL; need memory about next-step decisions before finalizing diagnosis; avoid premature closure without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2051,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1968,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2811,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2505,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your stoma output, such as increased frequency, consistency, or odor since the ileostomy closure?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your stoma output, such as increased frequency, consistency, or odor since the ileostomy closure?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your stoma output, such as increased frequency, consistency, or odor since the ileostomy closure?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure following colectomy for pneumatosis coli. Well-healed low anterior anastomosis. Past medical history includes ileostomy closure, left colectomy, BPH, insomnia, obstructive sleep apnea, depression, osteoarthritis, diverticulosis, irritable bowel syndrome, cataracts, knee replacements, lactose intolerance, hypertension. Physical exam: stable vitals, no acute distress, clean incision, normal bowel sounds. Objective: assess and diagnose patient presenting with ileostomy closure and well-healed low anterior."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 6,
+        "query_text": "ileostomy closure post-colectomy; patient reports no local issues; need memory about post-op complications or ileostomy function assessment; avoid premature diagnosis without further review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_a8f87508a2dd",
+              "type": "experience",
+              "score": 0.303,
+              "outcome": "failure",
+              "situation": "When a patient reports no symptoms after ileostomy closure but the clinical context suggests potential complications, and initial history is unremarkable, the doctor should avoid premature finalization without ruling out key complications.",
+              "action": "Do not finalize diagnosis without reviewing imaging or surgical records confirming ileostomy closure status and absence of complications.",
+              "boundary": "Use this memory when the patient denies symptoms but the clinical context raises suspicion for ileostomy-related issues; do not use if imaging or surgical records are available and confirm closure without complications.",
+              "tags": [
+                "negative",
+                "ileostomy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_a8f87508a2dd"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_a8f87508a2dd",
+            "memory_type": "experience",
+            "score": 0.303,
+            "content": {
+              "situation": "When a patient reports no symptoms after ileostomy closure but the clinical context suggests potential complications, and initial history is unremarkable, the doctor should avoid premature finalization without ruling out key complications.",
+              "action": "Do not finalize diagnosis without reviewing imaging or surgical records confirming ileostomy closure status and absence of complications.",
+              "outcome": "Premature finalization led to missing the gold diagnosis of 'Attention to ileostomy' because critical evidence was not sought.",
+              "boundary": "Use this memory when the patient denies symptoms but the clinical context raises suspicion for ileostomy-related issues; do not use if imaging or surgical records are available and confirm closure without complications.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "ileostomy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "post-ileostomy closure complications in elderly patients with prior colectomy"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'184df25e-55d0-4e9a-8134-0341dea529bb': '[Document 1] (ID: 3381_138, Score: 0.865)\\n## Comments\\nIn a report of stoma closure surgery in 16 patients with symptomatic improvement out of 42 patients who underwent colostomies for refractory rectoanal lesions as complications of CD, 75 % required re-creation of the stoma [bib_ref] Efficacy and problems of fecal diversion for intractable...\\n\\n[Document 2] (ID: 3122_62, Score: 0.856)\\nHowever, there are risks and disadvantages of surgery, although the postoperative mortality is low in both diseases [bib_ref] Ileal pouch anal anastomosis: analysis of outcome and quality of life in..., Fazio [/bib_ref] [bib_ref] Postoperative complications and mortality following colectomy for ulce...\\n\\n[Document 3] (ID: 3122_148, Score: 0.856)\\nThe surgical procedure for elderly UC patients should be performed in the same way as young patients as far as the anal sphincter muscle function is preserved since ilealpouch anal (canal) anastomosis is not contraindicated even in elderly patients. However, permanent stoma formation may be selected...\\n\\n[Document 4] (ID: 3122_102, Score: 0.854)\\nThere is a possibility to develop infectious complications in patients under treatments with strong immunosuppressive ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-ileostomy closure complications in elderly patients with prior colectomy\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-ileostomy closure complications in elderly patients with prior colectomy\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "tool_outputs.184df25e-55d0-4e9a-8134-0341dea529bb: [Document 1] (ID: 3381_138, Score: 0.865) ## Comments In a report of stoma closure surgery in 16 patients with symptomatic improvement out of 42 patients who underwent colostomies for refractory rectoanal lesions as complications of CD, 75 % required re-creation of the stoma [bib_ref] Efficacy and problems of fecal diversion for intractable... [Document 2] (ID: 3122_62, Score: 0.856) However, there are risks and disadvantages of surgery, although the postoperative mortality is low in both diseases [bib_ref] Ileal pouch anal anastomosis: analysis of outcome and quality of life in..., Fazio [/bib_ref] [bib_ref] Postoperative complications and mortality following colectomy for ulce... [Document 3] (ID: 3122_148, Score: 0.856) The surgical procedure for elderly UC patients should be performed in the same way as young patients as far as the anal sphincter muscle function is preserved since ilealpouch anal (canal) anastomosis is not contraindicated even in elderly patients. However, permanent stoma formation may be selected... [Document 4] (ID: 3122_102, Score: 0.854) There is a possibility to develop infectious complications in patients under treatments with strong immunosuppressive effects. As patients who are administered steroids especially have an increased risk of anastomotic leak and infectious complications including wound infection, it is necessary to ta... [Document 5] (ID: 2945_43, Score: 0.852) ## Functional consequences and qol In a Dutch study, no difference in global QoL was noted between 51 LS patients who underwent partial colectomy and 53 patients who underwent subtotal colectomy, although functional outcome (stool frequency and social impact) was worse after subtotal colectomy than ..."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure. History: well-healed low anterior anastomosis after colectomy for pneumatosis coli. Past medical history includes ileostomy closure, left colectomy, BPH, insomnia, obstructive sleep apnea, depression, osteoarthritis, diverticulosis, IBS, cataracts, knee replacements, lactose intolerance, hypertension. Physical exam: stable vitals, no acute distress, clean incision, no erythema or hematoma. Objective: assess and diagnose patient presenting with ileostomy closure and well-healed low anterior. No recent abdominal pain or weight loss. Previous tool output: no labs result found. Previous tool output: documents on stoma closure, ileal pouch anastomosis, QoL, complications, and management."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 7,
+        "query_text": "ileostomy closure with well-healed anastomosis; new docs on stoma complications and QoL; need memory on avoiding premature closure; consider imaging or lab review before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.204,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1852,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2515,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Post-ileostomy adjustment period with no acute complications}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'96bc065b-751d-4330-a662-9111479e148f': '{\"diagnosis\": \"Post-ileostomy adjustment period with no acute complications\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-ileostomy adjustment period with no acute complications}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-ileostomy adjustment period with no acute complications}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20068836",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "ileostomy closure",
+        "current_turn_information": [
+          "exam_type: imaging, source: none, result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "69-year-old male, surgical same-day admission for ileostomy closure following colectomy for pneumatosis coli. Well-healed low anterior anastomosis. Past medical history includes ileostomy closure, left colectomy, BPH, sleep apnea, depression, osteoarthritis, diverticulosis, IBS, hypertension. Physical exam: stable vitals, no acute distress, clean incision. No recent symptoms or changes since closure. Tool results: no labs, CXR, or imaging results available."
+      },
+      "query": {
+        "case_id": "20068836",
+        "turn_id": 8,
+        "query_text": "ileostomy closure post-colectomy; no imaging or lab results available; need memory about next-step diagnostic actions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2901,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2767,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.265,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2386,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2236,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3717,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3693794c1882",
+              "type": "experience",
+              "score": 0.3431,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, cough, respiratory distress, diarrhea, and low lymphocytes, and a positive PCR test for a virus, but no lab or imaging results are available, what should the doctor do?",
+              "action": "Do not finalize a diagnosis of viral pneumonia without reviewing available lab results or imaging. Request specific lab data (e.g., lymphocyte count, PCR type) and review chest X-ray if available to confirm or rule out specific viral etiologies.",
+              "boundary": "Use this memory when there is a positive PCR for a virus and clinical signs of viral pneumonia, but no supporting lab or imaging data; do not use if lab or imaging data is available and confirms the diagnosis or rules out alternatives.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e200407cb894",
+              "type": "experience",
+              "score": 0.3186,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, cough, and chest tightness worsened by triggers and viral infections, and has a reduced sense of smell, but no imaging or lab results are available, what should the doctor avoid?",
+              "action": "Avoid finalizing a diagnosis without confirming key evidence like nasal polyp imaging or aspirin challenge test results, especially when the patient’s history suggests possible AERD.",
+              "boundary": "Use this memory when the patient has suggestive history of AERD but no imaging or lab results; do not use if nasal polyp imaging or aspirin challenge is available or if the patient has clear evidence of non-AERD asthma.",
+              "tags": [
+                "negative",
+                "asthma",
+                "reduced_smell",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_2",
+              "type": "skill",
+              "score": 0.2076,
+              "outcome": null,
+              "situation": "Initial confidence in diagnosis is low (0.2) after symptom inquiry; no labs or imaging available.",
+              "action": null,
+              "boundary": "Only use when confidence is below 0.5 and no diagnostic tests are available.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asymptomatic post-ileostomy closure with no complications and normal recovery.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'aa3f3aff-d9fd-4e85-a260-20af57fc6752': '{\"diagnosis\": \"Asymptomatic post-ileostomy closure with no complications and normal recovery.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic post-ileostomy closure with no complications and normal recovery.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic post-ileostomy closure with no complications and normal recovery.}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

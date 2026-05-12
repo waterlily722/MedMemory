@@ -6,6 +6,11 @@ from pathlib import Path
 MEMORY_ROOT_DIRNAME = str(Path(__file__).resolve().parents[1] / "memory_data")
 
 RETRIEVAL_CONFIG = {
+    # Online retrieval fallback scoring when dense embeddings are unavailable.
+    # Options:
+    # - "cosine": previous token-cosine scoring over the full memory text.
+    # - "fielded_bm25": field-weighted BM25 scoring for experience/skill.
+    "fallback_scoring": "cosine",
     "positive_experience_top_k": 5,
     "negative_experience_top_k": 3,
     "skill_top_k": 3,
@@ -19,6 +24,10 @@ RETRIEVAL_CONFIG = {
 }
 
 MERGE_CONFIG = {
+    # Offline merge candidate recall / rule similarity scoring.
+    # Keep this aligned with RETRIEVAL_CONFIG["fallback_scoring"] for paired
+    # retrieve+merge ablation runs.
+    "candidate_scoring": "cosine",
     "semantic_threshold": 0.80,
     "action_threshold": 0.75,
     "boundary_threshold": 0.50,

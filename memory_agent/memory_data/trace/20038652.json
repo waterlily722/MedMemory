@@ -1,0 +1,1658 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20038652",
+  "turns": [
+    {
+      "case_id": "20038652",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 33-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 33-year-old female patient based on the available clinical presentation.",
+          "Assess and diagnose the 33-year-old female patient based on the available clinical presentation.",
+          "Schizophrenia, unspecified",
+          "Disorganized schizophrenia",
+          "Schizophrenia"
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 1,
+        "query_text": "Schizophrenia diagnosis under consideration; new information includes disorganized subtype; need memory about targeted questions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having trouble with my thoughts and speech — sometimes they don’t make sense, like I’m mixing words together or jumping from one idea to another without connecting them. I also feel like I’m not really feeling things the way I used to — emotions seem flat or inappropriate, like laughing at the wrong time or not caring about things that used to matter. I’ve started doing things that seem strange or socially awkward, like talking to myself or acting out in public without thinking. I’ve also noticed I’m not motivated to do everyday things, like showering or eating, and I’ve lost interest in activities I used to enjoy. These symptoms started about a year ago, slowly at first, but they’ve gotten worse over time. I’ve also had trouble sleeping and sometimes hear voices that aren’t there — they’re usually critical or commanding. I’m not sure when exactly it started, but I remember feeling like something was off around that time, and it’s only gotten harder to function normally since then.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Trouble with thoughts and speech — mixing words, jumping ideas without connection",
+          "Emotions feel flat or inappropriate — laughing at wrong times, not caring about things that mattered",
+          "Doing strange or socially awkward things — talking to self, acting out in public without thinking",
+          "Not motivated to do daily tasks — showering, eating, lost interest in enjoyable activities",
+          "Symptoms started about a year ago, slowly at first, worsened over time",
+          "Trouble sleeping",
+          "Hear voices that aren’t there — critical or commanding",
+          "Feeling something was off around that time, difficulty functioning normally since then"
+        ],
+        "prior_information_summary": "33-year-old female patient, admitted for EU OBSERVATION on 2200-12-21 13:13:00, discharged 2200-12-26 08:42:00. Patient is Black/African American, single, speaks English, insured by Medicaid. Objective: Assess and diagnose based on clinical presentation. Final Result: Schizophrenia, unspecified. Knowledge base includes information on Disorganized schizophrenia (obsolete subtype) and Schizophrenia (symptoms, causes, diagnosis, prognosis, comorbidities, differential diagnosis)."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 2,
+        "query_text": "Symptoms suggest schizophrenia with disorganized features; new info includes auditory hallucinations and flat affect; need memory about targeted history for insight and social function; avoid premature diagnosis without imaging or lab review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2626,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2014,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3068,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2751,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of schizophrenia in young adult females"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bee05daf-1602-447d-837b-2eb3f51dfbb9': '[Document 1] (ID: 2317_0, Score: 0.869)\\nPsychosis and schizophrenia in adults: prevention and management\\nThis guideline covers recognising and managing psychosis and schizophrenia in adults. It aims to improve care through early recognition and treatment, and by focusing on long-term recovery. It also recommends checking for coexisting he...\\n\\n[Document 2] (ID: 1085_51, Score: 0.859)\\n# Bipolar Disorder and Schizophrenia\\nAbout 2% of pregnant women have a preexisting bipolar disorder, and less than 1% have a pre-existing psychotic disorder such as schizophrenia. 159 Women with severe mental disorders are at particularly high risk of relapse in the postpartum period and usually req...\\n\\n[Document 3] (ID: 8136_9, Score: 0.858)\\n## History and Symptoms\\nPostpartum blues symptoms are present for few days to 1-2 weeks after delivery. \\nThey are sadness, excessive crying, reduced concentration, appetite problem, anxiety, mood swings, sleeping difficulty, feeling overwhelmed.\\nSigns and symptoms of postpartum depression includes:\\n...\\n\\n[Document 4] (ID: 22606_3, Score: 0.858)\\n(F20.6) Simple schizophrenia\\n(F20.8) Other schizophrenia\\n(F20.9) Schizophrenia, unspecified\\n- (F20.0) Paranoid schizophreni...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 1.0,
+        "delta": 1.0,
+        "turn_reward": 0.2,
+        "importance": 1.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of schizophrenia in young adult females\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of schizophrenia in young adult females\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having trouble with my thoughts and speech — sometimes they don’t make sense, like I’m mixing words together or jumping from one idea to another without connecting them.",
+          "I also feel like I’m not really feeling things the way I used to — emotions seem flat or inappropriate, like laughing at the wrong time or not caring about things that used to matter.",
+          "I’ve started doing things that seem strange or socially awkward, like talking to myself or acting out in public without thinking.",
+          "I’ve also noticed I’m not motivated to do everyday things, like showering or eating, and I’ve lost interest in activities I used to enjoy.",
+          "These symptoms started about a year ago, slowly at first, but they’ve gotten worse over time.",
+          "I’ve also had trouble sleeping and sometimes hear voices that aren’t there — they’re usually critical or commanding.",
+          "I’m not sure when exactly it started, but I remember feeling like something was off around that time, and it’s only gotten harder to function normally since then."
+        ],
+        "prior_information_summary": "33-year-old female patient, admitted for EU OBSERVATION on 2200-12-21 13:13:00, discharged 2200-12-26 08:42:00. Patient is Black/African American, single, speaks English, insured by Medicaid. Objective: Assess and diagnose based on clinical presentation. Final Result: Schizophrenia, unspecified. Knowledge base includes details on Disorganized schizophrenia (obsolete subtype) and Schizophrenia (symptoms, causes, diagnosis, prognosis)."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 3,
+        "query_text": "patient reports disorganized thinking, emotional blunting, social withdrawal, and auditory hallucinations; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure; consider imaging or lab if not yet reviewed"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2285,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.207,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1931,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2706,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2629,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b98f3349-bdfb-446d-834c-6e278d7dec21': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "33-year-old female patient, admitted for EU OBSERVATION on 2200-12-21 13:13:00, discharged 2200-12-26 08:42:00. Chief complaint: Assess and diagnose the 33-year-old female patient based on the available clinical presentation. Patient reports disorganized speech, flat/inappropriate affect, social withdrawal, lack of motivation, hearing voices, and cognitive decline. Diagnosed with Schizophrenia, unspecified. Knowledge base includes details on disorganized schizophrenia and schizophrenia symptoms, causes, diagnosis, prognosis, and comorbidities."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 4,
+        "query_text": "Schizophrenia diagnosis with disorganized symptoms; labs missing; need memory about next-step testing or hypothesis updating before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.201,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'dc69b9e3-4ce7-4305-a8eb-421640af9bb9': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having trouble with my thoughts and speech — sometimes they don’t make sense, like I’m mixing words together or jumping from one idea to another without connecting them.",
+          "I also feel like I’m not really feeling things the way I used to — emotions seem flat or inappropriate, like laughing at the wrong time or not caring about things that used to matter.",
+          "I’ve started doing things that seem strange or socially awkward, like talking to myself or acting out in public without thinking.",
+          "I’ve also noticed I’m not motivated to do everyday things, like showering or eating, and I’ve lost interest in activities I used to enjoy.",
+          "These symptoms started about a year ago, slowly at first, but they’ve gotten worse over time.",
+          "I’ve also had trouble sleeping and sometimes hear voices that aren’t there — they’re usually critical or commanding.",
+          "I’m not sure when exactly it started, but I remember feeling like something was off around that time, and it’s only gotten harder to function normally since then."
+        ],
+        "prior_information_summary": "33-year-old female patient, admitted for EU OBSERVATION on 2200-12-21 13:13:00, discharged 2200-12-26 08:42:00. Patient is Black/African American, single, on Medicaid. Objective: Assess and diagnose based on clinical presentation. Final Result: Schizophrenia, unspecified. Knowledge base includes details on disorganized schizophrenia (obsolete subtype) and schizophrenia (positive, negative, cognitive symptoms, causes, diagnosis, prognosis)."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 5,
+        "query_text": "patient reports disorganized speech, emotional blunting, social withdrawal, and auditory hallucinations; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure; consider imaging or lab if not yet reviewed"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2412,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.207,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1931,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2706,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2629,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'269540eb-d471-45e3-ae4f-31f1a3512a37': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"imaging\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, on Medicaid, admitted via walk-in/self-referral for EU observation. Chief complaint: Assess and diagnose the 33-year-old female patient based on available clinical presentation. Symptoms include disorganized speech, flat/inappropriate affect, social withdrawal, lack of motivation, and auditory hallucinations. Diagnosis: Schizophrenia, unspecified. Knowledge base includes details on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 6,
+        "query_text": "Schizophrenia diagnosis with no labs or imaging available; need memory about next-step evidence gathering before finalization; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2809,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2792,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2275,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2182,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2027,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.3163,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3066,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3029,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "microbiology"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ad863178-635c-49c7-8cd5-fc193cfcbede': '{\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\\\"microbiology\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve been having trouble with my thoughts and speech — sometimes they don’t make sense, like I’m mixing words together or jumping from one idea to another without connecting them.",
+          "I also feel like I’m not really feeling things the way I used to — emotions seem flat or inappropriate, like laughing at the wrong time or not caring about things that used to matter.",
+          "I’ve started doing things that seem strange or socially awkward, like talking to myself or acting out in public without thinking.",
+          "I’ve also noticed I’m not motivated to do everyday things, like showering or eating, and I’ve lost interest in activities I used to enjoy.",
+          "These symptoms started about a year ago, slowly at first, but they’ve gotten worse over time.",
+          "I’ve also had trouble sleeping and sometimes hear voices that aren’t there — they’re usually critical or commanding.",
+          "I’m not sure when exactly it started, but I remember feeling like something was off around that time, and it’s only gotten harder to function normally since then."
+        ],
+        "prior_information_summary": "33-year-old female patient, admitted for EU OBSERVATION on 2200-12-21 13:13:00, discharged 2200-12-26 08:42:00. Patient is Black/African American, single, speaks English, insured by Medicaid. Objective: Assess and diagnose based on clinical presentation. Final Result: Schizophrenia, unspecified. Knowledge base includes details on disorganized schizophrenia (obsolete subtype) and schizophrenia (positive, negative, cognitive symptoms, causes, diagnosis, prognosis). No lab, imaging, or microbiology results available. Patient’s symptoms include disorganized speech, flat/inappropriate affect, behavioral disorganization, avolition, anhedonia, sleep issues, and auditory hallucinations. Diagnosis criteria from DSM-5 and ICD-11 referenced. Prognosis includes reduced life expectancy, comorbidities, and treatment options including antipsychotics and social rehabilitation."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 7,
+        "query_text": "disorganized speech and affective flattening with emerging hallucinations; need memory about diagnostic criteria for schizophrenia and avoiding premature closure; consider targeted history for social functioning and sleep; no labs or imaging available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2227,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2221,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1864,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Schizophrenia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'eb8c16a5-b1fc-4136-a4a6-53c8f52125cf': '{\"diagnosis\": \"Schizophrenia\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Schizophrenia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Schizophrenia}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "33-year-old female patient, Black/African American, single, Medicaid-insured, admitted via walk-in/self-referral for EU observation. Admission time: 2200-12-21 13:13:00; discharge time: 2200-12-26 08:42:00. Objective: Assess and diagnose based on clinical presentation. Final result: Schizophrenia, unspecified. Knowledge base includes details on schizophrenia and disorganized schizophrenia, including symptoms, causes, diagnosis, prognosis, and comorbidities. Previous turns included repeated patient statements of no known problems in specific areas, and tool outputs indicating no lab results and partial matches for epidemiology and risk factors."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 8,
+        "query_text": "Patient denies known problems in specific areas; no lab results available; need memory about targeted history to avoid premature closure before finalizing schizophrenia diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2167,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2573,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common non-specific symptoms in 33-year-old females"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'16f00002-9e29-4c8f-b2c2-2bc54678a798': '[Document 1] (ID: 4019_9, Score: 0.850)\\n## Symptoms and signs\\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\\n\\n[Document 2] (ID: 1702_14, Score: 0.849)\\nVasomotor symptoms Menopausal symptoms such as hot flushes and night sweats caused by constriction and dilatation of blood vessels in the skin that can lead to a sudden increase in blood flow to allow heat loss. These symptoms can have a major impact on activities of daily living.# Context\\nMenopause...\\n\\n[Document 3] (ID: 1702_2, Score: 0.848)\\nExplain to women that as well as a change in their menstrual cycle they may experience a variety of symptoms associated with menopause, including:\\n\\nvasomotor symptoms (for example, hot flushes and sweats)\\n\\nmusculoskeletal symptoms (for example, joint and muscle pain)\\n\\neffects on mood (for example, l...\\n\\n[Document 4] (ID: 8848_1, Score: 0.848)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more co...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in 33-year-old females\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in 33-year-old females\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, on Medicaid, admitted via walk-in/self-referral for EU observation. Admission time: 2200-12-21 13:13:00, discharge time: 2200-12-26 08:42:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Schizophrenia, unspecified. Knowledge base includes information on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities. Previous turns included repeated patient statements of no known problems or abnormal findings in specific areas, and tool outputs for labs and other conditions (e.g., HP, menopause) with no relevant results."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 9,
+        "query_text": "Patient denies known problems or abnormal findings in specific areas; need memory about targeted history to avoid premature closure; consider updating hypothesis before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained weight loss, flu-like symptoms, or persistent fatigue?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, flu-like symptoms, or persistent fatigue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, flu-like symptoms, or persistent fatigue?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "33-year-old female patient, admitted for EU OBSERVATION on 2200-12-21 13:13:00, discharged 2200-12-26 08:42:00. Objective: Assess and diagnose based on clinical presentation. Final diagnosis: Schizophrenia, unspecified. Patient is Black/African American, single, Medicaid-insured, English-speaking. Knowledge base includes details on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities. Previous turns included repeated patient statements of no known issues in specific areas, and tool outputs for labs and other queries with no results or partial matches."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 10,
+        "query_text": "Patient reports no known issues in specific areas; prior diagnosis schizophrenia; need memory about targeted history to avoid premature closure before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1978,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1933,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2581,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "non-specific symptoms in young adult females without clear diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'feeffc49-5f4f-469e-907a-12e2624ccb27': '[Document 1] (ID: 1450_50, Score: 0.849)\\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\\nThese recommendations apply to women aged 18\\xa0and over\\nUltrasound\\nsuggests soft tissu...\\n\\n[Document 2] (ID: 2255_5, Score: 0.848)\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nBulging fontanelle\\nSymptom or sign present\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nOnly relevant in children aged under 2\\xa0years\\nPhotophobia\\nSympto...\\n\\n[Document 3] (ID: 4903_42, Score: 0.845)\\n# Values and preferences:\\nThe lack of evidence for assessments and interventions in the postnatal period highlights the need for urgent high quality research into this area. However, even in the current situation, clear recommendations for routine postnatal care of the mother are needed for setting ...\\n\\n[Document 4] (ID: 380_145, Score: 0.845)\\nMany episodes of PID go unrecognized. Although some cases are asymptomatic, others are undiagnosed because the patient or ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females without clear diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females without clear diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, on Medicaid, admitted via walk-in/self-referral for EU observation. Admission time: 2200-12-21 13:13:00; discharge time: 2200-12-26 08:42:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Schizophrenia, unspecified. Knowledge base includes details on disorganized schizophrenia (obsolete subtype) and schizophrenia (positive, negative, cognitive symptoms, causes, diagnosis, prognosis, comorbidities, differential diagnosis). No lab results found. Multiple tool outputs from prior turns, mostly irrelevant to current context."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 11,
+        "query_text": "Schizophrenia diagnosis with no new findings reported; need memory about targeted history to confirm symptom persistence; avoid premature closure without imaging or lab evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2591,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2286,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2216,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.218,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1916,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3138,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.3076,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.28,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any abnormal vaginal discharge, pelvic pain, or changes in your menstrual cycle?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any abnormal vaginal discharge, pelvic pain, or changes in your menstrual cycle?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any abnormal vaginal discharge, pelvic pain, or changes in your menstrual cycle?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, on Medicaid, admitted via walk-in/self-referral for EU observation. Admission time: 2200-12-21 13:13:00, discharge time: 2200-12-26 08:42:00. Objective: Assess and diagnose the 33-year-old female patient based on available clinical presentation. Final result: Schizophrenia, unspecified. Knowledge base includes details on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities. Multiple tool outputs returned with low confidence scores, mostly unrelated to the patient's condition. Patient has not reported any problems or abnormal findings in relevant areas."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 12,
+        "query_text": "Patient reports no relevant problems or abnormal findings; need memory about targeted history to rule out missed evidence; avoid premature diagnosis closure; consider updating hypothesis before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2007,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific systemic symptoms in young adult females"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1693ae5d-399f-45f8-9780-4c76db307950': '[Document 1] (ID: 4019_9, Score: 0.848)\\n## Symptoms and signs\\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\\n\\n[Document 2] (ID: 100_9, Score: 0.845)\\nInfants are typically asymptomatic at birth and then develop fever, pain, rash, and peripheral edema. Those infected during the intrapartum period may also develop neurologic disease (e.g., meningoencephalitis, white matter lesions, brain swelling, and intracranial hemorrhage), hemorrhagic symptoms,...\\n\\n[Document 3] (ID: 19181_3, Score: 0.844)\\n- Lymphoma\\n\\n- Malaria\\n\\n- Menopause\\n\\n- Mycobacterium avium complex infection\\n\\n- Natalizumab\\n\\n- Niacin\\n\\n- Nitroglycerin\\n\\n- Nocardiosis\\n\\n- Oat cell carcinoma of the lung\\n\\n- Obstructive sleep apnea\\n\\n- Omeprazole\\n\\n- Osteomyelitis\\n\\n- Pegaspargase\\n\\n- Pentamidine inhalation\\n\\n- Perimenopause\\n\\n- Pheochromocyt...\\n\\n[Document 4] (ID: 3888_58, Score: 0.843)\\n## Summary\\nAdequately treated children with nonsyndromic CH have normal growth and puberty, and their fertility does not dif...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific systemic symptoms in young adult females\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific systemic symptoms in young adult females\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, with Medicaid insurance. Admitted via walk-in/self-referral for EU observation from 2200-12-21 13:13:00 to 2200-12-26 08:42:00. Objective: Assess and diagnose the patient based on clinical presentation. Final diagnosis: Schizophrenia, unspecified. Knowledge base includes details on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities. Previous turns included repeated patient statements of no known problems and tool outputs with no lab results or relevant clinical findings."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 13,
+        "query_text": "Patient denies known problems in relevant area; no new lab or imaging findings; need memory about targeted history to avoid premature closure before finalizing schizophrenia diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2257,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1911,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1899,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1897,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2897,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2551,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained fever, night sweats, or persistent fatigue that doesn’t improve with rest?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained fever, night sweats, or persistent fatigue that doesn’t improve with rest?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained fever, night sweats, or persistent fatigue that doesn’t improve with rest?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, on Medicaid, admitted via walk-in/self-referral for EU observation. Admission time: 2200-12-21 13:13:00, discharge time: 2200-12-26 08:42:00. Objective: Assess and diagnose the patient based on clinical presentation. Final diagnosis: Schizophrenia, unspecified. Knowledge base includes details on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities. Multiple tool outputs returned with low confidence scores, mostly unrelated to the patient's condition. Patient has not reported any problems or abnormal findings in relevant areas."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 14,
+        "query_text": "Patient reports no relevant problems or abnormal findings; need memory about targeted history to rule out missed evidence; avoid premature diagnosis closure; consider updating hypothesis before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2007,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "possible diagnoses for non-specific symptoms in 33-year-old female without clear signs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ac2f8f57-8c7d-426c-b7da-13f45b6bafaf': '[Document 1] (ID: 1450_49, Score: 0.857)\\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\\nThese recommendations apply to women aged 18\\xa0and over\\nThrombocytosis, 40\\xa0and ov...\\n\\n[Document 2] (ID: 2255_5, Score: 0.851)\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nBulging fontanelle\\nSymptom or sign present\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nOnly relevant in children aged under 2\\xa0years\\nPhotophobia\\nSympto...\\n\\n[Document 3] (ID: 1450_50, Score: 0.851)\\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\\nThese recommendations apply to women aged 18\\xa0and over\\nUltrasound\\nsuggests soft tissu...\\n\\n[Document 4] (ID: 8848_1, Score: 0.850)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more c...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"possible diagnoses for non-specific symptoms in 33-year-old female without clear signs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"possible diagnoses for non-specific symptoms in 33-year-old female without clear signs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20038652",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "[Document 1] (ID: 1450_49, Score: 0.857)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...",
+          "[Document 2] (ID: 2255_5, Score: 0.851)\nSymptom or sign present\nnot known if a symptom or sign is present (not reported in the evidence)\nBulging fontanelle\nSymptom or sign present\nSymptom or sign present\nnot known if a symptom or sign is present (not reported in the evidence)\nOnly relevant in children aged under 2 years\nPhotophobia\nSympto...",
+          "[Document 3] (ID: 1450_50, Score: 0.851)\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\nThese recommendations apply to women aged 18 and over\nUltrasound\nsuggests soft tissu...",
+          "[Document 4] (ID: 8848_1, Score: 0.850)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 5743_1, Score: 0.850)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ..."
+        ],
+        "prior_information_summary": "Patient is a 33-year-old female, Black/African American, single, with Medicaid insurance. Admitted via walk-in/self-referral for EU observation. Admission and discharge times: 2200-12-21 13:13:00 to 2200-12-26 08:42:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Schizophrenia, unspecified. Knowledge base includes information on schizophrenia, disorganized schizophrenia, symptoms, causes, diagnosis, prognosis, and comorbidities. Previous turns included repeated patient statements of no known problems or abnormal findings in specific areas, and tool outputs with search results for various conditions, mostly unrelated to the current case. No lab results found. Patient has no reported history of relevant issues."
+      },
+      "query": {
+        "case_id": "20038652",
+        "turn_id": 15,
+        "query_text": "no known problems or abnormal findings reported; prior diagnosis schizophrenia unspecified; need memory about targeted questions before finalizing diagnosis; avoid premature closure without further evidence"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent stress, changes in routine, or emotional changes that might correlate with your symptoms?"
+        },
+        "patient_or_tool_response": "{}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent stress, changes in routine, or emotional changes that might correlate with your symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent stress, changes in routine, or emotional changes that might correlate with your symptoms?\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

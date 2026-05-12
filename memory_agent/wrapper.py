@@ -2,12 +2,17 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 import uuid
 from pathlib import Path
 from typing import Any
 
-from rllm.rewards.med_diagnosis_reward import result_reward, result_reward_judge
+from rllm.rewards.med_diagnosis_reward import (
+    _confidence_heuristic,
+    result_reward,
+    result_reward_judge,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +53,7 @@ from .schemas import (
     MemoryQuery,
     MemoryRetrievalResult,    OutcomeType,    TurnRecord,
 )
-from .utils.config import MEMORY_ROOT_DIRNAME
+from .utils.config import MEMORY_ROOT_DIRNAME, RETRIEVAL_CONFIG
 from .utils.config import MEMORY_ACTION_CONFIG
 
 ACTION_MAP = dict(MEMORY_ACTION_CONFIG["tool_to_action"])
@@ -178,6 +183,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         disable_experience_memory: bool = False,
         disable_skill_memory: bool = False,
         disable_knowledge_memory: bool = False,
+        disable_memory_write: bool = False,
         memory_root: str | None = None,
         memory_llm_model: str = "",
         memory_llm_base_url: str = "",
@@ -207,6 +213,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.disable_experience_memory = disable_experience_memory
         self.disable_skill_memory = disable_skill_memory
         self.disable_knowledge_memory = disable_knowledge_memory
+        self.disable_memory_write = disable_memory_write
         self.strict_memory_errors = strict_memory_errors
         self.no_cxr = no_cxr
         self.memory_llm = LLMClient(
@@ -413,6 +420,15 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 "disable_skill_memory": self.disable_skill_memory,
                 "disable_knowledge_memory": self.disable_knowledge_memory,
                 "embedding_available": self.memory_embedding.available(),
+                "retrieval_mode": (
+                    "embedding"
+                    if self.memory_embedding.available()
+                    else str(
+                        os.environ.get("MEDGYM_RETRIEVAL_FALLBACK_SCORING")
+                        or RETRIEVAL_CONFIG.get("fallback_scoring")
+                        or "cosine"
+                    )
+                ),
                 "result": self.latest_retrieval.to_dict(),
             }
             memory_debug["applicability"] = {}
@@ -621,6 +637,13 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
 
         observation = self._safe_payload(env_observation, max_chars=1200)
         info = self._safe_payload(env_info, max_chars=1200)
+        turn_importance = self._compute_turn_importance(
+            tool_name=tool_name,
+            arguments=arguments,
+            observation=observation,
+            env_info=env_info,
+            reward=reward,
+        )
         return {
             "turn_id": self.case_state.turn_id if self.case_state else 0,
             "doctor_action_type": action.get("action_type") or "",
@@ -630,6 +653,12 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             "env_info": info,
             "reward": float(reward or 0.0),
             "done": bool(done),
+            "conf_before": turn_importance.get("conf_before", 0.0),
+            "conf_after": turn_importance.get("conf_after", 0.0),
+            "delta": turn_importance.get("delta", 0.0),
+            "turn_reward": turn_importance.get("turn_reward", 0.0),
+            "importance": turn_importance.get("importance", 0.0),
+            "turn_importance": turn_importance,
         }
 
     # ------------------------------------------------------------------
@@ -644,6 +673,9 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 self.episode_id,
             )
             return
+        if self.disable_memory_write:
+            self.episode_finalized = True
+            return
 
         # ── Extract fields from env info dict ─────────────────────────
         # Total reward from trajectory (sum of step rewards) or fallback
@@ -657,30 +689,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             last_action = self.turn_records[-1].selected_action or {}
             final_diagnosis = self._extract_final_diagnosis_from_action(last_action)
 
-        # Gold diagnosis: from cached bundle / task fields.
-        gold_diagnosis = ""
-        bundle_ehr = (
-            self._case_bundle.get("ehr")
-            or (self._case_bundle.get("context") or {}).get("ehr")
-            or (self._case_bundle.get("medenv_case_bundle") or {}).get("ehr")
-            or {}
-        )
-        if isinstance(bundle_ehr, dict):
-            gold_diagnosis = str(
-                bundle_ehr.get("Correct_Diagnosis")
-                or bundle_ehr.get("Principal_Diagnosis")
-                or bundle_ehr.get("Final_Result")
-                or ""
-            )
-        # Also check task-level ground_truth
-        if not gold_diagnosis:
-            gold_diagnosis = str(
-                info.get("gold_diagnosis")
-                or info.get("ground_truth")
-                or self._case_bundle.get("ground_truth")
-                or self._case_bundle.get("gold_diagnosis")
-                or ""
-            )
+        gold_diagnosis = self._gold_diagnosis_from_context(info)
 
         # Keep memory extraction success identical to diagnose_acc.py summary:
         # use med_diagnosis_reward.py result reward logic, including judge mode
@@ -809,6 +818,109 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if len(text) > max_chars:
             return text[:max_chars] + "...[truncated]"
         return value
+
+    def _gold_diagnosis_from_context(self, info: dict[str, Any] | None = None) -> str:
+        info = info or {}
+        bundle_ehr = (
+            self._case_bundle.get("ehr")
+            or (self._case_bundle.get("context") or {}).get("ehr")
+            or (self._case_bundle.get("medenv_case_bundle") or {}).get("ehr")
+            or {}
+        )
+        if isinstance(bundle_ehr, dict):
+            gold_diagnosis = str(
+                bundle_ehr.get("Correct_Diagnosis")
+                or bundle_ehr.get("Principal_Diagnosis")
+                or bundle_ehr.get("Final_Result")
+                or ""
+            ).strip()
+            if gold_diagnosis:
+                return gold_diagnosis
+        return str(
+            info.get("gold_diagnosis")
+            or info.get("ground_truth")
+            or self._case_bundle.get("ground_truth")
+            or self._case_bundle.get("gold_diagnosis")
+            or ""
+        ).strip()
+
+    def _response_text(self, value: Any, max_chars: int = 1200) -> str:
+        if value is None:
+            return ""
+        if isinstance(value, dict):
+            if "question" in value:
+                return self._response_text(value.get("question"), max_chars=max_chars)
+            if "tool_outputs" in value and isinstance(value.get("tool_outputs"), dict):
+                return "\n".join(
+                    self._response_text(item, max_chars=max_chars)
+                    for item in value.get("tool_outputs", {}).values()
+                ).strip()
+            return json.dumps(value, ensure_ascii=False)[:max_chars]
+        if isinstance(value, list):
+            return "\n".join(self._response_text(item, max_chars=max_chars) for item in value[-5:]).strip()
+        text = str(value).strip()
+        if len(text) > max_chars:
+            return text[:max_chars].rstrip() + "...[truncated]"
+        return text
+
+    def _dialogue_text_from_turn_records(self) -> str:
+        parts: list[str] = []
+        for record in self.turn_records:
+            clinical = record.clinical_turn or {}
+            tool_name = str(clinical.get("tool_name") or "").strip()
+            arguments = clinical.get("arguments") or {}
+            response = self._response_text(clinical.get("patient_or_tool_response"))
+            if isinstance(arguments, dict):
+                question = str(arguments.get("question") or "").strip()
+                args_text = json.dumps(arguments, ensure_ascii=False)
+            else:
+                question = ""
+                args_text = str(arguments)
+
+            if question:
+                parts.append(f"doctor[{tool_name}]: {question}")
+            elif tool_name:
+                parts.append(f"doctor[{tool_name}]: {args_text}")
+            if response:
+                parts.append(f"response[{tool_name}]: {response}")
+        return "\n".join(parts)
+
+    def _compute_turn_importance(
+        self,
+        *,
+        tool_name: str,
+        arguments: dict[str, Any],
+        observation: Any,
+        env_info: dict[str, Any],
+        reward: float,
+    ) -> dict[str, Any]:
+        gold_diagnosis = self._gold_diagnosis_from_context(env_info)
+        dialogue_before = self._dialogue_text_from_turn_records()
+        answer = self._response_text(observation)
+        question = ""
+        if isinstance(arguments, dict):
+            question = str(arguments.get("question") or "").strip()
+
+        conf_before = _confidence_heuristic(dialogue_before, gold_diagnosis)
+        context_after = f"{dialogue_before}\n{answer}".strip()
+        conf_after = _confidence_heuristic(context_after, gold_diagnosis)
+        delta = conf_after - conf_before
+        turn_reward = max(-0.1, min(0.2, delta * 0.2))
+        return {
+            "method": "med_diagnosis_reward_confidence_delta",
+            "applies_to": "all_turns",
+            "available": bool(gold_diagnosis and answer),
+            "tool_name": tool_name,
+            "question": question,
+            "answer_excerpt": answer[:500],
+            "gold_diagnosis": gold_diagnosis,
+            "conf_before": conf_before,
+            "conf_after": conf_after,
+            "delta": delta,
+            "turn_reward": turn_reward,
+            "importance": abs(delta),
+            "env_reward": float(reward or 0.0),
+        }
 
     def _has_memory_snapshot(self) -> bool:
         return (

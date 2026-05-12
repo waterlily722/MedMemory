@@ -1,0 +1,2368 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20024058",
+  "turns": [
+    {
+      "case_id": "20024058",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 63-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 63-year-old female patient based on the available clinical presentation.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 1,
+        "query_text": "63-year-old female presenting with nonspecific symptoms; need targeted history and exam before proceeding; avoid premature diagnosis; consider imaging or labs if available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2816,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.272,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2643,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2414,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2314,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2c269fa4ab97",
+              "type": "experience",
+              "score": 0.3324,
+              "outcome": "failure",
+              "situation": "When a 63-year-old woman presents with non-specific symptoms and denies any systemic signs, and initial targeted history and labs are unhelpful, the doctor should avoid broad differential updates without focusing on visual or vascular clues.",
+              "action": "Request a focused ophthalmologic exam or review of any available eye imaging to rule out retinal vascular events, especially if the patient is elderly and has no clear systemic explanation.",
+              "boundary": "Use this memory when the patient is elderly with non-specific complaints and no systemic signs; do not use if there is a clear history of systemic illness, or if eye exam/imaging is unavailable or not indicated.",
+              "tags": [
+                "negative",
+                "retinal_artery_occlusion",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3284,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3198,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_2c269fa4ab97"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_2c269fa4ab97",
+            "memory_type": "experience",
+            "score": 0.3324,
+            "content": {
+              "situation": "When a 63-year-old woman presents with non-specific symptoms and denies any systemic signs, and initial targeted history and labs are unhelpful, the doctor should avoid broad differential updates without focusing on visual or vascular clues.",
+              "action": "Request a focused ophthalmologic exam or review of any available eye imaging to rule out retinal vascular events, especially if the patient is elderly and has no clear systemic explanation.",
+              "outcome": "This action would have revealed a retinal artery branch occlusion, which was the gold diagnosis, and prevented premature closure on non-specific complaints.",
+              "boundary": "Use this memory when the patient is elderly with non-specific complaints and no systemic signs; do not use if there is a clear history of systemic illness, or if eye exam/imaging is unavailable or not indicated.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "retinal_artery_occlusion",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female, admitted via physician referral for observation. Admitted 20024058, discharged 20024058. Diagnosis: Retinal artery branch occlusion, left eye. Objective: Assess and diagnose the 63-year-old female patient based on available clinical presentation. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 2,
+        "query_text": "Retinal artery branch occlusion, left eye; patient denies new symptoms or findings; need memory about targeted history or exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.188,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female, admitted via physician referral for observation. Admitted 20024058, discharged 20024058. Objective: Assess and diagnose the 63-year-old female patient based on available clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 3,
+        "query_text": "Retinal artery branch occlusion, left eye; patient denies symptoms or findings in affected area; need memory about targeted history or exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1893,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your energy levels, sleep patterns, or mood recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, sleep patterns, or mood recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, sleep patterns, or mood recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admitted on 2147-06-08 20:59:00, discharged on 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient has no reported prior issues in the relevant area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 4,
+        "query_text": "No prior issues reported in relevant area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1884,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1879,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.2762,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2554,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or abdominal pain?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient has no reported prior issues in the area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 5,
+        "query_text": "No prior issues reported in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2179,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1813,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3187,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_7af660f63eba",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When evaluating a young adult female with non-specific symptoms and no clear local findings, and after multiple targeted history questions yield negative responses, the doctor should avoid premature finalization without ruling out localized dermatologic or nail pathology.",
+              "action": "Instead of finalizing a broad differential, request a focused physical exam or image review of the affected area to identify subtle signs like nail bed inflammation or paronychia.",
+              "boundary": "Use this memory when symptoms are non-specific and history is negative, but before finalizing diagnosis; do not use if the patient has clear dermatologic findings or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "non-specific_symptoms",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3187,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any respiratory symptoms such as cough, shortness of breath, or chest pain?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any respiratory symptoms such as cough, shortness of breath, or chest pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any respiratory symptoms such as cough, shortness of breath, or chest pain?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient has no reported prior issues in the area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 6,
+        "query_text": "No prior issues reported in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2179,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1813,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3187,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_7af660f63eba",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When evaluating a young adult female with non-specific symptoms and no clear local findings, and after multiple targeted history questions yield negative responses, the doctor should avoid premature finalization without ruling out localized dermatologic or nail pathology.",
+              "action": "Instead of finalizing a broad differential, request a focused physical exam or image review of the affected area to identify subtle signs like nail bed inflammation or paronychia.",
+              "boundary": "Use this memory when symptoms are non-specific and history is negative, but before finalizing diagnosis; do not use if the patient has clear dermatologic findings or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "non-specific_symptoms",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3187,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any joint pain, muscle weakness, or neurological symptoms such as dizziness or numbness?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any joint pain, muscle weakness, or neurological symptoms such as dizziness or numbness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any joint pain, muscle weakness, or neurological symptoms such as dizziness or numbness?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient has no reported prior issues in the area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 7,
+        "query_text": "No prior issues reported in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2179,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1813,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3187,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_7af660f63eba",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When evaluating a young adult female with non-specific symptoms and no clear local findings, and after multiple targeted history questions yield negative responses, the doctor should avoid premature finalization without ruling out localized dermatologic or nail pathology.",
+              "action": "Instead of finalizing a broad differential, request a focused physical exam or image review of the affected area to identify subtle signs like nail bed inflammation or paronychia.",
+              "boundary": "Use this memory when symptoms are non-specific and history is negative, but before finalizing diagnosis; do not use if the patient has clear dermatologic findings or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "non-specific_symptoms",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3187,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any urinary symptoms such as frequent urination, burning sensation, or blood in urine?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any urinary symptoms such as frequent urination, burning sensation, or blood in urine?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any urinary symptoms such as frequent urination, burning sensation, or blood in urine?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient has no reported prior issues in the area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 8,
+        "query_text": "No prior issues reported in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2179,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1813,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3187,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_7af660f63eba",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When evaluating a young adult female with non-specific symptoms and no clear local findings, and after multiple targeted history questions yield negative responses, the doctor should avoid premature finalization without ruling out localized dermatologic or nail pathology.",
+              "action": "Instead of finalizing a broad differential, request a focused physical exam or image review of the affected area to identify subtle signs like nail bed inflammation or paronychia.",
+              "boundary": "Use this memory when symptoms are non-specific and history is negative, but before finalizing diagnosis; do not use if the patient has clear dermatologic findings or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "non-specific_symptoms",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3187,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any skin changes, such as rashes, discoloration, or unexplained bruising?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes, such as rashes, discoloration, or unexplained bruising?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any skin changes, such as rashes, discoloration, or unexplained bruising?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient has no reported prior issues in the area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 9,
+        "query_text": "No prior issues reported in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2179,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1813,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3187,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_7af660f63eba",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When evaluating a young adult female with non-specific symptoms and no clear local findings, and after multiple targeted history questions yield negative responses, the doctor should avoid premature finalization without ruling out localized dermatologic or nail pathology.",
+              "action": "Instead of finalizing a broad differential, request a focused physical exam or image review of the affected area to identify subtle signs like nail bed inflammation or paronychia.",
+              "boundary": "Use this memory when symptoms are non-specific and history is negative, but before finalizing diagnosis; do not use if the patient has clear dermatologic findings or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "non-specific_symptoms",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3187,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent trauma, falls, or changes in your medication regimen?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, falls, or changes in your medication regimen?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent trauma, falls, or changes in your medication regimen?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "63-year-old female patient admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes: Central retinal vein occlusion, Ocular ischemic syndrome, Hollenhorst plaque. Patient has no reported prior issues in the area."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 10,
+        "query_text": "No prior issues reported in the area; need memory about targeted history or exam before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2431,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2179,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1834,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1813,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.3187,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            },
+            {
+              "id": "exp_7af660f63eba",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When evaluating a young adult female with non-specific symptoms and no clear local findings, and after multiple targeted history questions yield negative responses, the doctor should avoid premature finalization without ruling out localized dermatologic or nail pathology.",
+              "action": "Instead of finalizing a broad differential, request a focused physical exam or image review of the affected area to identify subtle signs like nail bed inflammation or paronychia.",
+              "boundary": "Use this memory when symptoms are non-specific and history is negative, but before finalizing diagnosis; do not use if the patient has clear dermatologic findings or if imaging is unavailable.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "non-specific_symptoms",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0aa00e5fd7fa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0aa00e5fd7fa",
+            "memory_type": "experience",
+            "score": 0.3187,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "outcome": "This action may reveal hidden environmental or lifestyle triggers that are critical to diagnosis, especially in cases where the gold diagnosis involves congenital or structural anomalies that may have been missed without such inquiry.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "non-specific symptoms in 63-year-old female patient"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'02cc68c7-cb09-48e5-bb3a-7e0de30b3281': '[Document 1] (ID: 4019_9, Score: 0.855)\\n## Symptoms and signs\\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\\n\\n[Document 2] (ID: 8848_1, Score: 0.853)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 3] (ID: 22925_2, Score: 0.851)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 4] (ID: 5743_1, Score: 0.851)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more co...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in 63-year-old female patient\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in 63-year-old female patient\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: [Document 1] (ID: 4019_9, Score: 0.855) Symptoms and signs: dyspnea, cough, midinspiratory squeaks, constitutional symptoms like weight loss, flu-like symptoms.",
+          "Tool output: [Document 2] (ID: 8848_1, Score: 0.853) Age, gender, race data incomplete or missing.",
+          "Tool output: [Document 3] (ID: 22925_2, Score: 0.851) Age, gender, race data incomplete or missing.",
+          "Tool output: [Document 4] (ID: 5743_1, Score: 0.851) Age, gender, race data incomplete or missing.",
+          "Tool output: [Document 5] (ID: 5174_8, Score: 0.850) ICD codes for endometrial hyperplasia, cervical dysplasia, stenosis, polyp."
+        ],
+        "prior_information_summary": "63-year-old female patient, admitted via physician referral for observation. Chief complaint: Assess and diagnose based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes: Central retinal vein occlusion, Ocular ischemic syndrome, Hollenhorst plaque. Patient has no reported issues in the area of concern. Multiple turns (1-10) repeated identical patient statement: 'As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.'"
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 11,
+        "query_text": "dyspnea and cough with midinspiratory squeaks and weight loss; incomplete demographic data; need targeted history and imaging review before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.2146,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2049,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1931,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1891,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1803,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2922,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'cb900f70-3dc7-4651-90de-f33f31a1d2ce': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: labs",
+          "source: none",
+          "result: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "63-year-old female patient, admitted via physician referral for observation. Chief complaint: Assess and diagnose the 63-year-old female patient based on the available clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient reports no prior issues in the affected area. Multiple turns (1-11) repeated the same patient history and no new findings."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 12,
+        "query_text": "no lab results available; prior diagnosis of retinal artery branch occlusion; need memory about next steps before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9a7df166-c17e-4e2e-953d-43e92ec20ea3': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: imaging, source: none, result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is a 63-year-old female admitted via physician referral for observation. Admission time: 2147-06-08 20:59:00; discharge time: 2147-06-10 17:30:00. Objective: Assess and diagnose the patient based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient reports no prior issues in the affected area. Previous tool outputs include lab and imaging results not found in record."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 13,
+        "query_text": "imaging result not found; need memory about next-step actions before finalizing diagnosis; avoid premature closure; review prior imaging and lab status if available"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2118,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1957,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1925,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1916,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1858,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.273,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3693794c1882",
+              "type": "experience",
+              "score": 0.2722,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, cough, respiratory distress, diarrhea, and low lymphocytes, and a positive PCR test for a virus, but no lab or imaging results are available, what should the doctor do?",
+              "action": "Do not finalize a diagnosis of viral pneumonia without reviewing available lab results or imaging. Request specific lab data (e.g., lymphocyte count, PCR type) and review chest X-ray if available to confirm or rule out specific viral etiologies.",
+              "boundary": "Use this memory when there is a positive PCR for a virus and clinical signs of viral pneumonia, but no supporting lab or imaging data; do not use if lab or imaging data is available and confirms the diagnosis or rules out alternatives.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.2657,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1d68c772-ba0e-4ddf-bb3d-c84b1e6ea656': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: CXR, source: none, result: No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is 63-year-old female, admitted via physician referral for observation. Objective: Assess and diagnose based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient reports no prior issues in the affected area. Previous tool outputs: No labs, no imaging, no CXR results found."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 14,
+        "query_text": "CXR result not available; need memory about next steps before finalizing diagnosis; avoid premature closure; consider ocular ischemic syndrome or Hollenhorst plaque in context"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "microbiology"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'253e4e99-ca01-4a3a-b774-d068444a099e': '{\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\\\"microbiology\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20024058",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: microbiology, source: none, result: No result for \"microbiology\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is 63-year-old female, admitted via physician referral for observation. Objective: Assess and diagnose based on clinical presentation. Final result: Retinal artery branch occlusion, left eye. Knowledge base includes Central retinal vein occlusion, Ocular ischemic syndrome, and Hollenhorst plaque. Patient reports no prior issues in the affected area. Previous tool outputs for labs, imaging, and CXR returned no results."
+      },
+      "query": {
+        "case_id": "20024058",
+        "turn_id": 15,
+        "query_text": "No microbiology result available; need memory about next diagnostic steps; avoid premature diagnosis; review prior imaging and labs for ocular ischemia clues"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2216,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2045,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.182,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2823,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.2635,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            },
+            {
+              "id": "exp_31a89b51741f",
+              "type": "experience",
+              "score": 0.2516,
+              "outcome": "failure",
+              "situation": "When a patient presents with a solitary pulmonary nodule and a history of breast cancer, but no symptoms like weight loss or fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis.",
+              "action": "Do not finalize diagnosis without reviewing available imaging or obtaining specific tests for BIA-ALCL, such as imaging findings or fluid analysis.",
+              "boundary": "Use this memory when imaging or specific tests are unavailable and the patient has no symptoms; do not use if imaging or fluid analysis is available or if symptoms suggest BIA-ALCL.",
+              "tags": [
+                "negative",
+                "missing_imaging",
+                "premature_closure",
+                "chest_pain"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Non-specific symptoms requiring further investigation}"
+        },
+        "patient_or_tool_response": "{}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Non-specific symptoms requiring further investigation}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Non-specific symptoms requiring further investigation}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

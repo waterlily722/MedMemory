@@ -175,6 +175,7 @@ def _compact_selected_action(action: dict[str, Any]) -> dict[str, Any]:
 def _compact_clinical_turn(turn: dict[str, Any]) -> dict[str, Any]:
     clinical = turn.get("clinical_turn") if isinstance(turn.get("clinical_turn"), dict) else {}
     if clinical:
+        turn_importance = clinical.get("turn_importance") or {}
         return {
             "turn_id": clinical.get("turn_id") or turn.get("turn_id", 0),
             "doctor_action_type": clinical.get("doctor_action_type") or "",
@@ -184,6 +185,21 @@ def _compact_clinical_turn(turn: dict[str, Any]) -> dict[str, Any]:
                 clinical.get("patient_or_tool_response")
             ),
             "reward": _safe_float(clinical.get("reward"), _safe_float(turn.get("reward"), 0.0)),
+            "conf_before": _safe_float(clinical.get("conf_before"), 0.0),
+            "conf_after": _safe_float(clinical.get("conf_after"), 0.0),
+            "delta": _safe_float(clinical.get("delta"), 0.0),
+            "turn_reward": _safe_float(clinical.get("turn_reward"), 0.0),
+            "importance": _safe_float(clinical.get("importance"), 0.0),
+            "turn_importance": {
+                "method": turn_importance.get("method"),
+                "tool_name": turn_importance.get("tool_name"),
+                "conf_before": _safe_float(turn_importance.get("conf_before"), 0.0),
+                "conf_after": _safe_float(turn_importance.get("conf_after"), 0.0),
+                "delta": _safe_float(turn_importance.get("delta"), 0.0),
+                "turn_reward": _safe_float(turn_importance.get("turn_reward"), 0.0),
+                "importance": _safe_float(turn_importance.get("importance"), 0.0),
+                "answer_excerpt": _clip_text(turn_importance.get("answer_excerpt"), 300),
+            },
             "done": bool(clinical.get("done", turn.get("done", False))),
         }
 

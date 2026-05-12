@@ -1,0 +1,1316 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20058777",
+  "turns": [
+    {
+      "case_id": "20058777",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 56-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 56-year-old female patient based on the available clinical presentation.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 1,
+        "query_text": "56-year-old female presenting with nonspecific symptoms; need targeted history to define current problem; avoid premature diagnosis; consider next-step diagnostic actions"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?"
+        },
+        "patient_or_tool_response": "{'question': 'I started noticing pain in my joint after an injury, and it’s gotten worse over time. I also feel stiffness, especially in the mornings or after sitting for a while. My joint swells up sometimes, and it’s tender to touch. I’ve had trouble moving it smoothly — it feels like there’s grinding when I use it. I’ve also noticed I’m losing my ability to do things I used to without pain or difficulty. The redness and swelling come and go, but the pain and stiffness are constant.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I started noticing pain in my joint after an injury, and it’s gotten worse over time.",
+          "I also feel stiffness, especially in the mornings or after sitting for a while.",
+          "My joint swells up sometimes, and it’s tender to touch.",
+          "I’ve had trouble moving it smoothly — it feels like there’s grinding when I use it.",
+          "I’ve also noticed I’m losing my ability to do things I used to without pain or difficulty.",
+          "The redness and swelling come and go, but the pain and stiffness are constant."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 2,
+        "query_text": "joint pain with progressive stiffness, swelling, and mechanical symptoms; need memory about targeted history and exam before imaging; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2588,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2564,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2503,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2429,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2325,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.3706,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.3113,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3046,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1a95f6def16d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1a95f6def16d",
+            "memory_type": "experience",
+            "score": 0.3706,
+            "content": {
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "outcome": "This action prevented premature closure on adhesive capsulitis, which was not the correct diagnosis, and ensured imaging was targeted to the affected joint, improving diagnostic accuracy.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d3c42abb-fa0b-4093-b8c4-cf97cc844deb': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "labs tool output: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "56-year-old female, admitted via physician referral for observation. Chief concern: assess and diagnose based on clinical presentation. Patient reports joint pain after injury, worsening over time, stiffness (especially morning/sitting), swelling, tenderness, grinding, loss of function, intermittent redness. Final result: Unilateral primary osteoarthritis, right knee. Knowledge base: Post-traumatic arthritis (PTAr) — symptoms include stiffness, swelling, pain, redness, tenderness, grinding, instability, bleeding; diagnosed via history and imaging."
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 3,
+        "query_text": "joint pain with history of trauma and progressive symptoms; labs unavailable; need memory about imaging review before finalizing osteoarthritis diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2402,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.238,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2219,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.211,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.2098,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.3935,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.3708,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.3635,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1a95f6def16d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1a95f6def16d",
+            "memory_type": "experience",
+            "score": 0.3935,
+            "content": {
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "outcome": "This action prevented premature closure on adhesive capsulitis, which was not the correct diagnosis, and ensured imaging was targeted to the affected joint, improving diagnostic accuracy.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b63d9844-b1f7-4de7-a356-82226828a647': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: imaging, source: none, result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is 56-year-old female, admitted via physician referral for observation. Chief concern: assess and diagnose based on clinical presentation. Symptoms include joint pain post-injury, worsening over time, morning stiffness, swelling, tenderness, grinding, loss of function, intermittent redness. Labs and imaging results not available. Final result: Unilateral primary osteoarthritis, right knee. Knowledge base: Post-traumatic arthritis (PTAr) is osteoarthritis following joint injury; diagnosed via history and imaging; symptoms include pain, swelling, stiffness, grinding, instability, loss of function."
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 4,
+        "query_text": "joint pain post-injury with imaging unavailable; need memory about targeted imaging review before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1918,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.181,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.3441,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            },
+            {
+              "id": "exp_2fdda3e3df92",
+              "type": "experience",
+              "score": 0.2626,
+              "outcome": "failure",
+              "situation": "When a patient presents with neck and arm pain, weakness, and no history of trauma, but with comorbid hypertension and diabetes, and initial imaging and labs are unavailable, the clinician should avoid premature diagnosis without cervical spine imaging.",
+              "action": "Request cervical spine MRI or CT to evaluate for structural cervical pathology, especially given the presence of arm weakness and chronic pain, before finalizing a diagnosis.",
+              "boundary": "Use this memory when neck/shoulder/arm pain is present with weakness and comorbidities, but only if cervical spine imaging is not yet available; do not use if imaging is already complete and shows no structural abnormality.",
+              "tags": [
+                "negative",
+                "cervical_pain",
+                "arm_weakness",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2599,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1a95f6def16d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1a95f6def16d",
+            "memory_type": "experience",
+            "score": 0.3441,
+            "content": {
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "outcome": "This action prevented premature closure on adhesive capsulitis, which was not the correct diagnosis, and ensured imaging was targeted to the affected joint, improving diagnostic accuracy.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of osteoarthritis in middle-aged women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b236c13f-0645-4a8c-a712-780fcd164492': '[Document 1] (ID: 1311_35, Score: 0.863)\\n## How the recommendation might affect practice\\nThe recommendation reflects current practice, so there should be no change in practice or resource impact.\\nReturn to recommendation# Context\\nOsteoarthritis is the most common form of arthritis. It typically presents with joint symptoms such as pain and...\\n\\n[Document 2] (ID: 3283_1, Score: 0.856)\\nOsteoarthritis (OA) is the most common form of arthritis and a leading cause of pain and disability worldwide [bib_ref] Years lived with disability (YLDs) for 1160 sequelae of 289 diseases and..., Vos [/bib_ref] [bib_ref] The global burden of hip and knee OA: estimates from the global..., Cross [/bi...\\n\\n[Document 3] (ID: 3283_13, Score: 0.850)\\n## Additional investigations\\nIf the patient is female, < 50 years of age, and non-menopausal, refer for an expert opinion. For all other clinical situations, proceed to the next criterion. The presence of swelling, isolated metacarpophalangeal joint pain, psoriasis, or several joints affected or per...\\n\\n[Document 4] (ID: 3355_8, Score: 0.850)\\nObesity is a well-established risk factor for osteoarthritis of the knee. It can predict the development of knee osteoarthr...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.4,
+        "delta": 0.4,
+        "turn_reward": 0.08000000000000002,
+        "importance": 0.4
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of osteoarthritis in middle-aged women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of osteoarthritis in middle-aged women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 1311_35, Score: 0.863) - Osteoarthritis is the most common form of arthritis. It typically presents with joint symptoms such as pain and...",
+          "Tool output: Document 2 (ID: 3283_1, Score: 0.856) - Osteoarthritis (OA) is the most common form of arthritis and a leading cause of pain and disability worldwide",
+          "Tool output: Document 3 (ID: 3283_13, Score: 0.850) - If the patient is female, < 50 years of age, and non-menopausal, refer for an expert opinion. For all other clinical situations, proceed to the next criterion.",
+          "Tool output: Document 4 (ID: 3355_8, Score: 0.850) - Obesity is a well-established risk factor for osteoarthritis of the knee.",
+          "Tool output: Document 5 (ID: 20366_1, Score: 0.847) - Symptoms of the disease are an acute pain and swelling in the hips and knee joints."
+        ],
+        "prior_information_summary": "56-year-old female patient, admitted via physician referral for observation. Chief complaint: pain, stiffness, swelling, tenderness, grinding, instability, and loss of ability in joint. No lab or imaging results available. Objective: assess and diagnose based on clinical presentation. Final result: unilateral primary osteoarthritis, right knee. Knowledge base: post-traumatic arthritis definition, symptoms, and diagnosis."
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 5,
+        "query_text": "unilateral knee osteoarthritis with known symptoms; new info confirms OA as leading cause; obesity is risk factor; need memory on next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight changes or are you currently overweight?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight changes or are you currently overweight?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight changes or are you currently overweight?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "56-year-old female, admitted for observation (admittime: 2156-06-28 00:00:00, dischtime: 2156-07-01 16:37:00). Chief complaint: Assess and diagnose the 56-year-old female patient based on the available clinical presentation. Patient reports pain, stiffness, swelling, tenderness, grinding, instability, and loss of ability in a joint following injury. Labs and imaging results not available. Knowledge base includes post-traumatic arthritis and osteoarthritis. Final result: Unilateral primary osteoarthritis, right knee."
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 6,
+        "query_text": "Joint injury with reported pain and functional loss; new info confirms no prior abnormalities; need memory about targeted history or imaging review before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2599,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2408,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2113,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.2045,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1986,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.287,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2825,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.278,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Osteoarthritis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2b9bcadb-9098-45ec-97ed-84a0c7715d58': '{\"diagnosis\": \"Osteoarthritis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Osteoarthritis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Osteoarthritis}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "56-year-old female patient admitted for observation. Chief complaint: pain, stiffness, swelling, grinding, tenderness, warmth in joint, loss of function, started after injury. Labs and imaging results not available. Documented signs include erythema, swelling, tenderness, pain with movement, possible sesamoiditis or fracture. Known risk factors for osteoarthritis: female, age 40-59, history of trauma, obesity. Final result: Unilateral primary osteoarthritis, right knee."
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 7,
+        "query_text": "Joint pain with history of trauma; new info: no prior abnormalities reported; imaging not reviewed; need memory about targeted history before finalizing osteoarthritis diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.2929,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2818,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2447,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2427,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_ebc143551b22",
+              "type": "experience",
+              "score": 0.1843,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor do next?",
+              "action": "Ask targeted questions about systemic symptoms like fever, night sweats, or weight loss to rule out infection or malignancy.",
+              "boundary": "Use when hip pain is mechanical and localized; do not use if systemic symptoms are present or if imaging is already available.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "conflicting_evidence"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e027d02565b1",
+              "type": "experience",
+              "score": 0.3529,
+              "outcome": "unsafe",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            },
+            {
+              "id": "exp_783c3320597f",
+              "type": "experience",
+              "score": 0.3459,
+              "outcome": "failure",
+              "situation": "When a patient presents with left hip pain and has uncontrolled diabetes, and the history suggests trauma, but imaging and labs are unavailable, the doctor should avoid finalizing a fracture diagnosis without confirming structural evidence.",
+              "action": "Request imaging to confirm structural integrity of the hip before finalizing a fracture diagnosis, especially in diabetic patients with trauma history.",
+              "boundary": "Use this memory when trauma history and diabetes are present, but imaging is unavailable; do not use if imaging is available and shows no fracture, or if the patient has no trauma history.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "trauma_history",
+                "uncontrolled_diabetes",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.3233,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e027d02565b1",
+          "exp_1a95f6def16d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e027d02565b1",
+            "memory_type": "experience",
+            "score": 0.3529,
+            "content": {
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "outcome": "Finalizing without imaging led to premature closure, but the correct diagnosis was confirmed later with imaging.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "outcome_type": "unsafe",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            }
+          },
+          {
+            "memory_id": "exp_1a95f6def16d",
+            "memory_type": "experience",
+            "score": 0.3233,
+            "content": {
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "outcome": "This action prevented premature closure on adhesive capsulitis, which was not the correct diagnosis, and ensured imaging was targeted to the affected joint, improving diagnostic accuracy.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Osteoarthritis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a80731f7-137a-4c98-b63d-30c003ee44e0': '{\"diagnosis\": \"Osteoarthritis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Osteoarthritis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Osteoarthritis}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20058777",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I had a bad fall last month where I landed on my knee. It really hurt at first, and I couldn’t put weight on it for a few days. Now, even when I’m not moving much, my knee feels stiff and swollen. It’s tender to touch, and sometimes I hear a grinding noise when I bend it. I’ve also noticed I’m not as steady on my feet as I used to be."
+        ],
+        "prior_information_summary": "56-year-old female patient. Symptoms include joint pain after use, morning stiffness, swelling, grinding sensation, tenderness, warmth, and loss of function. Symptoms started after joint injury. No prior problems in the area. Labs and imaging results not available. Knowledge base includes post-traumatic arthritis: symptoms like stiffness, swelling, pain, tenderness, grinding, instability, and loss of function; diagnosed via history and imaging. Final result: Unilateral primary osteoarthritis, right knee."
+      },
+      "query": {
+        "case_id": "20058777",
+        "turn_id": 8,
+        "query_text": "post-traumatic knee symptoms with stiffness, swelling, and grinding; need memory about imaging review before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2313,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2075,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2027,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2025,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1944,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.2977,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2784,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2564,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Post-traumatic osteoarthritis of the knee}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3e082a9c-a0d4-41ff-adfc-83d06a7683ec': '{\"diagnosis\": \"Post-traumatic osteoarthritis of the knee\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2,
+        "conf_after": 0.4,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-traumatic osteoarthritis of the knee}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-traumatic osteoarthritis of the knee}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

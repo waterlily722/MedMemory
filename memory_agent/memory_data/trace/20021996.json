@@ -1,0 +1,1903 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20021996",
+  "turns": [
+    {
+      "case_id": "20021996",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 59-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 59-year-old male patient based on the available clinical presentation."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 1,
+        "query_text": "59-year-old male presenting with nonspecific systemic symptoms; need targeted history and exam before diagnostic decision; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.185,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2c269fa4ab97",
+              "type": "experience",
+              "score": 0.2977,
+              "outcome": "failure",
+              "situation": "When a 63-year-old woman presents with non-specific symptoms and denies any systemic signs, and initial targeted history and labs are unhelpful, the doctor should avoid broad differential updates without focusing on visual or vascular clues.",
+              "action": "Request a focused ophthalmologic exam or review of any available eye imaging to rule out retinal vascular events, especially if the patient is elderly and has no clear systemic explanation.",
+              "boundary": "Use this memory when the patient is elderly with non-specific complaints and no systemic signs; do not use if there is a clear history of systemic illness, or if eye exam/imaging is unavailable or not indicated.",
+              "tags": [
+                "negative",
+                "retinal_artery_occlusion",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2961,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2579,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "59-year-old male, admitted via walk-in/self-referral on 2132-03-11 18:47:00, discharged 2132-03-13 14:10:00. Diagnosis: Gastritis, unspecified, with bleeding. Patient is Hispanic/Latino (Colombian), divorced, private insurance, speaks Spanish. Objective: Assess and diagnose based on clinical presentation. Knowledge base includes details on gastritis and atrophic gastritis, including causes, symptoms, diagnosis, and treatment."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 2,
+        "query_text": "Gastritis with bleeding; patient denies new symptoms or findings; need memory about targeted history before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.3191,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2805,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2224,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.1926,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.192,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3387,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.3343,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0aa00e5fd7fa",
+              "type": "experience",
+              "score": 0.2985,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history questions yield negative responses, the doctor should avoid premature closure and continue probing for environmental or routine changes that might explain the symptoms.",
+              "action": "Ask targeted questions about recent travel, exposure to unusual environments, or changes in routine that might have affected health, even if prior questions were negative.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unremarkable; do not use if the patient has a clear history of trauma, known illness, or if imaging or labs already point to a specific diagnosis.",
+              "tags": [
+                "negative",
+                "missing_history",
+                "premature_closure",
+                "non_specific_symptoms"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3387,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your appetite, weight, or energy levels recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed I’ve lost my appetite lately, and I’ve been feeling more tired than usual. I’ve also been losing weight without trying, even though I’m eating enough. My stomach feels bloated sometimes, and I get that gnawing pain in my upper abdomen, especially after meals.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, weight, or energy levels recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, weight, or energy levels recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve lost my appetite lately, and I’ve been feeling more tired than usual. I’ve also been losing weight without trying, even though I’m eating enough. My stomach feels bloated sometimes, and I get that gnawing pain in my upper abdomen, especially after meals."
+        ],
+        "prior_information_summary": "59-year-old male, admitted via walk-in/self-referral on 2132-03-11 18:47:00, discharged 2132-03-13 14:10:00. Admission type: OBSERVATION ADMIT. Patient is Hispanic/Latino (Columbian), divorced, speaks Spanish, private insurance. Objective: Assess and diagnose based on clinical presentation. Final result: Gastritis, unspecified, with bleeding. Knowledge base includes details on gastritis and atrophic gastritis, including symptoms, causes, and diagnostic methods."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 3,
+        "query_text": "new complaint of weight loss, fatigue, bloating, and postprandial upper abdominal pain; need memory about targeted history and exam before finalizing diagnosis; avoid premature closure without imaging or lab confirmation"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2054,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1853,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3515,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3092,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_9b3e36f200f1",
+              "type": "experience",
+              "score": 0.2911,
+              "outcome": "failure",
+              "situation": "When a patient reports upper abdominal pain, nausea, and weight loss, and initial lab results are unavailable, the doctor should not finalize a diagnosis without reviewing relevant clinical literature or patient history for red flags.",
+              "action": "Update the differential diagnosis by reviewing literature or patient history for signs of GI bleeding, such as melena or hematemesis, before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if no history of melena or hematemesis is reported; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7744e1418ec9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7744e1418ec9",
+            "memory_type": "experience",
+            "score": 0.3092,
+            "content": {
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "outcome": "This action would have revealed gastric pathology, preventing premature closure on a benign diagnosis and aligning with the gold diagnosis of gastritis with bleeding.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a5e3689a-924b-4e59-a4c5-0aec21dab476': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "labs tool output: No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "59-year-old male, admitted via walk-in/self-referral on 2132-03-11 18:47:00, discharged 2132-03-13 14:10:00. Chief complaint: Assess and diagnose the 59-year-old male patient based on the available clinical presentation. Patient reports loss of appetite, increased fatigue, unintentional weight loss, bloating, and gnawing upper abdominal pain after meals. No prior issues or abnormal findings reported. Final result: Gastritis, unspecified, with bleeding. Knowledge base includes information on gastritis and atrophic gastritis, including symptoms, causes, and diagnostic methods."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 4,
+        "query_text": "unintentional weight loss and bloating with no lab results; need memory about targeted diagnostic next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2526,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.2184,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2163,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2068,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1962,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2996,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.2703,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2694,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of weight loss, fatigue, bloating, and upper abdominal pain in 59-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fefd5cd3-2ffe-4449-8db0-266d92c84ee6': \"[Document 1] (ID: 11275_1, Score: 0.866)\\n# Symptoms\\nSymptoms include:\\n- Patient appears like an 'elderly man'\\n- Dry\\xa0and\\xa0flaking/peeling\\xa0skin\\xa0but no changes in\\xa0color\\n- Loss of muscle mass\\n- Sunken eyes\\n- Protruded cheeks\\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\\n- Swelling of body (edema) is generally not se...\\n\\n[Document 2] (ID: 9438_4, Score: 0.865)\\n### Gastrointestinal\\nAbdominal pain, anorexia, constipation, hepatitis, malaise, mild transient abnormalities in liver function tests, nausea, parotitis, pseudo-obstruction (including colonic pseudo-obstruction), salivary gland pain, and vomiting.\\n\\n### Genitourinary\\nDecreased sexual activity, diffic...\\n\\n[Document 3] (ID: 114_185, Score: 0.865)\\n# Symptoms with Possible Relationship to Nutritional Deficiencies\\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\\n\\n[Document 4] (ID: 10843_3, Score: 0.861)\\n## Major\\n- weight gain\\n- facial swelling\\n- depression, mania, or other psychiatric symptoms\\n- unusual fatigue or weakness\\n...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of weight loss, fatigue, bloating, and upper abdominal pain in 59-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of weight loss, fatigue, bloating, and upper abdominal pain in 59-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 11275_1, Score: 0.866) - Symptoms include: patient appears like an 'elderly man', dry and flaking/peeling skin, loss of muscle mass, sunken eyes, protruded cheeks, loss of fullness near mouth area, swelling of body (edema).",
+          "Tool output: Document 2 (ID: 9438_4, Score: 0.865) - Gastrointestinal: abdominal pain, anorexia, constipation, hepatitis, malaise, mild transient abnormalities in liver function tests, nausea, parotitis, pseudo-obstruction, salivary gland pain, vomiting.",
+          "Tool output: Document 3 (ID: 114_185, Score: 0.865) - Symptoms with possible relationship to nutritional deficiencies: general symptoms (e.g., fatigue, decreased cognitive function, headache), behavioral changes (e.g., irritability, apathy, anxiety, attention deficit), body habitus changes (e.g., loss or gain of fat), gastric symptoms.",
+          "Tool output: Document 4 (ID: 10843_3, Score: 0.861) - Major symptoms: weight gain, facial swelling, depression, mania, unusual fatigue, mental confusion, blurred vision, abdominal pain, peptic ulcer, infections, painful hips or shoulders, osteoporosis, acne, insomnia, severe joint pain.",
+          "Tool output: Document 5 (ID: 19261_9, Score: 0.861) - Body as a Whole: abdomen enlarged, allergic reaction, asthenia, back pain, chest pain, substernal chest pain, facial edema, peripheral edema, hot flushes, fatigue, fever, flu-like disorder, generalized edema, leg edema, malaise, pain, rigors; Cardiovascular: flushing, hypertension, tachycardia."
+        ],
+        "prior_information_summary": "Patient is a 59-year-old male, admitted via walk-in/self-referral on 2132-03-11 18:47:00, discharged 2132-03-13 14:10:00. Chief complaint: Assess and diagnose the 59-year-old male patient based on available clinical presentation. Patient reports loss of appetite, increased fatigue, unintentional weight loss, bloating, and gnawing upper abdominal pain after meals. No prior abnormal findings reported. Labs tool output: No result for 'labs' found in record and no knowledge base available for approximate answer."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 5,
+        "query_text": "Patient presents with weight loss, fatigue, abdominal pain, and edema; new info includes skin changes, GI symptoms, and possible nutritional deficiencies; need memory on targeted labs or imaging before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.2359,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2357,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.2238,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2031,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1947,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3193,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b50ce4db888b",
+              "type": "experience",
+              "score": 0.2979,
+              "outcome": "failure",
+              "situation": "When a patient presents with back pain, leg pain, and recent weight loss, and the initial history suggests possible drug-related complications, but labs and imaging are unavailable, what should the doctor do?",
+              "action": "Request immediate imaging and labs to evaluate for acute kidney failure, especially given the temporal association with medication changes and systemic symptoms.",
+              "boundary": "Use this memory when systemic symptoms like weight loss, night sweats, and pain are present with recent medication changes and no imaging or labs available; do not use if imaging or labs are already available or if the patient has clear signs of rheumatoid arthritis without systemic features.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "missing_imaging",
+                "premature_closure",
+                "systemic_symptoms"
+              ]
+            },
+            {
+              "id": "exp_2328f1b427f6",
+              "type": "experience",
+              "score": 0.2774,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping abdominal pain, syncope, and weight loss, and the initial hypothesis points toward GI causes without imaging or lab confirmation, what should the doctor do?",
+              "action": "Request imaging to evaluate for structural causes like fracture or mass, especially when syncope and weight loss are present, as these suggest systemic involvement beyond simple GI dysfunction.",
+              "boundary": "Use this memory when syncope, weight loss, or systemic symptoms are present alongside GI complaints; do not use if imaging is unavailable or if the patient is too unstable for imaging, or if the history clearly points to a non-structural cause.",
+              "tags": [
+                "negative",
+                "syncope",
+                "weight_loss",
+                "image_review_needed",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7744e1418ec9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7744e1418ec9",
+            "memory_type": "experience",
+            "score": 0.3193,
+            "content": {
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "outcome": "This action would have revealed gastric pathology, preventing premature closure on a benign diagnosis and aligning with the gold diagnosis of gastritis with bleeding.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any nausea, vomiting, or changes in bowel habits like constipation or diarrhea?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had nausea and vomiting. I’ve also noticed some bloating and early satiety, and I’ve been losing my appetite lately.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any nausea, vomiting, or changes in bowel habits like constipation or diarrhea?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any nausea, vomiting, or changes in bowel habits like constipation or diarrhea?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had nausea and vomiting. I’ve also noticed some bloating and early satiety, and I’ve been losing my appetite lately."
+        ],
+        "prior_information_summary": "Patient is a 59-year-old male, Spanish-speaking, divorced, with private insurance. Admitted via walk-in/self-referral on 2132-03-11 18:47:00, discharged 2132-03-13 14:10:00. Chief complaint: Assess and diagnose the 59-year-old male patient based on the available clinical presentation. Patient reports loss of appetite, fatigue, unintentional weight loss, bloating, and gnawing upper abdominal pain after meals. No prior GI issues reported. Labs tool returned no result. Documented symptoms include nausea, vomiting, bloating, early satiety, and abdominal pain."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 6,
+        "query_text": "Nausea, vomiting, bloating, and early satiety reported; labs pending; need memory about targeted GI history and imaging review before final diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "causes of upper abdominal pain, weight loss, nausea, and vomiting in 59-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6b24a6bb-52af-4304-a4d1-62280939e31b': '[Document 1] (ID: 9438_4, Score: 0.864)\\n### Gastrointestinal\\nAbdominal pain, anorexia, constipation, hepatitis, malaise, mild transient abnormalities in liver function tests, nausea, parotitis, pseudo-obstruction (including colonic pseudo-obstruction), salivary gland pain, and vomiting.\\n\\n### Genitourinary\\nDecreased sexual activity, diffic...\\n\\n[Document 2] (ID: 8629_1, Score: 0.861)\\n# Symptoms\\nSymptoms include early satiety, nausea, bilious vomiting of large quantities of partially undigested food, postprandial abdominal pain, eructation, external hypersensitivity of the abdominal area, and marked weight loss. Weight loss, in turn, increases the duodenal compression, spurring a...\\n\\n[Document 3] (ID: 19261_9, Score: 0.858)\\n- Body as a Whole: abdomen enlarged, allergic reaction, asthenia, back pain, chest pain, substernal chest pain, facial edema, peripheral edema, hot flushes, fatigue, fever, flu-like disorder, generalized edema, leg edema, malaise, pain, rigors;\\n- Cardiovascular: flushing, hypertension, tachycardia;\\n...\\n\\n[Document 4] (ID: 31555_12, Score: 0.857)\\n- Digestive System: Anorexia, abdominal pain, constipation, diarrhea, dyspepsia, elevated liver enzymes, flatulence, gross...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of upper abdominal pain, weight loss, nausea, and vomiting in 59-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of upper abdominal pain, weight loss, nausea, and vomiting in 59-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Nausea and vomiting",
+          "Bloating and early satiety",
+          "Loss of appetite lately"
+        ],
+        "prior_information_summary": "59-year-old male, admitted via walk-in/self-referral. Chief complaint: Assess and diagnose based on clinical presentation. Symptoms: Loss of appetite, fatigue, weight loss without trying, bloating, gnawing upper abdominal pain after meals. No prior GI issues reported. Labs: No result found. Tool outputs: Documented symptoms including abdominal pain, anorexia, nausea, vomiting, early satiety, weight loss, and malaise."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 7,
+        "query_text": "Nausea, vomiting, bloating, early satiety; no labs or imaging yet; need targeted GI history and exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2641,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2596,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2457,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2015,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2013,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3282,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.3098,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2987,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3282,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any yellowing of the skin or eyes, dark urine, or pale stools?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any yellowing of the skin or eyes, dark urine, or pale stools?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any yellowing of the skin or eyes, dark urine, or pale stools?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is a 59-year-old male, admitted via walk-in/self-referral for observation. Chief complaint includes loss of appetite, fatigue, unintentional weight loss, bloating, and gnawing upper abdominal pain after meals. Also reports nausea, vomiting, early satiety. No prior issues or abnormal findings noted. Labs not available. Knowledge base includes gastritis and atrophic gastritis symptoms, causes, and diagnostic methods. Final result: Gastritis, unspecified, with bleeding."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 8,
+        "query_text": "Upper abdominal pain after meals with weight loss and nausea; new info: no prior issues or abnormal findings; labs not available; need memory about targeted history or imaging before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2393,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2112,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2092,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2085,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.1962,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3078,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_9b3e36f200f1",
+              "type": "experience",
+              "score": 0.2865,
+              "outcome": "failure",
+              "situation": "When a patient reports upper abdominal pain, nausea, and weight loss, and initial lab results are unavailable, the doctor should not finalize a diagnosis without reviewing relevant clinical literature or patient history for red flags.",
+              "action": "Update the differential diagnosis by reviewing literature or patient history for signs of GI bleeding, such as melena or hematemesis, before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if no history of melena or hematemesis is reported; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2801,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7744e1418ec9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7744e1418ec9",
+            "memory_type": "experience",
+            "score": 0.3078,
+            "content": {
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "outcome": "This action would have revealed gastric pathology, preventing premature closure on a benign diagnosis and aligning with the gold diagnosis of gastritis with bleeding.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "gastric outlet obstruction symptoms and diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'03d042a1-9519-4bfe-8ae9-65f0e65844bb': \"[Document 1] (ID: 13157_5, Score: 0.876)\\n## Diagnostic Criteria\\nThere is no single diagnostic study of choice for the diagnosis of bowel obstruction, but bowel obstruction can be diagnosed based on plain x-ray and CT scan. An x-ray is performed when obstruction is suspected with clinical findings of nausea, vomiting, abdominal pain, abdomi...\\n\\n[Document 2] (ID: 19012_0, Score: 0.875)\\nBouveret's syndrome\\nBouveret's syndrome is a gastric outlet obstruction produced by a gallstone impacted in the distal stomach or proximal duodenum.\\n\\n# Demographics\\nOccurs most commonly in elderly women with a mean age of 69 years.\\n\\n# Symptoms & Signs\\nThe presenting clinical situation is variable an...\\n\\n[Document 3] (ID: 16371_2, Score: 0.872)\\n# Natural History, Complications and Prognosis\\nThe natural history of gastroparesis is largely unknown. Common complications include fluctuations in blood glucose due to unpredictable digestion times in diabetic patients, malnutrition, weight loss, malnutrition and vitamin and mineral deficiencies, ...\\n\\n[Document 4] (ID: 4092_25, Score: 0.872)\\nComment: since the pathogenesis of FD includes visceral hypersensitivity and abnormalities in gastric and duodenal motili...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"gastric outlet obstruction symptoms and diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"gastric outlet obstruction symptoms and diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "tool_outputs.03d042a1-9519-4bfe-8ae9-65f0e65844bb: [Document 1] (ID: 13157_5, Score: 0.876) Diagnostic Criteria: No single diagnostic study of choice for bowel obstruction, but can be diagnosed based on plain x-ray and CT scan. An x-ray is performed when obstruction is suspected with clinical findings of nausea, vomiting, abdominal pain, abdomi...",
+          "tool_outputs.03d042a1-9519-4bfe-8ae9-65f0e65844bb: [Document 2] (ID: 19012_0, Score: 0.875) Bouveret's syndrome: Gastric outlet obstruction produced by a gallstone impacted in the distal stomach or proximal duodenum. Demographics: Most common in elderly women, mean age 69. Symptoms & Signs: Variable presenting clinical situation...",
+          "tool_outputs.03d042a1-9519-4bfe-8ae9-65f0e65844bb: [Document 3] (ID: 16371_2, Score: 0.872) Natural History, Complications and Prognosis: Natural history of gastroparesis largely unknown. Common complications include fluctuations in blood glucose in diabetics, malnutrition, weight loss, vitamin/mineral deficiencies...",
+          "tool_outputs.03d042a1-9519-4bfe-8ae9-65f0e65844bb: [Document 4] (ID: 4092_25, Score: 0.872) Comment: Pathogenesis of FD includes visceral hypersensitivity and motility abnormalities. Gastrointestinal motility can be evaluated by pressure measurements...",
+          "tool_outputs.03d042a1-9519-4bfe-8ae9-65f0e65844bb: [Document 5] (ID: 4140_11, Score: 0.871) Torres-Villalobos et al. [bib_ref] Small bowel obstruction and internal hernias during pregnancy after gastric bypass surgery, reported in systematic review that SBO in pregnant women presents with common signs and symptoms du..."
+        ],
+        "prior_information_summary": "Patient is 59-year-old male, Spanish-speaking, divorced, private insurance, admitted via walk-in/self-referral. Chief complaint: upper abdominal pain, bloating, early satiety, loss of appetite, nausea, vomiting, fatigue, weight loss. No prior GI issues reported. Labs not available. Symptoms consistent with gastritis. Final result: Gastritis, unspecified, with bleeding. Knowledge base includes gastritis and atrophic gastritis causes, symptoms, diagnosis, and treatment."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 9,
+        "query_text": "upper abdominal pain with nausea and weight loss; new info on bowel obstruction and Bouveret's syndrome; need to review imaging and avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.2104,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.1909,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1877,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1844,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.3556,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2864,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_ad5f8918ded9",
+              "type": "experience",
+              "score": 0.2723,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting with blood, bloating, and weight loss, and initial labs are unavailable, but the history suggests possible NSAID or alcohol use, what should the doctor do next?",
+              "action": "Request a focused upper GI endoscopy to directly visualize the gastric mucosa and identify bleeding sources, especially given the history of NSAID use and blood-tinged vomit.",
+              "boundary": "Use this memory when the patient has upper abdominal pain, vomiting with blood, weight loss, and NSAID/alcohol use, but only if endoscopy is feasible and not when the patient has contraindications to endoscopy or when the history strongly suggests a non-bleeding condition.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "vomiting_with_blood",
+                "missing_lab",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7744e1418ec9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7744e1418ec9",
+            "memory_type": "experience",
+            "score": 0.3556,
+            "content": {
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "outcome": "This action would have revealed gastric pathology, preventing premature closure on a benign diagnosis and aligning with the gold diagnosis of gastritis with bleeding.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of gastric outlet obstruction in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4293c543-4cd8-4882-8f20-f2b1a0329e3a': \"[Document 1] (ID: 19012_0, Score: 0.883)\\nBouveret's syndrome\\nBouveret's syndrome is a gastric outlet obstruction produced by a gallstone impacted in the distal stomach or proximal duodenum.\\n\\n# Demographics\\nOccurs most commonly in elderly women with a mean age of 69 years.\\n\\n# Symptoms & Signs\\nThe presenting clinical situation is variable an...\\n\\n[Document 2] (ID: 1276_3, Score: 0.863)\\n## Gastric, gastro-oesophageal junction and oesophageal adenocarcinoma have a poor prognosis and a large impact on quality of life\\nThe patient experts explained that gastric, gastro-oesophageal junction and oesophageal adenocarcinoma significantly impact quality of life. They explained that major sy...\\n\\n[Document 3] (ID: 16371_2, Score: 0.860)\\n# Natural History, Complications and Prognosis\\nThe natural history of gastroparesis is largely unknown. Common complications include fluctuations in blood glucose due to unpredictable digestion times in diabetic patients, malnutrition, weight loss, malnutrition and vitamin and mineral deficiencies, ...\\n\\n[Document 4] (ID: 3836_18, Score: 0.860)\\nMust include one or both of the following symptoms at least 1 day a week. 1. Bothersome epigastric pain (ie, severe enough...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of gastric outlet obstruction in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of gastric outlet obstruction in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed I’ve lost my appetite lately, and I’ve been feeling more tired than usual. I’ve also been losing weight without trying, even though I’m eating enough. My stomach feels bloated sometimes, and I get that gnawing pain in my upper abdomen, especially after meals.",
+          "I’ve had nausea and vomiting. I’ve also noticed some bloating and early satiety, and I’ve been losing my appetite lately.",
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "59-year-old male, admitted via walk-in/self-referral, with no prior known issues in the area. Chief complaint: Assess and diagnose the 59-year-old male patient based on the available clinical presentation. Final result: Gastritis, unspecified, with bleeding. Knowledge base includes information on gastritis and atrophic gastritis, including symptoms, causes, and diagnostic methods. Patient reports loss of appetite, fatigue, weight loss, bloating, upper abdominal pain, nausea, and vomiting. Labs tool output: No result for 'labs' found. Tool outputs from prior turns reference gastrointestinal symptoms and possible causes including gastroparesis, bowel obstruction, and gastric outlet obstruction."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 10,
+        "query_text": "upper abdominal pain, bloating, nausea, weight loss, and early satiety; labs not yet reviewed; need memory about targeted GI workup before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_9e6c90f4e832",
+              "type": "experience",
+              "score": 0.2904,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting, and weight loss, and initial labs are unavailable, the doctor should avoid premature diagnosis without confirming key red flags like melena or hematemesis.",
+              "action": "Ask specifically about black tarry stools or blood in vomit or stool to identify gastrointestinal bleeding before finalizing a diagnosis.",
+              "boundary": "Use this memory when upper abdominal pain is present with weight loss or nausea, but only if there is no history of melena or hematemesis; do not use if the patient has already reported black stools or blood in vomit.",
+              "tags": [
+                "negative",
+                "gastrointestinal_bleeding",
+                "missing_clue",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_7744e1418ec9",
+              "type": "experience",
+              "score": 0.2814,
+              "outcome": "failure",
+              "situation": "When a patient presents with unexplained weight loss, fatigue, and upper abdominal pain with vomiting streaked with blood, and initial workup yields no labs or imaging, the doctor should avoid premature diagnosis and instead request targeted imaging to rule out gastric pathology.",
+              "action": "Request abdominal imaging to evaluate for structural or mass lesions in the stomach or adjacent organs, especially when symptoms suggest gastrointestinal bleeding or obstruction.",
+              "boundary": "Use this memory when upper abdominal pain, weight loss, and hematemesis are present without clear source; do not use if imaging is already completed or if patient has known malignancy or prior gastric surgery.",
+              "tags": [
+                "negative",
+                "upper_abdominal_pain",
+                "vomiting_with_blood",
+                "weight_loss",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_ad5f8918ded9",
+              "type": "experience",
+              "score": 0.2565,
+              "outcome": "failure",
+              "situation": "When a patient presents with upper abdominal pain, nausea, vomiting with blood, bloating, and weight loss, and initial labs are unavailable, but the history suggests possible NSAID or alcohol use, what should the doctor do next?",
+              "action": "Request a focused upper GI endoscopy to directly visualize the gastric mucosa and identify bleeding sources, especially given the history of NSAID use and blood-tinged vomit.",
+              "boundary": "Use this memory when the patient has upper abdominal pain, vomiting with blood, weight loss, and NSAID/alcohol use, but only if endoscopy is feasible and not when the patient has contraindications to endoscopy or when the history strongly suggests a non-bleeding condition.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "vomiting_with_blood",
+                "missing_lab",
+                "unsafe_finalization",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of gastroparesis in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b52eded0-654d-4d1e-889e-1fedd736f642': '[Document 1] (ID: 16371_2, Score: 0.892)\\n# Natural History, Complications and Prognosis\\nThe natural history of gastroparesis is largely unknown. Common complications include fluctuations in blood glucose due to unpredictable digestion times in diabetic patients, malnutrition, weight loss, malnutrition and vitamin and mineral deficiencies, ...\\n\\n[Document 2] (ID: 16371_1, Score: 0.889)\\n# Causes\\nThe etiology of gastroparesis can be broadly classified into idiopathic, diabetic, post-surgical and medication induced. Life threatening causes of gastroparesis include brainstem stroke and hypokalemia (which may lead to cardiac arrythmias). Surgical procedures most commonly associated wit...\\n\\n[Document 3] (ID: 16371_0, Score: 0.874)\\nGastroparesis overview\\n\\n# Overview\\nGastroparesis is a medical condition consisting of a paresis (partial paralysis) of the stomach (\"gastro-\"), resulting in food remaining in the stomach for a longer period of time than normal in absence of mecchanical obstruction. Normally, the stomach contracts to...\\n\\n[Document 4] (ID: 16371_3, Score: 0.873)\\n## Electrocardiogram\\nThere are no\\xa0ECG\\xa0findings associated with gastroparesis. In case of\\xa0malnutrition\\xa0and\\xa0electrolyte imb...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of gastroparesis in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of gastroparesis in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20021996",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had nausea and vomiting. I’ve also noticed some bloating and early satiety, and I’ve been losing my appetite lately."
+        ],
+        "prior_information_summary": "Patient is a 59-year-old male, admitted via walk-in/self-referral. Chief complaint: abdominal discomfort, pain, nausea. Symptoms include loss of appetite, fatigue, weight loss, bloating, gnawing upper abdominal pain after meals, nausea, vomiting, early satiety. No prior GI issues reported. Labs not available. Tool outputs suggest possible links to gastroparesis, gastric outlet obstruction, or other GI conditions. Final result: Gastritis, unspecified, with bleeding."
+      },
+      "query": {
+        "case_id": "20021996",
+        "turn_id": 11,
+        "query_text": "abdominal symptoms with nausea, vomiting, bloating, and early satiety; labs not available; need targeted history and exam before imaging or lab decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2742,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2736,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.251,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2401,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.234,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3585,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3459,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3225,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_29e5d8eae41a"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_29e5d8eae41a",
+            "memory_type": "experience",
+            "score": 0.3225,
+            "content": {
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "outcome": "This prevented premature closure and allowed for identification of acquired coagulation factor deficiency, which was missed due to lack of targeted inquiry.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Gastroparesis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'be008081-2dca-4396-8d52-85fdbf294496': '{\"diagnosis\": \"Gastroparesis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Gastroparesis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Gastroparesis}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

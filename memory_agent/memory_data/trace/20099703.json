@@ -1,0 +1,1267 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20099703",
+  "turns": [
+    {
+      "case_id": "20099703",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "Assess and diagnose the 76-year-old female patient presenting with Shortness of breath.",
+          "I am a 76-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 76-year-old female patient presenting with Shortness of breath.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 1,
+        "query_text": "Shortness of breath in elderly female; need targeted history and exam before imaging or lab; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.303,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2719,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2713,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2691,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_be333bcd366a",
+              "type": "experience",
+              "score": 0.2469,
+              "outcome": "success",
+              "situation": "When a patient reports pelvic pressure and constipation in an elderly woman, the doctor should consider the possibility of a pelvic mass compressing the rectum and ask about bowel habits to guide imaging.",
+              "action": "Ask about bowel habits and constipation to identify potential mechanical compression from a pelvic mass and prioritize imaging.",
+              "boundary": "Use this memory when a patient reports pelvic pressure and constipation in an elderly woman; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "bowel_habits",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.4438,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.4264,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.3685,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the shortness of breath start, and has it been gradually worsening or sudden?"
+        },
+        "patient_or_tool_response": "{'question': 'I started having shortness of breath about ___ days ago, and it has been gradually worsening — it went from just feeling short of breath with exertion to now being short of breath even at rest.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the shortness of breath start, and has it been gradually worsening or sudden?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the shortness of breath start, and has it been gradually worsening or sudden?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "I started having shortness of breath about ___ days ago, and it has been gradually worsening — it went from just feeling short of breath with exertion to now being short of breath even at rest."
+        ],
+        "prior_information_summary": "76-year-old female, admitted for shortness of breath. History of metastatic lung adenocarcinoma, on vinorelbine, previously treated with XRT to spine. Previously hospitalized for SOB, resolved with prednisone and levofloxacin. Current ED course: T 96.5, BP 105, HR 105, RR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg, magnesium 2g, nebs, vancomycin 1g. No furosemide. Interventions: BiPAP. Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. Past medical history includes HTN, hypothyroidism, asthma, osteoporosis, anxiety. Social history: noncontributory family history. Physical exam: VS: T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Chest: CTAB. No edema. Known knowledge: Asthma and acute severe asthma definitions, signs, symptoms, diagnosis, prognosis, and differential diagnoses."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 2,
+        "query_text": "Shortness of breath worsening to rest; new info: gradual onset, now at rest; lactate elevated; need memory about asthma exacerbation management before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any other symptoms such as cough, fever, chest pain, or swelling in your legs?"
+        },
+        "patient_or_tool_response": "{'question': 'I had a cough that produced small amounts of yellow sputum. I also had chest discomfort and was needing albuterol 8-9 times a day. I didn’t mention any swelling in my legs, and I don’t recall having a fever.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms such as cough, fever, chest pain, or swelling in your legs?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms such as cough, fever, chest pain, or swelling in your legs?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "I had a cough that produced small amounts of yellow sputum.",
+          "I also had chest discomfort.",
+          "I was needing albuterol 8-9 times a day.",
+          "I didn’t mention any swelling in my legs.",
+          "I don’t recall having a fever."
+        ],
+        "prior_information_summary": "76-year-old female, admitted for shortness of breath. History of metastatic lung adenocarcinoma, on vinorelbine, previously treated with XRT to spine. Previously hospitalized for SOB, resolved with prednisone and levofloxacin. ED course: T 96.5, BP 105, HR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg, magnesium 2g, nebs, vancomycin 1g. No furosemide. Interventions: BiPAP. Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. Past medical history: HTN, hypothyroidism, asthma, osteoporosis, anxiety, s/p appendectomy. Social history: Noncontributory family history."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 3,
+        "query_text": "Shortness of breath with new cough and chest discomfort; albuterol use suggests asthma exacerbation; need to review imaging and labs before finalizing diagnosis; avoid premature closure without ruling out infection or cardiac cause"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2149,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1936,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1868,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.2844,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2795,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.2684,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e57371f4-832e-4aa7-aeb7-ea644fc0b681': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "76-year-old female, admitted for shortness of breath. History of metastatic lung adenocarcinoma, on vinorelbine, previously treated with radiation and surgery. Presenting with SOB, progressing from exertional to rest dyspnea, with cough and yellow sputum, requiring albuterol 8-9x daily. Previously hospitalized for SOB, resolved with prednisone and levofloxacin. ED course: T 96.5, BP 105, HR 105, RR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg, magnesium 2g, nebs, vancomycin 1g. No furosemide. Interventions: BiPAP. Physical exam: VS: T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Chest: CTAB. Labs: Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. Past medical history: HTN, hypothyroidism, asthma, osteoporosis, anxiety, s/p appendectomy. Social history: Noncontributory family history."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 4,
+        "query_text": "Shortness of breath with unresolved labs; lactate elevated; need memory about targeted testing before finalizing asthma diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fefd061b-1f3c-46b7-8a08-6ccbd284981c': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "I started having shortness of breath about ___ days ago, and it has been gradually worsening — it went from just feeling short of breath with exertion to now being short of breath even at rest.",
+          "I had a cough that produced small amounts of yellow sputum. I also had chest discomfort and was needing albuterol 8-9 times a day. I didn’t mention any swelling in my legs, and I don’t recall having a fever.",
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "76-year-old female, admitted for shortness of breath. History of metastatic lung adenocarcinoma, on vinorelbine, previously treated with XRT to spine. Previously hospitalized for SOB, resolved with prednisone and levofloxacin. ED course: T 96.5, BP 105, HR 105, RR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg, magnesium 2g, nebs, vancomycin 1g. No furosemide. Interventions: BiPAP. Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. Past medical history: HTN, hypothyroidism, asthma, osteoporosis, anxiety, s/p appendectomy. Social history: Noncontributory family history. Physical exam: VS: T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Gen: NAD. HEENT: HCAT, PERRLA, MMM, OP clear, no LAD, no JVD. CV: RRR, S1S2, no m/r/g. CHEST: CTAB. ABD: Soft, NTND, BS+. EXT: No edema BLE."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 5,
+        "query_text": "Shortness of breath worsening to rest, with cough and albuterol use; no labs or CXR available; need memory about targeted history and exam before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2766,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2196,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2181,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2015,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2006,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.3086,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.2826,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2729,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis of shortness of breath in elderly female with cough and chest discomfort"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1230eeaa-fb3b-4db8-a181-434f77511325': '[Document 1] (ID: 6693_0, Score: 0.861)\\nShortness of breath resident survival guide\\n\\n# Overview\\nDyspnea is a symptom, it must generally be distinguished from signs that clinicians typically invoke as evidence of respiratory distress, such as tachypnea, use of accessory muscles, and intercostal retractions.\\nRespiratory discomfort may arise...\\n\\n[Document 2] (ID: 8371_3, Score: 0.857)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 3] (ID: 114_282, Score: 0.851)\\n# Pulmonary Symptoms Background\\nShortness of breath and cough are common manifestations of acute or chronic respiratory diseases, but also may be symptoms of HIV-related opportunistic infections. Further, these symptoms may indicate nonpulmonary conditions such as anemia, cardiovascular disease, and...\\n\\n[Document 4] (ID: 4031_5, Score: 0.850)\\n## Lower respiratory tract infection\\nAn acute illness (present for 21 days or less), usually with cough as the main symptom,...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis of shortness of breath in elderly female with cough and chest discomfort\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis of shortness of breath in elderly female with cough and chest discomfort\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "I started having shortness of breath about ___ days ago, and it has been gradually worsening — it went from just feeling short of breath with exertion to now being short of breath even at rest.",
+          "I had a cough that produced small amounts of yellow sputum. I also had chest discomfort and was needing albuterol 8-9 times a day. I didn’t mention any swelling in my legs, and I don’t recall having a fever.",
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer.",
+          "No result for \"CXR\" found in the record and no knowledge base available for an approximate answer.",
+          "Document 1: Shortness of breath resident survival guide: Dyspnea is a symptom, it must generally be distinguished from signs that clinicians typically invoke as evidence of respiratory distress, such as tachypnea, use of accessory muscles, and intercostal retractions. Respiratory discomfort may arise...",
+          "Document 2: Diagnostic Criteria: In hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis. The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...",
+          "Document 3: Pulmonary Symptoms Background: Shortness of breath and cough are common manifestations of acute or chronic respiratory diseases, but also may be symptoms of HIV-related opportunistic infections. Further, these symptoms may indicate nonpulmonary conditions such as anemia, cardiovascular disease, and...",
+          "Document 4: Lower respiratory tract infection: An acute illness (present for 21 days or less), usually with cough as the main symptom, with at least one other lower respiratory tract symptom (sputum production, dyspnoea, wheeze or chest discomfort/pain) and no alternative explanation (e.g. sinusitis or asthma...",
+          "Document 5: While a diagnosis is based on a combination of medical history and physical examination, it is the documentation of airflow limitation using spirometry that confirms the diagnosis. Consider a COPD diagnosis for a patient ≥ 40 years of age who has: Respiratory symptoms, including: dyspnea (pr..."
+        ],
+        "prior_information_summary": "76-year-old female, admitted for shortness of breath. History of metastatic lung adenocarcinoma, on vinorelbine, previously treated with XRT to spine. Previous hospitalization for SOB, resolved with prednisone and levofloxacin. Current ED course: T 96.5, BP 105, HR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg, magnesium 2g, nebs, vancomycin 1g. No furosemide. Interventions: BiPAP. Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. Past medical history: HTN, hypothyroidism, asthma, osteoporosis, anxiety, s/p appendectomy. Social history: Noncontributory family history. Physical exam: VS: T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Gen: NAD. HEENT: HCAT, PERRLA, MMM, OP clear, no LAD, no JVD. CV: RRR, S1S2, no m/r/g. CHEST: CTAB. ABD: Soft, NTND, BS+. EXT: No edema BLE."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 6,
+        "query_text": "Shortness of breath worsening to rest, with cough and albuterol use; no labs or CXR available; need memory about targeted history and exam before imaging or lab decisions; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2729,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2423,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2327,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2198,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2197,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3294,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.3141,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3095,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_caf7a492af53"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_caf7a492af53",
+            "memory_type": "experience",
+            "score": 0.3141,
+            "content": {
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "outcome": "Premature finalization led to a missed opportunity to consider AERD, which is a distinct condition with specific triggers and comorbidities.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you have a history of smoking or any chronic lung disease such as COPD or asthma?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I have a history of asthma.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.5,
+        "delta": 0.16666666666666669,
+        "turn_reward": 0.03333333333333334,
+        "importance": 0.16666666666666669
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a history of smoking or any chronic lung disease such as COPD or asthma?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a history of smoking or any chronic lung disease such as COPD or asthma?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "Yes, I have a history of asthma."
+        ],
+        "prior_information_summary": "76-year-old female, history of metastatic lung adenocarcinoma, on vinorelbine, previously treated with XRT to spine, presented with SOB. Prior hospitalization for SOB, symptoms progressed from DOE to dyspnea at rest, with cough productive of yellow sputum, requiring albuterol 8-9x daily. Discharged on prednisone taper and levofloxacin. Current ED course: VS T 96.5, BP, HR 105, RR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg x1, magnesium 2g, nebs, vancomycin 1g x1, no furosemide. Interventions: BiPAP. Physical exam: VS T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Chest: CTAB. Labs: Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 7,
+        "query_text": "Shortness of breath with asthma history; new info: asthma exacerbation; lactate elevated; need memory about avoiding premature diagnosis; consider imaging review before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been exposed to any recent environmental triggers, such as allergens, smoke, or chemical fumes?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve been exposed to some environmental triggers recently. I’ve noticed my symptoms get worse when I’m around dust, animal dander — especially cat and dog hair — and mold. I’ve also had episodes where perfumes triggered a sudden attack, especially when I was in crowded places. Sometimes, even just being near someone who’s smoking or in areas with strong chemical smells makes my breathing feel tight and my coughing worse. I’ve also been around traffic pollution and low air quality lately, which seems to make my symptoms flare up more often.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been exposed to any recent environmental triggers, such as allergens, smoke, or chemical fumes?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been exposed to any recent environmental triggers, such as allergens, smoke, or chemical fumes?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "Exposure to environmental triggers: dust, animal dander (especially cat and dog hair), mold, perfumes (especially in crowded places), smoking, chemical smells, traffic pollution, and low air quality worsen symptoms."
+        ],
+        "prior_information_summary": "76-year-old female with metastatic lung adenocarcinoma, on vinorelbine, history of XRT to spine, presented with SOB. Previously hospitalized for SOB, symptoms progressed from DOE to dyspnea at rest, with cough productive of yellow sputum, requiring albuterol 8-9x daily. Symptoms resolved on prednisone taper and levofloxacin. ED course: T 96.5, BP 105, HR 105, RR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg x1, magnesium 2g, nebs, vancomycin 1g x1, no furosemide. Interventions: BiPAP. Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. Past medical history: HTN, hypothyroidism, asthma, osteoporosis, anxiety, s/p appendectomy. Social history: noncontributory family history. Physical exam: VS: T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Gen: NAD. HEENT: HCAT, PERRLA, MMM, OP clear, no LAD, no JVD. CV: RRR, S1S2, no m/r/g. CHEST: CTAB. ABD: Soft, NTND, BS+. EXT: No edema BLE."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 8,
+        "query_text": "SOB worsened by environmental triggers; need memory about asthma exacerbation management; avoid premature closure without imaging or lab review; consider targeted history on exposure timing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2761,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2733,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_caf7a492af53",
+              "type": "experience",
+              "score": 0.257,
+              "outcome": "failure",
+              "situation": "When a patient presents with recurrent wheezing, shortness of breath, and cough triggered by allergens or viral infections, and has a history of nasal congestion, but no imaging or lab results are available, the doctor should avoid premature diagnosis without ruling out aspirin-exacerbated respiratory disease.",
+              "action": "Do not finalize asthma diagnosis without specifically investigating for aspirin sensitivity or nasal polyps, especially when symptoms are triggered by environmental exposures or viral infections.",
+              "boundary": "Use this memory when symptoms suggest asthma but no imaging or lab data is available; do not use if nasal polyps or aspirin sensitivity history is confirmed or if imaging shows structural abnormalities.",
+              "tags": [
+                "negative",
+                "asthma",
+                "aspirin_sensitivity",
+                "nasal_polyps",
+                "premature_closure",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asthma exacerbation with possible environmental triggers}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'971763c6-e29a-4cb6-9d84-2facd2c12230': '{\"diagnosis\": \"Asthma exacerbation with possible environmental triggers\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.16666666666666663,
+        "turn_reward": 0.033333333333333326,
+        "importance": 0.16666666666666663
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asthma exacerbation with possible environmental triggers}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asthma exacerbation with possible environmental triggers}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20099703",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Shortness of breath",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "76-year-old female, history of metastatic lung adenocarcinoma, on vinorelbine, previously treated with XRT to spine, presented with SOB. Previously hospitalized for SOB, symptoms progressed from DOE to dyspnea at rest, with cough productive of yellow sputum, requiring albuterol 8-9 daily. Discharged on prednisone taper and levofloxacin. Current ED course: VS T 96.5, BP 105, HR 105, RR 23, O2sat 100 on BiPAP. Meds: Methylprednisolone 125mg x1, magnesium 2g, nebs, vancomycin 1g x1, no furosemide. Interventions: BiPAP. Physical exam: VS T afebrile, BP 116/80, HR 99, RR 26, O2sat 93 on RA. Chest: CTAB. Labs: Lactate 2.3 mmol/L (abnormal). Final diagnosis: Asthma, unspecified type, with (acute) exacerbation. PMH: HTN, hypothyroidism, asthma, osteoporosis, anxiety, s/p appendectomy. Social history: noncontributory family history."
+      },
+      "query": {
+        "case_id": "20099703",
+        "turn_id": 9,
+        "query_text": "Shortness of breath in metastatic lung cancer patient; new info: no prior abnormalities reported; CXR reviewed; lactate elevated; need memory on avoiding premature diagnosis closure and targeted history for exacerbation triggers"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 2,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.2371,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_e2c694861ba6",
+              "type": "experience",
+              "score": 0.2185,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic 54-year-old female for potential colorectal cancer screening, and initial history is negative for red flags, what should the doctor do next?",
+              "action": "Update the hypothesis to include evidence-based screening guidelines for average-risk asymptomatic patients of this age, then finalize diagnosis based on established screening protocols.",
+              "boundary": "Use when patient is asymptomatic, age 50+, and no red flags; do not use if patient has symptoms, known risk factors, or prior abnormal screening results.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening",
+                "age_50_plus",
+                "broad_differential",
+                "evidence_based"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2058,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_1fb6105883ed",
+              "type": "experience",
+              "score": 0.1951,
+              "outcome": "success",
+              "situation": "When a patient reports hip pain with stiffness and functional limitation, but the initial history suggests no prior issues, what should the doctor do to improve diagnostic accuracy?",
+              "action": "Ask targeted questions about morning stiffness, activity-related worsening, and joint swelling to differentiate osteoarthritis from other causes.",
+              "boundary": "Use when history is non-specific and no imaging is available; do not use if the patient has systemic symptoms or trauma history suggesting other diagnoses.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "targeted_history",
+                "broad_differential",
+                "conflicting_evidence"
+              ]
+            },
+            {
+              "id": "exp_b47a6d9a86d0",
+              "type": "experience",
+              "score": 0.192,
+              "outcome": "success",
+              "situation": "When evaluating an asymptomatic patient for a colonoscopy with no clinical indications, initial history reveals no symptoms like abdominal pain, bowel changes, or weight loss, but uncertainty remains about screening appropriateness.",
+              "action": "Request evidence-based guidelines on screening colonoscopy indications for asymptomatic adults to inform decision-making.",
+              "boundary": "Use when patient is asymptomatic and no clinical indications exist; do not use if patient has symptoms, risk factors, or prior abnormal findings.",
+              "tags": [
+                "positive",
+                "asymptomatic",
+                "screening_colonoscopy",
+                "targeted_history",
+                "guideline_review"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_47d03a33eefe",
+              "type": "experience",
+              "score": 0.2841,
+              "outcome": "failure",
+              "situation": "When a patient presents with progressive shortness of breath and a history of asthma, but no fever or chest pain, and the clinical suspicion is asthma exacerbation, yet the patient also has metastatic lung adenocarcinoma, what should the doctor do?",
+              "action": "Request a chest X-ray to rule out pulmonary causes of dyspnea, especially in patients with known malignancy and worsening respiratory symptoms.",
+              "boundary": "Use this memory when the patient has a history of asthma and progressive dyspnea, but also has known malignancy or risk factors for metastatic disease; do not use if chest X-ray is unavailable or if the patient has no known malignancy.",
+              "tags": [
+                "negative",
+                "dyspnea",
+                "image_review_needed",
+                "missing_image",
+                "premature_closure",
+                "metastatic_cancer"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2816,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2707,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_0",
+              "type": "skill",
+              "score": 0.2317,
+              "outcome": null,
+              "situation": "Patient presents for routine screening colonoscopy with no reported symptoms or clinical indications for intervention.",
+              "action": null,
+              "boundary": "Only apply when patient is asymptomatic and no clinical indications for intervention; do not use if symptoms or risk factors are present.",
+              "tags": []
+            },
+            {
+              "id": "skill_001",
+              "type": "skill",
+              "score": 0.2041,
+              "outcome": null,
+              "situation": "Patient reports blood in stool, altered bowel habits, weight loss, and fatigue, and is over 50 years old.",
+              "action": null,
+              "boundary": "Apply only when patient is over 50 and reports unexplained weight loss or rectal bleeding. Do not use if symptoms are absent or non-specific.",
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asthma exacerbation with possible superimposed lower respiratory tract infection}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4e16a5f8-f8f3-4849-b72b-df95f1c64e49': '{\"diagnosis\": \"Asthma exacerbation with possible superimposed lower respiratory tract infection\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6666666666666666,
+        "conf_after": 0.6666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asthma exacerbation with possible superimposed lower respiratory tract infection}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asthma exacerbation with possible superimposed lower respiratory tract infection}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,639 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20045188",
+  "turns": [
+    {
+      "case_id": "20045188",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Right leg redness and painful nodule",
+        "current_turn_information": [
+          "Assess and diagnose the 58-year-old female patient presenting with Right leg redness and painful nodule and advanced IGG kappa.",
+          "I am a 58-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old female patient presenting with Right leg redness and painful nodule and advanced IGG kappa.."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20045188",
+        "turn_id": 1,
+        "query_text": "Right leg redness and painful nodule with advanced IGG kappa; need targeted history and exam before imaging or lab decision; avoid premature diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2578,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2361,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.2344,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2169,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.208,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3318,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.3098,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2953,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the right leg redness and painful nodule in more detail? For example, when did it start, how big is it, and has it changed over time?"
+        },
+        "patient_or_tool_response": "{'question': 'The redness on my right leg started near my groin and went down past my knee to my lower leg — it was a bright pink, nonblanching area that felt warm to the touch. I also had a 1 cm tender, mobile nodule on the medial thigh that was painful to press on. The redness has resolved now, but the nodule is still there — it’s about 0.25 cm in size and still slightly tender. I’m not sure if it’s gotten bigger or smaller since I first noticed it, but it hasn’t changed much.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.4,
+        "delta": 0.4,
+        "turn_reward": 0.08000000000000002,
+        "importance": 0.4
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the right leg redness and painful nodule in more detail? For example, when did it start, how big is it, and has it changed over time?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the right leg redness and painful nodule in more detail? For example, when did it start, how big is it, and has it changed over time?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20045188",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Right leg redness and painful nodule",
+        "current_turn_information": [
+          "Redness on right leg started near groin, extended past knee to lower leg",
+          "Bright pink, nonblanching, warm to touch",
+          "1 cm tender, mobile nodule on medial thigh, painful to press",
+          "Redness resolved, nodule still present, now 0.25 cm, slightly tender"
+        ],
+        "prior_information_summary": "58-year-old female with advanced IGG kappa multiple myeloma, amyloidosis, and paroxysmal SVT on apixaban. Presented with likely cellulitis. Six days ago: fever 101-102, chills, cramps, poor appetite. Worsening left rib pain (fracture), painful nodule in right medial thigh. No rash initially. Symptoms except rib pain and nodule resolved. Did not take revlimid due to fever. On admission: red rash on right inner thigh. Blood cultures, urine cultures, flu swab, respiratory viral panel taken. Since admission: denies fever/chills, rash has gotten bigger (now resolved), nodule still tender. No swelling, upper respiratory symptoms, nausea, vomiting, diarrhea, or urine changes. Appetite good. Last seen in heme/onc for daratumamab (tolerated well). Missed cardiology follow-up. Physical exam: erythematous region in medial thigh, nonblanching bright pink macules, warm, tender 1 cm subcutaneous nodule. Final result: cellulitis of right lower limb."
+      },
+      "query": {
+        "case_id": "20045188",
+        "turn_id": 2,
+        "query_text": "Right leg redness resolved but tender nodule persists; need memory about differentials beyond cellulitis; avoid premature diagnosis; consider imaging review if nodule changes"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d8c4f3ed-e114-462b-9f54-37af063dc1ad': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20045188",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Right leg redness and painful nodule",
+        "current_turn_information": [
+          "The redness on my right leg started near my groin and went down past my knee to my lower leg — it was a bright pink, nonblanching area that felt warm to the touch.",
+          "I also had a 1 cm tender, mobile nodule on the medial thigh that was painful to press on.",
+          "The redness has resolved now, but the nodule is still there — it’s about 0.25 cm in size and still slightly tender.",
+          "I’m not sure if it’s gotten bigger or smaller since I first noticed it, but it hasn’t changed much."
+        ],
+        "prior_information_summary": "58-year-old female with advanced IGG kappa multiple myeloma, amyloidosis, and paroxysmal SVT on apixaban. Presented with likely cellulitis: fever, chills, cramps, poor appetite, worsening left rib pain (fracture), and painful nodule in right medial thigh. No rash initially, but red rash noted on right inner thigh during PET visit. Blood cultures, urine cultures, flu swab, and respiratory viral panel taken. Denies fever/chills since admission, denies other rashes, swelling, or systemic symptoms. Appetite good. History includes multiple myeloma, amyloidosis, thyroid nodules, atrial flutter, neuropathy, cataracts, and hearing loss. Family history: no myeloma, mother with arthritis, father with CVA, brother with hypertension, sister with diabetes. Physical exam: erythematous region in medial thigh extending from groin to distal lower extremity, nonblanching bright pink macules, warm to touch, tender 1 cm subcutaneous nodule. Discharge exam: erythema resolved, nodule slightly tender, 0.25 cm, mobile. Final result: Cellulitis of right lower limb."
+      },
+      "query": {
+        "case_id": "20045188",
+        "turn_id": 3,
+        "query_text": "Right leg redness resolved, persistent tender nodule; need memory about nodule evolution and imaging review; avoid premature diagnosis closure; consider targeted history before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "diagnosis of painful nodule and redness on leg in 58-year-old female with advanced IgG kappa"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'df666951-455a-4d66-bef5-7404491ef114': '[Document 1] (ID: 25319_1, Score: 0.857)\\nHere, we report the case of a 75-year-old female with onset of cutaneous discoid lupus erythematosus after intravenous administration of the IgG2/IgG4 monoclonal antibody Eculizumab, which was initiated for the treatment of IgG–positive neuromyelitis optica.\\n\\n[Document 2] (ID: 25319_4, Score: 0.857)\\nA 75-year-old (race?) female presented for evaluation of an asymptomatic rash in her extremeties. Her past medical history was significant for discoid lupus erythematosus diagnosed (when?) achieving drug-induced remission with (treatment?) and (any other commorbidity?). Other chronic medications inc...\\n\\n[Document 3] (ID: 19076_3, Score: 0.851)\\n## Diagnostic Criteria\\n- Age 50 years or more\\n- New developed headache\\n- Tenderness of the superficial temporal artery\\n- Elevated sedimentation rate, at least 50\\xa0mm/hour (blood test that reveals inflammatory activity)\\n- Giant cell arteritis in a biopsy specimen from the temporal artery\\n- Age when di...\\n\\n[Document 4] (ID: 15955_2, Score: 0.850)\\n# Differential Diagnosis\\n- Advanced age\\n- Chronic active hepatitis\\n- Cirrhosis\\n- Drugs\\n- HIV infection\\n- Mixed Connective Tissue Disease\\n- Multiple Sclerosis\\n- Necrot...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.6,
+        "delta": 0.19999999999999996,
+        "turn_reward": 0.039999999999999994,
+        "importance": 0.19999999999999996
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of painful nodule and redness on leg in 58-year-old female with advanced IgG kappa\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of painful nodule and redness on leg in 58-year-old female with advanced IgG kappa\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20045188",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Right leg redness and painful nodule",
+        "current_turn_information": [
+          "The redness on my right leg started near my groin and went down past my knee to my lower leg — it was a bright pink, nonblanching area that felt warm to the touch.",
+          "I also had a 1 cm tender, mobile nodule on the medial thigh that was painful to press on.",
+          "The redness has resolved now, but the nodule is still there — it’s about 0.25 cm in size and still slightly tender.",
+          "I’m not sure if it’s gotten bigger or smaller since I first noticed it, but it hasn’t changed much."
+        ],
+        "prior_information_summary": "58-year-old female with advanced IgG kappa multiple myeloma and amyloidosis, presenting with likely cellulitis. Symptoms began 6 days ago with fever, chills, and cramps, followed by worsening left rib pain and a painful nodule in right medial thigh. No rash initially, but red rash noted on right inner thigh during PET visit. Denies fever/chills since admission, denies other rashes or swelling. History includes recent missed revlimid due to fever, and upcoming daratumamab. Past medical history includes atrial flutter, neuropathy, cataracts, hearing loss. Social history includes no family history of myeloma. Physical exam shows erythematous region in medial thigh, tender 1 cm subcutaneous nodule. Final result: Cellulitis of right lower limb."
+      },
+      "query": {
+        "case_id": "20045188",
+        "turn_id": 4,
+        "query_text": "Right leg redness resolved but persistent tender nodule; need memory about imaging or biopsy guidance for subcutaneous lesion; avoid premature diagnosis closure; consider myeloma-related skin involvement"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent infections, surgeries, or exposure to new medications or substances?"
+        },
+        "patient_or_tool_response": "{'question': 'I had a fever and chills six days ago, along with body and face cramps, which improved over the day. I also had worsening left rib pain (from a fracture earlier this year) and a painful nodule in my right thigh. I didn’t take my revlimid on ___ because of the fever and chills. I didn’t have any other recent infections, surgeries, or exposure to new medications or substances — except for my scheduled daratumamab infusion, which I missed because I was admitted. I’m not sure if that counts as a new substance, but I didn’t start any new meds or substances since my last clinic visit.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent infections, surgeries, or exposure to new medications or substances?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent infections, surgeries, or exposure to new medications or substances?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20045188",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Right leg redness and painful nodule",
+        "current_turn_information": [
+          "I had a fever and chills six days ago, along with body and face cramps, which improved over the day.",
+          "I also had worsening left rib pain (from a fracture earlier this year) and a painful nodule in my right thigh.",
+          "I didn’t take my revlimid on ___ because of the fever and chills.",
+          "I didn’t have any other recent infections, surgeries, or exposure to new medications or substances — except for my scheduled daratumamab infusion, which I missed because I was admitted.",
+          "I’m not sure if that counts as a new substance, but I didn’t start any new meds or substances since my last clinic visit."
+        ],
+        "prior_information_summary": "58-year-old female with advanced IGG kappa multiple myeloma, amyloidosis, and paroxysmal SVT on apixaban. Presented with likely cellulitis. Six days ago: fever 101-102, shaking chills, body/face cramps, poor appetite. Worsening left rib pain (fracture this year) and painful nodule in right medial thigh. No rash at that time. Symptoms except rib pain and nodule resolved. Did not take revlimid due to fever/chills. On admission: red rash on right inner thigh noticed during PET. Blood cultures, urine cultures, flu swab, respiratory viral panel taken. Since admission: denies fever/chills; thinks rash on leg has gotten bigger; not itchy; only area that hurts is nodule in right inner thigh; denies other rashes, swelling, upper respiratory symptoms, nausea, vomiting, diarrhea, or urine changes. Appetite good. Last seen in heme/onc for follow-up and next dose of daratumamab (tolerated well). Missed cardiology follow-up due to admission. Physical exam: erythematous region in medial thigh extending from groin to distal lower extremity, nonblanching bright pink macules, warm to touch, tender 1 cm subcutaneous nodule on palpation. Discharge exam: erythema resolved, slightly tender 0.25 cm subcutaneous nodule. Final result: Cellulitis of right lower limb."
+      },
+      "query": {
+        "case_id": "20045188",
+        "turn_id": 5,
+        "query_text": "Right leg nodule with prior cellulitis; new fever/chills and cramps; need memory about targeted history for infection or systemic cause; avoid premature diagnosis without imaging or lab review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2192,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.202,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1992,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1971,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3477,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.3276,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.284,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_864fb0e90870"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_864fb0e90870",
+            "memory_type": "experience",
+            "score": 0.3276,
+            "content": {
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "outcome": "Imaging would have revealed the true diagnosis (cellulitis vs. DVT) and prevented premature closure on a potentially dangerous misdiagnosis.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "diagnosis of painful nodule and systemic symptoms in patient with advanced IgG kappa and recent daratumamab infusion"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fa28008e-3c7d-4cf6-801a-fd0633c56e90': '[Document 1] (ID: 3989_85, Score: 0.851)\\n---Explanation---[Characteristics of the disease] -Symptoms: This disease develops in severe immunocompromised hosts such as patients received chemotherapy for leukemia or hematopoietic stem cell/organ transplantation. Symptoms such as fever that does not respond to broadspectrum antimicrobial drugs...\\n\\n[Document 2] (ID: 3579_9, Score: 0.848)\\n## 6.\\nFor patients experiencing severe immune-related rheumatic and systemic immune-related adverse events or with insufficient response to csDMARD, bDMARD may be considered, with TNF or IL-6 inhibitors being the preferred options for inflammatory arthritis.\\n[formula] 4 C 8.8 (1.2) 7. [/formula]\\nThe...\\n\\n[Document 3] (ID: 22049_7, Score: 0.847)\\n- Injection site hemorrhage.\\n\\n- Deep venous thrombosis\\n\\n- Pulmonary embolism\\n\\n- Increased autoantibodies\\n\\n- Lupus-like syndrome.\\n\\n- Hyponatremia\\n\\n- Hyperglycemia\\n\\n- Hypertriglyceridemia\\n\\n- Clubbing\\n\\n- Muscle spasms\\n\\n- Tachypnea\\n\\n- Bronchospasm\\n\\n- Interstitial pneumonitis\\n\\n- Reversible renal insuffic...\\n\\n[Document 4] (ID: 29502_6, Score: 0.847)\\n### Monitoring\\nClosely monitor patients for the development of signs and symptoms of infection during and after treatment ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of painful nodule and systemic symptoms in patient with advanced IgG kappa and recent daratumamab infusion\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of painful nodule and systemic symptoms in patient with advanced IgG kappa and recent daratumamab infusion\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20045188",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Right leg redness and painful nodule",
+        "current_turn_information": [
+          "The redness on my right leg started near my groin and went down past my knee to my lower leg — it was a bright pink, nonblanching area that felt warm to the touch.",
+          "I also had a 1 cm tender, mobile nodule on the medial thigh that was painful to press on.",
+          "The redness has resolved now, but the nodule is still there — it’s about 0.25 cm in size and still slightly tender.",
+          "I’m not sure if it’s gotten bigger or smaller since I first noticed it, but it hasn’t changed much."
+        ],
+        "prior_information_summary": "58-year-old female with advanced IGG kappa multiple myeloma and amyloidosis, presenting with likely cellulitis. Symptoms began 6 days ago with fever, chills, body cramps, worsening left rib pain (fracture), and painful nodule in right medial thigh. No rash initially, but red rash noted on right inner thigh upon admission. Blood cultures, urine cultures, flu swab, and respiratory viral panel taken. Denies fever/chills since admission, denies other rashes, swelling, or systemic symptoms. Appetite good. Missed daratumamab infusion due to admission. Physical exam shows erythematous region in medial thigh, tender 1 cm subcutaneous nodule. Final result: Cellulitis of right lower limb."
+      },
+      "query": {
+        "case_id": "20045188",
+        "turn_id": 6,
+        "query_text": "Right leg redness resolved but persistent tender nodule; need memory about imaging or biopsy guidance; avoid premature diagnosis closure; consider myeloma-related skin involvement"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Lupus-like syndrome due to daratumamab infusion in a patient with advanced IgG kappa.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f5781d73-37a8-42d4-9a68-73bd7b261d07': '{\"diagnosis\": \"Lupus-like syndrome due to daratumamab infusion in a patient with advanced IgG kappa.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Lupus-like syndrome due to daratumamab infusion in a patient with advanced IgG kappa.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Lupus-like syndrome due to daratumamab infusion in a patient with advanced IgG kappa.}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1318 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20055244",
+  "turns": [
+    {
+      "case_id": "20055244",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "I am a 32-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 32-year-old female patient presenting with vaginal bleeding."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 1,
+        "query_text": "vaginal bleeding in 32-year-old female; need targeted history and exam before final diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.221,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1993,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2766,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_527401053a55",
+              "type": "experience",
+              "score": 0.2732,
+              "outcome": "failure",
+              "situation": "When a patient presents with constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, especially in an elderly female, and initial labs are unavailable, the doctor should avoid premature diagnosis without imaging or targeted physical exam.",
+              "action": "Request imaging of the abdomen and pelvis to evaluate for bowel obstruction or diverticulitis, and perform a focused physical exam including assessment of distension, tenderness, and pulses in the lower extremities.",
+              "boundary": "Use this memory when the patient has constipation followed by diarrhea with mucus, cramping, syncope, and ankle pain, and when labs are unavailable or inconclusive; do not use if imaging is contraindicated or if the patient has clear signs of fracture on physical exam or prior imaging.",
+              "tags": [
+                "negative",
+                "abdominal_pain",
+                "syncope",
+                "ankle_pain",
+                "missing_imaging",
+                "premature_closure"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the vaginal bleeding start, and how frequently does it occur?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the vaginal bleeding start, and how frequently does it occur?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the vaginal bleeding start, and how frequently does it occur?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. History includes dark brown clots, bright red bleeding on toilet paper, no recurrence, denies dysuria but reports urinary frequency. Physical exam: gravid, no uterine tenderness, cervix friable and bled on manipulation. Ultrasound: cephalic presentation, MVP 3.5cm, posterior placenta, no abruption, EFW 1135g. Final result: premature separation of placenta, unspecified, third trimester. Knowledge base: placental disease, including causes, symptoms, risk factors, and diagnosis."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 2,
+        "query_text": "vaginal bleeding with friable cervix and prior ultrasound findings; new info: no prior problems or abnormal findings; need memory about targeted history before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2282,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2058,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1875,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.2761,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2626,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2531,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any pain, discomfort, or unusual discharge along with the vaginal bleeding?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any pain, discomfort, or unusual discharge along with the vaginal bleeding?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any pain, discomfort, or unusual discharge along with the vaginal bleeding?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. History includes dark brown clots, bright red bleeding on toilet paper, no recurrence, denies dysuria but reports urinary frequency. Physical exam: gravid, no uterine tenderness, cervix friable and bled on manipulation. Ultrasound: cephalic presentation, MVP 3.5cm, posterior placenta, no abruption, EFW 1135g. Final result: premature separation of placenta, unspecified, third trimester. Knowledge base: placental disease, including causes, symptoms, risk factors, and diagnostic methods."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 3,
+        "query_text": "vaginal bleeding with friable cervix and prior ultrasound findings; new info: no prior problems or abnormal findings; need memory about targeted history before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2282,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2058,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1875,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.2761,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2626,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2531,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you noticed any change in the amount, color, or duration of the bleeding? For example, is it heavier than your normal period or does it last longer?"
+        },
+        "patient_or_tool_response": "{'question': 'I noticed the bleeding started as dark brown clots, then turned to bright red when I wiped with toilet paper. It didn’t last longer than usual, and it stopped after that. I’m not sure if it was heavier than my normal period, but I didn’t feel like it was unusually heavy.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any change in the amount, color, or duration of the bleeding? For example, is it heavier than your normal period or does it last longer?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any change in the amount, color, or duration of the bleeding? For example, is it heavier than your normal period or does it last longer?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "I noticed the bleeding started as dark brown clots, then turned to bright red when I wiped with toilet paper. It didn’t last longer than usual, and it stopped after that. I’m not sure if it was heavier than my normal period, but I didn’t feel like it was unusually heavy."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. Denies dysuria, fever, abdominal pain, trauma. Physical exam: gravid, no uterine tenderness, cervix friable and bled on manipulation. Ultrasound: cephalic presentation, posterior placenta, no abruption, EFW 1135g. Past medical history: asthma, migraine. No abnormal Pap, fibroids, STIs. Social history: denies tobacco, partner supportive. Final result: premature separation of placenta, unspecified, third trimester."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 4,
+        "query_text": "vaginal bleeding with recent bright red discharge; cervix friable and bled on manipulation; need memory about targeted history for trauma or coagulopathy; avoid premature diagnosis without imaging or lab review"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2423,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0931fd8aa0a8",
+              "type": "experience",
+              "score": 0.1938,
+              "outcome": "success",
+              "situation": "When a patient presents with disorganized speech, flat affect, and social withdrawal without any lab or imaging results, and the history strongly suggests a psychotic disorder, what should the doctor do next?",
+              "action": "Update the differential to include schizophrenia and request targeted imaging or lab tests only if clinically indicated, but prioritize focused history and mental status exam to confirm core features.",
+              "boundary": "Use when symptoms suggest psychosis but no imaging or labs are available; do not use if there is a clear alternative diagnosis or if imaging/labs are urgently needed for safety.",
+              "tags": [
+                "positive",
+                "schizophrenia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1885,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1809,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3072,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_b36ecb08deb2",
+              "type": "experience",
+              "score": 0.2785,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear history, and initial targeted history and lab requests yield no findings, the doctor should avoid premature reliance on imaging without first considering toxicology or behavioral history.",
+              "action": "Avoid requesting imaging like CXR without first exploring toxicology or behavioral history, especially when symptoms are non-specific and no lab results are available.",
+              "boundary": "Use this memory when symptoms are non-specific and no lab results are available; do not use if toxicology or behavioral history has already been explored or if imaging is indicated by clinical suspicion.",
+              "tags": [
+                "negative",
+                "non_specific_symptoms",
+                "missing_lab",
+                "premature_closure",
+                "toxicology_needed"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.2633,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'423f29d4-5a48-46e6-9c6f-a5626be0c5cf': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. History includes dark brown clots followed by bright red bleeding on toilet paper, no recurrence. Denies dysuria, abdominal pain, trauma, recent illness. Physical exam: gravid, no uterine tenderness, cervix friable and bled on manipulation. Ultrasound: cephalic presentation, posterior placenta, no abruption, EFW 1135g. Final result: premature separation of placenta, unspecified, third trimester. Knowledge base: placental disease, risk factors, signs/symptoms, diagnosis."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 5,
+        "query_text": "vaginal bleeding with prior ultrasound and diagnosis of placental separation; labs pending; need memory about next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2058,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.191,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.1889,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            },
+            {
+              "id": "exp_d51c5ca122ef",
+              "type": "experience",
+              "score": 0.1873,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging of the abdomen and pelvis, specifically CT colonography or MRI, to evaluate for colonic mass or obstruction.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, and fatigue; do not use if imaging is contraindicated or if symptoms are fully explained by benign causes like IBS or hemorrhoids without structural evidence.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1819,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e571193c7274",
+              "type": "experience",
+              "score": 0.2612,
+              "outcome": "failure",
+              "situation": "When a patient presents with asthma-like symptoms and reports loss of smell, but no prior aspirin sensitivity history, and the doctor prematurely finalizes a diagnosis of AERD without checking for key diagnostic clues, it matters because the gold diagnosis was unspecified asthma with exacerbation.",
+              "action": "Avoid finalizing AERD diagnosis without confirming aspirin sensitivity history or reviewing relevant labs and imaging. Instead, ask targeted questions about aspirin use and reactions, and request specific labs like serum tryptase or eosinophil count.",
+              "boundary": "Use this memory when patient has asthma-like symptoms and loss of smell, but only if aspirin sensitivity history is unknown and no labs/imaging are available; do not use if aspirin sensitivity is confirmed or if eosinophilia is present.",
+              "tags": [
+                "negative",
+                "asthma",
+                "loss_of_smell",
+                "premature_closure",
+                "missing_lab",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.2574,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "vaginal bleeding in 32-year-old females: common causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3ad34e09-f2bd-488b-9b8c-d591166c9175': \"[Document 1] (ID: 22359_0, Score: 0.878)\\nVaginal bleeding\\n# Overview\\nVaginal bleeding refers to bleeding in females that are either a physiologic response during the non-conceptional menstrual cycle or caused by hormonal or organic problems of the reproductive system. Vaginal bleeding may occur at any age, but always needs investigation wh...\\n\\n[Document 2] (ID: 9189_0, Score: 0.860)\\nMetrorrhagia (patient information)\\nFor the WikiDoc page for this topic, click here\\nSynonyms and Keywords: Bleeding between periods; Intermenstrual bleeding; Spotting; Metrorrhagia\\n\\n# Overview\\nThis article discusses vaginal bleeding that occurs between a woman's monthly menstrual periods. Such bleedi...\\n\\n[Document 3] (ID: 7520_2, Score: 0.858)\\n# Causes\\nUterine bleeding can be divided into anatomical or structural and non-structural causes. The anatomical causes include Polyp, adenomyosis, Leiomyoma and Malignancy or hyperplasia. The non-structural causes include Coagulopathy, Ovulatory dysfunction, such as PCOS, Endometrial disorders, suc...\\n\\n[Document 4] (ID: 22476_2, Score: 0.858)\\n## Age\\n- vaginal prolapse is more commonly observed among patients aged 25-64 years old.older women .\\n\\n## Gender\\n- Females ...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"vaginal bleeding in 32-year-old females: common causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"vaginal bleeding in 32-year-old females: common causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "I noticed the bleeding started as dark brown clots, then turned to bright red when I wiped with toilet paper. It didn’t last longer than usual, and it stopped after that. I’m not sure if it was heavier than my normal period, but I didn’t feel like it was unusually heavy.",
+          "{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "[Document 1] (ID: 22359_0, Score: 0.878)\nVaginal bleeding\n# Overview\nVaginal bleeding refers to bleeding in females that are either a physiologic response during the non-conceptional menstrual cycle or caused by hormonal or organic problems of the reproductive system. Vaginal bleeding may occur at any age, but always needs investigation wh...\n\n[Document 2] (ID: 9189_0, Score: 0.860)\nMetrorrhagia (patient information)\nFor the WikiDoc page for this topic, click here\nSynonyms and Keywords: Bleeding between periods; Intermenstrual bleeding; Spotting; Metrorrhagia\n\n# Overview\nThis article discusses vaginal bleeding that occurs between a woman's monthly menstrual periods. Such bleedi...\n\n[Document 3] (ID: 7520_2, Score: 0.858)\n# Causes\nUterine bleeding can be divided into anatomical or structural and non-structural causes. The anatomical causes include Polyp, adenomyosis, Leiomyoma and Malignancy or hyperplasia. The non-structural causes include Coagulopathy, Ovulatory dysfunction, such as PCOS, Endometrial disorders, suc...\n\n[Document 4] (ID: 22476_2, Score: 0.858)\n## Age\n- vaginal prolapse is more commonly observed among patients aged 25-64 years old.older women .\n\n## Gender\n- Females are more commonly affected with vaginal prolapse.\n\n## Race\n- vaginal prolapse usually affects individuals of the  African Americans and Caucasians race.\n\n# Risk Factors\n- Common...\n\n[Document 5] (ID: 21258_1, Score: 0.857)\n# Causes\n\n## Common Causes\n- Atrophic vaginitis or senile vaginitis, it as a result of estrogen deficiency lead to vaginal dryness, itching, irritation, discharge, and dyspareunia\n- Bacterial vaginosisis mostally happen  during the reproductive age of women characterized by a shift in the vaginal fl..."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. Denies dysuria, fever, chest pain, abdominal pain, trauma, or recent illness. Physical exam: gravid, no uterine tenderness, cervix friable and bled on manipulation. Ultrasound: cephalic presentation, posterior placenta, no abruption, EFW 1135g. Past medical history: asthma, migraine. Gynecologic history: denies fibroids, endometriosis, STIs. Social history: denies tobacco, partner supportive. Final result: premature separation of placenta, unspecified, third trimester. Knowledge base: placental disease, causes, symptoms, diagnosis."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 6,
+        "query_text": "vaginal bleeding with dark brown to bright red discharge; no lab results yet; need memory about targeted questions before finalizing diagnosis; avoid premature closure"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1917,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.2911,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent stress, changes in weight, or hormonal contraceptive use?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent stress, changes in weight, or hormonal contraceptive use?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent stress, changes in weight, or hormonal contraceptive use?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. Bleeding started as dark brown clots, then bright red on toilet paper, no recurrence. Denies dysuria, fever, abdominal pain, trauma. Physical exam: gravid, no uterine tenderness, cervix friable, bled on manipulation. Ultrasound: cephalic, MVP 3.5cm, posterior placenta, no abruption, EFW 1135g. Past history: asthma, migraine. No abnormal Pap, fibroids, STIs. No recent falls or trauma. No unusual foods or GI symptoms. No vaginal discharge or odor. No history of preeclampsia or IUGR. Final result: Premature separation of placenta, unspecified, third trimester."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 7,
+        "query_text": "vaginal bleeding with friable cervix and prior ultrasound findings; new info: no trauma or symptoms; need memory about next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2552,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2277,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1963,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1936,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_68db3c0f9477",
+              "type": "experience",
+              "score": 0.1804,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after trauma or frequent handwashing, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Update the hypothesis to include paronychia based on symptom alignment, then ask targeted questions about recent hand trauma, chemical exposure, or nail-biting habits to confirm environmental triggers.",
+              "boundary": "Use when symptoms match paronychia and labs are unavailable; do not use if there is clear evidence of systemic infection, trauma, or foreign body; avoid if patient denies any hand-related trauma or exposure.",
+              "tags": [
+                "positive",
+                "chest_pain",
+                "nail_infection",
+                "targeted_history",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.2938,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent sexual activity or unprotected intercourse?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent sexual activity or unprotected intercourse?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent sexual activity or unprotected intercourse?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "32-year-old F, G2P1, presents with vaginal bleeding. Started as dark brown clots, then bright red on toilet paper, no recurrence. Denies dysuria, fever, abdominal pain, trauma. Physical exam: gravid, no uterine tenderness, cervix friable, bled on manipulation. Ultrasound: cephalic, MVP 3.5cm, posterior placenta, no abruption, EFW 1135g. Past history: asthma, migraine. No abnormal Pap, fibroids, STIs. No recent falls or trauma. No unusual foods, nausea, vomiting, diarrhea. No dysuria, hematuria. Final result: Premature separation of placenta, unspecified, third trimester."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 8,
+        "query_text": "vaginal bleeding with friable cervix and prior ultrasound findings; new info: no trauma or dysuria; need memory about next steps before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 1,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2421,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.1936,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.1876,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1842,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d472bf1285e6",
+              "type": "experience",
+              "score": 0.2677,
+              "outcome": "failure",
+              "situation": "When a patient presents with isolated vaginal bleeding, especially with dark brown clots followed by bright red bleeding, and no associated pain or systemic symptoms, the initial uncertainty is high. The clinical history is non-specific, and early actions fail to reveal critical clues. Decision pressure to finalize a diagnosis is present despite low confidence.",
+              "action": "Avoid finalizing a diagnosis without imaging or ruling out obstetric causes, especially in a pregnant patient. Request focused imaging (e.g., ultrasound) to evaluate for placental abnormalities or other intrauterine pathology.",
+              "boundary": "Use this memory when vaginal bleeding occurs in a pregnant patient with no pain or systemic symptoms, but only if imaging (e.g., ultrasound) is not yet performed or considered. Do not use if the patient is not pregnant or if imaging has already been completed and ruled out obstetric causes.",
+              "tags": [
+                "negative",
+                "vaginal_bleeding",
+                "pregnancy",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any other symptoms such as dizziness, fatigue, or pelvic pain?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any other symptoms such as dizziness, fatigue, or pelvic pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any other symptoms such as dizziness, fatigue, or pelvic pain?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "32-year-old F, G2P1, presents with vaginal bleeding. Started as dark brown clots, then bright red on toilet paper, no recurrence. Denies dysuria, fever, abdominal pain, trauma. Physical exam: gravid, no uterine tenderness, cervix friable, bled on manipulation. Ultrasound: cephalic, MVP 3.5cm, posterior placenta, no abruption, EFW 1135g. Final result: premature separation of placenta, unspecified, third trimester. History: denies fibroids, STIs, abnormal Pap; PMHx: asthma, migraine; social: denies T/E/D, partner supportive. Knowledge base: placental disease, causes, symptoms, diagnosis."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 9,
+        "query_text": "vaginal bleeding with friable cervix and prior ultrasound showing placental separation; new info: no prior issues or trauma; need memory about avoiding premature diagnosis and targeted history before finalization"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2223,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "vaginal bleeding after menopause: causes and diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8afd0524-098b-426b-90fe-a87af73d8f37': \"[Document 1] (ID: 9189_0, Score: 0.884)\\nMetrorrhagia (patient information)\\nFor the WikiDoc page for this topic, click here\\nSynonyms and Keywords: Bleeding between periods; Intermenstrual bleeding; Spotting; Metrorrhagia\\n\\n# Overview\\nThis article discusses vaginal bleeding that occurs between a woman's monthly menstrual periods. Such bleedi...\\n\\n[Document 2] (ID: 22359_0, Score: 0.883)\\nVaginal bleeding\\n# Overview\\nVaginal bleeding refers to bleeding in females that are either a physiologic response during the non-conceptional menstrual cycle or caused by hormonal or organic problems of the reproductive system. Vaginal bleeding may occur at any age, but always needs investigation wh...\\n\\n[Document 3] (ID: 9189_1, Score: 0.882)\\n# What causes Metrorrhagia?\\n- Uterine fibroids or cervical or uterine polyps\\n- Changes in hormone levels\\n- Inflammation or infection of the cervix (cervicitis)\\n- Injury or disease of the vaginal opening (caused by intercourse, infection, polyp, genital warts, ulcer, or varicose veins)\\n- IUD use (may...\\n\\n[Document 4] (ID: 1450_29, Score: 0.877)\\n# Bleeding\\nSee also:\\nthe section on urological symptoms for haematuria\\nthe section on primary care investigations for faeca...[truncated]\"}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"vaginal bleeding after menopause: causes and diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"vaginal bleeding after menopause: causes and diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20055244",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "vaginal bleeding",
+        "current_turn_information": [
+          "tool_outputs.8afd0524-098b-426b-90fe-a87af73d8f37: [Document 1] (ID: 9189_0, Score: 0.884) Metrorrhagia (patient information) ... [Document 2] (ID: 22359_0, Score: 0.883) Vaginal bleeding ... [Document 3] (ID: 9189_1, Score: 0.882) What causes Metrorrhagia? ... [Document 4] (ID: 1450_29, Score: 0.877) Bleeding ... [Document 5] (ID: 9684_0, Score: 0.874) Menorrhagia (patient information) ..."
+        ],
+        "prior_information_summary": "32-year-old female, G2P1, presenting with vaginal bleeding. History includes dark brown clots followed by bright red bleeding on toilet paper, no recurrence, denies dysuria but reports increased urinary frequency. Physical exam: gravid, no uterine tenderness, cervix friable and bled on manipulation. Ultrasound: cephalic presentation, MVP 3.5cm, posterior placenta, no abruption, EFW 1135g. Final result: Premature separation of placenta, unspecified, third trimester. Knowledge base: Placental disease overview, causes, symptoms, diagnosis. Patient denies abnormal Pap, fibroids, STIs, asthma, migraine. Social history: denies T/E/D, partner supportive."
+      },
+      "query": {
+        "case_id": "20055244",
+        "turn_id": 10,
+        "query_text": "vaginal bleeding with friable cervix and prior placental separation; need memory about avoiding premature diagnosis; consider targeted history for risk factors before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.1929,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Vaginal bleeding likely due to uterine fibroids or cervical polyps, or hormonal imbalance. Further evaluation with pelvic exam and imaging is recommended.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'782c7166-c76e-49b2-8ccd-8ef7ae7d5529': '{\"diagnosis\": \"Vaginal bleeding likely due to uterine fibroids or cervical polyps, or hormonal imbalance. Further evaluation with pelvic exam and imaging is recommended.\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Vaginal bleeding likely due to uterine fibroids or cervical polyps, or hormonal imbalance. Further evaluation with pelvic exam and imaging is",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Vaginal bleeding likely due to uterine fibroids or cervical polyps, or hormonal imbalance. Further evaluation with pelvic exam and imaging is recommended.}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}

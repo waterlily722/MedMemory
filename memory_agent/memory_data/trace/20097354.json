@@ -1,0 +1,1721 @@
+{
+  "schema": "memory_trace.memory_only.v3",
+  "case_id": "20097354",
+  "turns": [
+    {
+      "case_id": "20097354",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I am a 54-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 54-year-old male patient based on the available clinical presentation."
+        ],
+        "prior_information_summary": ""
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 1,
+        "query_text": "54-year-old male presenting with nonspecific symptoms; need targeted history to narrow differential; avoid premature diagnosis without further data"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.19,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_38816ab67fcd",
+              "type": "experience",
+              "score": 0.2875,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnostic direction, and initial targeted questions yield unhelpful or negative responses, the doctor should avoid premature finalization and instead broaden the differential to include psychiatric or systemic conditions.",
+              "action": "Avoid finalizing diagnosis without ruling out psychiatric conditions; instead, broaden the differential to include schizophrenia and other psychiatric diagnoses, especially when non-specific symptoms persist despite negative history and labs.",
+              "boundary": "Use this memory when symptoms are non-specific and history is unhelpful; do not use if clear physical exam or imaging findings point to a structural or infectious cause.",
+              "tags": [
+                "negative",
+                "psychiatric_symptoms",
+                "premature_closure",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2625,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been noticing a red, swollen, and painful area on my leg that’s been getting bigger over the past few days. The skin feels warm to the touch, and it’s tender when I press on it. I’ve also had a fever and feel generally tired. It started after I got a small cut on my leg, and I’m not sure if it’s from an insect bite or just a minor scrape. I haven’t had any pus, but the redness is spreading slowly. I’m also a bit concerned because I have diabetes, and I’ve noticed my foot has been swollen lately.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Red, swollen, and painful area on leg getting bigger over past few days",
+          "Skin feels warm to touch, tender when pressed",
+          "Fever and general tiredness",
+          "Started after small cut on leg, unsure if from insect bite or minor scrape",
+          "No pus, redness spreading slowly",
+          "Concerned due to diabetes and recent foot swelling"
+        ],
+        "prior_information_summary": "54-year-old male, admitted via transfer from skilled nursing facility, admission type: EU OBSERVATION, diagnostic window: 2133-01-30 20:48:00 to 2133-01-30 23:00:00. Patient is white, married, speaks English, insured by Medicare. Objective: Assess and diagnose patient based on clinical presentation. Final result: Cellulitis of right lower limb. Knowledge base includes details on cellulitis: signs (red, hot, painful), symptoms (swelling, fever, fatigue), causes (bacterial infection via skin break), risk factors (diabetes, obesity, leg swelling), differential diagnosis (DVT, stasis dermatitis, necrotizing fasciitis), and treatment (antibiotics like cephalexin, alternatives for penicillin allergy, ultrasound for abscess detection)."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 2,
+        "query_text": "Leg redness and swelling with fever; new info: small cut, diabetes, recent foot swelling; need memory about cellulitis vs DVT; avoid premature diagnosis without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2244,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2079,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.343,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2888,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.2842,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_864fb0e90870"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_864fb0e90870",
+            "memory_type": "experience",
+            "score": 0.343,
+            "content": {
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "outcome": "Imaging would have revealed the true diagnosis (cellulitis vs. DVT) and prevented premature closure on a potentially dangerous misdiagnosis.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0e5c4a87-151d-4f87-bf21-6294e932d584': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "No result for \"labs\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "54-year-old male, admitted via transfer from skilled nursing facility, admitted for EU observation. Chief complaint: Assess and diagnose the 54-year-old male patient based on the available clinical presentation. Patient has diabetes, history of foot swelling, and recent small leg cut. Symptoms include red, swollen, painful leg area spreading over days, warmth, tenderness, fever, and fatigue. Final result: Cellulitis of right lower limb. Knowledge base includes details on cellulitis: signs (red, hot, painful area), symptoms (fever, fatigue), causes (bacterial infection, skin breaks), risk factors (diabetes, obesity, leg swelling), differential diagnosis (deep vein thrombosis, stasis dermatitis, necrotizing fasciitis), and treatment (antibiotics like cephalexin, clindamycin, doxycycline for MRSA)."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 3,
+        "query_text": "cellulitis with fever and spreading leg redness; labs not available; need memory about targeted next steps before finalizing diagnosis; avoid premature closure without lab results"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.228,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.1991,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.192,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.3198,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3039,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.276,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_864fb0e90870"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_864fb0e90870",
+            "memory_type": "experience",
+            "score": 0.3198,
+            "content": {
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "outcome": "Imaging would have revealed the true diagnosis (cellulitis vs. DVT) and prevented premature closure on a potentially dangerous misdiagnosis.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of cellulitis in diabetic patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'220d2ea1-a38e-4220-bec2-16ef4ce725b0': '[Document 1] (ID: 11392_61, Score: 0.897)\\n### Cellulitis in diabetic patients\\n- Preferred Regimen\\nDrug DosageRouteFrequencyDuration OR Drug DosageRouteFrequencyDuration AND\\nDrug DosageRouteFrequencyDuration OR Drug DosageRouteFrequencyDuration\\n- Drug DosageRouteFrequencyDuration OR Drug DosageRouteFrequencyDuration AND\\n- Drug DosageRouteFre...\\n\\n[Document 2] (ID: 11392_64, Score: 0.879)\\n### Cellulitis in non-diabetic patients\\n- Preferred Regimen\\nDrug DosageRouteFrequencyDuration OR Drug DosageRouteFrequencyDuration AND\\nDrug DosageRouteFrequencyDuration OR Drug DosageRouteFrequencyDuration\\n- Drug DosageRouteFrequencyDuration OR Drug DosageRouteFrequencyDuration AND\\n- Drug DosageRout...\\n\\n[Document 3] (ID: 19061_1, Score: 0.877)\\n# Differentiating Cellulitis from other Diseases\\nCellulitis should be distinguished from thrombophlebitis, contact dermatitis, insect stings, drug reactions, and arthritis.\\n\\n# Risk Factors\\nThe elderly, patients with impaired circulation to and drainage from the extremities, and those with weakened i...\\n\\n[Document 4] (ID: 4596_43, Score: 0.871)\\n# Limb-Threatening Infections\\nInappropriately managed infections in diabetic foot ulcers can lead to life-or limb-threa...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.4,
+        "delta": 0.4,
+        "turn_reward": 0.08000000000000002,
+        "importance": 0.4
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of cellulitis in diabetic patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of cellulitis in diabetic patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "Tool output: Document 1 (ID: 11392_61, Score: 0.897) - Cellulitis in diabetic patients: Preferred Regimen with drug dosage, route, frequency, duration.",
+          "Tool output: Document 2 (ID: 11392_64, Score: 0.879) - Cellulitis in non-diabetic patients: Preferred Regimen with drug dosage, route, frequency, duration.",
+          "Tool output: Document 3 (ID: 19061_1, Score: 0.877) - Differentiating Cellulitis from other diseases: thrombophlebitis, contact dermatitis, insect stings, drug reactions, arthritis; Risk Factors: elderly, impaired circulation, weakened immunity.",
+          "Tool output: Document 4 (ID: 4596_43, Score: 0.871) - Limb-Threatening Infections: Inappropriately managed infections in diabetic foot ulcers can lead to life-or-limb-threatening consequences; cellulitis extending >2cm beyond wound border, fever, edema, lymphangitis.",
+          "Tool output: Document 5 (ID: 10831_8, Score: 0.870) - Possible Examination Findings: Acute Arterial Insufficiency, Chronic Arterial Insufficiency with Ulcers, Gangrene of Toes, Venous insufficiency, Cellulitis, Asymmetric Leg, Swelling secondary to DVT in Right Leg, Onychomycosis, Neuropathy."
+        ],
+        "prior_information_summary": "Patient is 54-year-old male, admitted via transfer from skilled nursing facility, admitted for EU observation. Chief complaint: Assess and diagnose 54-year-old male patient based on clinical presentation. Patient has diabetes, swollen foot, and history of small leg cut. Symptoms include red, swollen, painful leg area spreading over days, warm skin, tenderness, fever, fatigue. No pus reported. Knowledge base includes cellulitis definition, signs/symptoms, causes, risk factors, diagnosis, treatment, and differential diagnosis. Final result: Cellulitis of right lower limb. Labs tool output: No result found."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 4,
+        "query_text": "Cellulitis with spreading redness, fever, and diabetic risk; need memory about limb-threatening signs and imaging review; avoid premature diagnosis without confirmatory imaging"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.1851,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.1816,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.313,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.2975,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_b9d14f673b15",
+              "type": "experience",
+              "score": 0.2892,
+              "outcome": "failure",
+              "situation": "When a patient presents with a painful, spreading nodule and redness on the inner thigh, and initial history suggests recent fever and chills but no rash, the doctor should avoid premature diagnosis without ruling out cellulitis.",
+              "action": "Request a focused physical exam to assess for signs of cellulitis, such as warmth, fluctuance, or systemic signs, before finalizing a diagnosis involving monoclonal gammopathy.",
+              "boundary": "Use this memory when the patient has localized skin findings with systemic symptoms but no clear signs of infection; do not use if there is evidence of systemic illness, fever, or lab findings consistent with monoclonal gammopathy.",
+              "tags": [
+                "negative",
+                "skin_rash",
+                "cellulitis",
+                "premature_closure",
+                "missing_exam"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any other symptoms like chills, night sweats, or difficulty walking due to pain or swelling?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had a fever and felt really tired, and sometimes I’ve felt cold with shaking. The area where it’s red and swollen hurts a lot, and I’ve noticed some swelling in my leg, which makes it harder to walk sometimes.'}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any other symptoms like chills, night sweats, or difficulty walking due to pain or swelling?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any other symptoms like chills, night sweats, or difficulty walking due to pain or swelling?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve had a fever and felt really tired, and sometimes I’ve felt cold with shaking.",
+          "The area where it’s red and swollen hurts a lot, and I’ve noticed some swelling in my leg, which makes it harder to walk sometimes."
+        ],
+        "prior_information_summary": "54-year-old male, admitted for EU OBSERVATION from skilled nursing facility. Chief complaint: Assess and diagnose the 54-year-old male patient based on the available clinical presentation. Patient reports red, swollen, painful leg area spreading over days, warm to touch, tender, with fever and fatigue. History of small leg cut, diabetes, and leg swelling. No pus reported. Labs: no result found. Tool output: documents on cellulitis in diabetic patients, non-diabetic patients, differentiation from other diseases, limb-threatening infections, and possible examination findings including cellulitis and swelling secondary to DVT."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 5,
+        "query_text": "fever, fatigue, and painful leg swelling with redness; new symptom of shaking chills; labs pending; need memory about cellulitis vs DVT in diabetic patients; avoid premature diagnosis without imaging or lab results"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2061,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2056,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.3437,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.2912,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.2896,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "fielded_bm25",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_864fb0e90870"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_864fb0e90870",
+            "memory_type": "experience",
+            "score": 0.3437,
+            "content": {
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "outcome": "Imaging would have revealed the true diagnosis (cellulitis vs. DVT) and prevented premature closure on a potentially dangerous misdiagnosis.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Cellulitis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bb884f7e-e729-437d-8b72-4e150b066e32': '{\"diagnosis\": \"Cellulitis\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cellulitis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Cellulitis}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: imaging, source: none, result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "Patient is a 54-year-old male, admitted via transfer from skilled nursing facility, with chief complaint of red, swollen, painful area on right lower limb that has increased in size over days, warm to touch, with fatigue and low-grade fever. No recent skin break noted, but has minor foot issues and manages diabetes. Labs and imaging not available. Knowledge base indicates cellulitis is likely, with signs including redness, warmth, pain, and non-sharp borders. Risk factors include diabetes and impaired circulation. Differential includes deep vein thrombosis and stasis dermatitis. Treatment typically involves oral antibiotics (e.g., cephalexin, amoxicillin)."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 6,
+        "query_text": "red, swollen, painful lower limb with fever; imaging unavailable; need memory about targeted questions before finalizing diagnosis; avoid premature closure without imaging or labs"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3514,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2936,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_dc7af3564350",
+              "type": "experience",
+              "score": 0.257,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs are unavailable, what should the doctor do next?",
+              "action": "Request targeted imaging or colonoscopy to evaluate for colorectal cancer, especially given the red flags of age, bleeding, and weight loss.",
+              "boundary": "Use when patient is over 50 with rectal bleeding, weight loss, or fatigue; do not use if symptoms are acute and non-specific or if imaging is contraindicated or unavailable.",
+              "tags": [
+                "positive",
+                "rectal_bleeding",
+                "weight_loss",
+                "elderly_patient",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2533,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2427,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e027d02565b1",
+              "type": "experience",
+              "score": 0.4094,
+              "outcome": "unsafe",
+              "situation": "When a patient reports hip pain with stiffness and swelling, and initial history suggests osteoarthritis, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or lab results, even if the history is suggestive.",
+              "boundary": "Use when history is suggestive of osteoarthritis but imaging or labs are missing; do not use if imaging is available or if systemic symptoms are present.",
+              "tags": [
+                "negative",
+                "hip_pain",
+                "premature_closure",
+                "unsafe_finalization"
+              ]
+            },
+            {
+              "id": "exp_31a89b51741f",
+              "type": "experience",
+              "score": 0.3917,
+              "outcome": "failure",
+              "situation": "When a patient presents with a solitary pulmonary nodule and a history of breast cancer, but no symptoms like weight loss or fever, and initial labs and imaging are unavailable, the doctor should avoid premature diagnosis.",
+              "action": "Do not finalize diagnosis without reviewing available imaging or obtaining specific tests for BIA-ALCL, such as imaging findings or fluid analysis.",
+              "boundary": "Use this memory when imaging or specific tests are unavailable and the patient has no symptoms; do not use if imaging or fluid analysis is available or if symptoms suggest BIA-ALCL.",
+              "tags": [
+                "negative",
+                "missing_imaging",
+                "premature_closure",
+                "chest_pain"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3866,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "cellulitis vs diabetic foot infection differential diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f2790bc4-5ae4-41a8-aa55-4a0fc804ad65': '[Document 1] (ID: 5872_0, Score: 0.896)\\nDifferentiating Diabetic foot from other diseases\\n\\n# Overview\\nDiabetic foot must be differentiated from other diseases that cause foot ulceration, erythema, swelling and skin lesion, such as skin and soft-tissue infections, gas gangrene, cellulitis, deep venous thrombosis and inflammatory disorders....\\n\\n[Document 2] (ID: 19061_1, Score: 0.890)\\n# Differentiating Cellulitis from other Diseases\\nCellulitis should be distinguished from thrombophlebitis, contact dermatitis, insect stings, drug reactions, and arthritis.\\n\\n# Risk Factors\\nThe elderly, patients with impaired circulation to and drainage from the extremities, and those with weakened i...\\n\\n[Document 3] (ID: 4596_43, Score: 0.890)\\n# Limb-Threatening Infections\\nInappropriately managed infections in diabetic foot ulcers can lead to life-or limb-threatening consequences. These infections may present with cellulitis extending greater than 2 cm beyond the wound border and cardinal signs of infection, such as fever, edema, lymphang...\\n\\n[Document 4] (ID: 4596_26, Score: 0.881)\\nAssessment and Management of Foot Ulcers for People with Diabetes, Second Edition Deep infections, especially in chronic u...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.6,
+        "delta": 0.39999999999999997,
+        "turn_reward": 0.08,
+        "importance": 0.39999999999999997
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"cellulitis vs diabetic foot infection differential diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"cellulitis vs diabetic foot infection differential diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "54-year-old male, admitted for EU OBSERVATION from skilled nursing facility. Chief complaint: red, swollen, painful area on right lower leg worsening over days, warm to touch, fatigue, mild fever. No recent injury, but has minor foot issues and manages diabetes with slow healing. Labs and imaging results not available. Differential diagnosis includes cellulitis, diabetic foot infection, deep vein thrombosis, and other skin infections. Knowledge base indicates cellulitis is bacterial, involves dermis/subcutaneous fat, often presents with redness, warmth, pain, and lacks sharp borders. Risk factors include diabetes, obesity, and impaired circulation. Treatment typically involves oral antibiotics (e.g., cephalexin, amoxicillin)."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 7,
+        "query_text": "red, swollen, painful leg with no prior findings; need to assess for cellulitis vs. diabetic foot infection; avoid premature diagnosis without imaging or labs; consider targeted history before next step"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3045,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_3fbc4033e09c",
+              "type": "experience",
+              "score": 0.2623,
+              "outcome": "success",
+              "situation": "When a patient presents with localized aching hip pain that worsens with movement and is associated with morning stiffness and functional limitation, but no prior history or lab results are available, what should the doctor do next?",
+              "action": "Request a focused physical exam to assess joint mobility, crepitus, and gait, then review imaging if available to confirm joint space narrowing or osteophytes.",
+              "boundary": "Use when pain is localized, mechanical, and associated with stiffness; do not use if there is systemic inflammation, trauma history, or imaging showing fracture or infection.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "physical_exam_needed",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2582,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.251,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2506,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_fd330105d19a",
+              "type": "experience",
+              "score": 0.3854,
+              "outcome": "failure",
+              "situation": "When a patient presents for chemotherapy with no specific symptoms reported, and initial targeted history yields no findings, the doctor should not proceed to imaging without first obtaining relevant lab results.",
+              "action": "Request labs before ordering imaging to establish baseline or identify systemic abnormalities that may inform the need for imaging.",
+              "boundary": "Use when patient is presenting for chemotherapy with no symptoms; do not use if labs are already available or if imaging is clinically indicated despite missing labs.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_29e5d8eae41a",
+              "type": "experience",
+              "score": 0.3653,
+              "outcome": "failure",
+              "situation": "When a patient presents with non-specific symptoms and no clear diagnosis, and initial targeted history and lab/imaging requests yield no findings, the doctor should avoid premature finalization without ruling out coagulation disorders.",
+              "action": "Delay final diagnosis until coagulation labs or imaging are reviewed, or until a targeted question about bleeding or bruising is asked.",
+              "boundary": "Use when patient has non-specific symptoms and no clear diagnosis, but only if coagulation labs or bleeding history are not yet reviewed; do not use if bleeding or bruising history is already known or if labs/imaging are unavailable.",
+              "tags": [
+                "negative",
+                "missing_lab",
+                "premature_closure",
+                "coagulation_deficiency"
+              ]
+            },
+            {
+              "id": "exp_b9d14f673b15",
+              "type": "experience",
+              "score": 0.329,
+              "outcome": "failure",
+              "situation": "When a patient presents with a painful, spreading nodule and redness on the inner thigh, and initial history suggests recent fever and chills but no rash, the doctor should avoid premature diagnosis without ruling out cellulitis.",
+              "action": "Request a focused physical exam to assess for signs of cellulitis, such as warmth, fluctuance, or systemic signs, before finalizing a diagnosis involving monoclonal gammopathy.",
+              "boundary": "Use this memory when the patient has localized skin findings with systemic symptoms but no clear signs of infection; do not use if there is evidence of systemic illness, fever, or lab findings consistent with monoclonal gammopathy.",
+              "tags": [
+                "negative",
+                "skin_rash",
+                "cellulitis",
+                "premature_closure",
+                "missing_exam"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent changes in your blood sugar levels or difficulty managing your diabetes?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your blood sugar levels or difficulty managing your diabetes?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your blood sugar levels or difficulty managing your diabetes?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "54-year-old male, admitted for EU OBSERVATION from skilled nursing facility. Chief complaint: red, swollen, painful leg area worsening over days, warm to touch, fatigue, fever. History of diabetes with slow-healing feet. No recent injury. Labs and imaging not available. Differential diagnosis includes cellulitis, diabetic foot infection, deep vein thrombosis. Knowledge base confirms cellulitis signs (redness, warmth, pain, no sharp borders) and risk factors (diabetes, impaired circulation). Final result: Cellulitis of right lower limb."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 8,
+        "query_text": "Leg swelling with known cellulitis diagnosis; new info: no prior issues or findings; need memory about avoiding premature closure; confirm imaging or lab status before finalizing"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.3386,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.3292,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.3065,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_198a65e4b651",
+              "type": "experience",
+              "score": 0.2673,
+              "outcome": "success",
+              "situation": "When evaluating a 54-year-old asymptomatic female with no reported symptoms, the initial uncertainty is whether routine screening for colorectal cancer is indicated despite the absence of red flags.",
+              "action": "Request a targeted history for gastrointestinal symptoms, weight loss, or systemic signs, then confirm absence of prior GI conditions or relevant lab results before finalizing screening recommendation.",
+              "boundary": "Use when patient is asymptomatic and age is 50+; do not use if patient reports symptoms, has known GI disease, or has abnormal labs or imaging findings.",
+              "tags": [
+                "positive",
+                "asymptomatic_colon_cancer",
+                "targeted_history",
+                "routine_screening",
+                "age_based_decision"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2547,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0d4a16154d9b",
+              "type": "experience",
+              "score": 0.4101,
+              "outcome": "failure",
+              "situation": "When a patient presents with fatigue and cough, and initial history suggests no fever or night sweats, but the final diagnosis is MDS while the gold diagnosis is viral pneumonia, the doctor should avoid premature finalization without ruling out infectious causes.",
+              "action": "Avoid finalizing diagnosis without reviewing imaging or lab results that could confirm or rule out viral pneumonia.",
+              "boundary": "Use this memory when the patient has fatigue and cough with no fever or night sweats, but only if imaging or lab results are unavailable or not reviewed; do not use if imaging or lab results are available and show signs of infection.",
+              "tags": [
+                "negative",
+                "viral_pneumonia",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_864fb0e90870",
+              "type": "experience",
+              "score": 0.3684,
+              "outcome": "failure",
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3477,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "cosine",
+        "embedding_available": false
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_864fb0e90870"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_864fb0e90870",
+            "memory_type": "experience",
+            "score": 0.3684,
+            "content": {
+              "situation": "When a patient presents with a red, swollen, painful leg and fever, but no prior history or lab/imaging results, and the differential includes both cellulitis and DVT, the doctor should not finalize diagnosis without imaging or lab confirmation.",
+              "action": "Request imaging (e.g., ultrasound) to confirm or rule out DVT, especially when fever and non-blanching swelling are present, as these are not specific to cellulitis alone.",
+              "outcome": "Imaging would have revealed the true diagnosis (cellulitis vs. DVT) and prevented premature closure on a potentially dangerous misdiagnosis.",
+              "boundary": "Use this memory when fever, non-blanching swelling, and redness are present without imaging or lab results; do not use if imaging is already available or if the patient has clear signs of cellulitis without systemic symptoms.",
+              "outcome_type": "failure",
+              "tags": [
+                "negative",
+                "leg_pain",
+                "fever",
+                "non_blanching_swelling",
+                "unsafe_finalization",
+                "image_review_needed"
+              ]
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Diabetic foot infection}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'012756f7-f74f-4b05-a9a7-10f3444e964a': '{\"diagnosis\": \"Diabetic foot infection\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diabetic foot infection}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Diabetic foot infection}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "exam_type: imaging, source: none, result: No result for \"imaging\" found in the record and no knowledge base available for an approximate answer."
+        ],
+        "prior_information_summary": "54-year-old male, admitted via transfer from skilled nursing facility, admission type: EU OBSERVATION, diagnostic window: 2133-01-30 20:48:00 to 2133-01-30 23:00:00. Patient reports red, swollen, painful area on right lower leg, increasing in size, not sharply defined, with fever and fatigue. Skin does not turn white on pressure, and has dry, itchy patches. Labs and imaging not available. Final result: Cellulitis of right lower limb. Knowledge base includes signs, symptoms, causes, diagnosis, and treatment of cellulitis."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 9,
+        "query_text": "right lower leg cellulitis with fever and swelling; imaging not available; need memory about targeted questions before finalizing diagnosis"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2474,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_d9f7ae6caf06",
+              "type": "experience",
+              "score": 0.2309,
+              "outcome": "success",
+              "situation": "When a patient reports heavy menstrual bleeding and fatigue in an elderly woman with pelvic symptoms, the doctor should ask targeted questions about bleeding patterns and associated symptoms to refine the differential.",
+              "action": "Ask targeted questions about menstrual bleeding patterns, associated symptoms, and recent changes to identify potential causes like fibroids or anemia.",
+              "boundary": "Use this memory when a patient reports heavy bleeding and fatigue in an elderly woman with pelvic symptoms; do not use if the patient has a clear history of benign fibroids or if imaging confirms a benign mass.",
+              "tags": [
+                "positive",
+                "menorrhagia",
+                "elderly_female",
+                "targeted_history",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_0b046cdc7fbf",
+              "type": "experience",
+              "score": 0.2158,
+              "outcome": "success",
+              "situation": "When a patient presents with dull, aching hip pain worsening over months with stiffness and swelling, especially after trauma, and no imaging or lab results are available, what should the doctor do next?",
+              "action": "Request targeted imaging of the hip to rule out structural damage or other causes, then update the differential based on findings.",
+              "boundary": "Use when hip pain is chronic, mechanical, and associated with trauma or stiffness; do not use if imaging is already available or if systemic symptoms suggest infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "image_review_needed",
+                "broad_differential"
+              ]
+            },
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2013,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_6617ff54ad7e",
+              "type": "experience",
+              "score": 0.19,
+              "outcome": "success",
+              "situation": "When a patient over 50 presents with rectal bleeding, weight loss, and fatigue, and initial labs and CXR are unavailable, what should the doctor do next?",
+              "action": "Ask targeted questions about abdominal pain, appetite changes, and bowel habits to refine the differential and guide imaging.",
+              "boundary": "Use when patient is over 50 with rectal bleeding and weight loss; do not use if symptoms are fully explained by benign causes or if imaging is already available.",
+              "tags": [
+                "positive",
+                "abdominal_pain",
+                "weight_loss",
+                "rectal_bleeding",
+                "targeted_history"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c95ca4534af0",
+              "type": "experience",
+              "score": 0.3092,
+              "outcome": "failure",
+              "situation": "When a patient presents with hematuria, fever, and flank pain, and has a known history of cystic kidney disease, but no imaging results are available, the doctor should not finalize a diagnosis without confirming imaging findings.",
+              "action": "Request and review available imaging studies (e.g., ultrasound or CT) before finalizing a diagnosis involving complications of cystic kidney disease.",
+              "boundary": "Use this memory when imaging is available and relevant to the differential; do not use if imaging is unavailable or if the patient has no known cystic kidney disease.",
+              "tags": [
+                "negative",
+                "missing_image",
+                "premature_closure",
+                "cystic_kidney_disease"
+              ]
+            },
+            {
+              "id": "exp_3db53c65aa33",
+              "type": "experience",
+              "score": 0.2901,
+              "outcome": "failure",
+              "situation": "When a patient presents with a pelvic mass and symptoms like pressure, urinary frequency, and bloating, but no imaging or lab results are available, and the differential is uncertain, avoid finalizing diagnosis without ruling out benign causes.",
+              "action": "Request imaging and labs before finalizing diagnosis, especially when the patient is symptomatic and the mass is not clearly benign.",
+              "boundary": "Use this memory when imaging and labs are missing and the patient has symptoms suggestive of a pelvic mass; do not use if imaging or labs are available and confirm benign findings.",
+              "tags": [
+                "negative",
+                "pelvic_mass",
+                "missing_imaging",
+                "missing_lab",
+                "premature_closure"
+              ]
+            },
+            {
+              "id": "exp_b30b1b80f22b",
+              "type": "experience",
+              "score": 0.2851,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and neutropenia, and imaging is unavailable, the doctor should not finalize diagnosis without confirming neutrophil count and ruling out infection or malignancy.",
+              "action": "Delay final diagnosis until neutrophil count is confirmed and imaging or further tests are available.",
+              "boundary": "Use this memory when fever and neutropenia are suspected but lab results or imaging are unavailable; do not use if neutrophil count is confirmed and imaging is available.",
+              "tags": [
+                "negative",
+                "unsafe_finalization",
+                "missing_lab",
+                "neutropenia"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "diagnosis of red swollen painful leg with fever and non-blanching swelling"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'cfe0c4af-ce75-463a-b8df-60ba78fc202c': '[Document 1] (ID: 5834_1, Score: 0.872)\\n# Diagnosis\\nThe diagnosis is primarily based on the appearance of the skin. Your doctor may order tests to examine the blood flow in your legs.\\n\\n# When to seek urgent medical care?\\nCall for an appointment with your health care provider if you develop leg swelling or symptoms of stasis dermatitis. Wa...\\n\\n[Document 2] (ID: 4518_28, Score: 0.868)\\n- Swelling in one or both legs - Pain or tenderness in one or both legs, which may occur only while standing or walking - Warmth of the skin of the affected leg - Red or discolored skin in the affected leg - Visible surface veins DVT usually involves the deep veins of the legs or arms. It may cause ...\\n\\n[Document 3] (ID: 9180_9, Score: 0.862)\\n# Post-Op Fever Causes\\n- Wind: pneumonia, atelectasis\\n- Wound: wound infections\\n- Water: urinary tract infection\\n- Walking: DVT/PE (walking can help reduce DVT/PE)\\n- Wonderdrugs: especially anesthesia\\n\\n# Predisposing Conditions for Pulmonary Embolism\\n- T - Trauma\\n- O - Obesity\\n- M - Malignancy\\n- S -...\\n\\n[Document 4] (ID: 17843_1, Score: 0.862)\\n## History and Symptoms\\nThe disease is classically a five-day fever of the relapsing type, rarely with a continuous course ...[truncated]'}}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of red swollen painful leg with fever and non-blanching swelling\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis of red swollen painful leg with fever and non-blanching swelling\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20097354",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "",
+        "current_turn_information": [
+          "I’ve noticed a red, swollen area on my leg that’s been getting bigger over the past few days. The skin feels hot and hurts to touch. It’s not sharply defined, and I’ve been having a fever and feeling tired. I also noticed some swelling around the area, and it doesn’t go white when I press on it. I’m not sure if it started after a break in the skin, but I’ve had some dry, itchy patches recently."
+        ],
+        "prior_information_summary": "Patient is a 54-year-old male, admitted via transfer from skilled nursing facility. Admission type: EU OBSERVATION. Diagnostic window: 2133-01-30 20:48:00 to 2133-01-30 23:00:00. Patient reports no prior issues in the affected area. Patient has dry, itchy skin patches. Final result: Cellulitis of right lower limb. Knowledge base includes information on cellulitis: signs (red, hot, painful area), symptoms (fever, fatigue), causes (bacterial infection, skin breaks), risk factors (diabetes, obesity), differential diagnosis (DVT, stasis dermatitis), and treatment (antibiotics like cephalexin, clindamycin, or doxycycline for MRSA)."
+      },
+      "query": {
+        "case_id": "20097354",
+        "turn_id": 10,
+        "query_text": "leg swelling with fever and redness; need to review imaging and labs before finalizing cellulitis diagnosis; avoid premature closure without confirming skin break or MRSA risk"
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_8de74d81f6ff",
+              "type": "experience",
+              "score": 0.2456,
+              "outcome": "success",
+              "situation": "When hip pain is described as aching and localized with stiffness and functional limitation, but no imaging or labs are available, what should the doctor avoid?",
+              "action": "Avoid finalizing diagnosis without imaging or physical exam findings, as this may lead to premature closure and miss alternative diagnoses like infection or fracture.",
+              "boundary": "Use when imaging or physical exam is missing; do not use if imaging is available and shows clear osteoarthritis or if the patient has systemic symptoms suggesting infection or malignancy.",
+              "tags": [
+                "positive",
+                "hip_pain",
+                "unsafe_finalization",
+                "premature_closure",
+                "image_review_needed"
+              ]
+            },
+            {
+              "id": "exp_60b4b6935e50",
+              "type": "experience",
+              "score": 0.2176,
+              "outcome": "success",
+              "situation": "When a 75-year-old female presents with pelvic pressure, bloating, urinary frequency, and dyspareunia, and initial labs and imaging are unavailable, the doctor should update the hypothesis to consider malignancy as a default assumption.",
+              "action": "Update the differential diagnosis to include malignancy as a default assumption, even in the absence of imaging or lab results, to avoid premature closure.",
+              "boundary": "Use this memory when facing a pelvic mass in an elderly woman with no imaging or lab results; do not use if imaging or lab results are available and confirm a benign diagnosis.",
+              "tags": [
+                "positive",
+                "pelvic_pain",
+                "elderly_female",
+                "malignancy_default",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            },
+            {
+              "id": "exp_5a035963c148",
+              "type": "experience",
+              "score": 0.2135,
+              "outcome": "success",
+              "situation": "When a patient presents with redness, swelling, and pus around a nail, and the history suggests recent trauma or nail-biting, but no imaging or lab results are available, what should the doctor do next?",
+              "action": "Update the differential to include paronychia and confirm the diagnosis with targeted patient history about trauma or nail manipulation, then finalize only after ruling out onychia or other nail infections.",
+              "boundary": "Use this memory when symptoms suggest paronychia and no imaging or labs are available; do not use if there is evidence of nail bed involvement or if the patient has systemic signs of infection.",
+              "tags": [
+                "positive",
+                "nail_infection",
+                "targeted_history",
+                "broad_differential",
+                "diagnostic_anchoring"
+              ]
+            },
+            {
+              "id": "exp_a109513b6068",
+              "type": "experience",
+              "score": 0.2106,
+              "outcome": "success",
+              "situation": "When a patient presents with pain, redness, swelling around the nail, and purulent discharge, especially after nail biting or frequent hand washing, and initial labs and imaging are unavailable, what should the doctor do next?",
+              "action": "Update the differential to include paronychia based on symptom description and then finalize diagnosis only after confirming the clinical picture matches known features of paronychia.",
+              "boundary": "Use when symptoms match paronychia and no imaging or labs are available; do not use if there is suspicion of onychia or if the patient has systemic signs of infection or trauma.",
+              "tags": [
+                "positive",
+                "nail_pain",
+                "paronychia",
+                "targeted_history",
+                "image_review_needed",
+                "lab_needed"
+              ]
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_319b5f0239cc",
+              "type": "experience",
+              "score": 0.3317,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever, weight loss, and poor appetite without specific localizing symptoms, and initial history and lab review yield no evidence, the doctor should avoid premature diagnosis of malignancy without imaging or targeted investigation.",
+              "action": "Avoid finalizing diagnosis of malignancy without reviewing relevant imaging (e.g., renal or urinary tract ultrasound) or obtaining specific lab tests (e.g., urinalysis, creatinine, calcium) to rule out calculi or other non-malignant causes.",
+              "boundary": "Use this memory when systemic symptoms like fever, weight loss, and poor appetite are present without localizing signs, and imaging or lab tests are unavailable or not requested; do not use if imaging (e.g., ultrasound) or specific labs (e.g., urinalysis) are available and not reviewed.",
+              "tags": [
+                "negative",
+                "fever",
+                "weight_loss",
+                "poor_appetite",
+                "premature_closure",
+                "image_review_needed",
+                "missing_lab"
+              ]
+            },
+            {
+              "id": "exp_e2c81e1259f9",
+              "type": "experience",
+              "score": 0.3171,
+              "outcome": "failure",
+              "situation": "When a patient presents with fever and fatigue but no clear infectious or inflammatory signs, and initial labs and imaging are unavailable, the clinician must avoid premature diagnosis of complex hematologic conditions without confirming key diagnostic evidence.",
+              "action": "Do not finalize a diagnosis like MDS without reviewing bone marrow biopsy or cytogenetic results. Instead, request specific labs (CBC, peripheral smear) and imaging (CT or bone marrow imaging) to rule out infectious or inflammatory causes.",
+              "boundary": "Use this memory when fever and fatigue are present but no lab or imaging results are available; do not use if bone marrow biopsy or cytogenetic results are obtained or if imaging shows clear infectious findings.",
+              "tags": [
+                "negative",
+                "fever",
+                "fatigue",
+                "missing_lab",
+                "premature_closure",
+                "myelodysplastic_syndrome"
+              ]
+            },
+            {
+              "id": "exp_1a95f6def16d",
+              "type": "experience",
+              "score": 0.2876,
+              "outcome": "failure",
+              "situation": "When a patient reports joint pain, stiffness, swelling, grinding, and limited range of motion with no clear joint localization, and initial imaging and labs are unavailable, the doctor should avoid premature diagnosis without confirming the specific joint involved.",
+              "action": "Ask the patient to specify which joint is primarily affected, then request targeted imaging of that joint to rule out osteoarthritis or other localized conditions before finalizing a diagnosis.",
+              "boundary": "Use this memory when joint symptoms are vague and imaging/labs are unavailable; do not use if the joint is clearly identified or if imaging confirms a specific condition like osteoarthritis.",
+              "tags": [
+                "negative",
+                "joint_pain",
+                "missing_imaging",
+                "premature_closure",
+                "unilateral_pain"
+              ]
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Deep Vein Thrombosis (DVT)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bbd71bf5-c9b1-45ad-8bac-8ee49ded6f51': '{\"diagnosis\": \"Deep Vein Thrombosis (DVT)\", \"done\": true}'}}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Deep Vein Thrombosis (DVT)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Deep Vein Thrombosis (DVT)}\"}}\n</tool_call>"
+      }
+    }
+  ]
+}
